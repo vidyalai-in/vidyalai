@@ -124,6 +124,7 @@ class Chatterbox:
         import torch
 
         self.torch = torch
+        self.engine = engine
         self.device = "cuda" if device in ("auto", "cuda") and torch.cuda.is_available() else "cpu"
         self.turbo = engine.get("model") == "turbo"
         if self.turbo:
@@ -189,7 +190,7 @@ class Chatterbox:
         for take in range(self.retakes):
             seed = int(hashlib.sha1(f"{text}|{take}".encode()).hexdigest()[:8], 16)
             self.torch.manual_seed(seed)
-            audio = self.model.generate(text, **self.kwargs).squeeze(0).cpu().numpy()
+            audio = finish(self.model.generate(text, **self.kwargs).squeeze(0).cpu().numpy(), self.engine)
             score, info = self.score(text, audio)
             if best is None or score < best[0]:
                 best = (score, audio, {**info, "take": take})
@@ -199,6 +200,31 @@ class Chatterbox:
         if score > self.max_wer:
             print(f"tts: WARNING best of {self.retakes} takes scored {score:.2f}: {text!r} -> {info}", flush=True)
         return audio, info
+
+
+def finish(audio, engine: dict):
+    """Optional per-clip polish from the voice profile: trim dead air, then speed up without
+    changing pitch (ffmpeg atempo, WSOLA). Applied to every take before it is scored."""
+    import subprocess
+    import tempfile
+
+    import numpy as np
+    import soundfile as sf
+
+    if engine.get("trim"):
+        import librosa
+
+        _, (start, end) = librosa.effects.trim(audio, top_db=40)
+        pad = int(0.04 * SAMPLE_RATE)
+        audio = audio[max(0, start - pad) : min(len(audio), end + pad)]
+    tempo = float(engine.get("tempo", 1.0))
+    if abs(tempo - 1.0) > 1e-3:
+        with tempfile.TemporaryDirectory() as tmp:
+            src, dst = f"{tmp}/in.wav", f"{tmp}/out.wav"
+            sf.write(src, audio, SAMPLE_RATE)
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-af", f"atempo={tempo}", dst], check=True)
+            audio = sf.read(dst, dtype="float32")[0]
+    return np.ascontiguousarray(audio, dtype=np.float32)
 
 
 ENGINES = {"kokoro": Kokoro, "chatterbox": Chatterbox}

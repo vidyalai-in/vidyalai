@@ -3,9 +3,12 @@
   "engine": "chatterbox",
   "model": "standard",
   "reference": "reference.wav",
-  "exaggeration": 0.5,
+  "exaggeration": 0.75,
   "cfg_weight": 0.5,
   "temperature": 0.8,
   "postfx": "highpass=f=70,lowpass=f=11500,deesser=i=0.4,equalizer=f=3000:t=q:w=1.4:g=-1.5,equalizer=f=200:t=q:w=1.0:g=1",
-  "credit": "Narration: an AI clone of the creator's own voice (Chatterbox open-weight text-to-speech), made from the creator's own recording. Script, diagrams and sources by VidyalAI."
+  "credit": "Narration: an AI clone of the creator's own voice (Chatterbox open-weight text-to-speech), made from the creator's own recording. Script, diagrams and sources by VidyalAI.",
+  "trim": true,
+  "tempo": 1.12,
+  "_tuning": "2026-10-16 listening feedback: v1 (exaggeration 0.5) was flatter and slower than the US voice. Measured: pitch spread 3.13 st vs 3.72; your own reading ~162 wpm. exaggeration 0.75 restores pitch spread (3.7 st) at similarity 0.96; higher values raise pitch above yours and add errors. trim + tempo 1.12 speed it up."
 }

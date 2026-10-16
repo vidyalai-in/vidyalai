@@ -154,7 +154,7 @@ writeFileSync(
   manifestPath,
   JSON.stringify(
     {
-      engine: { name: engineName, ...Object.fromEntries(Object.entries(profile).filter(([k]) => !['engine', 'postfx', 'label'].includes(k))), ...(pronunciationChecks.length && { checks: pronunciationChecks }) },
+      engine: { name: engineName, ...Object.fromEntries(Object.entries(profile).filter(([k]) => !['engine', 'postfx', 'label', 'credit', '_tuning'].includes(k))), ...(pronunciationChecks.length && { checks: pronunciationChecks }) },
       cacheDir: join(ROOT, 'video/.tts-cache'),
       items,
     },
