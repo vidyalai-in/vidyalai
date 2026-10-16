@@ -689,15 +689,15 @@ And do the sizing math before
 you build anything.
 
 150
-00:10:48,850 --> 00:10:53,725
+00:10:48,850 --> 00:10:53,450
 The full article, with every number and
 every source, is on vidyal.ai.
 
 151
-00:10:54,350 --> 00:10:59,200
+00:10:54,050 --> 00:10:58,900
 Next in the series: how to debug a RAG
 system that gives wrong answers.
 
 152
-00:10:59,500 --> 00:11:01,050
+00:10:59,200 --> 00:11:00,750
 See you there.

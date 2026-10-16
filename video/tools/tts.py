@@ -95,6 +95,12 @@ def mix(timeline_path: Path):
     for clip in timeline["clips"]:
         audio, sr = sf.read(clip["wav"], dtype="float32")
         assert sr == SAMPLE_RATE, f"{clip['wav']}: {sr} Hz"
+        # 5 ms fades so clip edges can't click.
+        fade = min(len(audio) // 2, int(0.005 * SAMPLE_RATE))
+        if fade:
+            ramp = np.linspace(0.0, 1.0, fade, dtype=np.float32)
+            audio[:fade] *= ramp
+            audio[-fade:] *= ramp[::-1]
         start = int(round(clip["start"] * SAMPLE_RATE))
         end = min(total, start + len(audio))
         track[start:end] += audio[: end - start]

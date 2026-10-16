@@ -31,7 +31,21 @@ expands them but prefer "for example"), symbols the table above doesn't cover (`
 and "$25k" (write "$25,000"). Write "recall at 50", not "recall@50".
 
 When a term is misread, add it to the script's `lexicon:` (or to `video/tools/lexicon.json` if it
-will recur across videos) with a phonetic respelling, e.g. `Faiss: face`, `SQL: sequel`.
+will recur across videos). Two forms:
+
+- A respelling, e.g. `Faiss: face`, `SQL: sequel`. Quick, but approximate.
+- Exact phonemes in Kokoro's markup, e.g. `vidyal.ai: "[Vidyalai](/vɪdjˈɑlˌA/)"`. Kokoro's US
+  symbols are IPA plus `A` = eɪ, `I` = aɪ, `O` = oʊ, `W` = aʊ, `Y` = ɔɪ; `ˈ`/`ˌ` mark stress.
+
+Matching a pronunciation the owner recorded (how `vidyal.ai` was set):
+1. `ffmpeg -i Recording.mp3 -ac 1 -ar 16000 rec.wav`, split it at pauses if it has several takes
+   (`-af silencedetect=noise=-35dB:d=0.25` finds them).
+2. Decode it with `video/tools/phonemes.py` (usage in its docstring) to get IPA.
+3. Synthesize 3-4 candidate markups *inside a sentence* (single words come out clipped) and decode
+   those too. Keep the one whose phonemes match the recording. If the recognizer is unsure of a
+   vowel, measure formants (F1 of the vowel's start: ~700+ Hz for aɪ, ~450 Hz for eɪ).
+4. Prefer this over splicing the owner's own recording into the narration: a second voice in the
+   same track sounds jarring.
 
 ## On-screen text
 

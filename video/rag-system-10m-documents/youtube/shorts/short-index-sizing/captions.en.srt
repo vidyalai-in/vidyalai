@@ -41,5 +41,5 @@ Vectors, times dimensions, times bytes.
 Do that math before you choose a database.
 
 10
-00:00:41,617 --> 00:00:44,342
+00:00:41,617 --> 00:00:44,117
 The full design is on vidyal.ai.

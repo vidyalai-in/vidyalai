@@ -268,10 +268,13 @@ for (const v of videos) {
   writeFileSync(timelinePath, JSON.stringify({ out: wav, totalSeconds: v.total, clips: v.clips }));
   uv(['mix', timelinePath]);
   const mp4 = join(outDir, `${v.id === 'main' ? slug : `${slug}--${v.id}`}.mp4`);
-  // Two-pass loudness normalization: measure the narration, then correct it exactly to -14 LUFS.
-  const probe = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', wav, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], { encoding: 'utf8' });
-  const m = JSON.parse(probe.stderr.slice(probe.stderr.lastIndexOf('{')));
-  const loudnorm = `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
+  // Loudness: one static gain to -14 LUFS plus a peak limiter at -2.5 dBFS, which leaves room for AAC overshoot (target: true peak under -1 dB). (ffmpeg's loudnorm falls back to
+  // dynamic gain when it can't stay linear, and that pumps the TTS noise floor up ~45 dB in every
+  // pause, which is audible as hiss and grinding. A fixed gain can't do that.)
+  const probe = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', wav, '-af', 'loudnorm=print_format=json', '-f', 'null', '-'], { encoding: 'utf8' });
+  const measured = JSON.parse(probe.stderr.slice(probe.stderr.lastIndexOf('{')));
+  const gain = -14 - Number(measured.input_i);
+  const loudnorm = `volume=${gain.toFixed(2)}dB,alimiter=limit=${Math.pow(10, -2.5 / 20).toFixed(4)}:attack=5:release=50:level=false`;
   const ff = spawnSync(
     'ffmpeg',
     [

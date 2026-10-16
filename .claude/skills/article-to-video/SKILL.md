@@ -71,9 +71,16 @@ Review every build, don't trust it blind:
    clipped, nothing overlapping, text readable, diagrams framed on what the narration is about.
 3. Spot-check frames at specific times with
    `ffmpeg -ss <sec> -i out/<file>.mp4 -frames:v 1 frame.png` and look at them.
-4. Check loudness lands near -14 LUFS:
-   `ffmpeg -i out/<file>.mp4 -af ebur128=framelog=quiet -f null - 2>&1 | grep ' I:'`.
-5. Re-read `youtube/main/description.txt` and the chapter titles.
+4. Check loudness (target about -14 to -15 LUFS, true peak under -1 dB):
+   `ffmpeg -i out/<file>.mp4 -af ebur128=peak=true:framelog=quiet -f null - 2>&1 | grep -E ' I:| Peak:'`.
+5. Check the pauses are silent: render a spectrogram of any 10 s
+   (`ffmpeg -ss 140 -t 10 -i out/<file>.mp4 -vn -lavfi showspectrumpic=s=1600x400:scale=log spec.png`)
+   and look at it. Gaps between sentences should be near-black (below about -90 dB). Bright noise in
+   the gaps means something is amplifying the TTS noise floor; never put `loudnorm` or any other
+   dynamic gain/compression on the narration (the build uses one static gain plus a limiter).
+6. If the user reports a mispronounced word, follow "Matching a pronunciation" in
+   `references/narration.md`, then re-check the rebuilt clips with `video/tools/phonemes.py`.
+7. Re-read `youtube/main/description.txt` and the chapter titles.
 
 ## 5. Outputs and hand-off
 

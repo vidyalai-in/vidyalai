@@ -35,5 +35,5 @@ filter during the search, or shard per
 tenant.
 
 9
-00:00:28,683 --> 00:00:31,408
+00:00:28,683 --> 00:00:31,183
 The full design is on vidyal.ai.

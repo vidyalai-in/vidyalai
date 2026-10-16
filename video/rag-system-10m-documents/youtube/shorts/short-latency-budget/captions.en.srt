@@ -32,5 +32,5 @@ Worst case, 1.4 s to the first
 token, inside a 1.5 s target.
 
 9
-00:00:36,217 --> 00:00:38,942
+00:00:36,217 --> 00:00:38,717
 The full design is on vidyal.ai.

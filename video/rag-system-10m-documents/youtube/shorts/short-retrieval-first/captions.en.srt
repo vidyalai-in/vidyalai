@@ -40,5 +40,5 @@ And retrieval is the cheapest
 part to measure.
 
 10
-00:00:33,817 --> 00:00:36,542
+00:00:33,817 --> 00:00:36,317
 The full design is on vidyal.ai.
