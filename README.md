@@ -64,9 +64,9 @@ GitHub Pages serves one custom domain per site. `vidyal.ai` is primary (`public/
 | AAAA | `@` | `2606:50c0:8001::153` |
 | AAAA | `@` | `2606:50c0:8002::153` |
 | AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `<github-user>.github.io` |
+| CNAME | `www` | `vidyalai-in.github.io` |
 
-Then, in GitHub: verify `vidyal.ai` under **Settings → Pages → Verified domains** (adds a TXT
+Then, in GitHub: verify `vidyal.ai` under the **vidyalai-in organization settings → Pages → Add a domain** (adds a TXT
 record; protects against domain takeover), set the custom domain in the repo's Pages settings, and
 tick **Enforce HTTPS** once the certificate is issued.
 
