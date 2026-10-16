@@ -1,0 +1,2 @@
+What's the biggest corpus you've run RAG over, and where did it break first: parsing, retrieval or generation?
+Every number in this video, with sources: https://vidyal.ai/blog/rag-system-10m-documents/

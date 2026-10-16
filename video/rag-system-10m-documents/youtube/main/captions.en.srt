@@ -1,0 +1,703 @@
+1
+00:00:03,550 --> 00:00:05,525
+Ten million documents.
+
+2
+00:00:05,825 --> 00:00:10,682
+A question comes in, and you have about two
+and a half seconds to find the right
+
+3
+00:00:10,682 --> 00:00:13,900
+passages and write a grounded
+answer, with citations.
+
+4
+00:00:14,517 --> 00:00:19,596
+In this video, we'll design that system end to
+end: how to size it, how to build it,
+
+5
+00:00:19,596 --> 00:00:21,592
+and how to know whether it works.
+
+6
+00:00:22,617 --> 00:00:25,417
+Here's the idea that shapes
+everything else.
+
+7
+00:00:25,717 --> 00:00:31,117
+Treat a RAG system as a retrieval system
+first, and a generation system second.
+
+8
+00:00:31,717 --> 00:00:34,342
+Most wrong answers start in retrieval.
+
+9
+00:00:34,642 --> 00:00:39,117
+The right passage was never found, or it
+never made it into the prompt.
+
+10
+00:00:39,417 --> 00:00:42,967
+And retrieval is also the
+cheapest part to measure.
+
+11
+00:00:43,983 --> 00:00:49,141
+Before choosing a single component, pin down a
+few requirements, because each one
+
+12
+00:00:49,141 --> 00:00:50,733
+changes the architecture.
+
+13
+00:00:51,350 --> 00:00:53,525
+First, what are the documents?
+
+14
+00:00:53,825 --> 00:00:59,675
+Ten million documents of about five pages
+each is roughly 25B tokens.
+
+15
+00:00:59,975 --> 00:01:03,600
+That's a very different system
+from ten million tweets.
+
+16
+00:01:04,217 --> 00:01:06,567
+Second, what kinds of questions?
+
+17
+00:01:06,867 --> 00:01:11,894
+Simple lookups, multi-step questions, and
+find-everything requests each need
+
+18
+00:01:11,894 --> 00:01:13,217
+different machinery.
+
+19
+00:01:13,817 --> 00:01:16,042
+Third, load and latency.
+
+20
+00:01:16,342 --> 00:01:23,092
+A workable starting point is 50 queries per
+second at peak, p95 under 3 s end to
+
+21
+00:01:23,092 --> 00:01:26,467
+end, and the first token in under 1.5 s.
+
+22
+00:01:27,083 --> 00:01:28,883
+Fourth, freshness.
+
+23
+00:01:29,183 --> 00:01:34,883
+If 1% of the corpus changes daily,
+that's 100k documents a day.
+
+24
+00:01:35,183 --> 00:01:38,658
+Do they need to be searchable in
+minutes, or in hours?
+
+25
+00:01:39,283 --> 00:01:41,633
+And fifth, access control.
+
+26
+00:01:41,933 --> 00:01:47,208
+Whether permissions are per user or per tenant
+decides where filtering happens.
+
+27
+00:01:47,508 --> 00:01:51,708
+Getting this wrong is the most common
+way RAG systems leak data.
+
+28
+00:01:52,717 --> 00:01:54,742
+The system has two halves.
+
+29
+00:01:55,042 --> 00:02:00,092
+Offline, an ingestion pipeline turns raw
+documents into two indexes.
+
+30
+00:02:00,392 --> 00:02:05,942
+Online, the query path searches both, reranks
+the results, and generates an answer.
+
+31
+00:02:06,550 --> 00:02:09,575
+Let's start offline, one stage at a time.
+
+32
+00:02:10,183 --> 00:02:14,908
+Parsing comes first, and it's the hidden
+ceiling on everything downstream.
+
+33
+00:02:15,208 --> 00:02:20,933
+Use layout-aware parsing, run OCR on
+scans, and keep tables as tables.
+
+34
+00:02:21,233 --> 00:02:26,308
+Then read about 200 parsed documents
+yourself, before tuning anything else.
+
+35
+00:02:26,917 --> 00:02:33,192
+Next, chunk along the document's structure, at
+roughly 300-800 tokens per chunk.
+
+36
+00:02:33,492 --> 00:02:38,339
+Store a pointer to each chunk's parent section,
+so you can retrieve something small,
+
+37
+00:02:38,339 --> 00:02:41,917
+and hand the model something bigger
+when it needs the context.
+
+38
+00:02:42,917 --> 00:02:44,817
+A quick sizing check.
+
+39
+00:02:45,117 --> 00:02:52,592
+25B tokens over ten million documents is
+about 2,500 tokens per document.
+
+40
+00:02:53,217 --> 00:02:58,642
+At 300-800 tokens per chunk, that's
+30 to 80 million chunks.
+
+41
+00:02:59,250 --> 00:03:05,025
+Plan capacity for 100 million, to leave room
+for overlap, context headers and
+
+42
+00:03:05,025 --> 00:03:05,550
+growth.
+
+43
+00:03:06,550 --> 00:03:11,692
+Then enrich each chunk with what retrieval
+will need: its title, section, date,
+
+44
+00:03:11,692 --> 00:03:13,775
+tenant, and access-control list.
+
+45
+00:03:14,383 --> 00:03:19,614
+Optionally, prepend a short generated
+sentence that places each chunk in its
+
+46
+00:03:19,614 --> 00:03:20,233
+document.
+
+47
+00:03:20,533 --> 00:03:23,583
+Anthropic calls this contextual retrieval.
+
+48
+00:03:23,883 --> 00:03:31,202
+Combined with keyword search and reranking, it
+cut their top-20 retrieval failures
+
+49
+00:03:31,202 --> 00:03:32,808
+from 5.7% to 1.9%.
+
+50
+00:03:33,417 --> 00:03:36,392
+Each chunk then goes into two indexes.
+
+51
+00:03:36,692 --> 00:03:43,014
+A vector index captures meaning, and a BM25
+keyword index catches exact terms, like
+
+52
+00:03:43,014 --> 00:03:44,842
+product codes and names.
+
+53
+00:03:45,850 --> 00:03:48,850
+Now the number everyone
+forgets to compute.
+
+54
+00:03:49,150 --> 00:03:51,600
+How big is the vector index?
+
+55
+00:03:52,217 --> 00:04:00,092
+A hundred million vectors at 1024 dimensions,
+in 32-bit floats, is about 410 GB.
+
+56
+00:04:00,392 --> 00:04:02,217
+That's a lot of RAM.
+
+57
+00:04:02,817 --> 00:04:09,133
+Truncate to 512 dimensions with a
+Matryoshka-trained model, store each value as an
+
+58
+00:04:09,133 --> 00:04:12,292
+8-bit integer, and you're at about 51 GB.
+
+59
+00:04:12,917 --> 00:04:18,567
+Go further with binary or
+product-quantized codes, and it's 6-13 GB.
+
+60
+00:04:18,867 --> 00:04:24,647
+Those trade recall for size, so rescore the
+top candidates with higher-precision
+
+61
+00:04:24,647 --> 00:04:26,092
+vectors kept on SSD.
+
+62
+00:04:27,117 --> 00:04:33,538
+For the index itself, HNSW graphs in memory give
+the best recall and latency, if you
+
+63
+00:04:33,538 --> 00:04:35,067
+can pay for the RAM.
+
+64
+00:04:35,683 --> 00:04:42,748
+IVF-PQ or DiskANN live on SSD, and cost far
+less per vector, at the price of more
+
+65
+00:04:42,748 --> 00:04:43,358
+tuning.
+
+66
+00:04:43,983 --> 00:04:48,956
+Whichever you choose, keep metadata and
+permission filters in the same engine, so
+
+67
+00:04:48,956 --> 00:04:52,333
+that filtering happens during the
+search, not after it.
+
+68
+00:04:52,950 --> 00:04:57,875
+Stream updates in as documents change, and
+apply deletions immediately.
+
+69
+00:04:58,175 --> 00:05:02,150
+Deletes are a compliance issue, not
+just a relevance one.
+
+70
+00:05:02,750 --> 00:05:06,450
+And tag every vector with the
+model that produced it.
+
+71
+00:05:06,750 --> 00:05:10,900
+When you change embedding models, you'll
+re-embed the whole corpus.
+
+72
+00:05:11,917 --> 00:05:13,892
+Now the online side.
+
+73
+00:05:14,192 --> 00:05:17,492
+When a question arrives, here's
+where the time goes.
+
+74
+00:05:18,117 --> 00:05:23,894
+An optional rewrite step, using a small model or
+rules, splits multi-part questions
+
+75
+00:05:23,894 --> 00:05:26,192
+and pulls out filters like dates.
+
+76
+00:05:26,492 --> 00:05:29,942
+Budget 100-300 ms.
+
+77
+00:05:30,550 --> 00:05:35,959
+Hybrid retrieval runs the vector search and the
+keyword search in parallel, about
+
+78
+00:05:35,959 --> 00:05:40,100
+100 results each, and merges them
+with reciprocal rank fusion.
+
+79
+00:05:40,400 --> 00:05:42,900
+That's 30-80 ms.
+
+80
+00:05:43,517 --> 00:05:48,886
+A cross-encoder then reads each candidate
+together with the question, and keeps the
+
+81
+00:05:48,886 --> 00:05:49,792
+best 10 to 20.
+
+82
+00:05:50,092 --> 00:05:56,192
+It's far more precise than the first
+stage, for 80-200 ms on a GPU.
+
+83
+00:05:56,817 --> 00:06:02,836
+Context assembly removes duplicates, expands
+chunks to their parent sections, and
+
+84
+00:06:02,836 --> 00:06:04,917
+orders them, in under 20 ms.
+
+85
+00:06:05,517 --> 00:06:11,992
+And generation streams the answer, with the
+first token after 400-800 ms.
+
+86
+00:06:12,617 --> 00:06:21,039
+Add up the worst cases, and the first token
+arrives in 1,400 ms, just inside the 1.5
+
+87
+00:06:21,039 --> 00:06:21,942
+s target.
+
+88
+00:06:22,242 --> 00:06:27,692
+In production, measure the end-to-end
+distribution, rather than summing the table.
+
+89
+00:06:28,717 --> 00:06:34,044
+For generation, tell the model to answer only
+from the retrieved passages, to cite
+
+90
+00:06:34,044 --> 00:06:37,292
+them, and to say so when the
+evidence isn't there.
+
+91
+00:06:37,917 --> 00:06:42,292
+Put the strongest passages at the start
+and the end of the context.
+
+92
+00:06:42,592 --> 00:06:47,992
+Models pay less attention to the middle of long
+inputs, an effect known as lost in
+
+93
+00:06:47,992 --> 00:06:48,717
+the middle.
+
+94
+00:06:49,317 --> 00:06:54,812
+And cache what repeats: the system prompt, query
+embeddings, and answers to frequent
+
+95
+00:06:54,812 --> 00:06:55,467
+questions.
+
+96
+00:06:56,483 --> 00:06:58,133
+Now the cost.
+
+97
+00:06:58,433 --> 00:07:04,308
+50 queries per second, around the clock, is
+about 4.3 million queries a day.
+
+98
+00:07:04,917 --> 00:07:11,292
+At about 12,000 input tokens each, that's
+roughly 52B input tokens a day.
+
+99
+00:07:11,592 --> 00:07:15,792
+Since 50 per second is a peak, treat
+that as an upper bound.
+
+100
+00:07:16,417 --> 00:07:23,041
+At an illustrative one dollar per million input
+tokens, that's about $52,000 a day,
+
+101
+00:07:23,041 --> 00:07:24,717
+before output tokens.
+
+102
+00:07:25,317 --> 00:07:31,056
+Retrieval infrastructure for 100 million
+vectors costs a few thousand dollars a
+
+103
+00:07:31,056 --> 00:07:31,492
+month.
+
+104
+00:07:31,792 --> 00:07:36,042
+So generation dominates the bill, by
+far more than ten times.
+
+105
+00:07:37,050 --> 00:07:42,650
+That's why the reranker pays for itself: fewer,
+better chunks means fewer tokens.
+
+106
+00:07:42,950 --> 00:07:48,223
+Add routing of easy questions to smaller
+models, plus caching, and those are the
+
+107
+00:07:48,223 --> 00:07:49,475
+levers that matter.
+
+108
+00:07:50,483 --> 00:07:55,479
+None of this matters unless you can measure it,
+and the key is to measure each stage
+
+109
+00:07:55,479 --> 00:07:56,133
+separately.
+
+110
+00:07:56,750 --> 00:08:03,450
+Build a golden set of 500 to 2,000 real queries,
+labeled by subject-matter experts.
+
+111
+00:08:03,750 --> 00:08:10,670
+Target recall at 50 of at least 0.95 before
+the reranker, and recall at 10 of at
+
+112
+00:08:10,670 --> 00:08:12,400
+least 0.85 after it.
+
+113
+00:08:13,017 --> 00:08:18,997
+Track the index's own recall against exact
+search, too, so index tuning doesn't hide
+
+114
+00:08:18,997 --> 00:08:20,492
+inside model changes.
+
+115
+00:08:21,117 --> 00:08:26,170
+For answers, measure faithfulness to the
+cited passages, correctness, citation
+
+116
+00:08:26,170 --> 00:08:30,317
+precision, and whether the system
+abstains when it can't answer.
+
+117
+00:08:30,617 --> 00:08:36,467
+If you use an LLM as a judge, calibrate it
+against about 200 human labels.
+
+118
+00:08:37,083 --> 00:08:42,158
+Online, watch feedback, reformulated
+queries, and clicks on citations.
+
+119
+00:08:42,458 --> 00:08:47,660
+And make every change to the chunker,
+embedder, index or prompt run the offline
+
+120
+00:08:47,660 --> 00:08:49,108
+suite before it ships.
+
+121
+00:08:50,117 --> 00:08:53,192
+Here's how the main index options compare.
+
+122
+00:08:53,492 --> 00:09:00,080
+HNSW in memory gives the best recall and
+latency, but it's RAM-heavy and weak under
+
+123
+00:09:00,080 --> 00:09:01,192
+heavy deletes.
+
+124
+00:09:01,817 --> 00:09:08,232
+IVF-PQ or DiskANN on SSD are five to twenty
+times cheaper in memory and scale to
+
+125
+00:09:08,232 --> 00:09:12,242
+billions, but they need
+rescoring and more tuning.
+
+126
+00:09:12,850 --> 00:09:18,216
+A managed vector database is the fastest to
+ship, but it gets expensive at 100
+
+127
+00:09:18,216 --> 00:09:22,550
+million vectors, and gives you less
+control over hybrid search.
+
+128
+00:09:23,150 --> 00:09:29,059
+And a search engine with vector support, like
+OpenSearch, Elasticsearch or Vespa,
+
+129
+00:09:29,059 --> 00:09:34,823
+gives you hybrid search, filters and BM25 in
+one system, at the cost of heavier
+
+130
+00:09:34,823 --> 00:09:35,625
+operations.
+
+131
+00:09:36,650 --> 00:09:39,500
+One tradeoff deserves its own warning.
+
+132
+00:09:39,800 --> 00:09:44,844
+If you fetch the top results first and filter
+permissions afterwards, a selective
+
+133
+00:09:44,844 --> 00:09:49,825
+permission can leave you with zero results,
+and the timing can leak information.
+
+134
+00:09:50,125 --> 00:09:53,200
+Filter during the search, or
+shard per tenant.
+
+135
+00:09:54,217 --> 00:09:57,617
+Let's finish with the mistakes
+that sink these projects.
+
+136
+00:09:57,917 --> 00:10:04,048
+First: jumping straight to a vector database
+and an LLM, with no targets, no eval
+
+137
+00:10:04,048 --> 00:10:06,017
+set, and no capacity math.
+
+138
+00:10:06,617 --> 00:10:09,617
+Second: ignoring permissions
+and deletions.
+
+139
+00:10:09,917 --> 00:10:15,279
+Leaked documents and stale deleted content
+are the incidents that actually get
+
+140
+00:10:15,279 --> 00:10:15,967
+escalated.
+
+141
+00:10:16,583 --> 00:10:19,883
+Third: reporting one
+end-to-end quality score.
+
+142
+00:10:20,183 --> 00:10:25,101
+If you don't separate retrieval recall from
+answer faithfulness, you can't tell
+
+143
+00:10:25,101 --> 00:10:26,283
+which stage to fix.
+
+144
+00:10:26,883 --> 00:10:29,558
+And fourth: unbounded context.
+
+145
+00:10:29,858 --> 00:10:35,808
+Sending the top 50 chunks costs more, runs
+slower, and actually makes answers worse.
+
+146
+00:10:36,817 --> 00:10:38,492
+So, to recap.
+
+147
+00:10:38,792 --> 00:10:41,842
+Treat RAG as a retrieval problem first.
+
+148
+00:10:42,142 --> 00:10:44,367
+Measure each stage on its own.
+
+149
+00:10:44,667 --> 00:10:47,842
+And do the sizing math before
+you build anything.
+
+150
+00:10:48,850 --> 00:10:53,725
+The full article, with every number and
+every source, is on vidyal.ai.
+
+151
+00:10:54,350 --> 00:10:59,200
+Next in the series: how to debug a RAG
+system that gives wrong answers.
+
+152
+00:10:59,500 --> 00:11:01,050
+See you there.

@@ -1,0 +1,44 @@
+1
+00:00:00,150 --> 00:00:03,125
+Your RAG system just gave a wrong answer.
+
+2
+00:00:03,750 --> 00:00:07,550
+Before you touch the prompt, or switch
+models, check retrieval.
+
+3
+00:00:08,550 --> 00:00:10,400
+Ask, in order.
+
+4
+00:00:10,700 --> 00:00:13,300
+Is the answer even in your documents?
+
+5
+00:00:13,917 --> 00:00:17,617
+Did retrieval find it, in the
+top 200 candidates?
+
+6
+00:00:18,217 --> 00:00:21,717
+Did it survive reranking, and
+make it into the prompt?
+
+7
+00:00:22,317 --> 00:00:25,717
+Only then, ask whether the model
+used it correctly.
+
+8
+00:00:26,717 --> 00:00:29,342
+Most wrong answers start in retrieval.
+
+9
+00:00:29,642 --> 00:00:32,817
+And retrieval is the cheapest
+part to measure.
+
+10
+00:00:33,817 --> 00:00:36,542
+The full design is on vidyal.ai.

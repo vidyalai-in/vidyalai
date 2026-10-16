@@ -1,0 +1,519 @@
+# Video script for "Designing a RAG System for 10 Million Documents".
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/rag-system-10m-documents
+
+slug: rag-system-10m-documents
+article: src/content/blog/01-rag-system-10m-documents.md
+voice: af_heart
+speed: 1.0
+
+youtube:
+  title: "Designing a RAG System for 10 Million Documents | LLM System Design"
+  altTitles:
+    - "RAG at Scale: Ingestion, Hybrid Search, Reranking and Cost for 10M Docs"
+    - "How to Build Production RAG Over 10 Million Documents"
+  summary: |
+    How do you build retrieval-augmented generation (RAG) over 10 million documents? This video walks through the whole design: the requirements that change the architecture, the ingestion pipeline, sizing the vector index (from 410 GB down to about 6 GB), the 2.5-second query path with hybrid search and reranking, what it costs, how to measure it, and the mistakes that sink these projects.
+
+    Part 1 of the LLM System Design series from VidyalAI.
+  tags:
+    - RAG
+    - retrieval augmented generation
+    - LLM system design
+    - vector database
+    - vector search
+    - hybrid search
+    - BM25
+    - reranking
+    - cross-encoder
+    - HNSW
+    - embeddings
+    - AI engineering
+    - LLM
+    - machine learning
+  hashtags: ["#RAG", "#LLM", "#SystemDesign"]
+  playlist: LLM System Design
+  pinnedComment: |
+    What's the biggest corpus you've run RAG over, and where did it break first: parsing, retrieval or generation?
+    Every number in this video, with sources: https://vidyal.ai/blog/rag-system-10m-documents/
+
+thumbnail:
+  title: "RAG for **10M** Docs"
+  badge: "410 GB → 6 GB"
+
+main:
+  scenes:
+    - type: brand
+      steps:
+        - hold: 3
+
+    - type: title
+      chapter: Why retrieval comes first
+      kicker: LLM System Design · Part 1
+      heading: Designing a RAG System for **10 Million** Documents
+      subtitle: Ingestion, hybrid retrieval, reranking, access control, cost and evals
+      steps:
+        - say: >-
+            Ten million documents. A question comes in, and you have about two and a half seconds
+            to find the right passages and write a grounded answer, with citations.
+        - say: >-
+            In this video, we'll design that system end to end: how to size it, how to build it,
+            and how to know whether it works.
+
+    - type: statement
+      text: Treat RAG as a **retrieval** system first, and a generation system second.
+      sub: Most wrong answers start in retrieval, and retrieval is the cheapest part to measure.
+      subStep: 1
+      steps:
+        - say: >-
+            Here's the idea that shapes everything else. Treat a RAG system as a retrieval system
+            first, and a generation system second.
+        - say: >-
+            Most wrong answers start in retrieval. The right passage was never found, or it never
+            made it into the prompt. And retrieval is also the cheapest part to measure.
+
+    - type: bullets
+      chapter: Requirements to pin down first
+      heading: Pin down the requirements first
+      numbered: true
+      steps:
+        - say: >-
+            Before choosing a single component, pin down a few requirements, because each one
+            changes the architecture.
+        - add: { text: What are the documents?, sub: "10M docs × ~5 pages ≈ 25B tokens" }
+          say: >-
+            First, what are the documents? Ten million documents of about five pages each is
+            roughly 25B tokens. That's a very different system from ten million tweets.
+        - add: { text: What's the query mix?, sub: "Lookups, multi-step questions, or \"find all X\"" }
+          say: >-
+            Second, what kinds of questions? Simple lookups, multi-step questions, and
+            find-everything requests each need different machinery.
+        - add: { text: Load and latency, sub: "50 QPS at peak · p95 under 3 s · first token under 1.5 s" }
+          say: >-
+            Third, load and latency. A workable starting point is 50 queries per second at peak,
+            p95 under 3 s end to end, and the first token in under 1.5 s.
+        - add: { text: Freshness, sub: "1% a day = 100k documents a day" }
+          say: >-
+            Fourth, freshness. If 1% of the corpus changes daily, that's 100k documents a day. Do
+            they need to be searchable in minutes, or in hours?
+        - add: { text: Access control, sub: Per-user or per-tenant ACLs }
+          say: >-
+            And fifth, access control. Whether permissions are per user or per tenant decides where
+            filtering happens. Getting this wrong is the most common way RAG systems leak data.
+
+    - type: diagram
+      chapter: The ingestion pipeline
+      heading: Two halves, two indexes
+      diagram: q01-rag-pipeline
+      steps:
+        - say: >-
+            The system has two halves. Offline, an ingestion pipeline turns raw documents into two
+            indexes. Online, the query path searches both, reranks the results, and generates an
+            answer.
+        - focus: [0, 0, 0.49, 1]
+          note: "Offline: parse → chunk → enrich → embed → index"
+          say: Let's start offline, one stage at a time.
+        - focus: [0, 0.25, 0.25, 0.7]
+          note: Parsing quality is the hidden ceiling on everything downstream.
+          say: >-
+            Parsing comes first, and it's the hidden ceiling on everything downstream. Use
+            layout-aware parsing, run OCR on scans, and keep tables as tables. Then read about 200
+            parsed documents yourself, before tuning anything else.
+        - focus: [0.08, 0.25, 0.25, 0.7]
+          note: "300–800 tokens per chunk, headings as metadata, a pointer to the parent section"
+          say: >-
+            Next, chunk along the document's structure, at roughly 300-800 tokens per chunk. Store
+            a pointer to each chunk's parent section, so you can retrieve something small, and hand
+            the model something bigger when it needs the context.
+
+    - type: stats
+      heading: How many chunks?
+      steps:
+        - add: { value: "2,500", label: "tokens per document (25B ÷ 10M)" }
+          say: >-
+            A quick sizing check. 25B tokens over ten million documents is about 2,500 tokens per
+            document.
+        - add: { value: "30–80M", label: "chunks, at 300–800 tokens each" }
+          say: At 300-800 tokens per chunk, that's 30 to 80 million chunks.
+        - add: { value: "100M", label: "chunks to plan for, with headroom" }
+          say: Plan capacity for 100 million, to leave room for overlap, context headers and growth.
+
+    - type: diagram
+      heading: Enrich, then index twice
+      diagram: q01-rag-pipeline
+      steps:
+        - focus: [0.21, 0.05, 0.28, 0.92]
+          note: "Title, section, date, tenant and the ACL on every chunk"
+          say: >-
+            Then enrich each chunk with what retrieval will need: its title, section, date, tenant,
+            and access-control list.
+        - note: "Contextual retrieval: top-20 failures fell from 5.7% to 1.9% (with BM25 + reranking)"
+          say: >-
+            Optionally, prepend a short generated sentence that places each chunk in its document.
+            Anthropic calls this contextual retrieval. Combined with keyword search and reranking,
+            it cut their top-20 retrieval failures from 5.7% to 1.9%.
+        - focus: [0.3, 0.05, 0.2, 0.92]
+          note: "Dense vectors for meaning, BM25 for exact terms"
+          say: >-
+            Each chunk then goes into two indexes. A vector index captures meaning, and a BM25
+            keyword index catches exact terms, like product codes and names.
+
+    - type: stats
+      chapter: Sizing the index
+      heading: How big is the vector index?
+      steps:
+        - say: Now the number everyone forgets to compute. How big is the vector index?
+        - add: { value: "410 GB", label: "100M × 1024 dims × 4 bytes (fp32)" }
+          say: >-
+            A hundred million vectors at 1024 dimensions, in 32-bit floats, is about 410 GB. That's
+            a lot of RAM.
+        - add: { value: "51 GB", label: "512 dims (Matryoshka) as int8" }
+          say: >-
+            Truncate to 512 dimensions with a Matryoshka-trained model, store each value as an
+            8-bit integer, and you're at about 51 GB.
+        - add: { value: "6–13 GB", label: "binary or PQ codes, plus rescoring" }
+          say: >-
+            Go further with binary or product-quantized codes, and it's 6-13 GB. Those trade recall
+            for size, so rescore the top candidates with higher-precision vectors kept on SSD.
+
+    - type: bullets
+      heading: Index, filter, update
+      steps:
+        - add: { text: HNSW in memory, sub: "Best recall and latency, if you can pay for the RAM" }
+          say: >-
+            For the index itself, HNSW graphs in memory give the best recall and latency, if you
+            can pay for the RAM.
+        - add: { text: IVF-PQ or DiskANN on SSD, sub: "Far cheaper per vector, with more tuning" }
+          say: IVF-PQ or DiskANN live on SSD, and cost far less per vector, at the price of more tuning.
+        - add: { text: Filter during the search, sub: Keep ACLs and metadata in the same engine }
+          say: >-
+            Whichever you choose, keep metadata and permission filters in the same engine, so that
+            filtering happens during the search, not after it.
+        - add: { text: Apply deletes immediately, sub: Deletes are a compliance issue }
+          say: >-
+            Stream updates in as documents change, and apply deletions immediately. Deletes are a
+            compliance issue, not just a relevance one.
+        - add: { text: Version every vector, sub: Re-embed everything when the model changes }
+          say: >-
+            And tag every vector with the model that produced it. When you change embedding models,
+            you'll re-embed the whole corpus.
+
+    - type: budget
+      chapter: The query path
+      heading: "The query path, in about 2.5 s"
+      total: "Worst case to first token: 300 + 80 + 200 + 20 + 800 = **1,400 ms**, inside the 1.5 s target"
+      steps:
+        - say: Now the online side. When a question arrives, here's where the time goes.
+        - add: { label: Query rewrite and routing, sub: Small model or rules (optional), ms: [100, 300] }
+          say: >-
+            An optional rewrite step, using a small model or rules, splits multi-part questions and
+            pulls out filters like dates. Budget 100-300 ms.
+        - add: { label: Hybrid retrieval, sub: "Vector top 100 + BM25 top 100, fused with RRF", ms: [30, 80] }
+          say: >-
+            Hybrid retrieval runs the vector search and the keyword search in parallel, about 100
+            results each, and merges them with reciprocal rank fusion. That's 30-80 ms.
+        - add: { label: Cross-encoder rerank, sub: "200 candidates down to 10–20", ms: [80, 200] }
+          say: >-
+            A cross-encoder then reads each candidate together with the question, and keeps the best
+            10 to 20. It's far more precise than the first stage, for 80-200 ms on a GPU.
+        - add: { label: Context assembly, sub: "Dedupe, expand to parents, order", ms: 20 }
+          say: >-
+            Context assembly removes duplicates, expands chunks to their parent sections, and orders
+            them, in under 20 ms.
+        - add: { label: "Generation: first token", sub: "8–15k token context, streamed", ms: [400, 800] }
+          say: And generation streams the answer, with the first token after 400-800 ms.
+        - showTotal: true
+          say: >-
+            Add up the worst cases, and the first token arrives in 1,400 ms, just inside the 1.5 s
+            target. In production, measure the end-to-end distribution, rather than summing the table.
+
+    - type: bullets
+      heading: Generate answers you can trust
+      steps:
+        - add: { text: Answer only from the passages, sub: "Cite them, and abstain when evidence is missing" }
+          say: >-
+            For generation, tell the model to answer only from the retrieved passages, to cite
+            them, and to say so when the evidence isn't there.
+        - add: { text: Strongest passages first and last, sub: Models attend less to the middle of long contexts }
+          say: >-
+            Put the strongest passages at the start and the end of the context. Models pay less
+            attention to the middle of long inputs, an effect known as lost in the middle.
+        - add: { text: Cache what repeats, sub: "System prompt, query embeddings, frequent answers" }
+          say: >-
+            And cache what repeats: the system prompt, query embeddings, and answers to frequent
+            questions.
+
+    - type: stats
+      chapter: What it costs
+      heading: Where the money goes
+      steps:
+        - add: { value: "4.3M", label: "queries a day at a sustained 50 QPS" }
+          say: >-
+            Now the cost. 50 queries per second, around the clock, is about 4.3 million queries a
+            day.
+        - add: { value: "52B", label: "input tokens a day, at ~12k per query" }
+          say: >-
+            At about 12,000 input tokens each, that's roughly 52B input tokens a day. Since 50 per
+            second is a peak, treat that as an upper bound.
+        - add: { value: "$52k", label: "a day at an illustrative $1 per million tokens" }
+          say: >-
+            At an illustrative one dollar per million input tokens, that's about $52,000 a day,
+            before output tokens.
+        - say: >-
+            Retrieval infrastructure for 100 million vectors costs a few thousand dollars a month.
+            So generation dominates the bill, by far more than ten times.
+
+    - type: statement
+      text: "The levers: **fewer, better chunks**, smaller models for easy questions, and caching."
+      steps:
+        - say: >-
+            That's why the reranker pays for itself: fewer, better chunks means fewer tokens. Add
+            routing of easy questions to smaller models, plus caching, and those are the levers
+            that matter.
+
+    - type: bullets
+      chapter: How to measure it
+      heading: Measure each stage separately
+      steps:
+        - say: >-
+            None of this matters unless you can measure it, and the key is to measure each stage
+            separately.
+        - add: { text: Retrieval recall, sub: "recall at 50 ≥ 0.95 before reranking · recall at 10 ≥ 0.85 after" }
+          say: >-
+            Build a golden set of 500 to 2,000 real queries, labeled by subject-matter experts.
+            Target recall at 50 of at least 0.95 before the reranker, and recall at 10 of at least
+            0.85 after it.
+        - add: { text: Index health, sub: "ANN recall vs exact search ≥ 0.95" }
+          say: >-
+            Track the index's own recall against exact search, too, so index tuning doesn't hide
+            inside model changes.
+        - add: { text: Answer quality, sub: "Faithfulness, correctness, citations, abstention" }
+          say: >-
+            For answers, measure faithfulness to the cited passages, correctness, citation
+            precision, and whether the system abstains when it can't answer. If you use an LLM as a
+            judge, calibrate it against about 200 human labels.
+        - add: { text: Online signals and a CI gate, sub: "Feedback, reformulations, A/B tests; every change runs the suite" }
+          say: >-
+            Online, watch feedback, reformulated queries, and clicks on citations. And make every
+            change to the chunker, embedder, index or prompt run the offline suite before it ships.
+
+    - type: compare
+      chapter: Tradeoffs
+      heading: Choosing an index
+      cols: 2
+      steps:
+        - add:
+            name: HNSW in memory
+            pros: Best recall and latency
+            cons: RAM-heavy; weak under heavy deletes
+            when: Latency-critical, with a RAM budget
+          say: >-
+            Here's how the main index options compare. HNSW in memory gives the best recall and
+            latency, but it's RAM-heavy and weak under heavy deletes.
+        - add:
+            name: IVF-PQ / DiskANN on SSD
+            pros: 5–20× cheaper memory; scales to billions
+            cons: Lower recall without rescoring
+            when: Very large, cost-sensitive corpora
+          say: >-
+            IVF-PQ or DiskANN on SSD are five to twenty times cheaper in memory and scale to
+            billions, but they need rescoring and more tuning.
+        - add:
+            name: Managed vector DB
+            pros: Fast to ship; operations handled
+            cons: Cost at 100M vectors; less hybrid control
+            when: Small team, speed to market
+          say: >-
+            A managed vector database is the fastest to ship, but it gets expensive at 100 million
+            vectors, and gives you less control over hybrid search.
+        - add:
+            name: Search engine + vectors
+            pros: Hybrid, filters and BM25 in one system
+            cons: Heavier operations
+            when: Hybrid search with complex ACLs
+          say: >-
+            And a search engine with vector support, like OpenSearch, Elasticsearch or Vespa, gives
+            you hybrid search, filters and BM25 in one system, at the cost of heavier operations.
+
+    - type: statement
+      text: Filter permissions **during** the search, not after it.
+      sub: "Post-filtering a selective ACL can return zero results, and leaks timing information."
+      steps:
+        - say: >-
+            One tradeoff deserves its own warning. If you fetch the top results first and filter
+            permissions afterwards, a selective permission can leave you with zero results, and the
+            timing can leak information. Filter during the search, or shard per tenant.
+
+    - type: bullets
+      chapter: Common mistakes
+      heading: Common mistakes
+      style: warn
+      steps:
+        - add: { text: "No SLOs, no eval set, no capacity math", sub: "You can't size, budget or evaluate it" }
+          say: >-
+            Let's finish with the mistakes that sink these projects. First: jumping straight to a
+            vector database and an LLM, with no targets, no eval set, and no capacity math.
+        - add: { text: Ignoring ACLs and deletion, sub: The incidents that actually get escalated }
+          say: >-
+            Second: ignoring permissions and deletions. Leaked documents and stale deleted content
+            are the incidents that actually get escalated.
+        - add: { text: One end-to-end quality score, sub: Separate retrieval recall from answer faithfulness }
+          say: >-
+            Third: reporting one end-to-end quality score. If you don't separate retrieval recall
+            from answer faithfulness, you can't tell which stage to fix.
+        - add: { text: Unbounded context, sub: "\"Just send the top 50\" costs more and answers worse" }
+          say: >-
+            And fourth: unbounded context. Sending the top 50 chunks costs more, runs slower, and
+            actually makes answers worse.
+
+    - type: statement
+      chapter: Wrap-up
+      text: "Retrieval first. **Measure every stage.** Do the sizing math before you build."
+      steps:
+        - say: >-
+            So, to recap. Treat RAG as a retrieval problem first. Measure each stage on its own. And
+            do the sizing math before you build anything.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/rag-system-10m-documents
+      next: "**Next in the series:** Debugging a RAG system that gives wrong answers"
+      steps:
+        - say: The full article, with every number and every source, is on vidyal.ai.
+        - say: >-
+            Next in the series: how to debug a RAG system that gives wrong answers. See you there.
+
+shorts:
+  - id: short-index-sizing
+    title: "How much RAM do 100M embeddings need? #shorts"
+    description: Sizing a vector index for 100 million chunks, from 410 GB of float vectors down to 6-13 GB of compressed codes.
+    hashtags: ["#RAG", "#VectorSearch", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Vector search, sized
+        text: How much RAM do **100 million** embeddings need?
+        steps:
+          - say: How much memory do 100 million embeddings need? More than you think, and less than you fear.
+      - type: stats
+        heading: 100M chunks
+        steps:
+          - add: { value: "410 GB", label: "1024 dims, 32-bit floats" }
+            say: At 1024 dimensions in 32-bit floats, it's about 410 GB.
+          - add: { value: "51 GB", label: "512 dims (Matryoshka), int8" }
+            say: >-
+              Truncate to 512 dimensions with a Matryoshka model, and store 8-bit integers. About
+              51 GB.
+          - add: { value: "6–13 GB", label: "binary or PQ codes + rescoring" }
+            say: >-
+              Binary or product-quantized codes: 6-13 GB. Just rescore the top results with
+              higher-precision vectors from SSD.
+      - type: statement
+        text: Vectors × dims × bytes. Do the math **before** you pick a database.
+        steps:
+          - say: Vectors, times dimensions, times bytes. Do that math before you choose a database.
+      - type: outro
+        title: Full breakdown
+        url: vidyal.ai
+        steps:
+          - say: The full design is on vidyal.ai.
+
+  - id: short-retrieval-first
+    title: "Your RAG gave a wrong answer. Check this first #shorts"
+    description: Before you change the prompt or the model, find out whether retrieval ever found the evidence.
+    hashtags: ["#RAG", "#LLM", "#shorts"]
+    scenes:
+      - type: statement
+        text: Your RAG system gave a **wrong answer**.
+        sub: Before you touch the prompt, check retrieval.
+        subStep: 1
+        steps:
+          - say: Your RAG system just gave a wrong answer.
+          - say: Before you touch the prompt, or switch models, check retrieval.
+      - type: bullets
+        heading: Ask, in order
+        numbered: true
+        steps:
+          - add: Is the answer in your documents?
+            say: Ask, in order. Is the answer even in your documents?
+          - add: { text: Did retrieval find it?, sub: In the top 200 candidates }
+            say: Did retrieval find it, in the top 200 candidates?
+          - add: { text: Did it reach the prompt?, sub: After reranking }
+            say: Did it survive reranking, and make it into the prompt?
+          - add: Did the model use it correctly?
+            say: Only then, ask whether the model used it correctly.
+      - type: statement
+        text: Most failures start in **retrieval**.
+        sub: And retrieval is the cheapest part to measure.
+        steps:
+          - say: Most wrong answers start in retrieval. And retrieval is the cheapest part to measure.
+      - type: outro
+        title: Full design
+        url: vidyal.ai
+        steps:
+          - say: The full design is on vidyal.ai.
+
+  - id: short-acl-filter
+    title: "The RAG bug that leaks data #shorts"
+    description: Filtering permissions after retrieval can return zero results and leak timing information. Filter during the search instead.
+    hashtags: ["#RAG", "#Security", "#shorts"]
+    scenes:
+      - type: statement
+        text: The RAG bug that **leaks data**
+        steps:
+          - say: Here's a RAG bug that leaks data.
+      - type: bullets
+        heading: Retrieve first, filter later
+        style: warn
+        steps:
+          - add: { text: Fetch the top 100 results, sub: then drop what the user can't see }
+            say: >-
+              Many systems fetch the top 100 results, and then remove the ones the user isn't
+              allowed to see.
+          - add: { text: Selective permission, sub: zero results left }
+            say: With a selective permission, nothing is left. Zero results.
+          - add: { text: Timing gives it away, sub: slow responses reveal hidden documents exist }
+            say: Worse, how long it takes can reveal that hidden documents exist.
+      - type: statement
+        text: Filter **during** the search.
+        sub: Keep ACLs in the index, or shard per tenant.
+        steps:
+          - say: >-
+              The fix: keep permissions in the index, and filter during the search, or shard per
+              tenant.
+      - type: outro
+        title: Full design
+        url: vidyal.ai
+        steps:
+          - say: The full design is on vidyal.ai.
+
+  - id: short-latency-budget
+    title: "Where 2.5 seconds go in a RAG query #shorts"
+    description: The latency budget for a RAG query over 10 million documents, stage by stage.
+    hashtags: ["#RAG", "#Latency", "#shorts"]
+    scenes:
+      - type: statement
+        text: Where does the time go in a **RAG query**?
+        steps:
+          - say: Where does the time go in a RAG query? Here's a budget for ten million documents.
+      - type: budget
+        heading: To the first token
+        total: "Worst case: **1.4 s** to first token"
+        steps:
+          - add: { label: Query rewrite, ms: [100, 300] }
+            say: Rewriting the query, 100-300 ms.
+          - add: { label: Hybrid retrieval, ms: [30, 80] }
+            say: Hybrid retrieval, 30-80 ms.
+          - add: { label: Rerank on GPU, ms: [80, 200] }
+            say: Reranking on a GPU, 80-200 ms.
+          - add: { label: Context assembly, ms: 20 }
+            say: Assembling the context, under 20 ms.
+          - add: { label: First token, ms: [400, 800] }
+            say: And the first token, 400-800 ms.
+          - showTotal: true
+            say: Worst case, 1.4 s to the first token, inside a 1.5 s target.
+      - type: outro
+        title: Full design
+        url: vidyal.ai
+        steps:
+          - say: The full design is on vidyal.ai.

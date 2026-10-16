@@ -1,0 +1,45 @@
+1
+00:00:00,150 --> 00:00:03,925
+How much memory do 100 million
+embeddings need?
+
+2
+00:00:04,225 --> 00:00:06,975
+More than you think, and
+less than you fear.
+
+3
+00:00:07,983 --> 00:00:14,033
+At 1024 dimensions in 32-bit
+floats, it's about 410 GB.
+
+4
+00:00:14,650 --> 00:00:20,750
+Truncate to 512 dimensions with a Matryoshka
+model, and store 8-bit integers.
+
+5
+00:00:21,050 --> 00:00:23,175
+About 51 GB.
+
+6
+00:00:23,783 --> 00:00:28,333
+Binary or product-quantized
+codes: 6-13 GB.
+
+7
+00:00:28,633 --> 00:00:33,483
+Just rescore the top results with
+higher-precision vectors from SSD.
+
+8
+00:00:34,483 --> 00:00:37,483
+Vectors, times dimensions, times bytes.
+
+9
+00:00:37,783 --> 00:00:40,608
+Do that math before you choose a database.
+
+10
+00:00:41,617 --> 00:00:44,342
+The full design is on vidyal.ai.

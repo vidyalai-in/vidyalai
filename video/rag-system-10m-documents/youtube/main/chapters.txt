@@ -1,0 +1,10 @@
+0:00 Why retrieval comes first
+0:43 Requirements to pin down first
+1:52 The ingestion pipeline
+3:45 Sizing the index
+5:11 The query path
+6:56 What it costs
+7:50 How to measure it
+8:49 Tradeoffs
+9:54 Common mistakes
+10:36 Wrap-up

@@ -4,3 +4,5 @@ dist/
 .env
 .DS_Store
 .screenshots/
+video/*/out/
+video/.tts-cache/

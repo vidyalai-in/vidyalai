@@ -1,0 +1,5 @@
+Designing a RAG System for 10 Million Documents | LLM System Design
+
+Alternatives:
+- RAG at Scale: Ingestion, Hybrid Search, Reranking and Cost for 10M Docs
+- How to Build Production RAG Over 10 Million Documents

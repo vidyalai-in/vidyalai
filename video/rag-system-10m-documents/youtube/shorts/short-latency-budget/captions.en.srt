@@ -1,0 +1,36 @@
+1
+00:00:00,150 --> 00:00:02,675
+Where does the time go in a RAG query?
+
+2
+00:00:02,975 --> 00:00:05,800
+Here's a budget for ten million documents.
+
+3
+00:00:06,817 --> 00:00:10,842
+Rewriting the query, 100-300 ms.
+
+4
+00:00:11,450 --> 00:00:14,925
+Hybrid retrieval, 30-80 ms.
+
+5
+00:00:15,550 --> 00:00:19,750
+Reranking on a GPU, 80-200 ms.
+
+6
+00:00:20,350 --> 00:00:23,750
+Assembling the context, under 20 ms.
+
+7
+00:00:24,350 --> 00:00:28,300
+And the first token, 400-800 ms.
+
+8
+00:00:28,917 --> 00:00:35,192
+Worst case, 1.4 s to the first
+token, inside a 1.5 s target.
+
+9
+00:00:36,217 --> 00:00:38,942
+The full design is on vidyal.ai.

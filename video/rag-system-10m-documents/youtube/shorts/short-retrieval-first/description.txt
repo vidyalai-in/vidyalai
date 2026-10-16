@@ -1,0 +1,8 @@
+Before you change the prompt or the model, find out whether retrieval ever found the evidence.
+
+Full article: https://vidyal.ai/blog/rag-system-10m-documents/
+Full video: <add the main video link after uploading it>
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+
+#RAG #LLM #shorts

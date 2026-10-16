@@ -1,0 +1,39 @@
+1
+00:00:00,150 --> 00:00:02,575
+Here's a RAG bug that leaks data.
+
+2
+00:00:03,583 --> 00:00:09,298
+Many systems fetch the top 100 results, and
+then remove the ones the user isn't
+
+3
+00:00:09,298 --> 00:00:10,383
+allowed to see.
+
+4
+00:00:10,983 --> 00:00:14,183
+With a selective permission,
+nothing is left.
+
+5
+00:00:14,483 --> 00:00:16,283
+Zero results.
+
+6
+00:00:16,883 --> 00:00:21,083
+Worse, how long it takes can reveal
+that hidden documents exist.
+
+7
+00:00:22,083 --> 00:00:27,220
+The fix: keep permissions in the index, and
+filter during the search, or shard per
+
+8
+00:00:27,220 --> 00:00:27,658
+tenant.
+
+9
+00:00:28,683 --> 00:00:31,408
+The full design is on vidyal.ai.

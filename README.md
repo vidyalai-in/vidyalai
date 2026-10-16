@@ -32,6 +32,20 @@ Reference a diagram from an article with
 `![Full alt text](/diagrams/<name>.svg "Caption")` on its own line. The build turns it into a figure
 that follows the light/dark theme.
 
+## Videos
+
+Each article can become a narrated YouTube video, Shorts and an upload kit. The Claude Code skill
+`.claude/skills/article-to-video/` describes the whole process; in short:
+
+```sh
+node video/tools/preview.mjs video/<slug> main 3:1   # still of scene 3, step 1
+node video/tools/build.mjs video/<slug>              # TTS (Kokoro, local), render, encode, upload kit
+```
+
+The source is `video/<slug>/script.yaml`; the upload kit (titles, descriptions, chapters, captions,
+thumbnail, `UPLOAD.md`) is written to `video/<slug>/youtube/`. Rendered MP4s go to
+`video/<slug>/out/` and are not committed. Needs `ffmpeg`, `uv` and (optionally) an NVIDIA GPU.
+
 ## Checks
 
 ```sh

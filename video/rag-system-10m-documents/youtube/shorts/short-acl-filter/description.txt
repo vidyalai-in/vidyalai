@@ -1,0 +1,8 @@
+Filtering permissions after retrieval can return zero results and leak timing information. Filter during the search instead.
+
+Full article: https://vidyal.ai/blog/rag-system-10m-documents/
+Full video: <add the main video link after uploading it>
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+
+#RAG #Security #shorts

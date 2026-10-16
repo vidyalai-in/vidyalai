@@ -1,0 +1,34 @@
+How do you build retrieval-augmented generation (RAG) over 10 million documents? This video walks through the whole design: the requirements that change the architecture, the ingestion pipeline, sizing the vector index (from 410 GB down to about 6 GB), the 2.5-second query path with hybrid search and reranking, what it costs, how to measure it, and the mistakes that sink these projects.
+
+Part 1 of the LLM System Design series from VidyalAI.
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/rag-system-10m-documents/
+📚 The whole LLM System Design series: https://vidyal.ai/series/llm-system-design/
+
+Chapters
+0:00 Why retrieval comes first
+0:43 Requirements to pin down first
+1:52 The ingestion pipeline
+3:45 Sizing the index
+5:11 The query path
+6:56 What it costs
+7:50 How to measure it
+8:49 Tradeoffs
+9:54 Common mistakes
+10:36 Wrap-up
+
+Sources and further reading
+• Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al., 2020): https://arxiv.org/abs/2005.11401
+• Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs (Malkov & Yashunin, 2016): https://arxiv.org/abs/1603.09320
+• DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node (Subramanya et al., 2019): https://papers.nips.cc/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html
+• The Faiss library (Douze et al., 2024): https://arxiv.org/abs/2401.08281
+• Faiss: Guidelines to choose an index (Meta, wiki): https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index
+• Contextual Retrieval in AI Systems (Anthropic, 2024): https://www.anthropic.com/engineering/contextual-retrieval
+• Lost in the Middle: How Language Models Use Long Contexts (Liu et al., 2023): https://arxiv.org/abs/2307.03172
+• Matryoshka Representation Learning (Kusupati et al., 2022): https://arxiv.org/abs/2205.13147
+• MTEB: Massive Text Embedding Benchmark (Muennighoff et al., 2022): https://arxiv.org/abs/2210.07316
+• Seven Failure Points When Engineering a Retrieval Augmented Generation System (Barnett et al., 2024): https://arxiv.org/abs/2401.05856
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+
+#RAG #LLM #SystemDesign
