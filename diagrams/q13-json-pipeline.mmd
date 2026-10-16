@@ -1,0 +1,23 @@
+flowchart TD
+    Req["Request with<br/>JSON Schema"]
+    subgraph L1["Decode-time guarantee"]
+        Decode["Constrained decoding<br/>(mask invalid tokens)"]
+        Stop{"Stop reason?"}
+    end
+    subgraph L3["Validate and repair"]
+        Parse["Strict parse and<br/>schema validation"]
+        Sem{"Semantic checks<br/>pass?"}
+        Repair["Send validator error<br/>back to model"]
+    end
+    Refusal["Refusal path"]
+    Trunc["Retry with bigger budget<br/>or compact schema"]
+    Out["Return object"]
+    Fallback["Deterministic default<br/>or human review"]
+
+    Req --> Decode --> Stop
+    Stop -->|"refusal"| Refusal
+    Stop -->|"max tokens"| Trunc --> Decode
+    Stop -->|"complete"| Parse --> Sem
+    Sem -->|"yes"| Out
+    Sem -->|"no, retries left"| Repair --> Decode
+    Sem -->|"no, 1-2 retries used"| Fallback

@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph offline["Offline ingestion"]
+    A["Source docs (10M)"] --> B["Layout-aware parse"]
+    B --> C["Structure-aware chunk<br/>(30-100M chunks)"]
+    C --> D["Enrich: metadata,<br/>ACLs, context"]
+    D --> E["Embed<br/>(versioned model)"]
+    E --> G["ANN index<br/>(sharded, filtered)"]
+    D --> F["BM25 / sparse index"]
+  end
+  subgraph online["Online query path"]
+    Q["User query"] --> R["Query rewrite<br/>and routing"]
+    R --> H["Hybrid retrieval + RRF<br/>(ACL-filtered, top 200)"]
+    H --> X["Cross-encoder rerank<br/>(top 10-20)"]
+    X --> Y["Context assembly"]
+    Y --> Z["Grounded generation<br/>with citations"]
+  end
+  G --> H
+  F --> H

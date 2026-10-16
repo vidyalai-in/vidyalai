@@ -1,0 +1,13 @@
+flowchart LR
+  C["Clients"] --> R["Cache-aware router<br/>(prefix hash, bounded load)"]
+  R --> X["Other replicas"]
+  R --> Q
+  subgraph REP["One replica: TP=4 inside an NVLink node"]
+    Q["Admission control<br/>+ priority queues"] --> S["Continuous-batching scheduler<br/>(token budget per step)"]
+    S --> P["Prefill chunks<br/>(compute-bound)"]
+    S --> D["Decode batch<br/>(bandwidth-bound)"]
+    P --> G["4 GPUs<br/>sharded FP8 weights"]
+    D --> G
+    G --- K["Paged KV cache<br/>(16-token blocks, prefix reuse)"]
+  end
+  K -.-> O["Offload tier<br/>(host DRAM, SSD)"]

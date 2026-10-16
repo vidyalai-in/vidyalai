@@ -1,0 +1,12 @@
+flowchart LR
+  Q["Request"] --> G["Gateway:<br/>hard override rules"]
+  G -->|"override"| S["Strong model"]
+  G --> R{"Learned router<br/>P(cheap is enough)"}
+  R -->|"clearly easy"| C["Cheap model"]
+  R -->|"clearly hard"| S
+  R -->|"uncertain band"| CC["Cheap model"]
+  CC --> V{"Verifier passes?"}
+  V -->|"yes"| A["Answer"]
+  V -->|"no: escalate"| S
+  C --> A
+  S --> A

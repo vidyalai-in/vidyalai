@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORIES } from '../../data/categories';
+import { getPosts, categoryUrl } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="All articles" description="Every VidyalAI article on designing production LLM systems, grouped by topic.">
+  <div class="container">
+    <header class="page-head">
+      <h1>All articles</h1>
+      <p>{posts.length} deep dives on designing production LLM systems, grouped by topic.</p>
+    </header>
+
+    <nav aria-label="Jump to a topic" class="topic-jump">
+      <ul class="chip-list">
+        {CATEGORIES.map((c) => <li><a class="chip" href={`#${c.slug}`}>{c.name}</a></li>)}
+      </ul>
+    </nav>
+
+    {
+      CATEGORIES.map((c) => {
+        const inCat = posts.filter((p) => p.data.category === c.slug);
+        return (
+          <section class="section cat-section" id={c.slug} aria-labelledby={`${c.slug}-h`}>
+            <div class="section-head">
+              <div>
+                <h2 id={`${c.slug}-h`}>{c.name}</h2>
+                <p>{c.blurb}</p>
+              </div>
+              <a href={categoryUrl(c.slug)}>Topic page</a>
+            </div>
+            <ul class="card-grid">
+              {inCat.map((p) => (
+                <li><PostCard post={p} showCategory={false} /></li>
+              ))}
+            </ul>
+          </section>
+        );
+      })
+    }
+  </div>
+</Base>
+
+<style>
+  .cat-section {
+    padding-block: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .topic-jump {
+    margin-bottom: 1rem;
+  }
+  .section-head > a {
+    font-weight: 600;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

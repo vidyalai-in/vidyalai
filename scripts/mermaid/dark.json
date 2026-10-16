@@ -1,0 +1,48 @@
+{
+  "theme": "base",
+  "themeVariables": {
+    "darkMode": true,
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "15px",
+    "background": "#0b162d",
+    "primaryColor": "#10264d",
+    "primaryTextColor": "#e8eefc",
+    "primaryBorderColor": "#38bdf8",
+    "secondaryColor": "#0c2a3a",
+    "secondaryTextColor": "#e8eefc",
+    "secondaryBorderColor": "#22d3ee",
+    "tertiaryColor": "#0a1428",
+    "tertiaryTextColor": "#e8eefc",
+    "tertiaryBorderColor": "#2a3f68",
+    "lineColor": "#9fb0cf",
+    "textColor": "#e8eefc",
+    "clusterBkg": "#0a1428",
+    "clusterBorder": "#2a3f68",
+    "edgeLabelBackground": "#0b162d",
+    "titleColor": "#e8eefc",
+    "actorBkg": "#10264d",
+    "actorBorder": "#38bdf8",
+    "actorTextColor": "#e8eefc",
+    "actorLineColor": "#9fb0cf",
+    "signalColor": "#9fb0cf",
+    "signalTextColor": "#e8eefc",
+    "labelBoxBkgColor": "#10264d",
+    "labelBoxBorderColor": "#38bdf8",
+    "labelTextColor": "#e8eefc",
+    "loopTextColor": "#e8eefc",
+    "noteBkgColor": "#2a2410",
+    "noteBorderColor": "#d4a017",
+    "noteTextColor": "#f5ecd0",
+    "activationBkgColor": "#163463",
+    "activationBorderColor": "#38bdf8"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "curve": "basis",
+    "padding": 12
+  },
+  "sequence": {
+    "mirrorActors": false
+  },
+  "themeCSS": ".edgeLabel rect.background { fill: #0b162d; opacity: 1; stroke: none; } .cluster-label text, .cluster-label tspan { font-weight: 700; }"
+}

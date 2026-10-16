@@ -1,0 +1,47 @@
+---
+import { getCategory } from '../data/categories';
+import { postUrl, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  headingLevel?: 'h2' | 'h3';
+  showCategory?: boolean;
+}
+const { post, headingLevel: H = 'h3', showCategory = true } = Astro.props;
+const category = getCategory(post.data.category);
+---
+
+<article class="card post-card">
+  <p class="post-kicker">
+    <span class="part">Part {post.data.seriesOrder}</span>
+    {showCategory && <span class="cat">{category.name}</span>}
+  </p>
+  <H><a class="card-link" href={postUrl(post)}>{post.data.title}</a></H>
+  <p>{post.data.description}</p>
+</article>
+
+<style>
+  .post-kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.75rem !important;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .part {
+    color: var(--accent) !important;
+  }
+
+  .cat {
+    color: var(--muted);
+  }
+
+  .cat::before {
+    content: '·';
+    margin-right: 0.5rem;
+  }
+</style>

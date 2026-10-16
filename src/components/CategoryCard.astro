@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+import { categoryUrl } from '../lib/posts';
+
+interface Props {
+  category: { slug: string; name: string; blurb: string; icon: string };
+  count: number;
+  headingLevel?: 'h2' | 'h3';
+}
+const { category, count, headingLevel: H = 'h3' } = Astro.props;
+---
+
+<article class="card cat-card">
+  <span class="cat-icon"><Icon name={category.icon} size={26} /></span>
+  <H><a class="card-link" href={categoryUrl(category.slug)}>{category.name}</a></H>
+  <p>{category.blurb}</p>
+  <p class="meta">{count} {count === 1 ? 'article' : 'articles'}</p>
+</article>
+
+<style>
+  .cat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    color: var(--cyan);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 18px -6px var(--cyan);
+  }
+</style>

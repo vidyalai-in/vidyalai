@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts, tagLabel, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({ params: { tag }, props: { posts: posts.filter((p) => p.data.tags.includes(tag)) } }));
+}
+
+interface Props {
+  posts: Post[];
+}
+const { posts } = Astro.props;
+const { tag } = Astro.params;
+const label = tagLabel(tag!);
+---
+
+<Base title={`Tagged: ${label}`} description={`VidyalAI articles tagged ${label}.`}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/tags/">Tags</a></li>
+        </ol>
+      </nav>
+      <h1>Tagged: {label}</h1>
+      <p>{posts.length} {posts.length === 1 ? 'article' : 'articles'}.</p>
+    </header>
+    <h2 class="visually-hidden">Articles</h2>
+    <ul class="card-grid">
+      {posts.map((p) => <li><PostCard post={p} /></li>)}
+    </ul>
+  </div>
+</Base>

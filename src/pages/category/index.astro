@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import { CATEGORIES } from '../../data/categories';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="Topics" description="Browse VidyalAI articles by topic: retrieval, cost and latency, agents, evaluation, security, fine-tuning and production engineering.">
+  <div class="container">
+    <header class="page-head">
+      <h1>Topics</h1>
+      <p>Seven areas of LLM system design. Pick one to see every article in it, or <a href="/tags/">browse by tag</a>.</p>
+    </header>
+    <ul class="card-grid">
+      {CATEGORIES.map((c) => <li><CategoryCard category={c} count={posts.filter((p) => p.data.category === c.slug).length} headingLevel="h2" /></li>)}
+    </ul>
+  </div>
+</Base>

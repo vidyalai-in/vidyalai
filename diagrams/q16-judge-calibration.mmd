@@ -1,0 +1,18 @@
+flowchart LR
+    subgraph Calibrate["Calibrate before launch"]
+        H["Expert human labels<br/>(300-1,000 items)"] --> HH["Human-human agreement<br/>(the ceiling)"]
+        H --> S["Dev and held-out splits"]
+        S --> R["Rubric and judge prompt<br/>(iterate on dev only)"]
+        R --> J["Judge verdicts<br/>(both orders)"]
+        J --> A{"Held-out agreement<br/>near the ceiling?"}
+        HH --> A
+        A -- "No" --> R
+    end
+    subgraph Operate["Operate in production"]
+        D["Deploy as versioned artifact"] --> C{"Low confidence?"}
+        C -- "Yes" --> HR["Route to human review"]
+        C -- "No" --> U["Use verdict"]
+        D --> W["Weekly drift audit<br/>(50-100 samples)"]
+    end
+    A -- "Yes" --> D
+    W -- "Kappa drop over 0.05" --> R

@@ -1,0 +1,84 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Color theme: system. Switch to light.">
+  <span class="ti ti-system"><Icon name="system" size={20} /></span>
+  <span class="ti ti-light"><Icon name="sun" size={20} /></span>
+  <span class="ti ti-dark"><Icon name="moon" size={20} /></span>
+  <span class="theme-label" aria-hidden="true">System</span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text-strong);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .ti {
+    display: none;
+    line-height: 0;
+  }
+
+  :global(html[data-theme-pref='system']) .ti-system,
+  :global(html[data-theme-pref='light']) .ti-light,
+  :global(html[data-theme-pref='dark']) .ti-dark {
+    display: inline-flex;
+  }
+
+  @media (max-width: 1023px) {
+    .theme-label {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const ORDER = ['system', 'light', 'dark'] as const;
+  type Pref = (typeof ORDER)[number];
+  const LABEL: Record<Pref, string> = { system: 'System', light: 'Light', dark: 'Dark' };
+
+  function apply(pref: Pref) {
+    const root = document.documentElement;
+    root.dataset.themePref = pref;
+    if (pref === 'system') delete root.dataset.theme;
+    else root.dataset.theme = pref;
+    const next = ORDER[(ORDER.indexOf(pref) + 1) % ORDER.length];
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-label', `Color theme: ${LABEL[pref].toLowerCase()}. Switch to ${LABEL[next].toLowerCase()}.`);
+      const label = btn.querySelector('.theme-label');
+      if (label) label.textContent = LABEL[pref];
+    });
+  }
+
+  const current = (document.documentElement.dataset.themePref as Pref) || 'system';
+  apply(current);
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const pref = (document.documentElement.dataset.themePref as Pref) || 'system';
+      const next = ORDER[(ORDER.indexOf(pref) + 1) % ORDER.length];
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+      apply(next);
+    });
+  });
+</script>

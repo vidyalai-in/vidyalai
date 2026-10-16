@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import profile from '../assets/brand/profile.png';
+import { CATEGORIES, SERIES } from '../data/categories';
+---
+
+<Base title="About" description="VidyalAI publishes clear, sourced explainers on how to build real systems with large language models.">
+  <div class="container-narrow about">
+    <header class="page-head about-head">
+      <Image src={profile} alt="VidyalAI logo: an open book with glowing pixels rising from its pages." width={160} height={160} class="about-logo" />
+      <div>
+        <h1>About VidyalAI</h1>
+        <p class="tagline">Knowledge amplified</p>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p>
+        VidyalAI is a learning resource for engineers who build with large language models. The goal is simple:
+        explain how real systems work, clearly enough to act on and with sources you can check.
+      </p>
+      <p>
+        The first collection is the <a href="/series/llm-system-design/">{SERIES.name}</a> series: 25 deep dives on the
+        problems that come up when an LLM feature moves from demo to production. Each article follows the same
+        shape, so you can find what you need quickly:
+      </p>
+      <ul>
+        <li><strong>TL;DR:</strong> the answer in one paragraph.</li>
+        <li><strong>Requirements to pin down first:</strong> the questions that change the design.</li>
+        <li><strong>The design:</strong> components, numbers and worked examples.</li>
+        <li><strong>How to measure it:</strong> metrics, targets and evals.</li>
+        <li><strong>Tradeoffs</strong> and <strong>common mistakes</strong>.</li>
+        <li><strong>Further reading:</strong> the papers and docs behind each claim.</li>
+      </ul>
+      <h2>Topics</h2>
+      <ul>
+        {CATEGORIES.map((c) => <li><a href={`/category/${c.slug}/`}>{c.name}</a>: {c.blurb}</li>)}
+      </ul>
+      <h2>Corrections</h2>
+      <p>
+        Numbers, prices and model names in this field go stale quickly. Each article cites its sources so you can check
+        them. If you spot something wrong or out of date, please let us know so it can be fixed.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .about-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .about-head h1 {
+    margin: 0;
+  }
+  .about-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px -10px var(--accent);
+  }
+  .tagline {
+    margin: 0.4rem 0 0 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent) !important;
+    font-weight: 600;
+  }
+</style>

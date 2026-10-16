@@ -1,0 +1,10 @@
+flowchart LR
+  R["Router"] --> PF
+  subgraph PF["Prefill pool"]
+    P1["Prefill replicas<br/>(sized for input tok/s)"]
+  end
+  P1 -- "KV blocks over RDMA" --> D1
+  subgraph DC["Decode pool"]
+    D1["Decode replicas<br/>(sized for output tok/s)"]
+  end
+  D1 --> T["Token stream to client"]

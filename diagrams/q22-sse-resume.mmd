@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant C as Client
+  participant A as Chat API
+  participant W as Generation worker
+  participant L as Stream log
+  participant G as SSE gateway (any replica)
+  C->>A: POST /messages with idempotency key
+  A->>W: Enqueue generation
+  A-->>C: message_id
+  C->>G: GET /messages/ID/stream
+  W->>L: Append chunks seq 1, 2, 3...
+  G->>L: Tail from seq 0
+  G-->>C: Frames seq 1 to 41
+  Note over C,G: Network drops, worker keeps generating
+  W->>L: Append seq 42 to 60
+  C->>G: Reconnect with Last-Event-ID = msg/41
+  G->>L: Read from seq 42
+  G-->>C: Replay 42 to 60, then live tail
+  W->>L: Append done, persist final text
+  G-->>C: event done

@@ -1,0 +1,17 @@
+flowchart LR
+  U["Web and mobile clients"] --> E["Edge: CDN, WAF,<br/>global LB, rate limits"]
+  E --> API["Chat API<br/>(stateless)"]
+  E --> SSE["SSE gateway"]
+  API --> CS[("Conversation store<br/>+ hot cache")]
+  API --> ORC["Orchestrator<br/>(context, tools, safety)"]
+  ORC --> CS
+  ORC --> IG["Inference gateway<br/>(conversation affinity)"]
+  subgraph GPU["GPU fleet"]
+    G1["Large-model pool"]
+    G2["Small-model pool"]
+  end
+  IG --> G1
+  IG --> G2
+  IG --> LOG["Stream log"]
+  SSE --> LOG
+  ORC --> ASY["Async pipeline:<br/>metering, titles, evals"]

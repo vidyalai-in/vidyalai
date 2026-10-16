@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph Data["Data"]
+        S["5K examples"] --> Q["Dedupe + hand review<br/>(200 samples)"]
+        Q --> SP["Split 4,500 / 250 / 250<br/>(stratified)"]
+    end
+    subgraph Train["Train"]
+        T["LoRA r=16, all linear<br/>LR sweep, 2-3 epochs"] --> CK["Checkpoints"]
+    end
+    subgraph Evaluate["Evaluate"]
+        V["Pick checkpoint by<br/>task metric (val)"] --> TE["Test vs baselines<br/>(bootstrap CI)"]
+        TE --> RG{"Regression suite<br/>passes?"}
+    end
+    SP --> T
+    CK --> V
+    RG -- "No: fix data or LR" --> Q
+    RG -- "Yes" --> MQ["Merge or multi-LoRA<br/>quantize, re-eval"]
+    MQ --> SH["Ship versioned artifact"]

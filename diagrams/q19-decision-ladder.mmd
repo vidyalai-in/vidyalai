@@ -1,0 +1,14 @@
+flowchart TD
+    E["Build the eval first<br/>(200-500 graded cases)"] --> P["Prompting baseline<br/>(strong model, few-shot)"]
+    P --> G{"Meets target<br/>on the eval?"}
+    G -- "Yes" --> S["Ship; re-check on<br/>each model upgrade"]
+    G -- "No" --> EA{"Error analysis:<br/>what kind of gap?"}
+    EA -- "Prompt-fixable" --> P
+    EA -- "Knowledge: missing,<br/>fresh or permissioned facts" --> RAG["Add RAG<br/>(measure recall@k first)"]
+    EA -- "Behavior: format,<br/>style, tool use" --> FT["LoRA fine-tune<br/>(1-10K examples)"]
+    EA -- "Cost or latency" --> DI["Distill into a small<br/>fine-tuned model"]
+    EA -- "Both knowledge<br/>and behavior" --> C["RAG + fine-tuned reader<br/>(RAFT-style)"]
+    RAG --> G
+    FT --> G
+    DI --> G
+    C --> G

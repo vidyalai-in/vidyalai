@@ -1,0 +1,9 @@
+flowchart LR
+  Q["Query"] --> QA["Query analysis<br/>(optional weights)"]
+  QA --> B["BM25<br/>top 100"]
+  QA --> D["Dense ANN<br/>top 100"]
+  B --> F["RRF fusion<br/>(k = 60)"]
+  D --> F
+  QA -. "per-query weights" .-> F
+  F --> R["Cross-encoder rerank<br/>(top 100-200 in)"]
+  R --> L["LLM with<br/>top-k context"]

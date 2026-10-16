@@ -1,0 +1,70 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  maxDepth?: 2 | 3;
+  id?: string;
+}
+const { headings, maxDepth = 3, id } = Astro.props;
+type Node = MarkdownHeading & { children: MarkdownHeading[] };
+const tree: Node[] = [];
+for (const h of headings) {
+  if (h.depth === 2) tree.push({ ...h, children: [] });
+  else if (h.depth === 3 && maxDepth >= 3 && tree.length) tree[tree.length - 1].children.push(h);
+}
+---
+
+<ol class="toc" id={id} data-toc>
+  {
+    tree.map((h) => (
+      <li>
+        <a href={`#${h.slug}`}>{h.text}</a>
+        {h.children.length > 0 && (
+          <ol>
+            {h.children.map((c) => (
+              <li>
+                <a href={`#${c.slug}`}>{c.text}</a>
+              </li>
+            ))}
+          </ol>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .toc,
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc ol {
+    padding-left: 0.85rem;
+    margin: 0.15rem 0 0.35rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .toc a {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .toc a:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .toc a[aria-current='true'] {
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>

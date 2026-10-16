@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Icon from '../../components/Icon.astro';
+import { CATEGORIES, type CategorySlug } from '../../data/categories';
+import { getPosts, categoryUrl, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return CATEGORIES.map((category) => ({
+    params: { slug: category.slug },
+    props: { category, posts: posts.filter((p) => p.data.category === category.slug) },
+  }));
+}
+
+interface Props {
+  category: (typeof CATEGORIES)[number];
+  posts: Post[];
+}
+const { category, posts } = Astro.props;
+---
+
+<Base title={category.name} description={category.blurb}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/category/">Topics</a></li>
+        </ol>
+      </nav>
+      <div class="cat-title">
+        <span class="cat-icon"><Icon name={category.icon} size={30} /></span>
+        <h1>{category.name}</h1>
+      </div>
+      <p>{category.blurb}</p>
+    </header>
+
+    <nav aria-label="Other topics" class="other-topics">
+      <ul class="chip-list">
+        {
+          CATEGORIES.map((c) => (
+            <li>
+              <a class="chip" href={categoryUrl(c.slug)} aria-current={c.slug === (category.slug as CategorySlug) ? 'page' : undefined}>
+                {c.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <h2 class="visually-hidden">Articles</h2>
+    <ul class="card-grid">
+      {posts.map((p) => <li><PostCard post={p} showCategory={false} /></li>)}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .cat-title {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .cat-title h1 {
+    margin: 0;
+  }
+  .cat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex: none;
+    border-radius: 14px;
+    color: var(--cyan);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 22px -6px var(--cyan);
+  }
+  .other-topics {
+    margin-bottom: 2rem;
+  }
+</style>

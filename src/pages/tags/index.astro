@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, tagUrl, tagLabel } from '../../lib/posts';
+
+const posts = await getPosts();
+const counts = new Map<string, number>();
+for (const p of posts) for (const t of p.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+const tags = [...counts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+---
+
+<Base title="Tags" description="Every tag used across VidyalAI articles.">
+  <div class="container">
+    <header class="page-head">
+      <h1>Tags</h1>
+      <p>Cross-cutting themes that show up in more than one topic.</p>
+    </header>
+    <ul class="chip-list tag-cloud">
+      {tags.map(([t, n]) => <li><a class="chip" href={tagUrl(t)}>{tagLabel(t)} <span class="n">({n})</span></a></li>)}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .tag-cloud .chip {
+    min-height: 44px;
+    font-size: 0.95rem;
+    padding-inline: 1rem;
+  }
+  .n {
+    margin-left: 0.3rem;
+
+  }
+</style>

@@ -1,0 +1,20 @@
+stateDiagram-v2
+    state "Acting" as Acting
+    state "Loop detector" as Detector
+    state "Reflect and replan" as Reflect
+    state "Fork from checkpoint<br/>(stronger model or new strategy)" as Fork
+    state "Graceful exit<br/>(partial result, reason, handoff)" as Exit
+    state "Task complete" as Done
+
+    [*] --> Acting
+    Acting --> Acting: progress made
+    Acting --> Done: goal reached
+    Acting --> Detector: repeat, oscillation or no progress
+    Acting --> Exit: hard budget hit
+    Detector --> Reflect: 1st trigger
+    Detector --> Fork: 2nd trigger
+    Detector --> Exit: 3rd trigger
+    Reflect --> Acting: new plan
+    Fork --> Acting: resume
+    Done --> [*]
+    Exit --> [*]

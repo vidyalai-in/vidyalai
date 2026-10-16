@@ -1,0 +1,33 @@
+flowchart TD
+    Turn["New conversation turn"]
+    subgraph Write["Write path (async)"]
+        Extract["Extract proposed facts<br/>(cheap model)"]
+        Gate["Salience and<br/>sensitivity gate"]
+        Ops["ADD / UPDATE /<br/>DELETE / NOOP<br/>vs top-k similar"]
+        Resolve["Conflict resolution<br/>(newer, explicit wins)"]
+    end
+    subgraph Stores["Memory tiers"]
+        Raw["Raw turn log<br/>(source of truth)"]
+        Episodic["Episode summaries"]
+        Facts["Profile facts<br/>(bitemporal)"]
+        Rules["Procedural rules"]
+    end
+    subgraph Read["Read path"]
+        Pinned["Pinned profile<br/>and rules"]
+        Hybrid["Hybrid retrieval<br/>and rerank"]
+        Tools["Memory tools<br/>(search, write, forget)"]
+    end
+    Context["Working context"]
+
+    Turn --> Raw
+    Turn --> Extract --> Gate --> Ops --> Resolve
+    Resolve --> Facts
+    Resolve --> Rules
+    Raw -->|"session summary"| Episodic
+    Facts --> Pinned
+    Rules --> Pinned
+    Facts --> Hybrid
+    Episodic --> Hybrid
+    Pinned --> Context
+    Hybrid --> Context
+    Context <--> Tools

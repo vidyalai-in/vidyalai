@@ -1,0 +1,27 @@
+flowchart LR
+    R["Request<br/>(prompt, docs, tool output)"]
+    subgraph Ingress["Ingress gateway"]
+        D1["Deterministic detectors<br/>(regex + checksums)"]
+        D2["NER model<br/>+ context rules"]
+        D3["Optional LLM pass<br/>(high-risk traffic)"]
+        M["Merge spans"]
+        PS["Pseudonymize<br/>(PERSON_1, EMAIL_2)"]
+    end
+    R --> D1
+    R --> D2
+    R -.-> D3
+    D1 --> M
+    D2 --> M
+    D3 -.-> M
+    M --> PS
+    PS -- "placeholder map" --> V[("Encrypted vault<br/>(request-scoped, short TTL)")]
+    PS -- "redacted request" --> LLM["Model endpoint<br/>(zero retention)"]
+    subgraph Egress["Egress"]
+        ES["Egress scan"]
+        RI{"Caller authorized<br/>to re-identify?"}
+    end
+    LLM --> ES
+    ES --> RI
+    V --> RI
+    RI -- "Yes" --> O1["Response with real values"]
+    RI -- "No" --> O2["Response with placeholders"]

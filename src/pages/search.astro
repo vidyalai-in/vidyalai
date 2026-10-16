@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Search" description="Search every VidyalAI article.">
+  <link slot="head" rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <div class="container-narrow">
+    <header class="page-head">
+      <h1>Search</h1>
+      <p>Search the full text of every article.</p>
+    </header>
+    <p id="search-label" class="search-label">Search articles</p>
+    <div id="search" class="search-root">
+      <noscript>
+        <p>Search needs JavaScript. You can also browse <a href="/blog/">all articles</a> or <a href="/category/">topics</a>.</p>
+      </noscript>
+    </div>
+  </div>
+</Base>
+
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!window.PagefindUI) return;
+    new window.PagefindUI({
+      element: '#search',
+      showSubResults: true,
+      showImages: false,
+      autofocus: true,
+      translations: { placeholder: 'e.g. semantic cache' },
+    });
+    // Pagefind's input only has a title; tie it to the visible label above.
+    var input = document.querySelector('#search input');
+    if (input) input.setAttribute('aria-labelledby', 'search-label');
+  });
+</script>
+
+<style is:global>
+  .search-label {
+    font-weight: 600;
+    color: var(--text-strong);
+    margin: 0 0 0.5rem;
+  }
+  .search-root {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--text);
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-border: var(--border-strong);
+    --pagefind-ui-tag: var(--surface-2);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-font: var(--font-sans);
+  }
+  .search-root .pagefind-ui__result-link {
+    color: var(--accent);
+  }
+  .search-root .pagefind-ui__result-excerpt {
+    color: var(--muted);
+  }
+  .search-root mark {
+    background: var(--accent-soft);
+    color: var(--text-strong);
+    padding: 0 0.15em;
+    border-radius: 3px;
+  }
+</style>

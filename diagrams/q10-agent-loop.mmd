@@ -1,0 +1,16 @@
+flowchart TD
+  U["User task"] --> M["Model step:<br/>reason, pick action"]
+  M -->|"done"| E{"End-state check"}
+  E -->|"verified"| D["Return result"]
+  E -->|"not reached"| M
+  M -->|"tool call"| B{"Budget or<br/>loop limit hit?"}
+  B -->|"yes"| X["Escalate or abort"]
+  B -->|"no"| V{"Schema + business<br/>rule validation"}
+  V -->|"invalid"| RT{"Retries left?"}
+  RT -->|"yes: return error"| M
+  RT -->|"no"| X
+  V -->|"irreversible"| H{"Human confirms?"}
+  H -->|"no"| RT
+  H -->|"yes"| T["Execute tool<br/>with idempotency key"]
+  V -->|"valid"| T
+  T -->|"result or actionable error"| M

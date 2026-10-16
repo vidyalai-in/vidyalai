@@ -1,0 +1,86 @@
+/* Brand palette taken from the VidyalAI banners: deep navy, electric blue, cyan glow.
+   Dark is the brand's native look; light keeps the same hues with AA-contrast accents. */
+
+:root {
+  color-scheme: light;
+  --bg: #f5f8fd;
+  --bg-glow: radial-gradient(1200px 600px at 85% -10%, rgb(30 123 255 / 0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgb(56 189 248 / 0.10), transparent 60%);
+  --surface: #ffffff;
+  --surface-2: #eef3fb;
+  --text: #0b1a33;
+  --text-strong: #050e1f;
+  --muted: #4a5b78;
+  --accent: #0b5fd6;
+  --accent-strong: #0a4fb3;
+  --on-accent: #ffffff;
+  --accent-soft: #e3eeff;
+  --cyan: #0e7490;
+  --border: #d6dfed;
+  --border-strong: #b8c6dd;
+  --code-bg: #f1f5fb;
+  --focus: #0b5fd6;
+  --shadow: 0 1px 2px rgb(11 26 51 / 0.06), 0 8px 24px rgb(11 26 51 / 0.06);
+  --header-bg: rgb(245 248 253 / 0.85);
+  --wordmark-ai: linear-gradient(90deg, #0b5fd6, #0891b2);
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Montserrat', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --measure: 72ch;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --page-max: 1440px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #060d1f;
+    --bg-glow: radial-gradient(1200px 600px at 85% -10%, rgb(30 123 255 / 0.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgb(56 189 248 / 0.12), transparent 60%);
+    --surface: #0b162d;
+    --surface-2: #10203f;
+    --text: #dfe7f7;
+    --text-strong: #f5f8ff;
+    --muted: #9fb0cf;
+    --accent: #38bdf8;
+    --accent-strong: #7dd3fc;
+    --on-accent: #04101f;
+    --accent-soft: rgb(56 189 248 / 0.12);
+    --cyan: #22d3ee;
+    --border: #1c2c4d;
+    --border-strong: #2a3f68;
+    --code-bg: #0a1428;
+    --focus: #7dd3fc;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.35);
+    --header-bg: rgb(6 13 31 / 0.82);
+    --wordmark-ai: linear-gradient(90deg, #22d3ee, #1e7bff);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #060d1f;
+  --bg-glow: radial-gradient(1200px 600px at 85% -10%, rgb(30 123 255 / 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgb(56 189 248 / 0.12), transparent 60%);
+  --surface: #0b162d;
+  --surface-2: #10203f;
+  --text: #dfe7f7;
+  --text-strong: #f5f8ff;
+  --muted: #9fb0cf;
+  --accent: #38bdf8;
+  --accent-strong: #7dd3fc;
+  --on-accent: #04101f;
+  --accent-soft: rgb(56 189 248 / 0.12);
+  --cyan: #22d3ee;
+  --border: #1c2c4d;
+  --border-strong: #2a3f68;
+  --code-bg: #0a1428;
+  --focus: #7dd3fc;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.35);
+  --header-bg: rgb(6 13 31 / 0.82);
+  --wordmark-ai: linear-gradient(90deg, #22d3ee, #1e7bff);
+}

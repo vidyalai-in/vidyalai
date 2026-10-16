@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph tree["Parsed structure tree"]
+    K["MSA: Acme / Globex"] --> D1["Art. 1<br/>Definitions"]
+    K --> A9["Art. 9<br/>Liability"]
+    K --> A12["Art. 12<br/>Indemnity"]
+    A9 --> S92["9.2 Limitation<br/>of Liability"]
+    S92 --> S92b["9.2(b) Exceptions"]
+    A12 --> S123["12.3 Procedure"]
+  end
+  S92b -. "subject to" .-> S123
+  S92b --> CH["Clause chunk<br/>+ context header"]
+  CH --> R["Hybrid retrieval"]
+  D1 --> DL["Defined-terms lookup"]
+  R --> CTX["LLM context"]
+  S92 -- "parent expansion" --> CTX
+  DL -- "terms used" --> CTX
+  S123 -- "one-hop reference" --> CTX

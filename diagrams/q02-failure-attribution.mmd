@@ -1,0 +1,18 @@
+flowchart TD
+  S["Failing case<br/>+ gold evidence"] --> A{"Gold in<br/>raw corpus?"}
+  A -- "no: corpus" --> H["Failure histogram<br/>(bucket counts)"]
+  A -- "yes" --> B{"Intact after<br/>parsing?"}
+  B -- "no: parsing" --> H
+  B -- "yes" --> C{"Whole within<br/>one chunk?"}
+  C -- "no: chunking" --> H
+  C -- "yes" --> D{"Indexed, current,<br/>correct ACL?"}
+  D -- "no: index" --> H
+  D -- "yes" --> E{"In top 200<br/>candidates?"}
+  E -- "no: retrieval" --> H
+  E -- "yes" --> F{"In final<br/>context?"}
+  F -- "no: ranking" --> H
+  F -- "yes" --> G{"Expected answer<br/>valid?"}
+  G -- "no: label" --> H
+  G -- "yes: generation" --> H
+  H --> X["Fix largest bucket"]
+  X --> Y["Add to regression suite"]

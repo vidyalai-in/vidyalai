@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="This page doesn't exist." noindex>
+  <div class="container-narrow nf">
+    <p class="eyebrow">404</p>
+    <h1>This page doesn't exist</h1>
+    <p>The link may be old, or the article may have moved.</p>
+    <p class="ctas">
+      <a class="btn btn-primary" href="/blog/">See all articles</a>
+      <a class="btn btn-ghost" href="/search/">Search</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .nf {
+    padding-block: 5rem;
+    text-align: center;
+  }
+  .nf h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 0.75rem;
+  }
+  .nf p {
+    color: var(--muted);
+  }
+  .ctas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+</style>

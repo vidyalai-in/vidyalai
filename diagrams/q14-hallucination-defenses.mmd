@@ -1,0 +1,25 @@
+flowchart LR
+    Query["User query"]
+    subgraph Prevent["Reduce"]
+        Retrieve["Hybrid retrieval<br/>and rerank"]
+        Generate["Grounded generation<br/>(cite spans)"]
+    end
+    subgraph Detect["Detect"]
+        Decompose["Split into<br/>atomic claims"]
+        Grounded["NLI or LLM judge<br/>vs evidence"]
+        Struct["Structural checks<br/>(IDs, URLs, tool args)"]
+        Gate{"All claims<br/>supported?"}
+    end
+    Abstain["Abstain or<br/>escalate"]
+    Revise["Remove, flag<br/>or revise claims"]
+    Show["Answer with<br/>citations"]
+    Audit["Sampled audits<br/>and user flags"]
+
+    Query --> Retrieve --> Generate
+    Generate -->|"insufficient evidence"| Abstain
+    Generate --> Decompose
+    Decompose --> Grounded --> Gate
+    Decompose --> Struct --> Gate
+    Gate -->|"yes"| Show
+    Gate -->|"no"| Revise --> Show
+    Show --> Audit

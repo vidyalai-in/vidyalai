@@ -1,0 +1,13 @@
+flowchart LR
+  A["New prompt v42"] --> REG["Prompt registry<br/>(immutable versions)"]
+  REG --> EV["Offline eval gate"]
+  EV -->|fail| BLK["Blocked"]
+  EV -->|pass| SH["Shadow traffic<br/>(optional)"]
+  SH --> CAN["Canary<br/>1, 5, 25, 50%"]
+  CAN --> MON["Guardrail monitor<br/>(canary vs control)"]
+  MON -->|healthy| PROD["Alias prod to v42<br/>(100%)"]
+  MON -->|breach| AUTO["Auto rollback<br/>alias to v41"]
+  PROD -->|incident| MAN["One-click rollback<br/>(on-call)"]
+  AUTO --> CFG["Config push<br/>(all servers under 60 s)"]
+  MAN --> CFG
+  CFG --> FIX["Data remediation<br/>+ regression evals"]

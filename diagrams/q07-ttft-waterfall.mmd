@@ -1,0 +1,12 @@
+flowchart TD
+  subgraph NET["Network: 100-200 ms"]
+    C["Client send"] --> E["Edge + TLS"]
+  end
+  subgraph PRE["Pre-model work, in series: 300-800 ms"]
+    A["Auth"] --> R["Embed + vector search"] --> RR["Rerank"] --> M["Moderation"]
+  end
+  subgraph GPU["Inference server"]
+    Q["Queue wait<br/>0-1500 ms"] --> P["Prefill<br/>200-2000 ms"] --> F["First token<br/>streams to client"]
+  end
+  E --> A
+  M --> Q

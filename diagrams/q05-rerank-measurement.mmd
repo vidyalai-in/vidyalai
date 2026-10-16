@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph online["Online path"]
+    Q["Query"] --> FS["First stage<br/>(hybrid, N = 100)"]
+    FS --> CE["Cross-encoder<br/>rerank"]
+    CE --> K["Top k to LLM"]
+    CE -. "timeout" .-> FB["Fallback:<br/>first-stage order"]
+    FB -.-> K
+    K --> ANS["Answer"]
+  end
+  subgraph measure["Measurement loop"]
+    OFF["Offline paired eval:<br/>nDCG@10, recall@k, e2e"] --> GATE["Pre-registered<br/>ship rule"]
+    GATE --> AB["Online A/B<br/>+ p95 and cost guardrails"]
+  end
+  AB -. "monitor" .-> CE
+  ANS -. "logs, new queries" .-> OFF

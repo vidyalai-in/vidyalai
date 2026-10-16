@@ -1,0 +1,16 @@
+flowchart TD
+  Q["Request"] --> N["Normalize + build scope key"]
+  N --> X{"Exact cache hit?"}
+  X -->|"yes"| H["Return cached answer"]
+  X -->|"no"| S["Semantic ANN lookup<br/>filtered by scope"]
+  S --> T{"Similarity?"}
+  T -->|"at or above τ_high"| H
+  T -->|"between τ_low and τ_high"| V{"Verifier:<br/>same answer?"}
+  T -->|"below τ_low"| L["Call LLM"]
+  V -->|"yes"| H
+  V -->|"no"| L
+  L --> W{"Write admission"}
+  W -->|"admit"| C["Store entry<br/>with versions + TTL"]
+  W -->|"skip"| R["Return fresh answer"]
+  C --> R
+  I["TTL expiry or<br/>source doc change"] -.->|"invalidate"| C

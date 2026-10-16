@@ -1,0 +1,228 @@
+---
+import { Image } from 'astro:assets';
+import logoMark from '../assets/brand/logo-mark.png';
+import ThemeToggle from './ThemeToggle.astro';
+import Icon from './Icon.astro';
+
+const path = Astro.url.pathname;
+const links = [
+  { href: '/blog/', label: 'Articles', match: (p: string) => p.startsWith('/blog') },
+  { href: '/category/', label: 'Topics', match: (p: string) => p.startsWith('/category') || p.startsWith('/tags') },
+  { href: '/series/llm-system-design/', label: 'Series', match: (p: string) => p.startsWith('/series') },
+  { href: '/about/', label: 'About', match: (p: string) => p.startsWith('/about') },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="VidyalAI home">
+      <Image src={logoMark} alt="" width={40} height={40} class="brand-mark" loading="eager" />
+      <span class="wordmark brand-word" aria-hidden="true">Vidyal<span class="ai">AI</span></span>
+    </a>
+
+    <button
+      type="button"
+      class="menu-btn"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-menu-btn
+    >
+      <span class="menu-open"><Icon name="menu" /></span>
+      <span class="menu-close"><Icon name="close" /></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={l.match(path) ? 'page' : undefined}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/search/" class="nav-search" aria-current={path.startsWith('/search') ? 'page' : undefined}>
+            <Icon name="search" size={20} />
+            <span>Search</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--header-bg);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 64px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    margin-right: auto;
+    min-height: 44px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .brand-word {
+    font-size: 1.35rem;
+  }
+
+  .site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0 0.85rem;
+    border-radius: 999px;
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .site-nav a:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .site-nav a[aria-current='page'] {
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+
+  .menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text-strong);
+    cursor: pointer;
+    order: 3;
+  }
+
+  .menu-close {
+    display: none;
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-open {
+    display: none;
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-close {
+    display: inline-flex;
+  }
+
+  .header-actions {
+    order: 2;
+  }
+
+  @media (min-width: 900px) {
+    .site-nav {
+      order: 1;
+    }
+    .header-actions {
+      order: 2;
+    }
+  }
+
+  /* Small screens: the menu collapses behind a disclosure button (only when JS runs). */
+  @media (max-width: 899px) {
+    :global(html.js) .menu-btn {
+      display: inline-flex;
+    }
+
+    .header-inner {
+      flex-wrap: wrap;
+    }
+
+    .site-nav {
+      order: 4;
+      width: 100%;
+    }
+
+    :global(html.js) .site-nav {
+      display: none;
+    }
+
+    :global(html.js) .site-nav[data-open] {
+      display: block;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0.15rem;
+      padding-bottom: 0.75rem;
+    }
+
+    .site-nav a {
+      width: 100%;
+      border-radius: 10px;
+      padding: 0 1rem;
+    }
+
+    :global(html:not(.js)) .site-nav ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    const setOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) nav.setAttribute('data-open', '');
+      else nav.removeAttribute('data-open');
+    };
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+    window.matchMedia('(min-width: 900px)').addEventListener('change', (e) => e.matches && setOpen(false));
+  }
+</script>

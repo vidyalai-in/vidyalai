@@ -1,0 +1,16 @@
+flowchart LR
+    U["Trusted user request"] --> P["Privileged planner LLM"]
+    P --> PL["Plan as code<br/>(symbolic variables)"]
+    PL --> I["Interpreter"]
+    EXT["Untrusted content<br/>(web, email, docs)"] -- "tainted values" --> I
+    subgraph Quarantine["Quarantine"]
+        Q["Quarantined LLM<br/>(no tools)"]
+    end
+    I -- "untrusted data" --> Q
+    Q -- "typed values + taint labels" --> I
+    I --> PE{"Policy engine<br/>checks provenance"}
+    PE -- "allowed" --> T["Tool sinks<br/>(email, payments, web)"]
+    PE -- "high risk" --> HC["Human confirmation<br/>(raw parameters)"]
+    PE -- "violates policy" --> B["Blocked and logged"]
+    HC -- "approved" --> T
+    T -- "tool outputs, tainted" --> I

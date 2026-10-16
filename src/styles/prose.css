@@ -1,0 +1,285 @@
+/* Long-form article typography. */
+
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: var(--measure);
+  overflow-wrap: break-word;
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin-block: 0;
+}
+
+.prose > p + p,
+.prose > ul,
+.prose > ol,
+.prose > p {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+  margin: 2.6em 0 0.6em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--border);
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.prose h3 {
+  font-size: clamp(1.15rem, 2vw, 1.3rem);
+  margin: 2em 0 0.5em;
+}
+
+.prose h4 {
+  font-size: 1.05rem;
+  margin: 1.6em 0 0.4em;
+}
+
+.prose h2 + *,
+.prose h3 + *,
+.prose h4 + * {
+  margin-top: 0;
+}
+
+.heading-anchor::after {
+  content: '#';
+}
+
+.heading-anchor {
+  margin-left: 0.4em;
+  color: var(--border-strong);
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.prose :is(h2, h3):hover .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+  color: var(--accent);
+}
+
+@media (hover: none) {
+  .heading-anchor {
+    opacity: 0.6;
+  }
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose li + li {
+  margin-top: 0.45em;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.45em;
+}
+
+.prose li::marker {
+  color: var(--accent);
+}
+
+.prose strong {
+  color: var(--text-strong);
+  font-weight: 650;
+}
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: 0.75rem 1.1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-block: 2.5em;
+}
+
+/* TL;DR gets a highlighted panel: it's the first section of every post. */
+.prose h2#tldr + p {
+  padding: 1rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--cyan);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Code ---------- */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.12em 0.38em;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  overflow-wrap: anywhere;
+}
+
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  background-color: var(--code-bg) !important;
+}
+
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .astro-code,
+  :root:not([data-theme='light']) .astro-code span {
+    color: var(--shiki-dark);
+  }
+}
+
+:root[data-theme='dark'] .astro-code,
+:root[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark);
+}
+
+/* ---------- Tables ---------- */
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.prose table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  color: var(--text-strong);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose td:first-child {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+/* ---------- Diagrams ---------- */
+.diagram {
+  margin: 2em 0;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.diagram-link {
+  display: block;
+  text-align: center;
+}
+
+.diagram img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-width: calc(var(--dw, 900) * 1px);
+}
+
+.diagram-hint {
+  display: none;
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Phones: show wide diagrams at ~75% of natural size and let the reader pan. */
+@media (max-width: 767px) {
+  .diagram {
+    padding: 0.75rem;
+  }
+  .diagram[data-wide] .diagram-link {
+    overflow-x: auto;
+    text-align: left;
+    -webkit-overflow-scrolling: touch;
+  }
+  .diagram[data-wide] img {
+    width: calc(var(--dw) * 0.75px);
+    max-width: none;
+  }
+  .diagram[data-wide] .diagram-hint {
+    display: block;
+  }
+}
+
+.diagram-dark {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .diagram-light {
+    display: none !important;
+  }
+  :root:not([data-theme='light']) .diagram-dark {
+    display: inline-block !important;
+  }
+}
+
+:root[data-theme='dark'] .diagram-light {
+  display: none !important;
+}
+
+:root[data-theme='dark'] .diagram-dark {
+  display: inline-block !important;
+}
+
+.diagram figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+}

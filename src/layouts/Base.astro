@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  /** Set for pages that Pagefind should index (articles). */
+  noindex?: boolean;
+}
+
+const { title, description, image = '/og-default.jpg', type = 'website', publishedTime, noindex } = Astro.props;
+const siteName = 'VidyalAI';
+const fullTitle = Astro.url.pathname === '/' ? `${siteName}: Knowledge Amplified` : `${title} | ${siteName}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" data-theme-pref="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <!-- Apply the saved theme before first paint so there is no flash. -->
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        var pref = 'system';
+        try {
+          pref = localStorage.getItem('theme') || 'system';
+        } catch (e) {}
+        if (pref !== 'light' && pref !== 'dark') pref = 'system';
+        root.dataset.themePref = pref;
+        if (pref !== 'system') root.dataset.theme = pref;
+      })();
+    </script>
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f8fd" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#060d1f" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title="VidyalAI" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800&display=swap"
+    />
+
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

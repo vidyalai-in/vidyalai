@@ -1,0 +1,28 @@
+flowchart TD
+    Analysis["Error analysis of<br/>200-500 transcripts"]
+    subgraph Offline["Offline suite (release gates)"]
+        Det["Deterministic checks<br/>(every PR, 100% pass)"]
+        Golden["Golden single-turn set<br/>(500-2,000 cases)"]
+        Sim["Multi-turn simulation<br/>(sandbox, pass^k)"]
+        Safety["Safety and<br/>red-team set"]
+        Judges["LLM judges calibrated<br/>against human labels"]
+    end
+    subgraph Online["Production"]
+        Rollout["Shadow, 5% canary,<br/>then A/B test"]
+        Metrics["Re-contact, escalation,<br/>CSAT, sampled audits"]
+    end
+    Triage["Weekly triage of<br/>failures"]
+
+    Analysis -->|"failure taxonomy"| Det
+    Analysis --> Golden
+    Analysis --> Sim
+    Analysis --> Safety
+    Judges -->|"grade"| Golden
+    Judges -->|"grade"| Sim
+    Det --> Rollout
+    Golden --> Rollout
+    Sim --> Rollout
+    Safety --> Rollout
+    Rollout --> Metrics --> Triage
+    Triage -->|"new cases"| Golden
+    Triage -->|"new scenarios"| Sim

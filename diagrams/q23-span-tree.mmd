@@ -1,0 +1,15 @@
+flowchart TD
+  R["invoke_workflow research_task<br/>(root span)"] --> O["invoke_agent orchestrator"]
+  O --> L1["chat model-large<br/>(plan)"]
+  O --> A1["invoke_agent researcher-1"]
+  O --> A2["invoke_agent researcher-2"]
+  A1 --> L2["chat model-small"]
+  A1 --> T1["execute_tool web_search"]
+  T1 --> H1["HTTP GET search API"]
+  A1 --> RT["retrieval docs-index"]
+  A2 --> L3["chat model-small"]
+  A2 --> T2["execute_tool code_exec"]
+  O --> S["invoke_agent synthesizer"]
+  A1 -.->|"span link"| S
+  A2 -.->|"span link"| S
+  S --> L4["chat model-large<br/>(final answer)"]

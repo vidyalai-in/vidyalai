@@ -1,0 +1,354 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Toc from '../../components/Toc.astro';
+import SeriesNav from '../../components/SeriesNav.astro';
+import PostCard from '../../components/PostCard.astro';
+import Icon from '../../components/Icon.astro';
+import { getCategory, SERIES } from '../../data/categories';
+import { getPosts, postUrl, categoryUrl, tagUrl, tagLabel, formatDate, relatedPosts, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, prev: posts[i - 1], next: posts[i + 1], all: posts },
+  }));
+}
+
+interface Props {
+  post: Post;
+  prev?: Post;
+  next?: Post;
+  all: Post[];
+}
+const { post, prev, next, all } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const category = getCategory(post.data.category);
+const inCategory = all.filter((p) => p.data.category === post.data.category);
+const related = relatedPosts(post, all);
+const minutes = remarkPluginFrontmatter.minutesRead as number;
+const hasToc = headings.some((h) => h.depth === 2);
+---
+
+<Base title={post.data.title} description={post.data.description} type="article" publishedTime={post.data.pubDate}>
+  <div class="container post-shell">
+    <aside class="post-left" aria-label={`More in ${category.name}`} data-pagefind-ignore>
+      <p class="side-title">In {category.name}</p>
+      <ol class="side-list">
+        {
+          inCategory.map((p) => (
+            <li>
+              <a href={postUrl(p)} aria-current={p.id === post.id ? 'page' : undefined}>
+                <span class="side-num">{p.data.seriesOrder}</span>
+                <span>{p.data.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      <a class="side-all" href="/series/llm-system-design/">Full series <Icon name="arrowRight" size={16} /></a>
+    </aside>
+
+    <article class="post" data-pagefind-body>
+      <header class="post-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb" data-pagefind-ignore>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Articles</a></li>
+            <li><a href={categoryUrl(category.slug)}>{category.name}</a></li>
+          </ol>
+        </nav>
+        <p class="eyebrow">
+          <a href="/series/llm-system-design/">{SERIES.name}</a> · Part {post.data.seriesOrder} of 25
+        </p>
+        <h1 data-pagefind-meta="title">{post.data.title}</h1>
+        <p class="lede">{post.data.description}</p>
+        <div class="post-meta" data-pagefind-ignore>
+          <span><Icon name="clock" size={18} /> {minutes} min read</span>
+          <span>
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          </span>
+          <a href={categoryUrl(category.slug)} data-pagefind-filter="category">{category.name}</a>
+        </div>
+      </header>
+
+      {
+        hasToc && (
+          <details class="toc-inline" data-pagefind-ignore>
+            <summary>
+              <Icon name="list" size={18} /> On this page
+            </summary>
+            <nav aria-label="On this page">
+              <Toc headings={headings} maxDepth={2} />
+            </nav>
+          </details>
+        )
+      }
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer class="post-footer" data-pagefind-ignore>
+        <h2 class="visually-hidden">Tags</h2>
+        <ul class="chip-list">
+          {post.data.tags.map((t) => (
+            <li><a class="chip" href={tagUrl(t)}>{tagLabel(t)}</a></li>
+          ))}
+        </ul>
+        <SeriesNav prev={prev} next={next} />
+      </footer>
+    </article>
+
+    {
+      hasToc && (
+        <aside class="post-right" data-pagefind-ignore>
+          <nav class="toc-side" aria-label="On this page (sidebar)">
+            <p class="side-title">On this page</p>
+            <Toc headings={headings} id="toc-side" />
+          </nav>
+        </aside>
+      )
+    }
+  </div>
+
+  {
+    related.length > 0 && (
+      <section class="container section related" aria-labelledby="related-heading" data-pagefind-ignore>
+        <div class="section-head">
+          <h2 id="related-heading">Related articles</h2>
+        </div>
+        <ul class="card-grid">
+          {related.map((p) => (
+            <li><PostCard post={p} /></li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .post-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .post-left,
+  .post-right {
+    display: none;
+  }
+
+  .post {
+    min-width: 0;
+    max-width: var(--measure);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .post-shell {
+      grid-template-columns: minmax(0, 1fr) 16rem;
+    }
+    .post-right {
+      display: block;
+    }
+    .toc-inline {
+      display: none;
+    }
+    .post {
+      margin-inline: 0 auto;
+      justify-self: center;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .post-shell {
+      grid-template-columns: 15rem minmax(0, 1fr) 16rem;
+    }
+    .post-left {
+      display: block;
+    }
+  }
+
+  .post-left,
+  .toc-side {
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    align-self: start;
+    padding-right: 0.25rem;
+  }
+
+  .post-right,
+  .post-left {
+    align-self: start;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .side-title {
+    margin: 0 0 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .side-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .side-list a {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.45rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .side-list a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .side-list a[aria-current='page'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .side-num {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .side-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    min-height: 44px;
+  }
+
+  .post-header h1 {
+    font-size: clamp(1.9rem, 4.6vw, 2.75rem);
+    margin: 0 0 0.9rem;
+  }
+
+  .eyebrow a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .eyebrow a:hover {
+    text-decoration: underline;
+  }
+
+  .lede {
+    font-size: clamp(1.08rem, 2vw, 1.22rem);
+    color: var(--muted);
+    margin: 0 0 1.25rem;
+    line-height: 1.6;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .post-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .toc-inline {
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .toc-inline summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0 1rem;
+    font-weight: 600;
+    color: var(--text-strong);
+    cursor: pointer;
+  }
+
+  .toc-inline nav {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .related {
+    padding-bottom: 0;
+  }
+</style>
+
+<script>
+  // Highlight the section currently in view in the sidebar TOC.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('#toc-side a'));
+  const targets = links
+    .map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1))))
+    .filter((el): el is HTMLElement => el !== null);
+  if (targets.length && 'IntersectionObserver' in window) {
+    const visible = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) visible.add(e.target.id);
+          else visible.delete(e.target.id);
+        }
+        const current = targets.find((t) => visible.has(t.id));
+        if (!current) return;
+        for (const a of links) {
+          if (a.hash === `#${current.id}`) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        }
+      },
+      { rootMargin: '-80px 0px -65% 0px' },
+    );
+    targets.forEach((t) => observer.observe(t));
+  }
+</script>

@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SERIES, getCategory } from '../../data/categories';
+import { getPosts, postUrl, categoryUrl } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title={`${SERIES.name} series`} description={SERIES.blurb}>
+  <div class="container-narrow">
+    <header class="page-head">
+      <p class="eyebrow">Series</p>
+      <h1>{SERIES.name}</h1>
+      <p>{SERIES.blurb} Read them in order, or jump to whatever you're building.</p>
+    </header>
+    <ol class="series-list">
+      {
+        posts.map((p) => {
+          const c = getCategory(p.data.category);
+          return (
+            <li>
+              <span class="num" aria-hidden="true">{String(p.data.seriesOrder).padStart(2, '0')}</span>
+              <div>
+                <h2><a href={postUrl(p)}>{p.data.title}</a></h2>
+                <p>{p.data.description}</p>
+                <a class="cat" href={categoryUrl(c.slug)}>{c.name}</a>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .series-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .series-list li {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .num {
+    flex: none;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.2;
+    min-width: 2.2ch;
+  }
+  .series-list h2 {
+    font-size: 1.12rem;
+    margin: 0 0 0.35rem;
+  }
+  .series-list h2 a {
+    color: var(--text-strong);
+    text-decoration: none;
+  }
+  .series-list h2 a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .series-list p {
+    margin: 0 0 0.4rem;
+    color: var(--muted);
+  }
+  .cat {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+</style>
