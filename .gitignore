@@ -6,3 +6,8 @@ dist/
 .screenshots/
 video/*/out/
 video/.tts-cache/
+
+# Voice references are biometric data and could be used to clone a voice; never commit them.
+video/voices/*/*.wav
+video/voices/*/*.mp3
+__pycache__/

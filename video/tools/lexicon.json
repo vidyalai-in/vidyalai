@@ -1,5 +1,5 @@
 {
-  "_comment": "Written form -> how the narrator should say it. Applied to TTS text only; captions keep the written form. Keys match whole words, case-sensitive. Per-video overrides go in script.yaml under `lexicon`.",
+  "_comment": "Written form -> how the narrator should say it. Applied to TTS text only; captions keep the written form. Keys match whole words, case-sensitive. A value is a string for every engine, or an object with per-engine values (kokoro, chatterbox, default) and an optional ipa: cloned-voice takes are then checked with a phoneme recognizer and retaken until they match. Kokoro values can use phoneme markup [word](/phonemes/). vidyal.ai was matched to the owner's recording: VID-yaa-lay. Per-video overrides go in script.yaml under `lexicon`.",
   "RAG": "rag",
   "LLM": "L L M",
   "LLMs": "L L Ms",
@@ -26,7 +26,10 @@
   "PDF": "P D F",
   "PDFs": "P D Fs",
   "HTML": "H T M L",
-  "SSD": "S S D",
+  "SSD": {
+    "kokoro": "S S D",
+    "default": "S S Dee"
+  },
   "RAM": "ram",
   "GPU": "G P U",
   "GPUs": "G P Us",
@@ -53,6 +56,14 @@
   "Vespa": "Vespa",
   "Faiss": "face",
   "Matryoshka": "matryoshka",
-  "VidyalAI": "[Vidyalai](/vɪdjˈɑlˌA/)",
-  "vidyal.ai": "[Vidyalai](/vɪdjˈɑlˌA/)"
+  "VidyalAI": {
+    "kokoro": "[Vidyalai](/vɪdjˈɑlˌA/)",
+    "default": "Vidd-yah-lay",
+    "ipa": "v ɪ d j ɑː l eɪ"
+  },
+  "vidyal.ai": {
+    "kokoro": "[Vidyalai](/vɪdjˈɑlˌA/)",
+    "default": "Vidd-yah-lay",
+    "ipa": "v ɪ d j ɑː l eɪ"
+  }
 }

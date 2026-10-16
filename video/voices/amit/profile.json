@@ -1,0 +1,11 @@
+{
+  "label": "Amit (cloned from Amit's own recording)",
+  "engine": "chatterbox",
+  "model": "standard",
+  "reference": "reference.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.8,
+  "postfx": "highpass=f=70,lowpass=f=11500,deesser=i=0.4,equalizer=f=3000:t=q:w=1.4:g=-1.5,equalizer=f=200:t=q:w=1.0:g=1",
+  "credit": "Narration: an AI clone of the creator's own voice (Chatterbox open-weight text-to-speech), made from the creator's own recording. Script, diagrams and sources by VidyalAI."
+}

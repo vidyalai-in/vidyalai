@@ -49,8 +49,18 @@ const outDir = join(videoDir, 'out');
 const kitDir = join(videoDir, 'youtube');
 mkdirSync(outDir, { recursive: true });
 mkdirSync(kitDir, { recursive: true });
-const voice = opt('voice', script.voice ?? 'af_heart');
-const speed = Number(script.speed ?? 1.0);
+// Voice: a profile in video/voices/<name>/profile.json (e.g. a cloned voice), or a Kokoro voice name.
+const voiceName = opt('voice', script.voice ?? 'af_heart');
+const profilePath = join(ROOT, 'video/voices', voiceName, 'profile.json');
+const profile = existsSync(profilePath)
+  ? JSON.parse(readFileSync(profilePath, 'utf8'))
+  : { engine: 'kokoro', voice: voiceName, speed: Number(script.speed ?? 1.0), lang: script.lang ?? 'a' };
+const engineName = profile.engine;
+if (profile.reference) {
+  profile.reference = join(dirname(profilePath), profile.reference);
+  if (!existsSync(profile.reference)) throw new Error(`Voice "${voiceName}" needs its reference recording at ${relative(ROOT, profile.reference)} (not in git)`);
+}
+const tag = opt('tag', ''); // e.g. --tag voice-sample: writes <name>--<tag>.mp4 and skips the upload kit
 
 // ---------- Article: URL and sources ----------
 const articlePath = join(ROOT, script.article);
@@ -67,9 +77,17 @@ const sources = [];
 const lexicon = { ...JSON.parse(readFileSync(join(ROOT, 'video/tools/lexicon.json'), 'utf8')), ...(script.lexicon ?? {}) };
 delete lexicon._comment;
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// A lexicon value is a string (all engines) or { kokoro?, chatterbox?, default?, ipa? } per engine.
+// `ipa` makes cloned-voice takes verify that pronunciation with a phoneme recognizer.
+const forEngine = (v) => (typeof v === 'string' ? v : (v[engineName] ?? v.default));
+const pronunciationChecks = Object.values(lexicon)
+  .filter((v) => typeof v === 'object' && v.ipa && engineName !== 'kokoro')
+  .map((v) => ({ say: forEngine(v), ipa: v.ipa }))
+  .filter((c, i, all) => all.findIndex((o) => o.say === c.say) === i); // one check per spelling
 const lexRules = Object.entries(lexicon)
+  .filter(([, v]) => forEngine(v) !== undefined)
   .sort((a, b) => b[0].length - a[0].length)
-  .map(([k, v]) => [new RegExp(`(?<![\\w.])${escapeRe(k)}(?![\\w])`, 'g'), v]);
+  .map(([k, v]) => [new RegExp(`(?<![\\w.])${escapeRe(k)}(?![\\w])`, 'g'), forEngine(v)]);
 
 const plain = (s) => s.replace(/\*\*(.+?)\*\*/g, '$1').replace(/`(.+?)`/g, '$1');
 function toSpeech(s) {
@@ -134,13 +152,27 @@ for (const v of videos)
   );
 writeFileSync(
   manifestPath,
-  JSON.stringify({ voice, speed, lang: script.lang ?? 'a', cacheDir: join(ROOT, 'video/.tts-cache'), items }, null, 1),
+  JSON.stringify(
+    {
+      engine: { name: engineName, ...Object.fromEntries(Object.entries(profile).filter(([k]) => !['engine', 'postfx', 'label'].includes(k))), ...(pronunciationChecks.length && { checks: pronunciationChecks }) },
+      cacheDir: join(ROOT, 'video/.tts-cache'),
+      items,
+    },
+    null,
+    1,
+  ),
 );
 
 function uv(args) {
   const torch = opt('torch', process.env.VIDEO_TORCH ?? 'cuda');
   const index = torch === 'cpu' ? ['--index', 'https://download.pytorch.org/whl/cpu', '--index-strategy', 'unsafe-best-match'] : [];
-  const cmd = ['run', '--python', '3.12', '--with', 'kokoro>=0.9.4', '--with', 'soundfile', '--with', 'pip', ...index, 'python', join(ROOT, 'video/tools/tts.py'), ...args];
+  // Chatterbox needs Python 3.14 to accept a current PyTorch (it pins torch 2.6 on older Pythons);
+  // setuptools<81 still ships pkg_resources, which its watermarker imports.
+  const deps =
+    engineName === 'chatterbox' && args[0] === 'synth'
+      ? ['--python', '3.14', '--with', 'chatterbox-tts', '--with', 'soundfile', '--with', 'num2words', '--with', 'setuptools<81']
+      : ['--python', '3.12', '--with', 'kokoro>=0.9.4', '--with', 'soundfile', '--with', 'pip', ...index];
+  const cmd = ['run', ...deps, 'python', join(ROOT, 'video/tools/tts.py'), ...args];
   const r = spawnSync('uv', cmd, { stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', env: { ...process.env, PYTHONWARNINGS: 'ignore' } });
   const lines = `${r.stdout}\n${r.stderr}`.split('\n').filter((l) => /^tts:|Error|error:|Traceback|^\s+File /.test(l));
   if (lines.length) console.log(lines.join('\n'));
@@ -267,14 +299,15 @@ for (const v of videos) {
   const wav = join(outDir, `${v.id}.narration.wav`);
   writeFileSync(timelinePath, JSON.stringify({ out: wav, totalSeconds: v.total, clips: v.clips }));
   uv(['mix', timelinePath]);
-  const mp4 = join(outDir, `${v.id === 'main' ? slug : `${slug}--${v.id}`}.mp4`);
+  const mp4 = join(outDir, `${v.id === 'main' ? slug : `${slug}--${v.id}`}${tag ? `--${tag}` : ''}.mp4`);
+  const postfx = profile.postfx ? `${profile.postfx},` : ''; // static voice polish (EQ, de-esser) from the profile
   // Loudness: one static gain to -14 LUFS plus a peak limiter at -2.5 dBFS, which leaves room for AAC overshoot (target: true peak under -1 dB). (ffmpeg's loudnorm falls back to
   // dynamic gain when it can't stay linear, and that pumps the TTS noise floor up ~45 dB in every
   // pause, which is audible as hiss and grinding. A fixed gain can't do that.)
-  const probe = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', wav, '-af', 'loudnorm=print_format=json', '-f', 'null', '-'], { encoding: 'utf8' });
+  const probe = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', wav, '-af', `${postfx}loudnorm=print_format=json`, '-f', 'null', '-'], { encoding: 'utf8' });
   const measured = JSON.parse(probe.stderr.slice(probe.stderr.lastIndexOf('{')));
   const gain = -14 - Number(measured.input_i);
-  const loudnorm = `volume=${gain.toFixed(2)}dB,alimiter=limit=${Math.pow(10, -2.5 / 20).toFixed(4)}:attack=5:release=50:level=false`;
+  const loudnorm = `${postfx}volume=${gain.toFixed(2)}dB,alimiter=limit=${Math.pow(10, -2.5 / 20).toFixed(4)}:attack=5:release=50:level=false`;
   const ff = spawnSync(
     'ffmpeg',
     [
@@ -293,7 +326,7 @@ for (const v of videos) {
 }
 
 // ---------- Thumbnail ----------
-if (script.thumbnail && !flag('no-video') && videos.some((v) => v.id === 'main')) {
+if (script.thumbnail && !flag('no-video') && !tag && videos.some((v) => v.id === 'main')) {
   const page = await openStage('thumb');
   const assets = { ...baseAssets('thumb'), ...(script.thumbnail.diagram ? diagramAsset(script.thumbnail.diagram) : {}) };
   await page.evaluate((spec) => window.stage.load(spec), { format: 'thumb', scene: { type: 'thumb', steps: [{}], ...script.thumbnail }, assets, progress: false });
@@ -336,8 +369,12 @@ function srt(captions) {
 }
 
 // ---------- Upload kit ----------
+if (tag) {
+  console.log('Tagged build: upload kit not updated.');
+  process.exit(0);
+}
 const yt = script.youtube ?? {};
-const credit = 'Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.';
+const credit = profile.credit ?? 'Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.';
 for (const v of videos) {
   const dir = join(kitDir, v.id === 'main' ? 'main' : join('shorts', v.id));
   mkdirSync(dir, { recursive: true });
