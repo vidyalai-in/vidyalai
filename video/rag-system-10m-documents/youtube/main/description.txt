@@ -30,5 +30,6 @@ Sources and further reading
 • Seven Failure Points When Engineering a Retrieval Augmented Generation System (Barnett et al., 2024): https://arxiv.org/abs/2401.05856
 
 Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
 
 #RAG #LLM #SystemDesign

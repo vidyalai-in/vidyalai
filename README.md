@@ -89,3 +89,8 @@ permanent redirect that preserves the path, with HTTPS support), or move its DNS
 (free plan), add proxied placeholder records (`A @ 192.0.2.1`, `CNAME www vidyalai.in`), and add a
 Redirect Rule: *all incoming requests* → dynamic `concat("https://vidyal.ai", http.request.uri.path)`,
 status 301, preserve query string.
+
+## License
+
+Copyright © 2026 VidyalAI. All rights reserved. The content, brand assets and code are not
+licensed for reuse; see [LICENSE](LICENSE).

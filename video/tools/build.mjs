@@ -375,7 +375,7 @@ if (tag) {
   process.exit(0);
 }
 const yt = script.youtube ?? {};
-const credit = profile.credit ?? 'Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.';
+const credit = `${profile.credit ?? 'Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.'}\n© ${new Date().getFullYear()} VidyalAI. All rights reserved.`;
 for (const v of videos) {
   const dir = join(kitDir, v.id === 'main' ? 'main' : join('shorts', v.id));
   mkdirSync(dir, { recursive: true });
