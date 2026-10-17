@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import { GLOSSARY } from '../data/glossary.mjs';
+import { getPosts, postUrl } from '../lib/posts';
+
+const posts = await getPosts();
+const bySlug = new Map(posts.map((p) => [p.id, p]));
+const sortKey = (t: string) => t.replace(/^[^A-Za-z0-9]+/, '').toLowerCase();
+const entries = [...GLOSSARY].sort((a, b) => sortKey(a.term).localeCompare(sortKey(b.term)));
+
+const groups = new Map<string, typeof entries>();
+for (const e of entries) {
+  const letter = sortKey(e.term)[0].toUpperCase();
+  groups.set(letter, [...(groups.get(letter) ?? []), e]);
+}
+---
+
+<Base title="Glossary" description="Plain-language definitions of the specialised terms used across VidyalAI articles, from ANN and BM25 to TTFT and LoRA.">
+  <div class="container-narrow">
+    <header class="page-head">
+      <h1>Glossary</h1>
+      <p>
+        Short, plain-language definitions of the terms used across the articles, each linked to the paper, standard or
+        documentation that defines it. In an article, terms with a dotted underline show their definition when you
+        hover over, tap or focus them.
+      </p>
+    </header>
+
+    <nav class="letters" aria-label="Jump to letter">
+      <ul>
+        {[...groups.keys()].map((l) => <li><a href={`#letter-${l}`}>{l}</a></li>)}
+      </ul>
+    </nav>
+
+    {
+      [...groups.entries()].map(([letter, items]) => (
+        <section aria-labelledby={`letter-${letter}`}>
+          <h2 id={`letter-${letter}`} class="letter">{letter}</h2>
+          <dl class="terms">
+            {items.map((e) => {
+              const post = e.article ? bySlug.get(e.article) : undefined;
+              return (
+                <div id={e.id} class="entry">
+                  <dt>
+                    {e.term}
+                    {e.expansion && <span class="exp">{e.expansion}</span>}
+                  </dt>
+                  <dd>
+                    {e.def}
+                    <span class="more">
+                      Source: <a href={e.source.url}>{e.source.title}</a>
+                    </span>
+                    {post && (
+                      <span class="more">
+                        Explained in <a href={postUrl(post)}>{post.data.title}</a>
+                      </span>
+                    )}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .letters ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .letters a {
+    display: inline-grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .letters a:hover {
+    border-color: var(--accent);
+  }
+
+  .letter {
+    margin: 2rem 0 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1.4rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .terms {
+    margin: 0;
+  }
+
+  .entry {
+    padding: 0.85rem 0.75rem;
+    margin-inline: -0.75rem;
+    border-radius: var(--radius-sm);
+    scroll-margin-top: 5rem;
+  }
+
+  .entry:target {
+    background: var(--accent-soft);
+    outline: 1px solid var(--accent);
+  }
+
+  dt {
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+
+  .exp {
+    margin-left: 0.5rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    line-height: 1.6;
+  }
+
+  .more {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+</style>

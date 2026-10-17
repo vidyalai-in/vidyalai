@@ -207,6 +207,21 @@
   color: var(--text-strong);
 }
 
+/* ---------- Glossary terms (rehype-glossary + GlossaryTips) ---------- */
+.prose a.term {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  cursor: help;
+}
+
+.prose a.term:hover {
+  color: var(--accent);
+}
+
 /* ---------- Diagrams ---------- */
 .diagram {
   margin: 2em 0;

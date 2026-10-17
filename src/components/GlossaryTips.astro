@@ -1,0 +1,242 @@
+---
+/**
+ * Tooltip for glossary terms marked by rehype-glossary (`a.term`). Opens on mouse hover, keyboard
+ * focus or tap/click; stays open while hovered; closes on Esc, tap outside, or moving away.
+ * Screen readers already get the definition through aria-describedby, so this is visual only,
+ * but its links are reachable with Tab because it is placed right after the term.
+ */
+---
+
+<div class="gloss-tip" data-gloss-tip hidden>
+  <p class="gloss-head"><strong data-gloss-name></strong> <span class="gloss-exp" data-gloss-exp></span></p>
+  <p class="gloss-def" data-gloss-def></p>
+  <p class="gloss-source">Source: <a data-gloss-source></a></p>
+  <p class="gloss-links">
+    <a data-gloss-article hidden></a>
+    <a href="/glossary/" data-gloss-all>All terms</a>
+  </p>
+</div>
+
+<style>
+  .gloss-tip {
+    position: fixed;
+    z-index: 60;
+    top: 0;
+    left: 0;
+    width: max-content;
+    max-width: min(22rem, calc(100vw - 32px));
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    font: 400 0.9rem/1.5 var(--font-sans);
+    letter-spacing: normal;
+    text-transform: none;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .gloss-tip[hidden] {
+    display: none;
+  }
+
+  /* Caret pointing at the term. */
+  .gloss-tip::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--caret-x, 50%) - 6px);
+    width: 10px;
+    height: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    transform: rotate(45deg);
+  }
+
+  .gloss-tip[data-place='below']::before {
+    top: -6px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .gloss-tip[data-place='above']::before {
+    bottom: -6px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .gloss-tip p {
+    margin: 0;
+  }
+
+  .gloss-head {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .gloss-head strong {
+    color: var(--text-strong);
+  }
+
+  .gloss-exp {
+    color: var(--muted);
+  }
+
+  .gloss-source {
+    margin-top: 0.4rem !important;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .gloss-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-top: 0.5rem !important;
+    font-size: 0.85rem;
+  }
+
+  .gloss-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+
+  .gloss-links a[hidden] {
+    display: none;
+  }
+</style>
+
+<script>
+  const tip = document.querySelector<HTMLElement>('[data-gloss-tip]');
+  const terms = Array.from(document.querySelectorAll<HTMLAnchorElement>('a.term'));
+
+  if (tip && terms.length) {
+    const name = tip.querySelector<HTMLElement>('[data-gloss-name]')!;
+    const exp = tip.querySelector<HTMLElement>('[data-gloss-exp]')!;
+    const def = tip.querySelector<HTMLElement>('[data-gloss-def]')!;
+    const source = tip.querySelector<HTMLAnchorElement>('[data-gloss-source]')!;
+    const article = tip.querySelector<HTMLAnchorElement>('[data-gloss-article]')!;
+    const all = tip.querySelector<HTMLAnchorElement>('[data-gloss-all]')!;
+
+    let current: HTMLAnchorElement | null = null;
+    let pinned = false; // opened by click/tap: stays until dismissed
+    let showTimer = 0;
+    let hideTimer = 0;
+
+    const place = () => {
+      if (!current) return;
+      const rects = current.getClientRects();
+      const r = rects[0] ?? current.getBoundingClientRect(); // first line if the term wraps
+      const vw = document.documentElement.clientWidth;
+      const vh = window.innerHeight;
+      const tw = tip.offsetWidth;
+      const th = tip.offsetHeight;
+      const left = Math.min(Math.max(16, r.left + r.width / 2 - tw / 2), vw - 16 - tw);
+      const fitsBelow = r.bottom + 10 + th <= vh - 8;
+      const above = !fitsBelow && r.top - 10 - th >= 8;
+      tip.dataset.place = above ? 'above' : 'below';
+      tip.style.transform = `translate(${Math.round(left)}px, ${Math.round(above ? r.top - 10 - th : r.bottom + 10)}px)`;
+      tip.style.setProperty('--caret-x', `${Math.min(Math.max(14, r.left + r.width / 2 - left), tw - 14)}px`);
+    };
+
+    const show = (term: HTMLAnchorElement, pin: boolean) => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+      const src = document.getElementById(term.getAttribute('aria-describedby') ?? '');
+      if (!src) return;
+      const expansion = src.dataset.expansion ?? '';
+      name.textContent = src.dataset.name ?? term.textContent;
+      exp.textContent = expansion;
+      def.textContent = (src.textContent ?? '').slice(expansion ? expansion.length + 2 : 0);
+      source.href = src.dataset.source ?? '';
+      source.textContent = src.dataset.sourceTitle ?? '';
+      if (src.dataset.article) {
+        article.href = src.dataset.article;
+        article.textContent = `Read: ${src.dataset.articleTitle}`;
+        article.hidden = false;
+      } else {
+        article.hidden = true;
+      }
+      all.href = `/glossary/#${term.dataset.term}`;
+      if (current !== term) term.after(tip); // next in tab order after the term
+      current = term;
+      pinned = pin;
+      tip.hidden = false;
+      place();
+    };
+
+    const hide = () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+      tip.hidden = true;
+      current = null;
+      pinned = false;
+    };
+
+    const hideSoon = () => {
+      clearTimeout(showTimer);
+      if (pinned) return;
+      clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(hide, 200);
+    };
+
+    for (const term of terms) {
+      term.addEventListener('pointerenter', (e) => {
+        if (e.pointerType !== 'mouse' || pinned) return;
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        showTimer = window.setTimeout(() => show(term, false), 120);
+      });
+      term.addEventListener('pointerleave', (e) => {
+        if (e.pointerType === 'mouse') hideSoon();
+      });
+      term.addEventListener('focus', () => {
+        if (term.matches(':focus-visible') && current !== term) show(term, false);
+      });
+      term.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // open the glossary in a new tab
+        e.preventDefault();
+        if (current === term && pinned) hide();
+        else show(term, true);
+      });
+    }
+
+    tip.addEventListener('pointerenter', () => clearTimeout(hideTimer));
+    tip.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'mouse') hideSoon();
+    });
+
+    // Close when focus leaves both the term and the tooltip.
+    document.addEventListener('focusin', (e) => {
+      if (!current || tip.hidden) return;
+      const t = e.target as Node;
+      if (t !== current && !tip.contains(t)) hide();
+    });
+
+    document.addEventListener('pointerdown', (e) => {
+      if (!current || tip.hidden) return;
+      const t = e.target as Node;
+      if (t !== current && !current.contains(t) && !tip.contains(t)) hide();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || tip.hidden || !current) return;
+      const term = current;
+      const focusWasInside = tip.contains(document.activeElement);
+      hide();
+      if (focusWasInside || document.activeElement === term) term.focus();
+    });
+
+    let frame = 0;
+    const reposition = () => {
+      if (tip.hidden || frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        place();
+      });
+    };
+    window.addEventListener('scroll', reposition, { passive: true, capture: true });
+    window.addEventListener('resize', reposition);
+  }
+</script>

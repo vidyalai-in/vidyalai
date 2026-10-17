@@ -103,6 +103,22 @@ The build renders `diagrams/q01-rag-pipeline.mmd` into light and dark SVGs plus 
 - Keep it legible: ≤ ~14 nodes, labels ≤ ~5 words per line, subgraphs to group stages.
 - Must be accurate to the text; do not add components the post doesn't discuss.
 
+## Glossary terms
+
+Specialised terms get a hover/tap tooltip automatically: the build marks the first use of each
+term in every H2 section (not in headings, links, code, diagrams or "Further reading"). Terms
+live in `src/data/glossary.mjs`, which also feeds the `/glossary/` page. When a post introduces a
+term a reader might not know, add an entry:
+
+- `match`: every form used in posts ("reranker", "rerankers", "reranking"). Phrases with a capital
+  letter match case-sensitively; all-lowercase ones match any case.
+- `def`: one or two plain sentences that make sense without the article.
+- `source`: the paper, standard or official docs that define the term. Check that the URL opens and,
+  for arXiv, that the ID's title matches.
+- `article`: the post that explains it best, if any.
+
+Still expand an acronym in the text on first use; the tooltip is a convenience, not a substitute.
+
 ## Review file (`content-src/reviews/qNN.md`)
 
 ```md
