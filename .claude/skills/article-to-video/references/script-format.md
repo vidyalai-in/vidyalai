@@ -114,9 +114,11 @@ don't support end screens).
 - **Next video already public:** no `teaser`, `minDuration: 20`; the say line invites viewers to pick
   the next video. The uploader puts a Video element in the frame and Subscribe in the circle.
 - **Next video not out yet:** set `teaser` to its title (the frame shows it with a "Coming soon" pill)
-  and use `minDuration: 12`; the say line names the next topic and asks viewers to subscribe. Only
-  Subscribe goes on now. YouTube can't replace an uploaded video file, but end screens can be edited
-  any time, so once the next video is public the uploader adds a Video element over the teaser.
+  and use `minDuration: 12`; the say line names the next topic and asks viewers to subscribe. YouTube
+  requires at least one video or playlist element, so for now the uploader puts the series Playlist
+  element over the teaser and Subscribe in the circle. YouTube can't replace an uploaded video file,
+  but end screens can be edited any time, so once the next video is public the uploader swaps the
+  playlist for that video.
 
 ### `outro`
 `title`, `url` (default vidyal.ai), `path`, `next` (shown from `nextStep`, a 0-based step index; default 1, the second step).

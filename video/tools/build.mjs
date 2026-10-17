@@ -429,9 +429,10 @@ const studioTime = (sec) => {
 const endcardHelp = endcard?.teaser
   ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${studioTime(endcard.start)} in Studio's m:ss:frames format) is the end card. Choose
      **Add element → Subscribe**, drag it into the dashed circle on the right, resize it to fill the circle, and set it
-     to run for the whole end card (drag the element's bar in the timeline if the typed time turns red). The left panel shows the next episode as "coming soon", so leave it uncovered for
-     now. **When that video is public**, come back to this video's end screen, add **Video → Choose specific video**,
-     and place it over the panel (same position and size). End screens can be edited any time; no re-upload needed.`
+     to run for the whole end card (drag the element's bar in the timeline if the typed time turns red). YouTube requires at least one video or playlist
+     element, so also add **Playlist** → the series playlist and drag it over the left "coming soon" panel, resized to
+     fill it. **When the next video is public**, come back to this video's end screen and replace the playlist with
+     **Video → Choose specific video** (same position and size). End screens can be edited any time; no re-upload needed.`
   : endcard
   ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${studioTime(endcard.start)} in Studio's m:ss:frames format) is a blank end card. Choose
      **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
