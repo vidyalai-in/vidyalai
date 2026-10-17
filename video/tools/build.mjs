@@ -421,14 +421,19 @@ const allIds = ['main', ...(script.shorts ?? []).map((s) => s.id)];
 // Where the end card sits, for the end screen step (from this run's timeline, or the last known one).
 const mainVideo = videos.find((v) => v.id === 'main');
 const endcard = mainVideo?.scenes.find((sc) => sc.type === 'endcard');
+// YouTube Studio's end screen editor shows times as m:ss:ff (ff = frame number, 30 fps).
+const studioTime = (sec) => {
+  const f = Math.round(sec * FPS);
+  return `${Math.floor(f / FPS / 60)}:${String(Math.floor(f / FPS) % 60).padStart(2, '0')}:${String(f % FPS).padStart(2, '0')}`;
+};
 const endcardHelp = endcard?.teaser
-  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${fmtTime(endcard.start)}) is the end card. Choose
+  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${studioTime(endcard.start)} in Studio's m:ss:frames format) is the end card. Choose
      **Add element → Subscribe**, drag it into the dashed circle on the right, resize it to fill the circle, and set it
-     to run for the whole end card. The left panel shows the next episode as "coming soon", so leave it uncovered for
+     to run for the whole end card (drag the element's bar in the timeline if the typed time turns red). The left panel shows the next episode as "coming soon", so leave it uncovered for
      now. **When that video is public**, come back to this video's end screen, add **Video → Choose specific video**,
      and place it over the panel (same position and size). End screens can be edited any time; no re-upload needed.`
   : endcard
-  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${fmtTime(endcard.start)}) is a blank end card. Choose
+  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${studioTime(endcard.start)} in Studio's m:ss:frames format) is a blank end card. Choose
      **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
      into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to
      fill the frames, and set both to run for the whole end card.`
