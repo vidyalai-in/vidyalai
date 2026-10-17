@@ -1,7 +1,7 @@
 The latency budget for a RAG query over 10 million documents, stage by stage.
 
-Full article: https://vidyal.ai/blog/rag-system-10m-documents/
-Full video: <add the main video link after uploading it>
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/rag-system-10m-documents/
 
 Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
 

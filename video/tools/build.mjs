@@ -113,7 +113,7 @@ const fmtTime = (sec, srt = false) => {
   const m = Math.floor((ms % 3600000) / 60000);
   const s = Math.floor((ms % 60000) / 1000);
   if (srt) return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`;
-  return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${m}:${String(s).padStart(2, '0')}`;
+  return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 };
 
 // ---------- Validate ----------
@@ -410,7 +410,7 @@ for (const v of videos) {
     writeFileSync(join(dir, 'title.txt'), `${v.title}\n`);
     writeFileSync(
       join(dir, 'description.txt'),
-      [v.description?.trim(), '', `Full article: ${articleUrl}`, 'Full video: <add the main video link after uploading it>', '', credit, '', (v.hashtags ?? yt.hashtags ?? []).join(' ')].join('\n') + '\n',
+      [v.description?.trim(), '', 'Watch the full breakdown: tap the related video link on this Short.', `Read the full article: ${articleUrl.replace(/^https:\/\//, '')}`, '', credit, '', (v.hashtags ?? yt.hashtags ?? []).join(' ')].join('\n') + '\n',
     );
   }
 }
@@ -421,34 +421,51 @@ const mp4Name = (id) => `${id === 'main' ? slug : `${slug}--${id}`}.mp4`;
 const checklist = `# YouTube upload checklist: ${yt.title ?? slug}
 
 Videos are in \`video/${slug}/out/\` (not committed; rebuild with \`node video/tools/build.mjs video/${slug}\`).
-Everything to paste is in this folder.
+Everything to paste is in this folder. Upload the main video first: the Shorts link to it.
+
+## Once per channel
+
+- **Verify the channel by phone** at https://www.youtube.com/verify. Custom thumbnails need it (Studio → Settings →
+  Channel → Feature eligibility shows what is unlocked). Chapters need the channel to have no active strikes; if they
+  don't appear, apply for Advanced features on the same page.
+- Create the playlist **${yt.playlist ?? 'LLM System Design'}** (it can also be created from the upload form).
 
 ## Main video: \`out/${mp4Name('main')}\`
 
 1. YouTube Studio → **Create → Upload videos** → select the MP4.
-2. **Title**: first line of \`main/title.txt\`.
-3. **Description**: paste \`main/description.txt\`. The timestamps in it create the chapters automatically.
-4. **Thumbnail**: upload \`main/thumbnail.png\`.
-5. **Playlist**: ${yt.playlist ?? 'LLM System Design'} (create it on first upload).
-6. **Audience**: "No, it's not made for kids".
-7. **Show more**:
-   - **Altered or synthetic content**: the narration is an AI-generated voice; no real person, place or event is depicted. Check YouTube's current disclosure policy (Help: "Disclosing use of altered or synthetic content") and answer accordingly. The description already credits the AI voice either way.
-   - **Tags**: paste \`main/tags.txt\`.
-   - **Language**: English. **Caption certification**: "This content has never aired on television in the U.S."
-   - **Category**: Education.
-8. **Video elements**: add **Subtitles → Upload file → With timing** → \`main/captions.en.srt\`. Add an **end screen** (last 15 s: subscribe + "best for viewer" video).
-9. **Visibility**: Public (or schedule). After publishing, pin the comment from \`main/pinned-comment.txt\`.
+2. **Details**
+   - **Title**: first line of \`main/title.txt\`.
+   - **Description**: paste \`main/description.txt\`. Its timestamps (starting at 00:00) become the chapters.
+   - **Thumbnail**: upload \`main/thumbnail.png\` (1280×720 PNG).
+   - **Playlists**: ${yt.playlist ?? 'LLM System Design'}.
+   - **Audience**: "No, it's not made for kids".
+   - **Attributes → AI use**: **Yes**. The narration is an AI-generated voice. YouTube's policy only requires
+     disclosure for realistic depictions of real people or events, but it labels AI-generated non-music audio in the
+     expanded description, which matches the credit line already in the description.
+   - **Show more**: **Tags**: paste \`main/tags.txt\`. **Language**: English. **Caption certification**: "This content
+     has never aired on television in the U.S." **Category**: Education.
+3. **Video elements**
+   - **Add subtitles → Upload file → With timing** → \`main/captions.en.srt\`.
+   - **Add end screen**: Subscribe + "Best for viewer" over the last 15-20 s. The outro scene has text in the middle of
+     the frame, so place elements in the corners and check the preview.
+4. **Checks**: wait for the copyright check to finish.
+5. **Visibility**: Public, or schedule. After publishing, pin the comment from \`main/pinned-comment.txt\`.
 
 ## Shorts
+
+Vertical videos up to 3 minutes are published as Shorts automatically. Links in Shorts descriptions and comments are
+not clickable, so each Short links to the main video with **Related video** instead.
 
 ${allIds
   .filter((id) => id !== 'main')
   .map(
     (id) => `### \`out/${mp4Name(id)}\`
 
-- Title: \`shorts/${id}/title.txt\`. Description: \`shorts/${id}/description.txt\` (replace the "Full video" placeholder with the main video's link).
-- Upload captions from \`shorts/${id}/captions.en.srt\`.
-- In the YouTube app or Studio, set **Related video** to the main video so viewers can jump to it.`,
+1. **Create → Upload videos** → select the MP4.
+2. **Title**: \`shorts/${id}/title.txt\`. **Description**: \`shorts/${id}/description.txt\`. **Audience**: not made for
+   kids. **Attributes → AI use**: Yes. **Playlists**: ${yt.playlist ?? 'LLM System Design'}.
+3. **Video elements → Add subtitles → Upload file → With timing** → \`shorts/${id}/captions.en.srt\`.
+4. Publish, then **Studio → Content → Shorts → ✏️ (Details) → Related video** → choose the main video → Save.`,
   )
   .join('\n\n')}
 `;
