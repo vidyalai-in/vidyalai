@@ -180,6 +180,23 @@
       if (scene.next) root.append(stepEl($('div', 'outro-next', md(scene.next)), scene.nextStep ?? 1));
     },
 
+    // End card for YouTube end screens: a 16:9 frame for the video element and a circle for the
+    // Subscribe element, both empty so the elements YouTube overlays sit inside them.
+    endcard(scene, root, assets) {
+      const top = $('div', 'endcard-top');
+      if (scene.kicker) top.append($('p', 'kicker', md(scene.kicker)));
+      top.append($('h1', 'heading', md(scene.title ?? 'Keep learning')));
+      root.append(stepEl(top, 0));
+      const slots = $('div', 'endcard-slots');
+      const video = $('div', 'slot-wrap');
+      video.append($('div', 'slot-label', md(scene.videoLabel ?? 'Watch next')), $('div', 'slot slot-video'));
+      const sub = $('div', 'slot-wrap slot-wrap-sub');
+      sub.append($('div', 'slot slot-subscribe'), $('div', 'slot-label', md(scene.subscribeLabel ?? 'Subscribe')));
+      slots.append(video, sub);
+      root.append(stepEl(slots, 0));
+      root.append(stepEl($('div', 'endcard-url', `<b>${esc(scene.url ?? 'vidyal.ai')}</b>${scene.path ? `<span>${esc(scene.path)}</span>` : ''}`), 0));
+    },
+
     thumb(scene, root, assets) {
       const top = $('div', 'thumb-top', `<img src="${assets.logo}" alt=""><span>Vidyal<b>AI</b></span>`);
       root.append(top);

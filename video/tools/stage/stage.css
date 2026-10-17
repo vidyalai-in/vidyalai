@@ -890,3 +890,98 @@ code,
 .landscape .t-title .heading {
   font-size: 104px;
 }
+
+/* ---------- endcard (YouTube end screen) ----------
+   Layout in 1080p frame pixels. Video slot: x 150-1030, y 333-828 (880x495, 16:9).
+   Subscribe slot: circle centred at (1445, 580), 300 px across. */
+.t-endcard {
+  padding: 0;
+  display: block;
+}
+
+.endcard-top {
+  position: absolute;
+  left: 150px;
+  top: 80px;
+}
+
+.endcard-top .heading {
+  font-size: 84px;
+  margin: 0;
+}
+
+.endcard-slots {
+  position: absolute;
+  inset: 0;
+}
+
+.slot-wrap {
+  position: absolute;
+  left: 150px;
+  top: 278px;
+}
+
+.slot-wrap-sub {
+  left: 1295px;
+  top: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slot-label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+
+.slot-wrap-sub .slot-label {
+  margin: 22px 0 0;
+}
+
+.slot {
+  border: 3px dashed rgb(56 189 248 / 0.55);
+  background: rgb(56 189 248 / 0.05);
+  box-shadow: 0 0 60px -20px var(--accent) inset;
+}
+
+.slot-video {
+  width: 880px;
+  height: 495px;
+  border-radius: 20px;
+}
+
+.slot-subscribe {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.endcard-url {
+  position: absolute;
+  left: 150px;
+  right: 150px;
+  bottom: 80px;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  font-size: 32px;
+  color: var(--muted);
+}
+
+.endcard-url b {
+  font-family: var(--display);
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.endcard-url span {
+  font-family: var(--mono);
+}

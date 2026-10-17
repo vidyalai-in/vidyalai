@@ -26,8 +26,10 @@ Everything to paste is in this folder. Upload the main video first: the Shorts l
      has never aired on television in the U.S." **Category**: Education.
 3. **Video elements**
    - **Add subtitles → Upload file → With timing** → `main/captions.en.srt`.
-   - **Add end screen**: Subscribe + "Best for viewer" over the last 15-20 s. The outro scene has text in the middle of
-     the frame, so place elements in the corners and check the preview.
+   - **Add end screen**: the last 20 s (from 10:59) is a blank end card. Choose
+     **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
+     into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to
+     fill the frames, and set both to run for the whole end card.
 4. **Checks**: wait for the copyright check to finish.
 5. **Visibility**: Public, or schedule. After publishing, pin the comment from `main/pinned-comment.txt`.
 

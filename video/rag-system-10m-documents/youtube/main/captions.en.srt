@@ -695,9 +695,14 @@ every source, is on vidyal.ai.
 
 151
 00:10:54,050 --> 00:10:58,900
-Next in the series: how to debug a RAG
+Next in the series, how to debug a RAG
 system that gives wrong answers.
 
 152
-00:10:59,200 --> 00:11:00,750
-See you there.
+00:10:59,917 --> 00:11:01,692
+Thanks for watching.
+
+153
+00:11:01,992 --> 00:11:06,342
+Subscribe for the rest of the series, and
+pick your next video right here.

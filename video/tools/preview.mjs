@@ -55,7 +55,7 @@ for (const pick of rest) {
     const [, , dw, dh] = /viewBox="([^"]+)"/.exec(readFileSync(join(ROOT, p), 'utf8'))[1].trim().split(/[\s,]+/).map(Number);
     Object.assign(assets, { diagram: fileUrl(p), diagramSize: { w: dw, h: dh } });
   }
-  await page.evaluate((spec) => window.stage.load(spec), { format: video.format, scene, assets, chapter: scene.chapter ?? 'Preview' });
+  await page.evaluate((spec) => window.stage.load(spec), { format: video.format, scene, assets, chapter: scene.chapter ?? 'Preview', progress: video.format === 'landscape' && scene.type !== 'endcard', chrome: !['brand', 'endcard'].includes(scene.type) });
   await page.evaluate((a) => window.stage.set(a, 1, 0.5), tn - 1);
   const file = join(outDir, `${which}-${sn}-${tn}.png`);
   await page.screenshot({ path: file });

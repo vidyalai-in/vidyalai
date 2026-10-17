@@ -210,6 +210,7 @@ for (const v of videos) {
       });
       let dur = said.length ? offset + STEP_TAIL : (st.hold ?? 2.5);
       if (ti === scene.steps.length - 1) dur += SCENE_TAIL;
+      if (st.minDuration) dur = Math.max(dur, st.minDuration); // e.g. a 20 s end card
       st.duration = frameRound(Math.max(dur, minStep));
       t += st.duration;
     });
@@ -274,7 +275,7 @@ for (const v of videos) {
     const assets = { ...baseAssets(v.format), ...(scene.diagram ? diagramAsset(scene.diagram) : {}) };
     await page.evaluate(
       (spec) => window.stage.load(spec),
-      { format: v.format, scene, assets, chapter: chapterTitle, progress: v.format === 'landscape', chrome: scene.type !== 'brand' },
+      { format: v.format, scene, assets, chapter: chapterTitle, progress: v.format === 'landscape' && scene.type !== 'endcard', chrome: !['brand', 'endcard'].includes(scene.type) },
     );
     for (const [ti, st] of scene.steps.entries()) {
       const frames = animates(scene, st, ti) ? TRANSITION_FRAMES : 1;
@@ -417,6 +418,15 @@ for (const v of videos) {
 
 // Checklist covering every video in the script (not only the ones built in this run).
 const allIds = ['main', ...(script.shorts ?? []).map((s) => s.id)];
+// Where the end card sits, for the end screen step (from this run's timeline, or the last known one).
+const mainVideo = videos.find((v) => v.id === 'main');
+const endcard = mainVideo?.scenes.find((sc) => sc.type === 'endcard');
+const endcardHelp = endcard
+  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${fmtTime(endcard.start)}) is a blank end card. Choose
+     **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
+     into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to
+     fill the frames, and set both to run for the whole end card.`
+  : 'Subscribe + "Best for viewer" over the last 15-20 s; check that the elements don\'t cover on-screen text.';
 const mp4Name = (id) => `${id === 'main' ? slug : `${slug}--${id}`}.mp4`;
 const checklist = `# YouTube upload checklist: ${yt.title ?? slug}
 
@@ -446,8 +456,7 @@ Everything to paste is in this folder. Upload the main video first: the Shorts l
      has never aired on television in the U.S." **Category**: Education.
 3. **Video elements**
    - **Add subtitles → Upload file → With timing** → \`main/captions.en.srt\`.
-   - **Add end screen**: Subscribe + "Best for viewer" over the last 15-20 s. The outro scene has text in the middle of
-     the frame, so place elements in the corners and check the preview.
+   - **Add end screen**: ${endcardHelp}
 4. **Checks**: wait for the copyright check to finish.
 5. **Visibility**: Public, or schedule. After publishing, pin the comment from \`main/pinned-comment.txt\`.
 

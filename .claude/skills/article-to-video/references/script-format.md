@@ -54,6 +54,7 @@ Common step fields:
 | `say` | Narration, one or more sentences, written form (see narration.md) |
 | `hold` | Seconds to show a step that has no `say` (default 2.5) |
 | `animate: true` | Force an entrance animation on a step with no visual change |
+| `minDuration` | Hold the step at least this many seconds (the end card uses 20) |
 
 ## Scene types
 
@@ -100,6 +101,14 @@ then focus on 2-4 nodes at a time.
 
 ### `code`
 `code` (monospace block; `# comments` are dimmed) and optional `caption`.
+
+### `endcard`
+Last scene of the main video: a blank layout for YouTube end-screen elements, with a dashed 16:9
+frame (left) for a video element and a dashed circle (right) for Subscribe. Fields: `kicker`,
+`title` (default "Keep learning"), `url`, `path`, `videoLabel`, `subscribeLabel`. Give it one step
+with a short call to action and `minDuration: 20` (YouTube's end-screen maximum). The brand bar and
+progress line are hidden, and `UPLOAD.md` gets the exact end-card start time for the end-screen step.
+Not used in Shorts (they don't support end screens).
 
 ### `outro`
 `title`, `url` (default vidyal.ai), `path`, `next` (shown from `nextStep`, a 0-based step index; default 1, the second step).

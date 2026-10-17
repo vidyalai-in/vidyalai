@@ -381,8 +381,18 @@ main:
       next: "**Next in the series:** Debugging a RAG system that gives wrong answers"
       steps:
         - say: The full article, with every number and every source, is on vidyal.ai.
+        - say: Next in the series, how to debug a RAG system that gives wrong answers.
+
+    - type: endcard
+      kicker: LLM System Design
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-system-design
+      steps:
         - say: >-
-            Next in the series: how to debug a RAG system that gives wrong answers. See you there.
+            Thanks for watching. Subscribe for the rest of the series, and pick your next video right
+            here.
+          minDuration: 20
 
 shorts:
   - id: short-index-sizing

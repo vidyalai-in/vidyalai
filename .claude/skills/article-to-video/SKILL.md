@@ -26,7 +26,8 @@ Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main 
   **1,300-1,700 narrated words**. The RAG example is ~1,600 words → 11:02.
 - 6-10 chapters, each 30 s or longer (YouTube needs ≥ 3 chapters, first at 0:00, each ≥ 10 s).
 - Follow the article's arc: hook → the core idea → requirements → design (with diagrams and
-  numbers) → measurement → tradeoffs → common mistakes → recap → outro pointing to the article.
+  numbers) → measurement → tradeoffs → common mistakes → recap → outro pointing to the article →
+  `endcard` (20 s, for YouTube's end-screen elements).
 - Adapt, don't read: drop "Further reading" (it goes in the description), turn tables into
   `compare`/`budget`/`stats` scenes, and cut detail the visuals already carry.
 
