@@ -52,7 +52,7 @@ Optionally, prepend a short LLM-generated context sentence to each chunk before 
 
 Start with an off-the-shelf model shortlisted from the MTEB (Massive Text Embedding Benchmark) leaderboard, evaluated on your own queries, and fine-tune later on in-domain pairs.
 
-Storage sizing for 100M chunks:
+Storage sizing for 100M chunks. An embedding model pools all of a chunk's tokens into **one vector per chunk**, so chunk length doesn't change these numbers. (Late-interaction models such as ColBERT keep a vector per token instead, which multiplies storage by the tokens per chunk.)
 
 | Representation | Bytes per vector | Total for 100M |
 |---|---|---|

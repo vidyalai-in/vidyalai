@@ -181,7 +181,8 @@
     },
 
     // End card for YouTube end screens: a 16:9 frame for the video element and a circle for the
-    // Subscribe element, both empty so the elements YouTube overlays sit inside them.
+    // Subscribe element, both empty so the elements YouTube overlays sit inside them. With `teaser`,
+    // the frame instead shows the next episode as "coming soon"; a video element can cover it later.
     endcard(scene, root, assets) {
       const top = $('div', 'endcard-top');
       if (scene.kicker) top.append($('p', 'kicker', md(scene.kicker)));
@@ -189,7 +190,12 @@
       root.append(stepEl(top, 0));
       const slots = $('div', 'endcard-slots');
       const video = $('div', 'slot-wrap');
-      video.append($('div', 'slot-label', md(scene.videoLabel ?? 'Watch next')), $('div', 'slot slot-video'));
+      const frame = $('div', 'slot slot-video');
+      if (scene.teaser) {
+        frame.classList.add('slot-teaser');
+        frame.append($('p', 'teaser-title', md(scene.teaser)), $('p', 'teaser-soon', md(scene.teaserNote ?? 'Coming soon')));
+      }
+      video.append($('div', 'slot-label', md(scene.videoLabel ?? (scene.teaser ? 'Next in the series' : 'Watch next'))), frame);
       const sub = $('div', 'slot-wrap slot-wrap-sub');
       sub.append($('div', 'slot slot-subscribe'), $('div', 'slot-label', md(scene.subscribeLabel ?? 'Subscribe')));
       slots.append(video, sub);

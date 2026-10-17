@@ -378,21 +378,22 @@ main:
       title: Read the full article
       url: vidyal.ai
       path: /blog/rag-system-10m-documents
-      next: "**Next in the series:** Debugging a RAG system that gives wrong answers"
       steps:
         - say: The full article, with every number and every source, is on vidyal.ai.
-        - say: Next in the series, how to debug a RAG system that gives wrong answers.
 
     - type: endcard
       kicker: LLM System Design
       title: Keep learning
       url: vidyal.ai
       path: /series/llm-system-design
+      # Next episode isn't out yet: show it as a teaser. Once it's public, add a Video end-screen
+      # element over this frame in YouTube Studio (no re-upload needed).
+      teaser: Debugging a RAG system that gives **wrong answers**
       steps:
         - say: >-
-            Thanks for watching. Subscribe for the rest of the series, and pick your next video right
-            here.
-          minDuration: 20
+            Thanks for watching. Next in the series, how to debug a RAG system that gives wrong
+            answers. Subscribe so you don't miss it.
+          minDuration: 12
 
 shorts:
   - id: short-index-sizing

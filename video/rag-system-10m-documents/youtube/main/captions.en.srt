@@ -694,15 +694,14 @@ The full article, with every number and
 every source, is on vidyal.ai.
 
 151
-00:10:54,050 --> 00:10:58,900
+00:10:54,450 --> 00:10:56,225
+Thanks for watching.
+
+152
+00:10:56,525 --> 00:11:01,375
 Next in the series, how to debug a RAG
 system that gives wrong answers.
 
-152
-00:10:59,917 --> 00:11:01,692
-Thanks for watching.
-
 153
-00:11:01,992 --> 00:11:06,342
-Subscribe for the rest of the series, and
-pick your next video right here.
+00:11:01,675 --> 00:11:03,800
+Subscribe so you don't miss it.

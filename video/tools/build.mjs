@@ -421,7 +421,13 @@ const allIds = ['main', ...(script.shorts ?? []).map((s) => s.id)];
 // Where the end card sits, for the end screen step (from this run's timeline, or the last known one).
 const mainVideo = videos.find((v) => v.id === 'main');
 const endcard = mainVideo?.scenes.find((sc) => sc.type === 'endcard');
-const endcardHelp = endcard
+const endcardHelp = endcard?.teaser
+  ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${fmtTime(endcard.start)}) is the end card. Choose
+     **Add element → Subscribe**, drag it into the dashed circle on the right, resize it to fill the circle, and set it
+     to run for the whole end card. The left panel shows the next episode as "coming soon", so leave it uncovered for
+     now. **When that video is public**, come back to this video's end screen, add **Video → Choose specific video**,
+     and place it over the panel (same position and size). End screens can be edited any time; no re-upload needed.`
+  : endcard
   ? `the last ${(mainVideo.total - endcard.start).toFixed(0)} s (from ${fmtTime(endcard.start)}) is a blank end card. Choose
      **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
      into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to

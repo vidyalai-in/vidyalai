@@ -954,6 +954,40 @@ code,
   border-radius: 20px;
 }
 
+.slot-teaser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 36px;
+  padding: 0 70px;
+  border-style: solid;
+  border-color: rgb(56 189 248 / 0.35);
+  background: linear-gradient(135deg, rgb(30 123 255 / 0.16), rgb(34 211 238 / 0.06));
+}
+
+.teaser-title {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 1.15;
+  color: var(--strong);
+}
+
+.teaser-soon {
+  align-self: flex-start;
+  margin: 0;
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .slot-subscribe {
   width: 300px;
   height: 300px;

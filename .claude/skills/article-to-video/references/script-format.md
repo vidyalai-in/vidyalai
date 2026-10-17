@@ -105,10 +105,18 @@ then focus on 2-4 nodes at a time.
 ### `endcard`
 Last scene of the main video: a blank layout for YouTube end-screen elements, with a dashed 16:9
 frame (left) for a video element and a dashed circle (right) for Subscribe. Fields: `kicker`,
-`title` (default "Keep learning"), `url`, `path`, `videoLabel`, `subscribeLabel`. Give it one step
-with a short call to action and `minDuration: 20` (YouTube's end-screen maximum). The brand bar and
-progress line are hidden, and `UPLOAD.md` gets the exact end-card start time for the end-screen step.
-Not used in Shorts (they don't support end screens).
+`title` (default "Keep learning"), `url`, `path`, `videoLabel`, `subscribeLabel`, `teaser`,
+`teaserNote` (default "Coming soon"). Give it one step with a short call to action and a
+`minDuration` (YouTube end screens run 5-20 s). The brand bar and progress line are hidden, and
+`UPLOAD.md` gets the exact end-card start time for the end-screen step. Not used in Shorts (they
+don't support end screens).
+
+- **Next video already public:** no `teaser`, `minDuration: 20`; the say line invites viewers to pick
+  the next video. The uploader puts a Video element in the frame and Subscribe in the circle.
+- **Next video not out yet:** set `teaser` to its title (the frame shows it with a "Coming soon" pill)
+  and use `minDuration: 12`; the say line names the next topic and asks viewers to subscribe. Only
+  Subscribe goes on now. YouTube can't replace an uploaded video file, but end screens can be edited
+  any time, so once the next video is public the uploader adds a Video element over the teaser.
 
 ### `outro`
 `title`, `url` (default vidyal.ai), `path`, `next` (shown from `nextStep`, a 0-based step index; default 1, the second step).

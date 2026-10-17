@@ -26,10 +26,11 @@ Everything to paste is in this folder. Upload the main video first: the Shorts l
      has never aired on television in the U.S." **Category**: Education.
 3. **Video elements**
    - **Add subtitles → Upload file → With timing** → `main/captions.en.srt`.
-   - **Add end screen**: the last 20 s (from 10:59) is a blank end card. Choose
-     **Add element → Video** (Best for viewer, or the next video in the series) and **Subscribe**. Drag the video element
-     into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to
-     fill the frames, and set both to run for the whole end card.
+   - **Add end screen**: the last 12 s (from 10:54) is the end card. Choose
+     **Add element → Subscribe**, drag it into the dashed circle on the right, resize it to fill the circle, and set it
+     to run for the whole end card. The left panel shows the next episode as "coming soon", so leave it uncovered for
+     now. **When that video is public**, come back to this video's end screen, add **Video → Choose specific video**,
+     and place it over the panel (same position and size). End screens can be edited any time; no re-upload needed.
 4. **Checks**: wait for the copyright check to finish.
 5. **Visibility**: Public, or schedule. After publishing, pin the comment from `main/pinned-comment.txt`.
 

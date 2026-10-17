@@ -27,7 +27,8 @@ Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main 
 - 6-10 chapters, each 30 s or longer (YouTube needs ≥ 3 chapters, first at 0:00, each ≥ 10 s).
 - Follow the article's arc: hook → the core idea → requirements → design (with diagrams and
   numbers) → measurement → tradeoffs → common mistakes → recap → outro pointing to the article →
-  `endcard` (20 s, for YouTube's end-screen elements).
+  `endcard` (for YouTube's end-screen elements: 20 s if the next video is already public, or a
+  12 s `teaser` naming it if it isn't; see `references/script-format.md`).
 - Adapt, don't read: drop "Further reading" (it goes in the description), turn tables into
   `compare`/`budget`/`stats` scenes, and cut detail the visuals already carry.
 
