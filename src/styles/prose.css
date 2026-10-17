@@ -220,6 +220,7 @@
 .diagram-link {
   display: block;
   text-align: center;
+  cursor: zoom-in;
 }
 
 .diagram img {

@@ -1,0 +1,406 @@
+---
+/**
+ * Full-screen viewer for article diagrams: zoom (wheel, pinch, buttons, keys), pan (drag, arrows),
+ * double-click or double-tap to zoom in. Clicking a `.diagram-link` opens it in place; without JS the
+ * link still opens the SVG file. A native modal <dialog> provides the focus trap and Esc to close.
+ */
+import Icon from './Icon.astro';
+---
+
+<dialog class="viewer" aria-labelledby="viewer-title" data-viewer>
+  <div class="viewer-bar">
+    <p id="viewer-title" class="viewer-title" data-viewer-title>Diagram</p>
+    <div class="viewer-tools" role="toolbar" aria-label="Diagram zoom">
+      <button type="button" data-zoom="out" aria-label="Zoom out" title="Zoom out (−)"><Icon name="minus" size={22} /></button>
+      <output class="viewer-level" data-viewer-level aria-label="Zoom level">100%</output>
+      <button type="button" data-zoom="in" aria-label="Zoom in" title="Zoom in (+)"><Icon name="plus" size={22} /></button>
+      <button type="button" data-zoom="fit" aria-label="Fit to screen" title="Fit to screen (0)"><Icon name="fit" size={22} /></button>
+      <button type="button" class="viewer-close" data-viewer-close aria-label="Close diagram" title="Close (Esc)"><Icon name="close" size={22} /></button>
+    </div>
+  </div>
+  <div class="viewer-stage" data-viewer-stage tabindex="0" aria-label="Zoomable diagram. Use plus and minus to zoom, arrow keys to pan.">
+    <img data-viewer-img alt="" draggable="false" />
+  </div>
+  <p class="viewer-help">
+    <span class="help-mouse">Scroll to zoom · drag to pan · double-click to zoom in · Esc to close</span>
+    <span class="help-touch">Pinch to zoom · drag to pan · double-tap to zoom in · tap outside to close</span>
+  </p>
+</dialog>
+
+<style>
+  .viewer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--surface);
+    color: var(--text);
+    overscroll-behavior: contain;
+  }
+
+  .viewer[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .viewer::backdrop {
+    background: var(--bg);
+  }
+
+  .viewer-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem max(0.75rem, env(safe-area-inset-right)) 0.5rem max(1rem, env(safe-area-inset-left));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .viewer-title {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-strong);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .viewer-tools {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .viewer-tools button {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .viewer-tools button:hover {
+    background: var(--surface-2);
+    color: var(--accent);
+  }
+
+  .viewer-tools button:disabled {
+    opacity: 0.4;
+    cursor: default;
+    background: none;
+    color: var(--text);
+  }
+
+  .viewer-tools .viewer-close {
+    margin-left: 0.25rem;
+    border-color: var(--border);
+  }
+
+  .viewer-level {
+    min-width: 3.5rem;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .viewer-stage {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .viewer-stage.dragging {
+    cursor: grabbing;
+  }
+
+  .viewer-stage:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -4px;
+  }
+
+  .viewer-stage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: none;
+    transform-origin: 0 0;
+    -webkit-user-drag: none;
+  }
+
+  .viewer-help {
+    margin: 0;
+    padding: 0.4rem 1rem max(0.4rem, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .help-touch {
+    display: none;
+  }
+
+  @media (pointer: coarse) {
+    .help-mouse {
+      display: none;
+    }
+    .help-touch {
+      display: inline;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .viewer-level {
+      display: none;
+    }
+  }
+
+  :global(html.viewer-open) {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-viewer]');
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.diagram-link'));
+
+  if (dialog && links.length && typeof dialog.showModal === 'function') {
+    const stage = dialog.querySelector<HTMLElement>('[data-viewer-stage]')!;
+    const img = dialog.querySelector<HTMLImageElement>('[data-viewer-img]')!;
+    const title = dialog.querySelector<HTMLElement>('[data-viewer-title]')!;
+    const level = dialog.querySelector<HTMLOutputElement>('[data-viewer-level]')!;
+    const zoomOut = dialog.querySelector<HTMLButtonElement>('[data-zoom="out"]')!;
+    const zoomIn = dialog.querySelector<HTMLButtonElement>('[data-zoom="in"]')!;
+
+    const PAD = 16;
+    let opener: HTMLAnchorElement | null = null;
+    let w = 1; // natural diagram size
+    let h = 1;
+    let s = 1; // current scale
+    let x = 0; // top-left of the diagram, in stage pixels
+    let y = 0;
+    let fitS = 1;
+    let minS = 0.25;
+    let maxS = 4;
+
+    const visibleImg = (link: HTMLAnchorElement) =>
+      Array.from(link.querySelectorAll('img')).find((i) => getComputedStyle(i).display !== 'none') ??
+      link.querySelector('img')!;
+
+    const clampPan = () => {
+      const vw = stage.clientWidth;
+      const vh = stage.clientHeight;
+      const iw = w * s;
+      const ih = h * s;
+      x = iw <= vw ? (vw - iw) / 2 : Math.min(0, Math.max(vw - iw, x));
+      y = ih <= vh ? (vh - ih) / 2 : Math.min(0, Math.max(vh - ih, y));
+    };
+
+    // Resize the image itself rather than scaling it, so the SVG stays sharp at any zoom.
+    const apply = () => {
+      clampPan();
+      img.style.width = `${w * s}px`;
+      img.style.height = `${h * s}px`;
+      img.style.transform = `translate(${x}px, ${y}px)`;
+      level.value = `${Math.round(s * 100)}%`;
+      zoomOut.disabled = s <= minS + 1e-6;
+      zoomIn.disabled = s >= maxS - 1e-6;
+    };
+
+    const fit = () => {
+      const contain = Math.min((stage.clientWidth - PAD * 2) / w, (stage.clientHeight - PAD * 2) / h);
+      fitS = Math.min(contain, 2); // don't blow small diagrams up past 2x
+      minS = Math.min(fitS, 1);
+      maxS = Math.max(4, fitS * 4);
+      s = fitS;
+      apply();
+    };
+
+    const zoomAt = (next: number, px: number, py: number) => {
+      const ns = Math.min(maxS, Math.max(minS, next));
+      x = px - (px - x) * (ns / s);
+      y = py - (py - y) * (ns / s);
+      s = ns;
+      apply();
+    };
+
+    const zoomCenter = (factor: number) => zoomAt(s * factor, stage.clientWidth / 2, stage.clientHeight / 2);
+
+    const open = (link: HTMLAnchorElement) => {
+      opener = link;
+      const src = visibleImg(link);
+      w = Number(src.getAttribute('width')) || src.naturalWidth || 800;
+      h = Number(src.getAttribute('height')) || src.naturalHeight || 600;
+      img.src = src.currentSrc || src.src;
+      img.alt = src.alt;
+      const caption = link.closest('figure')?.querySelector('figcaption')?.textContent?.trim();
+      title.textContent = caption || src.alt || 'Diagram';
+      document.documentElement.classList.add('viewer-open');
+      dialog.showModal();
+      stage.focus({ preventScroll: true });
+      fit();
+    };
+
+    for (const link of links) {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.title = 'Open the diagram to zoom and pan';
+      link.addEventListener('click', (e) => {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // new tab etc.
+        e.preventDefault();
+        open(link);
+      });
+    }
+
+    dialog.addEventListener('close', () => {
+      document.documentElement.classList.remove('viewer-open');
+      img.removeAttribute('src');
+      opener?.focus({ preventScroll: true });
+    });
+
+    dialog.querySelector('[data-viewer-close]')!.addEventListener('click', () => dialog.close());
+    zoomIn.addEventListener('click', () => zoomCenter(1.5));
+    zoomOut.addEventListener('click', () => zoomCenter(1 / 1.5));
+    dialog.querySelector('[data-zoom="fit"]')!.addEventListener('click', fit);
+
+    dialog.addEventListener('keydown', (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const step = 80;
+      const keys: Record<string, () => void> = {
+        '+': () => zoomCenter(1.25),
+        '=': () => zoomCenter(1.25),
+        '-': () => zoomCenter(1 / 1.25),
+        _: () => zoomCenter(1 / 1.25),
+        '0': fit,
+        ArrowLeft: () => ((x += step), apply()),
+        ArrowRight: () => ((x -= step), apply()),
+        ArrowUp: () => ((y += step), apply()),
+        ArrowDown: () => ((y -= step), apply()),
+      };
+      const action = keys[e.key];
+      if (!action) return;
+      e.preventDefault();
+      action();
+    });
+
+    // Wheel and trackpad pinch (which arrives as wheel + ctrlKey) zoom towards the pointer.
+    stage.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        const r = stage.getBoundingClientRect();
+        const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+        zoomAt(s * Math.exp(-dy * (e.ctrlKey ? 0.01 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+      },
+      { passive: false },
+    );
+
+    // Pointer gestures: one pointer pans, two pinch-zoom; a still tap on the empty area closes and a
+    // quick second tap on the diagram toggles between fit and zoomed in.
+    const pointers = new Map<number, { x: number; y: number }>();
+    let moved = false;
+    let startX = 0;
+    let startY = 0;
+    let lastTap = { t: 0, x: 0, y: 0 };
+
+    const local = (e: PointerEvent) => {
+      const r = stage.getBoundingClientRect();
+      return { x: e.clientX - r.left, y: e.clientY - r.top };
+    };
+    const pinch = () => {
+      const [a, b] = Array.from(pointers.values());
+      return { d: Math.hypot(a.x - b.x, a.y - b.y), x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    };
+
+    stage.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      stage.setPointerCapture(e.pointerId);
+      const p = local(e);
+      pointers.set(e.pointerId, p);
+      if (pointers.size === 1) {
+        moved = false;
+        startX = p.x;
+        startY = p.y;
+      } else {
+        moved = true; // a pinch is never a tap
+      }
+      stage.classList.add('dragging');
+    });
+
+    stage.addEventListener('pointermove', (e) => {
+      const prev = pointers.get(e.pointerId);
+      if (!prev) return;
+      const p = local(e);
+      if (pointers.size === 1) {
+        x += p.x - prev.x;
+        y += p.y - prev.y;
+        pointers.set(e.pointerId, p);
+        if (Math.hypot(p.x - startX, p.y - startY) > 6) moved = true;
+        apply();
+      } else if (pointers.size === 2) {
+        const before = pinch();
+        pointers.set(e.pointerId, p);
+        const after = pinch();
+        x += after.x - before.x;
+        y += after.y - before.y;
+        if (before.d > 0) zoomAt(s * (after.d / before.d), after.x, after.y);
+        else apply();
+      }
+    });
+
+    const release = (e: PointerEvent) => {
+      if (!pointers.delete(e.pointerId)) return;
+      if (pointers.size) return;
+      stage.classList.remove('dragging');
+      if (moved || e.type === 'pointercancel') return;
+
+      const p = local(e);
+      const r = img.getBoundingClientRect();
+      const onDiagram = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      const now = performance.now();
+      if (now - lastTap.t < 320 && Math.hypot(p.x - lastTap.x, p.y - lastTap.y) < 30) {
+        lastTap.t = 0;
+        if (s > fitS * 1.05) fit();
+        else zoomAt(Math.max(fitS * 2.5, 1), p.x, p.y); // at least real size, so text is readable
+      } else if (!onDiagram) {
+        dialog.close();
+      } else {
+        lastTap = { t: now, x: p.x, y: p.y };
+      }
+    };
+    stage.addEventListener('pointerup', release);
+    stage.addEventListener('pointercancel', release);
+
+    // Keep the view sensible when the window or phone orientation changes.
+    window.addEventListener('resize', () => {
+      if (!dialog.open) return;
+      if (Math.abs(s - fitS) < 1e-6) fit();
+      else apply();
+    });
+
+    // Swap to the other diagram variant if the theme changes while the viewer is open.
+    const syncTheme = () => {
+      if (dialog.open && opener) img.src = visibleImg(opener).src;
+    };
+    new MutationObserver(syncTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncTheme);
+  }
+</script>

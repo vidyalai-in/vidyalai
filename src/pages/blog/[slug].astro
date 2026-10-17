@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Toc from '../../components/Toc.astro';
 import SeriesNav from '../../components/SeriesNav.astro';
+import DiagramViewer from '../../components/DiagramViewer.astro';
 import PostCard from '../../components/PostCard.astro';
 import Icon from '../../components/Icon.astro';
 import { getCategory, SERIES } from '../../data/categories';
@@ -127,6 +128,7 @@ const hasToc = headings.some((h) => h.depth === 2);
       </section>
     )
   }
+  <DiagramViewer />
 </Base>
 
 <style>

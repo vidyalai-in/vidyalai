@@ -59,6 +59,7 @@ export function rehypeDiagrams() {
               className: ['diagram-link'],
               href: `/diagrams/${name}.svg`,
               title: 'Open the diagram full size',
+              // DiagramViewer turns this into an in-page zoom/pan viewer; without JS it opens the SVG.
             },
             children: [
               variant('diagram-light', `/diagrams/${name}.svg`),
@@ -72,7 +73,7 @@ export function rehypeDiagrams() {
           type: 'element',
           tagName: 'p',
           properties: { className: ['diagram-hint'] },
-          children: [{ type: 'text', value: 'Swipe to pan the diagram, or tap it to open full size.' }],
+          children: [{ type: 'text', value: 'Swipe to pan the diagram, or tap it to zoom.' }],
         });
       }
       if (caption) {
