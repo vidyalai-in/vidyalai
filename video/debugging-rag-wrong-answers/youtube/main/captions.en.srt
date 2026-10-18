@@ -1,0 +1,736 @@
+1
+00:00:03,550 --> 00:00:07,075
+Your RAG system just gave a
+confident, wrong answer.
+
+2
+00:00:07,375 --> 00:00:11,775
+The tempting fix is to tweak the prompt,
+or to switch to a bigger model.
+
+3
+00:00:12,383 --> 00:00:15,233
+Usually, that's the wrong place to start.
+
+4
+00:00:15,533 --> 00:00:20,178
+In this video, we'll walk through a method for
+finding where the answer actually
+
+5
+00:00:20,178 --> 00:00:22,733
+went wrong, and fixing it so
+it stays fixed.
+
+6
+00:00:23,750 --> 00:00:25,550
+Here's the core idea.
+
+7
+00:00:25,850 --> 00:00:29,300
+Wrong answers are a symptom,
+not a diagnosis.
+
+8
+00:00:29,917 --> 00:00:35,742
+A RAG answer passes through many stages:
+parsing, chunking, indexing, retrieval,
+
+9
+00:00:35,742 --> 00:00:37,417
+ranking and generation.
+
+10
+00:00:37,717 --> 00:00:41,592
+So the first job is to find which
+stage each failure came from.
+
+11
+00:00:42,617 --> 00:00:44,692
+First, what does wrong mean?
+
+12
+00:00:44,992 --> 00:00:51,278
+Factually incorrect, incomplete, outdated, a
+hallucinated citation, or an unwanted
+
+13
+00:00:51,278 --> 00:00:51,892
+refusal.
+
+14
+00:00:52,192 --> 00:00:54,767
+Each one points to a different stage.
+
+15
+00:00:55,383 --> 00:00:57,458
+Ask what the base rate is.
+
+16
+00:00:57,758 --> 00:01:02,833
+Three anecdotes and 8% of traffic call
+for very different responses.
+
+17
+00:01:03,450 --> 00:01:06,075
+Second, did something change recently?
+
+18
+00:01:06,375 --> 00:01:12,024
+A new embedding model, chunker, index rebuild,
+prompt, model version, or corpus
+
+19
+00:01:12,024 --> 00:01:12,525
+update.
+
+20
+00:01:12,825 --> 00:01:18,329
+Sudden regressions are almost always a deploy
+or a data change, so diff the change
+
+21
+00:01:18,329 --> 00:01:19,000
+log first.
+
+22
+00:01:19,617 --> 00:01:22,392
+Third, is the failure concentrated?
+
+23
+00:01:22,692 --> 00:01:28,217
+Look for clusters by query type, tenant,
+language, document type, or time range.
+
+24
+00:01:28,517 --> 00:01:34,386
+A concentrated failure usually has a single
+cause, like one broken parser or one
+
+25
+00:01:34,386 --> 00:01:35,267
+stale shard.
+
+26
+00:01:36,283 --> 00:01:37,808
+Step one.
+
+27
+00:01:38,108 --> 00:01:42,008
+Pull 50-200 failing examples
+from your logs.
+
+28
+00:01:42,617 --> 00:01:46,092
+Take them from thumbs-down
+ratings and escalations.
+
+29
+00:01:46,717 --> 00:01:51,467
+And add a random sample of traffic,
+graded by an LLM judge.
+
+30
+00:01:51,767 --> 00:01:56,921
+That sample matters, because explicit complaints
+are biased toward certain kinds of
+
+31
+00:01:56,921 --> 00:01:57,542
+questions.
+
+32
+00:01:58,550 --> 00:02:03,175
+For every request, the system has to log
+enough to replay it exactly.
+
+33
+00:02:03,475 --> 00:02:05,950
+The original and rewritten query.
+
+34
+00:02:06,250 --> 00:02:10,150
+The retrieved chunk IDs, with
+scores at every stage.
+
+35
+00:02:10,450 --> 00:02:12,550
+The final prompt, as sent.
+
+36
+00:02:12,850 --> 00:02:15,225
+The model and prompt versions.
+
+37
+00:02:15,525 --> 00:02:17,225
+And the output.
+
+38
+00:02:17,850 --> 00:02:23,025
+If you can't replay a request exactly,
+fixing observability is step zero.
+
+39
+00:02:23,325 --> 00:02:25,725
+Every later step depends on it.
+
+40
+00:02:26,750 --> 00:02:28,875
+Step two is the core move.
+
+41
+00:02:29,175 --> 00:02:34,364
+For each failing case, have a subject-matter
+expert find the gold evidence: the
+
+42
+00:02:34,364 --> 00:02:36,925
+passage that contains the right answer.
+
+43
+00:02:37,550 --> 00:02:42,803
+Then walk that case downstream, and find the
+first stage where the gold evidence
+
+44
+00:02:42,803 --> 00:02:43,525
+disappears.
+
+45
+00:02:43,825 --> 00:02:46,100
+That stage is the root cause.
+
+46
+00:02:47,117 --> 00:02:50,242
+Is the gold evidence in the
+raw corpus at all?
+
+47
+00:02:50,542 --> 00:02:52,817
+If not, it's a content gap.
+
+48
+00:02:53,417 --> 00:02:59,146
+Is it intact after parsing, or did a table
+get flattened, or OCR turn it into
+
+49
+00:02:59,146 --> 00:02:59,742
+garbage?
+
+50
+00:03:00,350 --> 00:03:05,250
+Is it whole within one chunk, or split away
+from the context that explains it?
+
+51
+00:03:05,850 --> 00:03:10,425
+Is the chunk in the index, current, with the
+right permissions and metadata?
+
+52
+00:03:11,050 --> 00:03:14,300
+Is it in the top 200 retrieval candidates?
+
+53
+00:03:14,917 --> 00:03:19,317
+Did it survive ranking, into the
+final context the model sees?
+
+54
+00:03:19,917 --> 00:03:23,492
+If the gold evidence reached the
+model, check the label.
+
+55
+00:03:23,792 --> 00:03:26,792
+Is the expected answer actually valid?
+
+56
+00:03:27,417 --> 00:03:32,867
+If it is, and the answer is still wrong, only
+then is it a generation failure.
+
+57
+00:03:33,883 --> 00:03:36,758
+Each case lands in exactly one bucket.
+
+58
+00:03:37,058 --> 00:03:42,480
+Count them, because the histogram, not the most
+memorable anecdote, decides what to
+
+59
+00:03:42,480 --> 00:03:43,133
+fix first.
+
+60
+00:03:43,433 --> 00:03:47,508
+Here's an illustrative distribution,
+not a published benchmark.
+
+61
+00:03:48,117 --> 00:03:52,242
+Retrieval or ranking, 30-40% of failures.
+
+62
+00:03:52,850 --> 00:03:55,800
+Generation, 20-30%.
+
+63
+00:03:56,417 --> 00:03:59,692
+Corpus or parsing, 10-20%.
+
+64
+00:04:00,317 --> 00:04:04,692
+And ambiguous questions or
+bad labels, 10-20%.
+
+65
+00:04:04,992 --> 00:04:07,192
+Don't skip that last bucket.
+
+66
+00:04:07,492 --> 00:04:12,367
+You can't fix what was never broken, and
+leaving it in inflates your error rate.
+
+67
+00:04:12,667 --> 00:04:16,217
+Your numbers will differ, which is
+the point of measuring.
+
+68
+00:04:17,217 --> 00:04:19,267
+Budget the time honestly.
+
+69
+00:04:19,567 --> 00:04:23,442
+Manual attribution takes about
+2-5 minutes per case.
+
+70
+00:04:24,050 --> 00:04:26,125
+Across 200 cases,
+
+71
+00:04:26,750 --> 00:04:30,075
+that's 7-17 hours of expert time.
+
+72
+00:04:30,375 --> 00:04:35,844
+So build the taxonomy by hand once, then scale
+it with an LLM judge that you've
+
+73
+00:04:35,844 --> 00:04:38,475
+calibrated against those human labels.
+
+74
+00:04:39,483 --> 00:04:43,058
+Step three: targeted
+diagnostics for each bucket.
+
+75
+00:04:43,358 --> 00:04:45,483
+Start with retrieval misses.
+
+76
+00:04:45,783 --> 00:04:52,111
+Compare your production retriever against BM25
+keyword search, and against exact,
+
+77
+00:04:52,111 --> 00:04:53,908
+brute-force kNN search.
+
+78
+00:04:54,517 --> 00:04:59,927
+If exact search finds the gold chunk but your
+approximate index doesn't, the index
+
+79
+00:04:59,927 --> 00:05:00,917
+is the problem.
+
+80
+00:05:01,217 --> 00:05:07,385
+Search parameters like efSearch or nprobe are
+set too low, or recall collapsed under
+
+81
+00:05:07,385 --> 00:05:09,442
+a selective metadata filter.
+
+82
+00:05:10,050 --> 00:05:13,750
+If neither finds it, the problem
+is the representation.
+
+83
+00:05:14,050 --> 00:05:18,600
+Acronyms, IDs and part numbers favor BM25.
+
+84
+00:05:18,900 --> 00:05:24,200
+A question phrased very differently from the
+document calls for query rewriting, or
+
+85
+00:05:24,200 --> 00:05:28,350
+HyDE, which embeds a hypothetical
+answer instead of the question.
+
+86
+00:05:29,350 --> 00:05:31,550
+Ranking misses look like this.
+
+87
+00:05:31,850 --> 00:05:37,396
+The gold chunk was retrieved, but it's at rank
+40, and the context only takes the
+
+88
+00:05:37,396 --> 00:05:37,875
+top 10.
+
+89
+00:05:38,483 --> 00:05:43,910
+Add or tune a cross-encoder reranker, and make
+sure it sees each chunk together with
+
+90
+00:05:43,910 --> 00:05:45,783
+its title and section header.
+
+91
+00:05:46,783 --> 00:05:50,008
+For generation failures, run an ablation.
+
+92
+00:05:50,308 --> 00:05:53,733
+Give the model only the gold
+chunk, and nothing else.
+
+93
+00:05:54,350 --> 00:05:59,925
+If it now answers correctly, the problem was
+distraction from irrelevant context.
+
+94
+00:06:00,225 --> 00:06:04,325
+Reduce k, rerank harder, and put
+the best evidence first.
+
+95
+00:06:04,950 --> 00:06:09,475
+If it still fails, the problem is
+reasoning or instruction following.
+
+96
+00:06:09,775 --> 00:06:15,115
+Require the model to quote the evidence before
+answering, use a stronger model, or
+
+97
+00:06:15,115 --> 00:06:17,525
+break multi-hop questions into steps.
+
+98
+00:06:18,550 --> 00:06:20,275
+Two more buckets.
+
+99
+00:06:20,575 --> 00:06:26,345
+If the model picked an old version of a policy,
+add date metadata, recency boosting,
+
+100
+00:06:26,345 --> 00:06:28,200
+and near-duplicate removal.
+
+101
+00:06:28,500 --> 00:06:32,800
+Tell the model to prefer the newest
+source, and to flag conflicts.
+
+102
+00:06:33,417 --> 00:06:39,292
+For hallucinated citations, check that every
+cited ID was actually in the context.
+
+103
+00:06:39,592 --> 00:06:46,023
+Then verify each claim against its cited
+passage, with an NLI model or an LLM judge,
+
+104
+00:06:46,023 --> 00:06:48,167
+before returning the answer.
+
+105
+00:06:49,183 --> 00:06:50,733
+Step four.
+
+106
+00:06:51,033 --> 00:06:56,130
+Fix the largest bucket first, then re-run
+the whole golden set, not just the
+
+107
+00:06:56,130 --> 00:06:56,733
+failures.
+
+108
+00:06:57,033 --> 00:07:02,258
+Changes like a smaller k or a new chunker
+routinely break other slices.
+
+109
+00:07:02,883 --> 00:07:08,473
+Report metrics per stage: retrieval recall at
+k, context precision, faithfulness,
+
+110
+00:07:08,473 --> 00:07:11,233
+answer correctness, and abstention rate.
+
+111
+00:07:11,850 --> 00:07:17,305
+Add every root-caused failure to a regression
+suite, with its stage label, and gate
+
+112
+00:07:17,305 --> 00:07:18,225
+deploys on it.
+
+113
+00:07:18,850 --> 00:07:23,822
+And monitor the signals that drift before
+users complain: retrieval score
+
+114
+00:07:23,822 --> 00:07:29,544
+distributions, the empty-result rate, the
+abstention rate, and answers with no valid
+
+115
+00:07:29,544 --> 00:07:30,225
+citations.
+
+116
+00:07:31,250 --> 00:07:34,075
+Now, how do you know a fix
+actually worked?
+
+117
+00:07:34,375 --> 00:07:36,600
+Small eval sets are noisy.
+
+118
+00:07:36,900 --> 00:07:42,325
+Compare old and new systems on the same
+queries, and report confidence intervals.
+
+119
+00:07:42,950 --> 00:07:44,875
+Here's a worked example.
+
+120
+00:07:45,175 --> 00:07:49,275
+300 queries, with accuracy around 70%.
+
+121
+00:07:49,883 --> 00:07:55,058
+The standard error of that single
+accuracy number is about 2.6 points.
+
+122
+00:07:55,683 --> 00:07:57,333
+Pairing helps.
+
+123
+00:07:57,633 --> 00:08:03,467
+But if 10% of queries flip between the two
+systems, the 95% interval on the
+
+124
+00:08:03,467 --> 00:08:07,433
+difference is still about plus
+or minus 3.6 points.
+
+125
+00:08:07,733 --> 00:08:11,958
+So a 2-point change on 300
+queries is usually noise.
+
+126
+00:08:12,983 --> 00:08:17,883
+If you use an LLM judge, calibrate it
+against human labels first.
+
+127
+00:08:18,183 --> 00:08:23,658
+Aim for at least 85% agreement, and
+re-check after every prompt change.
+
+128
+00:08:23,958 --> 00:08:29,818
+Optimizing against an uncalibrated judge is a
+Goodhart trap: the metric goes up, and
+
+129
+00:08:29,818 --> 00:08:31,283
+real quality doesn't.
+
+130
+00:08:31,883 --> 00:08:35,683
+And keep faithfulness and
+correctness as separate metrics.
+
+131
+00:08:35,983 --> 00:08:40,358
+An answer that's faithful to an
+outdated document is still wrong.
+
+132
+00:08:41,383 --> 00:08:43,183
+Here are the tradeoffs.
+
+133
+00:08:43,483 --> 00:08:48,458
+Manual attribution by experts gives the
+best root cause, but it's slow.
+
+134
+00:08:48,758 --> 00:08:52,683
+Use it for the first pass, and for
+any new kind of failure.
+
+135
+00:08:53,283 --> 00:08:59,589
+An LLM judge covers thousands of cases cheaply,
+once the taxonomy is stable and the
+
+136
+00:08:59,589 --> 00:09:01,108
+judge is calibrated.
+
+137
+00:09:01,717 --> 00:09:05,692
+A bigger model is quick, and fixes
+some reasoning failures.
+
+138
+00:09:05,992 --> 00:09:10,042
+But it doesn't fix retrieval, and it
+adds cost and latency.
+
+139
+00:09:10,650 --> 00:09:16,221
+Tuning retrieval, with hybrid search, reranking
+or a fine-tuned embedder, fixes the
+
+140
+00:09:16,221 --> 00:09:19,375
+most common bucket, at the
+cost of re-indexing.
+
+141
+00:09:20,383 --> 00:09:22,283
+Which leads to the rule.
+
+142
+00:09:22,583 --> 00:09:27,461
+Don't touch the prompt or the model until you
+know the gold evidence made it into
+
+143
+00:09:27,461 --> 00:09:28,183
+the context.
+
+144
+00:09:28,783 --> 00:09:31,408
+Many teams do it the other way around.
+
+145
+00:09:32,417 --> 00:09:34,742
+Finally, the common mistakes.
+
+146
+00:09:35,042 --> 00:09:40,213
+First: tweaking prompts or upgrading the model
+before checking whether retrieval
+
+147
+00:09:40,213 --> 00:09:41,442
+found the evidence.
+
+148
+00:09:42,050 --> 00:09:47,964
+Second: debugging from three anecdotes, with no
+failure set, no traces and no base
+
+149
+00:09:47,964 --> 00:09:48,325
+rate.
+
+150
+00:09:48,625 --> 00:09:52,425
+You end up fixing the memorable
+case, not the common one.
+
+151
+00:09:53,050 --> 00:09:58,700
+Third: re-testing only the failing cases, so
+regressions elsewhere ship unnoticed.
+
+152
+00:09:59,317 --> 00:10:01,992
+And fourth: missing a broken index.
+
+153
+00:10:02,292 --> 00:10:07,131
+A collapse in filtered search recall, or a
+version mismatch between the query
+
+154
+00:10:07,131 --> 00:10:11,467
+encoder and the document encoder, both
+look like the model got worse.
+
+155
+00:10:12,483 --> 00:10:14,158
+So, to recap.
+
+156
+00:10:14,458 --> 00:10:16,883
+Make every failure replayable.
+
+157
+00:10:17,183 --> 00:10:20,658
+Find the first stage where the
+evidence disappears.
+
+158
+00:10:20,958 --> 00:10:24,808
+Fix the biggest bucket, and gate
+every future change on it.
+
+159
+00:10:25,817 --> 00:10:29,192
+The full method, with every
+source, is on vidyal.ai.
+
+160
+00:10:30,217 --> 00:10:31,992
+Thanks for watching.
+
+161
+00:10:32,292 --> 00:10:36,442
+Next in the series, how to chunk legal
+contracts for retrieval.
+
+162
+00:10:36,742 --> 00:10:38,867
+Subscribe so you don't miss it.

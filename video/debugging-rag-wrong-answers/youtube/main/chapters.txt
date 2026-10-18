@@ -1,0 +1,10 @@
+00:00 A symptom, not a diagnosis
+00:42 Questions to ask first
+01:36 Step 1: a failure set you can replay
+02:26 Step 2: find where the evidence disappears
+04:39 Step 3: diagnose each bucket
+06:49 Step 4: fix, measure, prevent
+07:31 Is the fix real?
+08:41 Tradeoffs
+09:32 Common mistakes
+10:12 Wrap-up

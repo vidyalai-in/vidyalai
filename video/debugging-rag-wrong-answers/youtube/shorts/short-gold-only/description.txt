@@ -1,0 +1,9 @@
+Give the model only the gold chunk. Whether it now answers correctly tells you whether to fix the context or the reasoning.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/debugging-rag-wrong-answers/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #LLM #shorts

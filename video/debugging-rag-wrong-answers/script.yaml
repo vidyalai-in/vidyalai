@@ -1,0 +1,541 @@
+# Video script for "Debugging a RAG System That Gives Wrong Answers".
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/debugging-rag-wrong-answers
+
+slug: debugging-rag-wrong-answers
+article: src/content/blog/02-debugging-rag-wrong-answers.md
+voice: af_heart
+speed: 1.0
+lexicon:
+  HyDE: hide
+  NLI: N L I
+  efSearch: E F search
+  nprobe: N probe
+
+youtube:
+  title: "Debugging a RAG System That Gives Wrong Answers | LLM System Design"
+  altTitles:
+    - "Why Your RAG Gives Wrong Answers, and How to Find the Broken Stage"
+    - "RAG Debugging: Find the Stage Where the Evidence Disappears"
+  summary: |
+    Your RAG system gives wrong answers. Before you change the prompt or swap in a bigger model, find out where the evidence disappeared. This video walks through a stage-by-stage method: build a replayable failure set, attribute each failing case to the first stage where the gold evidence goes missing, diagnose each bucket (retrieval, ranking, generation, stale documents, hallucinated citations), then fix the biggest bucket and gate future changes on it. It also covers how to tell a real improvement from noise on a small eval set.
+
+    Part 2 of the LLM System Design series from VidyalAI.
+    Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+    The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+  tags:
+    - RAG
+    - retrieval augmented generation
+    - RAG debugging
+    - LLM system design
+    - RAG evaluation
+    - LLM as a judge
+    - hallucination
+    - vector search
+    - reranking
+    - observability
+    - AI engineering
+    - LLM
+    - machine learning
+  hashtags: ["#RAG", "#LLM", "#SystemDesign"]
+  playlist: LLM System Design
+  pinnedComment: |
+    When your RAG system gets an answer wrong, which stage is usually to blame: parsing, retrieval, ranking or the model?
+    The full method, with sources: https://vidyal.ai/blog/debugging-rag-wrong-answers/
+
+thumbnail:
+  title: "Why RAG Gets It **Wrong**"
+  badge: "Find the broken stage"
+
+main:
+  scenes:
+    - type: brand
+      steps:
+        - hold: 3
+
+    - type: title
+      chapter: A symptom, not a diagnosis
+      kicker: LLM System Design · Part 2
+      heading: Debugging a RAG System That Gives **Wrong Answers**
+      subtitle: Find the stage where the evidence disappears, then fix the biggest bucket
+      steps:
+        - say: >-
+            Your RAG system just gave a confident, wrong answer. The tempting fix is to tweak the
+            prompt, or to switch to a bigger model.
+        - say: >-
+            Usually, that's the wrong place to start. In this video, we'll walk through a method
+            for finding where the answer actually went wrong, and fixing it so it stays fixed.
+
+    - type: statement
+      text: "\"Wrong answers\" is a **symptom**, not a diagnosis."
+      sub: The first job is to localize each failure to a pipeline stage.
+      subStep: 1
+      steps:
+        - say: Here's the core idea. Wrong answers are a symptom, not a diagnosis.
+        - say: >-
+            A RAG answer passes through many stages: parsing, chunking, indexing, retrieval,
+            ranking and generation. So the first job is to find which stage each failure came from.
+
+    - type: bullets
+      chapter: Questions to ask first
+      heading: Before you debug anything
+      numbered: true
+      steps:
+        - add: { text: 'What does "wrong" mean?', sub: "Incorrect, incomplete, outdated, a fake citation, or a refusal" }
+          say: >-
+            First, what does wrong mean? Factually incorrect, incomplete, outdated, a hallucinated
+            citation, or an unwanted refusal. Each one points to a different stage.
+        - add: { text: What's the base rate?, sub: "Three anecdotes vs 8% of traffic" }
+          say: >-
+            Ask what the base rate is. Three anecdotes and 8% of traffic call for very different
+            responses.
+        - add: { text: Did something change?, sub: "Embedder, chunker, index, prompt, model or corpus" }
+          say: >-
+            Second, did something change recently? A new embedding model, chunker, index rebuild,
+            prompt, model version, or corpus update. Sudden regressions are almost always a deploy
+            or a data change, so diff the change log first.
+        - add: { text: Is it concentrated?, sub: "By query type, tenant, language, document type or date" }
+          say: >-
+            Third, is the failure concentrated? Look for clusters by query type, tenant, language,
+            document type, or time range. A concentrated failure usually has a single cause, like
+            one broken parser or one stale shard.
+
+    - type: bullets
+      chapter: "Step 1: a failure set you can replay"
+      kicker: Step 1
+      heading: Collect real failures
+      steps:
+        - add: { text: "50–200 failing examples", sub: From your logs }
+          say: >-
+            Step one. Pull 50-200 failing examples from your logs.
+        - add: { text: Thumbs-down and escalations, sub: What users complained about }
+          say: Take them from thumbs-down ratings and escalations.
+        - add: { text: "A random sample, graded by an LLM judge", sub: Complaints are biased toward certain query types }
+          say: >-
+            And add a random sample of traffic, graded by an LLM judge. That sample matters,
+            because explicit complaints are biased toward certain kinds of questions.
+
+    - type: code
+      heading: Log enough to replay every request
+      code: |
+        # for every request, log:
+        query       original + rewritten
+        retrieval   chunk IDs + scores at every stage
+                    (each retriever, fusion, reranker)
+        prompt      the final prompt, exactly as sent
+        versions    model + prompt version
+        output      the answer
+      caption: "Can't replay a request exactly? Fixing observability is **step zero**."
+      captionStep: 1
+      steps:
+        - say: >-
+            For every request, the system has to log enough to replay it exactly. The original and
+            rewritten query. The retrieved chunk IDs, with scores at every stage. The final prompt,
+            as sent. The model and prompt versions. And the output.
+        - say: >-
+            If you can't replay a request exactly, fixing observability is step zero. Every later
+            step depends on it.
+
+    - type: statement
+      chapter: "Step 2: find where the evidence disappears"
+      kicker: Step 2
+      text: Find the **first stage** where the gold evidence disappears.
+      sub: That stage is the root cause.
+      subStep: 1
+      steps:
+        - say: >-
+            Step two is the core move. For each failing case, have a subject-matter expert find the
+            gold evidence: the passage that contains the right answer.
+        - say: >-
+            Then walk that case downstream, and find the first stage where the gold evidence
+            disappears. That stage is the root cause.
+
+    - type: bullets
+      heading: Walk each case downstream
+      numbered: true
+      steps:
+        - add: "**Corpus:** is gold in the raw source?"
+          say: Is the gold evidence in the raw corpus at all? If not, it's a content gap.
+        - add: "**Parsing:** is it intact after parsing?"
+          say: Is it intact after parsing, or did a table get flattened, or OCR turn it into garbage?
+        - add: "**Chunking:** is it whole within one chunk?"
+          say: Is it whole within one chunk, or split away from the context that explains it?
+        - add: "**Index:** indexed, current, with the right ACL?"
+          say: Is the chunk in the index, current, with the right permissions and metadata?
+        - add: "**Retrieval:** in the top 200 candidates?"
+          say: Is it in the top 200 retrieval candidates?
+        - add: "**Ranking:** in the final context?"
+          say: Did it survive ranking, into the final context the model sees?
+        - add: "**Label:** is the expected answer valid?"
+          say: >-
+            If the gold evidence reached the model, check the label. Is the expected answer
+            actually valid?
+        - add: "**Generation:** gold in context, answer still wrong"
+          say: If it is, and the answer is still wrong, only then is it a generation failure.
+
+    - type: bullets
+      heading: An illustrative histogram
+      steps:
+        - say: >-
+            Each case lands in exactly one bucket. Count them, because the histogram, not the most
+            memorable anecdote, decides what to fix first. Here's an illustrative distribution, not
+            a published benchmark.
+        - add: { text: "Retrieval or ranking: 30–40%", sub: Often the biggest bucket }
+          say: Retrieval or ranking, 30-40% of failures.
+        - add: { text: "Generation: 20–30%", sub: Gold was in the context }
+          say: Generation, 20-30%.
+        - add: { text: "Corpus or parsing: 10–20%", sub: The evidence was missing or mangled }
+          say: Corpus or parsing, 10-20%.
+        - add: { text: "Ambiguous question or bad label: 10–20%", sub: Never broken in the first place }
+          say: >-
+            And ambiguous questions or bad labels, 10-20%. Don't skip that last bucket. You can't
+            fix what was never broken, and leaving it in inflates your error rate. Your numbers
+            will differ, which is the point of measuring.
+
+    - type: stats
+      heading: Budget the time honestly
+      steps:
+        - add: { value: "2–5 min", label: "of expert time per case" }
+          say: Budget the time honestly. Manual attribution takes about 2-5 minutes per case.
+        - add: { value: "200", label: "failing cases" }
+          say: Across 200 cases,
+        - add: { value: "7–17 hours", label: "of subject-matter expert time" }
+          say: >-
+            that's 7-17 hours of expert time. So build the taxonomy by hand once, then scale it
+            with an LLM judge that you've calibrated against those human labels.
+
+    - type: bullets
+      chapter: "Step 3: diagnose each bucket"
+      kicker: Step 3
+      heading: Retrieval misses
+      steps:
+        - say: >-
+            Step three: targeted diagnostics for each bucket. Start with retrieval misses. Compare
+            your production retriever against BM25 keyword search, and against exact, brute-force
+            kNN search.
+        - add: { text: "Exact kNN finds gold, ANN doesn't", sub: "The index: efSearch or nprobe too low, or a selective filter" }
+          say: >-
+            If exact search finds the gold chunk but your approximate index doesn't, the index is
+            the problem. Search parameters like efSearch or nprobe are set too low, or recall
+            collapsed under a selective metadata filter.
+        - add: { text: Neither finds gold, sub: "The representation: vocabulary, phrasing or domain" }
+          say: >-
+            If neither finds it, the problem is the representation. Acronyms, IDs and part numbers
+            favor BM25. A question phrased very differently from the document calls for query
+            rewriting, or HyDE, which embeds a hypothetical answer instead of the question.
+
+    - type: statement
+      heading: Ranking misses
+      text: Gold is at **rank 40**. The context takes 10.
+      sub: Add or tune a cross-encoder reranker, and show it each chunk's title and section header.
+      subStep: 1
+      steps:
+        - say: >-
+            Ranking misses look like this. The gold chunk was retrieved, but it's at rank 40, and
+            the context only takes the top 10.
+        - say: >-
+            Add or tune a cross-encoder reranker, and make sure it sees each chunk together with its
+            title and section header.
+
+    - type: bullets
+      heading: "Generation: give it only the gold chunk"
+      steps:
+        - say: >-
+            For generation failures, run an ablation. Give the model only the gold chunk, and
+            nothing else.
+        - add: { text: Now it answers correctly, sub: "Distraction: reduce k, rerank harder, best evidence first" }
+          say: >-
+            If it now answers correctly, the problem was distraction from irrelevant context.
+            Reduce k, rerank harder, and put the best evidence first.
+        - add: { text: It still fails, sub: "Reasoning: quote the evidence first, a stronger model, or split the question" }
+          say: >-
+            If it still fails, the problem is reasoning or instruction following. Require the model
+            to quote the evidence before answering, use a stronger model, or break multi-hop
+            questions into steps.
+
+    - type: bullets
+      heading: Two more buckets
+      steps:
+        - add: { text: Stale or conflicting documents, sub: "Date metadata, recency boosts, near-duplicate removal" }
+          say: >-
+            Two more buckets. If the model picked an old version of a policy, add date metadata,
+            recency boosting, and near-duplicate removal. Tell the model to prefer the newest
+            source, and to flag conflicts.
+        - add: { text: Hallucinated citations, sub: "Check every cited ID was in the context, then verify each claim" }
+          say: >-
+            For hallucinated citations, check that every cited ID was actually in the context. Then
+            verify each claim against its cited passage, with an NLI model or an LLM judge, before
+            returning the answer.
+
+    - type: bullets
+      chapter: "Step 4: fix, measure, prevent"
+      kicker: Step 4
+      heading: Fix it so it stays fixed
+      numbered: true
+      steps:
+        - add: { text: "Fix the largest bucket, re-run everything", sub: A smaller k or a new chunker can regress other slices }
+          say: >-
+            Step four. Fix the largest bucket first, then re-run the whole golden set, not just the
+            failures. Changes like a smaller k or a new chunker routinely break other slices.
+        - add: { text: Report per-stage metrics, sub: "Recall at k, context precision, faithfulness, correctness, abstention" }
+          say: >-
+            Report metrics per stage: retrieval recall at k, context precision, faithfulness,
+            answer correctness, and abstention rate.
+        - add: { text: Gate deploys on a regression suite, sub: "Every root-caused failure, with its stage label" }
+          say: >-
+            Add every root-caused failure to a regression suite, with its stage label, and gate
+            deploys on it.
+        - add: { text: Watch signals that drift early, sub: "Retrieval scores, empty results, abstentions, zero-citation answers" }
+          say: >-
+            And monitor the signals that drift before users complain: retrieval score
+            distributions, the empty-result rate, the abstention rate, and answers with no valid
+            citations.
+
+    - type: stats
+      chapter: Is the fix real?
+      heading: Is a 2-point gain real?
+      steps:
+        - say: >-
+            Now, how do you know a fix actually worked? Small eval sets are noisy. Compare old and
+            new systems on the same queries, and report confidence intervals.
+        - add: { value: "300", label: "queries, at about 70% accuracy" }
+          say: Here's a worked example. 300 queries, with accuracy around 70%.
+        - add: { value: "±2.6", label: "points: the standard error of one accuracy estimate" }
+          say: The standard error of that single accuracy number is about 2.6 points.
+        - add: { value: "±3.6", label: "points: the 95% interval on the difference, if 10% of queries flip" }
+          say: >-
+            Pairing helps. But if 10% of queries flip between the two systems, the 95% interval on
+            the difference is still about plus or minus 3.6 points. So a 2-point change on 300
+            queries is usually noise.
+
+    - type: bullets
+      heading: Trust your metrics
+      steps:
+        - add: { text: "Calibrate the judge: ≥ 85% agreement", sub: "Against human labels, and again after every prompt change" }
+          say: >-
+            If you use an LLM judge, calibrate it against human labels first. Aim for at least 85%
+            agreement, and re-check after every prompt change. Optimizing against an uncalibrated
+            judge is a Goodhart trap: the metric goes up, and real quality doesn't.
+        - add: { text: Faithful is not the same as correct, sub: A faithful answer from an outdated document is still wrong }
+          say: >-
+            And keep faithfulness and correctness as separate metrics. An answer that's faithful to
+            an outdated document is still wrong.
+
+    - type: compare
+      chapter: Tradeoffs
+      heading: Where to spend effort
+      cols: 2
+      steps:
+        - add:
+            name: Manual attribution by experts
+            pros: Highest-signal root cause
+            cons: "Slow, about 2–5 min per case"
+            when: First pass, and any new failure class
+          say: >-
+            Here are the tradeoffs. Manual attribution by experts gives the best root cause, but
+            it's slow. Use it for the first pass, and for any new kind of failure.
+        - add:
+            name: LLM-judge attribution
+            pros: Covers thousands of cases cheaply
+            cons: Judge errors; needs calibration
+            when: After the taxonomy is stable
+          say: An LLM judge covers thousands of cases cheaply, once the taxonomy is stable and the judge is calibrated.
+        - add:
+            name: Swap to a bigger LLM
+            pros: Quick; fixes some reasoning failures
+            cons: "Doesn't fix retrieval; adds cost and latency"
+            when: Only for gold-in-context failures
+          say: >-
+            A bigger model is quick, and fixes some reasoning failures. But it doesn't fix
+            retrieval, and it adds cost and latency.
+        - add:
+            name: Tune retrieval
+            pros: Fixes the most common bucket
+            cons: Re-index cost; possible regressions
+            when: Recall at k on gold is low
+          say: >-
+            Tuning retrieval, with hybrid search, reranking or a fine-tuned embedder, fixes the
+            most common bucket, at the cost of re-indexing.
+
+    - type: statement
+      text: Don't touch the prompt or the model until you know **gold reached the context**.
+      sub: Many teams invert this order.
+      subStep: 1
+      steps:
+        - say: >-
+            Which leads to the rule. Don't touch the prompt or the model until you know the gold
+            evidence made it into the context.
+        - say: Many teams do it the other way around.
+
+    - type: bullets
+      chapter: Common mistakes
+      heading: Common mistakes
+      style: warn
+      steps:
+        - add: { text: Prompt tweaks before checking retrieval, sub: Effort on the stage that often isn't the problem }
+          say: >-
+            Finally, the common mistakes. First: tweaking prompts or upgrading the model before
+            checking whether retrieval found the evidence.
+        - add: { text: Debugging from three anecdotes, sub: "No failure set, no traces, no base rate" }
+          say: >-
+            Second: debugging from three anecdotes, with no failure set, no traces and no base
+            rate. You end up fixing the memorable case, not the common one.
+        - add: { text: Re-testing only the failing cases, sub: Regressions elsewhere ship unnoticed }
+          say: "Third: re-testing only the failing cases, so regressions elsewhere ship unnoticed."
+        - add: { text: Missing a broken index, sub: "Filtered-ANN recall collapse, or mismatched encoder versions" }
+          say: >-
+            And fourth: missing a broken index. A collapse in filtered search recall, or a version
+            mismatch between the query encoder and the document encoder, both look like the model
+            got worse.
+
+    - type: statement
+      chapter: Wrap-up
+      text: "Replay it. **Find the stage.** Fix the biggest bucket. Gate on it."
+      steps:
+        - say: >-
+            So, to recap. Make every failure replayable. Find the first stage where the evidence
+            disappears. Fix the biggest bucket, and gate every future change on it.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/debugging-rag-wrong-answers
+      steps:
+        - say: The full method, with every source, is on vidyal.ai.
+
+    - type: endcard
+      kicker: LLM System Design
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-system-design
+      # Next episode isn't out yet: show it as a teaser. Once it's public, swap the Playlist
+      # end-screen element for it in YouTube Studio (no re-upload needed).
+      teaser: Chunking **legal contracts** for retrieval
+      steps:
+        - say: >-
+            Thanks for watching. Next in the series, how to chunk legal contracts for retrieval.
+            Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  - id: short-gold-only
+    title: "One test that tells you why your RAG answer is wrong #shorts"
+    description: Give the model only the gold chunk. Whether it now answers correctly tells you whether to fix the context or the reasoning.
+    hashtags: ["#RAG", "#LLM", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: RAG debugging
+        text: One test that tells you **why** your RAG answer is wrong.
+        steps:
+          - say: Here's one test that tells you why your RAG system gave a wrong answer.
+      - type: bullets
+        heading: Give it only the gold chunk
+        steps:
+          - say: >-
+              The right passage was in the context, and the model still got it wrong. So give the
+              model only that passage, and nothing else.
+          - add: { text: Now it's right, sub: "Distraction: fewer chunks, rerank harder, best first" }
+            say: >-
+              If it now answers correctly, the other chunks were distracting it. Send fewer chunks,
+              rerank harder, and put the best evidence first.
+          - add: { text: Still wrong, sub: "Reasoning: quote the evidence, a stronger model" }
+            say: >-
+              If it's still wrong, it's a reasoning problem. Make it quote the evidence before
+              answering, or use a stronger model.
+      - type: outro
+        title: Full method
+        url: vidyal.ai
+        steps:
+          - say: The full debugging method is on vidyal.ai.
+
+  - id: short-eval-noise
+    title: "Is your 2-point eval gain real? #shorts"
+    description: On 300 queries, a 2-point accuracy change is usually noise. Here's the math.
+    hashtags: ["#LLM", "#Evals", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: LLM evals
+        text: Your eval score went up **2 points**. Is it real?
+        steps:
+          - say: Your RAG eval score went up 2 points. Is it real?
+      - type: stats
+        heading: 300 queries, ~70% accuracy
+        steps:
+          - add: { value: "±2.6 pts", label: "standard error of one score" }
+            say: On 300 queries at about 70% accuracy, one score has a standard error of about 2.6 points.
+          - add: { value: "±3.6 pts", label: "95% interval on the difference" }
+            say: >-
+              Compare two systems on the same queries, with 10% of answers flipping, and the 95%
+              interval on the difference is still about 3.6 points.
+      - type: statement
+        text: A 2-point change on 300 queries is usually **noise**.
+        sub: Pair the comparison, and report confidence intervals.
+        steps:
+          - say: >-
+              So a 2-point gain is usually noise. Compare on the same queries, and report the
+              confidence interval.
+      - type: outro
+        title: Full method
+        url: vidyal.ai
+        steps:
+          - say: The full method is on vidyal.ai.
+
+  - id: short-exact-vs-ann
+    title: "Is your vector index hiding the answer? #shorts"
+    description: Compare your retriever against exact kNN search to tell a broken index from a bad embedding.
+    hashtags: ["#RAG", "#VectorSearch", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Vector search
+        text: Is your vector index **hiding** the answer?
+        steps:
+          - say: Your RAG system didn't retrieve the right passage. Is it the index, or the embeddings?
+      - type: bullets
+        heading: Run exact kNN search
+        steps:
+          - say: Run the same query with exact, brute-force search.
+          - add: { text: "Exact finds it, ANN doesn't", sub: "The index: raise efSearch or nprobe, check filters" }
+            say: >-
+              If exact search finds it and your index doesn't, the index is the problem. Its
+              search settings are too low, or a selective filter collapsed recall.
+          - add: { text: Neither finds it, sub: "The embeddings: try BM25, query rewriting or HyDE" }
+            say: >-
+              If neither finds it, it's the embeddings. Try keyword search, query rewriting, or
+              HyDE.
+      - type: outro
+        title: Full method
+        url: vidyal.ai
+        steps:
+          - say: The full debugging method is on vidyal.ai.
+
+  - id: short-bad-label
+    title: "The RAG failure that was never broken #shorts"
+    description: Some failing RAG cases have a wrong or ambiguous expected answer. Count them, or they inflate your error rate.
+    hashtags: ["#RAG", "#Evals", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: RAG evals
+        text: Some RAG failures were **never broken**.
+        steps:
+          - say: Some of your RAG failures were never broken in the first place.
+      - type: bullets
+        heading: Check the label too
+        style: warn
+        steps:
+          - add: { text: The question is ambiguous, sub: More than one answer is reasonable }
+            say: Sometimes the question is ambiguous, and more than one answer is reasonable.
+          - add: { text: The expected answer is wrong, sub: The golden set has a mistake }
+            say: Sometimes the expected answer in your golden set is just wrong.
+          - add: { text: "10–20% of failures", sub: In an illustrative breakdown }
+            say: >-
+              In an illustrative breakdown, that's 10-20% of failures. Leave them in, and they
+              inflate your error rate and send work the wrong way.
+      - type: statement
+        text: Fix the **golden set**, not the model.
+        steps:
+          - say: Fix the golden set, not the model.
+      - type: outro
+        title: Full method
+        url: vidyal.ai
+        steps:
+          - say: The full debugging method is on vidyal.ai.

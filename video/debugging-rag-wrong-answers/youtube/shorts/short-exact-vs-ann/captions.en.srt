@@ -1,0 +1,36 @@
+1
+00:00:00,150 --> 00:00:03,550
+Your RAG system didn't retrieve
+the right passage.
+
+2
+00:00:03,850 --> 00:00:06,450
+Is it the index, or the embeddings?
+
+3
+00:00:07,450 --> 00:00:10,825
+Run the same query with exact,
+brute-force search.
+
+4
+00:00:11,450 --> 00:00:16,275
+If exact search finds it and your index
+doesn't, the index is the problem.
+
+5
+00:00:16,575 --> 00:00:21,175
+Its search settings are too low, or a
+selective filter collapsed recall.
+
+6
+00:00:21,783 --> 00:00:24,608
+If neither finds it, it's the embeddings.
+
+7
+00:00:24,908 --> 00:00:28,208
+Try keyword search, query
+rewriting, or HyDE.
+
+8
+00:00:29,217 --> 00:00:32,267
+The full debugging method is on vidyal.ai.

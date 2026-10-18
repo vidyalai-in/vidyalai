@@ -1,0 +1,38 @@
+1
+00:00:00,150 --> 00:00:04,800
+Here's one test that tells you why your
+RAG system gave a wrong answer.
+
+2
+00:00:05,817 --> 00:00:10,242
+The right passage was in the context, and
+the model still got it wrong.
+
+3
+00:00:10,542 --> 00:00:14,142
+So give the model only that
+passage, and nothing else.
+
+4
+00:00:14,750 --> 00:00:18,975
+If it now answers correctly, the other
+chunks were distracting it.
+
+5
+00:00:19,275 --> 00:00:23,700
+Send fewer chunks, rerank harder, and
+put the best evidence first.
+
+6
+00:00:24,317 --> 00:00:27,342
+If it's still wrong, it's a
+reasoning problem.
+
+7
+00:00:27,642 --> 00:00:31,917
+Make it quote the evidence before
+answering, or use a stronger model.
+
+8
+00:00:32,917 --> 00:00:35,967
+The full debugging method is on vidyal.ai.

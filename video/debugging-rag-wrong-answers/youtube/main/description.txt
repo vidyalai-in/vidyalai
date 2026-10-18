@@ -1,0 +1,34 @@
+Your RAG system gives wrong answers. Before you change the prompt or swap in a bigger model, find out where the evidence disappeared. This video walks through a stage-by-stage method: build a replayable failure set, attribute each failing case to the first stage where the gold evidence goes missing, diagnose each bucket (retrieval, ranking, generation, stale documents, hallucinated citations), then fix the biggest bucket and gate future changes on it. It also covers how to tell a real improvement from noise on a small eval set.
+
+Part 2 of the LLM System Design series from VidyalAI.
+Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/debugging-rag-wrong-answers/
+📚 The whole LLM System Design series: https://vidyal.ai/series/llm-system-design/
+
+Chapters
+00:00 A symptom, not a diagnosis
+00:42 Questions to ask first
+01:36 Step 1: a failure set you can replay
+02:26 Step 2: find where the evidence disappears
+04:39 Step 3: diagnose each bucket
+06:49 Step 4: fix, measure, prevent
+07:31 Is the fix real?
+08:41 Tradeoffs
+09:32 Common mistakes
+10:12 Wrap-up
+
+Sources and further reading
+• Seven Failure Points When Engineering a Retrieval Augmented Generation System (Barnett et al., 2024): https://arxiv.org/abs/2401.05856
+• Ragas: Automated Evaluation of Retrieval Augmented Generation (Es et al., 2023): https://arxiv.org/abs/2309.15217
+• ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems (Saad-Falcon et al., 2023): https://arxiv.org/abs/2311.09476
+• Large Language Models Can Be Easily Distracted by Irrelevant Context (Shi et al., 2023): https://arxiv.org/abs/2302.00093
+• Lost in the Middle: How Language Models Use Long Contexts (Liu et al., 2023): https://arxiv.org/abs/2307.03172
+• Precise Zero-Shot Dense Retrieval without Relevance Labels (Gao et al., 2022): https://arxiv.org/abs/2212.10496
+• Contextual Retrieval in AI Systems (Anthropic, 2024): https://www.anthropic.com/engineering/contextual-retrieval
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #LLM #SystemDesign

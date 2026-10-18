@@ -1,0 +1,32 @@
+1
+00:00:00,150 --> 00:00:04,000
+Some of your RAG failures were never
+broken in the first place.
+
+2
+00:00:05,017 --> 00:00:10,142
+Sometimes the question is ambiguous, and
+more than one answer is reasonable.
+
+3
+00:00:10,750 --> 00:00:15,200
+Sometimes the expected answer in your
+golden set is just wrong.
+
+4
+00:00:15,817 --> 00:00:20,292
+In an illustrative breakdown,
+that's 10-20% of failures.
+
+5
+00:00:20,592 --> 00:00:25,217
+Leave them in, and they inflate your error
+rate and send work the wrong way.
+
+6
+00:00:26,217 --> 00:00:28,792
+Fix the golden set, not the model.
+
+7
+00:00:29,817 --> 00:00:32,867
+The full debugging method is on vidyal.ai.

@@ -1,0 +1,2 @@
+When your RAG system gets an answer wrong, which stage is usually to blame: parsing, retrieval, ranking or the model?
+The full method, with sources: https://vidyal.ai/blog/debugging-rag-wrong-answers/

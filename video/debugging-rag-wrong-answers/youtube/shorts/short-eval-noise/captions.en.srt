@@ -1,0 +1,39 @@
+1
+00:00:00,150 --> 00:00:02,875
+Your RAG eval score went up 2 points.
+
+2
+00:00:03,175 --> 00:00:04,675
+Is it real?
+
+3
+00:00:05,683 --> 00:00:12,702
+On 300 queries at about 70% accuracy, one score
+has a standard error of about 2.6
+
+4
+00:00:12,702 --> 00:00:13,308
+points.
+
+5
+00:00:13,917 --> 00:00:20,219
+Compare two systems on the same queries, with
+10% of answers flipping, and the 95%
+
+6
+00:00:20,219 --> 00:00:24,292
+interval on the difference is
+still about 3.6 points.
+
+7
+00:00:25,317 --> 00:00:27,942
+So a 2-point gain is usually noise.
+
+8
+00:00:28,242 --> 00:00:32,367
+Compare on the same queries, and
+report the confidence interval.
+
+9
+00:00:33,383 --> 00:00:35,908
+The full method is on vidyal.ai.
