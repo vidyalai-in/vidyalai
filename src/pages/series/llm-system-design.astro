@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { SERIES, getCategory } from '../../data/categories';
 import { getPosts, postUrl, categoryUrl } from '../../lib/posts';
+import Icon from '../../components/Icon.astro';
 
 const posts = await getPosts();
 ---
@@ -12,6 +13,10 @@ const posts = await getPosts();
       <p class="eyebrow">Series</p>
       <h1>{SERIES.name}</h1>
       <p>{SERIES.blurb} Read them in order, or jump to whatever you're building.</p>
+      <p class="watch">
+        <a href={SERIES.playlist}><Icon name="play" size={20} /> Watch the series on YouTube</a>
+        <span>Episodes are added to the playlist as they're released.</span>
+      </p>
     </header>
     <ol class="series-list">
       {
@@ -34,6 +39,21 @@ const posts = await getPosts();
 </Base>
 
 <style>
+  .watch {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .watch a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    font-weight: 600;
+  }
   .series-list {
     list-style: none;
     margin: 0;

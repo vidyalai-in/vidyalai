@@ -95,3 +95,7 @@ Review every build, don't trust it blind:
 Tell the user where the MP4s are, the main video's length and chapters, each Short's length, and
 point them to `youtube/UPLOAD.md`. Mention that the voice is AI-generated (the description credits
 it) and that they should follow YouTube's current disclosure guidance.
+
+When the user shares the published video's link, embed it in the article: add
+`video: { youtube: "<ID>", duration: "<m:ss>" }` to the post's frontmatter and copy
+`video/<slug>/youtube/main/thumbnail.png` to `src/assets/video/<slug>.png` (see `content-src/AUTHORING.md`).

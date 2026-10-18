@@ -33,6 +33,10 @@ import { CATEGORIES, SERIES } from '../data/categories';
         <li><strong>Tradeoffs</strong> and <strong>common mistakes</strong>.</li>
         <li><strong>Further reading:</strong> the papers and docs behind each claim.</li>
       </ul>
+      <p>
+        Articles are also being turned into videos with the same diagrams and numbers, collected in the
+        <a href={SERIES.playlist}>{SERIES.name} playlist on YouTube</a>.
+      </p>
       <h2>Topics</h2>
       <ul>
         {CATEGORIES.map((c) => <li><a href={`/category/${c.slug}/`}>{c.name}</a>: {c.blurb}</li>)}

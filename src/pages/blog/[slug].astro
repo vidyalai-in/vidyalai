@@ -5,6 +5,7 @@ import Toc from '../../components/Toc.astro';
 import SeriesNav from '../../components/SeriesNav.astro';
 import DiagramViewer from '../../components/DiagramViewer.astro';
 import GlossaryTips from '../../components/GlossaryTips.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
 import PostCard from '../../components/PostCard.astro';
 import Icon from '../../components/Icon.astro';
 import { getCategory, SERIES } from '../../data/categories';
@@ -74,6 +75,8 @@ const hasToc = headings.some((h) => h.depth === 2);
           <a href={categoryUrl(category.slug)} data-pagefind-filter="category">{category.name}</a>
         </div>
       </header>
+
+      {post.data.video && <VideoEmbed id={post.data.video.youtube} duration={post.data.video.duration} title={post.data.title} slug={post.id} />}
 
       {
         hasToc && (

@@ -7,6 +7,7 @@ tags: ["rag", "vector-search", "retrieval", "evals", "architecture"]
 seriesOrder: 1
 pubDate: 2026-10-16
 sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
+video: { youtube: "_ric0wnAKrE", duration: "11:06" }
 ---
 
 ## TL;DR

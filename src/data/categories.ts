@@ -57,4 +57,5 @@ export const SERIES = {
   name: 'LLM System Design',
   blurb:
     'Twenty-five deep dives on building production LLM systems, from retrieval and evaluation to serving, security and operations.',
+  playlist: 'https://www.youtube.com/playlist?list=PLTy3a2upFmcM',
 };

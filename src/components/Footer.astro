@@ -1,5 +1,5 @@
 ---
-import { CATEGORIES } from '../data/categories';
+import { CATEGORIES, SERIES } from '../data/categories';
 import Icon from './Icon.astro';
 
 const year = new Date().getFullYear();
@@ -25,6 +25,9 @@ const year = new Date().getFullYear();
       <ul>
         <li><a href="/blog/">All articles</a></li>
         <li><a href="/series/llm-system-design/">LLM System Design series</a></li>
+        <li>
+          <a href={SERIES.playlist}><Icon name="play" size={18} /> Videos on YouTube</a>
+        </li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/glossary/">Glossary</a></li>
         <li><a href="/search/">Search</a></li>

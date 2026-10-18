@@ -30,6 +30,10 @@ sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"  # Drive file ID of th
 ---
 ```
 
+Once the article's video is on YouTube, add `video: { youtube: "<11-char ID>", duration: "11:06" }` and copy
+its thumbnail to `src/assets/video/<slug>.png`. The post then shows a click-to-play poster above the
+contents; nothing loads from YouTube until the reader presses play.
+
 Category slugs:
 
 | Slug | Name | Questions |
