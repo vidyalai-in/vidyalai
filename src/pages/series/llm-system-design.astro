@@ -14,7 +14,7 @@ const posts = await getPosts();
       <h1>{SERIES.name}</h1>
       <p>{SERIES.blurb} Read them in order, or jump to whatever you're building.</p>
       <p class="watch">
-        <a href={SERIES.playlist}><Icon name="play" size={20} /> Watch the series on YouTube</a>
+        <a href={SERIES.playlist}><Icon name="play" size={20} />Watch the series on YouTube</a>
         <span>Episodes are added to the playlist as they're released.</span>
       </p>
     </header>
@@ -47,12 +47,15 @@ const posts = await getPosts();
     font-size: 0.95rem;
     color: var(--muted);
   }
+  /* Not flex: Chrome drops the external-link ::after alt text from a flex link's name. */
   .watch a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 44px;
+    display: inline-block;
+    padding-block: 0.6rem;
     font-weight: 600;
+  }
+  .watch a :global(svg) {
+    margin-right: 0.4rem;
+    vertical-align: -0.3em;
   }
   .series-list {
     list-style: none;

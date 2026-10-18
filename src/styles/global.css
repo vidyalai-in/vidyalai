@@ -367,3 +367,22 @@ a.chip:hover {
 main:focus {
   outline: none;
 }
+
+/*
+ * External links get a small ↗ so readers know they're leaving the site. They still open in the same
+ * tab. The alt text after "/" is read by screen readers; browsers without that syntax skip the line
+ * and show the icon only. Add class "no-ext" to opt out (e.g. links that are images).
+ */
+a[href^='http']:not([href^='https://vidyal.ai']):not(.no-ext)::after {
+  content: '';
+  content: '' / ' (external site)';
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-left: 0.22em;
+  vertical-align: 0.08em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 2h6v6M10 2 2.5 9.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 2h6v6M10 2 2.5 9.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.75;
+}

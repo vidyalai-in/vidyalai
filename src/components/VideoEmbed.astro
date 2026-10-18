@@ -25,7 +25,7 @@ const spoken = `${m} min ${Number(s)} s`;
 
 <figure class="video" data-video={id} data-video-title={title} data-pagefind-ignore>
   <div class="video-frame">
-    <a class="video-play" href={watch} aria-label={`Play ${duration} video: ${title}`}>
+    <a class="video-play no-ext" href={watch} aria-label={`Play ${duration} video: ${title}`}>
       {
         thumb ? (
           <Image src={thumb} alt="" widths={[480, 800, 1280]} sizes="(min-width: 760px) 720px, 100vw" loading="eager" />
@@ -139,10 +139,10 @@ const spoken = `${m} min ${Number(s)} s`;
     color: var(--muted);
   }
 
+  /* Not flex: Chrome drops the external-link ::after alt text from a flex link's name. */
   figcaption a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 36px;
+    display: inline-block;
+    padding-block: 0.4rem;
     font-weight: 600;
   }
 
