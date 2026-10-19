@@ -182,20 +182,19 @@
 
     // End card for YouTube end screens: a 16:9 frame for the video element and a circle for the
     // Subscribe element, both empty so the elements YouTube overlays sit inside them. With `teaser`,
-    // the frame instead shows the next episode as "coming soon"; a video element can cover it later.
+    // the heading names the next episode as "coming soon".
     endcard(scene, root, assets) {
+      // With a teaser (next episode not out yet), its title is the heading and the video frame stays
+      // empty: YouTube draws end-screen elements see-through in the editor, so anything inside the
+      // frame would show behind the Playlist/Video element placed there.
       const top = $('div', 'endcard-top');
-      if (scene.kicker) top.append($('p', 'kicker', md(scene.kicker)));
-      top.append($('h1', 'heading', md(scene.title ?? 'Keep learning')));
+      const kicker = scene.teaser ? `Next in the series · ${scene.teaserNote ?? 'Coming soon'}` : scene.kicker;
+      if (kicker) top.append($('p', 'kicker', md(kicker)));
+      top.append($('h1', scene.teaser ? 'heading heading-teaser' : 'heading', md(scene.teaser ?? scene.title ?? 'Keep learning')));
       root.append(stepEl(top, 0));
       const slots = $('div', 'endcard-slots');
       const video = $('div', 'slot-wrap');
-      const frame = $('div', 'slot slot-video');
-      if (scene.teaser) {
-        frame.classList.add('slot-teaser');
-        frame.append($('p', 'teaser-title', md(scene.teaser)), $('p', 'teaser-soon', md(scene.teaserNote ?? 'Coming soon')));
-      }
-      video.append($('div', 'slot-label', md(scene.videoLabel ?? (scene.teaser ? 'Next in the series' : 'Watch next'))), frame);
+      video.append($('div', 'slot-label', md(scene.videoLabel ?? 'Watch next')), $('div', 'slot slot-video'));
       const sub = $('div', 'slot-wrap slot-wrap-sub');
       sub.append($('div', 'slot slot-subscribe'), $('div', 'slot-label', md(scene.subscribeLabel ?? 'Subscribe')));
       slots.append(video, sub);
