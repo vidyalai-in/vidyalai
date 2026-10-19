@@ -1,0 +1,44 @@
+1
+00:00:00,150 --> 00:00:05,300
+Your chunker just cut "notwithstanding the
+foregoing" off the rule it modifies.
+
+2
+00:00:06,317 --> 00:00:10,592
+Fixed 512-token windows don't know
+where a clause ends.
+
+3
+00:00:10,892 --> 00:00:13,067
+The rule lands in one chunk.
+
+4
+00:00:13,683 --> 00:00:16,133
+Its exception lands in the next.
+
+5
+00:00:16,433 --> 00:00:21,870
+Retrieval finds the rule without the exception,
+and the answer comes out confidently
+
+6
+00:00:21,870 --> 00:00:22,258
+wrong.
+
+7
+00:00:23,283 --> 00:00:28,817
+So chunk by clause, along the contract's own
+numbering, and split long clauses only
+
+8
+00:00:28,817 --> 00:00:30,883
+at their sub-clause boundaries.
+
+9
+00:00:31,883 --> 00:00:37,075
+The full chunking strategy, with context
+headers and cross-references, is on
+
+10
+00:00:37,075 --> 00:00:37,758
+vidyal.ai.

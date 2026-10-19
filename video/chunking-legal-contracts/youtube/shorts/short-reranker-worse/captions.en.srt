@@ -1,0 +1,45 @@
+1
+00:00:00,150 --> 00:00:03,650
+Adding a reranker is supposed to
+make search better.
+
+2
+00:00:03,950 --> 00:00:06,525
+On legal text, it made it worse.
+
+3
+00:00:07,550 --> 00:00:13,093
+In the LegalBench-RAG experiments, the authors
+added a general-purpose reranker to
+
+4
+00:00:13,093 --> 00:00:14,175
+legal retrieval.
+
+5
+00:00:14,783 --> 00:00:17,658
+It performed worse than no
+reranker at all.
+
+6
+00:00:17,958 --> 00:00:20,408
+They put it down to domain mismatch.
+
+7
+00:00:20,708 --> 00:00:23,908
+General-purpose doesn't mean it
+fits your domain.
+
+8
+00:00:24,917 --> 00:00:30,420
+So evaluate any off-the-shelf reranker on your
+own legal queries before you adopt
+
+9
+00:00:30,420 --> 00:00:33,817
+it, and keep it only if
+span-level recall goes up.
+
+10
+00:00:34,817 --> 00:00:37,442
+The full article is on vidyal.ai.

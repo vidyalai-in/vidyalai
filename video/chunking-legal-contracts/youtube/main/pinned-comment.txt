@@ -1,0 +1,2 @@
+How do you chunk contracts today: fixed windows, recursive splitting, or by clause?
+The full article, with sources: https://vidyal.ai/blog/chunking-legal-contracts/

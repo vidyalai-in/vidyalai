@@ -1,0 +1,43 @@
+1
+00:00:00,150 --> 00:00:03,800
+Your contract chunk doesn't know
+what its own words mean.
+
+2
+00:00:04,100 --> 00:00:07,350
+And your RAG system is
+answering from it anyway.
+
+3
+00:00:08,350 --> 00:00:14,650
+"Confidential Information" is defined in
+Section 1.4, and used in Section 9.
+
+4
+00:00:14,950 --> 00:00:18,925
+A Section 9 chunk on its own
+doesn't say what it covers.
+
+5
+00:00:19,550 --> 00:00:25,171
+So extract the definitions into a lookup table,
+and attach the ones each retrieved
+
+6
+00:00:25,171 --> 00:00:25,925
+chunk uses.
+
+7
+00:00:26,550 --> 00:00:29,825
+Don't inline them into every
+chunk at index time.
+
+8
+00:00:30,125 --> 00:00:34,750
+That bloats the chunk, and dilutes its
+embedding, so retrieval gets worse.
+
+9
+00:00:35,750 --> 00:00:38,900
+The full chunking strategy
+is on vidyal.ai.

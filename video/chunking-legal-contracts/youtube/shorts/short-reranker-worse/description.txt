@@ -1,0 +1,9 @@
+In LegalBench-RAG, a general-purpose reranker did worse than no reranker on legal text. Test before you adopt one.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/chunking-legal-contracts/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #Reranking #shorts

@@ -1,0 +1,35 @@
+Fixed 512-token windows split contract clauses mid-sentence, separate carve-outs from the rules they modify, and lose the defined terms and cross-references that give a clause its meaning. This video walks through a structure-aware alternative: parse the contract into a tree, chunk by clause, add a context header to every chunk, resolve defined terms and one hop of cross-references at retrieval time, retrieve small and expand to the parent section, and track amendments so retrieval prefers current terms. It also covers how to prove the choice with a span-level eval built from CUAD or LegalBench-RAG.
+
+Part 3 of the LLM System Design series from VidyalAI.
+Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/chunking-legal-contracts/
+📚 The whole LLM System Design series: https://vidyal.ai/series/llm-system-design/
+
+Chapters
+00:00 Why fixed windows fail
+01:34 Questions to ask first
+02:29 Parse to a structure tree
+03:06 Clause-level chunks
+03:54 A context header on every chunk
+05:13 Definitions, cross-references, parents
+06:44 Retrieval and generation
+07:27 Measuring the choice
+09:10 Tradeoffs
+10:20 Common mistakes
+11:01 Wrap-up
+
+Sources and further reading
+• CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review (Hendrycks et al., 2021): https://arxiv.org/abs/2103.06268
+• LegalBench-RAG: A Benchmark for Retrieval-Augmented Generation in the Legal Domain (Pipitone & Alami, 2024): https://arxiv.org/abs/2408.10343
+• Contextual Retrieval in AI Systems (Anthropic, 2024): https://www.anthropic.com/engineering/contextual-retrieval
+• Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models (Günther et al., 2024): https://arxiv.org/abs/2409.04701
+• Lost in the Middle: How Language Models Use Long Contexts (Liu et al., 2023): https://arxiv.org/abs/2307.03172
+• Seven Failure Points When Engineering a Retrieval Augmented Generation System (Barnett et al., 2024): https://arxiv.org/abs/2401.05856
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #LegalTech #SystemDesign

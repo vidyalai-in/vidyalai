@@ -1,0 +1,568 @@
+# Video script for "Chunking Legal Contracts for Retrieval".
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/chunking-legal-contracts
+
+slug: chunking-legal-contracts
+article: src/content/blog/03-chunking-legal-contracts.md
+voice: af_heart
+speed: 1.0
+lexicon:
+  CUAD: C U A D
+  LegalBench-RAG: Legal Bench rag
+  MSA: M S A
+  SLA: S L A
+  SLAs: S L As
+  DOCX: dock X
+  LIBOR: lie bor
+
+youtube:
+  title: "Chunking Legal Contracts for Retrieval | LLM System Design"
+  altTitles:
+    - "Why Fixed-Size Chunks Fail on Contracts, and What to Do Instead"
+    - "RAG for Legal Contracts: Chunk by Clause, Not by Token Count"
+  summary: |
+    Fixed 512-token windows split contract clauses mid-sentence, separate carve-outs from the rules they modify, and lose the defined terms and cross-references that give a clause its meaning. This video walks through a structure-aware alternative: parse the contract into a tree, chunk by clause, add a context header to every chunk, resolve defined terms and one hop of cross-references at retrieval time, retrieve small and expand to the parent section, and track amendments so retrieval prefers current terms. It also covers how to prove the choice with a span-level eval built from CUAD or LegalBench-RAG.
+
+    Part 3 of the LLM System Design series from VidyalAI.
+    Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+    Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+    The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+  tags:
+    - RAG
+    - retrieval augmented generation
+    - chunking
+    - legal AI
+    - contract analysis
+    - LLM system design
+    - contextual retrieval
+    - late chunking
+    - hybrid search
+    - CUAD
+    - LegalBench
+    - AI engineering
+    - LLM
+  hashtags: ["#RAG", "#LegalTech", "#SystemDesign"]
+  playlist: LLM System Design
+  pinnedComment: |
+    How do you chunk contracts today: fixed windows, recursive splitting, or by clause?
+    The full article, with sources: https://vidyal.ai/blog/chunking-legal-contracts/
+
+thumbnail:
+  title: "Chunk Contracts by **Clause**"
+  badge: "Not by token count"
+
+main:
+  scenes:
+    - type: brand
+      steps:
+        - hold: 3
+
+    - type: title
+      chapter: Why fixed windows fail
+      kicker: LLM System Design · Part 3
+      heading: Chunking **Legal Contracts** for Retrieval
+      subtitle: Chunk by clause, carry the context, and measure the choice
+      steps:
+        - say: >-
+            Somewhere in a contract, a 512-token chunk boundary just landed between "Notwithstanding
+            the foregoing" and the rule it modifies.
+        - say: >-
+            Your retrieval system will now find the rule without its exception, and answer with
+            confidence. In this video, we'll look at how to chunk contracts so that doesn't happen.
+
+    - type: statement
+      text: Chunk along the contract's **own structure**, not by token count.
+      sub: Article, section, clause. Then carry the context each clause depends on.
+      subStep: 1
+      steps:
+        - say: >-
+            Here's the core idea. Contracts are highly structured, and full of cross-references. So
+            chunk them along their own hierarchy: article, section, clause.
+        - say: >-
+            Then give each chunk the context it depends on: where it sits, whose contract it is, and
+            what its defined terms mean.
+
+    - type: bullets
+      heading: Why naive chunking fails
+      style: warn
+      steps:
+        - add: { text: Clauses split mid-sentence, sub: Carve-outs end up in a different chunk from the rule }
+          say: >-
+            First, fixed windows split clauses mid-sentence. Exceptions and carve-outs end up in a
+            different chunk from the rule, which is exactly how a system produces confidently wrong
+            answers.
+        - add: { text: Defined terms live elsewhere, sub: "Defined in Section 1.4, used in Section 9" }
+          say: >-
+            Second, defined terms live elsewhere. "Confidential Information" is defined in Section
+            1.4 and used in Section 9. A Section 9 chunk on its own doesn't say what it covers.
+        - add: { text: Cross-references point elsewhere, sub: '"Subject to Section 12.3"' }
+          say: >-
+            Third, cross-references. "Subject to Section 12.3" makes a clause meaningless without
+            its target.
+        - add: { text: Boilerplate looks identical, sub: Thousands of near-identical governing-law clauses }
+          say: >-
+            And fourth, boilerplate. A portfolio has thousands of near-identical governing-law
+            clauses. Without contract-level metadata, retrieval can't tell whose clause it found.
+
+    - type: bullets
+      chapter: Questions to ask first
+      heading: Pin these down first
+      numbered: true
+      steps:
+        - add: { text: What's the task?, sub: "One contract, search across thousands, playbook comparison or extraction" }
+          say: >-
+            Before designing anything, pin down four things. First, the task. Question answering
+            over one contract is very different from finding every contract with uncapped
+            indemnity. Cross-corpus "find all" questions push toward structured extraction, not
+            chunk retrieval.
+        - add: { text: How good is the source?, sub: "Native PDF or DOCX, scans, redlines, exhibits" }
+          say: >-
+            Second, source quality. Scans and redlines decide how much you can trust the structure
+            parser.
+        - add: { text: "How big, and which version wins?", sub: "5 to 300+ pages, plus amendments" }
+          say: >-
+            Third, size and versions. Contracts run from 5 to over 300 pages. With a master
+            agreement plus amendments, the governing text may live in a later document, so the
+            system has to know which version wins.
+        - add: { text: How precise must answers be?, sub: Exact clause text with its section number }
+          say: >-
+            And fourth, precision. Legal users need the exact clause text, with a citation to the
+            section number. Roughly relevant passages aren't good enough.
+
+    - type: diagram
+      chapter: Parse to a structure tree
+      heading: Retrieve small, assemble the context
+      diagram: q03-contract-chunking
+      steps:
+        - say: >-
+            Here's the design in one picture. The chunk that gets retrieved is small, but the
+            context the model sees is assembled from the structure around it.
+        - focus: [0, 0, 0.66, 1]
+          note: "Article 9 → Section 9.2 → clause 9.2(b)"
+          say: >-
+            It starts with a structure tree. Detect the numbering hierarchy, from Article 9, to
+            Section 9.2, to clause 9.2(b). Use layout cues and regular expressions, with an LLM
+            fallback for messy documents.
+        - note: Keep tables intact as Markdown. Exhibits and schedules are separate subtrees.
+          say: >-
+            Keep tables like payment schedules and SLAs intact, as Markdown. And treat exhibits and
+            schedules as separate subtrees.
+
+    - type: bullets
+      chapter: Clause-level chunks
+      heading: One chunk per clause
+      steps:
+        - add: { text: "The lowest heading that fits ~800 tokens", sub: One chunk per clause }
+          say: >-
+            Then make one chunk per clause: the lowest heading that fits within about 800 tokens.
+        - add: { text: "Merge tiny siblings up to ~200 tokens", sub: For example one-line sub-clauses }
+          say: Merge tiny siblings, like one-line sub-clauses, up to a minimum of about 200 tokens.
+        - add: { text: Split long clauses at sub-clause boundaries, sub: "With a small overlap of 1–2 sentences" }
+          say: >-
+            And split oversized clauses at their sub-clause boundaries, with a small overlap of
+            1-2 sentences.
+
+    - type: stats
+      heading: How many chunks per contract?
+      steps:
+        - add: { value: "20k", label: "tokens in a 40-page contract" }
+          say: The chunk count follows from contract length. A 40-page contract is roughly 20k tokens.
+        - add: { value: "~65", label: "clause chunks, at about 300 tokens each" }
+          say: With clause chunks averaging about 300 tokens, that's about 65 chunks.
+        - add: { value: "~500", label: "chunks for a 300-page master agreement" }
+          say: >-
+            A 300-page master agreement with schedules, about 150k tokens, produces about 500. So
+            expect tens to a few hundred chunks per contract.
+
+    - type: code
+      chapter: A context header on every chunk
+      heading: A context header on every chunk
+      code: |
+        # prepended for embedding and BM25 indexing
+        [Contract: MSA, Acme Corp <-> Globex, effective 2023-04-01]
+        [Section 9.2 Limitation of Liability > (b) Exceptions]
+
+        # stored separately for display
+      caption: "Optional: a 1–2 sentence LLM summary that **situates the clause** in its contract"
+      captionStep: 1
+      steps:
+        - say: >-
+            Next, prepend a context header to every chunk, for embedding and BM25 indexing. It
+            names the contract, its parties and effective date, and the heading path down to the
+            clause. Store it separately for display.
+        - say: >-
+            Optionally, add a 1-2 sentence summary, generated by an LLM, that situates the clause
+            in its contract. Anthropic calls this contextual retrieval. Contract portfolios are
+            full of near-identical boilerplate, so it matters more for legal text than for most
+            domains.
+
+    - type: stats
+      heading: What does contextualizing cost?
+      steps:
+        - add: { value: "$1.02", label: "per million tokens: Anthropic's 2024 figure" }
+          say: >-
+            The cost is modest, but check the assumptions. Anthropic reported $1.02 per million
+            document tokens, with a small model and prompt caching, at 2024 prices.
+        - add: { value: "~$4", label: "per million: 30k-token contracts, 300-token chunks" }
+          say: >-
+            Each chunk's call re-reads the cached document, so the cost grows with document length
+            divided by chunk size. Redo the math for 30k-token contracts and 300-token chunks, and
+            it's about $4 per million tokens.
+        - add: { value: "$1,200", label: "roughly, for 10,000 contracts (300M tokens)" }
+          say: >-
+            So 10,000 such contracts, 300M tokens, cost on the order of $1,200 to contextualize
+            once. Re-price with the model you actually use.
+
+    - type: diagram
+      chapter: Definitions, cross-references, parents
+      heading: Assemble the context at query time
+      diagram: q03-contract-chunking
+      steps:
+        - focus: [0.55, 0, 0.45, 0.62]
+          note: Attach the definitions of terms the chunk uses. Don't inline them at index time.
+          say: >-
+            Now the retrieval side. Extract the definitions section into a lookup table. At
+            retrieval time, attach the definitions of the capitalized terms each retrieved chunk
+            uses.
+        - say: >-
+            Don't inline definitions into every chunk at index time. It bloats the chunk, and
+            dilutes its embedding.
+        - focus: [0.3, 0.4, 0.45, 0.5]
+          note: "Pull in one hop: at least “subject to” and “notwithstanding” links"
+          say: >-
+            Next, build a cross-reference graph. At generation time, pull in one hop of referenced
+            clauses, at least for "subject to" and "notwithstanding" links, since those change
+            the meaning of the clause that cites them.
+        - focus: [0.22, 0.25, 0.78, 0.7]
+          note: Retrieve the clause, expand to its parent section when the answer needs it
+          say: >-
+            And retrieve small, then expand. Retrieve on clauses, and expand to the parent section
+            when the answer needs the surrounding context.
+        - focus: [0, 0, 1, 1]
+          note: Plus one summary chunk per contract, for routing questions
+          say: >-
+            Keep one contract-level summary chunk too, for routing questions like "which contracts
+            are with Globex?"
+
+    - type: bullets
+      heading: Metadata, and two more options
+      steps:
+        - add: { text: Metadata for filtering, sub: "Type, parties, dates, governing law, version" }
+          say: >-
+            Store metadata for filtering: contract type, parties, dates, governing law, and
+            version.
+        - add: { text: "Amendment lineage: superseded_by", sub: So retrieval prefers current terms }
+          say: >-
+            And record amendment lineage, with a superseded-by link, so retrieval prefers the terms
+            that currently apply.
+        - add: { text: "Alternative: late chunking", sub: "Embed the whole document, then pool per chunk" }
+          say: >-
+            There's also an alternative to context headers, called late chunking. A long-context
+            embedding model reads the whole document first, then pools token embeddings per chunk,
+            so each chunk vector already knows its surroundings. It needs no LLM call per chunk.
+            Include it in your comparison, rather than assuming either approach wins.
+
+    - type: bullets
+      chapter: Retrieval and generation
+      heading: Pair chunks with the right retrieval
+      steps:
+        - add: { text: Hybrid BM25 + dense, sub: '"Cap on liability" and "Section 7.3" in one query' }
+          say: >-
+            Legal queries mix meaning, like "cap on liability", with exact strings, like "Section
+            7.3", LIBOR in legacy contracts, and party names. So use hybrid search: BM25 plus dense
+            retrieval.
+        - add: { text: Test any reranker on legal queries, sub: A general-purpose reranker did worse than none in LegalBench-RAG }
+          say: >-
+            Be careful with the reranker. In the LegalBench-RAG experiments, adding a
+            general-purpose reranker performed worse than no reranker at all on legal text, which
+            the authors put down to domain mismatch. Evaluate any off-the-shelf reranker on legal
+            queries before you adopt it.
+        - add: { text: Quote the clause verbatim, sub: "With its section number, so a lawyer can verify it" }
+          say: >-
+            And generation should quote the clause verbatim, with its section number, so a lawyer
+            can check the answer against the source.
+
+    - type: bullets
+      chapter: Measuring the choice
+      heading: Build a span-level eval
+      steps:
+        - say: >-
+            Chunking is a hyperparameter you measure, not one you argue about. So build an eval of
+            200-500 queries with gold clause spans.
+        - add: { text: CUAD, sub: "510 contracts, more than 13,000 expert labels, 41 clause categories" }
+          say: >-
+            Two public resources help. CUAD has 510 commercial contracts, with more than 13,000
+            expert labels across 41 clause categories.
+        - add: { text: LegalBench-RAG, sub: "6,858 query-answer pairs, with character-span ground truth" }
+          say: >-
+            LegalBench-RAG has 6,858 query-answer pairs, with ground truth given as character
+            spans in the source documents. Then add in-house questions that reflect your users.
+
+    - type: bullets
+      heading: Three metrics
+      numbered: true
+      steps:
+        - add: { text: Span-level recall at k, sub: Did any retrieved chunk overlap the gold span? }
+          say: Measure three things. Span-level recall at k. Did any retrieved chunk overlap the gold span?
+        - add: { text: Precision at k, sub: "A 2,000-token chunk with a 40-token answer is mostly noise" }
+          say: >-
+            Precision at k. How much irrelevant text did the model have to read? A 2,000-token
+            chunk that contains a 40-token answer is mostly noise.
+        - add: { text: Answer correctness, sub: On an attorney-labeled subset }
+          say: And answer correctness, on a subset labeled by attorneys.
+
+    - type: bullets
+      heading: Compare chunkers head to head
+      numbered: true
+      steps:
+        - say: Then hold the rest of the pipeline fixed, and compare chunkers head to head.
+        - add: "Fixed 512-token windows, 10% overlap"
+          say: Fixed 512-token windows, with 10% overlap.
+        - add: Recursive character splitting
+          say: Recursive character splitting.
+        - add: Structure-aware clause chunks
+          say: Structure-aware clause chunks.
+        - add: Clause chunks + context headers
+          say: Clause chunks with context headers.
+        - add: Late chunking
+          say: >-
+            And late chunking. Clause chunks with context should beat fixed windows, but the
+            published evidence is thin, so produce the numbers on your own contracts. Slice them by
+            contract length, scanned versus native documents, and query type. Averages hide the
+            slice where a chunker collapses.
+
+    - type: compare
+      chapter: Tradeoffs
+      heading: Choosing a strategy
+      cols: 2
+      steps:
+        - add:
+            name: Fixed-size windows
+            pros: "Trivial, robust to bad parsing"
+            cons: "Splits clauses, loses carve-outs"
+            when: "Baseline only, or unparseable scans"
+          say: >-
+            Here are the tradeoffs. Fixed-size windows are trivial, and robust to bad parsing. But
+            they split clauses, so use them only as a baseline, or for scans you can't parse.
+        - add:
+            name: Clause chunks + context
+            pros: Aligns with how lawyers cite and query
+            cons: "Needs a good parser; ingest-time LLM cost"
+            when: Default for contracts
+          say: >-
+            Clause chunks with context headers line up with how lawyers cite and query. They need a
+            good parser, and an LLM call per chunk at ingest. This is the default for contracts.
+        - add:
+            name: Whole contract in long context
+            pros: No chunking errors
+            cons: "Expensive per query; mid-context recall drops"
+            when: "Single-contract Q&A, under ~100 pages"
+          say: >-
+            Putting the whole contract in a long context has no chunking errors. But it's expensive
+            per query, and recall drops in the middle of long contexts. It fits single-contract
+            questions, under about 100 pages.
+        - add:
+            name: Structured extraction to a table
+            pros: "Exact, exhaustive, auditable"
+            cons: "Fixed schema, upfront labeling"
+            when: "Portfolio analytics, compliance"
+          say: >-
+            And structured extraction into a table is exact and auditable, but needs a fixed
+            schema. That's the tool for portfolio analytics.
+
+    - type: statement
+      text: '"All contracts with auto-renewal and under 30 days'' notice" is a **SQL query**, not a chunk.'
+      sub: Extract clauses into a table at ingest; RAG handles the long tail.
+      subStep: 1
+      steps:
+        - say: >-
+            Which matters at scale. A question like "all contracts with auto-renewal and under 30
+            days' notice" is the wrong job for chunking.
+        - say: >-
+            Extract clauses into a structured table at ingest, and query it with SQL. RAG then
+            handles only the long tail.
+
+    - type: bullets
+      chapter: Common mistakes
+      heading: Common mistakes
+      style: warn
+      steps:
+        - add: { text: Chunk size chosen by intuition, sub: '"512 feels right", and it''s never revisited' }
+          say: >-
+            Finally, the common mistakes. Choosing chunk size by intuition, because 512 feels
+            right, instead of measuring span-level recall.
+        - add: { text: Exceptions split from their rule, sub: Confidently wrong in the costliest direction }
+          say: >-
+            Separating exceptions and carve-outs from the rule they modify. The answers come out
+            confidently wrong, in the costliest direction.
+        - add: { text: Contract identity left out, sub: A near-identical clause from the wrong contract gets cited }
+          say: >-
+            Leaving contract identity out of the chunk, so a near-identical clause from the wrong
+            contract gets cited.
+        - add: { text: Superseded terms still retrieved, sub: "A liability risk, not just a quality bug" }
+          say: >-
+            And ignoring amendments. If the system cites terms that no longer apply, that's a
+            liability risk, not just a quality bug. Lineage deserves an owner, and tests of its
+            own.
+
+    - type: statement
+      chapter: Wrap-up
+      text: "Chunk by **clause**. Carry the context. Measure on spans."
+      steps:
+        - say: >-
+            So, to recap. Chunk by clause, along the contract's own structure. Carry the context
+            each clause depends on: its header, its definitions, and its cross-references. And
+            measure the choice on span-level recall, on your own contracts.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/chunking-legal-contracts
+      steps:
+        - say: The full article, with every source, is on vidyal.ai.
+
+    - type: endcard
+      kicker: LLM System Design
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-system-design
+      # Next episode isn't out yet: show it as a teaser. Once it's public, swap the Playlist
+      # end-screen element for it in YouTube Studio (no re-upload needed).
+      teaser: BM25 vs dense vs **hybrid** search
+      steps:
+        - say: >-
+            Thanks for watching. Next in the series, BM25 versus dense versus hybrid search, and
+            when to use each. Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  - id: short-carve-out
+    title: "How a 512-token chunk makes your legal RAG wrong #shorts"
+    description: Fixed-size chunks split exceptions from the rules they modify. Chunk contracts by clause instead.
+    hashtags: ["#RAG", "#LegalTech", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Legal RAG
+        text: Your chunker just cut **"Notwithstanding"** off its rule.
+        steps:
+          - say: Your chunker just cut "notwithstanding the foregoing" off the rule it modifies.
+      - type: bullets
+        heading: Fixed windows split clauses
+        style: warn
+        steps:
+          - add: { text: The rule lands in one chunk, sub: "\"The liability cap is…\"" }
+            say: >-
+              Fixed 512-token windows don't know where a clause ends. The rule lands in one chunk.
+          - add: { text: The carve-out lands in another, sub: "\"Notwithstanding the foregoing…\"" }
+            say: >-
+              Its exception lands in the next. Retrieval finds the rule without the exception, and
+              the answer comes out confidently wrong.
+      - type: statement
+        text: Chunk by **clause**, and split long clauses at sub-clauses.
+        steps:
+          - say: >-
+              So chunk by clause, along the contract's own numbering, and split long clauses only
+              at their sub-clause boundaries.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full chunking strategy, with context headers and cross-references, is on vidyal.ai.
+
+  - id: short-defined-terms
+    title: "Your contract chunk doesn't know what its words mean #shorts"
+    description: Defined terms live in Section 1. Attach their definitions at retrieval time, not at index time.
+    hashtags: ["#RAG", "#LegalTech", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Legal RAG
+        text: Your contract chunk doesn't know what its **own words** mean.
+        steps:
+          - say: >-
+              Your contract chunk doesn't know what its own words mean. And your RAG system is
+              answering from it anyway.
+      - type: bullets
+        heading: Defined terms live elsewhere
+        steps:
+          - add: { text: '"Confidential Information"', sub: "Defined in Section 1.4, used in Section 9" }
+            say: >-
+              "Confidential Information" is defined in Section 1.4, and used in Section 9. A
+              Section 9 chunk on its own doesn't say what it covers.
+          - add: { text: Attach definitions at retrieval time, sub: For the capitalized terms the chunk uses }
+            say: >-
+              So extract the definitions into a lookup table, and attach the ones each retrieved
+              chunk uses.
+          - add: { text: Don't inline them at index time, sub: It bloats the chunk and dilutes its embedding }
+            say: >-
+              Don't inline them into every chunk at index time. That bloats the chunk, and dilutes
+              its embedding, so retrieval gets worse.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full chunking strategy is on vidyal.ai.
+
+  - id: short-reranker-worse
+    title: "When adding a reranker made legal search worse #shorts"
+    description: In LegalBench-RAG, a general-purpose reranker did worse than no reranker on legal text. Test before you adopt one.
+    hashtags: ["#RAG", "#Reranking", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Legal RAG
+        text: Adding a reranker made legal search **worse**.
+        steps:
+          - say: >-
+              Adding a reranker is supposed to make search better. On legal text, it made it
+              worse.
+      - type: bullets
+        heading: The LegalBench-RAG result
+        steps:
+          - add: { text: A general-purpose reranker, sub: "Cohere's rerank-english-v3.0" }
+            say: >-
+              In the LegalBench-RAG experiments, the authors added a general-purpose reranker to
+              legal retrieval.
+          - add: { text: Worse than no reranker at all, sub: The authors point to domain mismatch }
+            say: >-
+              It performed worse than no reranker at all. They put it down to domain mismatch.
+              General-purpose doesn't mean it fits your domain.
+      - type: statement
+        text: Test any reranker on **your** queries first.
+        steps:
+          - say: >-
+              So evaluate any off-the-shelf reranker on your own legal queries before you adopt it,
+              and keep it only if span-level recall goes up.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.
+
+  - id: short-portfolio-sql
+    title: "Some contract questions aren't a RAG problem #shorts"
+    description: Portfolio questions like "all contracts with auto-renewal" need clause extraction into a table, not chunk retrieval.
+    hashtags: ["#RAG", "#LegalTech", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Legal RAG
+        text: Some contract questions **aren't** a RAG problem.
+        steps:
+          - say: >-
+              Some contract questions aren't a RAG problem at all, no matter how well you chunk.
+      - type: bullets
+        heading: '"Find all" needs a table'
+        steps:
+          - add: { text: '"All contracts with auto-renewal"', sub: "…and under 30 days' notice" }
+            say: >-
+              Take "all contracts with auto-renewal and under 30 days' notice". Retrieval returns
+              the top few chunks. This question needs every match.
+          - add: { text: Extract clauses into a table at ingest, sub: "Exact, exhaustive and auditable" }
+            say: >-
+              So extract clauses into a structured table when contracts come in, and answer it with
+              SQL.
+          - add: { text: RAG handles the long tail, sub: Questions the schema doesn't cover }
+            say: RAG then handles only the long tail, the questions your schema doesn't cover.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.

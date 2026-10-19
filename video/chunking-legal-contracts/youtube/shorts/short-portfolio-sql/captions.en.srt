@@ -1,0 +1,35 @@
+1
+00:00:00,150 --> 00:00:05,350
+Some contract questions aren't a RAG problem at
+all, no matter how well you chunk.
+
+2
+00:00:06,350 --> 00:00:10,900
+Take "all contracts with auto-renewal
+and under 30 days' notice".
+
+3
+00:00:11,200 --> 00:00:13,975
+Retrieval returns the top few chunks.
+
+4
+00:00:14,275 --> 00:00:16,625
+This question needs every match.
+
+5
+00:00:17,250 --> 00:00:22,711
+So extract clauses into a structured table
+when contracts come in, and answer it
+
+6
+00:00:22,711 --> 00:00:23,325
+with SQL.
+
+7
+00:00:23,950 --> 00:00:29,150
+RAG then handles only the long tail, the
+questions your schema doesn't cover.
+
+8
+00:00:30,150 --> 00:00:32,775
+The full article is on vidyal.ai.

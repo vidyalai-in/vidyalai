@@ -1,0 +1,11 @@
+00:00 Why fixed windows fail
+01:34 Questions to ask first
+02:29 Parse to a structure tree
+03:06 Clause-level chunks
+03:54 A context header on every chunk
+05:13 Definitions, cross-references, parents
+06:44 Retrieval and generation
+07:27 Measuring the choice
+09:10 Tradeoffs
+10:20 Common mistakes
+11:01 Wrap-up

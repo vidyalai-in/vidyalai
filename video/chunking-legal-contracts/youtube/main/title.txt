@@ -1,0 +1,5 @@
+Chunking Legal Contracts for Retrieval | LLM System Design
+
+Alternatives:
+- Why Fixed-Size Chunks Fail on Contracts, and What to Do Instead
+- RAG for Legal Contracts: Chunk by Clause, Not by Token Count

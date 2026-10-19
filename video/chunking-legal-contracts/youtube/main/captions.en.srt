@@ -1,0 +1,780 @@
+1
+00:00:03,550 --> 00:00:08,778
+Somewhere in a contract, a 512-token chunk
+boundary just landed between
+
+2
+00:00:08,778 --> 00:00:12,975
+"Notwithstanding the foregoing" and
+the rule it modifies.
+
+3
+00:00:13,583 --> 00:00:18,859
+Your retrieval system will now find the rule
+without its exception, and answer with
+
+4
+00:00:18,859 --> 00:00:19,558
+confidence.
+
+5
+00:00:19,858 --> 00:00:24,408
+In this video, we'll look at how to chunk
+contracts so that doesn't happen.
+
+6
+00:00:25,417 --> 00:00:27,217
+Here's the core idea.
+
+7
+00:00:27,517 --> 00:00:31,567
+Contracts are highly structured, and
+full of cross-references.
+
+8
+00:00:31,867 --> 00:00:36,367
+So chunk them along their own
+hierarchy: article, section, clause.
+
+9
+00:00:36,983 --> 00:00:42,469
+Then give each chunk the context it depends on:
+where it sits, whose contract it is,
+
+10
+00:00:42,469 --> 00:00:44,558
+and what its defined terms mean.
+
+11
+00:00:45,583 --> 00:00:48,933
+First, fixed windows split
+clauses mid-sentence.
+
+12
+00:00:49,233 --> 00:00:54,125
+Exceptions and carve-outs end up in a
+different chunk from the rule, which is
+
+13
+00:00:54,125 --> 00:00:57,683
+exactly how a system produces
+confidently wrong answers.
+
+14
+00:00:58,283 --> 00:01:01,058
+Second, defined terms live elsewhere.
+
+15
+00:01:01,358 --> 00:01:07,683
+"Confidential Information" is defined in
+Section 1.4 and used in Section 9.
+
+16
+00:01:07,983 --> 00:01:11,958
+A Section 9 chunk on its own
+doesn't say what it covers.
+
+17
+00:01:12,583 --> 00:01:14,708
+Third, cross-references.
+
+18
+00:01:15,008 --> 00:01:20,408
+"Subject to Section 12.3" makes a clause
+meaningless without its target.
+
+19
+00:01:21,017 --> 00:01:23,067
+And fourth, boilerplate.
+
+20
+00:01:23,367 --> 00:01:28,042
+A portfolio has thousands of
+near-identical governing-law clauses.
+
+21
+00:01:28,342 --> 00:01:33,167
+Without contract-level metadata, retrieval
+can't tell whose clause it found.
+
+22
+00:01:34,183 --> 00:01:37,508
+Before designing anything, pin
+down four things.
+
+23
+00:01:37,808 --> 00:01:39,558
+First, the task.
+
+24
+00:01:39,858 --> 00:01:45,699
+Question answering over one contract is very
+different from finding every contract
+
+25
+00:01:45,699 --> 00:01:47,408
+with uncapped indemnity.
+
+26
+00:01:47,708 --> 00:01:52,982
+Cross-corpus "find all" questions push toward
+structured extraction, not chunk
+
+27
+00:01:52,982 --> 00:01:53,658
+retrieval.
+
+28
+00:01:54,283 --> 00:01:56,333
+Second, source quality.
+
+29
+00:01:56,633 --> 00:02:01,283
+Scans and redlines decide how much you
+can trust the structure parser.
+
+30
+00:02:01,883 --> 00:02:04,183
+Third, size and versions.
+
+31
+00:02:04,483 --> 00:02:08,333
+Contracts run from 5 to over 300 pages.
+
+32
+00:02:08,633 --> 00:02:13,733
+With a master agreement plus amendments, the
+governing text may live in a later
+
+33
+00:02:13,733 --> 00:02:17,283
+document, so the system has to
+know which version wins.
+
+34
+00:02:17,883 --> 00:02:19,783
+And fourth, precision.
+
+35
+00:02:20,083 --> 00:02:25,458
+Legal users need the exact clause text, with
+a citation to the section number.
+
+36
+00:02:25,758 --> 00:02:28,808
+Roughly relevant passages
+aren't good enough.
+
+37
+00:02:29,817 --> 00:02:32,342
+Here's the design in one picture.
+
+38
+00:02:32,642 --> 00:02:37,718
+The chunk that gets retrieved is small, but the
+context the model sees is assembled
+
+39
+00:02:37,718 --> 00:02:39,492
+from the structure around it.
+
+40
+00:02:40,117 --> 00:02:42,392
+It starts with a structure tree.
+
+41
+00:02:42,692 --> 00:02:49,367
+Detect the numbering hierarchy, from Article 9,
+to Section 9.2, to clause 9.2(b).
+
+42
+00:02:49,667 --> 00:02:55,892
+Use layout cues and regular expressions, with
+an LLM fallback for messy documents.
+
+43
+00:02:56,517 --> 00:03:01,517
+Keep tables like payment schedules and
+SLAs intact, as Markdown.
+
+44
+00:03:01,817 --> 00:03:05,417
+And treat exhibits and schedules
+as separate subtrees.
+
+45
+00:03:06,417 --> 00:03:11,733
+Then make one chunk per clause: the lowest
+heading that fits within about 800
+
+46
+00:03:11,733 --> 00:03:12,217
+tokens.
+
+47
+00:03:12,817 --> 00:03:19,092
+Merge tiny siblings, like one-line sub-clauses,
+up to a minimum of about 200 tokens.
+
+48
+00:03:19,717 --> 00:03:25,706
+And split oversized clauses at their sub-clause
+boundaries, with a small overlap of
+
+49
+00:03:25,706 --> 00:03:26,717
+1-2 sentences.
+
+50
+00:03:27,717 --> 00:03:30,667
+The chunk count follows from
+contract length.
+
+51
+00:03:30,967 --> 00:03:35,117
+A 40-page contract is roughly 20k tokens.
+
+52
+00:03:35,717 --> 00:03:41,342
+With clause chunks averaging about 300
+tokens, that's about 65 chunks.
+
+53
+00:03:41,950 --> 00:03:49,875
+A 300-page master agreement with schedules,
+about 150k tokens, produces about 500.
+
+54
+00:03:50,175 --> 00:03:53,775
+So expect tens to a few hundred
+chunks per contract.
+
+55
+00:03:54,783 --> 00:04:01,333
+Next, prepend a context header to every chunk,
+for embedding and BM25 indexing.
+
+56
+00:04:01,633 --> 00:04:06,777
+It names the contract, its parties and effective
+date, and the heading path down to
+
+57
+00:04:06,777 --> 00:04:07,458
+the clause.
+
+58
+00:04:07,758 --> 00:04:10,008
+Store it separately for display.
+
+59
+00:04:10,617 --> 00:04:16,583
+Optionally, add a 1-2 sentence summary,
+generated by an LLM, that situates the
+
+60
+00:04:16,583 --> 00:04:18,342
+clause in its contract.
+
+61
+00:04:18,642 --> 00:04:21,692
+Anthropic calls this contextual retrieval.
+
+62
+00:04:21,992 --> 00:04:27,571
+Contract portfolios are full of near-identical
+boilerplate, so it matters more for
+
+63
+00:04:27,571 --> 00:04:29,817
+legal text than for most domains.
+
+64
+00:04:30,817 --> 00:04:33,942
+The cost is modest, but check
+the assumptions.
+
+65
+00:04:34,242 --> 00:04:41,572
+Anthropic reported $1.02 per million document
+tokens, with a small model and prompt
+
+66
+00:04:41,572 --> 00:04:43,692
+caching, at 2024 prices.
+
+67
+00:04:44,317 --> 00:04:49,382
+Each chunk's call re-reads the cached
+document, so the cost grows with document
+
+68
+00:04:49,382 --> 00:04:51,242
+length divided by chunk size.
+
+69
+00:04:51,542 --> 00:04:58,439
+Redo the math for 30k-token contracts and
+300-token chunks, and it's about $4 per
+
+70
+00:04:58,439 --> 00:04:59,717
+million tokens.
+
+71
+00:05:00,317 --> 00:05:08,782
+So 10,000 such contracts, 300M tokens, cost on
+the order of $1,200 to contextualize
+
+72
+00:05:08,782 --> 00:05:09,292
+once.
+
+73
+00:05:09,592 --> 00:05:12,542
+Re-price with the model you actually use.
+
+74
+00:05:13,550 --> 00:05:15,550
+Now the retrieval side.
+
+75
+00:05:15,850 --> 00:05:19,650
+Extract the definitions section
+into a lookup table.
+
+76
+00:05:19,950 --> 00:05:25,717
+At retrieval time, attach the definitions of
+the capitalized terms each retrieved
+
+77
+00:05:25,717 --> 00:05:26,500
+chunk uses.
+
+78
+00:05:27,117 --> 00:05:31,367
+Don't inline definitions into
+every chunk at index time.
+
+79
+00:05:31,667 --> 00:05:34,642
+It bloats the chunk, and
+dilutes its embedding.
+
+80
+00:05:35,250 --> 00:05:37,775
+Next, build a cross-reference graph.
+
+81
+00:05:38,075 --> 00:05:43,222
+At generation time, pull in one hop of
+referenced clauses, at least for "subject to"
+
+82
+00:05:43,222 --> 00:05:48,369
+and "notwithstanding" links, since those change
+the meaning of the clause that cites
+
+83
+00:05:48,369 --> 00:05:48,675
+them.
+
+84
+00:05:49,283 --> 00:05:51,708
+And retrieve small, then expand.
+
+85
+00:05:52,008 --> 00:05:57,155
+Retrieve on clauses, and expand to the parent
+section when the answer needs the
+
+86
+00:05:57,155 --> 00:05:58,458
+surrounding context.
+
+87
+00:05:59,083 --> 00:06:04,082
+Keep one contract-level summary chunk too,
+for routing questions like "which
+
+88
+00:06:04,082 --> 00:06:05,858
+contracts are with Globex?"
+
+89
+00:06:06,883 --> 00:06:12,354
+Store metadata for filtering: contract type,
+parties, dates, governing law, and
+
+90
+00:06:12,354 --> 00:06:12,908
+version.
+
+91
+00:06:13,517 --> 00:06:18,860
+And record amendment lineage, with a
+superseded-by link, so retrieval prefers the
+
+92
+00:06:18,860 --> 00:06:20,642
+terms that currently apply.
+
+93
+00:06:21,250 --> 00:06:25,600
+There's also an alternative to context
+headers, called late chunking.
+
+94
+00:06:25,900 --> 00:06:30,921
+A long-context embedding model reads the whole
+document first, then pools token
+
+95
+00:06:30,921 --> 00:06:35,625
+embeddings per chunk, so each chunk vector
+already knows its surroundings.
+
+96
+00:06:35,925 --> 00:06:38,675
+It needs no LLM call per chunk.
+
+97
+00:06:38,975 --> 00:06:43,625
+Include it in your comparison, rather than
+assuming either approach wins.
+
+98
+00:06:44,650 --> 00:06:50,166
+Legal queries mix meaning, like "cap on
+liability", with exact strings, like
+
+99
+00:06:50,166 --> 00:06:54,375
+"Section 7.3", LIBOR in legacy
+contracts, and party names.
+
+100
+00:06:54,675 --> 00:06:59,175
+So use hybrid search: BM25
+plus dense retrieval.
+
+101
+00:06:59,783 --> 00:07:01,983
+Be careful with the reranker.
+
+102
+00:07:02,283 --> 00:07:07,946
+In the LegalBench-RAG experiments, adding a
+general-purpose reranker performed worse
+
+103
+00:07:07,946 --> 00:07:13,002
+than no reranker at all on legal text, which
+the authors put down to domain
+
+104
+00:07:13,002 --> 00:07:13,608
+mismatch.
+
+105
+00:07:13,908 --> 00:07:18,833
+Evaluate any off-the-shelf reranker on
+legal queries before you adopt it.
+
+106
+00:07:19,450 --> 00:07:24,036
+And generation should quote the clause
+verbatim, with its section number, so a
+
+107
+00:07:24,036 --> 00:07:26,800
+lawyer can check the answer
+against the source.
+
+108
+00:07:27,817 --> 00:07:32,167
+Chunking is a hyperparameter you
+measure, not one you argue about.
+
+109
+00:07:32,467 --> 00:07:37,717
+So build an eval of 200-500 queries
+with gold clause spans.
+
+110
+00:07:38,317 --> 00:07:40,742
+Two public resources help.
+
+111
+00:07:41,042 --> 00:07:48,613
+CUAD has 510 commercial contracts, with more
+than 13,000 expert labels across 41
+
+112
+00:07:48,613 --> 00:07:50,317
+clause categories.
+
+113
+00:07:50,917 --> 00:07:57,612
+LegalBench-RAG has 6,858 query-answer pairs,
+with ground truth given as character
+
+114
+00:07:57,612 --> 00:08:00,092
+spans in the source documents.
+
+115
+00:08:00,392 --> 00:08:04,042
+Then add in-house questions that
+reflect your users.
+
+116
+00:08:05,050 --> 00:08:06,925
+Measure three things.
+
+117
+00:08:07,225 --> 00:08:09,400
+Span-level recall at k.
+
+118
+00:08:09,700 --> 00:08:12,875
+Did any retrieved chunk
+overlap the gold span?
+
+119
+00:08:13,483 --> 00:08:15,283
+Precision at k.
+
+120
+00:08:15,583 --> 00:08:19,108
+How much irrelevant text did the
+model have to read?
+
+121
+00:08:19,408 --> 00:08:25,058
+A 2,000-token chunk that contains a
+40-token answer is mostly noise.
+
+122
+00:08:25,683 --> 00:08:29,733
+And answer correctness, on a subset
+labeled by attorneys.
+
+123
+00:08:30,750 --> 00:08:35,300
+Then hold the rest of the pipeline fixed,
+and compare chunkers head to head.
+
+124
+00:08:35,917 --> 00:08:40,367
+Fixed 512-token windows, with 10% overlap.
+
+125
+00:08:40,983 --> 00:08:43,308
+Recursive character splitting.
+
+126
+00:08:43,917 --> 00:08:46,017
+Structure-aware clause chunks.
+
+127
+00:08:46,617 --> 00:08:49,267
+Clause chunks with context headers.
+
+128
+00:08:49,883 --> 00:08:51,658
+And late chunking.
+
+129
+00:08:51,958 --> 00:08:57,239
+Clause chunks with context should beat fixed
+windows, but the published evidence is
+
+130
+00:08:57,239 --> 00:09:00,483
+thin, so produce the numbers on
+your own contracts.
+
+131
+00:09:00,783 --> 00:09:06,083
+Slice them by contract length, scanned versus
+native documents, and query type.
+
+132
+00:09:06,383 --> 00:09:09,883
+Averages hide the slice where a
+chunker collapses.
+
+133
+00:09:10,883 --> 00:09:12,683
+Here are the tradeoffs.
+
+134
+00:09:12,983 --> 00:09:17,133
+Fixed-size windows are trivial, and
+robust to bad parsing.
+
+135
+00:09:17,433 --> 00:09:22,633
+But they split clauses, so use them only as a
+baseline, or for scans you can't
+
+136
+00:09:22,633 --> 00:09:23,033
+parse.
+
+137
+00:09:23,650 --> 00:09:28,450
+Clause chunks with context headers line up
+with how lawyers cite and query.
+
+138
+00:09:28,750 --> 00:09:33,250
+They need a good parser, and an LLM
+call per chunk at ingest.
+
+139
+00:09:33,550 --> 00:09:36,125
+This is the default for contracts.
+
+140
+00:09:36,750 --> 00:09:41,325
+Putting the whole contract in a long
+context has no chunking errors.
+
+141
+00:09:41,625 --> 00:09:46,650
+But it's expensive per query, and recall
+drops in the middle of long contexts.
+
+142
+00:09:46,950 --> 00:09:51,350
+It fits single-contract questions,
+under about 100 pages.
+
+143
+00:09:51,950 --> 00:09:57,306
+And structured extraction into a table is
+exact and auditable, but needs a fixed
+
+144
+00:09:57,306 --> 00:09:57,775
+schema.
+
+145
+00:09:58,075 --> 00:10:00,900
+That's the tool for portfolio analytics.
+
+146
+00:10:01,917 --> 00:10:03,792
+Which matters at scale.
+
+147
+00:10:04,092 --> 00:10:09,715
+A question like "all contracts with
+auto-renewal and under 30 days' notice" is the
+
+148
+00:10:09,715 --> 00:10:11,292
+wrong job for chunking.
+
+149
+00:10:11,917 --> 00:10:17,067
+Extract clauses into a structured table at
+ingest, and query it with SQL.
+
+150
+00:10:17,367 --> 00:10:20,067
+RAG then handles only the long tail.
+
+151
+00:10:21,083 --> 00:10:23,408
+Finally, the common mistakes.
+
+152
+00:10:23,708 --> 00:10:29,715
+Choosing chunk size by intuition, because 512
+feels right, instead of measuring
+
+153
+00:10:29,715 --> 00:10:31,083
+span-level recall.
+
+154
+00:10:31,683 --> 00:10:35,933
+Separating exceptions and carve-outs
+from the rule they modify.
+
+155
+00:10:36,233 --> 00:10:40,508
+The answers come out confidently wrong,
+in the costliest direction.
+
+156
+00:10:41,117 --> 00:10:46,233
+Leaving contract identity out of the chunk, so
+a near-identical clause from the
+
+157
+00:10:46,233 --> 00:10:47,917
+wrong contract gets cited.
+
+158
+00:10:48,517 --> 00:10:50,492
+And ignoring amendments.
+
+159
+00:10:50,792 --> 00:10:56,624
+If the system cites terms that no longer apply,
+that's a liability risk, not just a
+
+160
+00:10:56,624 --> 00:10:57,467
+quality bug.
+
+161
+00:10:57,767 --> 00:11:01,117
+Lineage deserves an owner, and
+tests of its own.
+
+162
+00:11:02,117 --> 00:11:03,792
+So, to recap.
+
+163
+00:11:04,092 --> 00:11:07,692
+Chunk by clause, along the
+contract's own structure.
+
+164
+00:11:07,992 --> 00:11:13,370
+Carry the context each clause depends on: its
+header, its definitions, and its
+
+165
+00:11:13,370 --> 00:11:14,542
+cross-references.
+
+166
+00:11:14,842 --> 00:11:19,217
+And measure the choice on span-level
+recall, on your own contracts.
+
+167
+00:11:20,217 --> 00:11:23,742
+The full article, with every
+source, is on vidyal.ai.
+
+168
+00:11:24,750 --> 00:11:26,525
+Thanks for watching.
+
+169
+00:11:26,825 --> 00:11:33,375
+Next in the series, BM25 versus dense versus
+hybrid search, and when to use each.
+
+170
+00:11:33,675 --> 00:11:35,800
+Subscribe so you don't miss it.
