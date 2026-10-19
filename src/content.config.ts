@@ -15,9 +15,16 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     sourceDoc: z.string().optional(),
-    /** The article's video: YouTube ID and length (m:ss). Thumbnail: src/assets/video/<slug>.png. */
+    /**
+     * The article's video: YouTube ID, length (m:ss) and, optionally, the link to use for "Watch on
+     * YouTube" (e.g. a share link). Thumbnail: src/assets/video/<slug>.png.
+     */
     video: z
-      .object({ youtube: z.string().regex(/^[\w-]{11}$/), duration: z.string().regex(/^\d+:\d{2}$/) })
+      .object({
+        youtube: z.string().regex(/^[\w-]{11}$/),
+        duration: z.string().regex(/^\d+:\d{2}$/),
+        url: z.string().url().optional(),
+      })
       .optional(),
   }),
 });

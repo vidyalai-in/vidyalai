@@ -7,7 +7,7 @@ tags: ["rag", "evals", "llm-as-judge", "observability", "hallucination"]
 seriesOrder: 2
 pubDate: 2026-10-16
 sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
-video: { youtube: "TLINef2z4F8", duration: "10:42" }
+video: { youtube: "TLINef2z4F8", duration: "10:42", url: "https://youtu.be/TLINef2z4F8?si=Zq_OAVxCppKewd5P" }
 ---
 
 ## TL;DR

@@ -76,7 +76,7 @@ const hasToc = headings.some((h) => h.depth === 2);
         </div>
       </header>
 
-      {post.data.video && <VideoEmbed id={post.data.video.youtube} duration={post.data.video.duration} title={post.data.title} slug={post.id} />}
+      {post.data.video && <VideoEmbed id={post.data.video.youtube} duration={post.data.video.duration} title={post.data.title} slug={post.id} url={post.data.video.url} />}
 
       {
         hasToc && (

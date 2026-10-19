@@ -13,12 +13,14 @@ interface Props {
   duration: string;
   title: string;
   slug: string;
+  /** Link for "Watch on YouTube"; defaults to the watch page. */
+  url?: string;
 }
-const { id, duration, title, slug } = Astro.props;
+const { id, duration, title, slug, url } = Astro.props;
 
 const thumbs = import.meta.glob<{ default: ImageMetadata }>('../assets/video/*.{png,jpg}', { eager: true });
 const thumb = Object.entries(thumbs).find(([path]) => path.includes(`/${slug}.`))?.[1].default;
-const watch = `https://www.youtube.com/watch?v=${id}`;
+const watch = url ?? `https://www.youtube.com/watch?v=${id}`;
 const [m, s] = duration.split(':');
 const spoken = `${m} min ${Number(s)} s`;
 ---
