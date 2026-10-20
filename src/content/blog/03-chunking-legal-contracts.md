@@ -11,7 +11,7 @@ sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
 
 ## TL;DR
 
-Contracts are highly structured and full of cross-references, so chunk them along their own hierarchy (article, section, clause) rather than by fixed token windows. Keep each clause whole when it fits (roughly 200-1,000 tokens) and split long clauses at sub-clause boundaries. Each chunk carries its heading path, the contract's identity (parties, type, effective date) and, at retrieval time, the definitions of the defined terms it uses. Retrieve on small clause-level chunks and expand to the parent section at generation time. Then validate the choice on a span-level clause-retrieval eval built from CUAD or LegalBench-RAG, because chunking is a hyperparameter you measure rather than argue about.
+Contracts are highly structured and full of cross-references, so chunk them along their own hierarchy (article, section, clause) rather than by fixed token windows. Keep each clause whole when it fits (roughly 200-1,000 tokens) and split long clauses at sub-clause boundaries. Each chunk carries its heading path, the contract's identity (parties, type, effective date) and, at retrieval time, the definitions of the defined terms it uses. Retrieve on small clause-level chunks and expand to the parent section at generation time. Then validate the choice on a span-level clause-retrieval eval built from CUAD or LegalBench-RAG, because chunking is a hyperparameter you settle by measuring.
 
 ## Requirements to pin down first
 
@@ -22,10 +22,10 @@ Contracts are highly structured and full of cross-references, so chunk them alon
 
 ## Why naive chunking fails on contracts
 
-- **Fixed 512-token windows split clauses mid-sentence.** They separate "Notwithstanding the foregoing..." from the rule it modifies. Exceptions and carve-outs end up in a different chunk from the rule, which is exactly how a system produces confidently wrong answers.
-- **Defined terms live elsewhere.** "Confidential Information" is defined in §1.4 and used in §9. A §9 chunk on its own does not say what it covers.
-- **Cross-references point elsewhere.** "Subject to Section 12.3" and "except as set forth in Schedule B" make a clause meaningless without its target.
-- **Boilerplate looks identical across contracts.** A portfolio has thousands of near-identical governing-law clauses. Without contract-level metadata, retrieval cannot tell *whose* clause it found.
+- Fixed 512-token windows split clauses mid-sentence. They separate "Notwithstanding the foregoing..." from the rule it modifies. Exceptions and carve-outs end up in a different chunk from the rule, which is how a system produces confidently wrong answers.
+- Defined terms live elsewhere. "Confidential Information" is defined in §1.4 and used in §9. A §9 chunk on its own does not say what it covers.
+- Cross-references point elsewhere. "Subject to Section 12.3" and "except as set forth in Schedule B" make a clause meaningless without its target.
+- Boilerplate looks identical across contracts. A portfolio has thousands of near-identical governing-law clauses. Without contract-level metadata, retrieval cannot tell *whose* clause it found.
 
 ## A structure-aware chunking strategy
 
@@ -54,9 +54,9 @@ Prepend a header for embedding and BM25 indexing, and store it separately for di
 [Section 9.2 Limitation of Liability > (b) Exceptions]
 ```
 
-Optionally add a 1-2 sentence LLM-generated summary that situates the clause in the contract, the technique Anthropic calls contextual retrieval. Because contract portfolios are full of near-identical boilerplate, this matters more for legal text than for most domains.
+Optionally add a 1-2 sentence LLM-generated summary that situates the clause in the contract, the technique Anthropic calls contextual retrieval. Because contract portfolios are full of near-identical boilerplate, legal text benefits from this more than most domains do.
 
-The cost is modest, but check the assumptions. Anthropic reported $1.02 per million document tokens using Claude 3 Haiku with prompt caching (2024 prices), for 8k-token documents split into 800-token chunks. Each chunk's call re-reads the cached document, so the per-token cost grows with (document length / chunk size). For example, re-running that arithmetic at the same prices for 30k-token contracts and 300-token chunks gives roughly $4 per million tokens, so a portfolio of 10,000 such contracts (300M tokens) costs on the order of $1,200 to contextualize once. Re-price with the model you actually use.
+The cost is modest, but check the assumptions. Anthropic reported $1.02 per million document tokens using Claude 3 Haiku with prompt caching (2024 prices), for 8k-token documents split into 800-token chunks. Each chunk's call re-reads the cached document, so the per-token cost grows with (document length / chunk size). For example, re-running that arithmetic at the same prices for 30k-token contracts and 300-token chunks gives roughly $4 per million tokens, so a portfolio of 10,000 such contracts (300M tokens) costs on the order of $1,200 to contextualize once. Re-price with the model you use.
 
 ### 4. Resolve defined terms at retrieval time
 
@@ -82,7 +82,7 @@ Late chunking runs a long-context embedding model over the whole document first,
 
 Legal queries mix semantics ("cap on liability") with exact strings ("Section 7.3", "LIBOR" in legacy contracts, party names). Use hybrid BM25 plus dense retrieval (see [BM25 vs Dense vs Hybrid Search](/blog/bm25-dense-hybrid-search/)) with a legal-domain or fine-tuned reranker.
 
-The reranker choice matters. In the LegalBench-RAG experiments, adding a general-purpose reranker (Cohere's `rerank-english-v3.0`) performed *worse* than no reranker on legal text, which the authors attribute to domain mismatch. Evaluate any off-the-shelf reranker on legal queries before adopting it; [Adding a Reranker and Proving It Helped](/blog/reranker-evaluation/) describes how.
+In the LegalBench-RAG experiments, adding a general-purpose reranker (Cohere's `rerank-english-v3.0`) performed *worse* than no reranker on legal text, which the authors attribute to domain mismatch. Evaluate any off-the-shelf reranker on legal queries before adopting it; [Adding a Reranker and Proving It Helped](/blog/reranker-evaluation/) describes how.
 
 Generation should quote the clause verbatim with its section number, so a lawyer can verify the answer against the source.
 
@@ -100,7 +100,7 @@ Add in-house questions that reflect your users.
 ### Metrics
 
 - **Span-level recall@k**: did any retrieved chunk overlap the gold span?
-- **Precision@k**: how much irrelevant text was fed to the model? LegalBench-RAG scores retrieval against gold spans rather than document IDs for exactly this reason: a 2,000-token chunk that contains a 40-token answer is mostly noise.
+- **Precision@k**: how much irrelevant text was fed to the model? LegalBench-RAG scores retrieval against gold spans rather than document IDs for this reason: a 2,000-token chunk that contains a 40-token answer is mostly noise.
 - **Answer correctness** on an attorney-labeled subset.
 
 ### Compare chunkers head to head
@@ -113,7 +113,7 @@ Hold the rest of the pipeline fixed and compare:
 4. structure-aware chunking plus context headers,
 5. late chunking.
 
-Structure-aware chunking with context is expected to beat fixed windows on clause recall, but the point of the exercise is to produce the numbers on *your* contracts. Public results are not conclusive: LegalBench-RAG compared only naive fixed-size (500-character) chunking against recursive splitting.
+Structure-aware chunking with context is expected to beat fixed windows on clause recall, but you need the numbers on *your* contracts. Public results are not conclusive: LegalBench-RAG compared only naive fixed-size (500-character) chunking against recursive splitting.
 
 ### Slice the results
 
@@ -130,8 +130,8 @@ Slice by contract length, scanned vs native documents, and query type (single cl
 | Whole contract in long context | No chunking errors | Expensive per query; mid-context recall drops | Single-contract Q&A, under ~100 pages |
 | Structured extraction to a table | Exact, exhaustive, auditable | Fixed schema, upfront labeling | Portfolio analytics, compliance |
 
-- **Chunk size trades precision against completeness.** Clause-level chunks plus parent expansion get most of both.
-- **Overlap is a weak patch for structure.** Prefer explicit links (definitions, cross-references) over a bigger overlap.
+- Chunk size trades precision against completeness. Clause-level chunks plus parent expansion get most of both.
+- Overlap is a weak patch for structure. Prefer explicit links (definitions, cross-references) over a bigger overlap.
 
 ## Common mistakes
 
@@ -144,8 +144,8 @@ Slice by contract length, scanned vs native documents, and query type (single cl
 
 ## Thinking at scale
 
-- **Portfolio questions need a different abstraction.** For "all contracts with auto-renewal and under 30 days' notice", chunking is the wrong tool. Run clause extraction into a structured table at ingest and query it with SQL; RAG then handles only the long tail. The same split applies to any large corpus, as discussed in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/).
-- **Model document lineage explicitly.** Amendments override the base agreement. If the system cites superseded terms, that is a liability risk, not just a quality bug, so lineage deserves an owner and tests of its own.
+- Portfolio questions need a different abstraction. For "all contracts with auto-renewal and under 30 days' notice", chunking is the wrong tool. Run clause extraction into a structured table at ingest and query it with SQL; RAG then handles only the long tail. The same split applies to any large corpus, as discussed in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/).
+- Model document lineage explicitly. Amendments override the base agreement. If the system cites superseded terms, that is a liability risk as well as a quality bug, so lineage deserves an owner and tests of its own.
 
 ## Further reading
 

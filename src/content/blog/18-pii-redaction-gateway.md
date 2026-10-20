@@ -31,19 +31,19 @@ Every model call crosses one chokepoint on the way in and one on the way out, an
 
 ### 1. One ingress chokepoint
 
-Run a single gateway service in front of all model calls, and in front of the embedding model for RAG (retrieval-augmented generation), since embeddings and vector stores are also data sinks. No team calls the model API directly. Enforce this with network policy and credentials, not convention: if the model API key only exists inside the gateway, bypassing it is impossible rather than merely discouraged.
+Run a single gateway service in front of all model calls, and in front of the embedding model for RAG (retrieval-augmented generation), since embeddings and vector stores are also data sinks. No team calls the model API directly. Enforce this with network policy and credentials, not convention: if the model API key only exists inside the gateway, bypassing it is impossible.
 
 ### 2. Layered detection
 
-**Deterministic validators.** Regexes plus checksums: Luhn for card numbers (PANs, primary account numbers), mod-97 for IBANs, SSN area-number rules, and libphonenumber for phone numbers. These are high precision and cheap, and checksums cut false positives on random digit strings.
+The first layer is deterministic validators, regexes plus checksums: Luhn for card numbers (PANs, primary account numbers), mod-97 for IBANs, SSN area-number rules, and libphonenumber for phone numbers. These are high precision and cheap, and checksums cut false positives on random digit strings.
 
-**Statistical NER.** A fine-tuned token classifier (DeBERTa- or spaCy-class, roughly 100-400M parameters, under 10 ms on a GPU) for PERSON, LOCATION/ADDRESS, ORG, date of birth and medical record numbers.
+The second layer is statistical NER, a fine-tuned token classifier (DeBERTa- or spaCy-class, roughly 100-400M parameters, under 10 ms on a GPU) for PERSON, LOCATION/ADDRESS, ORG, date of birth and medical record numbers.
 
 Off-the-shelf NER recall varies a lot with the text. As an illustrative planning figure, expect something like 85-90% recall on names in clean, well-formed text, and noticeably less on chat, ALL-CAPS text or names from underrepresented cultures. Robustness studies of Presidio and spaCy-based detectors consistently report significant degradation on out-of-distribution inputs, non-standard formats and unseen surface forms (Zafar and Nowaczyk, 2026). Don't plan around a published number: measure recall on your own labeled data, and fine-tune on in-domain examples to close the gap.
 
-**Context rules.** Boost scores near trigger phrases ("my SSN is", "DOB:"), and suppress them on allowlisted terms such as public figures, product names or your own company name.
+Context rules sit on top. They boost scores near trigger phrases ("my SSN is", "DOB:"), and suppress them on allowlisted terms such as public figures, product names or your own company name.
 
-**Optional LLM pass.** A small, self-hosted LLM can catch quasi-identifiers such as "the only female cardiologist at St. Mary's in Boise", which no token-level detector flags. Run it only on flagged or high-risk traffic, because of its cost and latency.
+As an optional extra pass, a small, self-hosted LLM can catch quasi-identifiers such as "the only female cardiologist at St. Mary's in Boise", which no token-level detector flags. Run it only on flagged or high-risk traffic, because of its cost and latency.
 
 Frameworks such as Microsoft Presidio (open source) or Google Cloud Sensitive Data Protection (managed) provide this pluggable recognizer pipeline. Expect to customize them heavily.
 
@@ -138,10 +138,10 @@ Turn recall into an absolute number for stakeholders. At 1 million requests a da
 
 ## Thinking at scale
 
-- **Own the gateway centrally.** A platform or security team owns the detectors, the vault and the policies; product teams consume the gateway. Detector improvements then reach every product at once, and audits have one place to look.
-- **Treat the vault as tier-zero infrastructure.** It is the one component that holds re-identifiable data for every request. It needs its own threat model, key management, access reviews and incident runbook.
-- **Version detectors like models.** Each detector change re-runs the labeled test set, and recall regressions on any high-risk type block the release.
-- **Revisit the build-vs-move decision.** As self-hosted open models improve, the cheapest way to meet a strict compliance bar can shift from "redact harder" to "move the model inside the trust boundary". Re-check that tradeoff when the capability gap narrows.
+- Own the gateway centrally. A platform or security team owns the detectors, the vault and the policies; product teams consume the gateway. Detector improvements then reach every product at once, and audits have one place to look.
+- Treat the vault as tier-zero infrastructure. It is the one component that holds re-identifiable data for every request. It needs its own threat model, key management, access reviews and incident runbook.
+- Version detectors like models. Each detector change re-runs the labeled test set, and recall regressions on any high-risk type block the release.
+- Revisit the build-vs-move decision. As self-hosted open models improve, the cheapest way to meet a strict compliance bar can shift from "redact harder" to "move the model inside the trust boundary". Re-check that tradeoff when the capability gap narrows.
 
 ## Further reading
 

@@ -11,7 +11,7 @@ sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 
 ## TL;DR
 
-With 5,000 examples, data quality and the eval matter more than any hyperparameter, so spend most of the effort there. For a 7-9B instruct model, apply LoRA (low-rank adaptation) to all linear layers (attention and MLP) with rank 16-32, alpha at 1-2 times the rank, and a learning rate around 1e-4 to 2e-4, roughly 10 times the learning rate you would use for full fine-tuning. Train for 2-3 epochs with cosine decay, 3-5% warmup, an effective batch size of 32-64 and loss on completion tokens only. In bf16 the frozen 8B base weights alone take about 16 GB, so with activations a comfortable budget is 40-80 GB of GPU memory; QLoRA (a 4-bit base, about 6 GB of weights) fits on a 24 GB card. Each run takes minutes on one H100. Select the checkpoint on a held-out task metric, not on validation loss, and check for regressions in general capability before shipping.
+With 5,000 examples, data quality and the eval affect the outcome more than any hyperparameter does, so spend most of the effort there. For a 7-9B instruct model, apply LoRA (low-rank adaptation) to all linear layers (attention and MLP) with rank 16-32, alpha at 1-2 times the rank, and a learning rate around 1e-4 to 2e-4, roughly 10 times the learning rate you would use for full fine-tuning. Train for 2-3 epochs with cosine decay, 3-5% warmup, an effective batch size of 32-64 and loss on completion tokens only. In bf16 the frozen 8B base weights alone take about 16 GB, so with activations a comfortable budget is 40-80 GB of GPU memory; QLoRA (a 4-bit base, about 6 GB of weights) fits on a 24 GB card. Each run takes minutes on one H100. Select the checkpoint on a held-out task metric, not on validation loss, and check for regressions in general capability before shipping.
 
 ## Requirements to pin down first
 
@@ -35,18 +35,18 @@ This post uses Qwen3-8B (dense, text-only, Apache 2.0, 8.19B parameters) as the 
 
 Most of the pipeline is data preparation and evaluation; the training step itself is the shortest stage.
 
-- **Split.** Use about 4,500 train / 250 validation / 250 test, stratified by category. If the training data is synthetic, keep a separate, human-verified test set. Deduplicate with near-duplicate hashing across the splits so the test set doesn't leak into training.
-- **Quality pass.** Review 200 examples by hand. With 5,000 samples, 5% label noise is 250 wrong lessons. Filter with an LLM judge or a rules check, and fix systematic errors at the source. As LIMA showed, 1,000 excellent examples often beat 10,000 mediocre ones.
-- **Format.** Use the base model's exact chat template, including its special tokens. Mask the loss on system and user tokens and train only on assistant tokens. Packing several short sequences into one training sequence, with correct attention masking so packed examples can't attend to each other, raises throughput by 2-3x.
-- **Coverage.** Compare the distribution against production traffic. Add hard negatives and "abstain" examples if the model has to refuse or say "not found".
+- Split the data into about 4,500 train / 250 validation / 250 test, stratified by category. If the training data is synthetic, keep a separate, human-verified test set. Deduplicate with near-duplicate hashing across the splits so the test set doesn't leak into training.
+- Do a quality pass: review 200 examples by hand. With 5,000 samples, 5% label noise is 250 mislabeled examples. Filter with an LLM judge or a rules check, and fix systematic errors at the source. As LIMA showed, 1,000 excellent examples often beat 10,000 mediocre ones.
+- Use the base model's exact chat template, including its special tokens. Mask the loss on system and user tokens and train only on assistant tokens. Packing several short sequences into one training sequence, with correct attention masking so packed examples can't attend to each other, raises throughput by 2-3x.
+- Check coverage by comparing the distribution against production traffic. Add hard negatives and "abstain" examples if the model has to refuse or say "not found".
 
 ## The training recipe
 
 ### Target modules and rank
 
-**Target modules.** Apply LoRA to all linear projections: `q`, `k`, `v`, `o`, `gate`, `up` and `down`. Attention-only LoRA underperforms noticeably. Thinking Machines' "LoRA Without Regret" (2025) found that the MLP adapters do most of the work: attention-only LoRA underperformed MLP-only LoRA even at matched parameter counts.
+Apply LoRA to all linear projections: `q`, `k`, `v`, `o`, `gate`, `up` and `down`. Attention-only LoRA underperforms noticeably. Thinking Machines' "LoRA Without Regret" (2025) found that the MLP adapters do most of the work: attention-only LoRA underperformed MLP-only LoRA even at matched parameter counts.
 
-**Rank.** Use `r=16` as the default, and `r=32-64` if the task is far from pretraining (a new language or a domain-specific language). Higher rank rarely helps with 5,000 examples and makes overfitting easier.
+For rank, use `r=16` as the default, and `r=32-64` if the task is far from pretraining (a new language or a domain-specific language). Higher rank rarely helps with 5,000 examples and makes overfitting easier.
 
 The trainable parameter count is `r × Σ (d_in + d_out)` over every adapted matrix. For Qwen3-8B (hidden size 4,096, MLP size 12,288, 8 key-value heads of dimension 128, 36 layers):
 
@@ -93,12 +93,12 @@ config = LoraConfig(
 
 ## The GPU memory budget
 
-A common shortcut says "an 8B model in bf16 with LoRA needs about 16 GB". That is the frozen base weights alone (8.19B parameters × 2 bytes ≈ 16.4 GB). The real budget has four parts:
+A common shortcut says "an 8B model in bf16 with LoRA needs about 16 GB". That is the frozen base weights alone (8.19B parameters × 2 bytes ≈ 16.4 GB). The full budget has four parts:
 
-1. **Base weights:** 2 bytes per parameter in bf16, or about 0.5 bytes in 4-bit NF4 (QLoRA).
-2. **LoRA state:** trainable weights, gradients and the two AdamW moments, all in fp32, so 16 bytes per trainable parameter. For 43.6M parameters that is about 0.7 GB.
-3. **Activations** saved for the backward pass. LoRA freezes the base weights, but gradients still have to flow back through every layer to reach the adapters, so the activations are still needed. As a rough estimate for an 8B dense model with FlashAttention, each token stores on the order of 170 KB per layer in bf16, about 6 MB per token across 36 layers, so about 25 GB for a 4,096-token micro-batch. LoRA dropout adds more, because each adapted projection keeps its own dropped-out copy of the input. Gradient checkpointing stores only each layer's input (36 × 4,096 tokens × 4,096 × 2 bytes ≈ 1.2 GB) and recomputes the rest, at the cost of one extra forward pass.
-4. **Logits and loss.** Qwen3's vocabulary has about 152,000 tokens, so 4,096 tokens produce 622M logits. Holding them in bf16, upcasting them to fp32 for the loss and storing the fp32 gradient takes roughly 4-6 GB at peak. A fused or chunked cross-entropy kernel (for example Liger Kernel or Cut Cross-Entropy) brings this under 1 GB.
+1. Base weights: 2 bytes per parameter in bf16, or about 0.5 bytes in 4-bit NF4 (QLoRA).
+2. LoRA state: trainable weights, gradients and the two AdamW moments, all in fp32, so 16 bytes per trainable parameter. For 43.6M parameters that is about 0.7 GB.
+3. Activations saved for the backward pass. LoRA freezes the base weights, but gradients still have to flow back through every layer to reach the adapters, so the activations are still needed. As a rough estimate for an 8B dense model with FlashAttention, each token stores on the order of 170 KB per layer in bf16, about 6 MB per token across 36 layers, so about 25 GB for a 4,096-token micro-batch. LoRA dropout adds more, because each adapted projection keeps its own dropped-out copy of the input. Gradient checkpointing stores only each layer's input (36 × 4,096 tokens × 4,096 × 2 bytes ≈ 1.2 GB) and recomputes the rest, at the cost of one extra forward pass.
+4. Logits and loss: Qwen3's vocabulary has about 152,000 tokens, so 4,096 tokens produce 622M logits. Holding them in bf16, upcasting them to fp32 for the loss and storing the fp32 gradient takes roughly 4-6 GB at peak. A fused or chunked cross-entropy kernel (for example Liger Kernel or Cut Cross-Entropy) brings this under 1 GB.
 
 Putting it together for Qwen3-8B with a 4,096-token micro-batch (rough estimates; measure with `torch.cuda.max_memory_allocated()` on your stack):
 
@@ -115,10 +115,10 @@ The QLoRA weight figure is about 6 GB rather than 4 GB because only the transfor
 
 What this means for hardware:
 
-- **80 GB (A100 or H100):** bf16 LoRA at 4,096 tokens without checkpointing, with headroom.
-- **40-48 GB:** bf16 LoRA with gradient checkpointing, comfortably.
-- **24 GB:** bf16 LoRA only with shorter micro-batches (2,048 tokens or less), checkpointing and a fused loss. QLoRA fits comfortably.
-- **70B models:** QLoRA needs about 40 GB for NF4 weights plus about 3.3 GB of LoRA state at `r=16` (207M trainable parameters), so one 80 GB GPU works, and 48 GB only with short sequences. The QLoRA paper fine-tuned a 65B model on a single 48 GB GPU.
+- 80 GB (A100 or H100): bf16 LoRA at 4,096 tokens without checkpointing, with headroom.
+- 40-48 GB: bf16 LoRA with gradient checkpointing, comfortably.
+- 24 GB: bf16 LoRA only with shorter micro-batches (2,048 tokens or less), checkpointing and a fused loss. QLoRA fits comfortably.
+- 70B models: QLoRA needs about 40 GB for NF4 weights plus about 3.3 GB of LoRA state at `r=16` (207M trainable parameters), so one 80 GB GPU works, and 48 GB only with short sequences. The QLoRA paper fine-tuned a 65B model on a single 48 GB GPU.
 
 QLoRA is slower than bf16 LoRA, because the 4-bit weights are dequantized on every forward and backward pass, and it costs a small amount of quality. A 10-30% throughput penalty is a reasonable planning figure; measure it on your stack.
 
@@ -136,7 +136,7 @@ Measure the task metric on held-out data: exact match or F1 for extraction, pass
 
 Compare against three baselines: the prompted base model, the prompted frontier model, and the fine-tuned model. Report the deltas with bootstrap confidence intervals.
 
-Be honest about how wide those intervals are on 250 test items. The 95% half-width of a single accuracy is `1.96 × sqrt(p(1 − p) / 250)`: about ±3.7 points at 90% accuracy, ±5.7 at 70%, and ±6.2 at 50%. When comparing two models on the same 250 items, analyze per-item differences; the interval then depends only on the items where the models disagree and is usually tighter.
+On 250 test items those intervals are wide. The 95% half-width of a single accuracy is `1.96 × sqrt(p(1 − p) / 250)`: about ±3.7 points at 90% accuracy, ±5.7 at 70%, and ±6.2 at 50%. When comparing two models on the same 250 items, analyze per-item differences; the interval then depends only on the items where the models disagree and is usually tighter.
 
 ### Regression suite
 
@@ -154,10 +154,10 @@ Would 2,500 examples give the same result? If so, buy better data rather than mo
 
 ## Shipping it
 
-- **Merged vs separate adapters.** Merge the adapter into the base weights for single-tenant, low-latency serving. Keep it separate for multi-tenant multi-LoRA serving, where many adapters share one base.
-- **Quantize after merging, then re-evaluate.** Quantization can cost 0.5-2 points, so the shipped artifact needs its own eval run.
-- **Version everything together.** Training data, config, base model hash and eval results form one release artifact.
-- **Plan for base model upgrades.** Re-run the pipeline when the base model changes; it should be a scheduled job, not a project.
+- Merge the adapter into the base weights for single-tenant, low-latency serving. Keep it separate for multi-tenant multi-LoRA serving, where many adapters share one base.
+- Quantize after merging, then re-evaluate. Quantization can cost 0.5-2 points, so the shipped artifact needs its own eval run.
+- Version everything together. Training data, config, base model hash and eval results form one release artifact.
+- Plan for base model upgrades. Re-run the pipeline when the base model changes; it should be a scheduled job, not a project.
 
 ## Tradeoffs
 
@@ -184,9 +184,9 @@ Would 2,500 examples give the same result? If so, buy better data rather than mo
 
 ## Thinking at scale
 
-- **Make the pipeline the product.** One fine-tune is a project; a cheap, automated pipeline (data versioning, sweep, eval, regression gate, packaging) turns every base-model upgrade and data refresh into a scheduled job. That is what keeps a fine-tune from being overtaken by the next frontier model with a prompt.
-- **Own the data, not just the weights.** The 5,000 examples, their provenance and the hand-review notes are the durable asset. Base models and adapters are rebuilt from them.
-- **Standardize serving early.** If several teams will fine-tune, a shared multi-LoRA serving tier with one blessed base model avoids a fleet of merged, separately quantized models that each need their own eval and capacity planning.
+- Treat the pipeline as the product. One fine-tune is a project; a cheap, automated pipeline (data versioning, sweep, eval, regression gate, packaging) turns every base-model upgrade and data refresh into a scheduled job. That is what keeps a fine-tune from being overtaken by the next frontier model with a prompt.
+- Own the data, not just the weights. The 5,000 examples, their provenance and the hand-review notes are the durable asset. Base models and adapters are rebuilt from them.
+- Standardize serving early. If several teams will fine-tune, a shared multi-LoRA serving tier with one blessed base model avoids a fleet of merged, separately quantized models that each need their own eval and capacity planning.
 
 ## Further reading
 

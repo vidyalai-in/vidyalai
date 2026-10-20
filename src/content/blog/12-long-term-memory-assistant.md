@@ -11,7 +11,7 @@ sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 
 ## TL;DR
 
-Treat memory as a tiered system with explicit write and read policies, not as "put everything in a vector database". There are four tiers: a **working context** curated each turn within the window; **episodic memory**, timestamped summaries of past sessions; **semantic or profile memory**, distilled facts and preferences stored as structured records with provenance that can be overwritten; and **procedural memory**, learned instructions and skills. The hard problems are deciding what to write, resolving conflicts and staleness, retrieving the right few hundred tokens, and giving users control and deletion. Measure the system on long-horizon memory benchmarks plus production signals such as how often users have to repeat themselves.
+Treat memory as a tiered system with explicit write and read policies, not as "put everything in a vector database". There are four tiers: a working context curated each turn within the window; episodic memory, timestamped summaries of past sessions; semantic or profile memory, distilled facts and preferences stored as structured records with provenance that can be overwritten; and procedural memory, learned instructions and skills. The hard problems are deciding what to write, resolving conflicts and staleness, retrieving the right few hundred tokens, and giving users control and deletion. Measure the system on long-horizon memory benchmarks plus production signals such as how often users have to repeat themselves.
 
 ## Requirements to pin down first
 
@@ -41,7 +41,7 @@ Writes and reads are separate pipelines: the write path decides what becomes a m
 
 ## The write path
 
-This is where most memory systems succeed or fail.
+Most memory systems succeed or fail here.
 
 ### Extraction with explicit operations
 
@@ -78,7 +78,7 @@ The pinned profile and active procedural rules go into every request. They are s
 
 Run hybrid BM25 plus dense retrieval over facts and episode summaries, filtered by user and ACL, then rerank. Budget about 1-3k tokens of retrieved memory.
 
-For ranking, a well-known formulation comes from the Generative Agents paper (Park et al., 2023). It scores each memory as a **weighted sum** of three components, each min-max normalized to [0, 1]:
+For ranking, a well-known formulation comes from the Generative Agents paper (Park et al., 2023). It scores each memory as a weighted sum of three components, each min-max normalized to [0, 1]:
 
 ```text
 score = α_recency · recency + α_importance · importance + α_relevance · relevance
@@ -86,7 +86,7 @@ score = α_recency · recency + α_importance · importance + α_relevance · re
 
 In the paper all three α weights are set to 1. Recency is an exponential decay (factor 0.995 per sandbox game hour since the memory was last retrieved), importance is a 1-10 rating an LLM assigns at write time, and relevance is cosine similarity between the memory's embedding and the query's.
 
-The sum matters. A product would let any near-zero component erase a memory. Consider a two-year-old but critical fact against yesterday's trivia, with normalized scores:
+Using a sum instead of a product can change the ranking, because a product would let any near-zero component erase a memory. Consider a two-year-old but critical fact against yesterday's trivia, with normalized scores:
 
 | Memory | Relevance | Recency | Importance | Sum | Product |
 |---|---|---|---|---|---|
@@ -107,8 +107,8 @@ Questions like "what did we decide last month?" need time-indexed episode retrie
 
 ## Consolidation and forgetting
 
-- **Nightly "sleep" jobs.** Merge duplicates, re-summarize old episodes into coarser summaries (day → week → month), decay low-importance items that are never accessed, and lower confidence on stale facts until they are re-confirmed.
-- **Hard delete that cascades.** A user deletion request must remove data from the raw log, summaries, facts, embeddings, caches and any fine-tuned artifacts. Provenance links make this possible. Design for it from day one; retrofitting it is far harder.
+- Nightly "sleep" jobs: merge duplicates, re-summarize old episodes into coarser summaries (day → week → month), decay low-importance items that are never accessed, and lower confidence on stale facts until they are re-confirmed.
+- Hard delete that cascades. A user deletion request must remove data from the raw log, summaries, facts, embeddings, caches and any fine-tuned artifacts. Provenance links make this possible. Design for it from day one; retrofitting it is far harder.
 
 ## How to measure it
 
@@ -150,14 +150,14 @@ Also build an internal synthetic set: scripted multi-week personas with planted 
 | Structured fact store with ADD/UPDATE/DELETE | Precise, editable; supports updates and deletion | Extraction errors; schema design; more infrastructure | Personal assistants with preferences and a profile |
 | Agentic memory tools (MemGPT-style) | Model controls paging; flexible | Under- or over-calling; harder to evaluate | Long autonomous tasks |
 
-- **False memory vs. forgetting.** In most consumer products a confidently wrong memory hurts trust more than a forgotten one, so tune extraction for precision.
-- **Implicit vs. explicit memory.** Inferring preferences is powerful and can feel creepy. Show users what is stored and let them edit it.
-- **Personalization vs. sycophancy.** Memory can lock in user beliefs. Keep facts *about the user* separate from claims *about the world*.
+- False memory vs. forgetting: in most consumer products a confidently wrong memory hurts trust more than a forgotten one, so tune extraction for precision.
+- Implicit vs. explicit memory: inferring preferences is powerful and can feel creepy. Show users what is stored and let them edit it.
+- Personalization vs. sycophancy: memory can lock in user beliefs. Keep facts *about the user* separate from claims *about the world*.
 
 ## Common mistakes
 
 - **No update or delete semantics.** "I'm no longer vegetarian" sits alongside the old fact, and the model picks one at random.
-- **Erasure that doesn't cascade** to embeddings, summaries and backups. That is a GDPR failure, not just a bug.
+- **Erasure that doesn't cascade** to embeddings, summaries and backups. That is a GDPR failure as well as a bug.
 - **Similarity-only retrieval.** It fails on temporal questions ("last month") and aggregate questions ("how many times did I...").
 - **Memory as a prompt-injection vector.** A malicious document gets "remembered" as an instruction and replays in every future session. Sanitize writes and store instructions separately from facts.
 - **Summaries of summaries drift.** Without the raw log as ground truth, errors compound and can't be corrected. Keep the raw log and allow re-derivation.
@@ -165,10 +165,10 @@ Also build an internal synthetic set: scripted multi-week personas with planted 
 
 ## Thinking at scale
 
-- **Deletion is an architecture property.** Provenance from every derived artifact back to source turns is what makes a cascade delete possible across stores, caches and fine-tuned models.
-- **Version the extraction pipeline.** A new extraction prompt or model changes what gets written. Keep the raw log so you can re-derive facts and summaries when it improves.
-- **Separate ownership of write and read paths.** They fail differently (bad memories versus missed memories) and need their own metrics and on-call signals.
-- **Plan for org memory.** Shared memory brings ACLs, conflicting statements from different people and stricter audit needs; retrofitting those onto a single-user design is costly.
+- Deletion is an architecture property. Provenance from every derived artifact back to source turns is what makes a cascade delete possible across stores, caches and fine-tuned models.
+- Version the extraction pipeline. A new extraction prompt or model changes what gets written. Keep the raw log so you can re-derive facts and summaries when it improves.
+- Separate ownership of write and read paths. They fail differently (bad memories versus missed memories) and need their own metrics and on-call signals.
+- Plan for org memory. Shared memory brings ACLs, conflicting statements from different people and stricter audit needs; retrofitting those onto a single-user design is costly.
 
 Related: [Detecting and Recovering from Agent Loops](/blog/agent-loop-detection-recovery/) covers why a persistent tried-list must survive context compaction.
 

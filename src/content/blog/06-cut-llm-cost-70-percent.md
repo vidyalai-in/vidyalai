@@ -11,24 +11,24 @@ sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 
 ## TL;DR
 
-A 70% cost cut almost never comes from one trick. It comes from stacking three or four multiplicative levers on a cost model you have actually measured: caching the prompt prefix, routing easy traffic to a smaller model, sending non-interactive work through a batch API, and trimming wasted tokens. Because the savings multiply, together they typically remove 70-85% of spend (for example `0.5 × 0.6 × 0.8 = 0.24` of the original bill). Before touching anything, build a frozen eval set and a quality guardrail, so "without hurting quality" is something you test rather than something you hope for. Then roll out one lever at a time behind a feature flag and measure each against that guardrail.
+A 70% cost cut almost never comes from one trick; it takes three or four multiplicative levers stacked on a cost model you have measured: caching the prompt prefix, routing easy traffic to a smaller model, sending non-interactive work through a batch API, and trimming wasted tokens. Because the savings multiply, together they typically remove 70-85% of spend (for example `0.5 × 0.6 × 0.8 = 0.24` of the original bill). Before touching anything, build a frozen eval set and a quality guardrail, so that "without hurting quality" is a claim you test. Then roll out one lever at a time behind a feature flag and measure each against that guardrail.
 
 ## Requirements to pin down first
 
-- **What does the spend actually consist of?** Break it down by endpoint and feature, input vs. output tokens, cached vs. uncached, and interactive vs. offline. In many products 10-20% of call sites cause around 80% of spend. A common culprit is one agent loop that re-sends a 30k-token context on every step. The breakdown tells you which lever to pull first.
+- **What does the spend consist of?** Break it down by endpoint and feature, input vs. output tokens, cached vs. uncached, and interactive vs. offline. In many products 10-20% of call sites cause around 80% of spend. A common culprit is one agent loop that re-sends a 30k-token context on every step. The breakdown tells you which lever to pull first.
 - **What does "quality" mean for this product?** Task success rate, human preference win-rate, a downstream business KPI (resolution rate, thumbs-down rate), or all three? Which slices must not regress at all, such as enterprise tenants or safety-critical flows? This defines the guardrail every lever has to pass.
 - **Hosted API or self-hosted?** On an API, the levers are tokens, model choice, caching and batch. On your own GPUs you also control utilization, batching, quantization and hardware choice.
 - **Which latency SLOs (service-level objectives) constrain you?** Batch processing and aggressive cascades both add latency. A strict interactive SLO rules some levers out for some traffic.
 
 ## Step 0: a cost model and a quality gate
 
-You cannot cut what you have not measured, and you cannot claim "no quality loss" without a test.
+Measure cost before you cut it, and set up a test before you claim "no quality loss".
 
-**Instrument every call** with: feature, tenant, model, input tokens, output tokens, cached tokens, latency and an outcome signal. With that in place, the north-star metric becomes cost per *successful task*, not cost per call. Comparing per task also absorbs tokenizer differences between model generations. Anthropic notes that Claude 4.7 and later models use a tokenizer that produces roughly 30% more tokens for the same text, so per-token prices alone can mislead.
+Instrument every call with feature, tenant, model, input tokens, output tokens, cached tokens, latency and an outcome signal. With that in place, the north-star metric becomes cost per *successful task*, not cost per call. Comparing per task also absorbs tokenizer differences between model generations. Anthropic notes that Claude 4.7 and later models use a tokenizer that produces roughly 30% more tokens for the same text, so per-token prices alone can mislead.
 
-**Build a frozen eval set** of roughly 1,000-3,000 real production samples, stratified by feature and difficulty. Score it with task-specific checks plus a calibrated LLM judge. Require judge-human agreement of at least 0.8 on a spot-checked subset before trusting the judge ([Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/) covers calibration in depth).
+Build a frozen eval set of roughly 1,000-3,000 real production samples, stratified by feature and difficulty. Score it with task-specific checks plus a calibrated LLM judge. Require judge-human agreement of at least 0.8 on a spot-checked subset before trusting the judge ([Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/) covers calibration in depth).
 
-**Define the guardrail as a non-inferiority test.** For example: the quality drop must be under 1 point absolute at 95% confidence, both overall *and* on each critical slice. Every lever in this post ships only if it passes that test.
+Define the guardrail as a non-inferiority test. For example: the quality drop must be under 1 point absolute at 95% confidence, both overall *and* on each critical slice. Every lever in this post ships only if it passes that test.
 
 ## The five levers
 
@@ -38,7 +38,7 @@ Each lever applies to the bill the previous lever left behind, which is why four
 
 ### Lever 1: Prompt and prefix caching (often 30-60% of input cost)
 
-Restructure prompts as **static, then semi-static, then dynamic**: system prompt, tool schemas and few-shot examples first, then retrieved documents, then the user turn. Provider prompt caching bills reads of a cached prefix at a small fraction of the base input price.
+Restructure prompts as static, then semi-static, then dynamic: system prompt, tool schemas and few-shot examples first, then retrieved documents, then the user turn. Provider prompt caching bills reads of a cached prefix at a small fraction of the base input price.
 
 Anthropic's current multipliers, per its [pricing page](https://platform.claude.com/docs/en/about-claude/pricing):
 
@@ -56,11 +56,11 @@ For chat and agents, where the conversation prefix is re-sent on every turn, cac
 
 - Tokens are 85% input and 15% output. Spend is `0.85 × 1 + 0.15 × 5 = 1.6` units, so input is 53% of spend.
 - Caching 80% of input tokens at 0.1x cuts input spend to `0.85 × (0.2 + 0.8 × 0.1) = 0.24` units.
-- The new total is about 0.99 units: a **38% cut** to the bill.
+- The new total is about 0.99 units: a 38% cut to the bill.
 
 When input dominates spend more heavily (long RAG contexts with short answers), the same caching can approach a 50-65% cut. When outputs are long, it is smaller.
 
-**Self-hosted equivalent:** vLLM automatic prefix caching or SGLang RadixAttention. There the saving is avoided prefill compute and higher throughput per GPU rather than a billing discount.
+The self-hosted equivalent is vLLM automatic prefix caching or SGLang RadixAttention. There the saving is avoided prefill compute and higher throughput per GPU rather than a billing discount.
 
 The cache-hit side of this is covered in more depth in [Designing a Semantic Cache with Hit-Rate Tracking](/blog/semantic-cache-hit-rate-tracking/), which also explains when provider prefix caching beats a semantic cache.
 
@@ -83,14 +83,14 @@ The batch discount stacks with prompt caching. Because batched requests run conc
 
 ### Lever 4: Token hygiene (10-30%)
 
-- **Output tokens are the expensive ones.** At current list prices output costs about 4-8x as much as input: 5x on every current Claude model, and 5-8x across OpenAI's current GPT-5 and GPT-6 lineup (for example $0.05 vs. $0.40 for gpt-5-nano). Cap `max_tokens`, require structured or terse output, and stop asking for chain-of-thought where the task does not benefit. With reasoning models, set the thinking budget per task.
-- **Retrieve less, retrieve better.** Moving from top-20 to top-5 chunks with a reranker often *improves* quality while cutting context by 60-75%.
-- **Compact history and tools.** Summarize long conversation history. Remove tool schemas the current step cannot use. Use prompt compression ([LLMLingua](https://arxiv.org/abs/2310.05736) reports up to 20x compression with little loss on its benchmarks) only where you have measured it on your own tasks.
-- **Deduplicate requests.** Retries, double-submits and the same prompt sent by many users can all be served by an exact-match cache.
+- Output tokens are the expensive ones. At current list prices output costs about 4-8x as much as input: 5x on every current Claude model, and 5-8x across OpenAI's current GPT-5 and GPT-6 lineup (for example $0.05 vs. $0.40 for gpt-5-nano). Cap `max_tokens`, require structured or terse output, and stop asking for chain-of-thought where the task does not benefit. With reasoning models, set the thinking budget per task.
+- Retrieve fewer, better chunks. Moving from top-20 to top-5 chunks with a reranker often *improves* quality while cutting context by 60-75%.
+- Compact history and tools. Summarize long conversation history. Remove tool schemas the current step cannot use. Use prompt compression ([LLMLingua](https://arxiv.org/abs/2310.05736) reports up to 20x compression with little loss on its benchmarks) only where you have measured it on your own tasks.
+- Deduplicate requests. Retries, double-submits and the same prompt sent by many users can all be served by an exact-match cache.
 
 ### Lever 5 (self-hosted): serving efficiency
 
-Continuous batching, FP8 or INT4 weight quantization (AWQ, GPTQ), speculative decoding, and right-sizing the GPU SKU all lower cost per token. Utilization matters most: cost per token scales roughly with `1 / utilization`, so moving from 30% to 70% utilization cuts it to about 43% of its former level (`30 / 70`), more than halving it. [Serving Open-Weight LLMs at Scale](/blog/serving-open-llms-at-scale/) works through the fleet math.
+Continuous batching, FP8 or INT4 weight quantization (AWQ, GPTQ), speculative decoding, and right-sizing the GPU SKU all lower cost per token. Utilization has the largest effect: cost per token scales roughly with `1 / utilization`, so moving from 30% to 70% utilization cuts it to about 43% of its former level (`30 / 70`), more than halving it. [Serving Open-Weight LLMs at Scale](/blog/serving-open-llms-at-scale/) works through the fleet math.
 
 ## A worked example
 
@@ -106,14 +106,14 @@ All numbers are illustrative. Each step applies to the bill left by the previous
 
 Checking the routing step: with perfect routing, cost falls to `0.35 + 0.65 × 0.1 = 0.415` of the previous bill, a 58.5% cut. Budgeting for escalations (about 7% of the routed traffic paying for both calls adds `0.65 × 0.07 ≈ 0.046`) brings it to about 0.46, so -55% is a fair planning figure.
 
-The end result is about $207k, a **79% reduction**. Planning for slightly more than 70% leaves headroom if the escalation rate turns out higher than expected. The levers are not perfectly independent (routing changes which model's cache you hit, for example), so re-measure after each rollout instead of trusting the product of estimates.
+The end result is about $207k, a 79% reduction. Planning for slightly more than 70% leaves headroom if the escalation rate turns out higher than expected. The levers are not perfectly independent (routing changes which model's cache you hit, for example), so re-measure after each rollout instead of trusting the product of estimates.
 
 ## How to measure it
 
-- **Cost metrics:** cost per successful task, the cached-token ratio (cached input tokens over all input tokens), the router escalation rate, and p50/p95 latency.
-- **Offline quality:** the non-inferiority test on the frozen eval set, overall and per critical slice, before each lever ships.
-- **Online quality:** an A/B test on the business KPI, followed by a 1-5% holdout that stays on the old stack for weeks to catch slow drift.
-- **Per-slice dashboards.** Averages hide the long-tail tenant whose quality dropped 8 points.
+- Cost metrics: cost per successful task, the cached-token ratio (cached input tokens over all input tokens), the router escalation rate, and p50/p95 latency.
+- Offline quality: the non-inferiority test on the frozen eval set, overall and per critical slice, before each lever ships.
+- Online quality: an A/B test on the business KPI, followed by a 1-5% holdout that stays on the old stack for weeks to catch slow drift.
+- Per-slice dashboards, because averages hide the long-tail tenant whose quality dropped 8 points.
 
 ## Tradeoffs
 
@@ -126,12 +126,12 @@ The end result is about $207k, a **79% reduction**. Planning for slightly more t
 | Token trimming / compression | Cheap to do; often improves quality | Aggressive compression drops key facts | Bloated RAG or agent contexts |
 | Self-host + quantize | Lowest marginal cost at scale | Ops burden; quantization regressions on long-tail tasks | Roughly $1-2M/yr or more of steady load on tasks open-weight models handle well |
 
-- **Sequence by risk.** Ship the zero-quality-risk levers (caching, batch, dedup) first, then the quality-risk levers (routing, distillation, quantization), each behind its own flag.
-- **Optimize cost per *successful* outcome.** A cheaper model that causes more retries or human escalations can cost more end to end.
+- Sequence by risk. Ship the zero-quality-risk levers (caching, batch, dedup) first, then the quality-risk levers (routing, distillation, quantization), each behind its own flag.
+- Optimize cost per *successful* outcome. A cheaper model that causes more retries or human escalations can cost more end to end.
 
 ## Common mistakes
 
-- **Breaking cache prefixes by accident.** A timestamp, request ID or non-deterministically ordered tool list near the top of the prompt drops the hit rate to zero, and the bill quietly returns. Monitor the cached-token ratio as a first-class metric.
+- **Breaking cache prefixes by accident.** A timestamp, request ID or non-deterministically ordered tool list near the top of the prompt drops the hit rate to zero, and the bill goes back up unnoticed. Monitor the cached-token ratio as a first-class metric.
 - **An unrepresentative eval set.** Validating routing on easy samples and then shipping to a heavy tail produces regressions the eval never saw. Stratify the set and test per slice.
 - **Trusting a biased LLM judge.** Judges favor longer, more fluent outputs and their own model family, which can hide a real regression. Calibrate against human labels and check judge-human agreement on the slices being changed.
 - **Ignoring output and reasoning tokens.** Teams optimize input while a reasoning model spends thousands of hidden thinking tokens per call at output prices. Track thinking tokens per task and set budgets.
@@ -140,10 +140,10 @@ The end result is about $207k, a **79% reduction**. Planning for slightly more t
 
 ## Thinking at scale
 
-- **Make cost per successful task a shared metric.** The 10-20% of call sites that drive most spend usually belong to different teams. A per-feature dashboard of cost per successful task gives each owner a number to move and stops savings in one place being offset by growth in another.
-- **Keep the holdout running.** A 1-5% slice on the old stack for weeks after launch is the only reliable way to see slow drift from provider model updates or traffic shifts.
-- **Revisit self-hosting at a threshold.** Below roughly $1-2M a year of steady, open-weight-friendly load, the operational burden of self-hosting usually outweighs the per-token savings. Above it, re-run the comparison as prices and models change.
-- **Re-validate on every model or price change.** Tier price gaps, cache multipliers and tokenizers all changed during 2025-2026. Each change can move the optimal routing threshold or caching layout.
+- Make cost per successful task a shared metric. The 10-20% of call sites that drive most spend usually belong to different teams. A per-feature dashboard of cost per successful task gives each owner a number to move and stops savings in one place being offset by growth in another.
+- Keep the holdout running. A 1-5% slice on the old stack for weeks after launch is the only reliable way to see slow drift from provider model updates or traffic shifts.
+- Revisit self-hosting at a threshold. Below roughly $1-2M a year of steady, open-weight-friendly load, the operational burden of self-hosting usually outweighs the per-token savings. Above it, re-run the comparison as prices and models change.
+- Re-validate on every model or price change. Tier price gaps, cache multipliers and tokenizers all changed during 2025-2026. Each change can move the optimal routing threshold or caching layout.
 
 ## Further reading
 

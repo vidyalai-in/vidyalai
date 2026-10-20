@@ -37,7 +37,7 @@ Log every step as structured data:
 
 Emit these as OpenTelemetry-style spans so a whole trajectory can be replayed step by step.
 
-Then pull 50-100 looping traces and label them by hand using the taxonomy above. The split is usually dominated by one or two causes. An illustrative breakdown: 60% uninformative tool errors and 25% context overflow, where the agent forgets it already tried X after summarization or truncation dropped the record. Your numbers will differ, which is the point of labeling them.
+Then pull 50-100 looping traces and label them by hand using the taxonomy above. One or two causes usually dominate the split. An illustrative breakdown: 60% uninformative tool errors and 25% context overflow, where the agent forgets it already tried X after summarization or truncation dropped the record. Your numbers will differ, and labeling is how you find them.
 
 Track four baseline metrics from day one:
 
@@ -81,7 +81,7 @@ Define a cheap progress signal per domain: tests passing, new information retrie
 
 ### Idempotency and caching
 
-Cache read-only tool results within a run. This removes the wasted cost of repeats. It does not remove the loop itself, so treat it as cost control, not a fix.
+Cache read-only tool results within a run. This removes the wasted cost of repeats but leaves the loop itself in place, so treat it as cost control.
 
 ## Step 3: Better signal to the model
 
@@ -124,19 +124,19 @@ At temperature 0, the same context gives the same action every time. On a detect
 
 ![State diagram: the agent acts and loops on itself while it makes progress, finishing when the goal is reached. If the loop detector fires on a repeat, oscillation or lack of progress, the first trigger goes to reflect-and-replan and back to acting, the second trigger forks from the last good checkpoint with a stronger model or new strategy and resumes acting, and the third trigger goes to a graceful exit. Hitting a hard budget also goes straight to graceful exit, which returns a partial result, a failure reason and a human handoff.](/diagrams/q11-loop-recovery.svg "Loop recovery as an escalation ladder, with hard budgets as a backstop.")
 
-Each detector trigger escalates one rung, and the hard budget is a backstop that always ends in a graceful exit rather than a silent failure.
+Each detector trigger escalates one rung, and the hard budget is a backstop that always ends in a graceful exit.
 
-1. **First trigger: reflect and replan.** Cheap and in-context.
-2. **Second trigger: fork from the last good checkpoint** with a stronger model or a different strategy, for example switching from "edit" to "read more code".
-3. **Third trigger: end gracefully** with a partial result, a structured failure reason and a handoff to a human. Never fail silently.
+1. First trigger: reflect and replan. This is cheap and stays in context.
+2. Second trigger: fork from the last good checkpoint with a stronger model or a different strategy, for example switching from "edit" to "read more code".
+3. Third trigger: end gracefully with a partial result, a structured failure reason and a handoff to a human. Never fail silently.
 
 Search with backtracking (as in Tree of Thoughts) is the general form of rung 2: instead of pushing forward on one greedy path, return to a known-good state and try a different branch.
 
 ## Step 5: Fix root causes and prevent regressions
 
-- **Fix the tools whose errors were uninformative.** Give similar tools distinct names and descriptions so the model doesn't confuse them; overlapping tools are a common source of ping-pong. Anthropic's tool guidance makes the same point: each tool needs a clear, distinct purpose, and namespacing helps the model choose.
-- **Multi-agent setups:** give each subtask one owner, cap handoff depth and make the handoff contract explicit. Step repetition and failure to recognize termination both appear in the MAST failure taxonomy for multi-agent systems.
-- **Regression evals:** add every labeled looping trace to a regression eval set and gate deploys on loop rate not regressing.
+- Fix the tools whose errors were uninformative. Give similar tools distinct names and descriptions so the model doesn't confuse them; overlapping tools are a common source of ping-pong. Anthropic's tool guidance makes the same point: each tool needs a clear, distinct purpose, and namespacing helps the model choose.
+- In multi-agent setups, give each subtask one owner, cap handoff depth and make the handoff contract explicit. Step repetition and failure to recognize termination both appear in the MAST failure taxonomy for multi-agent systems.
+- Add every labeled looping trace to a regression eval set and gate deploys on loop rate not regressing.
 
 ## How to measure it
 
@@ -153,8 +153,8 @@ The targets above are illustrative; set yours from the baseline you measured in 
 
 Two checks keep the metrics honest:
 
-- **Success rate must not drop.** If loop rate falls but success falls with it, the caps are cutting off trajectories that would have succeeded.
-- **Validate on hard tasks.** Run the regression set and a slice of long, legitimately multi-step tasks on every change, so a tighter cap doesn't quietly hurt the hardest work.
+- Success rate must not drop. If loop rate falls but success falls with it, the caps are cutting off trajectories that would have succeeded.
+- Validate on hard tasks. Run the regression set and a slice of long, legitimately multi-step tasks on every change, so a tighter cap doesn't hurt the hardest work unnoticed.
 
 For the judge that scores exits, see [Building an Eval Suite for a Customer Support Bot](/blog/support-bot-eval-suite/) on calibrating LLM judges against human labels.
 
@@ -168,13 +168,13 @@ For the judge that scores exits, see [Building an Eval Suite for a Customer Supp
 | Escalate to stronger model or human | High recovery rate | Latency, cost, human load | High-value tasks, regulated domains |
 | Retrain/fine-tune on loop-recovery trajectories | Fixes behavior at the source | Slow; needs data and RL infrastructure | You own the model and loops are systemic |
 
-- **Cap from the data.** Set budgets from the distribution of successful trajectories, and revisit them after every model upgrade, because newer models often need fewer steps.
-- **Some repetition is legitimate.** Polling a CI job or waiting on async work should be allow-listed or given backoff semantics, not flagged.
-- **Fix the harness before the model.** Most loops come from the environment and its tools, not from the model being weak.
+- Set budgets from the distribution of successful trajectories, and revisit them after every model upgrade, because newer models often need fewer steps.
+- Some repetition is legitimate. Polling a CI job or waiting on async work should be allow-listed or given backoff semantics instead of being flagged.
+- Fix the harness before the model. Most loops come from the environment and its tools, not from the model being weak.
 
 ## Common mistakes
 
-- **"Just set `max_iterations=10`."** That bounds cost but hides the root cause and quietly lowers the success rate. Without measurement and diagnosis, you never learn why tasks fail.
+- **"Just set `max_iterations=10`."** That bounds cost but hides the root cause and lowers the success rate in a way that is easy to miss. Without measurement and diagnosis, you never learn why tasks fail.
 - **Ignoring context compaction.** After summarization the agent forgets what it already tried and repeats it. A persistent tried-list or memory fixes this.
 - **Exact-match detection only.** Paraphrased queries and reordered arguments slip past. Normalize arguments and add semantic similarity.
 - **Retrying without changing anything.** Temperature 0 plus an unchanged context gives deterministic repetition, so a blind retry produces the same loop.
@@ -183,10 +183,10 @@ For the judge that scores exits, see [Building an Eval Suite for a Customer Supp
 
 ## Thinking at scale
 
-- **Make loop rate a fleet-level SLO.** Track it per agent, per tool and per model version, so a regression after a tool change is attributed to the right owner.
-- **Own the tool contracts.** Error-message quality is part of each tool's API. Review it like any other interface, and test it with the agent in the loop.
-- **Re-baseline budgets on every model migration.** Caps tuned for an older model either waste money or cut off work on a newer one.
-- **Decide when to stop patching.** If loops remain systemic after harness and tool fixes, and you own the model, training on loop-recovery trajectories fixes the behavior at the source.
+- Make loop rate a fleet-level SLO. Track it per agent, per tool and per model version, so a regression after a tool change is attributed to the right owner.
+- Own the tool contracts. Error-message quality is part of each tool's API. Review it like any other interface, and test it with the agent in the loop.
+- Re-baseline budgets on every model migration. Caps tuned for an older model either waste money or cut off work on a newer one.
+- Decide when to stop patching. If loops remain systemic after harness and tool fixes, and you own the model, training on loop-recovery trajectories fixes the behavior at the source.
 
 ## Further reading
 

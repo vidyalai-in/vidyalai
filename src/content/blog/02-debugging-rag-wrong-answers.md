@@ -12,7 +12,7 @@ video: { youtube: "TLINef2z4F8", duration: "10:42", url: "https://youtu.be/TLINe
 
 ## TL;DR
 
-"Wrong answers" is a symptom, not a diagnosis, so the first job is to localize each failure to a pipeline stage. Collect a set of failing cases, trace each one through the pipeline, and bucket it: the answer is not in the corpus; it is in the corpus but was not retrieved; it was retrieved but ranked out of the context; it was in the context but the model ignored or misread it; or the question was ambiguous or the expected answer is wrong. The bucket counts tell you where to spend effort, and more often than not the biggest buckets are retrieval and parsing rather than the LLM (large language model). Fix the dominant bucket, add those cases to a regression set, and gate future changes on it.
+"Wrong answers" is a symptom, so the first job is to localize each failure to a pipeline stage. Collect a set of failing cases, trace each one through the pipeline, and bucket it: the answer is not in the corpus; it is in the corpus but was not retrieved; it was retrieved but ranked out of the context; it was in the context but the model ignored or misread it; or the question was ambiguous or the expected answer is wrong. The bucket counts tell you where to spend effort, and more often than not the biggest buckets are retrieval and parsing rather than the LLM (large language model). Fix the dominant bucket, add those cases to a regression set, and gate future changes on it.
 
 ## Requirements to pin down first
 
@@ -32,11 +32,11 @@ For every request, the system must log enough to replay it exactly:
 - the model and prompt versions,
 - the output.
 
-**If you cannot replay a request exactly, fixing observability is step zero.** Every later step depends on it.
+If you cannot replay a request exactly, fixing observability is step zero, since every later step depends on it.
 
 ## Step 2: Attribute each failure to a stage
 
-This is the core move. For each case, have an SME (subject-matter expert), or a strong model followed by human spot-checks, find the gold evidence chunk(s). Then walk downstream and find the first stage where the gold evidence disappears.
+For each case, have an SME (subject-matter expert), or a strong model followed by human spot-checks, find the gold evidence chunk(s). Then walk downstream and find the first stage where the gold evidence disappears.
 
 ![Decision flowchart for one failing case. Starting from the failing case with its gold evidence, the checks run in order: is gold in the raw corpus, intact after parsing, whole within one chunk, indexed and current with the correct ACL, in the top 200 retrieval candidates, and in the final context. A "no" at any check sends the case to the failure histogram under that stage's bucket. If gold reached the context, a final check asks whether the expected answer is valid: if not, it is a label bucket; if so, a generation bucket. The histogram then drives fixing the largest bucket and adding the cases to a regression suite.](/diagrams/q02-failure-attribution.svg "Walk each failing case downstream; the first stage where gold evidence disappears is the root cause.")
 
@@ -62,9 +62,9 @@ Build a histogram of the buckets. An illustrative distribution, not a published 
 | Generation | 20-30% |
 | Ambiguous question or bad label | 10-20% |
 
-Your numbers will differ, which is the point of measuring. The last bucket matters: you cannot fix what was never broken, and leaving it in inflates the apparent error rate.
+Your numbers will differ, which is why you measure them. Count the last bucket separately: those cases were never broken, so there is nothing to fix, and leaving them in inflates the apparent error rate.
 
-Budget the time honestly. Manual attribution takes roughly 2-5 minutes per case, so 200 cases is about 7-17 hours of SME time. That is why it pays to build the taxonomy manually once, then scale it with a calibrated LLM judge.
+Budget for the SME time. Manual attribution takes roughly 2-5 minutes per case, so 200 cases is about 7-17 hours of SME time. Because of that cost, build the taxonomy manually once, then scale it with a calibrated LLM judge.
 
 ## Step 3: Targeted diagnostics per bucket
 
@@ -72,8 +72,8 @@ Budget the time honestly. Manual attribution takes roughly 2-5 minutes per case,
 
 Compare the production retriever against BM25 (keyword search) and against exact, brute-force kNN (k-nearest neighbors) search.
 
-- **Exact kNN finds gold, ANN does not.** The problem is the approximate index: parameters such as `efSearch` (HNSW) or `nprobe` (IVF) are too low, or recall collapsed under a selective metadata filter.
-- **Neither finds gold.** The problem is the representation. Common causes are vocabulary mismatch (acronyms, IDs and part numbers favor BM25), a query phrased very differently from the document (try HyDE, which embeds a hypothetical answer instead of the question, or query rewriting), or a domain far from the embedder's training data.
+- If exact kNN finds gold and ANN does not, the problem is the approximate index: parameters such as `efSearch` (HNSW) or `nprobe` (IVF) are too low, or recall collapsed under a selective metadata filter.
+- If neither finds gold, the problem is the representation. Common causes are vocabulary mismatch (acronyms, IDs and part numbers favor BM25), a query phrased very differently from the document (try HyDE, which embeds a hypothetical answer instead of the question, or query rewriting), or a domain far from the embedder's training data.
 
 For when each retriever wins, see [BM25 vs Dense vs Hybrid Search](/blog/bm25-dense-hybrid-search/).
 
@@ -85,8 +85,8 @@ Gold is at rank 40 and the context takes k = 10. Add or tune a cross-encoder rer
 
 Run an ablation: give the model *only* the gold chunk.
 
-- **It now answers correctly.** The problem is distraction from irrelevant context. Reduce k, rerank harder, and put the best evidence first.
-- **It still fails.** The problem is reasoning or instruction following. Improve the prompt, require the model to quote the evidence before answering, use a stronger model, or decompose multi-hop questions.
+- If it now answers correctly, the problem is distraction from irrelevant context. Reduce k, rerank harder, and put the best evidence first.
+- If it still fails, the problem is reasoning or instruction following. Improve the prompt, require the model to quote the evidence before answering, use a stronger model, or decompose multi-hop questions.
 
 ### Stale or conflicting documents
 
@@ -94,14 +94,14 @@ The model picked an old version of a policy. Add date metadata, recency boosting
 
 ### Hallucinated citations
 
-Validate that every cited ID was actually in the context. Then verify each claim against its cited span with an NLI (natural language inference) model or an LLM judge before returning the answer.
+Validate that every cited ID was in the context. Then verify each claim against its cited span with an NLI (natural language inference) model or an LLM judge before returning the answer.
 
 ## Step 4: Fix, measure, prevent
 
-- **Fix the largest bucket first, then re-run the whole golden set**, not just the failures. Changes such as a smaller k or a new chunker routinely regress other slices.
-- **Report per-stage metrics**: retrieval recall@k, context precision, faithfulness, answer correctness and abstention rate.
-- **Add every root-caused failure to a regression suite** with its stage label, and gate deploys on it.
-- **Monitor online signals** that drift before users complain: retrieval score distributions, the empty-result rate, the abstention rate, and the share of answers with zero valid citations.
+- Fix the largest bucket first, then re-run the whole golden set, not just the failures. Changes such as a smaller k or a new chunker routinely regress other slices.
+- Report per-stage metrics: retrieval recall@k, context precision, faithfulness, answer correctness and abstention rate.
+- Add every root-caused failure to a regression suite with its stage label, and gate deploys on it.
+- Monitor online signals that drift before users complain: retrieval score distributions, the empty-result rate, the abstention rate, and the share of answers with zero valid citations.
 
 ## How to measure it
 
@@ -123,8 +123,8 @@ Keep faithfulness and correctness as separate metrics. A faithful answer grounde
 | Tune retrieval (hybrid, rerank, fine-tune) | Fixes the most common bucket | Re-index cost, possible regressions | Recall@k on gold is low |
 | Add a verification / abstention layer | Cuts hallucination | Added latency, more refusals | High-stakes domains |
 
-- **Do not touch the prompt or the model until you know gold made it into the context.** Many teams invert this order.
-- **Raising k trades precision and cost for recall.** Measure it rather than assuming it helps.
+- Do not touch the prompt or the model until you know gold made it into the context. Many teams invert this order.
+- Raising k trades precision and cost for recall. Measure it rather than assuming it helps.
 
 ## Common mistakes
 
@@ -132,15 +132,15 @@ Keep faithfulness and correctness as separate metrics. A faithful answer grounde
 - **Debugging from three anecdotes** with no failure set, no traces and no base rate. Fixes target the memorable case, not the common one.
 - **Re-testing only the failing cases.** Regressions elsewhere ship unnoticed; always re-run the full stratified suite.
 - **Ignoring the "label is wrong / question is ambiguous" bucket.** It inflates the apparent error rate and sends work in the wrong direction.
-- **Missing filtered-ANN recall collapse, or a silent version mismatch** between the query encoder and the document encoder. Both look like "the model got worse" while the index is actually broken.
+- **Missing filtered-ANN recall collapse, or a silent version mismatch** between the query encoder and the document encoder. Both look like "the model got worse" when it is the index that is broken.
 - **Treating faithfulness and correctness as the same metric.** Answers faithfully grounded in stale documents pass the check and still mislead users.
 
 ## Thinking at scale
 
-- **Build tooling, not heroics.** A trace viewer with stage-by-stage "gold hit" indicators lets anyone on the team triage a failure in minutes. Debugging RAG is a recurring workflow.
-- **Guard the judge.** Re-calibrate LLM judges against humans on a schedule and after any prompt or model change, so the team does not optimize against a drifting metric.
-- **Escalate systemic issues to their owners.** If 15% of failures are content gaps, that is a product and data-ownership conversation, not a modeling problem.
-- **Design for attribution up front.** The system architecture in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/) separates ingestion, retrieval and generation evals for exactly this reason.
+- Debugging RAG is a recurring workflow, so build tooling for it. A trace viewer with stage-by-stage "gold hit" indicators lets anyone on the team triage a failure in minutes.
+- Re-calibrate LLM judges against humans on a schedule and after any prompt or model change, so the team does not optimize against a drifting metric.
+- Escalate systemic issues to their owners. If 15% of failures are content gaps, that is a product and data-ownership conversation rather than a modeling problem.
+- Design for attribution up front. The system architecture in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/) separates ingestion, retrieval and generation evals for this reason.
 
 ## Further reading
 

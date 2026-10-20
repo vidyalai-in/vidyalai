@@ -11,7 +11,7 @@ sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 
 ## TL;DR
 
-The rollback itself should be boring: a pointer flip. Store prompts as immutable, versioned artifacts in a registry, and have production resolve an alias (`chat-system@prod -> v42`) through a config service with push invalidation. Rolling back means pointing the alias at the last known-good version, which reaches every server in under a minute without a code deploy. The real engineering is in three things around that flip. Detect fast, using a canary with automated guardrail metrics and every trace stamped with the prompt version. Keep prompt and code changes backward-compatible so the old version still works. And clean up the after-effects: conversations, memories and downstream data written while the bad prompt was live, plus a regression eval so the same failure cannot ship again.
+The rollback itself should be boring: a pointer flip. Store prompts as immutable, versioned artifacts in a registry, and have production resolve an alias (`chat-system@prod -> v42`) through a config service with push invalidation. Rolling back means pointing the alias at the last known-good version, which reaches every server in under a minute without a code deploy. The engineering is in three things around that flip. Detect fast, using a canary with automated guardrail metrics and every trace stamped with the prompt version. Keep prompt and code changes backward-compatible so the old version still works. And clean up the after-effects: conversations, memories and downstream data written while the bad prompt was live, plus a regression eval so the same failure cannot ship again.
 
 ## Requirements to pin down first
 
@@ -22,8 +22,8 @@ The rollback itself should be boring: a pointer flip. Store prompts as immutable
 ## Prerequisites: what makes rollback a two-minute operation
 
 - **A prompt registry.** Every version is immutable and carries a content hash, author, linked eval results, target model snapshot and required template variables. Aliases (`dev`, `canary`, `prod`) are mutable pointers, and every alias change is audit-logged.
-- **A serving path built for fast flips.** Applications fetch prompts by alias through a config service or feature-flag platform, with a local cache and push invalidation (or a TTL under 30 s). Bake a **last-known-good fallback** into the binary in case the registry is down.
-- **A compatibility contract.** Templates declare their inputs, and the renderer validates them at load time. The code supports **both N and N-1** prompt versions, so a rollback cannot crash on a missing variable. Prompt-plus-code changes ship in two phases: first deploy code that supports both versions, then flip the prompt.
+- **A serving path built for fast flips.** Applications fetch prompts by alias through a config service or feature-flag platform, with a local cache and push invalidation (or a TTL under 30 s). Bake a last-known-good fallback into the binary in case the registry is down.
+- **A compatibility contract.** Templates declare their inputs, and the renderer validates them at load time. The code supports both N and N-1 prompt versions, so a rollback cannot crash on a missing variable. Prompt-plus-code changes ship in two phases: first deploy code that supports both versions, then flip the prompt.
 - **Version stamping.** `prompt.id`, `prompt.version` and `model.snapshot` go on every trace, log line and feedback event. The OpenTelemetry GenAI conventions now define `gen_ai.prompt.name` and `gen_ai.prompt.version` for exactly this (see [Tracing Every Step of a Multi-Agent Workflow](/blog/tracing-multi-agent-workflows/)). Without stamps you cannot attribute a regression, or prove the rollback took effect.
 
 ## A rollout that catches problems before 100%
@@ -34,7 +34,7 @@ Every stage either promotes the alias or flips it back; there is no path that re
 
 1. **Offline eval gate.** A golden set (for example 1-3k cases) plus targeted regression suites: format validity, tool-call accuracy, refusal and over-refusal, safety red-teaming, length, latency and cost. Block on regressions beyond agreed thresholds.
 2. **Shadow mode (optional).** Run the new prompt on mirrored traffic with no user exposure, and compare outputs with pairwise LLM-judge scoring.
-3. **Canary** at 1%, then 5%, 25%, 50% and 100%, with automated analysis at each stage. Compare the canary against a **concurrent control** group, not against yesterday, which is the approach of Kayenta-style automated canary analysis. Time-of-day and traffic-mix effects then cancel out.
+3. **Canary** at 1%, then 5%, 25%, 50% and 100%, with automated analysis at each stage. Compare the canary against a concurrent control group, not against yesterday, which is the approach of Kayenta-style automated canary analysis. Time-of-day and traffic-mix effects then cancel out.
 4. **Guardrail metrics** in two tiers:
    - *Fast and deterministic:* parse and schema error rate, tool-call failure rate, refusal rate, empty or truncated responses, output tokens per response (cost), TTFT (time to first token).
    - *Slow and noisy:* thumbs-down rate, regenerate rate, conversation abandonment, sampled LLM-judge scores.
@@ -53,11 +53,11 @@ Parse errors, base 0.5%, detect a doubling to 1%:
   (every response is checked, so no rating-rate penalty)
 ```
 
-For example, with 10M responses a day, a 5% canary sees about 21k responses an hour. It collects the 4,800 needed for the parse-error check in about 14 minutes, but needs 380,000 / 21k ≈ 18 hours for the thumbs-down check. **Deterministic metrics and LLM judges catch problems in minutes; user feedback confirms over hours or days.**
+For example, with 10M responses a day, a 5% canary sees about 21k responses an hour. It collects the 4,800 needed for the parse-error check in about 14 minutes, but needs 380,000 / 21k ≈ 18 hours for the thumbs-down check. Deterministic metrics and LLM judges catch problems in minutes; user feedback confirms over hours or days.
 
 ## The rollback itself
 
-- **Trigger.** Automated rollback when a guardrail breaches during canary. Otherwise an on-call one-click rollback, or a CLI command such as `prompt rollback chat-system --to v41`. A **kill switch** for safety issues routes to a conservative fallback prompt or disables the feature entirely.
+- **Trigger.** Automated rollback when a guardrail breaches during canary. Otherwise an on-call one-click rollback, or a CLI command such as `prompt rollback chat-system --to v41`. A kill switch for safety issues routes to a conservative fallback prompt or disables the feature entirely.
 - **Propagation.** The config push lands, caches invalidate, and new requests use v41. Verify on a dashboard filtered by `prompt.version`: v42 traffic should drop to zero within about 60 s.
 - **In-flight conversations.** Decide whether multi-turn sessions that started on v42 switch mid-conversation (usually yes, because the system prompt is re-rendered every turn) or stay pinned. Agents mid-task should finish the current step, then pick up v41.
 - **Expect side effects of the rollback itself.** The provider's or engine's prefix cache for v41 may be cold, causing a temporary spike in TTFT and cost (prompt caching discounts only apply to cached prefixes). Pre-warm the cache, or accept the spike.
@@ -86,9 +86,9 @@ Set each guardrail as a bound on the canary-minus-control difference, not on an 
 
 ### Eval-gate quality
 
-- **Slice coverage:** the share of production traffic slices (language, conversation length, tenant, tool set) that have at least N golden cases.
-- **Gate recall:** of the regressions found later in canary or production, how many the offline gate could have caught. Each miss becomes a new regression case.
-- **Judge calibration:** agreement between the LLM judge and human labels on a held-out sample, rechecked when the judge model changes.
+- Slice coverage: the share of production traffic slices (language, conversation length, tenant, tool set) that have at least N golden cases.
+- Gate recall: of the regressions found later in canary or production, how many the offline gate could have caught. Each miss becomes a new regression case.
+- Judge calibration: agreement between the LLM judge and human labels on a held-out sample, rechecked when the judge model changes.
 
 ### Rollback drills
 
@@ -104,8 +104,8 @@ Practice a rollback on a non-critical prompt regularly and time it end to end. A
 | Full A/B experiment | Measures real product impact | Days to reach power; exposes users to a bad variant | Intentional behavior changes, not fixes |
 | Auto-rollback on guardrail breach | Fast, no human in the loop | False positives from noisy metrics; flapping | Deterministic metrics (parse errors, refusals, cost) |
 
-- **Treat prompts like code *and* like config.** Review, evals and versioning like code; deployment and rollback speed like config.
-- **Pin model snapshots.** A prompt is tuned against a specific model version. An unpinned "latest" model alias makes prompt rollback insufficient, because the regression may come from the model.
+- Treat prompts like code and like config: review, evals and versioning like code; deployment and rollback speed like config.
+- Pin model snapshots. A prompt is tuned against a specific model version. An unpinned "latest" model alias makes prompt rollback insufficient, because the regression may come from the model.
 
 ## Common mistakes
 
@@ -118,9 +118,9 @@ Practice a rollback on a non-critical prompt regularly and time it end to end. A
 
 ## Thinking at scale
 
-- **One change log for everything that shapes behavior.** Prompt aliases, model snapshots, retrieval index versions and tool versions should land in one queryable timeline. Most "which change caused it?" debates end once all four are visible on the same chart.
-- **Ownership and permissions.** Alias flips to `prod` need the same access control and audit trail as code deploys, but on-call must be able to roll back without waiting for the prompt's author.
-- **Per-tenant targeting.** Once prompts resolve through a flag service, the same mechanism supports tenant-specific rollouts and rollbacks, which matters when one large customer's tool set is the slice your golden set missed.
+- Everything that shapes behavior (prompt aliases, model snapshots, retrieval index versions and tool versions) should land in one change log, a single queryable timeline. Most "which change caused it?" debates end once all four are visible on the same chart.
+- Alias flips to `prod` need the same access control and audit trail as code deploys, but on-call must be able to roll back without waiting for the prompt's author.
+- Once prompts resolve through a flag service, the same mechanism supports tenant-specific rollouts and rollbacks, which matters when one large customer's tool set is the slice your golden set missed.
 
 ## Further reading
 

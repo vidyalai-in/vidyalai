@@ -54,20 +54,20 @@ The router sends clearly hard requests straight to the strong model, clearly eas
 
 ## Building the training data
 
-- **Sample 20,000-50,000 production prompts,** stratified by feature and difficulty. Run both models on each.
-- **Label with an LLM judge** in pairwise mode, scoring both orderings to cancel position bias, plus programmatic checks where they exist. Give about 1,000-2,000 examples human labels to calibrate the judge (see [Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/)).
-- **Define the target:** `y = 1` if the cheap answer is at least as good as the strong one (or within a margin).
-- **Include hard negatives:** short prompts that are deceptively hard, such as "prove this" or "fix this bug". Length alone does not predict difficulty.
-- **Retrain monthly or on drift.** Both models change underneath you when providers update them.
+- Sample 20,000-50,000 production prompts, stratified by feature and difficulty. Run both models on each.
+- Label with an LLM judge in pairwise mode, scoring both orderings to cancel position bias, plus programmatic checks where they exist. Give about 1,000-2,000 examples human labels to calibrate the judge (see [Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/)).
+- Define the target: `y = 1` if the cheap answer is at least as good as the strong one (or within a margin).
+- Include hard negatives: short prompts that are deceptively hard, such as "prove this" or "fix this bug". Length alone does not predict difficulty.
+- Retrain monthly or on drift. Both models change underneath you when providers update them.
 
 Distillation widens the routable fraction: fine-tuning the cheap model on your traffic ([Distilling Step-by-Step](https://arxiv.org/abs/2305.02301)) makes more requests "easy".
 
 ## Choosing the threshold
 
-- **Sweep the threshold** and plot quality against the percentage of calls routed to the strong model. This is the deferral curve.
-- **Pick an operating point,** for example "85% of the strong model's win-rate with 25% of calls going to the strong model".
-- **Report RouteLLM's metrics:** APGR (average performance gap recovered, the area under the curve of how much of the cheap-to-strong quality gap you recover) and CPT (call-performance threshold, the share of strong-model calls needed to reach a given performance level).
-- **Set per-slice thresholds** where slices differ. Enterprise tenants, for example, can get a more conservative threshold.
+- Sweep the threshold and plot quality against the percentage of calls routed to the strong model. This is the deferral curve.
+- Pick an operating point, for example "85% of the strong model's win-rate with 25% of calls going to the strong model".
+- Report RouteLLM's metrics: APGR (average performance gap recovered, the area under the curve of how much of the cheap-to-strong quality gap you recover) and CPT (call-performance threshold, the share of strong-model calls needed to reach a given performance level).
+- Set per-slice thresholds where slices differ. Enterprise tenants, for example, can get a more conservative threshold.
 
 ### A worked example of the cost math
 
@@ -76,27 +76,27 @@ Illustrative numbers: the cheap model costs 10% of the strong model per request.
 - Strong-only requests: `0.30 × 1.0 = 0.30`
 - Cheap calls: `0.70 × 0.1 = 0.07`
 - Escalated strong calls: `0.70 × 0.10 × 1.0 = 0.07`
-- Total: `0.44` of the strong-only cost, a **56% saving**.
+- Total: `0.44` of the strong-only cost, a 56% saving.
 
 The escalated 7% of traffic also has a latency of roughly cheap plus strong. Check that this tail fits the product's SLO.
 
 ## Serving architecture
 
-- **The router runs in the gateway** with a budget of about 5 ms.
-- **Hard overrides come first:** safety-sensitive intents, paid tier, an explicit user model choice, long-context requirements, and tool sets the cheap model handles poorly.
-- **Keep conversations sticky.** Switching models mid-conversation breaks prefix caching and can cause style or persona whiplash. Route per conversation, or only ever escalate upward.
-- **Provide a fallback path.** On cheap-model errors, timeouts or refusals, retry on the strong model.
-- **Log everything:** the decision, router score, chosen model and outcome for every request.
+- The router runs in the gateway with a budget of about 5 ms.
+- Hard overrides come first: safety-sensitive intents, paid tier, an explicit user model choice, long-context requirements, and tool sets the cheap model handles poorly.
+- Keep conversations sticky. Switching models mid-conversation breaks prefix caching and can cause style or persona whiplash. Route per conversation, or only ever escalate upward.
+- Provide a fallback path. On cheap-model errors, timeouts or refusals, retry on the strong model.
+- Log the decision, router score, chosen model and outcome for every request.
 
 Routing as a pattern is one of the basic workflows described in Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents): classify an input and direct it to a specialized follow-up task.
 
 ## How to measure it
 
-- **Offline:** the deferral curve on a held-out set, and the calibration of the router score (a reliability diagram and ECE, expected calibration error). A well-calibrated score makes threshold changes predictable.
-- **Online:** an A/B test of routed vs. strong-only traffic, comparing the business KPI and regenerate and thumbs-down rates per arm.
-- **Shadow slice:** keep a permanent 1-2% slice where both models run, to estimate the router's live false-easy rate (hard requests sent to the cheap model).
-- **Drift alarms:** the fraction routed to the cheap model changing more than an agreed percentage week over week, a shift in the score distribution, or a rising escalation rate.
-- **Expected outcome:** for typical assistant traffic, 50-80% routed to the cheap model, total cost down 40-70%, and quality within noise on aggregate metrics. These are typical ranges, not guarantees; verify the long tail separately.
+- Offline: the deferral curve on a held-out set, and the calibration of the router score (a reliability diagram and ECE, expected calibration error). A well-calibrated score makes threshold changes predictable.
+- Online: an A/B test of routed vs. strong-only traffic, comparing the business KPI and regenerate and thumbs-down rates per arm.
+- Shadow slice: keep a permanent 1-2% slice where both models run, to estimate the router's live false-easy rate (hard requests sent to the cheap model).
+- Drift alarms: the fraction routed to the cheap model changing more than an agreed percentage week over week, a shift in the score distribution, or a rising escalation rate.
+- Expected outcome: for typical assistant traffic, 50-80% routed to the cheap model, total cost down 40-70%, and quality within noise on aggregate metrics. These are typical ranges, not guarantees; verify the long tail separately.
 
 ## Tradeoffs
 
@@ -108,8 +108,8 @@ Routing as a pattern is one of the basic workflows described in Anthropic's [Bui
 | Hybrid router + cascade band | Best cost-quality frontier | Most complex system | Mature, large-scale deployments |
 | Always the strong model | Simplest, maximum quality | Highest cost | Low volume or very high stakes |
 
-- **Errors are asymmetric.** Routing a hard query to the cheap model (a false-easy) hurts users. Routing an easy query to the strong model only wastes money. Tune for a false-easy budget, not for accuracy.
-- **Find where the router's value comes from.** If a simple length or intent rule gets 80% of the gain, ship the rule and spend the effort elsewhere.
+- Errors are asymmetric. Routing a hard query to the cheap model (a false-easy) hurts users. Routing an easy query to the strong model only wastes money. Tune for a false-easy budget, not for accuracy.
+- Find where the router's value comes from. If a simple length or intent rule gets 80% of the gain, ship the rule and spend the effort elsewhere.
 
 ## Common mistakes
 
@@ -122,9 +122,9 @@ Routing as a pattern is one of the basic workflows described in Anthropic's [Bui
 
 ## Thinking at scale
 
-- **Treat the router as a model with its own lifecycle.** It needs an owner, a retraining cadence, a labeled eval set and a rollback plan, just like any other production model. Both underlying LLMs change on the provider's schedule, not yours.
-- **Keep the shadow slice permanently.** The 1-2% of traffic where both models run is the only ongoing ground truth for the false-easy rate. It is cheap insurance against silent quality loss.
-- **Revisit the model pair as prices change.** Tier gaps moved substantially during 2025-2026. A new cheap model can widen the routable fraction overnight, and a price cut on the strong model can make routing not worth its complexity.
+- Treat the router as a model with its own lifecycle. It needs an owner, a retraining cadence, a labeled eval set and a rollback plan, just like any other production model. Both underlying LLMs change on the provider's schedule, not yours.
+- Keep the shadow slice permanently. The 1-2% of traffic where both models run is the only ongoing ground truth for the false-easy rate. It is cheap insurance against silent quality loss.
+- Revisit the model pair as prices change. Tier gaps moved substantially during 2025-2026. A new cheap model can widen the routable fraction overnight, and a price cut on the strong model can make routing not worth its complexity.
 
 ## Further reading
 

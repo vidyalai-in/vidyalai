@@ -37,16 +37,16 @@ Outlines pre-compiles the finite-state-machine-to-vocabulary index, which makes 
 
 ### Hosted APIs
 
-**OpenAI Structured Outputs.** In the Responses API, set `text.format` to `{"type": "json_schema", "name": ..., "schema": ..., "strict": true}`; in Chat Completions the equivalent is `response_format` with `type: "json_schema"`. Function calling also accepts `strict: true`. Strict mode guarantees schema adherence within a supported subset of JSON Schema: every field must be listed as required (model optional fields as a union with `null`), and objects need `additionalProperties: false`. The first request with a new schema has extra latency while the schema is processed. At launch, OpenAI reported that `gpt-4o-2024-08-06` with Structured Outputs scored 100% on its complex-schema eval, versus under 40% for `gpt-4-0613` with prompting alone.
+With OpenAI Structured Outputs, in the Responses API you set `text.format` to `{"type": "json_schema", "name": ..., "schema": ..., "strict": true}`; in Chat Completions the equivalent is `response_format` with `type: "json_schema"`. Function calling also accepts `strict: true`. Strict mode guarantees schema adherence within a supported subset of JSON Schema: every field must be listed as required (model optional fields as a union with `null`), and objects need `additionalProperties: false`. The first request with a new schema has extra latency while the schema is processed. At launch, OpenAI reported that `gpt-4o-2024-08-06` with Structured Outputs scored 100% on its complex-schema eval, versus under 40% for `gpt-4-0613` with prompting alone.
 
-**Anthropic structured outputs.** Generally available on the Claude API in two forms that share one grammar-compilation pipeline:
+Anthropic's structured outputs are generally available on the Claude API in two forms that share one grammar-compilation pipeline:
 
 - **JSON outputs**: set `output_config.format` to `{"type": "json_schema", "schema": ...}` and the response text conforms to the schema.
 - **Strict tool use**: add `"strict": true` to a tool definition and the tool call's `input` is guaranteed to match its `input_schema`, with a valid tool `name`.
 
 The older `output_format` parameter is deprecated and only works with the `structured-outputs-2025-11-13` beta header. Unsupported schema features include recursive schemas, numeric constraints such as `minimum` and `maximum`, string length constraints, and `additionalProperties` set to anything but `false`; using one returns a 400 error. The first use of a schema adds compile latency, and compiled grammars are cached for 24 hours from last use. Forcing a non-strict tool with `tool_choice` still gives schema-*shaped* JSON, but without the guarantee.
 
-**JSON mode is not schema adherence.** Plain "JSON mode" guarantees only parseable JSON, not conformance to your schema.
+Plain "JSON mode" is a weaker feature: it guarantees only parseable JSON, not conformance to your schema.
 
 ### Tokenization subtleties
 
@@ -58,23 +58,23 @@ Tokens can cross grammar boundaries; for example, `"}` is often a single token. 
 
 Generation is left to right, so the model commits to each field as it writes it. Options, in order of preference:
 
-- **Use the model's native reasoning channel.** On models with built-in thinking, let reasoning happen there and keep the schema for the answer. Anthropic's docs warn that a schema property asking for step-by-step reasoning may trigger a `reasoning_extraction` refusal and recommend asking for a short explanation instead.
-- **Put a short rationale field before the answer** (`"rationale"` before `"answer"`) on models without a separate reasoning channel.
-- **Two steps:** reason in an unconstrained call, then format in a second, constrained call.
+- Use the model's native reasoning channel. On models with built-in thinking, let reasoning happen there and keep the schema for the answer. Anthropic's docs warn that a schema property asking for step-by-step reasoning may trigger a `reasoning_extraction` refusal and recommend asking for a short explanation instead.
+- Put a short rationale field before the answer (`"rationale"` before `"answer"`) on models without a separate reasoning channel.
+- Use two steps: reason in an unconstrained call, then format in a second, constrained call.
 
 ### Whether constraints hurt reasoning is disputed
 
-- **Evidence for harm.** Tam et al. (2024), "Let Me Speak Freely?", reported a significant decline in reasoning accuracy under format restrictions, with stricter formats hurting more, while classification tasks were unaffected or even improved with JSON mode.
-- **Evidence against.** Will Kurt's response for .txt (the Outlines team), "Say What You Mean" (2024), argues the comparison was confounded: the prompts differed between conditions, the JSON prompts left out the schema, answers were parsed by another LLM, and JSON mode was conflated with true constrained decoding. With matched prompts on Llama-3-8B-Instruct, structured generation matched or beat unstructured on the same tasks (for example GSM8K 0.78 vs 0.77, Last Letter 0.77 vs 0.73, Shuffled Objects 0.44 vs 0.41).
+- Tam et al. (2024), "Let Me Speak Freely?", reported a significant decline in reasoning accuracy under format restrictions, with stricter formats hurting more, while classification tasks were unaffected or even improved with JSON mode.
+- Will Kurt's response for .txt (the Outlines team), "Say What You Mean" (2024), argues the comparison was confounded: the prompts differed between conditions, the JSON prompts left out the schema, answers were parsed by another LLM, and JSON mode was conflated with true constrained decoding. With matched prompts on Llama-3-8B-Instruct, structured generation matched or beat unstructured on the same tasks (for example GSM8K 0.78 vs 0.77, Last Letter 0.77 vs 0.73, Shuffled Objects 0.44 vs 0.41).
 
-The practical takeaway is the same either way: give the model space to reason, write the schema and its descriptions into the prompt, and measure your own task accuracy against an unconstrained baseline.
+Either way, give the model space to reason, write the schema and its descriptions into the prompt, and measure your own task accuracy against an unconstrained baseline.
 
 ### Field order and naming
 
-- **Order fields by dependency.** Put fields the others depend on first. Note that Anthropic's structured outputs emit required properties before optional ones, so mark fields required if their order matters.
-- **Use enums for categorical fields**, plus descriptive field names and descriptions; the model reads them.
-- **Use nullable fields instead of forcing invented values.** Include an explicit status so the model isn't forced to make something up to satisfy the schema.
-- **Keep schemas shallow.** Deep nesting and large `anyOf` unions increase compile time and confuse the model.
+- Order fields by dependency. Put fields the others depend on first. Note that Anthropic's structured outputs emit required properties before optional ones, so mark fields required if their order matters.
+- Use enums for categorical fields, plus descriptive field names and descriptions; the model reads them.
+- Use nullable fields instead of forcing invented values. Include an explicit status so the model isn't forced to make something up to satisfy the schema.
+- Keep schemas shallow. Deep nesting and large `anyOf` unions increase compile time and confuse the model.
 
 A worked example:
 
@@ -95,7 +95,7 @@ Every field is required, so the structure is fixed, but `null` and `"insufficien
 
 ## Layer 3: Validate and repair
 
-Constrained decoding is the guarantee for shape. Defense in depth covers the rest.
+Constrained decoding guarantees the shape, and defense in depth covers the rest.
 
 ### Parse, validate, check semantics
 
@@ -165,8 +165,8 @@ Track everything by schema version. Schema changes are deploys and need contract
 | Validate + retry/repair loop | Catches semantic errors | Extra latency and cost; not a guarantee alone | Always, on top of constraints |
 | Two-step: free-form reasoning, then format | Preserves reasoning quality | 2x calls and latency | Hard reasoning tasks with structured output |
 
-- **Syntax is solved; semantics aren't.** Most remaining production bugs are valid JSON with wrong values, so put the effort into semantic validators and evals.
-- **Check that constraints don't cost accuracy.** Compare task accuracy with and without them, especially on reasoning-heavy fields.
+- Syntax is solved, but semantics aren't: most remaining production bugs are valid JSON with wrong values, so put the effort into semantic validators and evals.
+- Compare task accuracy with and without constraints, especially on reasoning-heavy fields, to check that they don't cost accuracy.
 
 ## Common mistakes
 
@@ -179,10 +179,10 @@ Track everything by schema version. Schema changes are deploys and need contract
 
 ## Thinking at scale
 
-- **Treat schemas as versioned APIs.** Store them in a registry, review changes, and run contract tests in CI against recorded outputs.
-- **Warm the grammar cache.** On deploy, send one request per new schema so users don't pay compile latency, and remember provider caches expire (24 hours from last use on Anthropic).
-- **Keep provider portability in mind.** Each provider supports a different JSON Schema subset. Write schemas to the intersection you need, or keep an adapter layer per provider.
-- **Own semantic validation centrally.** Business rules belong in shared validators that every LLM-backed endpoint uses, not in each prompt.
+- Treat schemas as versioned APIs. Store them in a registry, review changes, and run contract tests in CI against recorded outputs.
+- Warm the grammar cache. On deploy, send one request per new schema so users don't pay compile latency, and remember provider caches expire (24 hours from last use on Anthropic).
+- Keep provider portability in mind. Each provider supports a different JSON Schema subset. Write schemas to the intersection you need, or keep an adapter layer per provider.
+- Own semantic validation centrally. Business rules belong in shared validators that every LLM-backed endpoint uses, not in each prompt.
 
 ## Further reading
 

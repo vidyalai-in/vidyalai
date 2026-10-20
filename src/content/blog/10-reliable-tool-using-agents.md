@@ -11,7 +11,7 @@ sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 
 ## TL;DR
 
-Tool-use reliability is mostly a property of the system around the model, not of the prompt. Make the tools hard to misuse: a few well-named tools with strict schemas, informative errors and idempotent side effects. Make the control loop robust: schema-constrained calls, validation, bounded retries with error feedback, step and budget limits, and human confirmation for irreversible actions. Measure end-to-end task success with multi-trial pass^k on a realistic eval suite that uses simulated users and real tool backends. The single biggest lever is usually the tool interface itself: consolidating overlapping tools, returning concise high-signal results, and writing descriptions the way you would for a new engineer joining the team.
+Tool-use reliability is mostly a property of the system around the model, not of the prompt. Make the tools hard to misuse: a few well-named tools with strict schemas, informative errors and idempotent side effects. Harden the control loop: schema-constrained calls, validation, bounded retries with error feedback, step and budget limits, and human confirmation for irreversible actions. Measure end-to-end task success with multi-trial pass^k on a realistic eval suite that uses simulated users and real tool backends. The single biggest lever is usually the tool interface itself: consolidating overlapping tools, returning concise high-signal results, and writing descriptions the way you would for a new engineer joining the team.
 
 ## Requirements to pin down first
 
@@ -31,23 +31,23 @@ The model chooses each step, but every call passes through code that can block, 
 
 ## Layer 1: Tool design (the highest-leverage layer)
 
-- **Fewer, higher-level tools.** Offer `schedule_meeting(attendees, window)` rather than `list_users`, `get_calendar`, `find_slot` and `create_event`. Every extra tool adds selection errors and context tokens. Once you have more than about 20-30 tools, load them dynamically or let the model search over tool descriptions; Anthropic's [tool search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool) is built for working with thousands of tools this way.
-- **Clear names, namespacing and descriptions.** Include examples, units, formats, and when *not* to use the tool. Namespace by service (`asana_search`, `jira_search`). Use unambiguous parameter names (`user_id`, not `user`) and enums instead of free strings.
-- **Strict schemas.** Use JSON Schema with required fields, enums and `additionalProperties: false`. Turn on the provider's strict mode: with `strict: true` on a Claude tool definition, [grammar-constrained sampling](https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use) guarantees the tool input matches the schema and the tool name is valid. [Guaranteeing Valid JSON Output from LLMs](/blog/guaranteed-valid-json-output/) covers constrained decoding and schema design.
-- **Agent-friendly responses.** Return concise, semantically meaningful fields (names rather than UUIDs where possible). Paginate and truncate with hints, such as "showing 20 of 340; refine with query". Aim for responses of a few thousand tokens at most. As a hard ceiling for comparison, Claude Code caps tool responses at 25,000 tokens by default ([Anthropic, Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)).
-- **Actionable errors.** Return `"date must be ISO-8601 like 2026-10-15; got '10/15'"`, not a stack trace. Errors are the model's main signal for self-correction.
-- **Idempotency keys and dry-run modes** for side-effecting tools, so a retry can never double-charge a customer.
+- Fewer, higher-level tools. Offer `schedule_meeting(attendees, window)` rather than `list_users`, `get_calendar`, `find_slot` and `create_event`. Every extra tool adds selection errors and context tokens. Once you have more than about 20-30 tools, load them dynamically or let the model search over tool descriptions; Anthropic's [tool search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool) is built for working with thousands of tools this way.
+- Clear names, namespacing and descriptions. Include examples, units, formats, and when *not* to use the tool. Namespace by service (`asana_search`, `jira_search`). Use unambiguous parameter names (`user_id`, not `user`) and enums instead of free strings.
+- Strict schemas. Use JSON Schema with required fields, enums and `additionalProperties: false`. Turn on the provider's strict mode: with `strict: true` on a Claude tool definition, [grammar-constrained sampling](https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use) guarantees the tool input matches the schema and the tool name is valid. [Guaranteeing Valid JSON Output from LLMs](/blog/guaranteed-valid-json-output/) covers constrained decoding and schema design.
+- Agent-friendly responses. Return concise, semantically meaningful fields (names rather than UUIDs where possible). Paginate and truncate with hints, such as "showing 20 of 340; refine with query". Aim for responses of a few thousand tokens at most. As a hard ceiling for comparison, Claude Code caps tool responses at 25,000 tokens by default ([Anthropic, Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)).
+- Actionable errors. Return `"date must be ISO-8601 like 2026-10-15; got '10/15'"`, not a stack trace. Errors are the model's main signal for self-correction.
+- Idempotency keys and dry-run modes for side-effecting tools, so a retry can never double-charge a customer.
 
 ## Layer 2: The control loop
 
 Use a ReAct-style loop ([ReAct](https://arxiv.org/abs/2210.03629): reason, call a tool, observe the result) with the model deciding the next step, but wrap it in deterministic guards:
 
-- **Validate before executing.** Check every call against the schema *and* business rules: permissions, value ranges, allowed resources. Strict mode covers the schema; only your code can enforce the business rules. On failure, return the error to the model without executing.
-- **Bound retries.** Allow 2-3 retries per call with the error in context, then escalate or abort.
-- **Enforce budgets.** Cap steps, tokens, cost and wall-clock time (for example, 25 steps and 120 seconds). Detect loops: the same call with the same arguments repeated more than twice. [Detecting and Recovering from Agent Loops](/blog/agent-loop-detection-recovery/) goes deeper on detection and recovery policies.
-- **Parallelize independent reads** to cut latency.
-- **Manage context on long tasks.** Compact old tool outputs, keep a scratchpad or to-do list, and hand large searches to sub-agents so the main context stays clean.
-- **Prefer workflows where you can.** If the path is known, hard-code the sequence (prompt chaining or routing) and use the LLM only for the fuzzy steps. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) draws the same line between workflows (predefined code paths) and agents (the model directs its own process). Reserve fully autonomous loops for open-ended tasks.
+- Validate before executing. Check every call against the schema *and* business rules: permissions, value ranges, allowed resources. Strict mode covers the schema; only your code can enforce the business rules. On failure, return the error to the model without executing.
+- Bound retries. Allow 2-3 retries per call with the error in context, then escalate or abort.
+- Enforce budgets. Cap steps, tokens, cost and wall-clock time (for example, 25 steps and 120 seconds). Detect loops: the same call with the same arguments repeated more than twice. [Detecting and Recovering from Agent Loops](/blog/agent-loop-detection-recovery/) goes deeper on detection and recovery policies.
+- Parallelize independent reads to cut latency.
+- Manage context on long tasks. Compact old tool outputs, keep a scratchpad or to-do list, and hand large searches to sub-agents so the main context stays clean.
+- Prefer workflows where you can. If the path is known, hard-code the sequence (prompt chaining or routing) and use the LLM only for the fuzzy steps. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) draws the same line between workflows (predefined code paths) and agents (the model directs its own process). Reserve fully autonomous loops for open-ended tasks.
 
 A minimal sketch of the guard layer:
 
@@ -77,10 +77,10 @@ return escalate(task, reason="step limit")
 
 ## Layer 3: Safety and permissions
 
-- **Classify tools** as read-only, reversible write, or irreversible. Require **human confirmation** or policy approval for irreversible actions.
-- **Use least-privilege credentials** scoped per user and per session. Never give the model raw admin tokens.
-- **Defend against prompt injection.** Treat tool outputs (web pages, emails, documents) as untrusted data. Do not let content from them trigger privileged tools without confirmation. Separate the planner's privileges from the reader's, as in dual-LLM or quarantined-reader patterns. Log and alert on anomalous tool sequences. [Defending Tool-Using Agents Against Prompt Injection by Design](/blog/prompt-injection-defense-tool-agents/) treats this layer in full.
-- **Sandbox code execution** in containers or gVisor, with no network by default and CPU, memory and time limits.
+- Classify tools as read-only, reversible write, or irreversible. Require human confirmation or policy approval for irreversible actions.
+- Use least-privilege credentials scoped per user and per session. Never give the model raw admin tokens.
+- Defend against prompt injection. Treat tool outputs (web pages, emails, documents) as untrusted data. Do not let content from them trigger privileged tools without confirmation. Separate the planner's privileges from the reader's, as in dual-LLM or quarantined-reader patterns. Log and alert on anomalous tool sequences. [Defending Tool-Using Agents Against Prompt Injection by Design](/blog/prompt-injection-defense-tool-agents/) treats this layer in full.
+- Sandbox code execution in containers or gVisor, with no network by default and CPU, memory and time limits.
 
 ## How to measure it
 
@@ -129,8 +129,8 @@ Reliability compounds. At 95% per-step success, a 20-step task succeeds `0.95^20
 | Human-in-the-loop on writes | Safety and user trust | Friction and latency | Irreversible or high-value actions |
 | Fine-tune for tool use | Better selection and arguments on your API | Data and maintenance cost; lags base-model upgrades | Very high volume, stable tool set |
 
-- **Autonomy vs. control.** Add autonomy only where evals show it raises task success. Each extra degree of freedom adds variance.
-- **Reliability compounds.** Reducing the step count with better tools often beats improving per-step accuracy.
+- Autonomy vs. control. Add autonomy only where evals show it raises task success. Each extra degree of freedom adds variance.
+- Reliability compounds. Reducing the step count with better tools often beats improving per-step accuracy.
 
 ## Common mistakes
 

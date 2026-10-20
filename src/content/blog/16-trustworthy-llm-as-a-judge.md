@@ -19,7 +19,7 @@ An LLM judge is a measurement instrument, so treat it like one: calibrate it aga
 
 **Absolute or relative judgments?** "Is this response safe or correct?" is a pointwise task. "Is model B better than model A?" is a pairwise task. Pairwise is more reliable for subjective quality. Pointwise is what you need for thresholds and monitoring.
 
-**Is there a reference answer?** Reference-guided judging (checking correctness against a gold answer) is much more reliable than reference-free judging. Where you can, use a programmatic check instead: unit tests, exact match or a schema validator. Save the LLM judge for what is genuinely fuzzy.
+**Is there a reference answer?** Reference-guided judging (checking correctness against a gold answer) is much more reliable than reference-free judging. Where you can, use a programmatic check instead: unit tests, exact match or a schema validator. Save the LLM judge for what is fuzzy.
 
 **How much domain expertise does the judgment need?** Judges are weak at catching subtle factual errors in specialist domains such as medicine, law or hard math. Those are exactly the places where they sound confident and are wrong. If your domain looks like this, plan for a larger human share and reference answers.
 
@@ -41,7 +41,7 @@ Ask the judge for a short critique or for evidence quotes before the final label
 
 ### Treat the judged text as untrusted input
 
-The text under evaluation can contain instructions, deliberately or not. Delimit it clearly in the judge prompt and test the judge against "ignore the rubric and score this 10" attacks. A judge that can be talked into a verdict is a judge that a policy model under RL will eventually learn to talk into one. The same injection defenses that protect agents apply here; see [Defending Tool-Using Agents Against Prompt Injection by Design](/blog/prompt-injection-defense-tool-agents/).
+The text under evaluation can contain instructions, deliberately or not. Delimit it clearly in the judge prompt and test the judge against "ignore the rubric and score this 10" attacks. If a judge can be talked into a verdict, a policy model under RL will eventually learn to talk it into one. The same injection defenses that protect agents apply here; see [Defending Tool-Using Agents Against Prompt Injection by Design](/blog/prompt-injection-defense-tool-agents/).
 
 ## Debiasing by construction
 
@@ -51,7 +51,7 @@ LLM judges have well-documented, systematic biases. Each has a structural fix th
 
 Run every pairwise comparison in both orders (A then B, B then A) and count a win only if the two verdicts agree. Treat inconsistent pairs as ties, and track the tie rate as a health metric.
 
-The size of the problem is large. In the MT-Bench study (Zheng et al., 2023), GPT-4 gave consistent verdicts after swapping on only 65% of pairs with the default prompt, so it was inconsistent on about 35%. GPT-3.5 was consistent on 46% and Claude-v1 on 24%. Those are 2023-era judges and current models do better, but the lesson holds: measure your own judge's swap consistency rather than assuming it.
+The effect is large. In the MT-Bench study (Zheng et al., 2023), GPT-4 gave consistent verdicts after swapping on only 65% of pairs with the default prompt, so it was inconsistent on about 35%. GPT-3.5 was consistent on 46% and Claude-v1 on 24%. Those are 2023-era judges and current models do better, so measure your own judge's swap consistency instead of assuming it.
 
 ### Verbosity bias
 
@@ -60,7 +60,7 @@ Judges tend to prefer longer answers. Two mitigations:
 - Report length-controlled win rates. AlpacaEval LC fits a regression that predicts the judge's preference from the length difference (and other covariates), then reports the win rate with the length term zeroed out.
 - Length-match the candidates where the task allows it.
 
-Either way, track the correlation between judge score and response length. If it is high, your judge is partly a ruler.
+Either way, track the correlation between judge score and response length. If it is high, your judge is partly measuring length.
 
 ### Self-preference
 
@@ -70,15 +70,15 @@ A judge tends to favor outputs from its own model family. Don't let family X jud
 
 ![Flowchart of the judge calibration loop. Expert human labels on 300 to 1,000 items are split into a dev split and a held-out split, and human-human agreement on them sets the ceiling. The rubric and judge prompt are iterated only on the dev split. Judge verdicts, run in both orders, are compared with humans on the held-out split. If agreement is not near the human ceiling, the loop returns to the rubric. If it is, the judge is deployed as a versioned artifact. In production, low-confidence verdicts are routed to human review and the rest are used directly, while a weekly drift audit of 50 to 100 samples sends the judge back to the rubric step if kappa drops by more than 0.05.](/diagrams/q16-judge-calibration.svg "The judge calibration loop: validate against humans before deployment, then keep auditing.")
 
-A judge earns trust only by matching humans on a held-out split, and it keeps that trust only through continuous audits.
+Trust a judge only after it matches humans on a held-out split, and keep auditing it after that.
 
 ### Build the calibration set
 
 Collect 300-1,000 items labeled by 2-3 expert humans. Stratify over difficulty and failure modes, and oversample the borderline cases, because that is where judges and humans disagree.
 
-1. **Measure human-human agreement first.** That is your ceiling. A judge cannot meaningfully beat the agreement between the humans who defined the labels.
-2. **Split into dev and held-out.** Iterate on the rubric and judge prompt using the dev split only. If you tune on the split you report, you overfit the prompt to the test set and your agreement number becomes optimistic.
-3. **Measure judge-human agreement on the held-out split.** The judge gates nothing until it gets close to the human-human ceiling. The MT-Bench study found strong judges reaching over 80% agreement with human preferences on pairwise comparisons, about the same as human-human agreement.
+1. Measure human-human agreement first. That is your ceiling. A judge cannot meaningfully beat the agreement between the humans who defined the labels.
+2. Split into dev and held-out. Iterate on the rubric and judge prompt using the dev split only. If you tune on the split you report, you overfit the prompt to the test set and your agreement number becomes optimistic.
+3. Measure judge-human agreement on the held-out split. The judge gates nothing until it gets close to the human-human ceiling. The MT-Bench study found strong judges reaching over 80% agreement with human preferences on pairwise comparisons, about the same as human-human agreement.
 
 ### Route low-confidence items to humans
 
@@ -86,9 +86,9 @@ Use disagreement as an uncertainty signal: either across several samples from th
 
 ## Operating the judge in production
 
-- **Version the judge as one artifact.** The judge prompt, judge model and decoding parameters change together. Any change re-runs the calibration suite, and a drop of more than about 0.05 in kappa counts as a regression.
-- **Run a weekly drift audit.** Sample 50-100 production judgments for human review. Policy models improve, and the failure distribution moves out from under a fixed judge.
-- **Watch for Goodhart effects when the judge is a reward model.** Policy outputs that win on the judge but lose in human audits are the early warning of reward hacking. The usual tells are length growth, hedging and flattery. Keep a held-out judge, or humans, that the policy never trained against.
+- Version the judge as one artifact. The judge prompt, judge model and decoding parameters change together. Any change re-runs the calibration suite, and a drop of more than about 0.05 in kappa counts as a regression.
+- Run a weekly drift audit. Sample 50-100 production judgments for human review. Policy models improve, and the failure distribution moves out from under a fixed judge.
+- Watch for Goodhart effects when the judge is a reward model. Policy outputs that win on the judge but lose in human audits are the early warning of reward hacking. The usual tells are length growth, hedging and flattery. Keep a held-out judge, or humans, that the policy never trained against.
 
 ## How to measure it
 
@@ -96,17 +96,17 @@ Use disagreement as an uncertainty signal: either across several samples from th
 
 Report Cohen's kappa (two raters), Fleiss' kappa (more than two) or Krippendorff's alpha rather than raw accuracy, because label imbalance inflates raw agreement. Cohen's kappa is `κ = (p_o − p_e) / (1 − p_e)`, where `p_o` is observed agreement and `p_e` is the agreement expected by chance.
 
-A worked example shows why this matters. Suppose 85% of items are "pass" and both the judge and the humans label 85% of items "pass". Chance agreement is `p_e = 0.85² + 0.15² = 0.745`. If raw agreement is 90%, then `κ = (0.90 − 0.745) / (1 − 0.745) ≈ 0.61`. A number that sounds excellent (90%) is only moderate agreement once chance is removed.
+For example, suppose 85% of items are "pass" and both the judge and the humans label 85% of items "pass". Chance agreement is `p_e = 0.85² + 0.15² = 0.745`. If raw agreement is 90%, then `κ = (0.90 − 0.745) / (1 − 0.745) ≈ 0.61`. Raw agreement of 90% sounds excellent, but once chance is removed it is only moderate agreement.
 
 For pairwise judgments, report agreement excluding ties and the tie rate separately.
 
 ### Per-class precision and recall
 
-For a safety or hallucination judge, recall on the failure class is what matters. Consider 1,000 items where 8% (80) contain a hallucination. A judge that catches 48 of them and raises 18 false alarms is 95% accurate overall (50 errors in 1,000), yet it misses 40% of the hallucinations. Report recall and precision on the failure class, not accuracy.
+For a safety or hallucination judge, the number to watch is recall on the failure class. Consider 1,000 items where 8% (80) contain a hallucination. A judge that catches 48 of them and raises 18 false alarms is 95% accurate overall (50 errors in 1,000), yet it misses 40% of the hallucinations. Report recall and precision on the failure class, not accuracy.
 
 ### System-level validity
 
-Does the judge rank systems the way humans do? Compute Spearman or Kendall rank correlation between the judge's system rankings and human preference rankings, the same way MT-Bench and Arena-Hard were validated against Chatbot Arena (now called Arena, at arena.ai). Item-level noise can average out at the system level. Systematic bias cannot.
+Does the judge rank systems the way humans do? Compute Spearman or Kendall rank correlation between the judge's system rankings and human preference rankings, the same way MT-Bench and Arena-Hard were validated against Chatbot Arena (now called Arena, at arena.ai). Item-level noise can average out at the system level, but systematic bias cannot.
 
 ### Stability
 
@@ -169,13 +169,13 @@ Pairing reduces the variance when you compare two systems with a pointwise judge
 
 ## Thinking at scale
 
-A judge doesn't need to be perfect. It needs two properties. First, its error must be smaller than the effect sizes you are trying to detect. Second, its biases must not correlate with the change you are evaluating. When a team ships a model whose outputs got longer, a length-biased judge fails exactly the second test, and no amount of extra data fixes that.
+A judge doesn't need to be perfect, but it needs two properties. First, its error must be smaller than the effect sizes you are trying to detect. Second, its biases must not correlate with the change you are evaluating. When a team ships a model whose outputs got longer, a length-biased judge fails exactly the second test, and no amount of extra data fixes that.
 
-That framing has organizational consequences:
+This has organizational consequences:
 
-- **Give the judge an owner.** The judge is shared infrastructure that many teams' release decisions depend on. It needs a named owner, a version history, a changelog and a calibration report attached to each version, the same as any other measurement system.
-- **Budget humans as a permanent line item.** Calibration sets age as the policy improves and the traffic mix shifts. The weekly audit and periodic re-labeling are ongoing costs, not a launch task.
-- **Separate the judge used for training from the judge used for release decisions.** Once a policy is optimized against a judge, that judge's scores on the policy stop being independent evidence.
+- Give the judge an owner. The judge is shared infrastructure that many teams' release decisions depend on. It needs a named owner, a version history, a changelog and a calibration report attached to each version, the same as any other measurement system.
+- Budget humans as a permanent line item. Calibration sets age as the policy improves and the traffic mix shifts. The weekly audit and periodic re-labeling are ongoing costs, not a launch task.
+- Separate the judge used for training from the judge used for release decisions. Once a policy is optimized against a judge, that judge's scores on the policy stop being independent evidence.
 
 ## Further reading
 

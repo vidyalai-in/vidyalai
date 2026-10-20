@@ -75,7 +75,7 @@ Show inline citations users can click, confidence indicators where they are cali
 
 Reward calibrated abstention and penalize confident errors. Train on "unanswerable" examples, and run factuality RL with a claim-level reward from an automated fact-checker.
 
-The reason this matters is grading. Kalai et al. (2025), "Why Language Models Hallucinate", argue that models bluff partly because training and most benchmarks use binary 0/1 accuracy, where "I don't know" scores the same as a wrong answer. Under that rule, guessing always has higher expected score than abstaining. Their proposed fix is to state an explicit confidence target `t` in the instructions: a correct answer earns 1 point, "I don't know" earns 0, and a wrong answer costs `t/(1−t)` points.
+This matters because of how models are graded. Kalai et al. (2025), "Why Language Models Hallucinate", argue that models bluff partly because training and most benchmarks use binary 0/1 accuracy, where "I don't know" scores the same as a wrong answer. Under that rule, guessing always has higher expected score than abstaining. Their proposed fix is to state an explicit confidence target `t` in the instructions: a correct answer earns 1 point, "I don't know" earns 0, and a wrong answer costs `t/(1−t)` points.
 
 A worked example of why that works: with confidence `p`, answering has expected score `p − (1−p)·t/(1−t)`, which is positive only when `p > t`. At `t = 0.5` (penalty 1), a 40%-confident guess has expected score `0.4 − 0.6 = −0.2`, so abstaining is better. At `t = 0.9` (penalty 9), the model should answer only when more than 90% confident. Under binary grading (`t = 0`) the same 40% guess scores `+0.4`, so bluffing wins.
 
@@ -111,8 +111,8 @@ A worked example of the coverage tradeoff, with illustrative numbers: a system t
 | Abstention thresholds | Directly trades errors for refusals | Over-refusal hurts helpfulness | Domains where wrong > unhelpful |
 | Post-training for calibration/factuality | Fixes at the source; no inference cost | Needs RL infrastructure and data; can over-refuse | You own the model |
 
-- **Choose a point on the precision/coverage curve for each product surface**, together with product and legal. It is a business decision, not a single global number.
-- **Say less vs. say wrong.** Factual precision can be gamed by being vague. Always pair it with informativeness or claim count.
+- Choose a point on the precision/coverage curve for each product surface, together with product and legal. It is a business decision, not a single global number.
+- Say less vs. say wrong: factual precision can be gamed by being vague. Always pair it with informativeness or claim count.
 
 ## Common mistakes
 
@@ -125,10 +125,10 @@ A worked example of the coverage tradeoff, with illustrative numbers: a system t
 
 ## Thinking at scale
 
-- **Set abstention thresholds per surface, with owners.** Product, legal and engineering should jointly own where each surface sits on the precision/coverage curve, and revisit it when the model changes.
-- **Fix your own scoreboard.** Internal evals and dashboards should credit appropriate abstention, or every model and prompt change will drift toward confident guessing.
-- **Keep a human-labeled audit stream.** Detectors and judges drift with model upgrades; a steady weekly sample is the only way to notice.
-- **Attribute failures to components.** Track retrieval recall, faithfulness and claim precision separately so the retrieval team and the generation team see their own regressions.
+- Set abstention thresholds per surface, with owners. Product, legal and engineering should jointly own where each surface sits on the precision/coverage curve, and revisit it when the model changes.
+- Fix your own scoreboard. Internal evals and dashboards should credit appropriate abstention, or every model and prompt change will drift toward confident guessing.
+- Keep a human-labeled audit stream. Detectors and judges drift with model upgrades; a steady weekly sample is the only way to notice.
+- Attribute failures to components. Track retrieval recall, faithfulness and claim precision separately so the retrieval team and the generation team see their own regressions.
 
 For calibrating judges and building the eval harness these metrics run in, see [Building an Eval Suite for a Customer Support Bot](/blog/support-bot-eval-suite/).
 

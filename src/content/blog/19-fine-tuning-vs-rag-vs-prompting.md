@@ -33,7 +33,7 @@ Every rung is judged on the same eval, and error analysis, not preference, decid
 
 ### 1. Build the eval first
 
-Collect 200-500 representative cases with graded outputs, using programmatic checks plus a calibrated LLM judge (see [Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/)), and slice them by failure category. Without this eval, every choice that follows is an argument about vibes.
+Collect 200-500 representative cases with graded outputs, using programmatic checks plus a calibrated LLM judge (see [Making LLM-as-a-Judge Trustworthy](/blog/trustworthy-llm-as-a-judge/)), and slice them by failure category. Without this eval, you have no evidence for any of the choices that follow.
 
 Keep the sample-size math in mind: on 300 cases, a pass rate near 80% has a 95% confidence interval of about ±4.5 points (`1.96 × sqrt(0.8 × 0.2 / 300)`). Differences smaller than that between rungs are not evidence.
 
@@ -43,9 +43,9 @@ Use the strongest available model with a clear system prompt, a few well-chosen 
 
 ### 3. Add RAG if the errors are knowledge errors
 
-- **Retrieval design.** Use hybrid retrieval (BM25 keyword search plus dense embeddings), chunks of about 300-800 tokens with contextual headers, a cross-encoder reranker over the top 50-100 candidates, and a final 5-10 chunks in context. Anthropic's Contextual Retrieval write-up shows how much these pieces add up to: contextual embeddings plus contextual BM25 cut the top-20 retrieval failure rate by 49%, and adding reranking cut it by 67% (from 5.7% to 1.9%).
-- **Measure retrieval separately from generation.** Recall@k on a labeled query-to-document set should be 90% or more at k=10 before you blame the generator. Then measure faithfulness (groundedness): the share of generated claims supported by the retrieved context.
-- **Expect retrieval to be the bottleneck.** The most common RAG failure is bad retrieval (chunking, missing metadata filters, vocabulary mismatch), not the LLM.
+- Use hybrid retrieval (BM25 keyword search plus dense embeddings), chunks of about 300-800 tokens with contextual headers, a cross-encoder reranker over the top 50-100 candidates, and a final 5-10 chunks in context. Anthropic's Contextual Retrieval write-up shows how much these pieces add up to: contextual embeddings plus contextual BM25 cut the top-20 retrieval failure rate by 49%, and adding reranking cut it by 67% (from 5.7% to 1.9%).
+- Measure retrieval separately from generation. Recall@k on a labeled query-to-document set should be 90% or more at k=10 before you blame the generator. Then measure faithfulness (groundedness): the share of generated claims supported by the retrieved context.
+- Expect retrieval to be the bottleneck. The most common RAG failure is bad retrieval (chunking, missing metadata filters, vocabulary mismatch), not the LLM.
 
 ### 4. Fine-tune if the errors are behavior errors that persist under good prompting
 
@@ -65,9 +65,9 @@ The mature end state is often RAG plus a model fine-tuned to use retrieved conte
 
 ## Why not fine-tune for knowledge
 
-**The empirical case.** Ovadia et al. (2023) found that RAG consistently outperforms unsupervised fine-tuning for knowledge injection, for both facts the model had seen in pretraining and entirely new ones. Gekhman et al. (2024) found that models learn new facts through supervised fine-tuning slowly, and that as the examples carrying new knowledge are eventually learned, the model's tendency to hallucinate rises.
+On the empirical side, Ovadia et al. (2023) found that RAG consistently outperforms unsupervised fine-tuning for knowledge injection, for both facts the model had seen in pretraining and entirely new ones. Gekhman et al. (2024) found that models learn new facts through supervised fine-tuning slowly, and that as the examples carrying new knowledge are eventually learned, the model's tendency to hallucinate rises.
 
-**The operational case.** With knowledge in the weights:
+On the operational side, with knowledge in the weights:
 
 - You can't revoke a fact, for example to honor a GDPR deletion request.
 - You can't enforce per-user ACLs.
@@ -78,10 +78,10 @@ LIMA (Zhou et al., 2023) supports the same framing from the other side: a small,
 
 ## How to measure it
 
-- **Compare every rung on the same eval.** Track quality, p50 and p95 latency, cost per 1,000 requests and engineering time-to-ship. Present the result as a Pareto frontier (the set of options where no other option is better on every axis) rather than as a single winner.
-- **Include maintenance cost.** A fine-tuned model must be retrained and re-evaluated whenever the base model is upgraded, often every 3-6 months. A prompt-plus-RAG stack usually ports to a new model in days.
-- **Track regressions outside the target domain after fine-tuning.** Check general capability, safety behavior and instruction following. Catastrophic forgetting (losing previously learned capabilities during fine-tuning) is a real cost.
-- **Measure RAG in two stages.** Report retrieval recall@k and generation faithfulness separately, so each regression has an owner.
+- Compare every rung on the same eval. Track quality, p50 and p95 latency, cost per 1,000 requests and engineering time-to-ship. Present the result as a Pareto frontier (the set of options where no other option is better on every axis) rather than as a single winner.
+- Include maintenance cost. A fine-tuned model must be retrained and re-evaluated whenever the base model is upgraded, often every 3-6 months. A prompt-plus-RAG stack usually ports to a new model in days.
+- Track regressions outside the target domain after fine-tuning. Check general capability, safety behavior and instruction following. Catastrophic forgetting (losing previously learned capabilities during fine-tuning) is a real cost.
+- Measure RAG in two stages. Report retrieval recall@k and generation faithfulness separately, so each regression has an owner.
 
 ## Tradeoffs
 
@@ -107,7 +107,7 @@ LIMA (Zhou et al., 2023) supports the same framing from the other side: a small,
 
 ## Thinking at scale
 
-Prompting, RAG and fine-tuning are not mutually exclusive. The real question is where to spend the next engineer-month, and the answer comes from error analysis on the eval.
+Prompting, RAG and fine-tuning are not mutually exclusive. The decision is where to spend the next engineer-month, and the answer comes from error analysis on the eval.
 
 The base model keeps getting better, so re-run that analysis regularly. A fine-tune that beat the old frontier model by 5 points often loses to the next frontier model with a good prompt. Before committing to fine-tuning, make sure the pipeline (data, training config, eval, regression suite) is cheap and automated to re-run, so that each model upgrade is a scheduled job rather than a project.
 

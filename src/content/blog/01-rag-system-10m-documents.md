@@ -16,7 +16,7 @@ Treat a RAG (retrieval-augmented generation) system as a retrieval system first 
 
 ## Requirements to pin down first
 
-These questions change the architecture, not just the tuning.
+The answers to these questions change the architecture as well as the tuning.
 
 - **What are the documents?** Average length, formats (PDF, HTML, scanned images), languages, and how much content is tables or code. 10M documents of about 5 pages each is roughly 25B tokens (at about 500 tokens per page). That is a very different system from 10M tweets.
 - **What is the query mix?** Factoid lookup, multi-hop synthesis, or "find all X"? Exhaustive-recall queries need different machinery (filters, aggregation, agentic search) than top-k question answering.
@@ -33,13 +33,13 @@ Both indexes are built once offline and queried together online, so ACLs, metada
 
 ### 1. Parse
 
-Use layout-aware parsing: PDFs become structured blocks, scans go through OCR, and tables are kept as Markdown or HTML rather than flattened into text. Parsing quality is the hidden ceiling on everything downstream. Sample about 200 documents and read the parsed output before tuning anything else.
+Use layout-aware parsing: PDFs become structured blocks, scans go through OCR, and tables are kept as Markdown or HTML rather than flattened into text. Parsing quality sets a ceiling on everything downstream, and that ceiling is easy to overlook. Sample about 200 documents and read the parsed output before tuning anything else.
 
 ### 2. Chunk
 
 Chunk along document structure, aiming for roughly 300-800 tokens per chunk, with headings carried as metadata. Store a parent pointer on every chunk so you can expand "small-to-big" at read time: retrieve on the small chunk, hand the model its larger parent section when needed.
 
-Sizing check: 25B tokens over 10M documents is about 2,500 tokens per document. At 300-800 tokens per chunk that is about 3-8 chunks per document, or **30-80M chunks**. Plan capacity for **100M** to leave headroom for overlap, context headers and corpus growth. The rest of this post uses 100M as the sizing number.
+Sizing check: 25B tokens over 10M documents is about 2,500 tokens per document. At 300-800 tokens per chunk that is about 3-8 chunks per document, or 30-80M chunks. Plan capacity for 100M to leave headroom for overlap, context headers and corpus growth. The rest of this post uses 100M as the sizing number.
 
 For a domain-specific example of structure-aware chunking, see [Chunking Legal Contracts for Retrieval](/blog/chunking-legal-contracts/).
 
@@ -53,7 +53,7 @@ Optionally, prepend a short LLM-generated context sentence to each chunk before 
 
 Start with an off-the-shelf model shortlisted from the MTEB (Massive Text Embedding Benchmark) leaderboard, evaluated on your own queries, and fine-tune later on in-domain pairs.
 
-Storage sizing for 100M chunks. An embedding model pools all of a chunk's tokens into **one vector per chunk**, so chunk length doesn't change these numbers. (Late-interaction models such as ColBERT keep a vector per token instead, which multiplies storage by the tokens per chunk.)
+Storage sizing for 100M chunks. An embedding model pools all of a chunk's tokens into one vector per chunk, so chunk length doesn't change these numbers. (Late-interaction models such as ColBERT keep a vector per token instead, which multiplies storage by the tokens per chunk.)
 
 | Representation | Bytes per vector | Total for 100M |
 |---|---|---|
@@ -79,7 +79,7 @@ Shard by hash or by tenant. Run a BM25 or SPLADE (learned sparse) inverted index
 
 ### 6. Incremental updates
 
-Use a CDC (change data capture) stream: re-parse, re-chunk and upsert changed documents. Tombstone deletions immediately, because deletes are a compliance issue and not only a relevance one. Run periodic compaction and rebuilds, since HNSW recall degrades under heavy deletes.
+Use a CDC (change data capture) stream: re-parse, re-chunk and upsert changed documents. Tombstone deletions immediately, because deletes are a compliance issue as well as a relevance one. Run periodic compaction and rebuilds, since HNSW recall degrades under heavy deletes.
 
 ## The query path
 
@@ -115,22 +115,18 @@ Add a semantic cache for frequent queries and an embedding cache for query vecto
 
 ## Cost back-of-envelope
 
-At 50 QPS sustained around the clock, the system would serve 50 × 86,400 ≈ **4.3M queries per day**. At about 12k input tokens per query, that is about **52B input tokens per day**. Because 50 QPS is a peak figure, treat this as an upper bound; average traffic is usually well below peak.
+At 50 QPS sustained around the clock, the system would serve 50 × 86,400 ≈ 4.3M queries per day. At about 12k input tokens per query, that is about 52B input tokens per day. Because 50 QPS is a peak figure, treat this as an upper bound; average traffic is usually well below peak.
 
 For example, at an illustrative $1 per million input tokens, 52B tokens is about $52k per day before output tokens. Retrieval infrastructure for about 100M vectors costs on the order of a few thousand dollars a month either way. Generation therefore dominates retrieval by far more than 10×.
 
-The levers that matter:
-
-- **Fewer, better chunks.** This is where the reranker pays for itself.
-- **Smaller models for easy queries** via routing.
-- **Caching** of prompts, queries and answers.
+To lower cost, send fewer, better chunks (this is where the reranker pays for itself), route easy queries to smaller models, and cache prompts, queries and answers.
 
 ## How to measure it
 
 ### Retrieval
 
 - Track recall@20 and nDCG@10 (normalized discounted cumulative gain) on a golden set of 500-2,000 queries labeled by SMEs (subject-matter experts) and stratified by query type.
-- Targets: **recall@50 ≥ 0.95 before the reranker** and **recall@10 ≥ 0.85 after it**.
+- Targets: recall@50 ≥ 0.95 before the reranker and recall@10 ≥ 0.85 after it.
 - Track ANN recall against exact kNN (brute-force nearest neighbors) separately, with a target of ≥ 0.95, so that index tuning does not hide inside model changes.
 
 ### Generation
@@ -160,14 +156,14 @@ Every change to the chunker, embedder, index parameters or prompt runs the offli
 
 On HNSW memory: Faiss documents HNSW memory as `d * 4 + M * 2 * 4` bytes per vector. For 1024-dim fp32 vectors with M = 32 links, the graph adds only about 6% on top of the raw vectors; the cost is that all of it must sit in RAM. For compressed 512-byte vectors, the same links add about 50%.
 
-- **Pre-filter vs post-filter ACLs.** Post-filtering the top-k on a selective ACL can return zero results and leaks timing information. Prefer filtered ANN or per-tenant shards.
-- **Chunk size vs reranker cost.** Smaller chunks give better precision but more candidates to rerank. Small-to-big expansion gets both.
-- **Fine-tuning the embedder.** In-domain fine-tuning often adds several points of recall (gains of 5-15 points are plausible but vary widely by domain), and it locks you into a re-embedding cycle.
+- Pre-filter vs post-filter ACLs: post-filtering the top-k on a selective ACL can return zero results and leaks timing information. Prefer filtered ANN or per-tenant shards.
+- Chunk size against reranker cost: smaller chunks give better precision but more candidates to rerank. Small-to-big expansion gets both.
+- Fine-tuning the embedder: in-domain fine-tuning often adds several points of recall (gains of 5-15 points are plausible but vary widely by domain), and it locks you into a re-embedding cycle.
 
 ## Common mistakes
 
 - **Jumping to "vector DB plus an LLM" with no SLOs, no eval set and no capacity math** (vectors × dims × bytes). The result is a system you cannot size, budget or evaluate.
-- **Ignoring ACLs and deletion.** Retrieval-time permission leaks and stale deleted content are the incidents that actually get escalated.
+- **Ignoring ACLs and deletion.** Retrieval-time permission leaks and stale deleted content are the incidents that get escalated.
 - **Reporting end-to-end answer quality without separating retrieval recall from generation faithfulness.** You cannot tell which stage to fix.
 - **Forgetting that ANN recall degrades** with filters, deletes and index drift. Without monitoring against exact kNN on a sample, recall erodes silently.
 - **No plan for re-embedding 100M chunks** when the embedding model changes. The migration becomes a multi-week outage risk instead of a routine job.
@@ -175,9 +171,9 @@ On HNSW memory: Faiss documents HNSW memory as `d * 4 + M * 2 * 4` bytes per vec
 
 ## Thinking at scale
 
-- **Ownership boundaries.** Give ingestion, retrieval and generation separate evals and separate on-call. A quality drop can then be traced to a stage in minutes rather than days.
-- **Embedding model migration from day one.** Dual-write to old and new indexes and run shadow traffic before cutting over.
-- **Exhaustive questions are a different product.** Requests like "list all contracts with clause X" belong in structured extraction into a table, queried with SQL. Do not stretch top-k RAG to cover them.
+- Draw ownership boundaries by stage: give ingestion, retrieval and generation separate evals and separate on-call. A quality drop can then be traced to a stage in minutes rather than days.
+- Plan for embedding model migration from day one. Dual-write to old and new indexes and run shadow traffic before cutting over.
+- Treat exhaustive questions as a different product. Requests like "list all contracts with clause X" belong in structured extraction into a table, queried with SQL. Do not stretch top-k RAG to cover them.
 
 ## Further reading
 

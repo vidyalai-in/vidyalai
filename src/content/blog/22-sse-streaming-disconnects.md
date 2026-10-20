@@ -48,7 +48,7 @@ data: {"t":" world"}
 
 ```
 
-Use typed events: `delta`, `tool_call`, `usage`, `error` and `done`. A final `done` event (some APIs send a `[DONE]` sentinel instead) lets the client tell **completion** apart from **truncation**. Anthropic's Messages API is a good production example of this shape: `message_start`, then `content_block_start` / `content_block_delta` / `content_block_stop` per block, `message_delta`, and a final `message_stop`, plus `ping` and in-band `error` events.
+Use typed events: `delta`, `tool_call`, `usage`, `error` and `done`. A final `done` event (some APIs send a `[DONE]` sentinel instead) lets the client tell completion apart from truncation. Anthropic's Messages API is a good production example of this shape: `message_start`, then `content_block_start` / `content_block_delta` / `content_block_stop` per block, `message_delta`, and a final `message_stop`, plus `ping` and in-band `error` events.
 
 ### Coalescing
 
@@ -88,7 +88,7 @@ Under HTTP/1.1, browsers allow only about 6 connections per origin, and each ope
 Because the log, not the connection, owns the tokens, a dropped connection costs a replay instead of the answer.
 
 1. **Create.** `POST /messages` validates the request, writes a message row with status `generating` and an idempotency key, enqueues the generation and returns a `message_id`. (It can also upgrade straight to the stream to save a round trip.)
-2. **Generate.** A generation worker calls the inference engine and appends chunks to a **per-message stream log**, keyed by `message_id`, with monotonically increasing sequence numbers. Redis Streams works well; an in-memory ring buffer works if gateways can reach the worker that holds it. Give entries a TTL of about 10 minutes.
+2. **Generate.** A generation worker calls the inference engine and appends chunks to a per-message stream log, keyed by `message_id`, with monotonically increasing sequence numbers. Redis Streams works well; an in-memory ring buffer works if gateways can reach the worker that holds it. Give entries a TTL of about 10 minutes.
 3. **Tail.** The SSE gateway (`GET /messages/{id}/stream`) reads from the sequence after `Last-Event-ID` (or from 0) and tails the log. Gateways are stateless, so any replica can resume any stream.
 4. **Complete.** The worker persists the final text to the durable message store, marks the message complete, appends a `done` event, and lets the log expire.
 5. **Client.** On a network error, reconnect with exponential backoff plus jitter, sending `Last-Event-ID`. Deduplicate by sequence number and render idempotently. If the log has already expired, fetch the completed message from the REST API.
@@ -111,12 +111,11 @@ Detect disconnects through the request context (`ctx.Done()` in Go, `await reque
 
 ### Propagate the cancel all the way down
 
-Gateway, then worker, then the engine's `abort(request_id)`, which frees the sequence's KV blocks and batch slot. A dropped cancel leaves a zombie sequence that keeps generating to `max_tokens`. On a 70B-class model in BF16 (about 320 KiB of KV per token, see [Serving Open-Weight LLMs at Scale](/blog/serving-open-llms-at-scale/)), a 32K-token context holds 32,768 × 327,680 bytes ≈ **10.7 GB** of KV. At scale, zombie generations can waste a meaningful share of decode capacity (5-15% is a plausible range if cancels are routinely dropped), so track a "tokens generated after client gone" metric and drive it toward zero.
+Gateway, then worker, then the engine's `abort(request_id)`, which frees the sequence's KV blocks and batch slot. A dropped cancel leaves a zombie sequence that keeps generating to `max_tokens`. On a 70B-class model in BF16 (about 320 KiB of KV per token, see [Serving Open-Weight LLMs at Scale](/blog/serving-open-llms-at-scale/)), a 32K-token context holds 32,768 × 327,680 bytes ≈ 10.7 GB of KV. At scale, zombie generations can waste a meaningful share of decode capacity (5-15% is a plausible range if cancels are routinely dropped), so track a "tokens generated after client gone" metric and drive it toward zero.
 
 ### Billing and agents
 
-- **Billing:** bill the tokens actually generated up to the cancel, and record them in the usage event.
-- **Agents with tools:** never abort halfway through a side-effecting tool call. Define cancel points between steps.
+Bill the tokens actually generated up to the cancel, and record them in the usage event. For agents with tools, never abort halfway through a side-effecting tool call; define cancel points between steps.
 
 ## Capacity math
 
@@ -131,22 +130,22 @@ Log appends        = per-token:     336,000 appends/s
                       gap, so it degenerates to ~1 token per append: ~336k/s)
 ```
 
-So the stream log takes roughly **170k-340k appends per second**, not a few thousand. Two techniques keep that manageable:
+So the stream log takes roughly 170k-340k appends per second, not a few thousand. Two techniques keep that manageable:
 
 - **Pipeline per worker.** Each generation worker batches the appends for all its streams into one pipelined round trip per flush interval. With, say, 200 workers flushing every 25-50 ms, that is 4,000-8,000 round trips per second carrying the 170k-340k entries.
 - **Shard by message ID.** Spread streams across several Redis shards (hash on `message_id`) so no single shard carries the whole append rate, and benchmark per-shard throughput with your entry size.
 
-Memory is the other constraint. Assuming about 100 bytes per entry, 2 tokens per entry and a 10-minute TTL after completion, the log holds about 700 × 612 s × 200 entries ≈ 86M entries, around **9 GB**. Shortening the post-completion TTL to 60 s (the final text is already in the durable store) cuts that to about 1 GB.
+Memory is the other constraint. Assuming about 100 bytes per entry, 2 tokens per entry and a 10-minute TTL after completion, the log holds about 700 × 612 s × 200 entries ≈ 86M entries, around 9 GB. Shortening the post-completion TTL to 60 s (the final text is already in the durable store) cuts that to about 1 GB.
 
-The gateway itself is cheap. One async gateway pod can hold 10-50k mostly idle connections, so 8,400 streams fit on a handful of pods. The real limits are file descriptors, load-balancer connection limits, and the stream log.
+The gateway itself is cheap. One async gateway pod can hold 10-50k mostly idle connections, so 8,400 streams fit on a handful of pods. The limits are file descriptors, load-balancer connection limits, and the stream log.
 
 ## How to measure it
 
-- **Client-measured TTFT** (time to first visible token) and p99 inter-chunk gap. Server-side timings miss proxy buffering.
-- **Percentage of streams ending without `done`**, and the resume success rate after reconnects.
-- **Abort-propagation latency** (client gone until KV freed) and the zombie token rate (tokens generated after the client left, under an abort policy).
-- **Gateway connection count and heartbeat-timeout rate**, split by proxy path (CDN, corporate proxies, mobile networks).
-- **Stream-log health:** append rate, p99 append latency per shard, and memory.
+- Client-measured TTFT (time to first visible token) and p99 inter-chunk gap. Server-side timings miss proxy buffering.
+- Percentage of streams ending without `done`, and the resume success rate after reconnects.
+- Abort-propagation latency (client gone until KV freed) and the zombie token rate (tokens generated after the client left, under an abort policy).
+- Gateway connection count and heartbeat-timeout rate, split by proxy path (CDN, corporate proxies, mobile networks).
+- Stream-log health: append rate, p99 append latency per shard, and memory.
 
 ## Tradeoffs
 
@@ -158,8 +157,8 @@ The gateway itself is cheap. One async gateway pod can hold 10-50k mostly idle c
 | Couple generation to the connection | Simplest; auto-cancel saves GPU | Any blip loses the answer; no resume | Prototypes, internal tools |
 | Decoupled generation + stream log | Resumable, deploy-safe, multi-device | Redis or log infrastructure; cancel must be enforced explicitly | Production consumer chat |
 
-- **Keep vs cancel on disconnect** is a product, cost and safety decision. Make it per surface and measurable.
-- **Flush cadence** trades smoothness and perceived speed against syscall and network overhead. 20-50 ms works for most products.
+- Keep vs cancel on disconnect is a product, cost and safety decision. Make it per surface and measurable.
+- Flush cadence trades smoothness and perceived speed against syscall and network overhead. 20-50 ms works for most products.
 
 ## Common mistakes
 
@@ -172,9 +171,9 @@ The gateway itself is cheap. One async gateway pod can hold 10-50k mostly idle c
 
 ## Thinking at scale
 
-- **Deploys.** Long-lived streams make deploys slow and disruptive. Drain connections with a maximum stream duration, and send a `reconnect` event so clients resume on a new pod. That is safe precisely because state lives in the log, not in the pod.
-- **One policy owner.** The keep-vs-cancel rule, the grace period and the generation cap belong to one team and one config, per surface, with the zombie-token metric on its dashboard. Otherwise each client team picks its own behavior and GPU waste becomes nobody's problem.
-- **Multi-device for free.** Once streams are keyed by message ID in a shared log, a second device (phone and laptop) can tail the same answer. Plan auth for that from the start.
+- Long-lived streams make deploys slow and disruptive. Drain connections with a maximum stream duration, and send a `reconnect` event so clients resume on a new pod. That is safe because state lives in the log, not in the pod.
+- The keep-vs-cancel rule, the grace period and the generation cap belong to one team and one config, per surface, with the zombie-token metric on its dashboard. Otherwise each client team picks its own behavior and GPU waste becomes nobody's problem.
+- Multi-device comes for free: once streams are keyed by message ID in a shared log, a second device (phone and laptop) can tail the same answer. Plan auth for that from the start.
 
 ## Further reading
 

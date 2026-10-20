@@ -11,7 +11,7 @@ sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 
 ## TL;DR
 
-LLM inference has two phases that behave very differently. Prefill (processing the prompt) is compute-bound; decode (generating one token at a time) is memory-bandwidth-bound and limited by how much KV cache fits in GPU memory. Serving at scale is therefore about keeping HBM (high-bandwidth memory) busy without breaking latency SLOs (service-level objectives). The standard design is a continuous-batching engine with a paged KV cache (vLLM, SGLang or TensorRT-LLM), plus chunked prefill and prefix caching, with weights quantized to FP8 (or FP4 on Blackwell) and the KV cache to FP8 so more sequences fit per GPU. Use tensor parallelism inside an NVLink domain and data-parallel replicas across nodes, size the fleet from tokens per second per replica measured at your TTFT and TPOT targets, and judge success by goodput: requests per second that actually meet the SLO, per dollar.
+LLM inference has two phases that behave very differently. Prefill (processing the prompt) is compute-bound; decode (generating one token at a time) is memory-bandwidth-bound and limited by how much KV cache fits in GPU memory. Serving at scale is therefore about keeping HBM (high-bandwidth memory) busy without breaking latency SLOs (service-level objectives). The standard design is a continuous-batching engine with a paged KV cache (vLLM, SGLang or TensorRT-LLM), plus chunked prefill and prefix caching, with weights quantized to FP8 (or FP4 on Blackwell) and the KV cache to FP8 so more sequences fit per GPU. Use tensor parallelism inside an NVLink domain and data-parallel replicas across nodes, size the fleet from tokens per second per replica measured at your TTFT and TPOT targets, and judge success by goodput: requests per second that meet the SLO, per dollar.
 
 ## Requirements to pin down first
 
@@ -45,26 +45,26 @@ Without GQA (all 64 heads storing K and V) the same model would need 2 × 80 × 
 
 - Total HBM: 4 × 80 GB = 320 GB. At about 90% usable, that is 288 GB.
 - Subtract FP8 weights (70 GB) and activations and workspace (about 15 GB): roughly 200 GB left for KV cache.
-- 200 GB ÷ 163,840 bytes per token ≈ **1.2M tokens** of FP8 KV cache.
-- At a 4K-token average context: 1.2M ÷ 4,096 ≈ **300 concurrent sequences**.
+- 200 GB ÷ 163,840 bytes per token ≈ 1.2M tokens of FP8 KV cache.
+- At a 4K-token average context: 1.2M ÷ 4,096 ≈ 300 concurrent sequences.
 
 ### Decode step time
 
 Every decode step reads all the weights plus the KV cache of every active sequence.
 
-- Weights: 70 GB ÷ 4 GPUs = 17.5 GB per GPU. At 3.35 TB/s (H100 SXM HBM3), that is a floor of about **5.2 ms per step**.
-- KV reads at batch 128: 128 sequences × 4,096 tokens × 163,840 bytes ≈ 86 GB, or about 21.5 GB per GPU, which is another **6.4 ms**.
-- The bandwidth floor is therefore about 11.6 ms. Add the all-reduce traffic of tensor parallelism, kernel launch overhead and sampling, and a realistic step is **20-30 ms**.
-- At batch 128 and 20-30 ms per step, the replica produces 128 ÷ 0.025 s ≈ **4-6k output tok/s**, or roughly 33-50 tok/s per user.
+- Weights: 70 GB ÷ 4 GPUs = 17.5 GB per GPU. At 3.35 TB/s (H100 SXM HBM3), that is a floor of about 5.2 ms per step.
+- KV reads at batch 128: 128 sequences × 4,096 tokens × 163,840 bytes ≈ 86 GB, or about 21.5 GB per GPU, which is another 6.4 ms.
+- The bandwidth floor is therefore about 11.6 ms. Add the all-reduce traffic of tensor parallelism, kernel launch overhead and sampling, and a realistic step is 20-30 ms.
+- At batch 128 and 20-30 ms per step, the replica produces 128 ÷ 0.025 s ≈ 4-6k output tok/s, or roughly 33-50 tok/s per user.
 
 Note the gap between capacity (about 300 sequences fit) and the batch you run (128). Larger batches raise throughput but also raise step time, and the TPOT SLO caps the batch long before memory does.
 
 ### Prefill throughput
 
-- Prefill costs about 2 FLOPs per parameter per token: 2 × 70B = **140 GFLOP per token** (ignoring attention FLOPs, which are small at 4K context).
+- Prefill costs about 2 FLOPs per parameter per token: 2 × 70B = 140 GFLOP per token (ignoring attention FLOPs, which are small at 4K context).
 - An H100's dense FP8 peak is about 1,979 TFLOPS (NVIDIA lists 3,958 with sparsity). At about 40% MFU (model FLOPs utilization) that is roughly 800 TFLOPS per GPU, or 3.2 PFLOPS per 4-GPU replica.
-- 3.2 PFLOPS ÷ 140 GFLOP ≈ **23k prefill tok/s** per replica (call it 20-25k).
-- A 4K-token prompt costs 4,096 × 140 GFLOP ÷ 3.2 PFLOPS ≈ **180 ms** of compute before any queueing.
+- 3.2 PFLOPS ÷ 140 GFLOP ≈ 23k prefill tok/s per replica (call it 20-25k).
+- A 4K-token prompt costs 4,096 × 140 GFLOP ÷ 3.2 PFLOPS ≈ 180 ms of compute before any queueing.
 
 ### The same model on Blackwell
 
@@ -96,15 +96,15 @@ A long prompt processed in one shot blocks every decoding user for its whole dur
 
 ### Scheduler policy
 
-- Set a **max-tokens-per-step budget** that bounds step time, and therefore TPOT.
-- Use **priority classes**: interactive over batch, paid over free.
-- When KV runs out, **preempt** by recompute (drop the KV and redo prefill later) or swap (copy KV to host memory).
-- **Admission control** rejects or queues new requests early instead of admitting them and then thrashing on preemption.
+- Set a max-tokens-per-step budget that bounds step time, and therefore TPOT.
+- Use priority classes: interactive over batch, paid over free.
+- When KV runs out, preempt by recompute (drop the KV and redo prefill later) or swap (copy KV to host memory).
+- Admission control rejects or queues new requests early instead of admitting them and then thrashing on preemption.
 
 ## KV cache management
 
 - **PagedAttention** stores KV in fixed-size blocks (16 tokens in vLLM) addressed through per-sequence block tables, like virtual memory pages. The vLLM paper reports that existing systems wasted 60-80% of KV memory to fragmentation and over-reservation, versus under 4% with paging. Copy-on-write blocks also make beam search and parallel sampling cheap.
-- **Prefix caching** (vLLM automatic prefix caching, SGLang RadixAttention) reuses KV for shared system prompts and multi-turn history. With a 2K-token system prompt on every request, it can cut prefill compute by 50% or more. It only pays off if the router is **cache-aware**: requests that share a prefix must land on the replica that holds it. Use consistent hashing on a prefix hash with bounded load, so a hot prefix cannot overload one replica.
+- **Prefix caching** (vLLM automatic prefix caching, SGLang RadixAttention) reuses KV for shared system prompts and multi-turn history. With a 2K-token system prompt on every request, it can cut prefill compute by 50% or more. It only pays off if the router is cache-aware: requests that share a prefix must land on the replica that holds it. Use consistent hashing on a prefix hash with bounded load, so a hot prefix cannot overload one replica.
 - **KV quantization** to FP8 halves KV bytes and so roughly doubles concurrency, at a small quality cost. Validate it on long-context evals, because errors accumulate over long sequences.
 - **Offload tiers.** Keep active KV in HBM, spill idle multi-turn sessions to host DRAM, then to SSD (the design Mooncake uses for Kimi). Restoring a session's KV over PCIe is far cheaper than recomputing its prefill.
 
@@ -117,8 +117,8 @@ A long prompt processed in one shot blocks every decoding user for its whole dur
 
 ## Parallelism and topology
 
-- Keep **tensor parallelism (TP) inside an NVLink domain**: TP=2, 4 or 8 inside a node, or wider inside a rack-scale domain like GB200 NVL72. TP does an all-reduce every layer, which is too chatty for the network between nodes.
-- Use **pipeline parallelism (PP) or independent replicas across nodes**. For large MoE models, add **expert parallelism (EP)**, which places different experts on different GPUs and routes tokens to them with all-to-all communication.
+- Keep tensor parallelism (TP) inside an NVLink domain: TP=2, 4 or 8 inside a node, or wider inside a rack-scale domain like GB200 NVL72. TP does an all-reduce every layer, which is too chatty for the network between nodes.
+- Use pipeline parallelism (PP) or independent replicas across nodes. For large MoE models, add **expert parallelism (EP)**, which places different experts on different GPUs and routes tokens to them with all-to-all communication.
 - **Speculative decoding** (a small draft model, or Medusa or EAGLE heads that propose several tokens per step for the big model to verify in one pass) gives 1.5-3x lower latency at low batch. The gain disappears at high batch, where decode is no longer bandwidth-starved and the rejected draft tokens are wasted compute. Enable it adaptively based on load.
 
 ### Prefill/decode disaggregation
@@ -133,10 +133,10 @@ At large scale, run prefill and decode on separate pools (DistServe, Splitwise) 
 
 Assume a peak of 1,000 requests/s, with 1,500 input and 300 output tokens per request, on the 4x H100 replica above.
 
-1. **Decode:** 1,000 × 300 = 300k output tok/s. At about 5k tok/s per replica, that needs **60 replicas**.
-2. **Prefill:** 1,000 × 1,500 = 1.5M input tok/s. With a 50% prefix-cache hit rate, 750k tok/s must be computed. At about 22k tok/s per replica, that is **about 34 replicas' worth** of compute.
-3. **Combine:** with chunked prefill, prefill work fills compute that bandwidth-bound decode steps leave idle, so the two do not simply add. Budget **80-90 replicas** (60 + 34 = 94 is the no-overlap upper bound).
-4. **Headroom:** add 30% for failures, deploys and forecast error: about **110 replicas × 4 GPUs ≈ 450 H100s**.
+1. **Decode:** 1,000 × 300 = 300k output tok/s. At about 5k tok/s per replica, that needs 60 replicas.
+2. **Prefill:** 1,000 × 1,500 = 1.5M input tok/s. With a 50% prefix-cache hit rate, 750k tok/s must be computed. At about 22k tok/s per replica, that is about 34 replicas' worth of compute.
+3. **Combine:** with chunked prefill, prefill work fills compute that bandwidth-bound decode steps leave idle, so the two do not simply add. Budget 80-90 replicas (60 + 34 = 94 is the no-overlap upper bound).
+4. **Headroom:** add 30% for failures, deploys and forecast error: about 110 replicas × 4 GPUs ≈ 450 H100s.
 
 ### Cost per token
 
@@ -155,18 +155,18 @@ At 1/3 of peak avg:   8.6B output tokens/day
 (3x diurnal swing)    $27,000 ÷ 8.6M ≈ $0.0031 per 1K output tokens
 ```
 
-So the all-in cost is about **$0.001-0.003 per 1K output tokens ($1-3 per million)**, and that price also covers the 5x larger volume of input tokens. The headline lesson: utilization over the day matters as much as per-replica efficiency, which is why off-peak batch work and autoscaling pay for themselves.
+So the all-in cost is about $0.001-0.003 per 1K output tokens ($1-3 per million), and that price also covers the 5x larger volume of input tokens. Utilization over the day therefore matters as much as per-replica efficiency, which is why off-peak batch work and autoscaling pay for themselves.
 
 The same throughput on B200 would need roughly half as many GPUs (about 110 replicas of 2), at a higher hourly price per GPU.
 
 ## How to measure it
 
-- **Goodput at the SLO:** requests per second that meet both the TTFT and the TPOT target. Never quote peak tok/s without the latency attached.
-- **Latency distributions** for TTFT and TPOT, split by input-length bucket, so long prompts do not hide inside an average.
-- **Engine health:** KV-cache utilization, preemption rate, prefix-cache hit rate, queue depth, MFU and memory-bandwidth utilization. GPU "utilization %" from `nvidia-smi` only says a kernel was running, not how much of the chip it used, so do not use it as a capacity metric.
-- **Cost per million tokens**, input and output, per model and per tenant.
-- **Quantization quality:** the full eval suite (long context, code, tool-call JSON validity, multilingual) for every new precision or calibration.
-- **Load tests** that replay production traces, not uniform synthetic prompts. Fixed-length prompts hide tail latency and prefix-sharing effects.
+- Goodput at the SLO: requests per second that meet both the TTFT and the TPOT target. Never quote peak tok/s without the latency attached.
+- Latency distributions for TTFT and TPOT, split by input-length bucket, so long prompts do not hide inside an average.
+- Engine health: KV-cache utilization, preemption rate, prefix-cache hit rate, queue depth, MFU and memory-bandwidth utilization. GPU "utilization %" from `nvidia-smi` only says a kernel was running, not how much of the chip it used, so do not use it as a capacity metric.
+- Cost per million tokens, input and output, per model and per tenant.
+- Quantization quality: the full eval suite (long context, code, tool-call JSON validity, multilingual) for every new precision or calibration.
+- Load tests that replay production traces, not uniform synthetic prompts. Fixed-length prompts hide tail latency and prefix-sharing effects.
 
 ## Tradeoffs
 
@@ -180,9 +180,9 @@ The same throughput on B200 would need roughly half as many GPUs (about 110 repl
 | Disaggregated prefill/decode | Independent scaling; best p99 TPOT | RDMA KV transfer complexity; more failure modes | Very large fleets, long prompts, strict TPOT |
 | Speculative decoding | 1.5-3x lower latency at low load | Wasted compute at high batch; draft model to maintain | Latency-sensitive, low-to-medium concurrency |
 
-- **Throughput vs latency is a single dial: max batch size.** Choose it from the SLO and maximize goodput under that constraint.
-- **Cache-aware routing fights even load balancing.** Prefix-hit locality wants requests on the same replica; load spreading wants them anywhere. Bounded-load consistent hashing is the compromise.
-- **Build vs buy the engine.** Use vLLM or SGLang and contribute upstream. Custom kernels only pay off for the top two or three hot paths.
+- Throughput vs latency is a single dial: max batch size. Choose it from the SLO and maximize goodput under that constraint.
+- Cache-aware routing fights even load balancing. Prefix-hit locality wants requests on the same replica; load spreading wants them anywhere. Bounded-load consistent hashing is the compromise.
+- Build vs buy the engine: use vLLM or SGLang and contribute upstream. Custom kernels only pay off for the top two or three hot paths.
 
 ## Common mistakes
 

@@ -11,7 +11,7 @@ sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 
 ## TL;DR
 
-Make each user task a single distributed trace using OpenTelemetry (OTel) and its GenAI semantic conventions. Every agent invocation, LLM call, tool execution, retrieval and handoff becomes a span, joined by W3C trace context that you propagate explicitly across queues and async boundaries. Spans carry small, structured metadata: model, prompt version, token usage, cost, latency, finish reason and tool status. Full prompts and completions go to a separate, access-controlled blob store referenced from the span. Use tail-based sampling so every error, expensive run and flagged run is kept while normal traffic is sampled. The goal is not pretty waterfalls; it is answering three questions quickly: why did this run fail, what changed, and where do the cost and latency go.
+Make each user task a single distributed trace using OpenTelemetry (OTel) and its GenAI semantic conventions. Every agent invocation, LLM call, tool execution, retrieval and handoff becomes a span, joined by W3C trace context that you propagate explicitly across queues and async boundaries. Spans carry small, structured metadata: model, prompt version, token usage, cost, latency, finish reason and tool status. Full prompts and completions go to a separate, access-controlled blob store referenced from the span. Use tail-based sampling so every error, expensive run and flagged run is kept while normal traffic is sampled. The traces are there to answer three questions quickly: why did this run fail, what changed, and where do the cost and latency go.
 
 ## Requirements to pin down first
 
@@ -65,7 +65,7 @@ Record guardrail verdicts, planner decisions ("chose tool X"), loop-detection tr
 
 ## Context propagation (where most implementations break)
 
-- **In-process.** OTel stores the active context in context variables (`contextvars` in Python). Thread pools and some async task-group patterns **drop context** unless you wrap the submitted callables to copy it.
+- **In-process.** OTel stores the active context in context variables (`contextvars` in Python). Thread pools and some async task-group patterns drop context unless you wrap the submitted callables to copy it.
 - **Across services.** Send `traceparent` and `tracestate` in HTTP or gRPC headers (W3C Trace Context). Auto-instrumentation handles this for common clients.
 - **Across queues.** Inject the context into message headers (Kafka, SQS, Pub/Sub) on publish and extract it in the consumer. Nothing does this for a hand-rolled job table, so add it yourself.
 - **Long-running and human-in-the-loop runs.** Persist the trace context in the workflow state store (Temporal or another durable executor), so a run resumed hours later stays attached. If the trace would otherwise grow without bound, start a new trace and link it to the old one.
@@ -73,7 +73,7 @@ Record guardrail verdicts, planner decisions ("chose tool X"), loop-detection tr
 
 ## Content capture and privacy
 
-- **Keep span attributes small and structured.** Store **full prompts and completions** in an object store, encrypted and keyed by span ID, and put a pointer attribute on the span. The OTel GenAI conventions recommend exactly this pattern for production: content capture is off by default, recording content on spans is suited to pre-production, and external storage with references is the recommended production option because it enables separate access controls. It also keeps the tracing backend cheap and lets content have stricter ACLs and shorter retention (for example 30 days for content, 13 months for metadata).
+- **Keep span attributes small and structured.** Store full prompts and completions in an object store, encrypted and keyed by span ID, and put a pointer attribute on the span. The OTel GenAI conventions recommend exactly this pattern for production: content capture is off by default, recording content on spans is suited to pre-production, and external storage with references is the recommended production option because it enables separate access controls. It also keeps the tracing backend cheap and lets content have stricter ACLs and shorter retention (for example 30 days for content, 13 months for metadata).
 - **Redact or tokenize PII in the SDK before export.** Never log secrets from tool arguments; allowlist the argument fields you record.
 - **Record enough to replay.** Store the exact rendered prompt, model snapshot, sampling parameters and seed, and tool results. A failing run can then be re-executed against a new prompt or model, which turns production traces into eval cases. (LLM sampling is not perfectly deterministic even with a seed, so replay compares behavior rather than bytes.)
 
@@ -102,7 +102,7 @@ Content is almost 4x the metadata, which is another reason to keep it out of the
 
 ### Metrics before sampling
 
-**Emit unsampled metrics** from spans with a span-metrics connector: RED metrics (rate, errors, duration), tokens, cost per agent and steps per run. Aggregates then stay accurate whatever the sampling rate. Keep high-cardinality fields (user ID, prompt text) out of metric labels.
+Emit unsampled metrics from spans with a span-metrics connector: RED metrics (rate, errors, duration), tokens, cost per agent and steps per run. Aggregates then stay accurate whatever the sampling rate. Keep high-cardinality fields (user ID, prompt text) out of metric labels.
 
 ## Making traces useful
 
@@ -113,11 +113,11 @@ Content is almost 4x the metadata, which is another reason to keep it out of the
 
 ## How to measure it
 
-- **Mean time to root cause** for agent incidents, for example from hours to under 15 minutes.
-- **Replayability:** the percentage of production failures that can be converted into replayable eval cases.
-- **Trace completeness:** the share of traces with no orphan spans or broken context. Target above 99%, and enforce it with a CI test that runs a sample workflow (including a queue hop and a parallel fan-out) and asserts the expected span tree.
-- **Overhead:** tracing adds under 1-2% to latency, with a known cost per million spans.
-- **Sampling coverage:** the share of error runs retained (should be 100%) and the share of total traffic stored.
+- Mean time to root cause for agent incidents, for example from hours to under 15 minutes.
+- Replayability: the percentage of production failures that can be converted into replayable eval cases.
+- Trace completeness: the share of traces with no orphan spans or broken context. Target above 99%, and enforce it with a CI test that runs a sample workflow (including a queue hop and a parallel fan-out) and asserts the expected span tree.
+- Overhead: tracing adds under 1-2% to latency, with a known cost per million spans.
+- Sampling coverage: the share of error runs retained (should be 100%) and the share of total traffic stored.
 
 ## Tradeoffs
 
@@ -130,8 +130,8 @@ Content is almost 4x the metadata, which is another reason to keep it out of the
 | Inline content in spans | Easy debugging | Cost, PII exposure, attribute size limits | Development and staging only |
 | Content in a separate blob store | Cheap, ACL-able, separate retention | Extra hop; pointers can dangle | Production |
 
-- **Fidelity vs privacy and cost.** Capture structure for everything, content for a sampled or flagged subset, and full replay data for failures.
-- **Instrument the framework, not each agent.** Auto-instrument the LLM client, the tool registry and the handoff primitive, so coverage does not depend on every developer remembering to add spans.
+- Fidelity vs privacy and cost: capture structure for everything, content for a sampled or flagged subset, and full replay data for failures.
+- Instrument the framework, not each agent. Auto-instrument the LLM client, the tool registry and the handoff primitive, so coverage does not depend on every developer remembering to add spans.
 
 ## Common mistakes
 

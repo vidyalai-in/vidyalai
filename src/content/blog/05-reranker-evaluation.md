@@ -11,14 +11,14 @@ sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
 
 ## TL;DR
 
-Add a cross-encoder reranker that rescores the first stage's top 50-200 candidates and passes the top 5-20 to the LLM (large language model). Then judge it with a controlled comparison, not a vibe check. Offline, on a labeled and stratified query set, the reranker should raise nDCG@10 and recall at the *context cutoff k* with statistical significance, and end-to-end answer correctness and faithfulness should rise at equal or smaller context size. Online, an A/B test should show a user-facing quality gain with p95 latency and cost per query as guardrails. The reranker "helped" only if the quality gain survives the latency budget and holds on every important slice.
+Add a cross-encoder reranker that rescores the first stage's top 50-200 candidates and passes the top 5-20 to the LLM (large language model). Then judge it with a controlled comparison. Offline, on a labeled and stratified query set, the reranker should raise nDCG@10 and recall at the *context cutoff k* with statistical significance, and end-to-end answer correctness and faithfulness should rise at equal or smaller context size. Online, an A/B test should show a user-facing quality gain with p95 latency and cost per query as guardrails. The reranker "helped" only if the quality gain survives the latency budget and holds on every important slice.
 
 ## Requirements to pin down first
 
 - **What is first-stage recall@N at the candidate depth?** A reranker can only reorder what it is given. If recall@100 is 0.70, the ceiling is 0.70, and the fix belongs upstream (see [BM25 vs Dense vs Hybrid Search](/blog/bm25-dense-hybrid-search/)).
 - **How much latency budget is left?** A typical reranking slot is 50-250 ms at p95. That bounds model size and candidate depth.
 - **Hosted or self-hosted?** Hosted APIs (Cohere Rerank, Voyage AI rerankers) are fast to adopt; self-hosted models (bge-reranker, monoT5, a fine-tuned cross-encoder) give control. Data-residency constraints may decide this for you.
-- **How many passages does the LLM consume: 5 or 20?** That k is the metric cutoff that matters, because rank 30 versus rank 40 never reaches the model.
+- **How many passages does the LLM consume: 5 or 20?** That k is the metric cutoff to evaluate at, because rank 30 versus rank 40 never reaches the model.
 
 ## Designing the reranking stage
 
@@ -32,9 +32,9 @@ Start at N = 100. Plot first-stage recall@N against N and pick the point where t
 
 ### 2. Choose the model
 
-- **Cross-encoder.** BERT, MiniLM or XLM-R-class models, roughly 20-600M parameters, that read each (query, passage) pair jointly with full attention. This is the default.
-- **LLM rerankers, listwise or pointwise** (RankGPT-style). Strong zero-shot, but 10-100× more expensive. Use them to label data and distill a smaller model, or for low-QPS (queries per second), high-value queries.
-- **Late interaction (ColBERT).** A cheaper middle ground that can serve as the reranker, especially if you already run it.
+- Cross-encoders: BERT, MiniLM or XLM-R-class models, roughly 20-600M parameters, that read each (query, passage) pair jointly with full attention. This is the default.
+- LLM rerankers, listwise or pointwise (RankGPT-style): strong zero-shot, but 10-100× more expensive. Use them to label data and distill a smaller model, or for low-QPS (queries per second), high-value queries.
+- Late interaction (ColBERT): a cheaper middle ground that can serve as the reranker, especially if you already run it.
 
 A worked latency estimate: reranking 100 passages of about 256 tokens is 25,600 tokens. A 100M-parameter cross-encoder needs about `2 × 100M` FLOPs per token, so about 5 TFLOPs per query. A data-center GPU sustaining 50-150 TFLOPs in fp16 finishes that in roughly 30-100 ms when batched. A 22M-parameter MiniLM is about 5× faster; a 560M-parameter model is about 5× slower. Benchmark on your hardware before setting N.
 
@@ -50,7 +50,7 @@ Take the top k by score. Optionally drop candidates below a calibrated score thr
 
 As a second phase, fine-tune on in-domain pairs from clicks, citations or LLM-labeled data, with hard negatives mined from the first stage. Domain fine-tuning commonly adds several nDCG points over an off-the-shelf model. It is also cheaper than fine-tuning the embedder, because changing the reranker requires no re-indexing.
 
-Domain mismatch is real: in the LegalBench-RAG benchmark, a general-purpose reranker performed worse than no reranker on legal text. [Chunking Legal Contracts for Retrieval](/blog/chunking-legal-contracts/) discusses that case.
+Domain mismatch can make a reranker harmful: in the LegalBench-RAG benchmark, a general-purpose reranker performed worse than no reranker on legal text. [Chunking Legal Contracts for Retrieval](/blog/chunking-legal-contracts/) discusses that case.
 
 ## How to measure it
 
@@ -75,7 +75,7 @@ Report the win/tie/loss distribution per query, not only the mean. A reranker th
 
 Run the full RAG pipeline with and without the reranker, holding the LLM, the prompt and k fixed. Measure answer correctness, faithfulness and citation precision with an LLM judge calibrated against human labels.
 
-Also run a variant **with the reranker and a smaller k** (for example, 5 instead of 10). A common win is the same answer quality at half the tokens.
+Also run a variant with the reranker and a smaller k (for example, 5 instead of 10). A common win is the same answer quality at half the tokens.
 
 ### Offline: slices and ablations
 
@@ -93,11 +93,11 @@ Also run a variant **with the reranker and a smaller k** (for example, 5 instead
 
 ### Cost and latency accounting
 
-Present the reranker's cost as **net** cost: reranker cost minus the generation tokens it saves.
+Present the reranker's cost as net cost: reranker cost minus the generation tokens it saves.
 
 A worked example for a self-hosted reranker: one GPU at roughly $1-2 per hour, fully utilized at 20-50 QPS on 100-candidate reranks, costs between `$1 / (50 × 3,600)` and `$2 / (20 × 3,600)` per query, which is about $0.006-0.03 per 1,000 queries.
 
-Now the savings. If the reranker lets you drop k from 20 to 8 chunks of about 500 tokens, that is about 6,000 fewer input tokens per query. At an illustrative $1 per million input tokens, that saves about $6 per 1,000 queries, two to three orders of magnitude more than the reranker costs. Even at much cheaper generation prices, the reranker is usually net-negative cost when it lets you shrink k.
+On the savings side, if the reranker lets you drop k from 20 to 8 chunks of about 500 tokens, that is about 6,000 fewer input tokens per query. At an illustrative $1 per million input tokens, that saves about $6 per 1,000 queries, two to three orders of magnitude more than the reranker costs. Even at much cheaper generation prices, the reranker is usually net-negative cost when it lets you shrink k.
 
 ## Tradeoffs
 
@@ -109,8 +109,8 @@ Now the savings. If the reranker lets you drop k from 20 to 8 chunks of about 50
 | LLM listwise reranking | Best zero-shot, handles reasoning | 10-100× cost, seconds of latency | Offline labeling and distillation, low-QPS high-value queries |
 | ColBERT as reranker | Cheap, strong | Index storage, infrastructure | Already running late interaction |
 
-- **Depth N vs latency.** Reranking cost is linear in N, and gains usually flatten past 100-200 candidates.
-- **Offline nDCG does not always translate end to end.** A strong LLM may already cope with a slightly noisy top 10, so measure both levels.
+- Depth N trades against latency: reranking cost is linear in N, and gains usually flatten past 100-200 candidates.
+- Offline nDCG does not always translate end to end. A strong LLM may already cope with a slightly noisy top 10, so measure both levels.
 
 ## Common mistakes
 
@@ -123,8 +123,8 @@ Now the savings. If the reranker lets you drop k from 20 to 8 chunks of about 50
 
 ## Thinking at scale
 
-- **Write the ship rule before the experiment.** For example: ship if end-to-end correctness gains at least 2 points with a confidence interval excluding 0, no important slice regresses by more than 1 point, and p95 latency rises by no more than 150 ms. Pre-registering the rule prevents post-hoc rationalization.
-- **Treat the reranker as the cheapest place to inject domain knowledge.** It can be fine-tuned and redeployed without re-indexing the corpus, unlike the embedder. In a system like the one in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/), that makes it the natural first target for domain adaptation.
+- Write the ship rule before the experiment. For example: ship if end-to-end correctness gains at least 2 points with a confidence interval excluding 0, no important slice regresses by more than 1 point, and p95 latency rises by no more than 150 ms. Pre-registering the rule prevents post-hoc rationalization.
+- Treat the reranker as the cheapest place to inject domain knowledge. It can be fine-tuned and redeployed without re-indexing the corpus, unlike the embedder. In a system like the one in [Designing a RAG System for 10 Million Documents](/blog/rag-system-10m-documents/), that makes it the natural first target for domain adaptation.
 
 ## Further reading
 

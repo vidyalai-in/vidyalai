@@ -17,7 +17,7 @@ TTFT (time to first token) is the sum of network time, queueing, prefill (the fo
 
 - **Which percentile matters: p50, or p95/p99?** Tail TTFT is usually driven by queueing and long prompts, not by average prefill speed. Optimizing the median and the tail lead to different fixes.
 - **Hosted API or your own serving stack?** On an API, your controls are prompt shape, caching, region, model choice and the pipeline around the call. Self-hosted, the scheduler and hardware are also in scope.
-- **How long are typical prompts?** Prompt length changes everything. For a 70B-parameter model on a tensor-parallel group of H100 GPUs, a 500-token prompt prefills in tens of milliseconds, while 30k tokens of history plus retrieved context takes seconds (worked out below).
+- **How long are typical prompts?** For a 70B-parameter model on a tensor-parallel group of H100 GPUs, a 500-token prompt prefills in tens of milliseconds, while 30k tokens of history plus retrieved context takes seconds (worked out below).
 - **What must happen before the first token?** Moderation, retrieval, tool planning? And does the first visible token have to be the first token of the final answer, or can it be a status message?
 
 ## Step 1: Measure the waterfall
@@ -40,10 +40,10 @@ An illustrative before-and-after budget at p95:
 
 ## Step 2: Remove pre-model latency
 
-- **Parallelize.** Run moderation alongside retrieval, or alongside generation with output gating (hold back the stream until the check passes). Run retrieval in parallel with intent classification.
-- **Retrieve speculatively.** Start embedding the query as the user types, or at the latest on submit. Cache embeddings for frequent queries.
-- **Skip retrieval when it is not needed.** A cheap classifier or heuristic can detect chit-chat and follow-ups that do not need fresh documents.
-- **Use a fast reranker,** such as a small cross-encoder at about 20 ms, or drop reranking on latency-critical paths.
+- Parallelize. Run moderation alongside retrieval, or alongside generation with output gating (hold back the stream until the check passes). Run retrieval in parallel with intent classification.
+- Retrieve speculatively. Start embedding the query as the user types, or at the latest on submit. Cache embeddings for frequent queries.
+- Skip retrieval when it is not needed. A cheap classifier or heuristic can detect chit-chat and follow-ups that do not need fresh documents.
+- Use a fast reranker, such as a small cross-encoder at about 20 ms, or drop reranking on latency-critical paths.
 
 ## Step 3: Make prefill cheaper, or avoid it
 
@@ -66,18 +66,18 @@ An H100 SXM delivers about 989 dense BF16 TFLOPS ([NVIDIA lists 1,979 with spars
 | TP=8, BF16 | about 4,000 TFLOP/s | about 1.4 s | about 20 ms |
 | TP=4, FP8 | about 4,000 TFLOP/s | about 1.4 s | about 20 ms |
 
-These are back-of-envelope figures; communication overhead and kernel efficiency move them by tens of percent. The conclusion holds: a long uncached prompt costs 1-3 seconds of prefill on a 4-8 GPU group, and avoiding that work is the biggest TTFT win available.
+These are back-of-envelope figures; communication overhead and kernel efficiency move them by tens of percent. Even so, a long uncached prompt costs 1-3 seconds of prefill on a 4-8 GPU group, and avoiding that work is the biggest TTFT win available.
 
 ### Prefix and KV caching
 
 Keep the system prompt and conversation history byte-stable so turn N reuses the KV cache (the attention keys and values computed during prefill) from turn N-1. Then only the new user message needs prefilling.
 
-- **On an API,** this is prompt caching. Anthropic reported latency reductions of up to 85% for long prompts when it launched the feature; in its examples, a 100k-token cached prompt went from 11.5 s to 2.4 s TTFT ([Anthropic, prompt caching announcement](https://claude.com/blog/prompt-caching)). Its [current docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) note that the 5-minute and 1-hour caches behave the same for latency, and that pre-warming the cache removes the miss penalty on the first user interaction.
-- **Self-hosted,** use [vLLM automatic prefix caching](https://docs.vllm.ai/en/stable/features/automatic_prefix_caching/) or [SGLang RadixAttention](https://arxiv.org/abs/2312.07104). Add **session-affinity routing** so each conversation returns to the replica that holds its KV cache.
+- On an API, this is prompt caching. Anthropic reported latency reductions of up to 85% for long prompts when it launched the feature; in its examples, a 100k-token cached prompt went from 11.5 s to 2.4 s TTFT ([Anthropic, prompt caching announcement](https://claude.com/blog/prompt-caching)). Its [current docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) note that the 5-minute and 1-hour caches behave the same for latency, and that pre-warming the cache removes the miss penalty on the first user interaction.
+- Self-hosted, use [vLLM automatic prefix caching](https://docs.vllm.ai/en/stable/features/automatic_prefix_caching/) or [SGLang RadixAttention](https://arxiv.org/abs/2312.07104). Add **session-affinity routing** so each conversation returns to the replica that holds its KV cache.
 
 ### Shorter prompts
 
-Compact old turns into summaries, retrieve fewer and better chunks, and load tool schemas lazily. Every token you do not send is prefill you do not wait for.
+Compact old turns into summaries, retrieve fewer and better chunks, and load tool schemas lazily, so there are fewer tokens to prefill.
 
 ### Hardware and parallelism
 
@@ -87,8 +87,8 @@ Because prefill is compute-bound, more tensor parallelism and FP8 cut prefill ti
 
 - **Chunked prefill** ([Sarathi-Serve](https://arxiv.org/abs/2403.02310)). Split long prefills into chunks that are mixed into decode batches. A 30k-token prompt then no longer stalls everyone else's token stream, and new requests get scheduled quickly.
 - **Prefill/decode disaggregation** ([DistServe](https://arxiv.org/abs/2401.09670), [Splitwise](https://arxiv.org/abs/2311.18677)). Run prefill and decode on separate GPU pools and transfer the KV cache between them. This lets you tune TTFT and inter-token latency independently. DistServe reported serving up to 7.4x more requests within both latency SLOs. It pays off at large scale with long prompts.
-- **Admission control and headroom.** Queueing delay grows sharply above about 70-80% utilization. Autoscale on queue depth and TTFT, not on GPU utilization. Use priority classes so interactive chat goes ahead of batch work.
-- **Warm replicas.** Loading a model on a cold start takes tens of seconds to minutes and must never sit on the request path.
+- Admission control and headroom. Queueing delay grows sharply above about 70-80% utilization. Autoscale on queue depth and TTFT, not on GPU utilization. Use priority classes so interactive chat goes ahead of batch work.
+- Warm replicas. Loading a model on a cold start takes tens of seconds to minutes and must never sit on the request path.
 
 [Serving Open-Weight LLMs at Scale](/blog/serving-open-llms-at-scale/) covers the scheduler, KV-cache and fleet-sizing side of this in more depth.
 
@@ -111,11 +111,11 @@ Speculative decoding ([Medusa](https://arxiv.org/abs/2401.10774), [EAGLE](https:
 
 ## How to measure it
 
-- **Latency distributions:** p50/p95/p99 TTFT by prompt-length bucket and by region, plus inter-token latency, also called TPOT (time per output token).
-- **Goodput:** the fraction of requests that meet *both* the TTFT SLO and the TPOT SLO. Throughput that misses either SLO does not count.
-- **Realistic load tests:** use production-shaped arrival processes (bursty, with heavy-tailed prompt lengths), not uniform synthetic load. Uniform load hides the queueing tail.
-- **Client-side truth:** instrument first rendered token in the client and compare it with server-side TTFT to expose proxies, TLS and rendering costs.
-- **Business link:** tie TTFT to an engagement metric (abandonment, messages per session) through an A/B test. That data justifies the GPU cost of headroom.
+- Latency distributions: p50/p95/p99 TTFT by prompt-length bucket and by region, plus inter-token latency, also called TPOT (time per output token).
+- Goodput: the fraction of requests that meet *both* the TTFT SLO and the TPOT SLO. Throughput that misses either SLO does not count.
+- Realistic load tests: use production-shaped arrival processes (bursty, with heavy-tailed prompt lengths), not uniform synthetic load. Uniform load hides the queueing tail.
+- Client-side measurement: instrument first rendered token in the client and compare it with server-side TTFT to expose proxies, TLS and rendering costs.
+- Business link: tie TTFT to an engagement metric (abandonment, messages per session) through an A/B test. That data justifies the GPU cost of headroom.
 
 ## Tradeoffs
 
@@ -128,8 +128,8 @@ Speculative decoding ([Medusa](https://arxiv.org/abs/2401.10774), [EAGLE](https:
 | Smaller/faster model | Cuts every stage | Quality risk | Easy turns, via a router |
 | Parallelize pre-model work | Cheap and often the biggest win | Wasted work when results are discarded | Always |
 
-- **The core decision is the cost-latency curve.** Cost per token scales roughly with `1 / utilization`, so running at 60% instead of 85% costs about 1.4x more per token (`85 / 60`). In return, queueing delay falls several-fold: in a simple M/M/1 queue model, mean wait scales with `ρ / (1 − ρ)`, which is 5.7 at 85% and 1.5 at 60%, and p99 wait drops about 3x. Bursty real traffic widens the gap. Make this call with product, using engagement data.
-- **Session affinity and load balancing conflict.** Use consistent hashing with bounded load, and fall back to recomputing the prefix when the preferred replica is full.
+- The main decision is where to sit on the cost-latency curve. Cost per token scales roughly with `1 / utilization`, so running at 60% instead of 85% costs about 1.4x more per token (`85 / 60`). In return, queueing delay falls several-fold: in a simple M/M/1 queue model, mean wait scales with `ρ / (1 − ρ)`, which is 5.7 at 85% and 1.5 at 60%, and p99 wait drops about 3x. Bursty real traffic widens the gap. Make this call with product, using engagement data.
+- Session affinity and load balancing conflict. Use consistent hashing with bounded load, and fall back to recomputing the prefix when the preferred replica is full.
 
 ## Common mistakes
 
@@ -142,9 +142,9 @@ Speculative decoding ([Medusa](https://arxiv.org/abs/2401.10774), [EAGLE](https:
 
 ## Thinking at scale
 
-- **Treat headroom as a product decision.** The extra GPUs that keep p99 TTFT low are a recurring cost. Owning that number jointly with product, backed by an engagement A/B, keeps it from being cut in the next cost review.
-- **Prompt stability is a cross-team contract.** Prefix caching only works if every team that touches the prompt keeps the shared prefix byte-stable. Put a cached-token-ratio alert on each feature so a careless change is caught within hours.
-- **Plan disaggregation as a migration, not a switch.** Moving to separate prefill and decode pools changes capacity planning, interconnect requirements and failure modes. Pilot it on the long-prompt traffic class first.
+- Treat headroom as a product decision. The extra GPUs that keep p99 TTFT low are a recurring cost. Owning that number jointly with product, backed by an engagement A/B, keeps it from being cut in the next cost review.
+- Prompt stability is a cross-team contract. Prefix caching only works if every team that touches the prompt keeps the shared prefix byte-stable. Put a cached-token-ratio alert on each feature so a careless change is caught within hours.
+- Plan disaggregation as a staged migration. Moving to separate prefill and decode pools changes capacity planning, interconnect requirements and failure modes. Pilot it on the long-prompt traffic class first.
 
 ## Further reading
 
