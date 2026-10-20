@@ -1,0 +1,12 @@
+00:00 Two retrievers, two failure modes
+00:57 Questions to ask first
+02:00 How BM25 works
+02:49 Dense retrieval
+04:11 Learned sparse and late interaction
+05:00 Hybrid retrieval done right
+06:51 Evidence the gains stack
+07:32 Choosing a retriever
+08:29 How to measure it
+09:48 Tradeoffs
+10:26 Common mistakes
+11:24 Wrap-up

@@ -1,0 +1,41 @@
+BM25 wins on exact tokens: identifiers, rare terms, names and error codes. Dense retrieval wins on paraphrase, when queries and documents use different words. Their errors are largely uncorrelated, so the production default is hybrid: run both retrievers in parallel, fuse the lists with reciprocal rank fusion (RRF), and rerank. This video covers how each retriever works and where it breaks, learned sparse retrieval (SPLADE) and late interaction (ColBERT), a worked RRF example, the evidence that the gains stack, a decision guide, and how to choose on your own traffic with per-slice recall.
+
+Part 4 of the LLM System Design series from VidyalAI.
+Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+Part 3, chunking legal contracts for retrieval: https://youtu.be/tl9HIgUdsnQ
+The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/bm25-dense-hybrid-search/
+📚 The whole LLM System Design series: https://vidyal.ai/series/llm-system-design/
+
+Chapters
+00:00 Two retrievers, two failure modes
+00:57 Questions to ask first
+02:00 How BM25 works
+02:49 Dense retrieval
+04:11 Learned sparse and late interaction
+05:00 Hybrid retrieval done right
+06:51 Evidence the gains stack
+07:32 Choosing a retriever
+08:29 How to measure it
+09:48 Tradeoffs
+10:26 Common mistakes
+11:24 Wrap-up
+
+Sources and further reading
+• BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models (Thakur et al., 2021): https://arxiv.org/abs/2104.08663
+• Text Embeddings by Weakly-Supervised Contrastive Pre-training (Wang et al., 2022): https://arxiv.org/abs/2212.03533
+• Dense Passage Retrieval for Open-Domain Question Answering (Karpukhin et al., 2020): https://arxiv.org/abs/2004.04906
+• SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking (Formal et al., 2021): https://arxiv.org/abs/2107.05720
+• ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT (Khattab & Zaharia, 2020): https://arxiv.org/abs/2004.12832
+• ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction (Santhanam et al., 2021): https://arxiv.org/abs/2112.01488
+• PLAID: An Efficient Engine for Late Interaction Retrieval (Santhanam et al., 2022): https://arxiv.org/abs/2205.09707
+• Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods (Cormack et al., 2009): https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf
+• Reciprocal rank fusion (Elasticsearch reference): https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion
+• Contextual Retrieval in AI Systems (Anthropic, 2024): https://www.anthropic.com/engineering/contextual-retrieval
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #VectorSearch #SystemDesign

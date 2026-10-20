@@ -1,0 +1,757 @@
+1
+00:00:03,550 --> 00:00:08,149
+Search for a part number with an embedding
+model, and the exact token can get
+
+2
+00:00:08,149 --> 00:00:08,925
+blurred away.
+
+3
+00:00:09,550 --> 00:00:14,442
+Search for "automobile" with keyword search,
+and you miss every document that says
+
+4
+00:00:14,442 --> 00:00:14,800
+"car".
+
+5
+00:00:15,100 --> 00:00:19,975
+In this video, we'll look at when to use each
+retriever, and how to combine them.
+
+6
+00:00:20,983 --> 00:00:22,783
+Here's the core idea.
+
+7
+00:00:23,083 --> 00:00:30,058
+BM25 wins on exact tokens: identifiers,
+rare terms, names and error codes.
+
+8
+00:00:30,358 --> 00:00:35,883
+Dense retrieval wins on paraphrase, when queries
+and documents use different words.
+
+9
+00:00:36,183 --> 00:00:39,058
+Their errors are largely uncorrelated.
+
+10
+00:00:39,683 --> 00:00:43,983
+So for almost any production system,
+the default is hybrid.
+
+11
+00:00:44,283 --> 00:00:49,558
+Run both retrievers, fuse the lists with
+reciprocal rank fusion, and rerank.
+
+12
+00:00:49,858 --> 00:00:54,924
+But decide by running all three on a labeled
+set from your own traffic, because
+
+13
+00:00:54,924 --> 00:00:56,783
+rankings flip across domains.
+
+14
+00:00:57,783 --> 00:01:00,708
+Before choosing, pin down a few things.
+
+15
+00:01:01,008 --> 00:01:03,558
+First, what do the queries look like?
+
+16
+00:01:03,858 --> 00:01:08,883
+Two or three keywords, IDs and SKUs, or
+natural-language questions?
+
+17
+00:01:09,183 --> 00:01:14,483
+The more queries look like identifiers,
+the more weight BM25 deserves.
+
+18
+00:01:15,083 --> 00:01:18,358
+Second, how specialized is the vocabulary?
+
+19
+00:01:18,658 --> 00:01:24,508
+Biomedical, legal, code or internal acronyms
+all stress off-the-shelf embedders.
+
+20
+00:01:24,808 --> 00:01:30,544
+And is there in-domain data, like click logs or
+labeled pairs, to fine-tune a dense
+
+21
+00:01:30,544 --> 00:01:30,958
+model?
+
+22
+00:01:31,583 --> 00:01:34,383
+Third, is the corpus multilingual?
+
+23
+00:01:34,683 --> 00:01:39,835
+Cross-lingual retrieval is where dense models
+have a structural advantage over
+
+24
+00:01:39,835 --> 00:01:40,958
+lexical matching.
+
+25
+00:01:41,583 --> 00:01:45,258
+And fourth, latency, cost, and
+the existing stack.
+
+26
+00:01:45,558 --> 00:01:50,408
+A second index is cheap in milliseconds,
+but not free in operations.
+
+27
+00:01:50,708 --> 00:01:57,272
+If you already run Elasticsearch, OpenSearch or
+Vespa, adding BM25 or vectors next
+
+28
+00:01:57,272 --> 00:01:59,433
+to it is often nearly free.
+
+29
+00:02:00,450 --> 00:02:02,825
+Start with BM25.
+
+30
+00:02:03,125 --> 00:02:09,021
+It scores a document by term frequency, with
+saturation, so each extra repeat of a
+
+31
+00:02:09,021 --> 00:02:10,100
+word adds less.
+
+32
+00:02:10,717 --> 00:02:13,217
+It normalizes for document length.
+
+33
+00:02:13,817 --> 00:02:18,492
+And it uses inverse document frequency,
+which rewards rare terms.
+
+34
+00:02:19,517 --> 00:02:24,367
+That gives BM25 exact match and
+rare-term precision.
+
+35
+00:02:24,667 --> 00:02:26,817
+Its scoring is transparent.
+
+36
+00:02:27,117 --> 00:02:32,417
+It's cheap: an inverted index over
+100M documents is routine.
+
+37
+00:02:32,717 --> 00:02:36,692
+It needs zero training, and it holds
+up under domain shift.
+
+38
+00:02:37,317 --> 00:02:43,081
+Its weaknesses are vocabulary mismatch, car
+versus automobile, no understanding of
+
+39
+00:02:43,081 --> 00:02:48,142
+negation or intent, and weak results on
+long natural-language questions.
+
+40
+00:02:49,150 --> 00:02:52,100
+Dense retrieval uses a bi-encoder.
+
+41
+00:02:52,400 --> 00:02:57,645
+It embeds the query and each document
+independently, then ranks by cosine or
+
+42
+00:02:57,645 --> 00:03:02,200
+dot-product similarity over an
+approximate nearest neighbor index.
+
+43
+00:03:02,817 --> 00:03:08,067
+It handles synonyms, paraphrase, cross-lingual
+matching and conceptual queries.
+
+44
+00:03:08,683 --> 00:03:13,358
+But exact rare tokens get blurred: part
+numbers, names and codes.
+
+45
+00:03:13,983 --> 00:03:18,033
+Quality degrades out of domain, and
+its failures are opaque.
+
+46
+00:03:18,333 --> 00:03:24,641
+On specialized corpora, off-the-shelf models
+can underperform BM25 until they're
+
+47
+00:03:24,641 --> 00:03:25,508
+fine-tuned.
+
+48
+00:03:26,117 --> 00:03:28,892
+And vectors cost compute and storage.
+
+49
+00:03:29,192 --> 00:03:33,042
+Every model change means
+re-embedding the whole corpus.
+
+50
+00:03:34,050 --> 00:03:36,550
+The picture has shifted over time.
+
+51
+00:03:36,850 --> 00:03:43,181
+In 2021, the BEIR benchmark showed BM25
+beating many dense models zero-shot, on
+
+52
+00:03:43,181 --> 00:03:45,825
+domains they weren't trained for.
+
+53
+00:03:46,450 --> 00:03:53,583
+Then embedders trained on large, diverse,
+weakly supervised data, starting with E5
+
+54
+00:03:53,583 --> 00:03:56,975
+in 2022, beat BM25 on the BEIR average.
+
+55
+00:03:57,275 --> 00:04:01,050
+That's now the norm for strong
+general-purpose embedders.
+
+56
+00:04:01,350 --> 00:04:07,750
+But BM25 still wins on individual datasets,
+and on identifier-heavy queries.
+
+57
+00:04:08,050 --> 00:04:10,875
+So the average alone doesn't
+settle the choice.
+
+58
+00:04:11,883 --> 00:04:14,433
+Two more options sit between these.
+
+59
+00:04:14,733 --> 00:04:19,700
+Learned sparse retrieval, like SPLADE, has a
+model predict term weights and
+
+60
+00:04:19,700 --> 00:04:23,408
+expansion terms, served from an
+ordinary inverted index.
+
+61
+00:04:23,708 --> 00:04:30,000
+It often approaches dense quality in-domain,
+while keeping BM25's interpretability
+
+62
+00:04:30,000 --> 00:04:31,458
+and exact matching.
+
+63
+00:04:32,083 --> 00:04:37,991
+Late interaction, like ColBERT, keeps one vector
+per token, and matches query tokens
+
+64
+00:04:37,991 --> 00:04:40,733
+against document tokens at search time.
+
+65
+00:04:41,033 --> 00:04:44,308
+Quality and out-of-domain
+behavior are strong.
+
+66
+00:04:44,608 --> 00:04:49,807
+But storing a vector per token costs an
+order of magnitude or more storage,
+
+67
+00:04:49,807 --> 00:04:50,708
+uncompressed.
+
+68
+00:04:51,008 --> 00:04:57,637
+ColBERTv2's compression cuts that 6-10×, and the
+PLAID engine brings search down to
+
+69
+00:04:57,637 --> 00:05:00,033
+tens of milliseconds on a GPU.
+
+70
+00:05:01,050 --> 00:05:03,700
+Now, hybrid retrieval done right.
+
+71
+00:05:04,000 --> 00:05:09,610
+Here's the whole pipeline: two retrievers in
+parallel, rank-based fusion, then a
+
+72
+00:05:09,610 --> 00:05:12,275
+cross-encoder reranker before the LLM.
+
+73
+00:05:12,883 --> 00:05:14,408
+Step one.
+
+74
+00:05:14,708 --> 00:05:20,108
+Run BM25 top 100 and dense top
+100 concurrently.
+
+75
+00:05:20,408 --> 00:05:26,333
+Combined latency is about the maximum of
+the two, typically 10-50 ms.
+
+76
+00:05:26,633 --> 00:05:30,983
+So hybrid adds an index to operate,
+but very little latency.
+
+77
+00:05:31,583 --> 00:05:33,108
+Step two.
+
+78
+00:05:33,408 --> 00:05:36,708
+Fuse the two lists with
+reciprocal rank fusion.
+
+79
+00:05:37,717 --> 00:05:44,442
+For each document, RRF sums one over k plus its
+rank in each list, with k around 60.
+
+80
+00:05:45,050 --> 00:05:46,975
+Here's a worked example.
+
+81
+00:05:47,275 --> 00:05:54,625
+A document ranked first by BM25 and fifth
+by dense scores about 0.0318.
+
+82
+00:05:54,925 --> 00:06:00,575
+A document ranked second by dense
+only scores about 0.0161.
+
+83
+00:06:00,875 --> 00:06:04,475
+Agreement between retrievers
+beats a single high rank.
+
+84
+00:06:05,083 --> 00:06:10,408
+RRF uses ranks, not raw scores, so it
+needs no score normalization.
+
+85
+00:06:10,708 --> 00:06:12,833
+That makes it the right default.
+
+86
+00:06:13,133 --> 00:06:18,442
+A weighted blend of normalized scores can beat
+it, if you tune the weight on labeled
+
+87
+00:06:18,442 --> 00:06:18,758
+data.
+
+88
+00:06:19,058 --> 00:06:24,308
+But that blend is brittle when score
+distributions drift after a model change.
+
+89
+00:06:25,317 --> 00:06:26,867
+Step three.
+
+90
+00:06:27,167 --> 00:06:32,997
+Rerank the fused top 100-200 with a
+cross-encoder, which scores each query and
+
+91
+00:06:32,997 --> 00:06:34,567
+passage pair jointly.
+
+92
+00:06:35,183 --> 00:06:39,108
+And step four, optionally route or
+weight by query type.
+
+93
+00:06:39,408 --> 00:06:45,812
+Queries that look like identifiers, such as
+codes or quoted strings, get more BM25
+
+94
+00:06:45,812 --> 00:06:46,358
+weight.
+
+95
+00:06:46,658 --> 00:06:50,308
+Long natural-language questions
+get more dense weight.
+
+96
+00:06:51,317 --> 00:06:52,917
+Is it worth it?
+
+97
+00:06:53,217 --> 00:06:57,717
+Anthropic's contextual retrieval
+experiments show the gains stack.
+
+98
+00:06:58,017 --> 00:07:04,142
+Measured as the top-20 retrieval failure
+rate, the baseline was 5.7%.
+
+99
+00:07:04,750 --> 00:07:11,425
+With contextual embeddings, it fell to
+3.7%, 35% fewer failures.
+
+100
+00:07:12,050 --> 00:07:18,700
+Adding contextual BM25 took it
+to 2.9%, 49% fewer.
+
+101
+00:07:19,317 --> 00:07:25,942
+And adding reranking on top brought it
+to 1.9%, 67% fewer failures.
+
+102
+00:07:26,242 --> 00:07:32,092
+In that setup, reranking took the top 150
+fused candidates down to 20.
+
+103
+00:07:33,117 --> 00:07:34,967
+So how do you choose?
+
+104
+00:07:35,267 --> 00:07:41,448
+Use BM25 only on a cold start with no labeled
+data, for identifier-heavy queries
+
+105
+00:07:41,448 --> 00:07:47,708
+like log search, code symbols, legal citations
+and SKUs, or under strict cost and
+
+106
+00:07:47,708 --> 00:07:48,867
+latency limits.
+
+107
+00:07:49,167 --> 00:07:51,692
+And always use it as the baseline.
+
+108
+00:07:51,992 --> 00:07:58,226
+If your dense system doesn't beat BM25 on your
+eval set, stop and investigate before
+
+109
+00:07:58,226 --> 00:07:59,117
+shipping it.
+
+110
+00:07:59,717 --> 00:08:04,880
+Use dense only for short-text semantic
+matching, like FAQ deduplication or
+
+111
+00:08:04,880 --> 00:08:10,672
+support-ticket routing, for cross-lingual
+retrieval, and for conversational queries
+
+112
+00:08:10,672 --> 00:08:12,417
+with low lexical overlap.
+
+113
+00:08:12,717 --> 00:08:18,792
+Even then, prove on your eval set that BM25
+adds nothing before you drop it.
+
+114
+00:08:19,417 --> 00:08:24,785
+And hybrid is the default for general
+enterprise RAG, for mixed query populations,
+
+115
+00:08:24,785 --> 00:08:28,517
+and anywhere recall matters more
+than a few milliseconds.
+
+116
+00:08:29,517 --> 00:08:35,763
+To measure it, sample 500-2,000 queries from
+real traffic, stratified by type: ID
+
+117
+00:08:35,763 --> 00:08:40,467
+lookups, keywords, natural-language
+questions, and multi-hop.
+
+118
+00:08:41,083 --> 00:08:43,033
+Use pooled judgments.
+
+119
+00:08:43,333 --> 00:08:49,133
+Label the union of the top 20 from every system
+under test, so the eval isn't biased
+
+120
+00:08:49,133 --> 00:08:50,583
+toward the incumbent.
+
+121
+00:08:51,183 --> 00:08:55,858
+For the first stage, report recall
+at 100 and recall at 50.
+
+122
+00:08:56,158 --> 00:09:00,108
+The reranker can only reorder what
+the first stage gives it.
+
+123
+00:09:00,717 --> 00:09:06,092
+For the final list, report nDCG at 10
+and MRR after reranking.
+
+124
+00:09:07,117 --> 00:09:09,642
+Always report metrics per slice.
+
+125
+00:09:09,942 --> 00:09:15,282
+The hybrid gain usually concentrates in the
+slice where one retriever collapses, and
+
+126
+00:09:15,282 --> 00:09:16,617
+the average hides it.
+
+127
+00:09:17,217 --> 00:09:22,267
+Compare the overlap between the
+BM25 and dense top 50.
+
+128
+00:09:22,567 --> 00:09:27,567
+As a rule of thumb, at 80% or more
+overlap, hybrid adds little.
+
+129
+00:09:27,867 --> 00:09:33,292
+At 30-50% overlap, fusion typically
+adds several points of recall.
+
+130
+00:09:33,917 --> 00:09:39,213
+Use a paired bootstrap or permutation test
+over queries, and report confidence
+
+131
+00:09:39,213 --> 00:09:39,892
+intervals.
+
+132
+00:09:40,192 --> 00:09:45,819
+Online, track click-through on citations,
+answer acceptance, and how often users
+
+133
+00:09:45,819 --> 00:09:47,367
+reformulate the query.
+
+134
+00:09:48,383 --> 00:09:50,833
+Here are the tradeoffs side by side.
+
+135
+00:09:51,133 --> 00:09:57,883
+BM25 is exact, cheap and interpretable, but
+suffers from vocabulary mismatch.
+
+136
+00:09:58,483 --> 00:10:04,399
+A dense bi-encoder is semantic and multilingual,
+but misses rare tokens and costs a
+
+137
+00:10:04,399 --> 00:10:06,608
+re-embed on every model change.
+
+138
+00:10:07,217 --> 00:10:13,292
+Hybrid with RRF and a reranker has the best
+recall across slices, at the price of
+
+139
+00:10:13,292 --> 00:10:15,017
+two indexes to operate.
+
+140
+00:10:15,317 --> 00:10:18,217
+RRF is robust with zero tuning.
+
+141
+00:10:18,517 --> 00:10:23,983
+A tuned linear blend can win by a point or a
+few, but needs labels and re-tuning
+
+142
+00:10:23,983 --> 00:10:25,692
+whenever a model changes.
+
+143
+00:10:26,717 --> 00:10:29,042
+Finally, the common mistakes.
+
+144
+00:10:29,342 --> 00:10:33,267
+Claiming dense is strictly
+better than BM25.
+
+145
+00:10:33,567 --> 00:10:40,317
+BM25 still wins on identifier-heavy slices, so
+dropping it loses those queries.
+
+146
+00:10:40,917 --> 00:10:45,467
+Adding raw BM25 scores to
+cosine similarities.
+
+147
+00:10:45,767 --> 00:10:50,367
+The scales are incompatible, so one
+retriever silently dominates.
+
+148
+00:10:50,667 --> 00:10:54,192
+Use RRF, or calibrated normalization.
+
+149
+00:10:54,817 --> 00:10:59,067
+Evaluating on a public benchmark
+instead of your own queries.
+
+150
+00:10:59,367 --> 00:11:02,642
+You end up optimizing for
+someone else's traffic.
+
+151
+00:11:03,250 --> 00:11:04,975
+Pooling bias.
+
+152
+00:11:05,275 --> 00:11:10,360
+If you label only the incumbent's results,
+the new retriever's finds count as
+
+153
+00:11:10,360 --> 00:11:13,200
+non-relevant, so better
+systems look worse.
+
+154
+00:11:13,817 --> 00:11:18,517
+And inconsistent ACLs and deletes
+across the two indexes.
+
+155
+00:11:18,817 --> 00:11:23,292
+A document deleted or restricted in one
+index leaks through the other.
+
+156
+00:11:24,317 --> 00:11:25,992
+So, to recap.
+
+157
+00:11:26,292 --> 00:11:29,217
+Keep BM25 as the baseline.
+
+158
+00:11:29,517 --> 00:11:33,367
+Make hybrid, with RRF and a
+reranker, the default.
+
+159
+00:11:33,667 --> 00:11:38,780
+And choose on your own traffic, slice by slice,
+because that's where the differences
+
+160
+00:11:38,780 --> 00:11:39,267
+show up.
+
+161
+00:11:40,283 --> 00:11:43,808
+The full article, with every
+source, is on vidyal.ai.
+
+162
+00:11:44,817 --> 00:11:46,592
+Thanks for watching.
+
+163
+00:11:46,892 --> 00:11:50,767
+Next in the series, adding a
+reranker, and proving it helped.
+
+164
+00:11:51,067 --> 00:11:53,192
+Subscribe so you don't miss it.

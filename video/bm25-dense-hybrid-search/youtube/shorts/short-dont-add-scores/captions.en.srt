@@ -1,0 +1,48 @@
+1
+00:00:00,150 --> 00:00:05,276
+Your hybrid search might really be one
+retriever in disguise, if you combine the
+
+2
+00:00:05,276 --> 00:00:06,750
+scores the obvious way.
+
+3
+00:00:07,750 --> 00:00:13,275
+Adding raw BM25 scores to cosine
+similarities looks reasonable.
+
+4
+00:00:13,575 --> 00:00:16,450
+But the two are on incompatible scales.
+
+5
+00:00:17,050 --> 00:00:22,214
+So one retriever silently dominates the sum,
+and the other barely changes the
+
+6
+00:00:22,214 --> 00:00:22,750
+ranking.
+
+7
+00:00:23,750 --> 00:00:29,900
+Fuse by rank instead, with reciprocal rank
+fusion, or use calibrated normalization.
+
+8
+00:00:30,200 --> 00:00:32,725
+RRF needs no tuning at all.
+
+9
+00:00:33,025 --> 00:00:38,708
+A tuned linear blend can win by a point or a
+few, but it needs labels, and re-tuning
+
+10
+00:00:38,708 --> 00:00:40,400
+whenever a model changes.
+
+11
+00:00:41,417 --> 00:00:44,042
+The full article is on vidyal.ai.

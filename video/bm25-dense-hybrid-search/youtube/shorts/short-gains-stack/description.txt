@@ -1,0 +1,9 @@
+Anthropic's contextual retrieval results: contextual embeddings, contextual BM25 and reranking stack up to 67% fewer failures.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/bm25-dense-hybrid-search/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #HybridSearch #shorts

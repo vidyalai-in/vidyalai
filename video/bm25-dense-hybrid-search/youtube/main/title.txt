@@ -1,0 +1,5 @@
+BM25 vs Dense vs Hybrid Search: When to Use Each | LLM System Design
+
+Alternatives:
+- Keyword Search or Embeddings? How to Choose a Retriever for RAG
+- Hybrid Search Done Right: BM25, Dense Retrieval and RRF

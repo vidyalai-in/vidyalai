@@ -1,0 +1,2 @@
+What does your stack run today: BM25 only, vectors only, or hybrid?
+The full article, with sources: https://vidyal.ai/blog/bm25-dense-hybrid-search/

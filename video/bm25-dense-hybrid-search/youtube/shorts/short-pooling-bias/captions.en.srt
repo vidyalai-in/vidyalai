@@ -1,0 +1,40 @@
+1
+00:00:00,150 --> 00:00:04,175
+Your new retriever can be better, and
+still look worse in your eval.
+
+2
+00:00:05,183 --> 00:00:10,389
+If your relevance labels come only from the
+current system's results, documents it
+
+3
+00:00:10,389 --> 00:00:12,483
+never returned were never judged.
+
+4
+00:00:13,083 --> 00:00:18,018
+So when the new retriever finds them, they
+count as non-relevant, and a better
+
+5
+00:00:18,018 --> 00:00:19,283
+system scores worse.
+
+6
+00:00:20,283 --> 00:00:22,483
+The fix is pooled judgments.
+
+7
+00:00:22,783 --> 00:00:27,233
+Label the union of the top 20 from
+every system under test.
+
+8
+00:00:27,533 --> 00:00:31,208
+Then the eval isn't biased toward the
+system you already run.
+
+9
+00:00:32,217 --> 00:00:34,842
+The full article is on vidyal.ai.

@@ -1,0 +1,44 @@
+1
+00:00:00,150 --> 00:00:05,225
+Anthropic cut retrieval failures by
+two-thirds by stacking three changes.
+
+2
+00:00:06,250 --> 00:00:11,150
+The top-20 retrieval failure
+rate started at 5.7%.
+
+3
+00:00:11,750 --> 00:00:15,750
+Contextual embeddings took it to 3.7%.
+
+4
+00:00:16,350 --> 00:00:22,400
+Adding contextual BM25, a keyword
+index, took it to 2.9%.
+
+5
+00:00:23,017 --> 00:00:26,642
+And reranking on top brought it to 1.9%.
+
+6
+00:00:26,942 --> 00:00:29,867
+That's 67% fewer failures.
+
+7
+00:00:30,167 --> 00:00:35,267
+The reranker took the top 150 fused
+candidates down to 20.
+
+8
+00:00:36,283 --> 00:00:42,446
+The keyword index added gains on top of
+embeddings, so don't drop BM25 just because
+
+9
+00:00:42,446 --> 00:00:43,708
+you have vectors.
+
+10
+00:00:44,717 --> 00:00:47,342
+The full article is on vidyal.ai.

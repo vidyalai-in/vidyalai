@@ -1,0 +1,588 @@
+# Video script for "BM25 vs Dense vs Hybrid Search: When to Use Each".
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/bm25-dense-hybrid-search
+
+slug: bm25-dense-hybrid-search
+article: src/content/blog/04-bm25-dense-hybrid-search.md
+voice: af_heart
+speed: 1.0
+lexicon:
+  BEIR: beer
+  ColBERT: coal bear
+  ColBERTv2: coal bear v 2
+  PLAID: plaid
+  E5: E 5
+  MRR: M R R
+  IDF: I D F
+  SKUs: skews
+  FAQ: F A Q
+
+youtube:
+  title: "BM25 vs Dense vs Hybrid Search: When to Use Each | LLM System Design"
+  altTitles:
+    - "Keyword Search or Embeddings? How to Choose a Retriever for RAG"
+    - "Hybrid Search Done Right: BM25, Dense Retrieval and RRF"
+  summary: |
+    BM25 wins on exact tokens: identifiers, rare terms, names and error codes. Dense retrieval wins on paraphrase, when queries and documents use different words. Their errors are largely uncorrelated, so the production default is hybrid: run both retrievers in parallel, fuse the lists with reciprocal rank fusion (RRF), and rerank. This video covers how each retriever works and where it breaks, learned sparse retrieval (SPLADE) and late interaction (ColBERT), a worked RRF example, the evidence that the gains stack, a decision guide, and how to choose on your own traffic with per-slice recall.
+
+    Part 4 of the LLM System Design series from VidyalAI.
+    Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+    Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+    Part 3, chunking legal contracts for retrieval: https://youtu.be/tl9HIgUdsnQ
+    The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+  tags:
+    - BM25
+    - dense retrieval
+    - hybrid search
+    - vector search
+    - reciprocal rank fusion
+    - RAG
+    - retrieval augmented generation
+    - SPLADE
+    - ColBERT
+    - reranking
+    - BEIR
+    - LLM system design
+    - AI engineering
+  hashtags: ["#RAG", "#VectorSearch", "#SystemDesign"]
+  playlist: LLM System Design
+  pinnedComment: |
+    What does your stack run today: BM25 only, vectors only, or hybrid?
+    The full article, with sources: https://vidyal.ai/blog/bm25-dense-hybrid-search/
+
+thumbnail:
+  title: "BM25 vs Dense vs **Hybrid**"
+  badge: "When to use each"
+
+main:
+  scenes:
+    - type: brand
+      steps:
+        - hold: 3
+
+    - type: title
+      chapter: Two retrievers, two failure modes
+      kicker: LLM System Design · Part 4
+      heading: BM25 vs Dense vs **Hybrid** Search
+      subtitle: How each one fails, how to fuse them, and how to choose
+      steps:
+        - say: >-
+            Search for a part number with an embedding model, and the exact token can get blurred
+            away.
+        - say: >-
+            Search for "automobile" with keyword search, and you miss every document that says
+            "car". In this video, we'll look at when to use each retriever, and how to combine
+            them.
+
+    - type: statement
+      text: Their errors are **largely uncorrelated**. So run both.
+      sub: Fuse the lists with RRF, then rerank. Decide on your own traffic.
+      subStep: 1
+      steps:
+        - say: >-
+            Here's the core idea. BM25 wins on exact tokens: identifiers, rare terms, names and
+            error codes. Dense retrieval wins on paraphrase, when queries and documents use
+            different words. Their errors are largely uncorrelated.
+        - say: >-
+            So for almost any production system, the default is hybrid. Run both retrievers, fuse
+            the lists with reciprocal rank fusion, and rerank. But decide by running all three on
+            a labeled set from your own traffic, because rankings flip across domains.
+
+    - type: bullets
+      chapter: Questions to ask first
+      heading: Pin these down first
+      numbered: true
+      steps:
+        - add: { text: "What do the queries look like?", sub: "Keywords and IDs, or natural-language questions" }
+          say: >-
+            Before choosing, pin down a few things. First, what do the queries look like? Two or
+            three keywords, IDs and SKUs, or natural-language questions? The more queries look
+            like identifiers, the more weight BM25 deserves.
+        - add: { text: "How specialized is the vocabulary?", sub: "Biomedical, legal, code, internal acronyms" }
+          say: >-
+            Second, how specialized is the vocabulary? Biomedical, legal, code or internal
+            acronyms all stress off-the-shelf embedders. And is there in-domain data, like click
+            logs or labeled pairs, to fine-tune a dense model?
+        - add: { text: "Is the corpus multilingual?", sub: Dense models have a structural advantage }
+          say: >-
+            Third, is the corpus multilingual? Cross-lingual retrieval is where dense models have
+            a structural advantage over lexical matching.
+        - add: { text: "Latency, cost, and the existing stack?", sub: "Elasticsearch, OpenSearch or Vespa make it nearly free" }
+          say: >-
+            And fourth, latency, cost, and the existing stack. A second index is cheap in
+            milliseconds, but not free in operations. If you already run Elasticsearch,
+            OpenSearch or Vespa, adding BM25 or vectors next to it is often nearly free.
+
+    - type: bullets
+      chapter: How BM25 works
+      heading: "BM25: sparse lexical"
+      steps:
+        - add: { text: Term frequency with saturation, sub: "k1, commonly 1.2" }
+          say: >-
+            Start with BM25. It scores a document by term frequency, with saturation, so each
+            extra repeat of a word adds less.
+        - add: { text: Length normalization, sub: "b, commonly 0.75" }
+          say: It normalizes for document length.
+        - add: { text: "IDF: rare terms count more", sub: Inverse document frequency }
+          say: And it uses inverse document frequency, which rewards rare terms.
+
+    - type: compare
+      heading: Where BM25 holds and breaks
+      cols: 2
+      steps:
+        - add:
+            name: Strengths
+            pros: ["Exact match, rare-term precision", "Transparent scoring", "Zero training", "Robust to domain shift"]
+            when: "An inverted index over 100M documents is routine"
+          say: >-
+            That gives BM25 exact match and rare-term precision. Its scoring is transparent. It's
+            cheap: an inverted index over 100M documents is routine. It needs zero training, and
+            it holds up under domain shift.
+        - add:
+            name: Weaknesses
+            cons: ["Vocabulary mismatch", "No grasp of negation or intent", "Weak on long questions"]
+            when: '"car" vs "automobile"'
+          say: >-
+            Its weaknesses are vocabulary mismatch, car versus automobile, no understanding of
+            negation or intent, and weak results on long natural-language questions.
+
+    - type: bullets
+      chapter: Dense retrieval
+      heading: "Dense: the bi-encoder"
+      steps:
+        - say: >-
+            Dense retrieval uses a bi-encoder. It embeds the query and each document
+            independently, then ranks by cosine or dot-product similarity over an approximate
+            nearest neighbor index.
+        - add: { text: "Synonyms, paraphrase, cross-lingual", sub: Matches meaning when the words differ }
+          say: >-
+            It handles synonyms, paraphrase, cross-lingual matching and conceptual queries.
+        - add: { text: Blurs exact rare tokens, sub: "Part numbers, names, codes" }
+          say: >-
+            But exact rare tokens get blurred: part numbers, names and codes.
+        - add: { text: "Degrades out of domain, opaque failures", sub: "Off-the-shelf models can trail BM25 until fine-tuned" }
+          say: >-
+            Quality degrades out of domain, and its failures are opaque. On specialized corpora,
+            off-the-shelf models can underperform BM25 until they're fine-tuned.
+        - add: { text: Re-embed on every model change, sub: Vectors cost compute and storage }
+          say: >-
+            And vectors cost compute and storage. Every model change means re-embedding the whole
+            corpus.
+
+    - type: statement
+      text: Strong embedders now beat BM25 **on average**. BM25 still wins on IDs.
+      sub: "BEIR (2021): BM25 beat many dense models zero-shot. E5 (2022) turned the average around."
+      subStep: 1
+      steps:
+        - say: >-
+            The picture has shifted over time. In 2021, the BEIR benchmark showed BM25 beating
+            many dense models zero-shot, on domains they weren't trained for.
+        - say: >-
+            Then embedders trained on large, diverse, weakly supervised data, starting with E5 in
+            2022, beat BM25 on the BEIR average. That's now the norm for strong general-purpose
+            embedders. But BM25 still wins on individual datasets, and on identifier-heavy
+            queries. So the average alone doesn't settle the choice.
+
+    - type: compare
+      chapter: Learned sparse and late interaction
+      heading: Two options in between
+      cols: 2
+      steps:
+        - add:
+            name: Learned sparse (SPLADE)
+            pros: "Semantic expansion, exact match retained"
+            cons: "Larger index than BM25; inference at ingest"
+            when: Dense-like quality on lexical infrastructure
+          say: >-
+            Two more options sit between these. Learned sparse retrieval, like SPLADE, has a model
+            predict term weights and expansion terms, served from an ordinary inverted index. It
+            often approaches dense quality in-domain, while keeping BM25's interpretability and
+            exact matching.
+        - add:
+            name: Late interaction (ColBERT)
+            pros: "Top quality, good out of domain"
+            cons: "One vector per token: storage and serving complexity"
+            when: "Quality-critical, moderate corpus size"
+          say: >-
+            Late interaction, like ColBERT, keeps one vector per token, and matches query tokens
+            against document tokens at search time. Quality and out-of-domain behavior are strong.
+            But storing a vector per token costs an order of magnitude or more storage,
+            uncompressed. ColBERTv2's compression cuts that 6-10×, and the PLAID engine brings
+            search down to tens of milliseconds on a GPU.
+
+    - type: diagram
+      chapter: Hybrid retrieval done right
+      heading: Hybrid retrieval
+      diagram: q04-hybrid-retrieval
+      steps:
+        - say: >-
+            Now, hybrid retrieval done right. Here's the whole pipeline: two retrievers in
+            parallel, rank-based fusion, then a cross-encoder reranker before the LLM.
+        - focus: [0.15, 0, 0.53, 1]
+          note: "Run both concurrently: latency ≈ the slower of the two, typically 10-50 ms"
+          say: >-
+            Step one. Run BM25 top 100 and dense top 100 concurrently. Combined latency is about
+            the maximum of the two, typically 10-50 ms. So hybrid adds an index to operate, but
+            very little latency.
+        - focus: [0.33, 0, 0.5, 1]
+          note: "Reciprocal rank fusion, k = 60"
+          say: >-
+            Step two. Fuse the two lists with reciprocal rank fusion.
+
+    - type: code
+      heading: Reciprocal rank fusion
+      code: |
+        # k ≈ 60, ranks start at 1
+        score(d) = Σ 1 / (k + rank_i(d))
+
+        # 1st in BM25, 5th in dense
+        1/61 + 1/65 ≈ 0.0318
+        # 2nd in dense only
+        1/62        ≈ 0.0161
+      caption: "Agreement between retrievers beats **a single high rank**"
+      captionStep: 1
+      steps:
+        - say: >-
+            For each document, RRF sums one over k plus its rank in each list, with k around 60.
+        - say: >-
+            Here's a worked example. A document ranked first by BM25 and fifth by dense scores
+            about 0.0318. A document ranked second by dense only scores about 0.0161. Agreement
+            between retrievers beats a single high rank.
+        - say: >-
+            RRF uses ranks, not raw scores, so it needs no score normalization. That makes it the
+            right default. A weighted blend of normalized scores can beat it, if you tune the
+            weight on labeled data. But that blend is brittle when score distributions drift after
+            a model change.
+
+    - type: diagram
+      heading: Rerank, then route
+      diagram: q04-hybrid-retrieval
+      steps:
+        - focus: [0.5, 0.2, 0.5, 0.8]
+          note: "Rerank the fused top 100-200, scoring each (query, passage) pair jointly"
+          say: >-
+            Step three. Rerank the fused top 100-200 with a cross-encoder, which scores each query
+            and passage pair jointly.
+        - focus: [0.1, 0, 0.45, 1]
+          note: "IDs and quoted strings: more BM25 weight. Long questions: more dense weight."
+          say: >-
+            And step four, optionally route or weight by query type. Queries that look like
+            identifiers, such as codes or quoted strings, get more BM25 weight. Long
+            natural-language questions get more dense weight.
+
+    - type: stats
+      chapter: Evidence the gains stack
+      heading: Top-20 retrieval failure rate
+      steps:
+        - add: { value: "5.7%", label: "baseline" }
+          say: >-
+            Is it worth it? Anthropic's contextual retrieval experiments show the gains stack.
+            Measured as the top-20 retrieval failure rate, the baseline was 5.7%.
+        - add: { value: "3.7%", label: "contextual embeddings (−35%)" }
+          say: With contextual embeddings, it fell to 3.7%, 35% fewer failures.
+        - add: { value: "2.9%", label: "+ contextual BM25 (−49%)" }
+          say: Adding contextual BM25 took it to 2.9%, 49% fewer.
+        - add: { value: "1.9%", label: "+ reranking (−67%)" }
+          say: >-
+            And adding reranking on top brought it to 1.9%, 67% fewer failures. In that setup,
+            reranking took the top 150 fused candidates down to 20.
+
+    - type: compare
+      chapter: Choosing a retriever
+      heading: A decision guide
+      steps:
+        - add:
+            name: BM25 only
+            pros: ["Cold start, no labels", "Logs, code, citations, SKUs", "Strict cost or latency"]
+            when: Always as the baseline
+          say: >-
+            So how do you choose? Use BM25 only on a cold start with no labeled data, for
+            identifier-heavy queries like log search, code symbols, legal citations and SKUs, or
+            under strict cost and latency limits. And always use it as the baseline. If your dense
+            system doesn't beat BM25 on your eval set, stop and investigate before shipping it.
+        - add:
+            name: Dense only
+            pros: ["FAQ dedup, ticket routing", "Cross-lingual", "Low lexical overlap"]
+            when: Once you've shown BM25 adds nothing
+          say: >-
+            Use dense only for short-text semantic matching, like FAQ deduplication or
+            support-ticket routing, for cross-lingual retrieval, and for conversational queries
+            with low lexical overlap. Even then, prove on your eval set that BM25 adds nothing
+            before you drop it.
+        - add:
+            name: Hybrid
+            pros: ["General enterprise RAG", "Mixed query populations", "Recall over milliseconds"]
+            when: The default
+          say: >-
+            And hybrid is the default for general enterprise RAG, for mixed query populations, and
+            anywhere recall matters more than a few milliseconds.
+
+    - type: bullets
+      chapter: How to measure it
+      heading: Build the eval on your traffic
+      steps:
+        - add: { text: "500-2,000 real queries, stratified by type", sub: "ID, keyword, natural-language, multi-hop" }
+          say: >-
+            To measure it, sample 500-2,000 queries from real traffic, stratified by type: ID
+            lookups, keywords, natural-language questions, and multi-hop.
+        - add: { text: Pooled judgments, sub: "Label the union of every system's top 20" }
+          say: >-
+            Use pooled judgments. Label the union of the top 20 from every system under test, so
+            the eval isn't biased toward the incumbent.
+        - add: { text: "First stage: recall at 100 and at 50", sub: The reranker can only reorder what it gets }
+          say: >-
+            For the first stage, report recall at 100 and recall at 50. The reranker can only
+            reorder what the first stage gives it.
+        - add: { text: "Final list: nDCG at 10 and MRR", sub: After reranking }
+          say: For the final list, report nDCG at 10 and MRR after reranking.
+
+    - type: bullets
+      heading: Read the results by slice
+      steps:
+        - add: { text: Always report per slice, sub: The hybrid gain hides in the average }
+          say: >-
+            Always report metrics per slice. The hybrid gain usually concentrates in the slice
+            where one retriever collapses, and the average hides it.
+        - add: { text: Check top-50 overlap, sub: "80%+ overlap: hybrid adds little. 30-50%: several points of recall." }
+          say: >-
+            Compare the overlap between the BM25 and dense top 50. As a rule of thumb, at 80% or
+            more overlap, hybrid adds little. At 30-50% overlap, fusion typically adds several
+            points of recall.
+        - add: { text: Test significance, sub: "Paired bootstrap or permutation test, with confidence intervals" }
+          say: >-
+            Use a paired bootstrap or permutation test over queries, and report confidence
+            intervals. Online, track click-through on citations, answer acceptance, and how often
+            users reformulate the query.
+
+    - type: compare
+      chapter: Tradeoffs
+      heading: The tradeoffs
+      steps:
+        - add:
+            name: BM25
+            pros: "Exact match, cheap, interpretable"
+            cons: Vocabulary mismatch
+            when: "Keyword and ID queries, baseline"
+          say: >-
+            Here are the tradeoffs side by side. BM25 is exact, cheap and interpretable, but
+            suffers from vocabulary mismatch.
+        - add:
+            name: Dense bi-encoder
+            pros: "Semantic, multilingual"
+            cons: "Misses rare tokens, re-embedding cost"
+            when: "Conversational, cross-lingual"
+          say: >-
+            A dense bi-encoder is semantic and multilingual, but misses rare tokens and costs a
+            re-embed on every model change.
+        - add:
+            name: Hybrid (RRF) + reranker
+            pros: "Best recall across slices"
+            cons: "Two indexes, more operations"
+            when: Default for production RAG
+          say: >-
+            Hybrid with RRF and a reranker has the best recall across slices, at the price of two
+            indexes to operate. RRF is robust with zero tuning. A tuned linear blend can win by a
+            point or a few, but needs labels and re-tuning whenever a model changes.
+
+    - type: bullets
+      chapter: Common mistakes
+      heading: Common mistakes
+      style: warn
+      steps:
+        - add: { text: '"Dense is strictly better"', sub: Dropping BM25 loses the identifier-heavy queries }
+          say: >-
+            Finally, the common mistakes. Claiming dense is strictly better than BM25. BM25 still
+            wins on identifier-heavy slices, so dropping it loses those queries.
+        - add: { text: Adding raw BM25 scores to cosine similarity, sub: The scales differ and one retriever dominates }
+          say: >-
+            Adding raw BM25 scores to cosine similarities. The scales are incompatible, so one
+            retriever silently dominates. Use RRF, or calibrated normalization.
+        - add: { text: Evaluating on a public benchmark, sub: "You optimize for someone else's traffic" }
+          say: >-
+            Evaluating on a public benchmark instead of your own queries. You end up optimizing
+            for someone else's traffic.
+        - add: { text: Pooling bias, sub: "The new retriever's finds count as non-relevant" }
+          say: >-
+            Pooling bias. If you label only the incumbent's results, the new retriever's finds
+            count as non-relevant, so better systems look worse.
+        - add: { text: Inconsistent ACLs and deletes, sub: A document removed from one index leaks through the other }
+          say: >-
+            And inconsistent ACLs and deletes across the two indexes. A document deleted or
+            restricted in one index leaks through the other.
+
+    - type: statement
+      chapter: Wrap-up
+      text: "BM25 as the baseline. **Hybrid** as the default. Choose on your own slices."
+      steps:
+        - say: >-
+            So, to recap. Keep BM25 as the baseline. Make hybrid, with RRF and a reranker, the
+            default. And choose on your own traffic, slice by slice, because that's where the
+            differences show up.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/bm25-dense-hybrid-search
+      steps:
+        - say: The full article, with every source, is on vidyal.ai.
+
+    - type: endcard
+      kicker: LLM System Design
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-system-design
+      # Next episode isn't out yet: show it as a teaser. Once it's public, swap the Playlist
+      # end-screen element for it in YouTube Studio (no re-upload needed).
+      teaser: Adding a **reranker**, and proving it helped
+      steps:
+        - say: >-
+            Thanks for watching. Next in the series, adding a reranker, and proving it helped.
+            Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  - id: short-rrf-math
+    title: "How hybrid search merges two ranked lists #shorts"
+    description: Reciprocal rank fusion in one worked example. Agreement between retrievers beats a single high rank.
+    hashtags: ["#RAG", "#HybridSearch", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Hybrid search
+        text: Rank **1st** in one list, or **2nd** in another?
+        steps:
+          - say: >-
+              Which document should rank higher: one ranked first by keyword search and fifth by
+              vector search, or one ranked second by vector search only?
+      - type: code
+        heading: Reciprocal rank fusion
+        code: |
+          score(d) = Σ 1 / (60 + rank)
+
+          # 1st in BM25, 5th in dense
+          1/61 + 1/65 ≈ 0.0318
+          # 2nd in dense only
+          1/62        ≈ 0.0161
+        steps:
+          - say: >-
+              Reciprocal rank fusion adds one over 60 plus the rank, for each list a document
+              appears in.
+          - say: >-
+              First and fifth scores about 0.0318. Second in one list only scores about 0.0161.
+              Agreement between retrievers wins.
+      - type: statement
+        text: Ranks, not scores. **No normalization** needed.
+        steps:
+          - say: >-
+              It uses ranks, not raw scores, so you never have to normalize BM25 against cosine
+              similarity. That's why it's the right default.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full guide to hybrid search is on vidyal.ai.
+
+  - id: short-dont-add-scores
+    title: "Don't add BM25 scores to cosine similarity #shorts"
+    description: Raw BM25 scores and cosine similarities are on different scales. Fuse by rank instead.
+    hashtags: ["#RAG", "#VectorSearch", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Hybrid search
+        text: Your hybrid search might be **one retriever** in disguise.
+        steps:
+          - say: >-
+              Your hybrid search might really be one retriever in disguise, if you combine the
+              scores the obvious way.
+      - type: bullets
+        heading: Adding raw scores
+        style: warn
+        steps:
+          - add: { text: BM25 scores and cosine similarity, sub: Their scales are incompatible }
+            say: >-
+              Adding raw BM25 scores to cosine similarities looks reasonable. But the two are on
+              incompatible scales.
+          - add: { text: One retriever silently dominates, sub: The other barely moves the ranking }
+            say: >-
+              So one retriever silently dominates the sum, and the other barely changes the
+              ranking.
+      - type: statement
+        text: Fuse by **rank** with RRF, or calibrate first.
+        steps:
+          - say: >-
+              Fuse by rank instead, with reciprocal rank fusion, or use calibrated normalization.
+              RRF needs no tuning at all. A tuned linear blend can win by a point or a few, but it
+              needs labels, and re-tuning whenever a model changes.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.
+
+  - id: short-gains-stack
+    title: "Retrieval failures cut by two-thirds, step by step #shorts"
+    description: "Anthropic's contextual retrieval results: contextual embeddings, contextual BM25 and reranking stack up to 67% fewer failures."
+    hashtags: ["#RAG", "#HybridSearch", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Hybrid search
+        text: Two-thirds fewer retrieval **failures**.
+        steps:
+          - say: >-
+              Anthropic cut retrieval failures by two-thirds by stacking three changes.
+      - type: stats
+        steps:
+          - add: { value: "5.7%", label: "top-20 failure rate, baseline" }
+            say: The top-20 retrieval failure rate started at 5.7%.
+          - add: { value: "3.7%", label: contextual embeddings }
+            say: Contextual embeddings took it to 3.7%.
+          - add: { value: "2.9%", label: "+ contextual BM25" }
+            say: Adding contextual BM25, a keyword index, took it to 2.9%.
+          - add: { value: "1.9%", label: "+ reranking" }
+            say: >-
+              And reranking on top brought it to 1.9%. That's 67% fewer failures. The reranker
+              took the top 150 fused candidates down to 20.
+      - type: statement
+        text: Keyword search still **pulls its weight**.
+        steps:
+          - say: >-
+              The keyword index added gains on top of embeddings, so don't drop BM25 just because
+              you have vectors.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.
+
+  - id: short-pooling-bias
+    title: "Why your better retriever looks worse in evals #shorts"
+    description: Pooling bias. Label the union of every system's top results, not just the incumbent's.
+    hashtags: ["#RAG", "#Evals", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Retrieval evals
+        text: Your better retriever can **look worse**.
+        steps:
+          - say: Your new retriever can be better, and still look worse in your eval.
+      - type: bullets
+        heading: Pooling bias
+        style: warn
+        steps:
+          - add: { text: You labeled only the incumbent's results, sub: Everything else counts as unjudged }
+            say: >-
+              If your relevance labels come only from the current system's results, documents it
+              never returned were never judged.
+          - add: { text: "New finds count as non-relevant", sub: So better systems look worse }
+            say: >-
+              So when the new retriever finds them, they count as non-relevant, and a better
+              system scores worse.
+      - type: statement
+        text: Label the **union** of every system's top 20.
+        steps:
+          - say: >-
+              The fix is pooled judgments. Label the union of the top 20 from every system under
+              test. Then the eval isn't biased toward the system you already run.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.

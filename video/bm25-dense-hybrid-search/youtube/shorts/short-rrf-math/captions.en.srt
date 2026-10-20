@@ -1,0 +1,49 @@
+1
+00:00:00,150 --> 00:00:05,246
+Which document should rank higher: one ranked
+first by keyword search and fifth by
+
+2
+00:00:05,246 --> 00:00:08,850
+vector search, or one ranked second
+by vector search only?
+
+3
+00:00:09,850 --> 00:00:15,687
+Reciprocal rank fusion adds one over 60 plus
+the rank, for each list a document
+
+4
+00:00:15,687 --> 00:00:16,500
+appears in.
+
+5
+00:00:17,117 --> 00:00:20,892
+First and fifth scores about 0.0318.
+
+6
+00:00:21,192 --> 00:00:25,967
+Second in one list only
+scores about 0.0161.
+
+7
+00:00:26,267 --> 00:00:28,867
+Agreement between retrievers wins.
+
+8
+00:00:29,883 --> 00:00:36,553
+It uses ranks, not raw scores, so you never
+have to normalize BM25 against cosine
+
+9
+00:00:36,553 --> 00:00:37,458
+similarity.
+
+10
+00:00:37,758 --> 00:00:39,958
+That's why it's the right default.
+
+11
+00:00:40,983 --> 00:00:44,208
+The full guide to hybrid
+search is on vidyal.ai.
