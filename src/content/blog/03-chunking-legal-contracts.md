@@ -7,6 +7,7 @@ tags: ["chunking", "rag", "retrieval", "evals"]
 seriesOrder: 3
 pubDate: 2026-10-16
 sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
+video: { youtube: "tl9HIgUdsnQ", duration: "11:36", url: "https://youtu.be/tl9HIgUdsnQ?si=Pu143r2_MqkymqpZ" }
 ---
 
 ## TL;DR
