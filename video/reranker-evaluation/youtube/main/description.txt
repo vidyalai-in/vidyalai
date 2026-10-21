@@ -1,0 +1,39 @@
+A cross-encoder reranker rescores the first stage's top 50-200 candidates and passes the best 5-20 to the LLM. This video covers how to add one and how to prove it helped: choosing the candidate depth, picking a model, a worked latency estimate, a timeout fallback, paired offline evals at the cutoff the LLM actually sees, how many queries you need to detect a gain, end-to-end checks, slices, a guarded online A/B test, and the net-cost math that often makes a reranker cheaper than running without one.
+
+Part 5 of the LLM System Design series from VidyalAI.
+Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+Part 3, chunking legal contracts for retrieval: https://youtu.be/tl9HIgUdsnQ
+Part 4, BM25 vs dense vs hybrid search: https://youtu.be/Ayvmk_rm1fc
+The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/reranker-evaluation/
+📚 The whole LLM System Design series: https://vidyal.ai/series/llm-system-design/
+
+Chapters
+00:00 Does the reranker help?
+00:57 Questions to ask first
+01:57 Designing the reranking stage
+04:18 Input, output and fine-tuning
+05:32 Measuring it offline
+07:41 The online A/B test
+08:26 Net cost
+09:14 Tradeoffs
+10:00 Common mistakes
+10:50 Write the ship rule first
+11:19 Wrap-up
+
+Sources and further reading
+• Passage Re-ranking with BERT (Nogueira & Cho, 2019): https://arxiv.org/abs/1901.04085
+• Document Ranking with a Pretrained Sequence-to-Sequence Model (Nogueira et al., 2020): https://arxiv.org/abs/2003.06713
+• Is ChatGPT Good at Search? Investigating Large Language Models as Re-Ranking Agents (Sun et al., 2023): https://arxiv.org/abs/2304.09542
+• ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT (Khattab & Zaharia, 2020): https://arxiv.org/abs/2004.12832
+• BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models (Thakur et al., 2021): https://arxiv.org/abs/2104.08663
+• Contextual Retrieval in AI Systems (Anthropic, 2024): https://www.anthropic.com/engineering/contextual-retrieval
+• LegalBench-RAG (Pipitone & Alami, 2024): https://arxiv.org/abs/2408.10343
+• Rerank overview (Cohere docs): https://docs.cohere.com/docs/rerank-overview
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#RAG #Reranking #SystemDesign

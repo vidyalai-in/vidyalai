@@ -1,0 +1,11 @@
+00:00 Does the reranker help?
+00:57 Questions to ask first
+01:57 Designing the reranking stage
+04:18 Input, output and fine-tuning
+05:32 Measuring it offline
+07:41 The online A/B test
+08:26 Net cost
+09:14 Tradeoffs
+10:00 Common mistakes
+10:50 Write the ship rule first
+11:19 Wrap-up

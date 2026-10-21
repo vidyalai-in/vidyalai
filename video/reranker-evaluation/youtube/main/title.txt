@@ -1,0 +1,5 @@
+Adding a Reranker and Proving It Helped | LLM System Design
+
+Alternatives:
+- Does Your Reranker Actually Help? How to Prove It
+- Cross-Encoder Rerankers for RAG: Sizing, Evals and A/B Tests

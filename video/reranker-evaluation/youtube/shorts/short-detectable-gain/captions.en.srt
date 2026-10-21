@@ -1,0 +1,40 @@
+1
+00:00:00,150 --> 00:00:05,100
+Your reranker raised nDCG by one
+point on 1,000 queries.
+
+2
+00:00:05,400 --> 00:00:07,300
+Is that a real gain?
+
+3
+00:00:08,317 --> 00:00:13,917
+Say the per-query difference has a
+standard deviation of about 0.25.
+
+4
+00:00:14,217 --> 00:00:20,717
+Divide by the square root of 1,000, and the
+standard error is about 0.008.
+
+5
+00:00:21,317 --> 00:00:26,942
+That makes the 95% interval about
+plus or minus 1.6 points.
+
+6
+00:00:27,950 --> 00:00:31,150
+So a gain of 2-3 points is detectable.
+
+7
+00:00:31,450 --> 00:00:33,600
+A gain of 1 point is not.
+
+8
+00:00:33,900 --> 00:00:37,825
+Compare per query, with a paired test,
+before you call it a win.
+
+9
+00:00:38,850 --> 00:00:41,475
+The full article is on vidyal.ai.

@@ -1,0 +1,32 @@
+1
+00:00:00,150 --> 00:00:03,975
+Before you test a reranker, decide
+what "it helped" will mean.
+
+2
+00:00:04,983 --> 00:00:10,261
+For example: ship only if end-to-end
+correctness gains at least 2 points, with a
+
+3
+00:00:10,261 --> 00:00:12,833
+confidence interval that excludes zero.
+
+4
+00:00:13,450 --> 00:00:17,200
+No important slice regresses by
+more than 1 point.
+
+5
+00:00:17,817 --> 00:00:23,492
+And p95 latency rises by no
+more than 150 ms.
+
+6
+00:00:24,517 --> 00:00:29,517
+Writing it down first stops you from
+explaining away a result after the fact.
+
+7
+00:00:30,517 --> 00:00:33,142
+The full article is on vidyal.ai.

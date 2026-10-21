@@ -1,0 +1,43 @@
+1
+00:00:00,150 --> 00:00:03,275
+Adding a reranker is another model call.
+
+2
+00:00:03,575 --> 00:00:06,300
+It can still make your RAG system cheaper.
+
+3
+00:00:07,317 --> 00:00:14,992
+A self-hosted reranker on one GPU costs about
+0.6 to 3 cents per 1,000 queries.
+
+4
+00:00:15,617 --> 00:00:21,056
+But if it lets you send 8 chunks instead of
+20, that's about 6,000 fewer input
+
+5
+00:00:21,056 --> 00:00:22,242
+tokens per query.
+
+6
+00:00:22,850 --> 00:00:29,486
+At an illustrative $1 per million input
+tokens, that saves about $6 per 1,000
+
+7
+00:00:29,486 --> 00:00:30,175
+queries.
+
+8
+00:00:31,183 --> 00:00:36,737
+So count the reranker's net cost: what it
+costs, minus the generation tokens it
+
+9
+00:00:36,737 --> 00:00:37,158
+saves.
+
+10
+00:00:38,183 --> 00:00:40,808
+The full article is on vidyal.ai.

@@ -1,0 +1,45 @@
+1
+00:00:00,150 --> 00:00:05,025
+Your reranker has a ceiling, and it was set
+before the reranker ever runs.
+
+2
+00:00:06,050 --> 00:00:12,030
+A reranker only reorders the candidates the
+first stage gives it, usually the top
+
+3
+00:00:12,030 --> 00:00:12,325
+100.
+
+4
+00:00:12,950 --> 00:00:20,750
+If the right passage is in the top 100 only 70%
+of the time, recall at 100 is 0.70.
+
+5
+00:00:21,050 --> 00:00:23,575
+No reranker can do better than that.
+
+6
+00:00:24,183 --> 00:00:29,577
+In that case, the fix belongs upstream, in the
+first-stage retriever, not in the
+
+7
+00:00:29,577 --> 00:00:30,183
+reranker.
+
+8
+00:00:31,183 --> 00:00:36,713
+So measure first-stage recall before you add a
+reranker, and report it alongside
+
+9
+00:00:36,713 --> 00:00:38,233
+every reranker result.
+
+10
+00:00:39,250 --> 00:00:42,850
+The full guide to adding a
+reranker is on vidyal.ai.

@@ -1,0 +1,576 @@
+# Video script for "Adding a Reranker and Proving It Helped".
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/reranker-evaluation
+
+slug: reranker-evaluation
+article: src/content/blog/05-reranker-evaluation.md
+voice: af_heart
+speed: 1.0
+lexicon:
+  MiniLM: mini L M
+  XLM-R: X L M R
+  BERT: bert
+  monoT5: mono T 5
+  RankGPT: rank G P T
+  bge-reranker: B G E reranker
+  TFLOPs: teraflops
+  FLOPs: flops
+  MRR: M R R
+  ColBERT: coal bear
+  LegalBench-RAG: Legal Bench rag
+  e2e: end to end
+
+youtube:
+  title: "Adding a Reranker and Proving It Helped | LLM System Design"
+  altTitles:
+    - "Does Your Reranker Actually Help? How to Prove It"
+    - "Cross-Encoder Rerankers for RAG: Sizing, Evals and A/B Tests"
+  summary: |
+    A cross-encoder reranker rescores the first stage's top 50-200 candidates and passes the best 5-20 to the LLM. This video covers how to add one and how to prove it helped: choosing the candidate depth, picking a model, a worked latency estimate, a timeout fallback, paired offline evals at the cutoff the LLM actually sees, how many queries you need to detect a gain, end-to-end checks, slices, a guarded online A/B test, and the net-cost math that often makes a reranker cheaper than running without one.
+
+    Part 5 of the LLM System Design series from VidyalAI.
+    Part 1, designing a RAG system for 10 million documents: https://youtu.be/_ric0wnAKrE
+    Part 2, debugging a RAG system that gives wrong answers: https://youtu.be/TLINef2z4F8
+    Part 3, chunking legal contracts for retrieval: https://youtu.be/tl9HIgUdsnQ
+    Part 4, BM25 vs dense vs hybrid search: https://youtu.be/Ayvmk_rm1fc
+    The full playlist: https://www.youtube.com/playlist?list=PLTy3a2upFmcM
+  tags:
+    - reranker
+    - reranking
+    - cross-encoder
+    - RAG
+    - retrieval augmented generation
+    - search evaluation
+    - nDCG
+    - A/B testing
+    - LLM system design
+    - LLM evals
+    - AI engineering
+    - LLM
+    - information retrieval
+  hashtags: ["#RAG", "#Reranking", "#SystemDesign"]
+  playlist: LLM System Design
+  pinnedComment: |
+    How did you decide your reranker was worth it: offline metrics, an A/B test, or neither?
+    The full article, with sources: https://vidyal.ai/blog/reranker-evaluation/
+
+thumbnail:
+  title: "Did the Reranker **Help**?"
+  badge: "Prove it, then ship it"
+
+main:
+  scenes:
+    - type: brand
+      steps:
+        - hold: 3
+
+    - type: title
+      chapter: Does the reranker help?
+      kicker: LLM System Design · Part 5
+      heading: Adding a **Reranker**, and Proving It Helped
+      subtitle: Size it, guard it, and measure it at the cutoff the LLM sees
+      steps:
+        - say: >-
+            You add a reranker to your RAG pipeline. The demo looks better. nDCG goes up a point.
+        - say: >-
+            Did it help? Or did you just add latency and a new way to fail? In this video, we'll
+            look at how to add a reranker, and how to prove it was worth it.
+
+    - type: statement
+      text: It helped only if the gain **survives the latency budget** and holds on every slice.
+      sub: "Offline: paired evals at the LLM's cutoff. Online: an A/B test with guardrails."
+      subStep: 1
+      steps:
+        - say: >-
+            Here's the core idea. A cross-encoder reranker rescores the first stage's top 50-200
+            candidates, and passes the top 5-20 to the LLM.
+        - say: >-
+            Then you judge it with a controlled comparison. Offline, on a labeled query set, at
+            the cutoff the LLM actually sees. Online, with an A/B test that uses p95 latency and
+            cost as guardrails. The reranker helped only if the quality gain survives the latency
+            budget, and holds on every important slice.
+
+    - type: bullets
+      chapter: Questions to ask first
+      heading: Pin these down first
+      numbered: true
+      steps:
+        - add: { text: "What's first-stage recall at N?", sub: "Recall at 100 of 0.70 means a ceiling of 0.70" }
+          say: >-
+            Before adding anything, pin down four things. First, what's the first stage's recall
+            at the candidate depth? A reranker can only reorder what it's given. If recall at 100
+            is 0.70, the ceiling is 0.70, and the fix belongs upstream.
+        - add: { text: "How much latency budget is left?", sub: "A typical reranking slot is 50-250 ms at p95" }
+          say: >-
+            Second, how much latency budget is left? A typical reranking slot is 50-250 ms at p95.
+            That bounds the model size, and the candidate depth.
+        - add: { text: "Hosted or self-hosted?", sub: "Cohere, Voyage AI, or bge-reranker, monoT5, your own" }
+          say: >-
+            Third, hosted or self-hosted? Hosted APIs like Cohere Rerank are fast to adopt.
+            Self-hosted models give you control. Data residency may decide this for you.
+        - add: { text: "How many passages reach the LLM?", sub: "That k is the metric cutoff" }
+          say: >-
+            And fourth, how many passages does the LLM consume, 5 or 20? That k is the cutoff to
+            evaluate at, because rank 30 versus rank 40 never reaches the model.
+
+    - type: diagram
+      chapter: Designing the reranking stage
+      heading: Retrieve, rerank, fall back
+      diagram: q05-rerank-measurement
+      steps:
+        - say: >-
+            Here's the design. On the right, the online path. On the left, the measurement loop
+            that justifies it.
+        - focus: [0.38, 0.1, 0.3, 0.75]
+          note: "Query → hybrid first stage (N = 100) → cross-encoder"
+          say: >-
+            Online, the query goes to a hybrid first stage, which returns 100 candidates. The
+            cross-encoder reranks them, and the top k go to the LLM.
+        - focus: [0.55, 0, 0.36, 0.8]
+          note: "On timeout, use the first-stage order"
+          say: >-
+            The reranker sits on the latency-critical path. So give it a timeout. If it exceeds
+            its budget, fall back to the first-stage order, and the top k still go to the LLM.
+            That bounds its worst case.
+
+    - type: bullets
+      heading: Choose the candidate depth N
+      steps:
+        - add: { text: Start at N = 100, sub: Plot first-stage recall at N against N }
+          say: >-
+            Next, choose the candidate depth. Start at 100. Plot first-stage recall at N against
+            N, and pick the point where the curve flattens.
+        - add: { text: "The knee is often 50-200", sub: Reranking cost grows linearly with N }
+          say: >-
+            That's often between 50 and 200. Reranking cost grows linearly with N, so depth past
+            the knee buys latency, and little else.
+
+    - type: compare
+      heading: Choose the model
+      steps:
+        - add:
+            name: Cross-encoder
+            pros: "BERT, MiniLM or XLM-R class, ~20-600M parameters"
+            when: The default
+          say: >-
+            Then choose the model. The default is a cross-encoder: a BERT, MiniLM or XLM-R class
+            model of roughly 20-600M parameters, which reads each query and passage pair jointly,
+            with full attention.
+        - add:
+            name: LLM reranker
+            pros: Strong zero-shot
+            cons: "10-100× more expensive"
+            when: "Labeling and distillation, low-QPS high-value queries"
+          say: >-
+            LLM rerankers, like RankGPT, are strong zero-shot, but 10-100× more expensive. Use
+            them to label data and distill a smaller model, or for low-QPS, high-value queries.
+        - add:
+            name: Late interaction (ColBERT)
+            pros: A cheaper middle ground
+            when: If you already run it
+          say: >-
+            And late interaction, like ColBERT, is a cheaper middle ground, especially if you
+            already run it.
+
+    - type: code
+      heading: A worked latency estimate
+      code: |
+        100 passages × 256 tokens     = 25,600 tokens
+        100M-param cross-encoder      ≈ 2 × 100M FLOPs per token
+                                      ≈ 5 TFLOPs per query
+        GPU at 50-150 TFLOPs (fp16)   → ~30-100 ms, batched
+
+        # 22M MiniLM: ~5× faster.  560M model: ~5× slower.
+      caption: "Benchmark **on your hardware** before setting N"
+      captionStep: 2
+      steps:
+        - say: >-
+            How fast is it? Reranking 100 passages of about 256 tokens is 25,600 tokens. A
+            100M-parameter cross-encoder needs about 2 times 100M FLOPs per token, so about 5
+            TFLOPs per query.
+        - say: >-
+            A data-center GPU sustaining 50-150 TFLOPs in fp16 finishes that in roughly 30-100 ms,
+            when batched. A 22M-parameter MiniLM is about 5× faster. A 560M-parameter model is
+            about 5× slower.
+        - say: Benchmark on your own hardware before you set N.
+
+    - type: bullets
+      chapter: Input, output and fine-tuning
+      heading: Input, output, and phase two
+      steps:
+        - add: { text: "Feed title + header + chunk", sub: Headers carry a lot of signal }
+          say: >-
+            Format the input with the title, the section header and the chunk text together.
+            Headers carry a lot of signal.
+        - add: { text: Check the input limit, sub: "Many classic cross-encoders cap at 512 tokens and truncate silently" }
+          say: >-
+            And check the model's maximum input length. Many classic BERT and MiniLM-based
+            cross-encoders cap at 512 tokens, and anything longer is silently truncated, which can
+            drop the evidence from long chunks.
+        - add: { text: Top k plus a score threshold, sub: "Fewer, better passages: 30-50% fewer context tokens is plausible" }
+          say: >-
+            For the output, take the top k by score. Optionally, drop candidates below a
+            calibrated score threshold, so the LLM gets fewer, better passages. That can cut
+            context tokens substantially, which can pay for the reranker by itself.
+        - add: { text: Fine-tune later, sub: "Several nDCG points, and no re-indexing" }
+          say: >-
+            As a second phase, fine-tune on in-domain pairs, with hard negatives mined from the
+            first stage. That commonly adds several nDCG points. And it's cheaper than fine-tuning
+            the embedder, because changing the reranker needs no re-indexing.
+
+    - type: statement
+      text: A general-purpose reranker can make retrieval **worse**.
+      sub: "LegalBench-RAG: worse than no reranker on legal text"
+      steps:
+        - say: >-
+            One warning. Domain mismatch can make a reranker harmful. In the LegalBench-RAG
+            benchmark, a general-purpose reranker performed worse than no reranker on legal text.
+            That's why you measure.
+
+    - type: bullets
+      chapter: Measuring it offline
+      heading: The offline eval
+      steps:
+        - add: { text: "500-2,000 real queries, stratified", sub: With graded relevance judgments }
+          say: >-
+            So, measuring it. Start with 500-2,000 real queries, stratified by type, with graded
+            relevance judgments.
+        - add: { text: Pool from both rankings, sub: "The top 20 of the baseline and the reranked list" }
+          say: >-
+            Pool the judgments from the top 20 of both the baseline and the reranked list.
+            Otherwise, relevant passages that only the reranker surfaces count as misses.
+        - add: { text: "Metrics at the LLM's cutoff", sub: "nDCG at 10, recall at 5 and 10, MRR" }
+          say: >-
+            Measure at the cutoff the LLM sees: nDCG at 10, recall at 5 and at 10, and MRR.
+        - add: { text: First-stage recall at N alongside, sub: To show the ceiling }
+          say: And report first-stage recall at N alongside, to show the ceiling.
+
+    - type: code
+      heading: How big a gain can you detect?
+      code: |
+        # per-query nDCG@10 difference: std dev ≈ 0.25
+        standard error = 0.25 / sqrt(1000) ≈ 0.008
+        95% interval   ≈ ±1.6 points
+
+        2-3 point gain → detectable
+        1 point gain   → not detectable
+      caption: "Compare **per query**: same queries, two systems"
+      steps:
+        - say: >-
+            Then compare per query: same queries, two systems. Use a paired bootstrap or
+            permutation test, with 95% confidence intervals.
+        - say: >-
+            How big a gain can you detect? Say the per-query difference in nDCG at 10 has a
+            standard deviation of about 0.25. On 1,000 queries, the standard error is about 0.008,
+            so the 95% interval is about plus or minus 1.6 points.
+        - say: >-
+            A gain of 2-3 points is detectable. A gain of 1 point is not. And report wins, ties
+            and losses per query. A reranker that helps 30% of queries and hurts 10% needs a look
+            at the losers.
+
+    - type: bullets
+      heading: End to end, slices, ablations
+      steps:
+        - add: { text: Run the full pipeline both ways, sub: "Same LLM, same prompt, same k" }
+          say: >-
+            Next, run the full RAG pipeline with and without the reranker, holding the LLM, the
+            prompt and k fixed. Measure answer correctness, faithfulness and citation precision,
+            with an LLM judge calibrated against human labels.
+        - add: { text: Try a smaller k too, sub: Same quality at half the tokens is a common win }
+          say: >-
+            Also run a variant with a smaller k, say 5 instead of 10. A common win is the same
+            answer quality at half the tokens.
+        - add: { text: Slice the results, sub: "Watch exact-match and ID queries" }
+          say: >-
+            Slice by query type, length, language and document type. Watch exact-match and ID
+            queries in particular: cross-encoders sometimes demote lexically exact hits.
+        - add: { text: Ablate, sub: "Did N or the input format change too?" }
+          say: >-
+            And ablate, to confirm the gain isn't just from reranking deeper, or from a change in
+            input formatting.
+
+    - type: bullets
+      chapter: The online A/B test
+      heading: Online, with guardrails
+      steps:
+        - add: { text: A pre-registered primary metric, sub: "Answer acceptance, or resolved without escalation" }
+          say: >-
+            Online, run an A/B test with a pre-registered primary metric, such as answer
+            acceptance rate.
+        - add: { text: Guardrails, sub: "p95 and p99 latency, timeouts, cost per query, abstentions" }
+          say: >-
+            Set guardrails: p95 and p99 latency, timeout rate, cost per query, and abstention rate.
+        - add: { text: Power analysis up front, sub: Compute the minimum detectable effect first }
+          say: >-
+            Do a power analysis up front. Small changes in noisy implicit-feedback metrics need
+            large samples, so compute the minimum detectable effect before launching.
+        - add: { text: Consider interleaving, sub: Far more sensitive per query than click A/B tests }
+          say: >-
+            For comparing ranking quality, consider interleaving. It mixes both rankings into one
+            result list per user, and it's far more sensitive per query than an A/B test on
+            clicks. And monitor the reranker's score distribution for drift.
+
+    - type: stats
+      chapter: Net cost
+      heading: Net cost per 1,000 queries
+      steps:
+        - add: { value: "≤ $0.03", label: "self-hosted reranker ($0.006–0.03)", count: false }
+          say: >-
+            Finally, cost. Present it as net cost: the reranker's cost minus the generation tokens
+            it saves. One GPU at roughly $1 to $2 an hour, at 20-50 QPS, costs about 0.6 to 3 cents
+            per 1,000 queries.
+        - add: { value: "6,000", label: "fewer input tokens per query, k from 20 to 8" }
+          say: >-
+            Now the savings. If the reranker lets you drop k from 20 to 8 chunks of about 500
+            tokens, that's about 6,000 fewer input tokens per query.
+        - add: { value: "~$6", label: "saved, at an illustrative $1 per million tokens" }
+          say: >-
+            At an illustrative $1 per million input tokens, that saves about $6 per 1,000 queries,
+            two to three orders of magnitude more than the reranker costs. So when it lets you
+            shrink k, the reranker usually pays for itself.
+
+    - type: compare
+      chapter: Tradeoffs
+      heading: The options
+      steps:
+        - add:
+            name: No reranker
+            pros: "Lowest latency, simplest"
+            cons: Lower precision at small k
+            when: Tight latency or high first-stage nDCG
+          say: >-
+            Here are the options. No reranker has the lowest latency, but lower precision at small
+            k.
+        - add:
+            name: Small cross-encoder
+            pros: "20-60 ms, big precision gain"
+            cons: Often a 512-token limit
+            when: Default production choice
+          say: >-
+            A small cross-encoder, around 20-100M parameters, takes 20-60 ms for a big precision
+            gain. That's the default production choice.
+        - add:
+            name: Large model or hosted API
+            pros: "Higher quality, multilingual"
+            cons: "100-300 ms, per-call cost"
+            when: "Quality-critical, moderate QPS"
+          say: >-
+            A large cross-encoder or a hosted API is higher quality and multilingual, at 100-300
+            ms and a per-call cost. And LLM listwise reranking costs 10-100× more, with seconds of
+            latency, so keep it for offline labeling. Remember too that offline nDCG doesn't always
+            translate end to end, so measure both levels.
+
+    - type: bullets
+      chapter: Common mistakes
+      heading: Common mistakes
+      style: warn
+      steps:
+        - add: { text: Reporting only the mean gain, sub: "No paired test, no slices, no win/loss" }
+          say: >-
+            Now the common mistakes. Reporting only the mean nDCG gain, with no paired test, no
+            slices, and no per-query wins and losses. Noise and slice regressions ship as wins.
+        - add: { text: Ignoring first-stage recall, sub: It can't recover documents it never sees }
+          say: >-
+            Ignoring first-stage recall. A reranker can't recover documents it never sees.
+        - add: { text: Pooling bias, sub: Judging only one system's results skews the gain }
+          say: >-
+            Pooling bias. Judging only the baseline's results understates the reranker's gains.
+            Pooling only the reranker's results overstates them.
+        - add: { text: Silent truncation, sub: The reranker scores the wrong text }
+          say: >-
+            Silent truncation. Long chunks cut at the input limit drop the relevant span.
+        - add: { text: No timeout fallback, sub: The reranker becomes an outage source }
+          say: >-
+            And forgetting the latency tail. Without a timeout fallback, and known p99 behavior
+            under load, the reranker becomes an outage source.
+
+    - type: code
+      chapter: Write the ship rule first
+      heading: Write the ship rule first
+      code: |
+        ship if:
+          end-to-end correctness  +2 points or more, CI excludes 0
+          every important slice   regresses by at most 1 point
+          p95 latency             rises by at most 150 ms
+      steps:
+        - say: >-
+            Which leads to the most useful habit. Write the ship rule before the experiment. For
+            example: ship if end-to-end correctness gains at least 2 points, with a confidence
+            interval that excludes zero.
+        - say: >-
+            No important slice regresses by more than 1 point. And p95 latency rises by no more
+            than 150 ms. Pre-registering the rule prevents rationalizing after the fact.
+
+    - type: statement
+      chapter: Wrap-up
+      text: "Check the ceiling. Measure at **k**. Write the rule first."
+      steps:
+        - say: >-
+            So, to recap. Check first-stage recall before you add a reranker. Measure it at the
+            cutoff the LLM sees, per query, with a paired test and slices. Give it a timeout
+            fallback. Count its net cost. And write the ship rule before you run the experiment.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/reranker-evaluation
+      steps:
+        - say: The full article, with every source, is on vidyal.ai.
+
+    - type: endcard
+      kicker: LLM System Design
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-system-design
+      # Next episode isn't out yet: show it as a teaser. Once it's public, swap the Playlist
+      # end-screen element for it in YouTube Studio (no re-upload needed).
+      teaser: Cutting LLM cost by **70%**
+      steps:
+        - say: >-
+            Thanks for watching. Next in the series, cutting LLM cost by 70% without losing
+            quality. Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  - id: short-reranker-ceiling
+    title: "A reranker can't fix what retrieval never found #shorts"
+    description: A reranker only reorders the candidates it's given. Check first-stage recall before adding one.
+    hashtags: ["#RAG", "#Reranking", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Reranking
+        text: Your reranker has a **ceiling**, and you set it upstream.
+        steps:
+          - say: >-
+              Your reranker has a ceiling, and it was set before the reranker ever runs.
+      - type: bullets
+        heading: Recall at N is the ceiling
+        steps:
+          - add: { text: It only reorders what it's given, sub: Usually the first stage's top 100 }
+            say: >-
+              A reranker only reorders the candidates the first stage gives it, usually the top
+              100.
+          - add: { text: "Recall at 100 = 0.70", sub: "→ the reranker's ceiling is 0.70" }
+            say: >-
+              If the right passage is in the top 100 only 70% of the time, recall at 100 is 0.70.
+              No reranker can do better than that.
+          - add: { text: Fix the first stage instead, sub: The fix belongs upstream }
+            say: >-
+              In that case, the fix belongs upstream, in the first-stage retriever, not in the
+              reranker.
+      - type: statement
+        text: Measure first-stage recall **before** you add a reranker.
+        steps:
+          - say: >-
+              So measure first-stage recall before you add a reranker, and report it alongside
+              every reranker result.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full guide to adding a reranker is on vidyal.ai.
+
+  - id: short-net-cost
+    title: "Why a reranker can make RAG cheaper #shorts"
+    description: "A self-hosted reranker costs cents per 1,000 queries; the tokens it saves can be worth dollars."
+    hashtags: ["#RAG", "#LLM", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Reranking
+        text: Adding a reranker can make your RAG **cheaper**.
+        steps:
+          - say: >-
+              Adding a reranker is another model call. It can still make your RAG system cheaper.
+      - type: stats
+        steps:
+          - add: { value: "≤ $0.03", label: "reranker cost per 1,000 queries", count: false }
+            say: >-
+              A self-hosted reranker on one GPU costs about 0.6 to 3 cents per 1,000 queries.
+          - add: { value: "6,000", label: "fewer input tokens per query" }
+            say: >-
+              But if it lets you send 8 chunks instead of 20, that's about 6,000 fewer input
+              tokens per query.
+          - add: { value: "~$6", label: "saved per 1,000 queries" }
+            say: >-
+              At an illustrative $1 per million input tokens, that saves about $6 per 1,000
+              queries.
+      - type: statement
+        text: Count the **net** cost, not the added cost.
+        steps:
+          - say: >-
+              So count the reranker's net cost: what it costs, minus the generation tokens it
+              saves.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.
+
+  - id: short-detectable-gain
+    title: "Can 1,000 queries prove your reranker helped? #shorts"
+    description: "With 1,000 queries, a 2-3 point nDCG gain is detectable. A 1 point gain is not."
+    hashtags: ["#RAG", "#Evals", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Retrieval evals
+        text: Your reranker gained **1 point**. Is that real?
+        steps:
+          - say: >-
+              Your reranker raised nDCG by one point on 1,000 queries. Is that a real gain?
+      - type: code
+        heading: Do the math
+        code: |
+          per-query std dev ≈ 0.25
+          0.25 / sqrt(1000) ≈ 0.008
+          95% interval ≈ ±1.6 points
+        steps:
+          - say: >-
+              Say the per-query difference has a standard deviation of about 0.25. Divide by
+              the square root of 1,000, and the standard error is about 0.008.
+          - say: >-
+              That makes the 95% interval about plus or minus 1.6 points.
+      - type: statement
+        text: "2-3 points: detectable. **1 point: not.**"
+        steps:
+          - say: >-
+              So a gain of 2-3 points is detectable. A gain of 1 point is not. Compare per query,
+              with a paired test, before you call it a win.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.
+
+  - id: short-ship-rule
+    title: "Write the ship rule before the experiment #shorts"
+    description: Pre-register the ship rule for your reranker so the result can't be rationalized afterwards.
+    hashtags: ["#RAG", "#Evals", "#shorts"]
+    scenes:
+      - type: statement
+        kicker: Reranking
+        text: Decide what **"it helped"** means before you test.
+        steps:
+          - say: >-
+              Before you test a reranker, decide what "it helped" will mean.
+      - type: bullets
+        heading: A ship rule, written first
+        numbered: true
+        steps:
+          - add: { text: "Correctness +2 points or more", sub: With a confidence interval that excludes zero }
+            say: >-
+              For example: ship only if end-to-end correctness gains at least 2 points, with a
+              confidence interval that excludes zero.
+          - add: { text: No slice regresses over 1 point, sub: Every important slice }
+            say: No important slice regresses by more than 1 point.
+          - add: { text: "p95 rises 150 ms at most", sub: The latency guardrail }
+            say: And p95 latency rises by no more than 150 ms.
+      - type: statement
+        text: No **rationalizing** after the fact.
+        steps:
+          - say: >-
+              Writing it down first stops you from explaining away a result after the fact.
+      - type: outro
+        title: Full article
+        url: vidyal.ai
+        steps:
+          - say: The full article is on vidyal.ai.

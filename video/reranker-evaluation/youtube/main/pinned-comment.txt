@@ -1,0 +1,2 @@
+How did you decide your reranker was worth it: offline metrics, an A/B test, or neither?
+The full article, with sources: https://vidyal.ai/blog/reranker-evaluation/

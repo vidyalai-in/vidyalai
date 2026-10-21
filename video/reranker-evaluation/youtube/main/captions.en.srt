@@ -1,0 +1,781 @@
+1
+00:00:03,550 --> 00:00:06,325
+You add a reranker to your RAG pipeline.
+
+2
+00:00:06,625 --> 00:00:10,325
+The demo looks better. nDCG
+goes up a point.
+
+3
+00:00:10,950 --> 00:00:12,375
+Did it help?
+
+4
+00:00:12,675 --> 00:00:16,050
+Or did you just add latency and
+a new way to fail?
+
+5
+00:00:16,350 --> 00:00:21,123
+In this video, we'll look at how to add a
+reranker, and how to prove it was worth
+
+6
+00:00:21,123 --> 00:00:21,300
+it.
+
+7
+00:00:22,317 --> 00:00:24,117
+Here's the core idea.
+
+8
+00:00:24,417 --> 00:00:31,107
+A cross-encoder reranker rescores the first
+stage's top 50-200 candidates, and
+
+9
+00:00:31,107 --> 00:00:33,767
+passes the top 5-20 to the LLM.
+
+10
+00:00:34,383 --> 00:00:37,508
+Then you judge it with a
+controlled comparison.
+
+11
+00:00:37,808 --> 00:00:43,058
+Offline, on a labeled query set, at the
+cutoff the LLM actually sees.
+
+12
+00:00:43,358 --> 00:00:49,408
+Online, with an A/B test that uses p95
+latency and cost as guardrails.
+
+13
+00:00:49,708 --> 00:00:55,126
+The reranker helped only if the quality gain
+survives the latency budget, and holds
+
+14
+00:00:55,126 --> 00:00:56,758
+on every important slice.
+
+15
+00:00:57,783 --> 00:01:00,883
+Before adding anything, pin
+down four things.
+
+16
+00:01:01,183 --> 00:01:05,008
+First, what's the first stage's
+recall at the candidate depth?
+
+17
+00:01:05,308 --> 00:01:08,533
+A reranker can only reorder
+what it's given.
+
+18
+00:01:08,833 --> 00:01:16,058
+If recall at 100 is 0.70, the ceiling is
+0.70, and the fix belongs upstream.
+
+19
+00:01:16,683 --> 00:01:19,633
+Second, how much latency budget is left?
+
+20
+00:01:19,933 --> 00:01:26,133
+A typical reranking slot is
+50-250 ms at p95.
+
+21
+00:01:26,433 --> 00:01:29,933
+That bounds the model size, and
+the candidate depth.
+
+22
+00:01:30,550 --> 00:01:33,100
+Third, hosted or self-hosted?
+
+23
+00:01:33,400 --> 00:01:37,275
+Hosted APIs like Cohere Rerank
+are fast to adopt.
+
+24
+00:01:37,575 --> 00:01:40,300
+Self-hosted models give you control.
+
+25
+00:01:40,600 --> 00:01:43,650
+Data residency may decide this for you.
+
+26
+00:01:44,250 --> 00:01:49,400
+And fourth, how many passages does
+the LLM consume, 5 or 20?
+
+27
+00:01:49,700 --> 00:01:55,641
+That k is the cutoff to evaluate at, because
+rank 30 versus rank 40 never reaches
+
+28
+00:01:55,641 --> 00:01:56,375
+the model.
+
+29
+00:01:57,383 --> 00:01:59,208
+Here's the design.
+
+30
+00:01:59,508 --> 00:02:01,733
+On the right, the online path.
+
+31
+00:02:02,033 --> 00:02:05,283
+On the left, the measurement
+loop that justifies it.
+
+32
+00:02:05,883 --> 00:02:11,608
+Online, the query goes to a hybrid first
+stage, which returns 100 candidates.
+
+33
+00:02:11,908 --> 00:02:16,308
+The cross-encoder reranks them, and
+the top k go to the LLM.
+
+34
+00:02:16,917 --> 00:02:20,217
+The reranker sits on the
+latency-critical path.
+
+35
+00:02:20,517 --> 00:02:22,292
+So give it a timeout.
+
+36
+00:02:22,592 --> 00:02:28,383
+If it exceeds its budget, fall back to the
+first-stage order, and the top k still go
+
+37
+00:02:28,383 --> 00:02:29,142
+to the LLM.
+
+38
+00:02:29,442 --> 00:02:31,492
+That bounds its worst case.
+
+39
+00:02:32,517 --> 00:02:34,967
+Next, choose the candidate depth.
+
+40
+00:02:35,267 --> 00:02:36,942
+Start at 100.
+
+41
+00:02:37,242 --> 00:02:42,292
+Plot first-stage recall at N against N, and pick
+the point where the curve flattens.
+
+42
+00:02:42,917 --> 00:02:45,917
+That's often between 50 and 200.
+
+43
+00:02:46,217 --> 00:02:51,590
+Reranking cost grows linearly with N, so
+depth past the knee buys latency, and
+
+44
+00:02:51,590 --> 00:02:52,417
+little else.
+
+45
+00:02:53,417 --> 00:02:55,317
+Then choose the model.
+
+46
+00:02:55,617 --> 00:03:02,007
+The default is a cross-encoder: a BERT,
+MiniLM or XLM-R class model of roughly
+
+47
+00:03:02,007 --> 00:03:08,397
+20-600M parameters, which reads each query
+and passage pair jointly, with full
+
+48
+00:03:08,397 --> 00:03:09,217
+attention.
+
+49
+00:03:09,817 --> 00:03:17,392
+LLM rerankers, like RankGPT, are strong
+zero-shot, but 10-100× more expensive.
+
+50
+00:03:17,692 --> 00:03:23,542
+Use them to label data and distill a smaller
+model, or for low-QPS, high-value
+
+51
+00:03:23,542 --> 00:03:24,142
+queries.
+
+52
+00:03:24,750 --> 00:03:30,192
+And late interaction, like ColBERT, is a
+cheaper middle ground, especially if you
+
+53
+00:03:30,192 --> 00:03:31,200
+already run it.
+
+54
+00:03:32,217 --> 00:03:33,992
+How fast is it?
+
+55
+00:03:34,292 --> 00:03:41,842
+Reranking 100 passages of about 256
+tokens is 25,600 tokens.
+
+56
+00:03:42,142 --> 00:03:49,674
+A 100M-parameter cross-encoder needs about 2
+times 100M FLOPs per token, so about 5
+
+57
+00:03:49,674 --> 00:03:51,217
+TFLOPs per query.
+
+58
+00:03:51,817 --> 00:04:00,907
+A data-center GPU sustaining 50-150 TFLOPs in
+fp16 finishes that in roughly 30-100
+
+59
+00:04:00,907 --> 00:04:02,792
+ms, when batched.
+
+60
+00:04:03,092 --> 00:04:08,242
+A 22M-parameter MiniLM is about 5× faster.
+
+61
+00:04:08,542 --> 00:04:13,467
+A 560M-parameter model is about 5× slower.
+
+62
+00:04:14,083 --> 00:04:17,383
+Benchmark on your own hardware
+before you set N.
+
+63
+00:04:18,383 --> 00:04:23,233
+Format the input with the title, the section
+header and the chunk text together.
+
+64
+00:04:23,533 --> 00:04:25,858
+Headers carry a lot of signal.
+
+65
+00:04:26,483 --> 00:04:29,583
+And check the model's
+maximum input length.
+
+66
+00:04:29,883 --> 00:04:35,803
+Many classic BERT and MiniLM-based
+cross-encoders cap at 512 tokens, and anything
+
+67
+00:04:35,803 --> 00:04:41,283
+longer is silently truncated, which can drop
+the evidence from long chunks.
+
+68
+00:04:41,883 --> 00:04:44,933
+For the output, take the top k by score.
+
+69
+00:04:45,233 --> 00:04:51,100
+Optionally, drop candidates below a calibrated
+score threshold, so the LLM gets
+
+70
+00:04:51,100 --> 00:04:52,808
+fewer, better passages.
+
+71
+00:04:53,108 --> 00:04:58,583
+That can cut context tokens substantially, which
+can pay for the reranker by itself.
+
+72
+00:04:59,183 --> 00:05:04,862
+As a second phase, fine-tune on in-domain pairs,
+with hard negatives mined from the
+
+73
+00:05:04,862 --> 00:05:05,683
+first stage.
+
+74
+00:05:05,983 --> 00:05:09,208
+That commonly adds several nDCG points.
+
+75
+00:05:09,508 --> 00:05:14,653
+And it's cheaper than fine-tuning the embedder,
+because changing the reranker needs
+
+76
+00:05:14,653 --> 00:05:15,583
+no re-indexing.
+
+77
+00:05:16,583 --> 00:05:18,183
+One warning.
+
+78
+00:05:18,483 --> 00:05:21,758
+Domain mismatch can make a
+reranker harmful.
+
+79
+00:05:22,058 --> 00:05:27,853
+In the LegalBench-RAG benchmark, a
+general-purpose reranker performed worse than no
+
+80
+00:05:27,853 --> 00:05:29,458
+reranker on legal text.
+
+81
+00:05:29,758 --> 00:05:31,633
+That's why you measure.
+
+82
+00:05:32,650 --> 00:05:34,350
+So, measuring it.
+
+83
+00:05:34,650 --> 00:05:40,814
+Start with 500-2,000 real queries,
+stratified by type, with graded relevance
+
+84
+00:05:40,814 --> 00:05:41,625
+judgments.
+
+85
+00:05:42,250 --> 00:05:47,275
+Pool the judgments from the top 20 of both
+the baseline and the reranked list.
+
+86
+00:05:47,575 --> 00:05:53,050
+Otherwise, relevant passages that only the
+reranker surfaces count as misses.
+
+87
+00:05:53,650 --> 00:06:01,125
+Measure at the cutoff the LLM sees: nDCG at
+10, recall at 5 and at 10, and MRR.
+
+88
+00:06:01,750 --> 00:06:06,350
+And report first-stage recall at N
+alongside, to show the ceiling.
+
+89
+00:06:07,350 --> 00:06:11,025
+Then compare per query: same
+queries, two systems.
+
+90
+00:06:11,325 --> 00:06:17,400
+Use a paired bootstrap or permutation test,
+with 95% confidence intervals.
+
+91
+00:06:18,017 --> 00:06:20,242
+How big a gain can you detect?
+
+92
+00:06:20,542 --> 00:06:27,892
+Say the per-query difference in nDCG at 10 has
+a standard deviation of about 0.25.
+
+93
+00:06:28,192 --> 00:06:36,215
+On 1,000 queries, the standard error is about
+0.008, so the 95% interval is about
+
+94
+00:06:36,215 --> 00:06:38,692
+plus or minus 1.6 points.
+
+95
+00:06:39,317 --> 00:06:42,417
+A gain of 2-3 points is detectable.
+
+96
+00:06:42,717 --> 00:06:44,867
+A gain of 1 point is not.
+
+97
+00:06:45,167 --> 00:06:48,667
+And report wins, ties and
+losses per query.
+
+98
+00:06:48,967 --> 00:06:54,917
+A reranker that helps 30% of queries and
+hurts 10% needs a look at the losers.
+
+99
+00:06:55,917 --> 00:07:01,796
+Next, run the full RAG pipeline with and without
+the reranker, holding the LLM, the
+
+100
+00:07:01,796 --> 00:07:03,142
+prompt and k fixed.
+
+101
+00:07:03,442 --> 00:07:09,448
+Measure answer correctness, faithfulness and
+citation precision, with an LLM judge
+
+102
+00:07:09,448 --> 00:07:11,792
+calibrated against human labels.
+
+103
+00:07:12,417 --> 00:07:16,867
+Also run a variant with a smaller
+k, say 5 instead of 10.
+
+104
+00:07:17,167 --> 00:07:21,342
+A common win is the same answer
+quality at half the tokens.
+
+105
+00:07:21,950 --> 00:07:26,150
+Slice by query type, length,
+language and document type.
+
+106
+00:07:26,450 --> 00:07:32,316
+Watch exact-match and ID queries in
+particular: cross-encoders sometimes demote
+
+107
+00:07:32,316 --> 00:07:33,875
+lexically exact hits.
+
+108
+00:07:34,483 --> 00:07:39,789
+And ablate, to confirm the gain isn't just from
+reranking deeper, or from a change
+
+109
+00:07:39,789 --> 00:07:41,083
+in input formatting.
+
+110
+00:07:42,083 --> 00:07:47,701
+Online, run an A/B test with a
+pre-registered primary metric, such as answer
+
+111
+00:07:47,701 --> 00:07:48,883
+acceptance rate.
+
+112
+00:07:49,483 --> 00:07:56,453
+Set guardrails: p95 and p99 latency, timeout
+rate, cost per query, and abstention
+
+113
+00:07:56,453 --> 00:07:56,883
+rate.
+
+114
+00:07:57,483 --> 00:07:59,833
+Do a power analysis up front.
+
+115
+00:08:00,133 --> 00:08:05,881
+Small changes in noisy implicit-feedback metrics
+need large samples, so compute the
+
+116
+00:08:05,881 --> 00:08:08,858
+minimum detectable effect
+before launching.
+
+117
+00:08:09,483 --> 00:08:13,108
+For comparing ranking quality,
+consider interleaving.
+
+118
+00:08:13,408 --> 00:08:18,900
+It mixes both rankings into one result list per
+user, and it's far more sensitive
+
+119
+00:08:18,900 --> 00:08:21,408
+per query than an A/B test on clicks.
+
+120
+00:08:21,708 --> 00:08:25,483
+And monitor the reranker's score
+distribution for drift.
+
+121
+00:08:26,483 --> 00:08:28,258
+Finally, cost.
+
+122
+00:08:28,558 --> 00:08:34,333
+Present it as net cost: the reranker's cost
+minus the generation tokens it saves.
+
+123
+00:08:34,633 --> 00:08:43,756
+One GPU at roughly $1 to $2 an hour, at 20-50
+QPS, costs about 0.6 to 3 cents per
+
+124
+00:08:43,756 --> 00:08:45,333
+1,000 queries.
+
+125
+00:08:45,950 --> 00:08:47,650
+Now the savings.
+
+126
+00:08:47,950 --> 00:08:53,974
+If the reranker lets you drop k from 20 to 8
+chunks of about 500 tokens, that's
+
+127
+00:08:53,974 --> 00:08:57,100
+about 6,000 fewer input tokens per query.
+
+128
+00:08:57,717 --> 00:09:03,583
+At an illustrative $1 per million input
+tokens, that saves about $6 per 1,000
+
+129
+00:09:03,583 --> 00:09:08,992
+queries, two to three orders of magnitude
+more than the reranker costs.
+
+130
+00:09:09,292 --> 00:09:13,617
+So when it lets you shrink k, the
+reranker usually pays for itself.
+
+131
+00:09:14,617 --> 00:09:16,442
+Here are the options.
+
+132
+00:09:16,742 --> 00:09:21,517
+No reranker has the lowest latency, but
+lower precision at small k.
+
+133
+00:09:22,117 --> 00:09:30,139
+A small cross-encoder, around 20-100M
+parameters, takes 20-60 ms for a big precision
+
+134
+00:09:30,139 --> 00:09:30,617
+gain.
+
+135
+00:09:30,917 --> 00:09:33,317
+That's the default production choice.
+
+136
+00:09:33,917 --> 00:09:41,512
+A large cross-encoder or a hosted API is higher
+quality and multilingual, at 100-300
+
+137
+00:09:41,512 --> 00:09:43,592
+ms and a per-call cost.
+
+138
+00:09:43,892 --> 00:09:50,798
+And LLM listwise reranking costs 10-100× more,
+with seconds of latency, so keep it
+
+139
+00:09:50,798 --> 00:09:52,567
+for offline labeling.
+
+140
+00:09:52,867 --> 00:09:59,276
+Remember too that offline nDCG doesn't always
+translate end to end, so measure both
+
+141
+00:09:59,276 --> 00:09:59,817
+levels.
+
+142
+00:10:00,817 --> 00:10:02,717
+Now the common mistakes.
+
+143
+00:10:03,017 --> 00:10:09,535
+Reporting only the mean nDCG gain, with no
+paired test, no slices, and no per-query
+
+144
+00:10:09,535 --> 00:10:10,792
+wins and losses.
+
+145
+00:10:11,092 --> 00:10:14,167
+Noise and slice regressions ship as wins.
+
+146
+00:10:14,783 --> 00:10:17,108
+Ignoring first-stage recall.
+
+147
+00:10:17,408 --> 00:10:21,058
+A reranker can't recover
+documents it never sees.
+
+148
+00:10:21,683 --> 00:10:23,408
+Pooling bias.
+
+149
+00:10:23,708 --> 00:10:28,358
+Judging only the baseline's results
+understates the reranker's gains.
+
+150
+00:10:28,658 --> 00:10:32,183
+Pooling only the reranker's
+results overstates them.
+
+151
+00:10:32,783 --> 00:10:34,708
+Silent truncation.
+
+152
+00:10:35,008 --> 00:10:39,133
+Long chunks cut at the input limit
+drop the relevant span.
+
+153
+00:10:39,750 --> 00:10:42,025
+And forgetting the latency tail.
+
+154
+00:10:42,325 --> 00:10:48,260
+Without a timeout fallback, and known p99
+behavior under load, the reranker becomes
+
+155
+00:10:48,260 --> 00:10:49,475
+an outage source.
+
+156
+00:10:50,483 --> 00:10:53,133
+Which leads to the most useful habit.
+
+157
+00:10:53,433 --> 00:10:56,208
+Write the ship rule before the experiment.
+
+158
+00:10:56,508 --> 00:11:01,492
+For example: ship if end-to-end correctness
+gains at least 2 points, with a
+
+159
+00:11:01,492 --> 00:11:04,083
+confidence interval that excludes zero.
+
+160
+00:11:04,683 --> 00:11:08,433
+No important slice regresses by
+more than 1 point.
+
+161
+00:11:08,733 --> 00:11:14,408
+And p95 latency rises by no
+more than 150 ms.
+
+162
+00:11:14,708 --> 00:11:19,033
+Pre-registering the rule prevents
+rationalizing after the fact.
+
+163
+00:11:20,050 --> 00:11:21,725
+So, to recap.
+
+164
+00:11:22,025 --> 00:11:25,500
+Check first-stage recall before
+you add a reranker.
+
+165
+00:11:25,800 --> 00:11:31,550
+Measure it at the cutoff the LLM sees, per
+query, with a paired test and slices.
+
+166
+00:11:31,850 --> 00:11:33,825
+Give it a timeout fallback.
+
+167
+00:11:34,125 --> 00:11:35,975
+Count its net cost.
+
+168
+00:11:36,275 --> 00:11:39,675
+And write the ship rule before
+you run the experiment.
+
+169
+00:11:40,683 --> 00:11:44,208
+The full article, with every
+source, is on vidyal.ai.
+
+170
+00:11:45,217 --> 00:11:46,992
+Thanks for watching.
+
+171
+00:11:47,292 --> 00:11:53,117
+Next in the series, cutting LLM cost by
+70% without losing quality.
+
+172
+00:11:53,417 --> 00:11:55,542
+Subscribe so you don't miss it.
