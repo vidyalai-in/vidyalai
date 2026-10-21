@@ -101,7 +101,7 @@ To upload, the user can follow `UPLOAD.md` by hand or use `video/tools/upload.mj
 `publish video/<slug>` makes them public and posts the comment. It records video IDs in
 `video/<slug>/youtube/uploaded.json` (committed). The end screen, each Short's Related video and pinning the
 comment stay manual. OAuth credentials live in `~/.config/vidyalai/`, never in the repo; the user signs in
-with `! node video/tools/upload.mjs auth`.
+with `! node video/tools/upload.mjs auth`. Setup, release steps and quota limits: `video/UPLOADING.md`.
 
 When the user shares the published video's link (or `publish` prints it), embed it in the article: add
 `video: { youtube: "<ID>", duration: "<m:ss>" }` to the post's frontmatter and copy

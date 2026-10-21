@@ -461,8 +461,8 @@ node video/tools/upload.mjs publish video/${slug}             # public (main fir
 \`\`\`
 
 Still by hand (the API can't): the main video's end screen, each Short's Related video, and pinning the
-comment. The script prints Studio links for each. Sign in once with \`node video/tools/upload.mjs auth\`
-(it explains how to create the OAuth client if \`~/.config/vidyalai/youtube-client.json\` is missing).
+comment. The script prints Studio links for each. One-time setup, the release steps and daily limits are
+in \`video/UPLOADING.md\`.
 
 ## Once per channel
 
