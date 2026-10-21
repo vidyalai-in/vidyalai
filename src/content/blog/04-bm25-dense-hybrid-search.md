@@ -7,6 +7,7 @@ tags: ["retrieval", "vector-search", "rag", "reranking", "evals"]
 seriesOrder: 4
 pubDate: 2026-10-16
 sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
+video: { youtube: "Ayvmk_rm1fc", duration: "11:56", url: "https://youtu.be/Ayvmk_rm1fc?si=3oqueIgg-vuVa1x1" }
 ---
 
 ## TL;DR
