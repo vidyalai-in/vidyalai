@@ -439,13 +439,37 @@ const endcardHelp = endcard?.teaser
      into the dashed 16:9 frame on the left and the Subscribe element into the dashed circle on the right, resize them to
      fill the frames, and set both to run for the whole end card.`
   : 'Subscribe + "Best for viewer" over the last 15-20 s; check that the elements don\'t cover on-screen text.';
+// For upload.mjs, which prints the end-card start next to the end-screen step.
+if (endcard) writeFileSync(join(kitDir, 'main', 'endcard.txt'), `${studioTime(endcard.start)}\n`);
 const mp4Name = (id) => `${id === 'main' ? slug : `${slug}--${id}`}.mp4`;
 const checklist = `# YouTube upload checklist: ${yt.title ?? slug}
 
 Videos are in \`video/${slug}/out/\` (not committed; rebuild with \`node video/tools/build.mjs video/${slug}\`).
 Everything to paste is in this folder. Upload the main video first: the Shorts link to it.
 
+## Automated alternative
+
+\`video/tools/upload.mjs\` does every step below that the YouTube Data API supports: upload, title,
+description, tags, category, language, audience, AI disclosure, thumbnail, captions and playlist, all as
+private, then publishing and posting the comment. Progress is saved in \`uploaded.json\`, so re-runs resume.
+
+\`\`\`sh
+node video/tools/upload.mjs upload  video/${slug} --dry-run   # check what will be sent
+node video/tools/upload.mjs upload  video/${slug}             # everything up as private
+node video/tools/upload.mjs status  video/${slug}             # processing state
+node video/tools/upload.mjs publish video/${slug}             # public (main first) + post the comment
+\`\`\`
+
+Still by hand (the API can't): the main video's end screen, each Short's Related video, and pinning the
+comment. The script prints Studio links for each. Sign in once with \`node video/tools/upload.mjs auth\`
+(it explains how to create the OAuth client if \`~/.config/vidyalai/youtube-client.json\` is missing).
+
 ## Once per channel
+
+- **Upload defaults** (Studio → Settings → Upload defaults → Advanced settings), so API uploads match the
+  manual steps: comments **Hold potentially inappropriate comments → Strict**, **Automatic chapters**,
+  **Featured places** and **Automatic concepts** unchecked, **Caption certification** "This content has never
+  aired on television in the U.S.", **Category** Education, **Language** English.
 
 - **Verify the channel by phone** at https://www.youtube.com/verify. Custom thumbnails need it (Studio → Settings →
   Channel → Feature eligibility shows what is unlocked). Chapters need the channel to have no active strikes; if they

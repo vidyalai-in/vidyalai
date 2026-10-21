@@ -96,6 +96,13 @@ Tell the user where the MP4s are, the main video's length and chapters, each Sho
 point them to `youtube/UPLOAD.md`. Mention that the voice is AI-generated (the description credits
 it) and that they should follow YouTube's current disclosure guidance.
 
-When the user shares the published video's link, embed it in the article: add
+To upload, the user can follow `UPLOAD.md` by hand or use `video/tools/upload.mjs` (YouTube Data API):
+`upload video/<slug>` puts every video up as private with all metadata, captions, thumbnail and playlist;
+`publish video/<slug>` makes them public and posts the comment. It records video IDs in
+`video/<slug>/youtube/uploaded.json` (committed). The end screen, each Short's Related video and pinning the
+comment stay manual. OAuth credentials live in `~/.config/vidyalai/`, never in the repo; the user signs in
+with `! node video/tools/upload.mjs auth`.
+
+When the user shares the published video's link (or `publish` prints it), embed it in the article: add
 `video: { youtube: "<ID>", duration: "<m:ss>" }` to the post's frontmatter and copy
 `video/<slug>/youtube/main/thumbnail.png` to `src/assets/video/<slug>.png` (see `content-src/AUTHORING.md`).

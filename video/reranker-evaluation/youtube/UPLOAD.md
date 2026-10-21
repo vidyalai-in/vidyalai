@@ -3,7 +3,29 @@
 Videos are in `video/reranker-evaluation/out/` (not committed; rebuild with `node video/tools/build.mjs video/reranker-evaluation`).
 Everything to paste is in this folder. Upload the main video first: the Shorts link to it.
 
+## Automated alternative
+
+`video/tools/upload.mjs` does every step below that the YouTube Data API supports: upload, title,
+description, tags, category, language, audience, AI disclosure, thumbnail, captions and playlist, all as
+private, then publishing and posting the comment. Progress is saved in `uploaded.json`, so re-runs resume.
+
+```sh
+node video/tools/upload.mjs upload  video/reranker-evaluation --dry-run   # check what will be sent
+node video/tools/upload.mjs upload  video/reranker-evaluation             # everything up as private
+node video/tools/upload.mjs status  video/reranker-evaluation             # processing state
+node video/tools/upload.mjs publish video/reranker-evaluation             # public (main first) + post the comment
+```
+
+Still by hand (the API can't): the main video's end screen, each Short's Related video, and pinning the
+comment. The script prints Studio links for each. Sign in once with `node video/tools/upload.mjs auth`
+(it explains how to create the OAuth client if `~/.config/vidyalai/youtube-client.json` is missing).
+
 ## Once per channel
+
+- **Upload defaults** (Studio → Settings → Upload defaults → Advanced settings), so API uploads match the
+  manual steps: comments **Hold potentially inappropriate comments → Strict**, **Automatic chapters**,
+  **Featured places** and **Automatic concepts** unchecked, **Caption certification** "This content has never
+  aired on television in the U.S.", **Category** Education, **Language** English.
 
 - **Verify the channel by phone** at https://www.youtube.com/verify. Custom thumbnails need it (Studio → Settings →
   Channel → Feature eligibility shows what is unlocked). Chapters need the channel to have no active strikes; if they
@@ -26,7 +48,12 @@ Everything to paste is in this folder. Upload the main video first: the Shorts l
      has never aired on television in the U.S." **Category**: Education.
 3. **Video elements**
    - **Add subtitles → Upload file → With timing** → `main/captions.en.srt`.
-   - **Add end screen**: Subscribe + "Best for viewer" over the last 15-20 s; check that the elements don't cover on-screen text.
+   - **Add end screen**: the last 12 s (from 11:45:02 in Studio's m:ss:frames format) is the end card. Choose
+     **Add element → Subscribe**, drag it into the dashed circle on the right, resize it to fill the circle, and set it
+     to run for the whole end card (drag the element's bar in the timeline if the typed time turns red). YouTube requires at least one video or playlist
+     element, so also add **Playlist** → the series playlist and drag it into the dashed frame on the left, resized to
+     fill it. **When the next video is public**, come back to this video's end screen and replace the playlist with
+     **Video → Choose specific video** (same position and size). End screens can be edited any time; no re-upload needed.
 4. **Checks**: wait for the copyright check to finish.
 5. **Visibility**: Public, or schedule. After publishing, pin the comment from `main/pinned-comment.txt`.
 
