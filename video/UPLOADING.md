@@ -14,7 +14,10 @@ API can't do them. The step-by-step manual route is in each kit's `UPLOAD.md`.
 3. **APIs & Services → OAuth consent screen**:
    - User type: **External**. App name: anything, for example "VidyalAI uploader".
    - Scopes: add none here. The script requests `youtube.upload` and `youtube.force-ssl` when you sign in.
-   - **Test users**: add the Google account that owns the YouTube channel.
+   - **Test users**: add the Google account that owns the YouTube channel. In the newer console this is
+     **Google Auth Platform → Audience → Test users → Add users**. If the channel is a Brand Account, add
+     the Gmail address you sign in with, not the channel's name. Check that the address then
+     appears in the list.
    - Leave the app in **Testing**. You don't need to publish it or have it verified.
 4. **APIs & Services → Credentials → Create credentials → OAuth client ID** → application type
    **Desktop app** → **Download JSON**.
@@ -60,6 +63,10 @@ node video/tools/upload.mjs auth
 Open the link it prints, sign in with the channel's account, and allow access. You'll see "Google hasn't
 verified this app": choose **Continue**, because it's your own app. The token is saved to
 `~/.config/vidyalai/youtube-token.json`.
+
+If Google shows "Error 403: access_denied … has not completed the Google verification process", the account
+you signed in with isn't on the test-user list. Add it (step 1.3), then run `auth` again. If several Google
+accounts are signed in to the browser, pick the one you added.
 
 In Testing mode Google expires the sign-in after **7 days**. When a command fails with `invalid_grant`, run
 `auth` again.
