@@ -130,7 +130,7 @@ Chat models need more structure: who is speaking, where each message ends, where
 What is France's capital?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 ```
 
-Each `<|...|>` marker is a special token. `<|eot_id|>` closes each message, and the prompt ends right after the assistant header, so the model's next tokens become its answer. This layout is called a chat template, and each model family defines its own. Part 13 covers how models are trained on these conversations.
+Each `<|...|>` marker is a special token. `<|eot_id|>` closes each message, and the prompt ends right after the assistant header, so the model's next tokens become its answer. This layout is called a chat template, and each model family defines its own. [Part 13](/blog/base-model-to-assistant/) covers how models are trained on these conversations.
 
 ## Step 4: what tokens do to spelling, math and languages
 

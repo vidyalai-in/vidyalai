@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph CLEAN["1. Clean the crawl"]
+    direction TB
+    A["Common Crawl<br/>raw web pages"] --> B["Extract text,<br/>drop menus and ads"]
+    B --> C["Language ID"]
+    C --> D["URL, safety<br/>and PII filters"]
+    D --> E["Heuristic filters:<br/>repetition, punctuation"]
+  end
+  subgraph SELECT["2. Select"]
+    direction TB
+    F["Deduplicate:<br/>URL, MinHash, lines"] --> G["Quality classifier<br/>trained on LLM labels"]
+    G --> H["Mix by domain:<br/>web, code, math,<br/>languages"]
+    X["Other sources:<br/>code, books, papers"] --> H
+  end
+  subgraph TRAIN["3. Train"]
+    direction TB
+    I["Tokenize"] --> J["Pretrain on<br/>trillions of tokens"]
+    J --> K["Anneal on<br/>top-quality data"]
+  end
+  CLEAN --> SELECT
+  SELECT --> TRAIN

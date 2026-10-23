@@ -1,0 +1,13 @@
+flowchart LR
+  BASE["Pretrained<br/>base model"] --> SFT["SFT on<br/>demonstrations"]
+  SFT --> CMP["Sample two answers,<br/>a person picks<br/>the better one"]
+  subgraph RLHF["RLHF path"]
+    RM["Reward model<br/>learns a score<br/>from pairs"] --> PPO["RL with PPO:<br/>reward minus<br/>β × KL to SFT model"]
+  end
+  subgraph SHORT["DPO shortcut"]
+    DPO["DPO: update the<br/>model directly<br/>on the pairs"]
+  end
+  CMP --> RM
+  CMP --> DPO
+  PPO --> ASST["Assistant<br/>model"]
+  DPO --> ASST

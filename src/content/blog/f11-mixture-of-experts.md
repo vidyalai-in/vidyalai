@@ -226,7 +226,7 @@ Sources: [Mixtral](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1/blob/main/
 
 ## What's next
 
-Every model in this part learned its weights from trillions of tokens of text. Part 12 covers pretraining: where that text comes from and how it's filtered, the scaling laws that say how big a model should be for a given budget, and how training runs spread across thousands of GPUs.
+Every model in this part learned its weights from trillions of tokens of text. [Part 12](/blog/pretraining-scaling-laws/) covers pretraining: where that text comes from and how it's filtered, the scaling laws that say how big a model should be for a given budget, and how training runs spread across thousands of GPUs.
 
 ## Further reading
 
