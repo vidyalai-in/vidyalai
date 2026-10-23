@@ -258,7 +258,7 @@ Paged caches are now the norm:
 
 ## What's next
 
-PagedAttention frees a request's blocks the moment it finishes. But the next request often starts with the same system prompt, or the same conversation history plus one new message, and recomputing that is wasted work. Part 6 covers prefix caching and KV cache offloading: keeping caches between requests, finding them again, and spilling them to CPU memory and SSD when the GPU is full.
+PagedAttention frees a request's blocks the moment it finishes. But the next request often starts with the same system prompt, or the same conversation history plus one new message, and recomputing that is wasted work. [Part 6](/blog/prefix-caching/) covers prefix caching and KV cache offloading: keeping caches between requests, finding them again, and spilling them to CPU memory and SSD when the GPU is full.
 
 ## Further reading
 

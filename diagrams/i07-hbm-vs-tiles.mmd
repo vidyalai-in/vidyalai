@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph STD["Standard attention: three kernels, n×n matrices round-trip through HBM"]
+    direction LR
+    A1["Q, K, V<br/>in HBM"] --> A2["Kernel 1<br/>S = QKᵀ"]
+    A2 -->|"write"| A3["S, n×n<br/>in HBM"]
+    A3 -->|"read"| A4["Kernel 2<br/>P = softmax(S)"]
+    A4 -->|"write"| A5["P, n×n<br/>in HBM"]
+    A5 -->|"read"| A6["Kernel 3<br/>O = PV"]
+    A6 --> A7["O<br/>in HBM"]
+  end
+  subgraph FA["FlashAttention: one fused kernel, tiles stay in SRAM"]
+    direction LR
+    B1["Q, K, V<br/>in HBM"] -->|"load tiles"| B2["In SRAM:<br/>one Q tile;<br/>K, V tiles<br/>stream in"]
+    B2 --> B3["Per K, V tile:<br/>scores,<br/>online softmax,<br/>update output"]
+    B3 -->|"write once"| B4["O<br/>in HBM"]
+  end
+  STD ~~~ FA

@@ -66,7 +66,7 @@ The waste grows with how much output lengths vary. If every request wanted exact
 
 ### Dynamic batching helps arrival, not departure
 
-**Dynamic batching** came first. NVIDIA's Triton Inference Server describes its dynamic batcher as one that "allows inference requests to be combined by the server, so that a batch is created dynamically." The server waits a short, configurable time (`max_queue_delay_microseconds`) for more requests to arrive, then launches whatever it has. Triton's docs frame it plainly as a way to "trade off increased latency for increased throughput."
+**Dynamic batching** came first. NVIDIA's Triton Inference Server describes its dynamic batcher as one that "allows inference requests to be combined by the server, so that a batch is created dynamically." The server waits a short, configurable time (`max_queue_delay_microseconds`) for more requests to arrive, then launches whatever it has. The server's docs frame it plainly as a way to "trade off increased latency for increased throughput."
 
 That suits models that answer in one forward pass, such as image classifiers or embedding models. For an LLM it only fixes how batches start: once launched, a dynamic batch still runs until its longest request finishes.
 

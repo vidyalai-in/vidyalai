@@ -1,0 +1,8 @@
+flowchart TD
+  R["Shared system prompt<br/>4,000 tokens"]
+  R --> A1["Chat A, turn 1<br/>question and reply"]
+  A1 --> A2["Chat A, turn 2<br/>new question"]
+  R --> B1["Chat B, turn 1<br/>question"]
+  R --> D["Contract text<br/>8,000 tokens"]
+  D --> Q1["Question 1<br/>about the contract"]
+  D --> Q2["Question 2<br/>about the contract"]
