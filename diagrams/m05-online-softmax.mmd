@@ -1,0 +1,8 @@
+flowchart LR
+  A["Start<br/>m = minus infinity<br/>l = 0<br/>acc = 0"] --> B["Read next block<br/>of scores z<br/>and values v"]
+  B --> C["New max M:<br/>larger of m<br/>and block max"]
+  C --> D["Rescale old totals:<br/>l and acc<br/>times e^(m-M)"]
+  D --> E["Add the block:<br/>l += e^(z-M)<br/>acc += e^(z-M) v<br/>then m = M"]
+  E --> G{"More<br/>blocks?"}
+  G -->|"yes"| B
+  G -->|"no"| H["Output = acc / l<br/>LSE = m + ln l"]

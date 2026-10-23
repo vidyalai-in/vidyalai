@@ -1,0 +1,8 @@
+flowchart TD
+  W1["w1 = 0.8<br/>(input x = 1.5)"] -->|"rate: x = 1.5"| Z1["z1 = w1 × x<br/>= 1.2"]
+  Z1 -->|"rate: SiLU'(1.2) = 0.982"| H["h = SiLU(z1)<br/>= 0.9222"]
+  H -->|"rate: w2 = -0.5"| Z2["z2 = w2 × h<br/>= -0.4611"]
+  W2["w2 = -0.5"] -->|"rate: h = 0.9222"| Z2
+  Z2 -->|"rate: p(1 - p) = 0.2372"| P["p = sigmoid(z2)<br/>= 0.3867"]
+  P -->|"rate: -1/p = -2.586"| L["loss = -ln p<br/>= 0.9501"]
+  L --> G["dL/dw1 = product<br/>of the 5 rates<br/>= 0.4517"]

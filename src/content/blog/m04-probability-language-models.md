@@ -231,7 +231,7 @@ Each term is a log-probability, or logprob. The 1,000 tokens above sum to -2,302
 
 ### Scoring real sentences
 
-Here are the opening numbers. The script loads Qwen2.5-1.5B-Instruct on a CPU and scores two sentences token by token. It puts the model's `<|endoftext|>` token first, as a blank page, so the first word gets a probability too. `log_softmax` turns the model's raw scores straight into log-probabilities; Part 5 covers how.
+Here are the opening numbers. The script loads Qwen2.5-1.5B-Instruct on a CPU and scores two sentences token by token. It puts the model's `<|endoftext|>` token first, as a blank page, so the first word gets a probability too. `log_softmax` turns the model's raw scores straight into log-probabilities; [Part 5](/blog/softmax-math/) covers how.
 
 ```python
 import math
@@ -352,7 +352,7 @@ $$
 
 Here $$X$$ is the random number and $$\mathbb{E}$$ stands for "expected". For a fair die, $$\mathbb{E}[X] = \tfrac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5$$. No roll gives 3.5, but the average of many rolls approaches it: 100,000 simulated rolls averaged 3.498.
 
-Training uses this fact. An LLM's training loss is the expected value of $$-\ln p(\text{next token})$$ over real text, estimated by averaging over billions of tokens. For "The cat sat on the mat." the average is $$18.40 / 7 = 2.63$$ per token. Part 6 turns that number into cross-entropy and perplexity.
+Training uses this fact. An LLM's training loss is the expected value of $$-\ln p(\text{next token})$$ over real text, estimated by averaging over billions of tokens. For "The cat sat on the mat." the average is $$18.40 / 7 = 2.63$$ per token. [Part 6](/blog/cross-entropy-perplexity/) turns that number into cross-entropy and perplexity.
 
 ## Step 5: reshaping the distribution before the draw
 

@@ -1,0 +1,7 @@
+flowchart TD
+  A["Model's probability for<br/>each actual next token<br/>(335 tokens of Oz)"] --> B["Surprise per token<br/>= -ln q"]
+  B --> C["Average over tokens<br/>= cross-entropy loss<br/>2.135 nats per token"]
+  C -->|"e to the loss"| D["Perplexity 8.46<br/>(choices per token)"]
+  C -->|"divide by ln 2"| E["3.080 bits per token"]
+  E -->|"times tokens,<br/>divide by bytes"| F["0.703 bits per byte"]
+  F -->|"arithmetic coding"| G["About 129 bytes<br/>for 1,468 bytes of text"]
