@@ -2,7 +2,7 @@
 title: "Softmax and Log-Sum-Exp: From Scores to Probabilities, Safely"
 description: "Why softmax uses the exponential, how one subtraction stops it overflowing, what log-sum-exp measures, and the online softmax inside FlashAttention."
 slug: "softmax-math"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "attention", "sampling", "training", "gpu"]
 series: "llm-math"
 seriesOrder: 5

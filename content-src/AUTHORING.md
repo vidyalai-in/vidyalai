@@ -52,8 +52,10 @@ Category slugs:
 
 | Slug | Name | Posts |
 |---|---|---|
-| `llm-fundamentals` | How LLMs Work | LLM Fundamentals and Math Behind LLMs series |
-| `inference-optimization` | Inference & Optimization | LLM Inference & Optimization and LLMs on the GPU series |
+| `llm-fundamentals` | How LLMs Work | LLM Fundamentals series |
+| `llm-math` | Math for LLMs | The Math Behind LLMs series |
+| `inference-optimization` | Inference & Optimization | LLM Inference & Optimization series |
+| `gpu-kernels` | GPUs & Kernels | LLMs on the GPU series |
 | `retrieval-rag` | Retrieval & RAG | 1-5 |
 | `cost-latency-serving` | Cost, Latency & Serving | 6, 7, 8, 9, 21 |
 | `agents-tool-use` | Agents & Tool Use | 10, 11, 12, 13 |

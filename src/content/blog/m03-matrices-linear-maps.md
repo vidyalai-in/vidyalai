@@ -2,7 +2,7 @@
 title: "Matrices as Transformations, and Why Neural Networks Need a Bend"
 description: "What a matrix does to space, why stacked linear layers collapse into one, how ReLU and SiLU fix that, and how batching changes a matmul's cost."
 slug: "matrices-linear-maps"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "neural-networks", "transformers", "gpu"]
 series: "llm-math"
 seriesOrder: 3

@@ -2,7 +2,7 @@
 title: "Vectors and Dot Products: Length, Angle and Meaning"
 description: "Length, angle, cosine and projection built from Pythagoras, why random vectors in 4,096 dimensions are nearly perpendicular, and real embedding arithmetic."
 slug: "vectors-dot-products"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "embeddings", "vector-search", "interpretability", "transformers"]
 series: "llm-math"
 seriesOrder: 2

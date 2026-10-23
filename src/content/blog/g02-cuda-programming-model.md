@@ -2,7 +2,7 @@
 title: "The CUDA Programming Model: Threads, Warps, Blocks and SMs"
 description: "Write, compile and time a first CUDA kernel, see it hit the memory-bandwidth limit, and learn what warps, occupancy and grid size do to its speed."
 slug: "cuda-programming-model"
-category: "inference-optimization"
+category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency"]
 series: "llm-gpu"
 seriesOrder: 2

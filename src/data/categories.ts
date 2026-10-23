@@ -6,10 +6,22 @@ export const CATEGORIES = [
     icon: 'book',
   },
   {
+    slug: 'llm-math',
+    name: 'Math for LLMs',
+    blurb: 'Vectors, probability, gradients and floating point: the math under every LLM, built up from high-school algebra.',
+    icon: 'sigma',
+  },
+  {
     slug: 'inference-optimization',
     name: 'Inference & Optimization',
     blurb: 'Prefill and decode, KV caching, batching, quantization and the other tricks behind fast generation.',
     icon: 'bolt',
+  },
+  {
+    slug: 'gpu-kernels',
+    name: 'GPUs & Kernels',
+    blurb: 'CUDA, Triton, memory hierarchies and tensor cores: how LLM math runs on the GPU, measured kernel by kernel.',
+    icon: 'chip',
   },
   {
     slug: 'retrieval-rag',

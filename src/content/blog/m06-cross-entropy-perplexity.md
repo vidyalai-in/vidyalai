@@ -2,7 +2,7 @@
 title: "Entropy, Cross-Entropy and Perplexity"
 description: "What an LLM's loss number means: surprise, entropy, cross-entropy, perplexity, bits per byte and KL divergence, and why predicting text is compressing it."
 slug: "cross-entropy-perplexity"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "training", "evals", "tokens"]
 series: "llm-math"
 seriesOrder: 6

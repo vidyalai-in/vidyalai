@@ -2,7 +2,7 @@
 title: "Derivatives, Gradients and the Chain Rule"
 description: "The derivative built from the slope of a tiny secant, gradients as the uphill direction, the chain rule and Jacobians, checked with NumPy and PyTorch."
 slug: "derivatives-gradients"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "training", "gradient-descent", "backpropagation"]
 series: "llm-math"
 seriesOrder: 7

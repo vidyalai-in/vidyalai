@@ -2,7 +2,7 @@
 title: "From torch.matmul to Silicon: What Happens When PyTorch Runs"
 description: "Follow one matmul from Python through the dispatcher, cuBLAS and a CUDA stream to the GPU, then trace one decode step of a real model on a laptop GPU."
 slug: "gpu-from-python-to-silicon"
-category: "inference-optimization"
+category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency", "serving"]
 series: "llm-gpu"
 seriesOrder: 1

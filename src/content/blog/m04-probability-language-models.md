@@ -2,7 +2,7 @@
 title: "Probability and the Chain Rule of Language"
 description: "How an LLM scores any text as a product of next-token probabilities, why it adds logs instead, and what sampling, temperature and top-p do to the numbers."
 slug: "probability-language-models"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "sampling", "tokens", "transformers"]
 series: "llm-math"
 seriesOrder: 4

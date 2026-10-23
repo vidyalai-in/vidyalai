@@ -2,7 +2,7 @@
 title: "The Math You Need for LLMs, and the Shapes Inside One"
 description: "Scalars, vectors, matrices and tensors, matrix multiplication as many dot products, and the shape of every tensor in one forward pass of Llama 3.1 8B."
 slug: "math-for-llms"
-category: "llm-fundamentals"
+category: "llm-math"
 tags: ["math", "transformers", "architecture", "embeddings", "tokens"]
 series: "llm-math"
 seriesOrder: 1
