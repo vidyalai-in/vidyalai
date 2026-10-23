@@ -1,0 +1,13 @@
+flowchart TD
+  subgraph SPARSE["Top-k sparse (DSA)"]
+    Q4["Query at token 100,000"] -->|"indexer picks<br/>the top 2,048"| C4["Reads 2,048 tokens<br/>Cache keeps 100,000"]
+  end
+  subgraph SINK["Sinks + window (StreamingLLM)"]
+    Q3["Query at token 100,000"] -->|"first 4 tokens<br/>+ recent window"| C3["Reads 4 + 4,092 tokens<br/>Cache keeps 4,096"]
+  end
+  subgraph SWA["Sliding window (Mistral 7B)"]
+    Q2["Query at token 100,000"] -->|"recent tokens only"| C2["Reads 4,096 tokens<br/>Cache keeps 4,096"]
+  end
+  subgraph FULL["Full attention"]
+    Q1["Query at token 100,000"] -->|"every earlier token"| C1["Reads 100,000 tokens<br/>Cache keeps 100,000"]
+  end

@@ -284,7 +284,7 @@ The gain shrinks as the batch grows, and the older EAGLE dips slightly below bre
 
 ## What's next
 
-Everything so far has assumed the model fits on one GPU. Llama 3.1 8B does; DeepSeek-V3, at 671 billion parameters, is nowhere close. Part 10 covers tensor, pipeline and expert parallelism: how to split one model across many GPUs, what each split costs in communication, and why NVLink matters so much.
+Everything so far has assumed the model fits on one GPU. Llama 3.1 8B does; DeepSeek-V3, at 671 billion parameters, is nowhere close. [Part 10](/blog/model-parallelism/) covers tensor, pipeline and expert parallelism: how to split one model across many GPUs, what each split costs in communication, and why NVLink matters so much.
 
 ## Further reading
 

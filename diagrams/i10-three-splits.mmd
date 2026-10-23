@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph TP["Tensor parallelism: slice every layer"]
+    direction TB
+    T1["GPU 1<br/>half of every matrix"] <-->|"all-reduce<br/>twice per layer"| T2["GPU 2<br/>other half"]
+  end
+  subgraph PP["Pipeline parallelism: split the layers"]
+    direction TB
+    P1["GPU 1<br/>layers 1-40"] -->|"activations<br/>16 KiB per token"| P2["GPU 2<br/>layers 41-80"]
+  end
+  subgraph EP["Expert parallelism: spread the experts"]
+    direction TB
+    A["Home GPU<br/>attention + router"]
+    E1["GPU 2<br/>experts 129-256"]
+    E2["GPU 1<br/>experts 1-128"]
+    C["Home GPU<br/>adds expert outputs"]
+    A -->|"dispatch"| E1
+    A -->|"dispatch"| E2
+    E1 -->|"combine"| C
+    E2 -->|"combine"| C
+  end
+  TP ~~~ PP ~~~ EP
