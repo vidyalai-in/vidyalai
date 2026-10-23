@@ -1,0 +1,11 @@
+flowchart LR
+  subgraph IN["Once, at the input"]
+    T["Token<br/>embeddings"] --> P["+ position vector<br/>sinusoidal<br/>or learned"]
+  end
+  subgraph L["Inside every attention layer"]
+    QK["Make queries,<br/>keys, values"] --> R["Rotate Q and K<br/>by position<br/>(RoPE)"]
+    R --> S["Score each<br/>query-key pair"]
+    S --> A["Subtract<br/>slope × distance<br/>(ALiBi)"]
+    A --> M["Mask, softmax,<br/>mix values"]
+  end
+  P --> QK

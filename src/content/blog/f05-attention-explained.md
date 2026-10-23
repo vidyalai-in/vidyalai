@@ -277,7 +277,7 @@ Some heads implement small algorithms. [Olsson et al. (2022)](https://arxiv.org/
 
 ## What's next
 
-So far there's one head, asking one kind of question. Real models run dozens of heads side by side, each with its own queries, keys and values, so one can track grammar while another looks for the previous mention of a name. Part 6 puts those heads together with the MLP, the residual stream and layer normalization to build a full Transformer block.
+So far there's one head, asking one kind of question. Real models run dozens of heads side by side, each with its own queries, keys and values, so one can track grammar while another looks for the previous mention of a name. [Part 6](/blog/transformer-block/) puts those heads together with the MLP, the residual stream and layer normalization to build a full Transformer block.
 
 ## Further reading
 

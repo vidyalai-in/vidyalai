@@ -1,0 +1,10 @@
+flowchart LR
+  X["Residual<br/>stream in"] --> LN1["Layer<br/>norm 1"]
+  LN1 --> MHA["Multi-head<br/>attention<br/>12 heads + W_O"]
+  MHA --> A1(("+"))
+  X -->|"skip path"| A1
+  A1 --> LN2["Layer<br/>norm 2"]
+  LN2 --> MLP["MLP<br/>768 → 3,072<br/>→ 768"]
+  MLP --> A2(("+"))
+  A1 -->|"skip path"| A2
+  A2 --> Y["Residual<br/>stream out"]
