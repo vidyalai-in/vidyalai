@@ -1194,6 +1194,23 @@ export const GLOSSARY = [
     source: { title: 'Circuit Tracing (Ameisen et al., 2025)', url: 'https://transformer-circuits.pub/2025/attribution-graphs/methods.html' },
   },
 
+  {
+    id: 'matrix-multiplication',
+    term: 'Matrix multiplication',
+    match: ['matrix multiplication', 'matrix multiply', 'matrix multiplies', 'matmul'],
+    def: 'Combining an m×k and a k×n matrix into an m×n matrix, where each entry is the dot product of a row of the first with a column of the second. It costs about 2mkn FLOPs.',
+    article: 'math-for-llms',
+    source: { title: 'numpy.matmul (NumPy docs)', url: 'https://numpy.org/doc/stable/reference/generated/numpy.matmul.html' },
+  },
+  {
+    id: 'einsum',
+    term: 'Einsum',
+    match: ['einsum', 'Einstein summation'],
+    def: 'A notation that names each axis of each array with a letter. Letters that appear in the inputs but not in the output are multiplied and summed over.',
+    article: 'math-for-llms',
+    source: { title: 'torch.einsum (PyTorch docs)', url: 'https://docs.pytorch.org/docs/stable/generated/torch.einsum.html' },
+  },
+
   // ---------- Retrieval and RAG ----------
   {
     id: 'rag',

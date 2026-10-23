@@ -1,0 +1,12 @@
+flowchart LR
+  IDS["Token IDs<br/>B×T"] --> EMB["Embedding<br/>lookup"]
+  EMB --> X["Stream<br/>B×T×4,096"]
+  X --> BLOCK
+  subgraph BLOCK["Each of 32 blocks"]
+    direction TB
+    QKV["Q: B×T×32×128<br/>K, V: B×T×8×128"] --> S["Scores per head<br/>B×32×T×T"]
+    S --> O["Mix values, project<br/>B×T×4,096"]
+    O --> GU["MLP gate and up<br/>B×T×14,336"]
+    GU --> D["MLP down<br/>B×T×4,096"]
+  end
+  BLOCK --> LOG["Logits<br/>B×T×128,256"]
