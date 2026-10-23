@@ -2,7 +2,7 @@
 
 ```yaml
 slug: <article slug>                      # output file names use it
-article: src/content/blog/NN-<slug>.md    # sources and URL come from here
+article: src/content/blog/NN-<slug>.md    # sources, URL and series come from here
 voice: af_heart                           # Kokoro voice
 speed: 1.0                                # 0.9-1.1 is natural
 lexicon: { Kubernetes: "koober netties" } # optional per-video pronunciations (TTS only)
@@ -14,7 +14,7 @@ youtube:
     ...
   tags: [...]                             # ≤ 500 chars total
   hashtags: ["#RAG", "#LLM", "#SystemDesign"]
-  playlist: LLM System Design
+  playlist: LLM System Design             # optional; defaults to the article's series name
   pinnedComment: |
     ...
 
@@ -33,6 +33,17 @@ shorts:
     hashtags: [...]
     scenes: [ ... ]                       # portrait 1080×1920
 ```
+
+### Series
+
+The article's frontmatter `series` (default `llm-system-design`) decides the series; names, slugs and
+playlists are in `src/data/series.mjs`. The build writes the series line of the description and the
+default playlist from it. Write the rest to match that series by hand:
+- the title suffix (`... | LLM Fundamentals`) and hashtags (`#SystemDesign` only for System Design),
+- `summary`: "Part N of the <series name> series from VidyalAI", the earlier parts' video links, and the
+  series playlist link once it exists,
+- the title scene's `kicker` (`LLM Fundamentals · Part 1`) and the endcard's `kicker` and
+  `path: /series/<series slug>`.
 
 ## Scenes and steps
 

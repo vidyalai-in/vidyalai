@@ -15,6 +15,7 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import YAML from 'yaml';
+import { getSeries } from '../../src/data/series.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const require = createRequire(join(ROOT, 'package.json'));
@@ -67,6 +68,7 @@ const articlePath = join(ROOT, script.article);
 const articleText = readFileSync(articlePath, 'utf8');
 const front = YAML.parse(articleText.split(/^---$/m)[1]);
 const articleUrl = `${SITE}/blog/${front.slug}/`;
+const series = getSeries(front.series);
 const sources = [];
 {
   const section = articleText.split(/^## Further reading\s*$/m)[1]?.split(/^## /m)[0] ?? '';
@@ -388,7 +390,7 @@ for (const v of videos) {
       yt.summary?.trim(),
       '',
       `📖 Read the full article (with every number and source): ${articleUrl}`,
-      `📚 The whole LLM System Design series: ${SITE}/series/llm-system-design/`,
+      `📚 The whole ${series.name} series: ${SITE}/series/${series.slug}/`,
       '',
       'Chapters',
       chapters,
@@ -474,7 +476,7 @@ in \`video/UPLOADING.md\`.
 - **Verify the channel by phone** at https://www.youtube.com/verify. Custom thumbnails need it (Studio → Settings →
   Channel → Feature eligibility shows what is unlocked). Chapters need the channel to have no active strikes; if they
   don't appear, apply for Advanced features on the same page.
-- Create the playlist **${yt.playlist ?? 'LLM System Design'}** (it can also be created from the upload form).
+- Create the playlist **${yt.playlist ?? series.name}** (it can also be created from the upload form).
 
 ## Main video: \`out/${mp4Name('main')}\`
 
@@ -483,7 +485,7 @@ in \`video/UPLOADING.md\`.
    - **Title**: first line of \`main/title.txt\`.
    - **Description**: paste \`main/description.txt\`. Its timestamps (starting at 00:00) become the chapters.
    - **Thumbnail**: upload \`main/thumbnail.png\` (1280×720 PNG).
-   - **Playlists**: ${yt.playlist ?? 'LLM System Design'}.
+   - **Playlists**: ${yt.playlist ?? series.name}.
    - **Audience**: "No, it's not made for kids".
    - **Attributes → AI use**: **Yes**. The narration is an AI-generated voice. YouTube's policy only requires
      disclosure for realistic depictions of real people or events, but it labels AI-generated non-music audio in the
@@ -508,7 +510,7 @@ ${allIds
 
 1. **Create → Upload videos** → select the MP4.
 2. **Title**: \`shorts/${id}/title.txt\`. **Description**: \`shorts/${id}/description.txt\`. **Audience**: not made for
-   kids. **Attributes → AI use**: Yes. **Playlists**: ${yt.playlist ?? 'LLM System Design'}.
+   kids. **Attributes → AI use**: Yes. **Playlists**: ${yt.playlist ?? series.name}.
 3. **Video elements → Add subtitles → Upload file → With timing** → \`shorts/${id}/captions.en.srt\`.
 4. Publish, then **Studio → Content → Shorts → ✏️ (Details) → Related video** → choose the main video → Save.`,
   )

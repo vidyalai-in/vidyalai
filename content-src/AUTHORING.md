@@ -1,17 +1,28 @@
-# Authoring guide: LLM System Design blog posts
+# Authoring guide: VidyalAI blog posts
 
-Every post on the VidyalAI site is a standalone engineering article built from one answer in the
+Every post belongs to one series (`src/data/series.mjs`):
+
+| Series | `series:` | File prefix | Parts | Template |
+|---|---|---|---|---|
+| LLM Fundamentals | `llm-fundamentals` | `f` | 10 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| LLM Inference & Optimization | `llm-inference` | `i` | 10 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| LLM System Design | `llm-system-design` (the default; existing posts omit it) | `q` | 25 | [Post structure](#post-structure) |
+
+LLM System Design posts are standalone engineering articles, each built from one answer in the
 "LLM System Design Answers" Google Docs. Repo Markdown is the source of truth: the website builds
-from it, and the Google Docs are later rewritten from it.
+from it, and the Google Docs are later rewritten from it. The Fundamentals and Inference series are
+written directly in the repo; they have no source doc.
+
+To add a series, add it to `src/data/series.mjs` (and, usually, a matching category below).
 
 ## Files
 
 | What | Where |
 |---|---|
 | Original doc snapshot (verbatim `read_file_content` output) | `content-src/original/qNN-qMM.md` |
-| Post | `src/content/blog/NN-<slug>.md` (NN = zero-padded question number, e.g. `01-rag-system-10m-documents.md`) |
+| Post | System Design: `src/content/blog/NN-<slug>.md` (NN = zero-padded question number, e.g. `01-rag-system-10m-documents.md`). Other series: `<prefix>NN-<slug>.md` (e.g. `f01-how-llms-work.md`) |
 | Review notes for one post | `content-src/reviews/qNN.md` |
-| Diagram source | `diagrams/qNN-<name>.mmd` (Mermaid) |
+| Diagram source | `diagrams/<prefix>NN-<name>.mmd` (Mermaid), e.g. `q01-rag-pipeline.mmd`, `i01-prefill-decode.mmd` |
 
 Posts are plain Markdown (`.md`), not MDX. No imports, no JSX, no raw HTML.
 
@@ -24,9 +35,10 @@ description: "One or two sentences (≤ 160 chars) that say what the reader will
 slug: "rag-system-10m-documents"        # kebab-case, ≤ 6 words, unique
 category: "retrieval-rag"               # one of the category slugs below
 tags: ["rag", "vector-search", "evals"] # 3-6 lowercase kebab-case tags; reuse the shared tag list when possible
-seriesOrder: 1                          # the question number, 1-25
+series: "llm-fundamentals"               # omit for LLM System Design posts
+seriesOrder: 1                          # part number within the series
 pubDate: 2026-10-16
-sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"  # Drive file ID of the original doc
+sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"  # System Design only: Drive file ID of the original doc
 ---
 ```
 
@@ -36,8 +48,10 @@ contents; nothing loads from YouTube until the reader presses play.
 
 Category slugs:
 
-| Slug | Name | Questions |
+| Slug | Name | Posts |
 |---|---|---|
+| `llm-fundamentals` | How LLMs Work | LLM Fundamentals series |
+| `inference-optimization` | Inference & Optimization | LLM Inference & Optimization series |
 | `retrieval-rag` | Retrieval & RAG | 1-5 |
 | `cost-latency-serving` | Cost, Latency & Serving | 6, 7, 8, 9, 21 |
 | `agents-tool-use` | Agents & Tool Use | 10, 11, 12, 13 |
@@ -53,6 +67,9 @@ Shared tags (prefer these; add a new one only when nothing fits): `rag`, `retrie
 `observability`, `deployment`, `architecture`.
 
 ## Post structure
+
+This section is for LLM System Design posts. The other series use the
+[explainer template](#explainer-template-fundamentals-and-inference).
 
 Use exactly these H2 headings, in this order. Omit a section only if the original truly has nothing
 for it (and say why in the review file). H3 headings are free-form inside sections. Do not add an
@@ -71,6 +88,51 @@ H1: the title comes from frontmatter.
 7. `## Thinking at scale`: from "What a principal would add" (or the equivalent inline remarks). Org,
    ownership, migration and long-term concerns. Omit if there is nothing.
 8. `## Further reading`: from "Sources". Bulleted `[Title (Authors, Year)](url): one-line why it matters`.
+
+## Explainer template (Fundamentals and Inference)
+
+Readers are curious people who want to understand LLMs properly, not only engineers building
+products. Every article will later become a YouTube video (see the `article-to-video` skill), so
+write it to be read and to be narrated.
+
+Use these H2 headings, in this order:
+
+1. `## TL;DR`: 3-5 plain sentences that state what the reader will understand by the end.
+2. `## Why it matters`: open with a question, a surprising number or a puzzle the article answers.
+   It becomes the video's cold open, so the first two sentences must hook.
+3. `## The intuition`: one everyday analogy, before any math. Say where the analogy breaks.
+4. Two to four descriptive H2s that explain how it works, step by step (e.g. `## Step 1: turning
+   text into tokens`). Each gets a worked example with real numbers: a small table, a short code
+   snippet, or a formula in code font explained in words right after it. At least one diagram.
+5. `## In the real world`: where this shows up in real models and systems, with their actual
+   numbers (model sizes, speeds, memory), each with a source.
+6. `## Common misconceptions`: bullets, each "**The belief.** What's actually true, and why."
+7. `## Key takeaways`: 4-6 bullets. They become the video's recap scene.
+8. `## What's next`: two or three sentences that tease the next part and link it once it exists.
+   It becomes the end-card teaser.
+9. `## Further reading`: as below. Primary sources first (papers, official docs), then the best
+   explainers (blog posts, talks, videos).
+
+Writing rules for these series, on top of the voice rules below:
+- Define every term at first use, in plain words, even ones that feel obvious (token, parameter,
+  GPU memory). Expand every acronym.
+- Numbers before symbols: work an example with small concrete numbers, then show the general
+  formula. Never leave an equation unexplained.
+- Short paragraphs (2-4 sentences). Vary the rhythm.
+- No system-design framing ("requirements to pin down", "tradeoffs table") unless it helps.
+- Link earlier parts and related System Design posts with `/blog/<slug>/` links.
+- Length: 2,000-3,500 words. A main video uses 1,300-1,700 narrated words, so the article can
+  carry more detail than the video.
+
+Video-readiness checklist (check before publishing):
+- A hook in the first two sentences of `## Why it matters`.
+- At least three striking numbers that would work as on-screen stat cards.
+- At least one diagram or table that can be shown full screen.
+- Three self-contained ideas that could each be a 30-50 second Short.
+- `## Key takeaways` and `## What's next` written as if spoken.
+
+When the article is done, run the `humanizer` skill on it in file mode (prose only: code,
+numbers, links and frontmatter stay as they are), then re-check every number against its source.
 
 ## Voice and tone
 

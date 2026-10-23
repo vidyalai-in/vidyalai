@@ -25,8 +25,11 @@ Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main 
 - Target 8-12 minutes. Narration runs at about 145 words/minute plus ~12% pauses, so budget
   **1,300-1,700 narrated words**. The RAG example is ~1,600 words → 11:02.
 - 6-10 chapters, each 30 s or longer (YouTube needs ≥ 3 chapters, first at 0:00, each ≥ 10 s).
-- Follow the article's arc: hook → the core idea → requirements → design (with diagrams and
-  numbers) → measurement → tradeoffs → common mistakes → recap → outro pointing to the article →
+- Follow the article's arc. System Design posts: hook → the core idea → requirements → design (with
+  diagrams and numbers) → measurement → tradeoffs → common mistakes → recap. Explainer posts
+  (Fundamentals, Inference): "Why it matters" → hook; "The intuition" → an analogy scene; the
+  how-it-works sections → the body; "Common misconceptions" → a myth-vs-fact scene; "Key takeaways"
+  → recap; "What's next" → the endcard teaser. Then an outro pointing to the article →
   `endcard` (for YouTube's end-screen elements: 20 s if the next video is already public, or a
   12 s `teaser` naming it if it isn't; see `references/script-format.md`).
 - Adapt, don't read: drop "Further reading" (it goes in the description), turn tables into
@@ -40,7 +43,8 @@ Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main 
 
 ## 3. Write `video/<slug>/script.yaml`
 
-Use `slug` = the article's slug. Fill `youtube:` (title ≤ 100 chars, 2 alternatives, summary
+Use `slug` = the article's slug. Match the article's series in the title suffix, summary and
+kickers (see "Series" in `references/script-format.md`). Fill `youtube:` (title ≤ 100 chars, 2 alternatives, summary
 paragraph, 10-15 tags, 3 hashtags, pinned comment with the article URL) and `thumbnail:` (3-5 word
 title with one **highlight**, a short badge). Then `main.scenes` and `shorts`.
 

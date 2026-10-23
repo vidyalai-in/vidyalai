@@ -22,6 +22,7 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { google } from 'googleapis';
 import YAML from 'yaml';
+import { getSeries } from '../../src/data/series.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const CONFIG_DIR = join(homedir(), '.config', 'vidyalai');
@@ -137,7 +138,13 @@ function loadKit(dir) {
   const endcard = existsSync(join(kitDir, 'main/endcard.txt'))
     ? read('main/endcard.txt')
     : readFileSync(join(kitDir, 'UPLOAD.md'), 'utf8').match(/from (\d+:\d\d:\d\d) in Studio/)?.[1];
-  return { slug, script, kitDir, entries, state, save, endcard, playlist: script.youtube?.playlist ?? 'LLM System Design' };
+  return { slug, script, kitDir, entries, state, save, endcard, playlist: script.youtube?.playlist ?? articleSeries(script).name };
+}
+
+/** The series of the article a video is made from (frontmatter `series`, default LLM System Design). */
+function articleSeries(script) {
+  const front = YAML.parse(readFileSync(join(ROOT, script.article), 'utf8').split(/^---$/m)[1]);
+  return getSeries(front.series);
 }
 
 // ---------- Resumable upload (resumes across runs via the saved session URI) ----------

@@ -52,7 +52,10 @@ may not pick up every default; if one is missing, set it by hand on each video.
 ### 3. Channel prerequisites
 
 - **Phone verification** at <https://www.youtube.com/verify>. Custom thumbnails need it.
-- The playlist **LLM System Design** must exist. The script looks it up by its exact title.
+- Each series needs its own playlist, named exactly like the series in `src/data/series.mjs`: **LLM System Design**,
+  **LLM Fundamentals**, **LLM Inference & Optimization**. Create it in Studio before the series' first upload; the
+  script looks it up by its exact title (or by `youtube.playlist` in `script.yaml`, if set). Then add its URL as
+  `playlist` in `src/data/series.mjs` so the series page and article videos link to it.
 
 ### 4. Sign in
 
