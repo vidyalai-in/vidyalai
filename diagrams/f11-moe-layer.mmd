@@ -1,0 +1,16 @@
+flowchart LR
+  X["Token vector<br/>from attention"] --> R["Router<br/>one score<br/>per expert"]
+  R --> TOP["Softmax,<br/>keep top 2,<br/>renormalize"]
+  subgraph ROUTED["8 routed experts"]
+    E4["Expert 4<br/>weight 0.60"]
+    E7["Expert 7<br/>weight 0.40"]
+    EO["Other 6 experts<br/>skipped"]
+  end
+  TOP --> E4
+  TOP --> E7
+  TOP -.->|"not chosen"| EO
+  X --> SH["Shared expert<br/>runs for<br/>every token"]
+  E4 --> SUM(("+"))
+  E7 --> SUM
+  SH --> SUM
+  SUM --> Y["Output, added to<br/>residual stream"]

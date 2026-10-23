@@ -267,7 +267,7 @@ Constrained decoding for structured output works like every filter above: set th
 
 ## What's next
 
-GPT-2 small, the model behind every number in this article, is a 2019 design. Part 10 puts its block next to the one inside a 2026 model and goes through what changed: RMSNorm instead of layer norm, SwiGLU in the MLP, rotary positions, and grouped-query and multi-head latent attention to shrink the KV cache.
+GPT-2 small, the model behind every number in this article, is a 2019 design. [Part 10](/blog/modern-llm-architecture/) puts its block next to the one inside a 2026 model and goes through what changed: RMSNorm instead of layer norm, SwiGLU in the MLP, rotary positions, and grouped-query and multi-head latent attention to shrink the KV cache.
 
 ## Further reading
 

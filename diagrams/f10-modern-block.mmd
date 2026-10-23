@@ -1,0 +1,15 @@
+flowchart LR
+  X["Residual<br/>stream in"] --> N1["RMSNorm"]
+  N1 --> ATT["GQA attention<br/>32 query heads<br/>8 KV heads<br/>RoPE on Q, K"]
+  ATT --> A1(("+"))
+  X -->|"skip path"| A1
+  A1 --> N2["RMSNorm"]
+  N2 --> G["Gate projection<br/>4,096 → 14,336"]
+  N2 --> U["Up projection<br/>4,096 → 14,336"]
+  G --> S["SiLU"]
+  S --> M(("×"))
+  U --> M
+  M --> D["Down projection<br/>14,336 → 4,096"]
+  D --> A2(("+"))
+  A1 -->|"skip path"| A2
+  A2 --> Y["Residual<br/>stream out"]
