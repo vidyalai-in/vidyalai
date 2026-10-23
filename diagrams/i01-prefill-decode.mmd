@@ -1,0 +1,12 @@
+flowchart LR
+  P["Prompt<br/>1,000 tokens"] --> PF
+  subgraph PREFILL["Prefill: once per request"]
+    PF["All prompt tokens<br/>in one parallel pass"] --> KV["KV cache written<br/>for every token"]
+  end
+  KV --> FT["First output token<br/>ends TTFT"]
+  subgraph DECODE["Decode: once per output token"]
+    RD["Read all weights<br/>+ KV cache"] --> NT["One new token"] --> AP["Append its K and V"]
+    AP -->|"until stop"| RD
+  end
+  FT --> RD
+  NT --> OUT["Streamed to the user<br/>one token per step"]
