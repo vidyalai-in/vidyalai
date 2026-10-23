@@ -1,0 +1,47 @@
+{
+  "videos": {
+    "main": {
+      "steps": {
+        "thumbnail": true,
+        "captions": true,
+        "playlist": true,
+        "comment": true
+      },
+      "id": "cWgwDQHYzTI",
+      "published": true
+    },
+    "short-reranker-ceiling": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "58hI-ht1kBY",
+      "published": true
+    },
+    "short-net-cost": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "rgMt3CQQ0Q0",
+      "published": true
+    },
+    "short-detectable-gain": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "KIo2Ob4WYpo",
+      "published": true
+    },
+    "short-ship-rule": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "fCWVpcr4k_o",
+      "published": true
+    }
+  },
+  "playlistId": "PLTy3a2upFmcM"
+}
