@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import profile from '../assets/brand/profile.png';
 import { CATEGORIES } from '../data/categories';
 import { CHANNEL, SERIES, seriesUrl } from '../data/series.mjs';
+import { numberWord } from '../lib/words';
 ---
 
 <Base title="About" description="VidyalAI publishes clear, sourced explainers on how large language models work, how they run fast, and how to build real systems with them.">
@@ -22,7 +23,7 @@ import { CHANNEL, SERIES, seriesUrl } from '../data/series.mjs';
         production. The goal is simple: explain how things really work, clearly enough to act on and with sources
         you can check.
       </p>
-      <p>The articles come in three series:</p>
+      <p>The articles come in {numberWord(SERIES.length).toLowerCase()} series:</p>
       <ul>
         {SERIES.map((s) => <li><a href={seriesUrl(s.slug)}>{s.name}</a>: {s.blurb}</li>)}
       </ul>

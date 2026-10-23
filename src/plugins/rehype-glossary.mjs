@@ -1,8 +1,10 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { GLOSSARY } from '../data/glossary.mjs';
 
-/** Skip text inside these: code, links, headings, diagrams and anything already marked. */
-const SKIP = new Set(['code', 'pre', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'figure', 'script', 'style', 'svg', 'button', 'kbd', 'sup']);
+/** Skip text inside these: code, links, headings, diagrams, math and anything already marked. */
+const SKIP = new Set(['code', 'pre', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'figure', 'script', 'style', 'svg', 'button', 'kbd', 'sup', 'math']);
+/** Diagrams and KaTeX output (`katex`, `katex-display`). */
+const skipClass = (node) => [].concat(node.properties?.className ?? []).some((c) => c === 'diagram' || String(c).startsWith('katex'));
 /** Sections whose text is mostly citations. */
 const SKIP_SECTIONS = new Set(['further reading']);
 
@@ -70,7 +72,7 @@ export function rehypeGlossary() {
       const out = [];
       for (const child of node.children) {
         if (child.type === 'element') {
-          if (!SKIP.has(child.tagName) && !child.properties?.className?.includes?.('diagram')) walk(child);
+          if (!SKIP.has(child.tagName) && !skipClass(child)) walk(child);
           out.push(child);
           continue;
         }

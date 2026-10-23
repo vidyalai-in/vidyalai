@@ -3,17 +3,19 @@ import Base from '../../layouts/Base.astro';
 import SeriesCard from '../../components/SeriesCard.astro';
 import { SERIES } from '../../data/series.mjs';
 import { getPosts } from '../../lib/posts';
+import { numberWord } from '../../lib/words';
 
 const posts = await getPosts();
 ---
 
-<Base title="Series" description="Three article series on large language models: how they work, how inference is made fast, and how to design production systems with them.">
+<Base title="Series" description={`${numberWord(SERIES.length)} article series on large language models: how they work, the math behind them, how inference is made fast, how they run on GPUs, and how to design production systems with them.`}>
   <div class="container">
     <header class="page-head">
       <p class="eyebrow">Series</p>
       <h1>Learn LLMs in order</h1>
       <p>
-        Start with the fundamentals, move on to how models are served fast, then design real systems with them. Each
+        Start with the fundamentals and the math behind them, move on to how models are served fast and how they run on
+        GPUs, then design real systems with them. Each
         series reads in order, and every article also stands on its own.
       </p>
     </header>

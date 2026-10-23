@@ -5,13 +5,15 @@ Every post belongs to one series (`src/data/series.mjs`):
 | Series | `series:` | File prefix | Parts | Template |
 |---|---|---|---|---|
 | LLM Fundamentals | `llm-fundamentals` | `f` | 16 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| The Math Behind LLMs | `llm-math` | `m` | 16 | [Explainer](#explainer-template-fundamentals-and-inference), plus [math notation](#math-notation-math-series) |
 | LLM Inference & Optimization | `llm-inference` | `i` | 14 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| LLMs on the GPU: Kernels and Hardware | `llm-gpu` | `g` | 15 | [Explainer](#explainer-template-fundamentals-and-inference), plus [GPU code and measurements](#gpu-code-and-measurements-gpu-series) |
 | LLM System Design | `llm-system-design` (the default; existing posts omit it) | `q` | 25 | [Post structure](#post-structure) |
 
 LLM System Design posts are standalone engineering articles, each built from one answer in the
 "LLM System Design Answers" Google Docs. Repo Markdown is the source of truth: the website builds
-from it, and the Google Docs are later rewritten from it. The Fundamentals and Inference series are
-written directly in the repo; they have no source doc.
+from it, and the Google Docs are later rewritten from it. The other four series are written directly
+in the repo; they have no source doc. Their outlines, slugs and scopes are in `content-src/SERIES-PLAN.md`.
 
 To add a series, add it to `src/data/series.mjs` (and, usually, a matching category below).
 
@@ -50,8 +52,8 @@ Category slugs:
 
 | Slug | Name | Posts |
 |---|---|---|
-| `llm-fundamentals` | How LLMs Work | LLM Fundamentals series |
-| `inference-optimization` | Inference & Optimization | LLM Inference & Optimization series |
+| `llm-fundamentals` | How LLMs Work | LLM Fundamentals and Math Behind LLMs series |
+| `inference-optimization` | Inference & Optimization | LLM Inference & Optimization and LLMs on the GPU series |
 | `retrieval-rag` | Retrieval & RAG | 1-5 |
 | `cost-latency-serving` | Cost, Latency & Serving | 6, 7, 8, 9, 21 |
 | `agents-tool-use` | Agents & Tool Use | 10, 11, 12, 13 |
@@ -133,6 +135,34 @@ Video-readiness checklist (check before publishing):
 
 When the article is done, run the `humanizer` skill on it in file mode (prose only: code,
 numbers, links and frontmatter stay as they are), then re-check every number against its source.
+
+### Math notation (Math series)
+
+The Math series assumes high-school algebra and functions, nothing more. Vectors, derivatives,
+probability and logarithms are built up from scratch. Formulas render with KaTeX at build time.
+
+- Inline math is `$$x^2$$` inside a sentence. Display math is `$$` on its own line, the formula, then
+  `$$` on its own line. Single dollar signs are plain text, so prices like "$2 to $10" are safe.
+  Never start a line with inline math: a line that begins with `$$` opens a display block.
+- Work a small numeric example first, then give the general formula, then say it in words right after.
+  Define every symbol at first use ("where $$d$$ is the number of numbers in each vector").
+- Keep display formulas short enough to read on a phone; split long derivations into steps, one
+  idea per line. Wide formulas scroll sideways rather than breaking the page.
+- Use code blocks (Python/NumPy) to check the math numerically where it helps.
+- Narration for video says formulas in words ("the softmax of x sub i").
+- Other series may use KaTeX sparingly; code-font formulas there are fine too.
+
+### GPU code and measurements (GPU series)
+
+- Code must run as shown: CUDA C++ (`nvcc`) or Triton/PyTorch. Keep listings short; link full files
+  if longer than about 40 lines.
+- Every measured number states its hardware and software: GPU (NVIDIA GeForce RTX 4060 Laptop GPU,
+  8 GB), driver, CUDA and PyTorch/Triton versions, and how it was timed (CUDA events or a profiler,
+  warm-up runs, median of N runs).
+- Compare against the theoretical limit (bandwidth or FLOPS from the spec, or measured with a copy
+  kernel), so a reader sees how close the kernel gets.
+- Data center features the laptop GPU lacks (TMA, wgmma, tcgen05, NVLink) come from official NVIDIA
+  docs, cited, and are labeled as not measured here.
 
 ## Voice and tone
 

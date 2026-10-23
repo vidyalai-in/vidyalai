@@ -18,6 +18,15 @@ export const SERIES = [
     filePrefix: 'f',
   },
   {
+    slug: 'llm-math',
+    name: 'The Math Behind LLMs',
+    short: 'Math',
+    blurb:
+      'The math inside a language model, built up from high-school algebra: vectors, probability, gradients, backpropagation, attention, RoPE and the equations behind training and alignment.',
+    total: 16,
+    filePrefix: 'm',
+  },
+  {
     slug: 'llm-inference',
     name: 'LLM Inference & Optimization',
     short: 'Inference',
@@ -25,6 +34,15 @@ export const SERIES = [
       'What happens when a model generates text, and the tricks that make it fast: KV caching, batching, PagedAttention, quantization, speculative decoding and more.',
     total: 14,
     filePrefix: 'i',
+  },
+  {
+    slug: 'llm-gpu',
+    name: 'LLMs on the GPU: Kernels and Hardware',
+    short: 'GPU',
+    blurb:
+      'How a GPU runs a language model, down to the kernels: CUDA, the memory hierarchy, tensor cores, Triton, attention and matmul kernels, and multi-GPU communication, measured on real hardware.',
+    total: 15,
+    filePrefix: 'g',
   },
   {
     slug: 'llm-system-design',

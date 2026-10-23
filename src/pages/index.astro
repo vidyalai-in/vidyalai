@@ -8,14 +8,14 @@ import Icon from '../components/Icon.astro';
 import banner from '../assets/brand/banner1.png';
 import bannerMobile from '../assets/brand/banner-mobile.png';
 import { CATEGORIES } from '../data/categories';
-import { SERIES } from '../data/series.mjs';
+import { SERIES, getSeries } from '../data/series.mjs';
 import { getPosts } from '../lib/posts';
+import { numberWord } from '../lib/words';
 
 const posts = await getPosts();
 // The first part of each series.
-const featuredSlugs = ['how-llms-work', 'how-llm-inference-works', 'rag-system-10m-documents'];
+const featuredSlugs = ['how-llms-work', 'math-for-llms', 'how-llm-inference-works', 'gpu-from-python-to-silicon', 'rag-system-10m-documents'];
 const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
-const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
 const counts = Object.fromEntries(CATEGORIES.map((c) => [c.slug, posts.filter((p) => p.data.category === c.slug).length]));
 
 // Art direction: wide banner from 768px, a centred crop (logo, tagline, icons) on phones.
@@ -45,11 +45,11 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
       </picture>
 
       <div class="hero-copy">
-        <p class="eyebrow">New: {SERIES[0].name} and {SERIES[1].name}</p>
+        <p class="eyebrow">New: {getSeries('llm-math').name} and {getSeries('llm-gpu').name}</p>
         <h1>Understand LLMs, from attention to production</h1>
         <p class="hero-lede">
-          {posts.length} in-depth articles in {numberWords[SERIES.length].toLowerCase()} series: how large language models work, how
-          they generate text fast, and how to build systems that hold up in production. Each one explains the idea, works
+          {posts.length} in-depth articles in {numberWord(SERIES.length).toLowerCase()} series: how large language models work and the math
+          behind them, how they generate text fast and run on GPUs, and how to build systems that hold up in production. Each one explains the idea, works
           through the numbers, and links the sources to check.
         </p>
         <div class="hero-ctas">
@@ -65,7 +65,7 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
   <section class="container section" aria-labelledby="series-heading">
     <div class="section-head">
       <div>
-        <h2 id="series-heading">{numberWords[SERIES.length]} series</h2>
+        <h2 id="series-heading">{numberWord(SERIES.length)} series</h2>
         <p>Each reads in order, from the first part to the last. Every article also stands on its own.</p>
       </div>
       <a href="/series/">All series <Icon name="arrowRight" size={16} /></a>
@@ -92,7 +92,7 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
     <div class="section-head">
       <div>
         <h2 id="topics-heading">Explore by topic</h2>
-        <p>{numberWords[CATEGORIES.length]} areas, from what happens inside a model to what it takes to run one for real traffic.</p>
+        <p>{numberWord(CATEGORIES.length)} areas, from what happens inside a model to what it takes to run one for real traffic.</p>
       </div>
     </div>
     <ul class="card-grid">

@@ -38,10 +38,13 @@ const series = seriesOf(post);
 const inCategory = all.filter((p) => p.data.category === post.data.category);
 const related = relatedPosts(post, all);
 const minutes = remarkPluginFrontmatter.minutesRead as number;
+// KaTeX's stylesheet only on posts with $$...$$ math.
+const hasMath = post.body?.includes('$$') ?? false;
 const hasToc = headings.some((h) => h.depth === 2);
 ---
 
 <Base title={post.data.title} description={post.data.description} type="article" publishedTime={post.data.pubDate}>
+  {hasMath && <link slot="head" rel="stylesheet" href="/katex/katex.min.css" />}
   <div class="container post-shell">
     <aside class="post-left" aria-label={`More in ${category.name}`} data-pagefind-ignore>
       <p class="side-title">In {category.name}</p>

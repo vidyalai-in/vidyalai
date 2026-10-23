@@ -1,4 +1,4 @@
-# Series plan: LLM Fundamentals and LLM Inference & Optimization
+# Series plan: the explainer series
 
 The agreed outline for the two explainer series. Each part follows the explainer template in
 `AUTHORING.md`. File names: `src/content/blog/f<NN>-<slug>.md` and `i<NN>-<slug>.md`. Slugs below
@@ -45,3 +45,54 @@ LoRA, routing, semantic caching) are linked, not re-explained.
 | 12 | Disaggregated serving and llm-d | `disaggregated-serving-llm-d` | Splitting prefill and decode; KV transfer; llm-d architecture, inference scheduler, autoscaling | Published |
 | 13 | Running LLMs on your own machine | `local-llm-inference` | llama.cpp, GGUF, Ollama, Apple silicon unified memory, sizing what fits, quantization in practice | Published |
 | 14 | Case study: DeepSeek's inference stack and DeepInfer | `deepseek-inference-deepinfer` | V3/R1 serving overview, MLA, MoE EP with DeepEP and EPLB, FlashMLA, DeepGEMM, MTP, DeepInfer | Published |
+
+## The Math Behind LLMs (16 parts)
+
+Assumes high-school algebra; builds up vectors, derivatives, probability and logs from scratch. Each
+part derives what the "Builds on" parts explain in words (f = Fundamentals, i = Inference) and links
+them instead of repeating them. Files: `src/content/blog/m<NN>-<slug>.md`. Formulas use KaTeX (see
+AUTHORING.md, "Math notation").
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | The math you need for LLMs, and the shapes inside one | `math-for-llms` | Roadmap of the series; scalars, vectors, matrices, tensors; the shape of every tensor in one forward pass of a real model; matrix multiply as many dot products; reading einsum notation | f01, f06 |  |
+| 2 | Vectors and dot products | `vectors-dot-products` | Length, angle, cosine, projection; the dot product as "how much one vector points along another"; high-dimensional geometry (random vectors are nearly perpendicular); embedding arithmetic | f04, f16 |  |
+| 3 | Matrices as transformations | `matrices-linear-maps` | Matrix × vector as a linear map; composition; rank; why a stack of linear layers collapses into one; nonlinearity; batching as matmul; counting FLOPs of a matmul (2mnk) | f03, f06 |  |
+| 4 | Probability and the chain rule of language | `probability-language-models` | Distributions; conditional probability; p(text) = a product of next-token probabilities; logs and log-probabilities; sampling; temperature, top-k and top-p as operations on the distribution | f01, f09 |  |
+| 5 | Softmax and log-sum-exp | `softmax-math` | Deriving softmax; invariance to shifts; overflow and the max trick; log-softmax; temperature limits; softmax as the smooth version of argmax; online softmax (the core of FlashAttention) | f04, i07 |  |
+| 6 | Entropy, cross-entropy and perplexity | `cross-entropy-perplexity` | Surprise, entropy, cross-entropy as the training loss, nats vs bits, perplexity, bits per byte, KL divergence, the link between language modeling and compression | f03, f12 |  |
+| 7 | Derivatives, gradients and the chain rule | `derivatives-gradients` | Slope; partial derivatives; the gradient as the direction of steepest climb; the chain rule; Jacobians in plain terms; numerical vs analytic derivatives | f03 |  |
+| 8 | Backpropagation by hand | `backpropagation-math` | Computational graphs; reverse-mode autodiff; deriving the backward pass of matmul, ReLU and GELU, softmax + cross-entropy (p − y); why backward costs about 2× forward; activation memory; checking gradients numerically; a tiny autograd in Python | f03, f12 |  |
+| 9 | Optimizers: from gradient descent to AdamW | `optimizers-adam` | SGD, mini-batch noise, momentum, RMSProp, Adam's bias correction, AdamW's decoupled weight decay, warm-up and cosine schedules, gradient clipping math, newer optimizers (e.g. Muon, if verifiable) | f03, f12 |  |
+| 10 | Keeping signals stable: initialization, normalization and residuals | `initialization-normalization` | Variance through layers; Xavier and He initialization; vanishing and exploding gradients; LayerNorm vs RMSNorm math; why residual connections keep gradients flowing; pre-norm vs post-norm; μP in brief | f06, f10 |  |
+| 11 | The math of attention | `attention-math` | Scaled dot-product attention derived; the variance argument for √d; the causal mask as −∞; the softmax Jacobian; O(n²d) cost; multi-head attention as low-rank pieces; GQA and MLA as factorizations | f05, f06, i02 |  |
+| 12 | Rotations, complex numbers and RoPE | `rope-math` | 2D rotation matrices; complex numbers as rotations; deriving RoPE's relative-position property; frequency bases; context-extension math (position interpolation, NTK, YaRN); ALiBi | f07, i11 |  |
+| 13 | Low rank and the SVD | `low-rank-svd` | Rank, SVD and truncated SVD; Eckart-Young; why LoRA's update is low rank; low-rank structure in MLA and in weight compression; worked SVD of a real weight matrix | f10, i02 |  |
+| 14 | Floating point and quantization math | `floating-point-math` | Sign, exponent and mantissa; FP32, BF16, FP16, FP8 and FP4 ranges and precision; rounding error and accumulation; mixed precision and loss scaling; quantization scales and zero points; group size vs error; the error statistics behind GPTQ/AWQ in brief | i03, i08 |  |
+| 15 | Counting: parameters, FLOPs, memory and scaling laws | `counting-flops-scaling-laws` | Exact parameter counts per layer; deriving 6ND; KV cache formula; arithmetic intensity; power laws and log-log fits; deriving the compute-optimal N and D (Chinchilla) | f12, i01 |  |
+| 16 | The math of alignment: policy gradients, PPO, DPO and GRPO | `alignment-math` | Expected reward; the REINFORCE gradient; baselines and advantages; PPO's clipped objective; Bradley-Terry; the KL-regularized optimum; deriving DPO from it; GRPO's group baseline; the speculative-decoding correctness proof as a bonus example of rejection sampling. Closes the series. | f13, f14, i09 |  |
+
+## LLMs on the GPU: Kernels and Hardware (15 parts)
+
+One level below Inference Parts 3 (GPUs) and 7 (FlashAttention): real CUDA C++ and Triton code, timed
+on an NVIDIA GeForce RTX 4060 Laptop GPU (8 GB). Data center features (TMA, wgmma, tcgen05, NVLink)
+come from NVIDIA's docs. Files: `src/content/blog/g<NN>-<slug>.md`. Only one GPU-measuring article is
+written at a time.
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | From torch.matmul to silicon | `gpu-from-python-to-silicon` | What happens when PyTorch runs a layer: the dispatcher, kernel launch, CUDA streams and asynchronous execution, launch overhead; roadmap of the series; a first measured trace of one decode step | i03, i07 |  |
+| 2 | The CUDA programming model | `cuda-programming-model` | Threads, warps, blocks, grids; SIMT and warp divergence; SMs and occupancy; writing, compiling and timing a first kernel (vector add) and seeing it hit the bandwidth limit | i03 |  |
+| 3 | The memory hierarchy | `gpu-memory-hierarchy` | Registers, shared memory, L1, L2, DRAM; coalesced vs strided access measured; shared-memory bank conflicts; a copy-kernel bandwidth test vs the spec; caches and access patterns | i03 |  |
+| 4 | Profiling and the roofline | `gpu-profiling-roofline` | Nsight Systems and Nsight Compute; the PyTorch profiler; achieved bandwidth and FLOPs; plotting our kernels on the 4060's roofline; finding the bottleneck | i01, i03 |  |
+| 5 | Writing a fast matmul, step by step | `cuda-matmul-optimization` | Naive → coalesced → shared-memory tiling → register blocking → vectorized loads, measured in GFLOPS at each step vs cuBLAS | m03 |  |
+| 6 | Tensor cores | `tensor-cores` | What an MMA instruction does; WMMA/mma.sync; data layouts and swizzling; FP16, BF16 and FP8 on Ada; Hopper wgmma and TMA and Blackwell tcgen05 from docs; CUTLASS and CuTe in brief; measured tensor-core vs CUDA-core matmul | i03, g05 |  |
+| 7 | Triton: GPU kernels in Python | `triton-kernels` | Block-level programming; vector add, fused softmax and matmul in Triton; autotuning; how it compiles (to PTX); measured against PyTorch | g05 |  |
+| 8 | Reductions and normalization kernels | `gpu-reductions` | Parallel reduction trees; warp shuffles; block-level reductions; softmax, RMSNorm and LayerNorm kernels; numerical stability on the GPU | m05, m10 |  |
+| 9 | Kernel fusion, torch.compile and CUDA graphs | `kernel-fusion-cuda-graphs` | Why elementwise ops are memory-bound; fusing SwiGLU, residual add and norm; torch.compile and TorchInductor's generated Triton; CUDA graphs removing launch overhead, measured in decode | i07 |  |
+| 10 | Writing an attention kernel | `attention-kernel` | FlashAttention-style tiling with online softmax in Triton; measured vs naive and vs PyTorch SDPA; decode attention, split-KV (Flash-Decoding) and paged-KV indexing | i05, i07, m11 |  |
+| 11 | Low-precision kernels | `low-precision-kernels` | Dequantize-in-kernel INT4/INT8 weight-only GEMM (e.g. Marlin, llama.cpp kernels); FP8 scaling factors; microscaling (MX/NVFP4) formats; when quantization actually speeds things up, measured | i08, m14 |  |
+| 12 | Mixture-of-experts kernels | `moe-kernels` | Token routing and permutation; grouped GEMM; fused MoE kernels (vLLM, DeepGEMM); load imbalance on the GPU | f11, i10 |  |
+| 13 | Many GPUs: NVLink, NCCL and collectives | `nccl-collectives` | Ring and tree all-reduce algorithms and their cost model; all-to-all; NVLink/NVSwitch vs PCIe vs InfiniBand; overlapping communication with compute; NVSHMEM in brief | i10, i12 |  |
+| 14 | Beyond NVIDIA: AMD, Apple, TPUs and other accelerators | `ai-accelerators` | AMD ROCm/HIP and MI-series; Apple Metal and MLX; Google TPU systolic arrays and XLA; AWS Trainium; Groq, Cerebras and others; how the same ideas map onto each | i03, i13 |  |
+| 15 | One token, kernel by kernel | `token-kernel-trace` | A full Nsight trace of Llama-class decode on the 4060: every kernel, its time, and its place on the roofline, tying the series together. Closes the series. | all |  |
