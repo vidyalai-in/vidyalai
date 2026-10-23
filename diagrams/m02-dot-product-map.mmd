@@ -1,0 +1,10 @@
+flowchart TD
+  P["Pythagoras:<br/>length of a vector"] --> L["Law of cosines"]
+  D["Dot product:<br/>multiply, then add"] --> K["a · b =<br/>length(a) × length(b) × cos θ"]
+  L --> K
+  K --> C["Cosine similarity:<br/>divide out both lengths"]
+  K --> J["Projection:<br/>shadow of a on b"]
+  C --> R["Retrieval and analogies:<br/>nearest by cosine"]
+  C --> H["Random vectors in d dims:<br/>cos ≈ 0 ± 1/√d"]
+  J --> F["Reading a direction:<br/>logits, probes, offsets"]
+  H --> S["Room for many<br/>nearly perpendicular directions"]

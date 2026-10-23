@@ -99,7 +99,7 @@ $$
 \mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{d} a_i \, b_i
 $$
 
-The big $$\sum$$ (the Greek capital sigma) means "add up". The little $$i = 1$$ below it and $$d$$ above it say: let $$i$$ run from 1 to $$d$$, compute $$a_i b_i$$ for each, and add the results. [Fundamentals Part 4](/blog/embeddings-and-logits/) shows that the result measures how much two vectors point the same way; Part 2 of this series shows why.
+The big $$\sum$$ (the Greek capital sigma) means "add up". The little $$i = 1$$ below it and $$d$$ above it say: let $$i$$ run from 1 to $$d$$, compute $$a_i b_i$$ for each, and add the results. [Fundamentals Part 4](/blog/embeddings-and-logits/) shows that the result measures how much two vectors point the same way; [Part 2](/blog/vectors-dot-products/) of this series shows why.
 
 ### Matrix multiplication, by hand
 
@@ -162,7 +162,7 @@ FLOPs = 2 × 1 × 4,096 × 4,096           =      33,554,432
 FLOPs = 2 × 8,000 × 4,096 × 4,096       = 268,435,456,000
 ```
 
-Notice what changed: only $$m$$, the number of rows. Stacking 8,000 tokens into one matrix doesn't change the weights at all; it reuses them 8,000 times. That's why GPUs like big batches, a point the real-world section comes back to. Part 3 of this series looks at matrix multiplication from the other side, as a transformation of space.
+Notice what changed: only $$m$$, the number of rows. Stacking 8,000 tokens into one matrix doesn't change the weights at all; it reuses them 8,000 times. That's why GPUs like big batches, a point the real-world section comes back to. [Part 3](/blog/matrices-linear-maps/) of this series looks at matrix multiplication from the other side, as a transformation of space.
 
 ## Step 3: the shapes inside one forward pass of Llama 3.1 8B
 
@@ -339,7 +339,7 @@ Each part works a small example first, then the general formula, then checks it 
 
 - **"You need advanced math to understand LLMs."** The forward pass is multiplication and addition, plus a few exponentials and square roots. Training adds derivatives, which Part 7 builds from the slope of a line. Research papers use heavier notation, but following how a model works takes high-school algebra and the four toolkits in this series.
 - **"Tensors are something exotic."** In machine learning, a tensor is a block of numbers with a shape: a list is a 1-axis tensor and a grid is a 2-axis one. `torch.Tensor` and a NumPy array are both just numbers plus a shape.
-- **"A model does something other than multiply and add."** More than 99.9% of Llama 3.1 8B's arithmetic is matrix multiplication. The rest (softmax, SiLU, RMSNorm) is a tiny share of the work, but it matters a lot: without those curved functions, a stack of matrix multiplies collapses into one matrix multiply, as Part 3 shows.
+- **"A model does something other than multiply and add."** More than 99.9% of Llama 3.1 8B's arithmetic is matrix multiplication. The rest (softmax, SiLU, RMSNorm) is a tiny share of the work, but it matters a lot: without those curved functions, a stack of matrix multiplies collapses into one matrix multiply, as [Part 3](/blog/matrices-linear-maps/) shows.
 - **"A forward pass always costs 2 FLOPs per parameter."** That holds for short contexts. The embedding lookup is free, and attention adds work that grows with context: at 128,000 tokens, attention makes up 82% of Llama 3.1 8B's per-token arithmetic.
 
 ## Key takeaways
@@ -352,7 +352,7 @@ Each part works a small example first, then the general formula, then checks it 
 
 ## What's next
 
-Everything in this article came down to dot products, so Part 2 takes a closer look at them. It shows what a vector's length and the angle between two vectors mean, why the dot product measures how much one vector points along another, and why two random vectors in 4,096 dimensions are almost always nearly perpendicular, which isn't true in the two or three dimensions you can draw.
+Everything in this article came down to dot products, so [Part 2](/blog/vectors-dot-products/) takes a closer look at them. It shows what a vector's length and the angle between two vectors mean, why the dot product measures how much one vector points along another, and why two random vectors in 4,096 dimensions are almost always nearly perpendicular, which isn't true in the two or three dimensions you can draw.
 
 ## Further reading
 

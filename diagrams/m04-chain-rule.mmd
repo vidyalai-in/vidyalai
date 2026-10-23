@@ -1,0 +1,7 @@
+flowchart TD
+  A["Start token<br/>(blank page)"] -->|"p(The) = 0.0063"| B["The"]
+  B -->|"p(cat given The) = 0.00031"| C["The cat"]
+  C -->|"p(sat given The cat) = 0.055"| D["The cat sat"]
+  D -->|"4 more steps"| E["The cat sat<br/>on the mat."]
+  E --> F["Sum of 7<br/>log-probabilities<br/>= -18.40"]
+  F --> G["p(sentence)<br/>= e^(-18.40)<br/>about 1 in 98 million"]

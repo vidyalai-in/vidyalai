@@ -1,0 +1,15 @@
+flowchart TD
+  subgraph LIN["Two linear layers, no bend"]
+    direction LR
+    X1["x: 768 numbers"] --> U1["W1: up to 3,072"] --> D1["W2: down to 768"] --> Y1["y"]
+  end
+  subgraph ONE["Folded: one matrix"]
+    direction LR
+    X2["x: 768 numbers"] --> W["W = W2 W1<br/>768 × 768"] --> Y2["y"]
+  end
+  subgraph BEND["With a bend between: no fold exists"]
+    direction LR
+    X3["x: 768 numbers"] --> U3["W1: up to 3,072"] --> R["ReLU or GELU"] --> D3["W2: down to 768"] --> Y3["y"]
+  end
+  LIN -- "same outputs, 8× fewer weights" --> ONE
+  ONE ~~~ BEND
