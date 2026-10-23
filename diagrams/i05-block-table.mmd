@@ -1,0 +1,30 @@
+flowchart TD
+  subgraph LB["Request B: logical blocks"]
+    B0["block 0<br/>tokens 1-16"]
+    B1["block 1<br/>tokens 17-20"]
+  end
+  subgraph LA["Request A: logical blocks"]
+    A1["block 1<br/>tokens 17-32"]
+    A2["block 2<br/>tokens 33-40"]
+    A0["block 0<br/>tokens 1-16"]
+  end
+  TA["A's block table<br/>0→7, 1→1, 2→3"]
+  TB["B's block table<br/>0→5, 1→2"]
+  subgraph GPU["GPU memory"]
+    P1["block 1"]
+    P2["block 2"]
+    P3["block 3"]
+    P5["block 5"]
+    P7["block 7"]
+    P4["block 4<br/>(free)"]
+  end
+  A0 --> TA
+  A1 --> TA
+  A2 --> TA
+  B0 --> TB
+  B1 --> TB
+  TA --> P7
+  TA --> P1
+  TA --> P3
+  TB --> P5
+  TB --> P2

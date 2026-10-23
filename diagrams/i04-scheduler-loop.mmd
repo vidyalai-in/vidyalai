@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant Q as Waiting queue
+  participant S as Scheduler
+  participant G as GPU
+  participant U as Users
+  loop Every step
+    Note over S: 1. One decode token per running request
+    Q->>S: 2. Admit requests while KV memory is free
+    Note over S: 3. Fill leftover token budget with prompt chunks
+    S->>G: 4. One forward pass on the mixed batch
+    G->>U: 5. Stream each request's new token
+    Note over S,G: 6. Evict finished requests and free their KV
+  end

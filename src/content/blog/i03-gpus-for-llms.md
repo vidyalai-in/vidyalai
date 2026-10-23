@@ -225,7 +225,7 @@ Batching alone makes each token 20 times cheaper on the same GPU and model. The 
 
 ## What's next
 
-Batching keeps a GPU busy because the hardware has math to spare and bandwidth to protect. Requests, though, don't arrive in neat batches. They start and finish at different times, and their prompts range from ten tokens to a hundred thousand. Part 4 covers continuous batching and chunked prefill, the scheduling tricks that keep a GPU full while keeping every user's stream smooth.
+Batching keeps a GPU busy because the hardware has math to spare and bandwidth to protect. Requests, though, don't arrive in neat batches. They start and finish at different times, and their prompts range from ten tokens to a hundred thousand. [Part 4](/blog/continuous-batching/) covers continuous batching and chunked prefill, the scheduling tricks that keep a GPU full while keeping every user's stream smooth.
 
 ## Further reading
 
