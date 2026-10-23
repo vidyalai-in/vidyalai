@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph VIS["Image path"]
+    IMG["Image"] --> PATCH["Cut into<br/>14 × 14-pixel<br/>patches"]
+    PATCH --> ENC["Vision encoder<br/>(ViT)"]
+    ENC --> PROJ["Merge 2 × 2,<br/>MLP projector"]
+  end
+  subgraph AUD["Audio path"]
+    WAV["Audio"] --> MEL["Log-Mel<br/>spectrogram"]
+    MEL --> AENC["Audio encoder<br/>(Whisper-style)"]
+  end
+  subgraph TXT["Text path"]
+    TEXT["Prompt text"] --> TOK["Tokenizer and<br/>embedding table"]
+  end
+  PROJ --> SEQ["One sequence of vectors:<br/>text, image, audio, text"]
+  AENC --> SEQ
+  TOK --> SEQ
+  SEQ --> LLM["Decoder-only LLM"]
+  LLM --> OUT["Next text token"]

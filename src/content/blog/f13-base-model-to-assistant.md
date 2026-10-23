@@ -249,7 +249,7 @@ Most product teams don't run RLHF themselves. They prompt a model that already w
 
 ## What's next
 
-Tülu 3's last stage pointed somewhere new: reward answers that can be checked, like a math result or passing code, instead of answers people prefer. Part 14 follows that thread into reasoning models. It covers how OpenAI's o1 and DeepSeek-R1 learned to think for thousands of tokens before answering, what GRPO changes about PPO, and why spending more compute at answer time can beat training a bigger model.
+Tülu 3's last stage pointed somewhere new: reward answers that can be checked, like a math result or passing code, instead of answers people prefer. [Part 14](/blog/reasoning-models/) follows that thread into reasoning models. It covers how OpenAI's o1 and DeepSeek-R1 learned to think for thousands of tokens before answering, what GRPO changes about PPO, and why spending more compute at answer time can beat training a bigger model.
 
 ## Further reading
 

@@ -1,0 +1,12 @@
+flowchart LR
+  X["Residual stream<br/>activation x<br/>(e.g. 4,096<br/>numbers)"] --> ENC["Encoder<br/>linear + ReLU"]
+  subgraph FEAT["Feature activations f (e.g. 1 million)"]
+    ON["A few active<br/>e.g. Golden Gate<br/>Bridge 2.0,<br/>fog 0.5"]
+    OFF["All the rest<br/>exactly 0"]
+  end
+  ENC --> ON
+  ENC -.-> OFF
+  ON --> DEC["Decoder<br/>linear"]
+  DEC --> XH["Reconstruction x̂<br/>(same 4,096<br/>numbers)"]
+  XH --> LOSS["Loss = ‖x − x̂‖²<br/>+ λ × sum of f"]
+  ON -.->|"sparsity penalty"| LOSS

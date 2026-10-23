@@ -1,0 +1,8 @@
+flowchart LR
+  Q["Prompt with a<br/>checkable answer"] --> P["Policy samples<br/>a group of<br/>8 answers"]
+  P --> C["Checker scores<br/>each answer<br/>1 or 0"]
+  C --> A["Advantage =<br/>(reward − mean)<br/>÷ std"]
+  A --> U["Update policy:<br/>push up winners,<br/>push down losers"]
+  R["Frozen<br/>reference model"] --> K["KL penalty<br/>limits drift"]
+  K --> U
+  U -->|"next batch"| P
