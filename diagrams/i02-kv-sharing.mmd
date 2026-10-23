@@ -1,0 +1,13 @@
+flowchart TD
+  subgraph MLA["Latent (MLA)"]
+    Q4["32 query heads"] -->|"all rebuild K and V<br/>from one latent"| C4["latent (512)<br/>+ RoPE key (64)<br/>= 576 numbers"]
+  end
+  subgraph MQA["Multi-query (MQA)"]
+    Q3["32 query heads"] -->|"all 32 share<br/>one pair"| C3["1 K and V pair<br/>= 256 numbers"]
+  end
+  subgraph GQA["Grouped-query (GQA)"]
+    Q2["32 query heads"] -->|"groups of 4<br/>share a pair"| C2["8 K and V pairs<br/>= 2,048 numbers"]
+  end
+  subgraph MHA["Multi-head (MHA)"]
+    Q1["32 query heads"] -->|"each head has<br/>its own pair"| C1["32 K and V pairs<br/>= 8,192 numbers"]
+  end

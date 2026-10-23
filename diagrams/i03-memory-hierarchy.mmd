@@ -1,0 +1,9 @@
+flowchart TD
+  subgraph CHIP["On the chip: SRAM, fast and small"]
+    REG["Registers<br/>256 KB per SM"] --- SMEM["Shared memory/L1<br/>256 KB per SM"]
+    SMEM --- L2["L2 cache<br/>50 MB, shared by all SMs"]
+  end
+  L2 ---|"3.35 TB/s"| HBM["HBM3 memory<br/>80 GB, beside the chip"]
+  HBM ---|"NVLink<br/>450 GB/s each way"| GPU["Other GPUs<br/>in the server"]
+  HBM ---|"PCIe Gen5<br/>64 GB/s each way"| CPU["CPU and its memory"]
+  HBM ---|"Network<br/>50 GB/s each way"| NET["Other servers"]

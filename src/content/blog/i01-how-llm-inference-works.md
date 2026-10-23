@@ -218,7 +218,7 @@ The [H200](https://www.nvidia.com/en-us/data-center/h200/) keeps the H100's comp
 
 ## What's next
 
-The KV cache makes generation fast, then fills the GPU's memory. Part 2 opens it up: what exactly gets stored, how grouped-query attention and DeepSeek's multi-head latent attention shrink it, and why a single long-context user can cost as much memory as the model itself.
+The KV cache makes generation fast, then fills the GPU's memory. [Part 2](/blog/kv-cache/) opens it up: what exactly gets stored, how grouped-query attention and DeepSeek's multi-head latent attention shrink it, and why a single long-context user can cost as much memory as the model itself.
 
 ## Further reading
 
