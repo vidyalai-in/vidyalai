@@ -1,6 +1,6 @@
 ---
 name: article-to-video
-description: Turn a VidyalAI article (src/content/blog/*.md) into a narrated YouTube video (landscape, ~8-12 min), several vertical Shorts (under 60 s), and a ready-to-paste upload kit (title, description with chapters and sources, tags, captions, thumbnail, checklist). Use when asked to make a video, YouTube video, Short, reel or "video version" of an article on this site.
+description: Turn a VidyalAI article (src/content/blog/*.md) into a narrated YouTube video (landscape, ~8-12 min), 3 vertical Shorts (under 60 s), and a ready-to-paste upload kit (title, description with chapters and sources, tags, captions, thumbnail, checklist). Use when asked to make a video, YouTube video, Short, reel or "video version" of an article on this site.
 ---
 
 # Article to video
@@ -9,7 +9,7 @@ Everything runs locally: Kokoro (open-weight TTS) for the voice, the `video/tool
 for visuals (screenshotted by headless Chromium), and ffmpeg for encoding. You write one file,
 `video/<slug>/script.yaml`; the build does the rest.
 
-Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main video + 4 Shorts).
+Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main video + 4 Shorts; new videos get 3).
 
 ## 1. Read before writing
 
@@ -32,10 +32,10 @@ Worked example to copy from: `video/rag-system-10m-documents/script.yaml` (main 
 - Adapt, don't read: drop "Further reading" (it goes in the description), turn tables into
   `compare`/`budget`/`stats` scenes, and cut detail the visuals already carry.
 
-**Shorts** (portrait 1080×1920, 3-4 per article):
+**Shorts** (portrait 1080×1920, 3 per article):
 - Each one stands alone, opens with a hook in the first sentence, and makes **one** point.
 - 80-120 narrated words → 30-50 s. Hard limit: under 60 s (the build warns).
-- Good sources: a striking number (sizing math), a counter-intuitive rule, a common bug, a
+- Pick the three strongest of these sources: a striking number (sizing math), a counter-intuitive rule, a common bug, a
   latency or cost budget. End with an `outro` scene pointing to vidyal.ai.
 
 ## 3. Write `video/<slug>/script.yaml`

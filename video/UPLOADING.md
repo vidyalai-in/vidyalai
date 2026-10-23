@@ -147,7 +147,7 @@ Lookups (`playlists.list`, `videos.list` in `status` and `publish`) cost 1 unit 
 
 | Upload pattern | Units | Per day |
 |---|---|---|
-| One release (1 main video and 4 Shorts) | about 2,600 | **3 releases** (15 videos, about 7,800 units) |
+| One release (1 main video and 3 Shorts) | about 2,100 | **4 releases** (16 videos, about 8,400 units) |
 | Shorts only | about 500 each | about **19 Shorts** |
 | Main videos only | about 600 each | about **16 main videos** |
 
