@@ -1,0 +1,12 @@
+flowchart LR
+  L["Logits<br/>one score<br/>per token"] --> P["Penalties<br/>for tokens<br/>already used"]
+  P --> G["Greedy<br/>take the<br/>top token"]
+  P --> T["Temperature<br/>divide logits<br/>by T"]
+  subgraph CUT["Cut the tail"]
+    K["Top-k<br/>keep the<br/>k best"] --> TP["Top-p<br/>keep the top<br/>p of mass"] --> M["Min-p<br/>drop tokens far<br/>below the leader"]
+  end
+  T --> K
+  M --> S["Softmax<br/>over the<br/>survivors"]
+  S --> D["Random draw<br/>from a seeded<br/>generator"]
+  G --> N["Next token"]
+  D --> N

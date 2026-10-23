@@ -262,7 +262,7 @@ The [DeepSeek-V3 report](https://arxiv.org/abs/2412.19437) applies RoPE only to 
 
 ## What's next
 
-You've now seen every piece of the Transformer: tokens, embeddings, attention, the block and position. Part 8 goes back to where it started, with a guided reading of "Attention Is All You Need": the original encoder-decoder design, the cross-attention that connects its two halves, how the authors trained it, and which of their choices survived into today's models.
+You've now seen every piece of the Transformer: tokens, embeddings, attention, the block and position. [Part 8](/blog/attention-is-all-you-need/) goes back to where it started, with a guided reading of "Attention Is All You Need": the original encoder-decoder design, the cross-attention that connects its two halves, how the authors trained it, and which of their choices survived into today's models.
 
 ## Further reading
 

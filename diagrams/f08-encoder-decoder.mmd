@@ -1,0 +1,14 @@
+flowchart LR
+  subgraph ENC["Encoder side: attention and FFN repeat 6 times"]
+    direction TB
+    SRC["German tokens<br/>+ positions"] --> ESA["Self-attention<br/>(sees whole source)"]
+    ESA --> EFF["Feed-forward"]
+  end
+  subgraph DEC["Decoder side: three sub-layers repeat 6 times"]
+    direction TB
+    TGT["English so far,<br/>shifted right,<br/>+ positions"] --> DSA["Masked<br/>self-attention"]
+    DSA --> CA["Cross-attention<br/>(queries from decoder)"]
+    CA --> DFF["Feed-forward"]
+    DFF --> OUT["Linear + softmax:<br/>next English token"]
+  end
+  EFF -->|"keys and values,<br/>to every decoder layer"| CA
