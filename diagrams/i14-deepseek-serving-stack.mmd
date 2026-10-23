@@ -1,0 +1,10 @@
+flowchart LR
+  U["API request"] --> R["DeepSeek Recipe<br/>text to tokens"]
+  R --> E["Entrypoint<br/>prefix-cache match"]
+  E --> PLB["Prefill load balancer<br/>(not released)"]
+  PLB --> P["Prefill engine (DeepInfer)<br/>EP2-8, FlashMLA, DeepGEMM"]
+  KV["KV cache store on 3FS SSDs<br/>(not released)"] -->|"cached prefix"| P
+  P --> DLB["Decode load balancer<br/>(not released)"]
+  DLB --> D["Decode engine (DeepInfer)<br/>EP64-128, DeepEP, DSpark"]
+  P -->|"KV cache"| D
+  D --> T["Tokens back to the user"]

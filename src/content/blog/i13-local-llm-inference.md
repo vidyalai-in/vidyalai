@@ -257,7 +257,7 @@ For speed, look up your bandwidth in Step 1's table. On a Mac, macOS limits how 
 
 ## What's next
 
-This part shrank inference down to one machine and one user. The final part goes the other way: Part 14 is a case study of DeepSeek's inference stack and its DeepInfer engine, where MLA, expert parallelism, FP8 kernels, multi-token prediction and [disaggregated serving](/blog/disaggregated-serving-llm-d/) all run together at production scale.
+This part shrank inference down to one machine and one user. The final part goes the other way: [Part 14](/blog/deepseek-inference-deepinfer/) is a case study of DeepSeek's inference stack and its DeepInfer engine, where MLA, expert parallelism, FP8 kernels, multi-token prediction and [disaggregated serving](/blog/disaggregated-serving-llm-d/) all run together at production scale.
 
 ## Further reading
 
