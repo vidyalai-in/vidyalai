@@ -140,6 +140,7 @@ No one labels the data. The text is its own answer key, which is why models can 
 
 - GPT-3 trained on [300 billion tokens](https://arxiv.org/abs/2005.14165).
 - Llama 3.1 405B trained on [15.6 trillion tokens](https://arxiv.org/abs/2407.21783), 52 times more. At about 0.75 words per token, that's roughly 11.7 trillion words.
+- Newer models go further: Qwen3 trained on [36 trillion tokens](https://arxiv.org/abs/2505.09388) and DeepSeek-V4 on [more than 32 trillion](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro).
 - It used [3.8 × 10²⁵](https://arxiv.org/abs/2407.21783) floating-point operations (FLOPs), simple multiplications and additions, on up to 16,000 H100 GPUs. The model card lists [30.84 million GPU-hours](https://huggingface.co/meta-llama/Llama-3.1-405B), which on a single GPU would take about 3,500 years.
 
 A handy rule from the [scaling-laws paper](https://arxiv.org/abs/2001.08361) predicts that compute: training costs about `6 × N × D` FLOPs, where `N` is the number of parameters and `D` is the number of training tokens. Check it on GPT-3: `6 × 175 billion × 300 billion = 3.15 × 10²³`, and the paper reports 3.14 × 10²³. Part 9 explains where the 6 comes from and what scaling laws say about choosing `N` and `D`.
@@ -165,21 +166,31 @@ The Transformer dropped recurrence entirely. Attention connects every position t
 
 A parallel architecture meant more data and more compute could be turned straight into better models. A year later, OpenAI's GPT-1 kept only the Transformer's decoder half, the part that generates text, and trained it on 7,000 books. After that, the models mostly got bigger:
 
-| Model | Year | Parameters | Training tokens | Context window |
-|---|---|---|---|---|
-| Transformer (big) | 2017 | 213M | (translation pairs) | n/a |
-| GPT-1 | 2018 | 117M | (BooksCorpus) | 512 |
-| GPT-2 | 2019 | 1.5B | (40 GB of web text) | 1,024 |
-| GPT-3 | 2020 | 175B | 300B | 2,048 |
-| Llama 3.1 405B | 2024 | 405B | 15.6T | 128K |
+| Model | Year | Parameters | Used per token | Training tokens | Context window |
+|---|---|---|---|---|---|
+| Transformer (big) | 2017 | 213M | all | (translation pairs) | n/a |
+| GPT-1 | 2018 | 117M | all | (BooksCorpus) | 512 |
+| GPT-2 | 2019 | 1.5B | all | (40 GB of web text) | 1,024 |
+| GPT-3 | 2020 | 175B | all | 300B | 2,048 |
+| Llama 3.1 405B | 2024 | 405B | all | 15.6T | 128K |
+| DeepSeek-V3 | 2024 | 671B | 37B | 14.8T | 128K |
+| Llama 4 Scout | 2025 | 109B | 17B | ~40T | 10M |
+| Qwen3-235B-A22B | 2025 | 235B | 22B | 36T | 32K (128K extended) |
+| Kimi K2 | 2025 | 1T | 32B | 15.5T | 128K |
+| DeepSeek-V4-Pro | 2026 | 1.6T | 49B | 32T+ | 1M |
+| Kimi K3 | 2026 | 2.8T | 104B | not published | 1M |
 
-From GPT-1 to Llama 3.1 405B, parameter counts grew about 3,500 times in six years. The block design underneath barely changed.
+Sources: [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf), [GPT-3](https://arxiv.org/abs/2005.14165), [Llama 3](https://arxiv.org/abs/2407.21783), [DeepSeek-V3](https://arxiv.org/abs/2412.19437), [Llama 4](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md), [Qwen3](https://huggingface.co/Qwen/Qwen3-235B-A22B), [Kimi K2](https://arxiv.org/abs/2507.20534), [DeepSeek-V4](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro), [Kimi K3](https://huggingface.co/moonshotai/Kimi-K3).
+
+From GPT-1's 117 million to Kimi K3's 2.8 trillion, parameter counts grew about 24,000 times in eight years, and the block design underneath barely changed.
+
+The "Used per token" column shows the one big change. Since late 2024, most of the largest open models have been mixture-of-experts (MoE) models. In each block, the single MLP is replaced by many smaller MLPs, called experts, and a small router network picks a few of them for each token. Kimi K3 has 896 experts per block and [uses 16 of them](https://huggingface.co/moonshotai/Kimi-K3) for each token, so only about 104 billion of its 2.8 trillion parameters, 3.7%, do any work on a given token. The model stores the knowledge of a giant but pays the compute cost of a much smaller model per token. All 2.8 trillion parameters still have to sit in memory, though, which is why these models run on racks of GPUs. A later part of this series covers how MoE works.
 
 ## In the real world
 
-- Open-weight models like Llama, Mistral, Qwen and DeepSeek publish their parameters, so you can download them and run the loop above on your own hardware. An 8 billion-parameter model needs about 16 GB just for its weights.
-- Closed models like GPT, Claude and Gemini run the same kind of loop on their providers' servers. Their sizes aren't published.
-- Context windows have grown from 512 tokens in GPT-1 to 128,000 in Llama 3.1, 256 times more. Every token in the window is something attention can look back at, and every one costs memory and compute.
+- Open-weight models like DeepSeek, Qwen, Kimi, Llama, Mistral and OpenAI's gpt-oss publish their parameters, so you can download them and run the loop above on your own hardware. An 8 billion-parameter model needs about 16 GB just for its weights.
+- Closed models like GPT, Claude and Gemini run the same kind of loop on their providers' servers. Their sizes aren't published: OpenAI's GPT-4 report, for example, [says it contains](https://arxiv.org/abs/2303.08774) "no further details about the architecture (including model size)".
+- Context windows have grown from 512 tokens in GPT-1 to 128,000 in Llama 3.1 and about 1 million in DeepSeek-V4 and Kimi K3, 2,048 times more. Llama 4 Scout is listed at 10 million. Every token in the window is something attention can look back at, and every one costs memory and compute.
 - Speed is usually quoted in tokens per second, because generation is one trip through the model per token. Even an 8 billion-parameter model on a top data-center GPU tops out around 200 tokens per second for a single user; [Part 1 of the inference series](/blog/how-llm-inference-works/) shows why.
 
 ## Common misconceptions
@@ -195,7 +206,8 @@ From GPT-1 to Llama 3.1 405B, parameter counts grew about 3,500 times in six yea
 - An LLM predicts one token at a time. Generating an answer is a loop: predict, pick, append, repeat.
 - Each trip turns tokens into vectors, mixes context through a stack of Transformer blocks (attention plus an MLP), then turns the final vector into probabilities with softmax.
 - Sampling settings like temperature decide how adventurous the pick is, which is why the same prompt can get different answers.
-- All of the model's skill lives in its parameters, learned by predicting the next token across trillions of tokens of text: 175 billion parameters for GPT-3, 405 billion for Llama 3.1.
+- All of the model's skill lives in its parameters, learned by predicting the next token across trillions of tokens of text: from 175 billion parameters in GPT-3 to 2.8 trillion in Kimi K3.
+- The largest recent models are mixtures of experts: they store trillions of parameters but use only a few percent of them for each token.
 - "Attention Is All You Need" made this possible by replacing step-by-step RNNs with attention, which processes every position at once and scales with compute.
 
 ## What's next
@@ -208,7 +220,8 @@ The rest of the series, in order: tokenization, embeddings and logits, attention
 
 - [Attention Is All You Need (Vaswani et al., 2017)](https://arxiv.org/abs/1706.03762): the paper that introduced the Transformer and the anchor for this series.
 - [Language Models are Few-Shot Learners (Brown et al., 2020)](https://arxiv.org/abs/2005.14165): GPT-3, with its architecture table and training compute.
-- [The Llama 3 Herd of Models (Llama Team, Meta, 2024)](https://arxiv.org/abs/2407.21783): a detailed, current account of building and training an open LLM.
+- [The Llama 3 Herd of Models (Llama Team, Meta, 2024)](https://arxiv.org/abs/2407.21783): a detailed account of building and training a large dense LLM.
+- [DeepSeek-V3 Technical Report (DeepSeek-AI, 2024)](https://arxiv.org/abs/2412.19437): how a 671B-parameter mixture-of-experts model uses only 37B parameters per token.
 - [Training language models to follow instructions with human feedback (Ouyang et al., 2022)](https://arxiv.org/abs/2203.02155): why a chat assistant differs from a raw next-token predictor.
 - [Scaling Laws for Neural Language Models (Kaplan et al., 2020)](https://arxiv.org/abs/2001.08361): the source of the `6 × N × D` compute rule.
 - [The Illustrated Transformer (Jay Alammar, 2018)](https://jalammar.github.io/illustrated-transformer/): the standard visual walkthrough of the architecture.
