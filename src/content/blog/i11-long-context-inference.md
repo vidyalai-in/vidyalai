@@ -218,7 +218,7 @@ Long context wins when the material fits, needs to be read as a whole (a contrac
 
 ## What's next
 
-Long prompts make prefill heavy and compute-bound, while decode stays light and memory-bound, and putting both on the same GPU makes them fight. Part 12 covers disaggregated serving: running prefill and decode on separate groups of GPUs, shipping the KV cache between them, and how llm-d schedules it all on Kubernetes.
+Long prompts make prefill heavy and compute-bound, while decode stays light and memory-bound, and putting both on the same GPU makes them fight. [Part 12](/blog/disaggregated-serving-llm-d/) covers disaggregated serving: running prefill and decode on separate groups of GPUs, shipping the KV cache between them, and how llm-d schedules it all on Kubernetes.
 
 ## Further reading
 

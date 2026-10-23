@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant C as Client
+  participant G as Gateway proxy
+  participant E as Endpoint Picker
+  participant S as Decode sidecar
+  participant P as Prefill pod
+  participant D as Decode vLLM
+  C->>G: 1. Chat request
+  G->>E: 2. Which pods?
+  E-->>G: 3. Decode pod + prefill pod
+  G->>S: 4. Request + prefill address
+  S->>P: 5. Same prompt, max_tokens=1
+  Note over P: 6. Prefill writes KV cache
+  P-->>S: 7. KV transfer params
+  S->>D: 8. Request + KV transfer params
+  D->>P: 9. Pull KV blocks (NIXL, RDMA)
+  Note over P: 10. Free the KV copy
+  D-->>C: 11. Stream tokens via sidecar and gateway
