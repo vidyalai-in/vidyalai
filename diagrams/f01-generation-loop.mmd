@@ -1,0 +1,8 @@
+flowchart LR
+  T["Text so far<br/>The capital of<br/>France is"] --> TK["Tokenizer<br/>text to<br/>token IDs"]
+  TK --> EM["Embeddings<br/>each ID to<br/>a vector"]
+  EM --> ST["Transformer<br/>blocks x N<br/>attention + MLP"]
+  ST --> LG["Logits<br/>a score for every<br/>vocabulary token"]
+  LG --> SM["Softmax<br/>scores to<br/>probabilities"]
+  SM --> SP["Pick one token<br/>Paris"]
+  SP --> RE["Append Paris<br/>and run the<br/>whole model again"]
