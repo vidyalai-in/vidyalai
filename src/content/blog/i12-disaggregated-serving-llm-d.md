@@ -233,7 +233,7 @@ The llm-d [v0.5 release post](https://llm-d.ai/blog/llm-d-v0.5-sustaining-perfor
 
 ## What's next
 
-This part was about the largest deployments: hundreds of GPUs, RDMA networks and Kubernetes. Part 13 goes to the other end of the scale: running LLMs on your own machine with llama.cpp, the GGUF file format and Ollama, why Apple silicon's unified memory changes what fits, and how to work out which models your laptop can run.
+This part was about the largest deployments: hundreds of GPUs, RDMA networks and Kubernetes. [Part 13](/blog/local-llm-inference/) goes to the other end of the scale: running LLMs on your own machine with llama.cpp, the GGUF file format and Ollama, why Apple silicon's unified memory changes what fits, and how to work out which models your laptop can run.
 
 ## Further reading
 

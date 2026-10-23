@@ -1,0 +1,12 @@
+flowchart LR
+  subgraph FILE["One GGUF file"]
+    direction TB
+    META["Metadata, tokenizer,<br/>chat template"]
+    W["Quantized weights<br/>e.g. Q4_K_M"]
+  end
+  FILE --> LC["llama.cpp loads it"]
+  LC -->|"-ngl N layers"| GPU["GPU memory<br/>fast, small"]
+  LC -->|"remaining layers"| CPU["System RAM<br/>slow, large"]
+  GPU --> STEP["Each token reads<br/>every layer once"]
+  CPU --> STEP
+  STEP --> TOK["Next token,<br/>then repeat"]
