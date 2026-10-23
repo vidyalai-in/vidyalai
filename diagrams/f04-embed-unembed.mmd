@@ -1,0 +1,9 @@
+flowchart LR
+  ID["Token ID 4881<br/>France"] --> TBL["Embedding table<br/>50,257 × 768<br/>take row 4881"]
+  TBL --> X["Input vector<br/>768 numbers"]
+  X --> BLK["Transformer blocks<br/>(Parts 5-6)"]
+  BLK --> H["Final vector<br/>768 numbers"]
+  H --> DOT["Dot product with<br/>every row of the<br/>output table"]
+  DOT --> LG["50,257 logits<br/>one per token"]
+  LG --> SM["Softmax<br/>probabilities"]
+  TBL -.->|"same table when tied<br/>(GPT-2)"| DOT

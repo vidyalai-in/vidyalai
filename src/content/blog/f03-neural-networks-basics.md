@@ -243,7 +243,7 @@ The standard check is to track loss on held-out data the model never trains on. 
 
 ## What's next
 
-We've treated the network's inputs and outputs as plain lists of numbers. Part 4 looks at the two ends of an LLM: the embedding table that turns each token into a vector, and the final layer that turns a vector back into a score, a logit, for every token in the vocabulary. You'll see why words with related meanings end up pointing in similar directions.
+We've treated the network's inputs and outputs as plain lists of numbers. [Part 4](/blog/embeddings-and-logits/) looks at the two ends of an LLM: the embedding table that turns each token into a vector, and the final layer that turns a vector back into a score, a logit, for every token in the vocabulary. You'll see why words with related meanings end up pointing in similar directions.
 
 ## Further reading
 

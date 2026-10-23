@@ -1,0 +1,11 @@
+flowchart LR
+  X["Token vectors<br/>one row<br/>per token"] -->|"× W_Q"| Q["Queries Q<br/>what each token<br/>looks for"]
+  X -->|"× W_K"| K["Keys K<br/>what each token<br/>offers"]
+  X -->|"× W_V"| V["Values V<br/>what each token<br/>passes on"]
+  Q --> S["Scores Q·Kᵀ<br/>every query against<br/>every key"]
+  K --> S
+  S --> SC["Divide by √d_k"]
+  SC --> M["Causal mask<br/>future scores<br/>set to −∞"]
+  M --> SM["Softmax<br/>on each row<br/>weights sum to 1"]
+  SM --> O["Output<br/>weighted sum<br/>of values"]
+  V --> O
