@@ -5,13 +5,14 @@ import { CATEGORIES } from '../../data/categories';
 import { getPosts } from '../../lib/posts';
 
 const posts = await getPosts();
+const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
 ---
 
-<Base title="Topics" description="Browse VidyalAI articles by topic: retrieval, cost and latency, agents, evaluation, security, fine-tuning and production engineering.">
+<Base title="Topics" description="Browse VidyalAI articles by topic: how LLMs work, inference, retrieval, cost and latency, agents, evaluation, security, fine-tuning and production engineering.">
   <div class="container">
     <header class="page-head">
       <h1>Topics</h1>
-      <p>Seven areas of LLM system design. Pick one to see every article in it, or <a href="/tags/">browse by tag</a>.</p>
+      <p>{numberWords[CATEGORIES.length]} areas, from how a model works inside to running it in production. Pick one to see every article in it, or <a href="/tags/">browse by tag</a>.</p>
     </header>
     <ul class="card-grid">
       {CATEGORIES.map((c) => <li><CategoryCard category={c} count={posts.filter((p) => p.data.category === c.slug).length} headingLevel="h2" /></li>)}
