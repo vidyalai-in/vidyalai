@@ -1850,6 +1850,46 @@ export const GLOSSARY = [
 
   // ---------- Serving ----------
   {
+    id: 'kernel-launch',
+    term: 'Kernel launch',
+    match: ['kernel launch', 'kernel launches', 'launch overhead'],
+    def: 'Starting a GPU function (a kernel) as many parallel threads. The CPU queues it and returns immediately, and each launch costs microseconds of CPU and driver time.',
+    article: 'gpu-from-python-to-silicon',
+    source: { title: 'CUDA Programming Guide: programming model (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html' },
+  },
+  {
+    id: 'cuda-stream',
+    term: 'CUDA stream',
+    match: ['CUDA stream', 'CUDA streams'],
+    def: 'A queue of GPU operations, such as kernels and memory copies, that run in the order they were added. Work in different streams may run at the same time.',
+    article: 'gpu-from-python-to-silicon',
+    source: { title: 'CUDA Programming Guide: asynchronous execution (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html' },
+  },
+  {
+    id: 'cublas',
+    term: 'cuBLAS',
+    match: ['cuBLAS', 'cuBLASLt'],
+    def: "NVIDIA's GPU library of linear-algebra routines, which provides the matrix multiplications PyTorch uses. cuBLASLt is its lighter API for matrix multiplies only.",
+    article: 'gpu-from-python-to-silicon',
+    source: { title: 'cuBLAS documentation (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cublas/' },
+  },
+  {
+    id: 'gemm-gemv',
+    term: 'GEMM / GEMV',
+    match: ['GEMM', 'GEMMs', 'GEMV', 'GEMVs'],
+    def: 'General matrix-matrix multiply and general matrix-vector multiply. Decoding at batch size 1 is mostly GEMVs, which are limited by memory bandwidth.',
+    article: 'gpu-from-python-to-silicon',
+    source: { title: 'cuBLAS documentation (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cublas/' },
+  },
+  {
+    id: 'pytorch-dispatcher',
+    term: 'PyTorch dispatcher',
+    match: ['dispatcher'],
+    def: 'The PyTorch layer that picks which implementation of an operation runs (CPU, CUDA, autograd and so on) based on the inputs.',
+    article: 'gpu-from-python-to-silicon',
+    source: { title: "Let's talk about the PyTorch dispatcher (Edward Yang, 2020)", url: 'https://blog.ezyang.com/2020/09/lets-talk-about-the-pytorch-dispatcher/' },
+  },
+  {
     id: 'deepinfer',
     term: 'DeepInfer',
     match: ['DeepInfer'],

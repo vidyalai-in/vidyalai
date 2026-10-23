@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant P as Python (CPU)
+  participant T as PyTorch dispatcher (CPU)
+  participant B as cuBLAS (CPU)
+  participant S as CUDA stream (queue)
+  participant G as GPU SMs
+  P->>T: c = a @ b
+  T->>B: CUDA tensors: call the GEMM routine
+  B->>S: launch a GEMM kernel
+  S->>G: kernel starts
+  B-->>P: return, about 0.2 ms after the call
+  Note over P: Python runs the next lines
+  Note over G: 24 SMs compute for about 25 ms
+  P->>S: torch.cuda.synchronize()
+  G-->>S: kernel finished
+  S-->>P: synchronize returns, c is ready
