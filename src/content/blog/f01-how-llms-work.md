@@ -33,11 +33,11 @@ The analogy breaks in one place. Autocomplete stores phrases. An LLM doesn't sto
 
 A model can only work with numbers, so the first step is a tokenizer, a fixed program that splits text into pieces from a vocabulary and replaces each piece with its ID number.
 
-Tokens are often whole common words, but rare words get split into smaller pieces. Spaces and punctuation are part of the pieces too. Our example might come out like this (real tokenizers differ in the details):
+Tokens are often whole common words, but rare words get split into smaller pieces. Spaces and punctuation are part of the pieces too. Here is our example as GPT-4's tokenizer splits it (other models' tokenizers differ in the details):
 
 | Text piece | `The` | ` capital` | ` of` | ` France` | ` is` |
 |---|---|---|---|---|---|
-| Token ID (illustrative) | 791 | 6864 | 315 | 9822 | 374 |
+| Token ID | 791 | 6864 | 315 | 9822 | 374 |
 
 For English, [OpenAI's rule of thumb](https://developers.openai.com/api/docs/concepts) is that one token is about 4 characters, or about three-quarters of a word. So 1,000 words is roughly 1,300 tokens.
 
@@ -212,7 +212,7 @@ The "Used per token" column shows the one big change. Since late 2024, most of t
 
 ## What's next
 
-Part 2 is about the first thing that happens to your text: tokenization. It shows how a tokenizer builds its vocabulary from raw text, why "strawberry" is hard for a model to spell, and why the same sentence can cost more tokens in one language than in another.
+[Part 2](/blog/tokenization/) is about the first thing that happens to your text: tokenization. It shows how a tokenizer builds its vocabulary from raw text, why "strawberry" is hard for a model to spell, and why the same sentence can cost more tokens in one language than in another.
 
 The whole series, in order:
 

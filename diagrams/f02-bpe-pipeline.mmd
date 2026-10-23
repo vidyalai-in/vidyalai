@@ -1,0 +1,15 @@
+flowchart TD
+  subgraph TRAIN["Training: once, on a large corpus"]
+    direction LR
+    C["Raw text corpus"] --> B["Split into bytes<br/>256 starting<br/>tokens"]
+    B --> P["Count neighboring<br/>token pairs"]
+    P --> M["Merge top pair<br/>into a new token<br/>repeat until full"]
+    M --> V["Vocabulary and<br/>merge list<br/>GPT-2: 50,257"]
+  end
+  subgraph USE["Encoding: every request"]
+    direction LR
+    T["Your text"] --> S["Pre-split into<br/>words, numbers<br/>and punctuation"]
+    S --> A["Apply the merges<br/>in learned order"]
+    A --> I["Token IDs<br/>sent to the model"]
+  end
+  TRAIN --> USE

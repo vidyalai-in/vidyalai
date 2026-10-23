@@ -1,0 +1,14 @@
+flowchart TD
+  subgraph FWD["Forward pass: compute the loss"]
+    direction LR
+    X["Input<br/>x = 2"] -->|"× w1 = 0.5, ReLU"| H["Hidden<br/>h = 1"]
+    H -->|"× w2 = 2"| Y["Prediction<br/>2"]
+    Y -->|"target is 6"| L["Loss<br/>(2 - 6)² = 16"]
+  end
+  subgraph BWD["Backward pass: chain the slopes"]
+    direction LR
+    G1["Slope for prediction<br/>2 × (2 - 6) = -8"] --> G2["Slope for w2<br/>-8 × h = -8"]
+    G1 --> G3["Slope for h<br/>-8 × w2 = -16"]
+    G3 --> G4["Slope for w1<br/>-16 × x = -32"]
+  end
+  FWD --> BWD
