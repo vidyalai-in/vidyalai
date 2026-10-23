@@ -1,0 +1,19 @@
+flowchart LR
+  subgraph OFF["Offline, once"]
+    direction TB
+    A["BF16 weights"] --> B["Calibrate on<br/>sample prompts"]
+    B --> C["Quantize to integers<br/>plus scales"]
+  end
+  C --> D["Stored in HBM:<br/>4 or 8 bits per weight"]
+  subgraph WO["Weight-only, e.g. W4A16"]
+    direction TB
+    E["Load 4-bit weights<br/>into SRAM"] --> F["Dequantize to BF16<br/>on the chip"]
+    F --> G["BF16 matmul with<br/>BF16 activations"]
+  end
+  subgraph WA["Weights and activations, e.g. W8A8"]
+    direction TB
+    H["Quantize activations<br/>to FP8 or INT8"] --> I["FP8 or INT8 matmul<br/>on tensor cores"]
+    I --> J["Multiply by scales,<br/>output in BF16"]
+  end
+  D --> E
+  D --> I

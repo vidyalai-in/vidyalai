@@ -256,7 +256,7 @@ FlashAttention removes the memory traffic, not the arithmetic. Every query still
 
 ## What's next
 
-FlashAttention cuts the bytes attention moves around. The weights and the KV cache are still read from memory at 16 bits per number on every decode step. Part 8 covers quantization: storing weights, and the KV cache itself, in 8 or 4 bits, so each step moves half or a quarter of the bytes, and how to check the model still gives good answers.
+FlashAttention cuts the bytes attention moves around. The weights and the KV cache are still read from memory at 16 bits per number on every decode step. [Part 8](/blog/quantization/) covers quantization: storing weights, and the KV cache itself, in 8 or 4 bits, so each step moves half or a quarter of the bytes, and how to check the model still gives good answers.
 
 ## Further reading
 

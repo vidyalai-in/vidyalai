@@ -1,0 +1,10 @@
+sequenceDiagram
+  participant D as Draft model
+  participant T as Target model
+  participant O as Output
+  Note over D: 1. Guess k = 4 tokens,<br/>one cheap pass each
+  D->>T: 2. Send Paris . It has
+  Note over T: 3. One forward pass over 5 positions<br/>(weights read once)
+  T->>O: 4. Accept the matching prefix: Paris . It
+  T->>O: 5. Reject has, emit the target's own token: is
+  T->>D: 6. Draft the next 4 tokens after is
