@@ -1,0 +1,6 @@
+flowchart LR
+  G["Grid: 262,144 blocks"] --> B["Block: 256 threads"] --> W["Warp: 32 threads,<br/>one instruction at a time"] --> T["Thread: one element,<br/>its own index i"]
+  GPU["GPU: 24 SMs"] --> SM["SM: up to 6 such blocks,<br/>48 warps at once"] --> P["Warp scheduler:<br/>4 per SM, 32 FP32 lanes each"]
+  G -. "spread over" .-> GPU
+  B -. "stays on one" .-> SM
+  W -. "issued by one" .-> P

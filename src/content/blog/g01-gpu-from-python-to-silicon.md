@@ -273,7 +273,7 @@ Data center GPUs have the same structure at a larger scale: an H100 has 132 SMs 
 
 ## What's next
 
-This part treated kernels as black boxes that someone else wrote. Part 2 opens the box: the CUDA programming model of threads, warps, blocks and grids, then a first kernel written, compiled and timed by hand, to see how close a simple vector add gets to this GPU's 256 GB/s.
+This part treated kernels as black boxes that someone else wrote. [Part 2](/blog/cuda-programming-model/) opens the box: the CUDA programming model of threads, warps, blocks and grids, then a first kernel written, compiled and timed by hand, to see how close a simple vector add gets to this GPU's 256 GB/s.
 
 ## Further reading
 

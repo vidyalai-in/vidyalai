@@ -82,7 +82,7 @@ written at a time.
 | # | Title (working) | Slug | Scope | Builds on | Status |
 |---|---|---|---|---|---|
 | 1 | From torch.matmul to silicon | `gpu-from-python-to-silicon` | What happens when PyTorch runs a layer: the dispatcher, kernel launch, CUDA streams and asynchronous execution, launch overhead; roadmap of the series; a first measured trace of one decode step | i03, i07 | Published |
-| 2 | The CUDA programming model | `cuda-programming-model` | Threads, warps, blocks, grids; SIMT and warp divergence; SMs and occupancy; writing, compiling and timing a first kernel (vector add) and seeing it hit the bandwidth limit; catching bugs with compute-sanitizer | i03 |  |
+| 2 | The CUDA programming model | `cuda-programming-model` | Threads, warps, blocks, grids; SIMT and warp divergence; SMs and occupancy; writing, compiling and timing a first kernel (vector add) and seeing it hit the bandwidth limit; catching bugs with compute-sanitizer | i03 | Published |
 | 3 | The memory hierarchy | `gpu-memory-hierarchy` | Registers, shared memory, L1, L2, DRAM; coalesced vs strided access measured; shared-memory bank conflicts; a copy-kernel bandwidth test vs the spec; caches and access patterns | i03 |  |
 | 4 | Profiling and the roofline | `gpu-profiling-roofline` | Nsight Systems and Nsight Compute; the PyTorch profiler; achieved bandwidth and FLOPs; plotting our kernels on the 4060's roofline; finding the bottleneck; clocks, power limits and throttling on a laptop GPU | i01, i03 |  |
 | 5 | Writing a fast matmul, step by step | `cuda-matmul-optimization` | Naive → coalesced → shared-memory tiling → register blocking → vectorized loads, measured in GFLOPS at each step vs cuBLAS | m03 |  |
