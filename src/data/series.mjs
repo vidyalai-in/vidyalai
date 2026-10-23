@@ -14,7 +14,7 @@ export const SERIES = [
     short: 'Fundamentals',
     blurb:
       'How large language models work, from tokens and embeddings to attention, the Transformer and training, built around “Attention Is All You Need”.',
-    total: 10,
+    total: 16,
     filePrefix: 'f',
   },
   {
@@ -23,7 +23,7 @@ export const SERIES = [
     short: 'Inference',
     blurb:
       'What happens when a model generates text, and the tricks that make it fast: KV caching, batching, PagedAttention, quantization, speculative decoding and more.',
-    total: 10,
+    total: 14,
     filePrefix: 'i',
   },
   {

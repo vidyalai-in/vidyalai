@@ -4,8 +4,8 @@ Every post belongs to one series (`src/data/series.mjs`):
 
 | Series | `series:` | File prefix | Parts | Template |
 |---|---|---|---|---|
-| LLM Fundamentals | `llm-fundamentals` | `f` | 10 | [Explainer](#explainer-template-fundamentals-and-inference) |
-| LLM Inference & Optimization | `llm-inference` | `i` | 10 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| LLM Fundamentals | `llm-fundamentals` | `f` | 16 | [Explainer](#explainer-template-fundamentals-and-inference) |
+| LLM Inference & Optimization | `llm-inference` | `i` | 14 | [Explainer](#explainer-template-fundamentals-and-inference) |
 | LLM System Design | `llm-system-design` (the default; existing posts omit it) | `q` | 25 | [Post structure](#post-structure) |
 
 LLM System Design posts are standalone engineering articles, each built from one answer in the

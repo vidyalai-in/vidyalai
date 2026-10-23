@@ -62,7 +62,7 @@ That work happens in a stack of identical layers called Transformer blocks. GPT-
 
 Each block adds what it computed to the vector instead of replacing it. A good mental picture is a shared notepad per token that each of the 96 layers reads and writes a few notes on. After the last block, the vector at the final position holds the model's best summary of "what should come next".
 
-Attention is the subject of Parts 4 and 5. For now, remember that it connects every token to every earlier token directly, in one step, no matter how far apart they are.
+Attention is the subject of Parts 5 and 6. For now, remember that it connects every token to every earlier token directly, in one step, no matter how far apart they are.
 
 ## Step 4: scores become probabilities
 
@@ -101,7 +101,7 @@ Same logits, three temperatures:
 | known | 0.1% | 2.6% | 9.7% |
 | Lyon | 0.0% | 0.9% | 5.9% |
 
-At `T = 2`, "Lyon" goes from almost never to about one draw in seventeen. That's the "creativity" knob, and also a source of mistakes. Other settings, like top-p, cut off the long tail of unlikely tokens before sampling. Part 8 covers them.
+At `T = 2`, "Lyon" goes from almost never to about one draw in seventeen. That's the "creativity" knob, and also a source of mistakes. Other settings, like top-p, cut off the long tail of unlikely tokens before sampling. Part 9 covers them.
 
 Once a token is chosen, it's appended to the text, and the whole model runs again on "The capital of France is Paris" to predict the token after that. The loop keeps going until the model produces a special end token or hits a length limit.
 
@@ -143,13 +143,13 @@ No one labels the data. The text is its own answer key, which is why models can 
 - Newer models go further: Qwen3 trained on [36 trillion tokens](https://arxiv.org/abs/2505.09388) and DeepSeek-V4 on [more than 32 trillion](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro).
 - It used [3.8 × 10²⁵](https://arxiv.org/abs/2407.21783) floating-point operations (FLOPs), simple multiplications and additions, on up to 16,000 H100 GPUs. The model card lists [30.84 million GPU-hours](https://huggingface.co/meta-llama/Llama-3.1-405B), which on a single GPU would take about 3,500 years.
 
-A handy rule from the [scaling-laws paper](https://arxiv.org/abs/2001.08361) predicts that compute: training costs about `6 × N × D` FLOPs, where `N` is the number of parameters and `D` is the number of training tokens. Check it on GPT-3: `6 × 175 billion × 300 billion = 3.15 × 10²³`, and the paper reports 3.14 × 10²³. Part 9 explains where the 6 comes from and what scaling laws say about choosing `N` and `D`.
+A handy rule from the [scaling-laws paper](https://arxiv.org/abs/2001.08361) predicts that compute: training costs about `6 × N × D` FLOPs, where `N` is the number of parameters and `D` is the number of training tokens. Check it on GPT-3: `6 × 175 billion × 300 billion = 3.15 × 10²³`, and the paper reports 3.14 × 10²³. Part 12 explains where the 6 comes from and what scaling laws say about choosing `N` and `D`.
 
 ### From base model to assistant
 
 A model trained only to predict internet text is called a base model. Ask it a question and it might continue with three more questions, because that's what a list of questions on a web page looks like. As the [InstructGPT paper](https://arxiv.org/abs/2203.02155) put it, predicting the next token on a web page is a different objective from following instructions helpfully and safely.
 
-So chat models get a second round of training on examples of good conversations, then learn from human preferences between pairs of answers. The effect is large: in that paper, people preferred answers from a 1.3 billion-parameter instruction-tuned model over the raw 175 billion-parameter GPT-3, a model more than 100 times bigger. Part 10 covers this post-training.
+So chat models get a second round of training on examples of good conversations, then learn from human preferences between pairs of answers. The effect is large: in that paper, people preferred answers from a 1.3 billion-parameter instruction-tuned model over the raw 175 billion-parameter GPT-3, a model more than 100 times bigger. Part 13 covers this post-training, and Part 14 covers the reasoning models trained on top of it.
 
 ## Why the 2017 paper was the turning point
 
@@ -184,7 +184,7 @@ Sources: [GPT-2](https://cdn.openai.com/better-language-models/language_models_a
 
 From GPT-1's 117 million to Kimi K3's 2.8 trillion, parameter counts grew about 24,000 times in eight years, and the block design underneath barely changed.
 
-The "Used per token" column shows the one big change. Since late 2024, most of the largest open models have been mixture-of-experts (MoE) models. In each block, the single MLP is replaced by many smaller MLPs, called experts, and a small router network picks a few of them for each token. Kimi K3 has 896 experts per block and [uses 16 of them](https://huggingface.co/moonshotai/Kimi-K3) for each token, so only about 104 billion of its 2.8 trillion parameters, 3.7%, do any work on a given token. The model stores the knowledge of a giant but pays the compute cost of a much smaller model per token. All 2.8 trillion parameters still have to sit in memory, though, which is why these models run on racks of GPUs. A later part of this series covers how MoE works.
+The "Used per token" column shows the one big change. Since late 2024, most of the largest open models have been mixture-of-experts (MoE) models. In each block, the single MLP is replaced by many smaller MLPs, called experts, and a small router network picks a few of them for each token. Kimi K3 has 896 experts per block and [uses 16 of them](https://huggingface.co/moonshotai/Kimi-K3) for each token, so only about 104 billion of its 2.8 trillion parameters, 3.7%, do any work on a given token. The model stores the knowledge of a giant but pays the compute cost of a much smaller model per token. All 2.8 trillion parameters still have to sit in memory, though, which is why these models run on racks of GPUs. Part 11 covers how MoE works.
 
 ## In the real world
 
@@ -214,7 +214,24 @@ The "Used per token" column shows the one big change. Since late 2024, most of t
 
 Part 2 is about the first thing that happens to your text: tokenization. It shows how a tokenizer builds its vocabulary from raw text, why "strawberry" is hard for a model to spell, and why the same sentence can cost more tokens in one language than in another.
 
-The rest of the series, in order: tokenization, embeddings and logits, attention, multi-head attention and the Transformer block, positional encoding, a guided reading of "Attention Is All You Need", from the Transformer to GPT, pretraining and scaling laws, and turning a base model into an assistant.
+The whole series, in order:
+
+1. The big picture (this article)
+2. Tokenization
+3. Neural networks: weights, gradient descent and backpropagation
+4. Embeddings and logits
+5. Attention: queries, keys and values
+6. Multi-head attention and the Transformer block
+7. Position: how Transformers know word order
+8. Reading "Attention Is All You Need"
+9. Encoders, decoders and GPT, and how sampling works
+10. The modern LLM block: what changed since 2017
+11. Mixture of experts
+12. Pretraining: data, scaling laws and training at scale
+13. From base model to assistant: SFT, RLHF and DPO
+14. Reasoning models and test-time compute
+15. Multimodal models: how LLMs see and hear
+16. Inside the black box: interpretability
 
 ## Further reading
 

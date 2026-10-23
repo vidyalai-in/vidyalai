@@ -165,14 +165,18 @@ Each later part takes on one part of the wall:
 | Part | Technique | The bottleneck it attacks |
 |---|---|---|
 | 2 | KV cache (and shrinking it with GQA and MLA) | Recomputing past tokens; cache size |
-| 3 | Continuous batching, chunked prefill | Idle compute in decode; prefill stalling decode |
-| 4 | PagedAttention and vLLM | KV cache memory wasted by fragmentation |
-| 5 | FlashAttention | Memory traffic inside the attention computation |
-| 6 | Quantization (8-bit, 4-bit) | Bytes per weight and per cached value |
-| 7 | Speculative decoding | One token per expensive weight read |
-| 8 | Tensor, pipeline and expert parallelism | Models too big for one GPU's memory |
-| 9 | Disaggregated serving and llm-d | Prefill and decode fighting over the same GPU |
-| 10 | DeepSeek's inference stack and DeepInfer | All of the above, at production scale |
+| 3 | How GPUs work: HBM, SRAM, tensor cores, number formats | The hardware every later part works around |
+| 4 | Continuous batching, chunked prefill | Idle compute in decode; prefill stalling decode |
+| 5 | PagedAttention and vLLM | KV cache memory wasted by fragmentation |
+| 6 | Prefix caching and KV cache offloading | Recomputing prompts that were seen before |
+| 7 | FlashAttention and fused kernels | Memory traffic inside the attention computation |
+| 8 | Quantization (8-bit, 4-bit) | Bytes per weight and per cached value |
+| 9 | Speculative decoding | One token per expensive weight read |
+| 10 | Tensor, pipeline and expert parallelism | Models too big for one GPU's memory |
+| 11 | Long-context inference: sliding windows, sparse attention | Attention and cache cost that grow with context |
+| 12 | Disaggregated serving and llm-d | Prefill and decode fighting over the same GPU |
+| 13 | Running LLMs on your own machine | Small memory, modest bandwidth, no data center |
+| 14 | DeepSeek's inference stack and DeepInfer | All of the above, at production scale |
 
 ### How much the fixes are worth
 
@@ -190,7 +194,7 @@ Today most open models are served by a handful of engines:
 
 ### DeepSeek at production scale
 
-DeepSeek's [published overview](https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md) of its V3/R1 serving system shows the prefill/decode split in practice. Each 8-GPU H800 node handled about **73,700 input tokens per second** during prefill (counting tokens served from cache) but about **14,800 output tokens per second** during decode, roughly five times fewer. Prefill and decode ran on separate groups of machines, an idea Part 9 covers.
+DeepSeek's [published overview](https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md) of its V3/R1 serving system shows the prefill/decode split in practice. Each 8-GPU H800 node handled about **73,700 input tokens per second** during prefill (counting tokens served from cache) but about **14,800 output tokens per second** during decode, roughly five times fewer. Prefill and decode ran on separate groups of machines, an idea Part 12 covers.
 
 ### Newer GPUs
 
