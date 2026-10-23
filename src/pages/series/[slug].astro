@@ -1,22 +1,36 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { SERIES, getCategory } from '../../data/categories';
-import { getPosts, postUrl, categoryUrl } from '../../lib/posts';
+import { getCategory } from '../../data/categories';
+import { SERIES } from '../../data/series.mjs';
+import { seriesPosts, postUrl, categoryUrl } from '../../lib/posts';
 import Icon from '../../components/Icon.astro';
 
-const posts = await getPosts();
+export function getStaticPaths() {
+  return SERIES.map((series) => ({ params: { slug: series.slug }, props: { series } }));
+}
+
+interface Props {
+  series: (typeof SERIES)[number];
+}
+const { series } = Astro.props;
+const posts = await seriesPosts(series.slug);
+const upcoming = series.total - posts.length;
 ---
 
-<Base title={`${SERIES.name} series`} description={SERIES.blurb}>
+<Base title={`${series.name} series`} description={series.blurb}>
   <div class="container-narrow">
     <header class="page-head">
       <p class="eyebrow">Series</p>
-      <h1>{SERIES.name}</h1>
-      <p>{SERIES.blurb} Read them in order, or jump to whatever you're building.</p>
-      <p class="watch">
-        <a href={SERIES.playlist}><Icon name="play" size={20} />Watch the series on YouTube</a>
-        <span>Episodes are added to the playlist as they're released.</span>
-      </p>
+      <h1>{series.name}</h1>
+      <p>{series.blurb} Read them in order, or jump to whatever you're curious about.</p>
+      {
+        series.playlist && (
+          <p class="watch">
+            <a href={series.playlist}><Icon name="play" size={20} />Watch the series on YouTube</a>
+            <span>Episodes are added to the playlist as they're released.</span>
+          </p>
+        )
+      }
     </header>
     <ol class="series-list">
       {
@@ -35,6 +49,13 @@ const posts = await getPosts();
         })
       }
     </ol>
+    {
+      upcoming > 0 && (
+        <p class="upcoming">
+          {posts.length} of {series.total} parts published. The next {upcoming === 1 ? 'part is' : `${upcoming} parts are`} on the way.
+        </p>
+      )
+    }
   </div>
 </Base>
 
@@ -100,5 +121,9 @@ const posts = await getPosts();
   .cat {
     font-size: 0.85rem;
     font-weight: 600;
+  }
+  .upcoming {
+    margin-top: 1.25rem;
+    color: var(--muted);
   }
 </style>

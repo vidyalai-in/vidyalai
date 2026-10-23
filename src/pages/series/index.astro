@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeriesCard from '../../components/SeriesCard.astro';
+import { SERIES } from '../../data/series.mjs';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="Series" description="Three article series on large language models: how they work, how inference is made fast, and how to design production systems with them.">
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow">Series</p>
+      <h1>Learn LLMs in order</h1>
+      <p>
+        Start with the fundamentals, move on to how models are served fast, then design real systems with them. Each
+        series reads in order, and every article also stands on its own.
+      </p>
+    </header>
+    <ul class="card-grid">
+      {
+        SERIES.map((s) => (
+          <li>
+            <SeriesCard series={s} published={posts.filter((p) => p.data.series === s.slug).length} headingLevel="h2" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Base>

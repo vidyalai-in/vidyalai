@@ -3,17 +3,19 @@ import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import CategoryCard from '../components/CategoryCard.astro';
+import SeriesCard from '../components/SeriesCard.astro';
 import Icon from '../components/Icon.astro';
 import banner from '../assets/brand/banner1.png';
 import bannerMobile from '../assets/brand/banner-mobile.png';
-import { CATEGORIES, SERIES, getCategory } from '../data/categories';
-import { getPosts, postUrl } from '../lib/posts';
+import { CATEGORIES } from '../data/categories';
+import { SERIES } from '../data/series.mjs';
+import { getPosts } from '../lib/posts';
 
 const posts = await getPosts();
-const featuredOrders = [1, 6, 25];
-const featured = featuredOrders
-  .map((n) => posts.find((p) => p.data.seriesOrder === n))
-  .filter((p) => p !== undefined);
+// The first part of each series.
+const featuredSlugs = ['how-llms-work', 'how-llm-inference-works', 'rag-system-10m-documents'];
+const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
+const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
 const counts = Object.fromEntries(CATEGORIES.map((c) => [c.slug, posts.filter((p) => p.data.category === c.slug).length]));
 
 // Art direction: wide banner from 768px, a centred crop (logo, tagline, icons) on phones.
@@ -26,7 +28,7 @@ const narrow = await Promise.all(
 const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
 ---
 
-<Base title="VidyalAI" description="Clear, sourced deep dives on designing production LLM systems: RAG, evaluation, agents, serving, security and operations.">
+<Base title="VidyalAI" description="Clear, sourced deep dives on large language models: how they work, how inference is made fast, and how to design production systems with them.">
   <section class="hero">
     <div class="container">
       <picture class="hero-banner">
@@ -43,15 +45,16 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
       </picture>
 
       <div class="hero-copy">
-        <p class="eyebrow">New series · {SERIES.name}</p>
-        <h1>Build LLM systems that hold up in production</h1>
+        <p class="eyebrow">New: {SERIES[0].name} and {SERIES[1].name}</p>
+        <h1>Understand LLMs, from attention to production</h1>
         <p class="hero-lede">
-          {posts.length} in-depth articles on retrieval, evaluation, agents, serving, security and operations. Each one gives you the
-          design, the numbers that size it, the ways it fails, and the sources to check.
+          {posts.length} in-depth articles in {numberWords[SERIES.length].toLowerCase()} series: how large language models work, how
+          they generate text fast, and how to build systems that hold up in production. Each one explains the idea, works
+          through the numbers, and links the sources to check.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="/series/llm-system-design/">
-            Start the series <Icon name="arrowRight" size={18} />
+          <a class="btn btn-primary" href="/series/">
+            Browse the series <Icon name="arrowRight" size={18} />
           </a>
           <a class="btn btn-ghost" href="/category/">Browse topics</a>
         </div>
@@ -59,11 +62,24 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
     </div>
   </section>
 
+  <section class="container section" aria-labelledby="series-heading">
+    <div class="section-head">
+      <div>
+        <h2 id="series-heading">{numberWords[SERIES.length]} series</h2>
+        <p>Each reads in order, from the first part to the last. Every article also stands on its own.</p>
+      </div>
+      <a href="/series/">All series <Icon name="arrowRight" size={16} /></a>
+    </div>
+    <ul class="card-grid">
+      {SERIES.map((s) => <li><SeriesCard series={s} published={posts.filter((p) => p.data.series === s.slug).length} /></li>)}
+    </ul>
+  </section>
+
   <section class="container section" aria-labelledby="featured-heading">
     <div class="section-head">
       <div>
         <h2 id="featured-heading">Start here</h2>
-        <p>Three articles that cover the ground most LLM products stand on.</p>
+        <p>The first part of each series.</p>
       </div>
       <a href="/blog/">All articles <Icon name="arrowRight" size={16} /></a>
     </div>
@@ -76,7 +92,7 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
     <div class="section-head">
       <div>
         <h2 id="topics-heading">Explore by topic</h2>
-        <p>Seven areas you need to get right before an LLM feature is ready for real traffic.</p>
+        <p>{numberWords[CATEGORIES.length]} areas, from what happens inside a model to what it takes to run one for real traffic.</p>
       </div>
     </div>
     <ul class="card-grid">
@@ -84,29 +100,6 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
     </ul>
   </section>
 
-  <section class="container section" aria-labelledby="series-heading">
-    <div class="section-head">
-      <div>
-        <h2 id="series-heading">The full reading order</h2>
-        <p>{SERIES.blurb}</p>
-      </div>
-    </div>
-    <ol class="series-grid">
-      {
-        posts.map((p) => (
-          <li>
-            <a href={postUrl(p)}>
-              <span class="num">{String(p.data.seriesOrder).padStart(2, '0')}</span>
-              <span class="t">
-                <span class="title">{p.data.title}</span>
-                <span class="cat">{getCategory(p.data.category).name}</span>
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
 </Base>
 
 <style>
@@ -156,68 +149,5 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
     gap: 0.3rem;
     font-weight: 600;
     min-height: 44px;
-  }
-
-  .series-grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 768px) {
-    .series-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .series-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .series-grid a {
-    display: flex;
-    gap: 0.9rem;
-    align-items: flex-start;
-    padding: 0.75rem 0.9rem;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    color: var(--text-strong);
-  }
-
-  .series-grid a:hover {
-    border-color: var(--border);
-    background: var(--surface);
-  }
-
-  .num {
-    flex: none;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--accent);
-    min-width: 2ch;
-  }
-
-  .t {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .title {
-    font-weight: 600;
-    line-height: 1.35;
-  }
-
-  .cat {
-    font-size: 0.82rem;
-    color: var(--muted);
   }
 </style>

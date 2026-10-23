@@ -19,7 +19,8 @@ npm run build      # static site in dist/, plus the Pagefind search index
 | Authoring rules: structure, tone, frontmatter, diagrams | `content-src/AUTHORING.md` |
 | Review of each original answer, and the roll-up | `content-src/reviews/`, `content-src/REVIEW.md` |
 | Snapshots of the original Google Docs | `content-src/original/` |
-| Categories and series metadata | `src/data/categories.ts` |
+| Categories | `src/data/categories.ts` |
+| Series (names, part counts, playlists) | `src/data/series.mjs` |
 | Diagram sources (Mermaid) | `diagrams/*.mmd` |
 
 Diagrams are pre-rendered and committed, so CI doesn't need a browser. After editing a `.mmd` file:

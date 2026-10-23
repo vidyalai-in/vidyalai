@@ -8,15 +8,21 @@ import GlossaryTips from '../../components/GlossaryTips.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import PostCard from '../../components/PostCard.astro';
 import Icon from '../../components/Icon.astro';
-import { getCategory, SERIES } from '../../data/categories';
-import { getPosts, postUrl, categoryUrl, tagUrl, tagLabel, formatDate, relatedPosts, type Post } from '../../lib/posts';
+import { getCategory } from '../../data/categories';
+import { seriesUrl } from '../../data/series.mjs';
+import { getPosts, postUrl, categoryUrl, tagUrl, tagLabel, formatDate, relatedPosts, seriesOf, type Post } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-  return posts.map((post, i) => ({
-    params: { slug: post.id },
-    props: { post, prev: posts[i - 1], next: posts[i + 1], all: posts },
-  }));
+  return posts.map((post) => {
+    // Prev/next stay inside the post's own series.
+    const inSeries = posts.filter((p) => p.data.series === post.data.series);
+    const i = inSeries.indexOf(post);
+    return {
+      params: { slug: post.id },
+      props: { post, prev: inSeries[i - 1], next: inSeries[i + 1], all: posts },
+    };
+  });
 }
 
 interface Props {
@@ -28,6 +34,7 @@ interface Props {
 const { post, prev, next, all } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
 const category = getCategory(post.data.category);
+const series = seriesOf(post);
 const inCategory = all.filter((p) => p.data.category === post.data.category);
 const related = relatedPosts(post, all);
 const minutes = remarkPluginFrontmatter.minutesRead as number;
@@ -50,7 +57,7 @@ const hasToc = headings.some((h) => h.depth === 2);
           ))
         }
       </ol>
-      <a class="side-all" href="/series/llm-system-design/">Full series <Icon name="arrowRight" size={16} /></a>
+      <a class="side-all" href={seriesUrl(series.slug)}>Full series <Icon name="arrowRight" size={16} /></a>
     </aside>
 
     <article class="post" data-pagefind-body>
@@ -63,7 +70,7 @@ const hasToc = headings.some((h) => h.depth === 2);
           </ol>
         </nav>
         <p class="eyebrow">
-          <a href="/series/llm-system-design/">{SERIES.name}</a> · Part {post.data.seriesOrder} of 25
+          <a href={seriesUrl(series.slug)}>{series.name}</a> · Part {post.data.seriesOrder} of {series.total}
         </p>
         <h1 data-pagefind-meta="title">{post.data.title}</h1>
         <p class="lede">{post.data.description}</p>
@@ -76,7 +83,7 @@ const hasToc = headings.some((h) => h.depth === 2);
         </div>
       </header>
 
-      {post.data.video && <VideoEmbed id={post.data.video.youtube} duration={post.data.video.duration} title={post.data.title} slug={post.id} url={post.data.video.url} />}
+      {post.data.video && <VideoEmbed id={post.data.video.youtube} duration={post.data.video.duration} title={post.data.title} slug={post.id} url={post.data.video.url} series={post.data.series} />}
 
       {
         hasToc && (

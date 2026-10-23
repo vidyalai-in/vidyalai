@@ -8,7 +8,7 @@ const path = Astro.url.pathname;
 const links = [
   { href: '/blog/', label: 'Articles', match: (p: string) => p.startsWith('/blog') },
   { href: '/category/', label: 'Topics', match: (p: string) => p.startsWith('/category') || p.startsWith('/tags') },
-  { href: '/series/llm-system-design/', label: 'Series', match: (p: string) => p.startsWith('/series') },
+  { href: '/series/', label: 'Series', match: (p: string) => p.startsWith('/series') },
   { href: '/about/', label: 'About', match: (p: string) => p.startsWith('/about') },
 ];
 ---

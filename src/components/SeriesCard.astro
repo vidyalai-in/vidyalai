@@ -1,0 +1,18 @@
+---
+import { seriesUrl } from '../data/series.mjs';
+
+interface Props {
+  series: { slug: string; name: string; blurb: string; total: number };
+  published: number;
+  headingLevel?: 'h2' | 'h3';
+}
+const { series, published, headingLevel: H = 'h3' } = Astro.props;
+---
+
+<article class="card series-card">
+  <H><a class="card-link" href={seriesUrl(series.slug)}>{series.name}</a></H>
+  <p>{series.blurb}</p>
+  <p class="meta">
+    {published < series.total ? `${published} of ${series.total} parts published` : `${series.total} parts`}
+  </p>
+</article>

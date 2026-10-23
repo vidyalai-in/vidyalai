@@ -6,7 +6,7 @@
  */
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { SERIES } from '../data/categories';
+import { CHANNEL, getSeries } from '../data/series.mjs';
 
 interface Props {
   id: string;
@@ -15,8 +15,11 @@ interface Props {
   slug: string;
   /** Link for "Watch on YouTube"; defaults to the watch page. */
   url?: string;
+  /** The post's series; its playlist is linked when it has one. */
+  series: string;
 }
-const { id, duration, title, slug, url } = Astro.props;
+const { id, duration, title, slug, url, series: seriesSlug } = Astro.props;
+const series = getSeries(seriesSlug);
 
 const thumbs = import.meta.glob<{ default: ImageMetadata }>('../assets/video/*.{png,jpg}', { eager: true });
 const thumb = Object.entries(thumbs).find(([path]) => path.includes(`/${slug}.`))?.[1].default;
@@ -45,8 +48,8 @@ const spoken = `${m} min ${Number(s)} s`;
   <figcaption>
     <span class="video-label"><Icon name="play" size={18} /> Video version, {spoken}</span>
     <a href={watch}>Watch on YouTube</a>
-    <a href={SERIES.playlist}>{SERIES.name} playlist</a>
-    <a href={SERIES.subscribe}>Subscribe<span class="visually-hidden"> to VidyalAI on YouTube</span></a>
+    {series.playlist && <a href={series.playlist}>{series.name} playlist</a>}
+    <a href={CHANNEL.subscribe}>Subscribe<span class="visually-hidden"> to VidyalAI on YouTube</span></a>
   </figcaption>
 </figure>
 

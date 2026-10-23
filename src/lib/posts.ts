@@ -1,12 +1,25 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { SERIES, getSeries } from '../data/series.mjs';
 
 export type Post = CollectionEntry<'blog'>;
 
-/** All posts in series order. */
+const seriesIndex = (p: Post) => SERIES.findIndex((s) => s.slug === p.data.series);
+
+/** Series in site order, then part number. */
+export const byReadingOrder = (a: Post, b: Post) => seriesIndex(a) - seriesIndex(b) || a.data.seriesOrder - b.data.seriesOrder;
+
+/** All posts in reading order. */
 export async function getPosts(): Promise<Post[]> {
   const posts = await getCollection('blog');
-  return posts.sort((a, b) => a.data.seriesOrder - b.data.seriesOrder);
+  return posts.sort(byReadingOrder);
 }
+
+/** One series' posts, in part order. */
+export async function seriesPosts(slug: string): Promise<Post[]> {
+  return (await getPosts()).filter((p) => p.data.series === slug);
+}
+
+export const seriesOf = (post: Post) => getSeries(post.data.series);
 
 export const postUrl = (post: Post) => `/blog/${post.id}/`;
 export const categoryUrl = (slug: string) => `/category/${slug}/`;
@@ -34,7 +47,7 @@ export function relatedPosts(post: Post, all: Post[], limit = 3) {
         p.data.tags.filter((t) => post.data.tags.includes(t)).length,
     }))
     .filter((x) => x.score > 0)
-    .sort((a, b) => b.score - a.score || a.p.data.seriesOrder - b.p.data.seriesOrder)
+    .sort((a, b) => b.score - a.score || byReadingOrder(a.p, b.p))
     .slice(0, limit)
     .map((x) => x.p);
 }

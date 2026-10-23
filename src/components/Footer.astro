@@ -1,5 +1,6 @@
 ---
-import { CATEGORIES, SERIES } from '../data/categories';
+import { CATEGORIES } from '../data/categories';
+import { CHANNEL, SERIES, seriesUrl } from '../data/series.mjs';
 import Icon from './Icon.astro';
 
 const year = new Date().getFullYear();
@@ -13,6 +14,13 @@ const year = new Date().getFullYear();
       <p class="muted">In-depth, sourced explainers on building real systems with large language models.</p>
     </div>
 
+    <nav aria-label="Series" class="footer-col">
+      <h2>Series</h2>
+      <ul>
+        {SERIES.map((s) => <li><a href={seriesUrl(s.slug)}>{s.name}</a></li>)}
+      </ul>
+    </nav>
+
     <nav aria-label="Topics" class="footer-col">
       <h2>Topics</h2>
       <ul>
@@ -24,9 +32,8 @@ const year = new Date().getFullYear();
       <h2>Site</h2>
       <ul>
         <li><a href="/blog/">All articles</a></li>
-        <li><a href="/series/llm-system-design/">LLM System Design series</a></li>
         <li>
-          <a href={SERIES.playlist}><Icon name="play" size={18} /> Videos on YouTube</a>
+          <a href={CHANNEL.url}><Icon name="play" size={18} /> Videos on YouTube</a>
         </li>
         <li><a href="/tags/">Tags</a></li>
         <li><a href="/glossary/">Glossary</a></li>
@@ -69,7 +76,7 @@ const year = new Date().getFullYear();
 
   @media (min-width: 1024px) {
     .footer-grid {
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
     .footer-brand {
       grid-column: auto;

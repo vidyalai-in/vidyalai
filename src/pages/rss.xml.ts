@@ -7,9 +7,9 @@ export async function GET(context: APIContext) {
   const posts = await getPosts();
   return rss({
     title: 'VidyalAI',
-    description: 'Deep dives on designing production LLM systems.',
+    description: 'Deep dives on how large language models work, how they run fast, and how to build production systems with them.',
     site: context.site!,
-    items: posts.map((p) => ({
+    items: posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((p) => ({
       title: p.data.title,
       description: p.data.description,
       pubDate: p.data.pubDate,

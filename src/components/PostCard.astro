@@ -1,6 +1,6 @@
 ---
 import { getCategory } from '../data/categories';
-import { postUrl, type Post } from '../lib/posts';
+import { postUrl, seriesOf, type Post } from '../lib/posts';
 
 interface Props {
   post: Post;
@@ -13,7 +13,7 @@ const category = getCategory(post.data.category);
 
 <article class="card post-card">
   <p class="post-kicker">
-    <span class="part">Part {post.data.seriesOrder}</span>
+    <span class="part">{seriesOf(post).short} · Part {post.data.seriesOrder}</span>
     {showCategory && <span class="cat">{category.name}</span>}
   </p>
   <H><a class="card-link" href={postUrl(post)}>{post.data.title}</a></H>

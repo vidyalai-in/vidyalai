@@ -2,10 +2,11 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import profile from '../assets/brand/profile.png';
-import { CATEGORIES, SERIES } from '../data/categories';
+import { CATEGORIES } from '../data/categories';
+import { CHANNEL, SERIES, seriesUrl } from '../data/series.mjs';
 ---
 
-<Base title="About" description="VidyalAI publishes clear, sourced explainers on how to build real systems with large language models.">
+<Base title="About" description="VidyalAI publishes clear, sourced explainers on how large language models work, how they run fast, and how to build real systems with them.">
   <div class="container-narrow about">
     <header class="page-head about-head">
       <Image src={profile} alt="VidyalAI logo: an open book with glowing pixels rising from its pages." width={160} height={160} class="about-logo" />
@@ -17,13 +18,17 @@ import { CATEGORIES, SERIES } from '../data/categories';
 
     <div class="prose">
       <p>
-        VidyalAI is a learning resource for engineers who build with large language models. The goal is simple:
-        explain how real systems work, clearly enough to act on and with sources you can check.
+        VidyalAI is a learning resource for anyone curious about large language models, from first principles to
+        production. The goal is simple: explain how things really work, clearly enough to act on and with sources
+        you can check.
       </p>
+      <p>The articles come in three series:</p>
+      <ul>
+        {SERIES.map((s) => <li><a href={seriesUrl(s.slug)}>{s.name}</a>: {s.blurb}</li>)}
+      </ul>
       <p>
-        The first collection is the <a href="/series/llm-system-design/">{SERIES.name}</a> series: 25 deep dives on the
-        problems that come up when an LLM feature moves from demo to production. Each article follows the same
-        shape, so you can find what you need quickly:
+        The <a href={seriesUrl('llm-system-design')}>LLM System Design</a> articles follow the same shape, so you
+        can find what you need quickly:
       </p>
       <ul>
         <li><strong>TL;DR:</strong> the answer in one paragraph.</li>
@@ -34,8 +39,8 @@ import { CATEGORIES, SERIES } from '../data/categories';
         <li><strong>Further reading:</strong> the papers and docs behind each claim.</li>
       </ul>
       <p>
-        Articles are also being turned into videos with the same diagrams and numbers, collected in the
-        <a href={SERIES.playlist}>{SERIES.name} playlist on YouTube</a>.
+        Articles are also being turned into videos with the same diagrams and numbers, on the
+        <a href={CHANNEL.url}>VidyalAI YouTube channel</a>.
       </p>
       <h2>Topics</h2>
       <ul>
