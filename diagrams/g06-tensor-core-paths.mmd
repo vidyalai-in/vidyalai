@@ -1,0 +1,18 @@
+flowchart LR
+  G["Global memory:<br/>tiles of A and B"]
+  subgraph ADA["Ada, sm_89 (this laptop, measured)"]
+    A1["cp.async:<br/>16 bytes per thread"] --> A2["Shared memory:<br/>swizzled tiles"]
+    A2 --> A3["ldmatrix:<br/>fragments into registers"]
+    A3 --> A4["mma.sync, one warp:<br/>sums in registers"]
+  end
+  subgraph HOP["Hopper, sm_90a (docs only)"]
+    H1["TMA: one thread<br/>copies a whole tile"] --> H2["Shared memory"]
+    H2 --> H3["wgmma, four warps:<br/>B read from shared memory"]
+  end
+  subgraph BW["Blackwell, sm_100a (docs only)"]
+    B1["TMA copy"] --> B2["Shared memory"]
+    B2 --> B3["tcgen05.mma, one thread:<br/>sums in tensor memory"]
+  end
+  G --> A1
+  G --> H1
+  G --> B1

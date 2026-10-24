@@ -1,0 +1,18 @@
+flowchart LR
+  PY["Python function<br/>with @triton.jit"]
+  subgraph T["Triton compiler, first launch"]
+    TTIR["Triton IR<br/>(tensors of pointers)"]
+    TTGIR["TritonGPU IR<br/>(layouts, coalescing,<br/>tensor cores, pipelining)"]
+    LLIR["LLVM IR<br/>(per-thread code)"]
+    PTX["PTX<br/>(virtual GPU assembly)"]
+  end
+  CUBIN["cubin with SASS<br/>(machine code)"]
+  CACHE["On-disk cache<br/>(~/.triton/cache)"]
+  RUN["Kernel launch<br/>on the GPU"]
+  PY -->|"trace with argument<br/>types and constants"| TTIR
+  TTIR -->|"num_warps,<br/>num_stages"| TTGIR
+  TTGIR --> LLIR
+  LLIR -->|"LLVM NVPTX<br/>backend"| PTX
+  PTX -->|"ptxas"| CUBIN
+  CUBIN --> CACHE
+  CUBIN --> RUN

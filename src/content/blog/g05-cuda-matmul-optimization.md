@@ -259,7 +259,7 @@ PyTorch calls the same library. With TF32 disabled (`torch.backends.cuda.matmul.
 
 ### Why LLMs use tensor cores instead
 
-Everything above runs on the CUDA cores. LLM matmuls run in BF16 or FP8 on **tensor cores**, units that do a small matrix multiply per instruction. Part 4 measured cuBLAS at 24.9 BF16 TFLOPS on this laptop against 6.1 in FP32, four times more. The CUTLASS guide notes that the warp-level step "may be implemented either by TensorCores issuing mma.sync or wmma instructions, or by thread-level matrix computations issued to CUDA cores." The block tiles, shared-memory staging and pipelining stay; the 8 × 8 outer product of FMAs becomes one tensor-core instruction. Part 6 writes that kernel.
+Everything above runs on the CUDA cores. LLM matmuls run in BF16 or FP8 on **tensor cores**, units that do a small matrix multiply per instruction. Part 4 measured cuBLAS at 24.9 BF16 TFLOPS on this laptop against 6.1 in FP32, four times more. The CUTLASS guide notes that the warp-level step "may be implemented either by TensorCores issuing mma.sync or wmma instructions, or by thread-level matrix computations issued to CUDA cores." The block tiles, shared-memory staging and pipelining stay; the 8 × 8 outer product of FMAs becomes one tensor-core instruction. [Part 6](/blog/tensor-cores/) writes that kernel.
 
 ### Why decode doesn't care
 
@@ -283,7 +283,7 @@ Tiling only helps when values are used more than once. A decode step at batch si
 
 ## What's next
 
-This kernel tops out near 6 TFLOPS because CUDA cores do one multiply-add per lane per clock. Part 6, Tensor cores, replaces the innermost loop with instructions that multiply whole tiles at once: what an MMA instruction does, WMMA and mma.sync, data layouts and swizzling, FP16, BF16 and FP8 on this GPU, and a measured tensor-core matmul against the CUDA-core one built here.
+This kernel tops out near 6 TFLOPS because CUDA cores do one multiply-add per lane per clock. [Part 6](/blog/tensor-cores/), Tensor cores, replaces the innermost loop with instructions that multiply whole tiles at once: what an MMA instruction does, WMMA and mma.sync, data layouts and swizzling, FP16, BF16 and FP8 on this GPU, and a measured tensor-core matmul against the CUDA-core one built here.
 
 ## Further reading
 
