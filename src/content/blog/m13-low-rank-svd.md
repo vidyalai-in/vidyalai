@@ -425,7 +425,7 @@ Muon, from Part 9, replaces each momentum matrix $$U\Sigma V^{\top}$$ by $$UV^{\
 
 ## What's next
 
-Step 4 ended with a contest that rounding won: 4-bit numbers kept Qwen almost intact at a quarter of the storage. Part 14, Floating point and quantization math, explains why. It takes apart how computers store decimals (sign, exponent and mantissa), compares FP32, BF16, FP8 and FP4, and works out the error that scales, zero points and group sizes leave behind.
+Step 4 ended with a contest that rounding won: 4-bit numbers kept Qwen almost intact at a quarter of the storage. [Part 14](/blog/floating-point-math/), Floating point and quantization math, explains why. It takes apart how computers store decimals (sign, exponent and mantissa), compares FP32, BF16, FP8 and FP4, and works out the error that scales, zero points and group sizes leave behind.
 
 ## Further reading
 

@@ -184,7 +184,7 @@ $$
 
 The backward pass is twice the forward, and a training step is three times it. Each row of $$X$$ is a token, so per token a matrix with $$N = kn$$ weights costs $$2N$$ FLOPs forward and $$4N$$ backward. For Llama 3.1 8B's 4,096 × 14,336 MLP matrix, that's 117.4 million FLOPs per token going forward and 234.9 million coming back.
 
-Add that up over every weight $$N$$ in the model and every training token $$D$$ and you get $$6ND$$, the rule [Fundamentals Part 12](/blog/pretraining-scaling-laws/) used to check Llama 3.1 405B's compute budget. Part 15 derives it properly, with what this count leaves out (attention's token-to-token products, the free embedding lookup). The [scaling-laws paper](https://arxiv.org/abs/2001.08361) puts the backward pass at "approximately twice the compute as the forwards pass". Activations, softmax and norms add only a few FLOPs per number in either direction.
+Add that up over every weight $$N$$ in the model and every training token $$D$$ and you get $$6ND$$, the rule [Fundamentals Part 12](/blog/pretraining-scaling-laws/) used to check Llama 3.1 405B's compute budget. [Part 15](/blog/counting-flops-scaling-laws/) derives it properly, with what this count leaves out (attention's token-to-token products, the free embedding lookup). The [scaling-laws paper](https://arxiv.org/abs/2001.08361) puts the backward pass at "approximately twice the compute as the forwards pass". Activations, softmax and norms add only a few FLOPs per number in either direction.
 
 ## Step 4: activations and the output layer
 

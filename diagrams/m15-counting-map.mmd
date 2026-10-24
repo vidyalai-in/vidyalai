@@ -1,0 +1,9 @@
+flowchart TD
+  CFG["config.json<br/>(d, layers, heads,<br/>d_ff, vocab)"] --> N["Parameters N<br/>(exact count)"]
+  CFG --> KV["KV cache<br/>per token:<br/>2 x layers x n_kv<br/>x d_head x bytes"]
+  N --> F["Training FLOPs<br/>6ND + attention"]
+  N --> MEM["Training memory<br/>16 bytes per parameter<br/>+ activations"]
+  F --> T["Training time<br/>C / (GPUs x peak x MFU)"]
+  LOSS["Fitted loss<br/>E + A/N^alpha<br/>+ B/D^beta"] --> OPT["Compute-optimal<br/>N_opt and D_opt"]
+  F --> OPT
+  OPT --> INF["Add inference<br/>cost: smaller N,<br/>more data"]

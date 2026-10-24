@@ -1,0 +1,12 @@
+flowchart TD
+  J["Maximize the<br/>expected reward"] --> RF["REINFORCE:<br/>reward ×<br/>grad log π"]
+  RF --> ADV["Subtract a<br/>baseline:<br/>A = r − b"]
+  ADV --> PPO["PPO: reuse<br/>samples with<br/>a clipped ratio"]
+  ADV --> GRPO["GRPO: the<br/>group mean<br/>is the baseline"]
+  PPO --> GRPO
+  BT["Bradley-Terry:<br/>P(win) = σ(gap)"] --> RM["Reward model<br/>from pairs"]
+  RM --> KLO["RLHF objective:<br/>reward − β × KL"]
+  KLO --> OPT["Exact optimum:<br/>π_ref × e^(r/β), normalized"]
+  OPT --> DPO["DPO: solve for r,<br/>plug into<br/>Bradley-Terry"]
+  BT --> DPO
+  RM -.->|"optimized with"| PPO

@@ -1,0 +1,6 @@
+flowchart TD
+  M["FP32 master weights"] --> C["Round to a BF16 copy"]
+  C --> F["Forward and backward passes<br/>in BF16, sums in FP32"]
+  F --> G["16-bit gradients<br/>(FP16: loss scaled by S,<br/>divide by S here)"]
+  G --> A["Adam update in FP32:<br/>tiny steps survive"]
+  A -->|"next step"| M
