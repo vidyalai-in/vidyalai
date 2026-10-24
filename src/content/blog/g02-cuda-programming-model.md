@@ -127,7 +127,7 @@ The rated bandwidth is 256 GB/s: a 128-bit bus at 16 gigabits per second per pin
 | `cudaMemcpy` device to device | 537 MB | 2.373 ms | 226.3 | 88% |
 | Copy kernel, `c[i] = a[i]` | 537 MB | 2.381 ms | 225.5 | 88% |
 
-Pure reads and pure writes come within 3% of the rating. Any mix, including NVIDIA's `cudaMemcpy`, levels off near 226 GB/s; Part 3 looks at why. So the first kernel you write already matches NVIDIA's copy routine. That's normal for simple memory-bound kernels: the gains come from not running them at all, by fusing them into neighbors (Part 9).
+Pure reads and pure writes come within 3% of the rating. Any mix, including NVIDIA's `cudaMemcpy`, levels off near 226 GB/s; [Part 3](/blog/gpu-memory-hierarchy/) looks at why. So the first kernel you write already matches NVIDIA's copy routine. That's normal for simple memory-bound kernels: the gains come from not running them at all, by fusing them into neighbors (Part 9).
 
 NVIDIA's Nsight Compute profiler (`ncu`, covered in Part 4) confirms the byte count: 537.0 MB read from DRAM and 254.7 MB written, against 536.9 MB and 268.4 MB expected. The missing 14 MB of writes was likely still in the 32 MB L2 cache when the kernel ended.
 
@@ -158,7 +158,7 @@ Now shrink the array, with the L2 cache overwritten by 64 MB of other data befor
 | 2^24 (16,777,216) | 201 MB | 904 µs | 223 |
 | 2^26 (67,108,864) | 805 MB | 3,558 µs | 226 |
 
-Below a few hundred thousand elements, a fixed cost of roughly 5 µs per launch dominates, as Part 1 found for small matrix multiplies. Above 16 million, the kernel sits at the bandwidth limit. Skip the cache flush and the 2^20 case, which fits in L2, runs at 768 GB/s, three times what DRAM allows; Part 3 measures that hierarchy.
+Below a few hundred thousand elements, a fixed cost of roughly 5 µs per launch dominates, as Part 1 found for small matrix multiplies. Above 16 million, the kernel sits at the bandwidth limit. Skip the cache flush and the 2^20 case, which fits in L2, runs at 768 GB/s, three times what DRAM allows; [Part 3](/blog/gpu-memory-hierarchy/) measures that hierarchy.
 
 ## Step 3: warps, SIMT and divergence
 
@@ -238,7 +238,7 @@ The Best Practices Guide suggests an experiment: reserve shared memory the kerne
 | 48 KB | 2 | 33% | 27% | 224.5 |
 | 60 KB | 1 | 17% | 16% | 141.5 |
 
-Too little hurts: with one 8-warp block per SM, bandwidth falls to 142 GB/s, because 8 warps can't keep enough loads in flight to cover memory latency. But the fastest runs came at 50 to 67%, not 100%, like the 1,024-thread blocks in Step 2 (also 67%). The Best Practices Guide says as much: "higher occupancy does not always equate to higher performance," but "low occupancy always interferes with the ability to hide memory latency." Why full occupancy is slower here isn't settled by these counters; more warps means more interleaved access streams for DRAM to serve, and Part 3 looks at access patterns.
+Too little hurts: with one 8-warp block per SM, bandwidth falls to 142 GB/s, because 8 warps can't keep enough loads in flight to cover memory latency. But the fastest runs came at 50 to 67%, not 100%, like the 1,024-thread blocks in Step 2 (also 67%). The Best Practices Guide says as much: "higher occupancy does not always equate to higher performance," but "low occupancy always interferes with the ability to hide memory latency." Why full occupancy is slower here isn't settled by these counters; more warps means more interleaved access streams for DRAM to serve, and [Part 3](/blog/gpu-memory-hierarchy/) looks at access patterns.
 
 ### Too few blocks
 
@@ -354,7 +354,7 @@ LLM kernels are the same model at larger scale. [FlashAttention-2](https://arxiv
 
 ## What's next
 
-The vector add touches each byte once, so all it needs from memory is raw bandwidth. Real kernels reuse data, and that's where the GPU's memory hierarchy comes in. Part 3 measures it level by level, from registers and shared memory to the L2 cache and DRAM, and shows how the order in which threads touch memory can cost you most of that bandwidth.
+The vector add touches each byte once, so all it needs from memory is raw bandwidth. Real kernels reuse data, and that's where the GPU's memory hierarchy comes in. [Part 3](/blog/gpu-memory-hierarchy/) measures it level by level, from registers and shared memory to the L2 cache and DRAM, and shows how the order in which threads touch memory can cost you most of that bandwidth.
 
 ## Further reading
 

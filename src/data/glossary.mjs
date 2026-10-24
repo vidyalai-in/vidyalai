@@ -2243,6 +2243,38 @@ export const GLOSSARY = [
 
   // ---------- Serving ----------
   {
+    id: 'memory-coalescing',
+    term: 'Memory coalescing',
+    match: ['memory coalescing', 'coalesced', 'coalescing'],
+    def: "The GPU combining the addresses of a warp's 32 threads into as few 32-byte memory transactions as possible. Consecutive threads reading consecutive words need the fewest.",
+    article: 'gpu-memory-hierarchy',
+    source: { title: 'CUDA Programming Guide: writing CUDA kernels (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html' },
+  },
+  {
+    id: 'bank-conflict',
+    term: 'Bank conflict',
+    match: ['bank conflict', 'bank conflicts'],
+    def: "When threads of one warp access different addresses in the same one of shared memory's 32 banks, so the hardware serializes the accesses.",
+    article: 'gpu-memory-hierarchy',
+    source: { title: 'CUDA Programming Guide: writing CUDA kernels (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html' },
+  },
+  {
+    id: 'register-spill',
+    term: 'Register spill',
+    match: ['register spill', 'register spills', 'local memory'],
+    def: 'When a kernel needs more registers than it can get, the compiler stores values in per-thread local memory, which physically lives in DRAM and is cached in L1 and L2.',
+    article: 'gpu-memory-hierarchy',
+    source: { title: 'CUDA Programming Guide: writing CUDA kernels (NVIDIA)', url: 'https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html' },
+  },
+  {
+    id: 'l2-cache',
+    term: 'L2 cache',
+    match: ['L2 cache'],
+    def: "The GPU's last on-chip cache, shared by all SMs. All traffic to DRAM goes through it: 32 MB on an RTX 4060 Laptop GPU, 50 MB on an H100.",
+    article: 'gpu-memory-hierarchy',
+    source: { title: 'Nsight Compute Kernel Profiling Guide (NVIDIA)', url: 'https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html' },
+  },
+  {
     id: 'warp',
     term: 'Warp',
     match: ['warp', 'warps'],

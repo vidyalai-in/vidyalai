@@ -1,0 +1,10 @@
+flowchart TD
+  subgraph SMX["Inside each of the 24 SMs"]
+    REG["Registers<br/>256 KB per SM<br/>4.6 cycles"]
+    L1["L1 cache + shared memory<br/>128 KB per SM<br/>30 to 40 cycles<br/>about 6 TB/s in total"]
+  end
+  L2["L2 cache<br/>32 MB for all SMs<br/>264 cycles<br/>about 1.4 TB/s"]
+  DRAM["GDDR6 DRAM, off the chip<br/>8 GB: global and local memory<br/>about 610 cycles<br/>about 250 GB/s"]
+  REG --- L1
+  L1 ---|"32-byte sectors"| L2
+  L2 ---|"128-bit bus"| DRAM
