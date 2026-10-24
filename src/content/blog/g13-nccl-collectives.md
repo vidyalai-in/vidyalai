@@ -332,7 +332,7 @@ The idea has moved into NCCL itself. "Starting with version 2.28, NCCL provides 
 
 ## What's next
 
-Everything in this series so far has run on NVIDIA hardware and software. Part 14 looks at the alternatives: AMD's ROCm and MI-series GPUs, Apple's Metal and MLX, Google's TPUs and XLA, AWS Trainium, Groq, Cerebras and others, and how the same ideas, from memory bandwidth to collectives, map onto each.
+Everything in this series so far has run on NVIDIA hardware and software. [Part 14](/blog/ai-accelerators/) looks at the alternatives: AMD's ROCm and MI-series GPUs, Apple's Metal and MLX, Google's TPUs and XLA, AWS Trainium, Groq, Cerebras and others, and how the same ideas, from memory bandwidth to collectives, map onto each.
 
 ## Further reading
 

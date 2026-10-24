@@ -1,0 +1,9 @@
+flowchart LR
+  H["Weight tile from HBM<br/>loaded once;<br/>next tile preloads"] -->|"shifted in"| A
+  X["Activation rows x<br/>from on-chip buffer"] -->|"left edge,<br/>row k starts k cycles late"| A
+  subgraph A["Systolic array: K rows by N columns of PEs"]
+    direction TB
+    P1["PE at row k, column j<br/>keeps one weight w<br/>each cycle adds w × x<br/>to the partial sum"] -->|"x moves right"| P2["PE at row k,<br/>column j+1"]
+    P1 -->|"partial sum moves down"| P3["PE at row k+1,<br/>column j"]
+  end
+  A -->|"bottom edge emits outputs,<br/>column j one cycle<br/>after column j-1"| Y["Accumulators,<br/>then the vector unit"]

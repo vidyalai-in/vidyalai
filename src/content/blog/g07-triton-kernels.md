@@ -319,7 +319,7 @@ Triton's "Fused Attention" tutorial is "a Triton implementation of the Flash Att
 
 LinkedIn's [Liger-Kernel](https://arxiv.org/abs/2410.10989), Triton kernels for LLM training such as RMSNorm, RoPE, SwiGLU and fused cross-entropy, reports "on average a 20% increase in training throughput and a 60% reduction in GPU memory usage" against Hugging Face implementations. [Unsloth](https://github.com/unslothai/unsloth)'s fine-tuning library keeps Triton kernels for RMSNorm, LayerNorm, RoPE, SwiGLU and cross-entropy in its `unsloth/kernels` folder. Both target the memory-bound operations around the matmuls, where Step 2 showed fusion pays.
 
-Triton's sweet spot is what this article measured: memory-bound fused kernels and standard tiled matmuls. Kernels that need warp-level control, unusual shared-memory layouts or the newest data center instructions are still written in CUDA C++, often with CUTLASS, or in Gluon. Triton also has an AMD backend, and its matmul tutorial claims performance "on par with cuBLAS or rocBLAS," AMD's library; Part 14 returns to AMD GPUs.
+Triton's sweet spot is what this article measured: memory-bound fused kernels and standard tiled matmuls. Kernels that need warp-level control, unusual shared-memory layouts or the newest data center instructions are still written in CUDA C++, often with CUTLASS, or in Gluon. Triton also has an AMD backend, and its matmul tutorial claims performance "on par with cuBLAS or rocBLAS," AMD's library; [Part 14](/blog/ai-accelerators/) returns to AMD GPUs.
 
 ## Common misconceptions
 

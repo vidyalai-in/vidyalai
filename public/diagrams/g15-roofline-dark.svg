@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 500" width="780" height="500" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="500" fill="#0b162d"/>
+<line x1="78.0" x2="78.0" y1="24" y2="438" stroke="#22355a" stroke-width="1"/>
+<text x="78.0" y="458" fill="#9fb0cf" font-size="13" text-anchor="middle">0.1</text>
+<line x1="247.5" x2="247.5" y1="24" y2="438" stroke="#22355a" stroke-width="1"/>
+<text x="247.5" y="458" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<line x1="417.0" x2="417.0" y1="24" y2="438" stroke="#22355a" stroke-width="1"/>
+<text x="417.0" y="458" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<line x1="586.5" x2="586.5" y1="24" y2="438" stroke="#22355a" stroke-width="1"/>
+<text x="586.5" y="458" fill="#9fb0cf" font-size="13" text-anchor="middle">100</text>
+<line x1="756.0" x2="756.0" y1="24" y2="438" stroke="#22355a" stroke-width="1"/>
+<text x="756.0" y="458" fill="#9fb0cf" font-size="13" text-anchor="middle">1000</text>
+<line x1="78" x2="756" y1="438.0" y2="438.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="442.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.001</text>
+<line x1="78" x2="756" y1="348.0" y2="348.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="352.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.01</text>
+<line x1="78" x2="756" y1="258.1" y2="258.1" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="262.1" fill="#9fb0cf" font-size="13" text-anchor="end">0.1</text>
+<line x1="78" x2="756" y1="168.1" y2="168.1" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="172.1" fill="#9fb0cf" font-size="13" text-anchor="end">1</text>
+<line x1="78" x2="756" y1="78.2" y2="78.2" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="82.2" fill="#9fb0cf" font-size="13" text-anchor="end">10</text>
+<text x="417.0" y="486" fill="#e8eefc" font-size="14" text-anchor="middle">Arithmetic intensity (FLOPs per byte, log scale)</text>
+<text transform="translate(20,231.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">TFLOPS (log scale)</text>
+<polyline fill="none" stroke="#e8eefc" stroke-width="2.5" points="78.0,312.4 587.8,41.9 756.0,41.9"/>
+<text x="579.8" y="33.9" fill="#e8eefc" font-size="13" text-anchor="end">BF16 tensor cores: 25.3 TFLOPS</text>
+<text transform="translate(112.6,284.1) rotate(-28.0)" fill="#e8eefc" font-size="13">DRAM: 248.7 GB/s</text>
+<text x="593.8" y="33.9" fill="#9fb0cf" font-size="12">ridge ≈ 102</text>
+<circle cx="247.5" cy="223.7" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="227.5" y="219.7" fill="#e8eefc" font-size="14" font-weight="bold">A</text>
+<circle cx="247.5" cy="231.4" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="256.5" y="245.4" fill="#e8eefc" font-size="14" font-weight="bold">B</text>
+<circle cx="379.4" cy="176.8" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="389.4" y="181.8" fill="#e8eefc" font-size="14" font-weight="bold">C</text>
+<circle cx="379.4" cy="268.9" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="389.4" y="273.9" fill="#e8eefc" font-size="14" font-weight="bold">D</text>
+<circle cx="183.6" cy="381.9" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="163.6" y="386.9" fill="#e8eefc" font-size="14" font-weight="bold">E</text>
+<circle cx="233.8" cy="292.6" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="243.8" y="297.6" fill="#e8eefc" font-size="14" font-weight="bold">F</text>
+<circle cx="196.5" cy="370.0" r="5" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="206.5" y="375.0" fill="#e8eefc" font-size="14" font-weight="bold">G</text>
+<circle cx="344.8" cy="180.0" r="5" fill="#0b162d" stroke="#38bdf8" stroke-width="2.5"/>
+<text x="322.8" y="174.0" fill="#e8eefc" font-size="14" font-weight="bold">H</text>
+<circle cx="500.8" cy="91.3" r="5" fill="#0b162d" stroke="#38bdf8" stroke-width="2.5"/>
+<text x="510.8" y="105.3" fill="#e8eefc" font-size="14" font-weight="bold">I</text>
+<circle cx="597.1" cy="51.4" r="5" fill="#0b162d" stroke="#38bdf8" stroke-width="2.5"/>
+<text x="591.1" y="73.4" fill="#e8eefc" font-size="14" font-weight="bold">J</text>
+<circle cx="379.4" cy="153.7" r="5" fill="#0b162d" stroke="#38bdf8" stroke-width="2.5"/>
+<text x="389.4" y="151.7" fill="#e8eefc" font-size="14" font-weight="bold">K</text>
+</svg>

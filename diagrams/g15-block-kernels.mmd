@@ -1,0 +1,16 @@
+flowchart TD
+    subgraph ATT["Attention half: 10 kernels"]
+        direction LR
+        A["Add + RMSNorm<br/>1 Triton"] --> B["Q, K, V GEMVs<br/>3 cuBLAS"]
+        B --> C["RoPE + cache writes<br/>3 Triton"]
+        C --> D["Split-KV attention<br/>2 Triton"]
+        D --> E["O GEMV<br/>1 cuBLAS"]
+    end
+    subgraph MLP["MLP half: 5 kernels"]
+        direction LR
+        F["Add + RMSNorm<br/>1 Triton"] --> G["Gate, up GEMVs<br/>2 cuBLAS"]
+        G --> H["SwiGLU<br/>1 Triton"]
+        H --> I["Down GEMV<br/>1 cuBLAS"]
+    end
+    ATT --> MLP
+    MLP --> J["Next block: same 15 kernels"]
