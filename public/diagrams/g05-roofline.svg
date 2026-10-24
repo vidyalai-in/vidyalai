@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="78.0" x2="78.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="78.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">2</text>
+<line x1="253.6" x2="253.6" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="253.6" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">10</text>
+<line x1="504.8" x2="504.8" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="504.8" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">100</text>
+<line x1="756.0" x2="756.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="756.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">1000</text>
+<line x1="78" x2="756" y1="363.6" y2="363.6" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="367.6" fill="#4a5b78" font-size="13" text-anchor="end">0.1</text>
+<line x1="78" x2="756" y1="216.0" y2="216.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="220.0" fill="#4a5b78" font-size="13" text-anchor="end">1</text>
+<line x1="78" x2="756" y1="68.4" y2="68.4" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="72.4" fill="#4a5b78" font-size="13" text-anchor="end">10</text>
+<text x="417.0" y="456" fill="#0b1a33" font-size="14" text-anchor="middle">FLOPs per byte of DRAM traffic (log scale)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">FP32 TFLOPS (log scale)</text>
+<polyline fill="none" stroke="#0b1a33" stroke-width="2.5" points="78.0,260.8 431.7,53.0 756.0,53.0"/>
+<line x1="390.9" y1="76.9" x2="756.0" y2="76.9" stroke="#4a5b78" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="756.0" y="45.0" fill="#0b1a33" font-size="13" text-anchor="end">FP32 roof at 2,159 MHz: 12.7 TFLOPS</text>
+<text x="756.0" y="94.9" fill="#4a5b78" font-size="13" text-anchor="end">FP32 peak at 1,425 MHz: 8.8 TFLOPS</text>
+<text transform="translate(106.6,233.9) rotate(-30.4)" fill="#0b1a33" font-size="13">DRAM: 248.7 GB/s</text>
+<circle cx="302.1" cy="363.6" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="311.1" y="368.6" fill="#0b1a33" font-size="13" font-weight="bold">1</text>
+<circle cx="302.8" cy="242.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="311.8" y="247.0" fill="#0b1a33" font-size="13" font-weight="bold">2</text>
+<circle cx="302.8" cy="217.5" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="311.8" y="222.5" fill="#0b1a33" font-size="13" font-weight="bold">3</text>
+<circle cx="377.0" cy="155.9" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="386.0" y="160.9" fill="#0b1a33" font-size="13" font-weight="bold">4</text>
+<circle cx="453.2" cy="129.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="462.2" y="143.0" fill="#0b1a33" font-size="13" font-weight="bold">5</text>
+<circle cx="446.5" cy="135.2" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="430.5" y="145.2" fill="#0b1a33" font-size="13" font-weight="bold">6</text>
+<circle cx="475.6" cy="112.1" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="484.6" y="124.1" fill="#0b1a33" font-size="13" font-weight="bold">6b</text>
+<circle cx="488.5" cy="107.7" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="497.5" y="103.7" fill="#0b1a33" font-size="13" font-weight="bold">7</text>
+<circle cx="448.9" cy="100.1" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="430.9" y="96.1" fill="#0b1a33" font-size="13" font-weight="bold">8</text>
+<circle cx="596.5" cy="105.9" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="2"/>
+<text x="605.5" y="110.9" fill="#0b1a33" font-size="13" font-weight="bold">cuBLAS</text>
+</svg>

@@ -2515,6 +2515,46 @@ export const GLOSSARY = [
 
   // ---------- Serving ----------
   {
+    id: 'fused-multiply-add',
+    term: 'Fused multiply-add (FMA)',
+    match: ['fused multiply-add', 'fused multiply-adds', 'FMA', 'FMAs'],
+    def: 'One instruction that computes a × b + c with a single rounding, counted as two floating-point operations. A matrix multiply is almost entirely FMAs.',
+    article: 'cuda-matmul-optimization',
+    source: { title: 'NVIDIA Ada GPU Architecture whitepaper (NVIDIA)', url: 'https://images.nvidia.com/aem-dam/Solutions/geforce/ada/nvidia-ada-gpu-architecture.pdf' },
+  },
+  {
+    id: 'register-blocking',
+    term: 'Register blocking',
+    match: ['register blocking', 'register tiling'],
+    def: 'Giving each GPU thread a small tile of outputs, so every value it loads into registers feeds several multiply-adds.',
+    article: 'cuda-matmul-optimization',
+    source: { title: 'Efficient GEMM in CUDA (NVIDIA CUTLASS docs)', url: 'https://github.com/NVIDIA/cutlass/blob/main/media/docs/cpp/efficient_gemm.md' },
+  },
+  {
+    id: 'double-buffering',
+    term: 'Double buffering',
+    match: ['double buffering', 'software pipelining'],
+    def: 'Keeping two copies of a tile so the next one loads while the current one is being computed on, hiding memory latency.',
+    article: 'cuda-matmul-optimization',
+    source: { title: 'Efficient GEMM in CUDA (NVIDIA CUTLASS docs)', url: 'https://github.com/NVIDIA/cutlass/blob/main/media/docs/cpp/efficient_gemm.md' },
+  },
+  {
+    id: 'split-k',
+    term: 'Split-K',
+    match: ['split-K'],
+    def: "Splitting a matrix multiply's inner dimension across thread blocks and summing the partial results, to fill the GPU when the output is small.",
+    article: 'cuda-matmul-optimization',
+    source: { title: 'Efficient GEMM in CUDA (NVIDIA CUTLASS docs)', url: 'https://github.com/NVIDIA/cutlass/blob/main/media/docs/cpp/efficient_gemm.md' },
+  },
+  {
+    id: 'cutlass',
+    term: 'CUTLASS',
+    match: ['CUTLASS'],
+    def: "NVIDIA's open-source CUDA C++ templates for writing fast matrix-multiply kernels on CUDA cores and tensor cores.",
+    article: 'cuda-matmul-optimization',
+    source: { title: 'CUTLASS (NVIDIA, GitHub)', url: 'https://github.com/NVIDIA/cutlass' },
+  },
+  {
     id: 'nsight-compute',
     term: 'Nsight Compute',
     match: ['Nsight Compute'],

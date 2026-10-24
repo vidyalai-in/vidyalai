@@ -300,7 +300,7 @@ The dimensions are from the [Llama 3 paper](https://arxiv.org/abs/2407.21783). N
 
 ### Why tiling is the core of fast kernels
 
-The transpose used shared memory to fix an access pattern; matrix multiplication uses it to reuse data. In an N × N matmul each input element is needed N times. Load 32 × 32 tiles into shared memory and each element fetched from DRAM or L2 is used 32 times, a 32-fold cut in global traffic. Part 5 builds that kernel step by step and measures it against cuBLAS. [FlashAttention](/blog/flashattention/) is the same idea applied to attention: tiles of queries, keys and values sized to fit shared memory, so the n × n score matrix never leaves the chip. On this GPU, shared memory delivered about 24 times DRAM's bandwidth; the [FlashAttention paper](https://arxiv.org/abs/2205.14135) estimated about 10 times on the A100 ("around 19TB/s" against 1.5 to 2.0 TB/s of HBM).
+The transpose used shared memory to fix an access pattern; matrix multiplication uses it to reuse data. In an N × N matmul each input element is needed N times. Load 32 × 32 tiles into shared memory and each element fetched from DRAM or L2 is used 32 times, a 32-fold cut in global traffic. [Part 5](/blog/cuda-matmul-optimization/) builds that kernel step by step and measures it against cuBLAS. [FlashAttention](/blog/flashattention/) is the same idea applied to attention: tiles of queries, keys and values sized to fit shared memory, so the n × n score matrix never leaves the chip. On this GPU, shared memory delivered about 24 times DRAM's bandwidth; the [FlashAttention paper](https://arxiv.org/abs/2205.14135) estimated about 10 times on the A100 ("around 19TB/s" against 1.5 to 2.0 TB/s of HBM).
 
 ### Data center GPUs
 

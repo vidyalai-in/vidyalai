@@ -1,0 +1,14 @@
+flowchart LR
+  M["Global memory:<br/>A and B, 4,096 × 4,096<br/>floats each"]
+  subgraph B["Thread block, 1 of 1,024:<br/>a 128 × 128 tile of C"]
+    S["Shared memory:<br/>128 × 8 slice of A,<br/>8 × 128 slice of B"]
+  end
+  subgraph T["Thread, 1 of 256:<br/>an 8 × 8 tile of C"]
+    R["Registers:<br/>8 values of A,<br/>8 of B"]
+    ACC["64 running sums"]
+  end
+  C["Global memory:<br/>C, written once"]
+  M -->|"each element loaded<br/>by 32 blocks"| S
+  S -->|"each value read<br/>by 16 threads"| R
+  R -->|"64 FMAs per<br/>16 values"| ACC
+  ACC -->|"after 512<br/>slices"| C

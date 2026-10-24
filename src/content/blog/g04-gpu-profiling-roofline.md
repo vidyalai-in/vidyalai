@@ -342,7 +342,7 @@ Nsight Compute's guide notes that "hierarchical roofline overlays can separate L
 
 ## What's next
 
-The matmuls on this chart came from cuBLAS and sat right under the roof. Part 5, Writing a fast matmul, step by step, builds one by hand: a naive kernel first, then coalescing, shared-memory tiling, register blocking and vectorized loads, measuring GFLOPS and placing each version on this roofline until it closes in on cuBLAS.
+The matmuls on this chart came from cuBLAS and sat right under the roof. [Part 5](/blog/cuda-matmul-optimization/), Writing a fast matmul, step by step, builds one by hand: a naive kernel first, then coalescing, shared-memory tiling, register blocking and vectorized loads, measuring GFLOPS and placing each version on this roofline until it closes in on cuBLAS.
 
 ## Further reading
 
