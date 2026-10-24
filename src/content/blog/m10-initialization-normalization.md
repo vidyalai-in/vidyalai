@@ -367,7 +367,7 @@ So in the standard setup, the best learning rate shrinks as the model gets wider
 
 ## What's next
 
-Attention has its own size problem: the dot product of a query and a key grows with the head's width. Part 11, The math of attention, derives scaled dot-product attention, explains its division by the square root of d with this part's variance rules, and works through the softmax's Jacobian, the cost of long contexts, and grouped-query and latent attention as factorizations.
+Attention has its own size problem: the dot product of a query and a key grows with the head's width. [Part 11](/blog/attention-math/), The math of attention, derives scaled dot-product attention, explains its division by the square root of d with this part's variance rules, and works through the softmax's Jacobian, the cost of long contexts, and grouped-query and latent attention as factorizations.
 
 ## Further reading
 

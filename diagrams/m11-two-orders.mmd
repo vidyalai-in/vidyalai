@@ -1,0 +1,13 @@
+flowchart LR
+  IN["Q, K, V<br/>n tokens x d numbers"]
+  subgraph SOFT["Softmax attention: multiply Q and K first"]
+    S1["Scores Q times K-transpose<br/>n x n grid"] --> S2["Add mask,<br/>softmax each row"]
+    S2 --> S3["Weights times V<br/>cost grows with n squared"]
+  end
+  subgraph LIN["Linear attention: multiply K and V first"]
+    L1["phi(K)-transpose times V<br/>d x d state"] --> L2["phi(Q) times state<br/>cost grows with n"]
+  end
+  IN --> S1
+  IN --> L1
+  S3 --> OUT["Output<br/>n x d"]
+  L2 --> OUT

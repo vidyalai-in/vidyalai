@@ -242,7 +242,7 @@ $$
 \frac{\partial p_i}{\partial z_j} = p_i (\delta_{ij} - p_j)
 $$
 
-where $$\delta_{ij}$$ is 1 when $$i = j$$ and 0 otherwise ([Part 7](/blog/derivatives-gradients/) builds these rates of change from scratch). For [2, 1, 0], raising the first score by 0.001 moved the probabilities by 0.000223, -0.000163 and -0.000060, matching $$0.665 \times 0.335$$, $$-0.245 \times 0.665$$ and $$-0.090 \times 0.665$$ per unit. A token's own rate, $$p(1 - p)$$, shrinks toward 0 as $$p$$ nears 1, which is why a nearly one-hot softmax stops learning ([Fundamentals Part 5](/blog/attention-explained/) shows this inside attention). Part 11 covers the full grid of rates.
+where $$\delta_{ij}$$ is 1 when $$i = j$$ and 0 otherwise ([Part 7](/blog/derivatives-gradients/) builds these rates of change from scratch). For [2, 1, 0], raising the first score by 0.001 moved the probabilities by 0.000223, -0.000163 and -0.000060, matching $$0.665 \times 0.335$$, $$-0.245 \times 0.665$$ and $$-0.090 \times 0.665$$ per unit. A token's own rate, $$p(1 - p)$$, shrinks toward 0 as $$p$$ nears 1, which is why a nearly one-hot softmax stops learning ([Fundamentals Part 5](/blog/attention-explained/) shows this inside attention). [Part 11](/blog/attention-math/) covers the full grid of rates.
 
 ### Why frameworks fuse log-softmax with the loss
 

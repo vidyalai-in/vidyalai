@@ -355,7 +355,7 @@ PyTorch's [`clip_grad_norm_`](https://docs.pytorch.org/docs/2.14/generated/torch
 
 Adam treats a 4,096 × 14,336 weight matrix as 58.7 million unrelated numbers. Muon ("MomentUm Orthogonalized by Newton-Schulz"), proposed by [Keller Jordan in December 2024](https://kellerjordan.github.io/posts/muon/), treats it as a matrix. Its starting observation is that momentum updates for weight matrices "typically have very high condition number": they are "almost low-rank matrices, with the updates for all neurons being dominated by just a few directions".
 
-The singular value decomposition, Part 13's subject, writes any matrix as $$M = U \Sigma V^{\top}$$: a rotation, a stretch along a few special directions by amounts called singular values, and another rotation. Muon keeps the rotations and sets every stretch to 1, replacing the momentum matrix $$M$$ by $$UV^{\top}$$:
+The singular value decomposition, [Part 13](/blog/low-rank-svd/)'s subject, writes any matrix as $$M = U \Sigma V^{\top}$$: a rotation, a stretch along a few special directions by amounts called singular values, and another rotation. Muon keeps the rotations and sets every stretch to 1, replacing the momentum matrix $$M$$ by $$UV^{\top}$$:
 
 $$
 M_t = \mu M_{t-1} + G_t, \qquad W_t = W_{t-1} - \eta\, \text{NS}(M_t)

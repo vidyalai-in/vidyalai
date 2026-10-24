@@ -138,7 +138,7 @@ $$
 
 In words, a combined move keeps at most as many directions as the weaker of its two parts. Squeeze 768 numbers through a layer 64 numbers wide and back out to 768, and whatever comes out lies in a 64-dimensional slice of the 768-dimensional space, however big the matrices around the bottleneck are.
 
-This inequality comes back later in the series. Each attention head in Llama 3.1 8B compares tokens through 128-number queries and keys, so the matrix that scores one token against another, a 4,096 × 4,096 grid if you multiply it out, has rank at most 128. LoRA, a popular fine-tuning method, builds its update to a weight matrix from two thin matrices, so the update has small rank by design. Part 11 and Part 13 work through both.
+This inequality comes back later in the series. Each attention head in Llama 3.1 8B compares tokens through 128-number queries and keys, so the matrix that scores one token against another, a 4,096 × 4,096 grid if you multiply it out, has rank at most 128. LoRA, a popular fine-tuning method, builds its update to a weight matrix from two thin matrices, so the update has small rank by design. [Part 11](/blog/attention-math/) and [Part 13](/blog/low-rank-svd/) work through both.
 
 ## Step 4: why depth needs a bend
 

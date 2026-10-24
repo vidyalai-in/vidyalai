@@ -1,0 +1,8 @@
+flowchart TD
+  X["x = (0.71, 0.71)<br/>on the unit circle"] --> VT["Vᵀ: rotate by -45°"]
+  VT --> P1["(1, 0)"]
+  P1 --> SIG["Σ: stretch the axes<br/>by 6.71 and 2.24"]
+  SIG --> P2["(6.71, 0)"]
+  P2 --> U["U: rotate by 71.6°"]
+  U --> Y["Ax = (2.12, 6.36)"]
+  SIG -.-> T["Truncate: set 2.24 to 0<br/>= best rank-1 copy of A"]

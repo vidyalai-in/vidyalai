@@ -1,0 +1,10 @@
+flowchart TD
+  A["RoPE pair j,<br/>speed θj"] --> B["r = turns it made<br/>in the original<br/>window L"]
+  B --> C{"r above β?"}
+  C -->|"yes: fast pair"| D["Keep θj<br/>unchanged"]
+  C -->|"no"| E{"r below α?"}
+  E -->|"yes: slow pair"| F["Use θj / s<br/>(interpolate,<br/>like PI)"]
+  E -->|"no: in between"| G["Mix θj and θj / s<br/>by where r sits<br/>between α and β"]
+  D --> H["YaRN only:<br/>multiply scores<br/>by 1/t"]
+  F --> H
+  G --> H

@@ -252,7 +252,7 @@ and dividing something of spread $$\sqrt{d}$$ by $$d$$ leaves spread $$\sqrt{d}/
 
 By hand for Llama's $$d = 4096$$: $$1/\sqrt{4096} = 1/64 \approx 0.0156$$. A cosine of 0.0156 is an angle of 89.1 degrees, and two spreads, 0.031, is 88.2 degrees. That's the 88.2 to 91.8 degree band in the output.
 
-The same argument, almost word for word, is in the [original Transformer paper](https://arxiv.org/abs/1706.03762). Its footnote 4 assumes the entries of a query q and a key k are "independent random variables with mean 0 and variance 1. Then their dot product ... has mean 0 and variance $$d_k$$." That's why attention divides its scores by $$\sqrt{d_k}$$, the square root of the key length: it brings the spread back to about 1. Part 11 works through the consequences.
+The same argument, almost word for word, is in the [original Transformer paper](https://arxiv.org/abs/1706.03762). Its footnote 4 assumes the entries of a query q and a key k are "independent random variables with mean 0 and variance 1. Then their dot product ... has mean 0 and variance $$d_k$$." That's why attention divides its scores by $$\sqrt{d_k}$$, the square root of the key length: it brings the spread back to about 1. [Part 11](/blog/attention-math/) works through the consequences.
 
 ### How many nearly perpendicular directions fit?
 
