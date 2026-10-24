@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph POST["Post-norm (2017): norm on the main path"]
+    PX["stream x"] --> PF["branch f"]
+    PF --> PA(("+"))
+    PX -->|"skip"| PA
+    PA --> PN["Norm"]
+    PN --> PY["next block<br/>Norm(x + f(x))"]
+  end
+  subgraph PRE["Pre-norm (GPT-2, Llama): norm on the branch"]
+    RX["stream x"] --> RN["Norm"]
+    RN --> RF["branch f"]
+    RF --> RA(("+"))
+    RX -->|"skip: gradient<br/>passes unchanged"| RA
+    RA --> RY["next block<br/>x + f(Norm(x))"]
+  end

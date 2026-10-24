@@ -1,0 +1,8 @@
+flowchart TD
+  W["w = 1<br/>grad -18"] -->|"local: x = 3"| U["u = w × x<br/>value 3, grad -6"]
+  X["x = 3<br/>grad -6"] -->|"local: w = 1"| U
+  U -->|"local: 1"| V["v = u + b<br/>value 4, grad -6"]
+  B["b = 1<br/>grad -6"] -->|"local: 1"| V
+  V -->|"local: 1"| E["e = v - y<br/>value -3, grad -6"]
+  Y["y = 7<br/>grad +6"] -->|"local: -1"| E
+  E -->|"local: 2e = -6"| L["L = e²<br/>value 9, grad 1"]

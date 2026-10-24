@@ -273,7 +273,7 @@ tensor([ 1., -1.])
 
 The probability $$e^{-120}$$ is about $$10^{-52}$$, below float32's smallest number, so softmax rounds it to 0. The two-step loss is then $$-\ln 0 = \infty$$, and its gradient, the signal training needs most, is `nan`. The fused version never forms the tiny probability, so it returns the exact loss, 120, and a clean gradient. PyTorch's documentation for `log_softmax` says that while it is "mathematically equivalent to log(softmax(x)), doing these two operations separately is slower and numerically unstable." Its `cross_entropy` takes raw logits for this reason, and is documented as "equivalent to applying LogSoftmax on an input, followed by NLLLoss."
 
-The gradient [1, -1] is each probability minus the target's one-hot vector: [1 - 0, 0 - 1]. Bridle's 1989 paper already noted this "difference between the corresponding output and a one-from-N target"; Part 8 derives it.
+The gradient [1, -1] is each probability minus the target's one-hot vector: [1 - 0, 0 - 1]. Bridle's 1989 paper already noted this "difference between the corresponding output and a one-from-N target"; [Part 8](/blog/backpropagation-math/) derives it.
 
 ## Step 4: online softmax, the core of FlashAttention
 

@@ -1,0 +1,9 @@
+flowchart TD
+  G["Mini-batch<br/>gradient g"] --> C["Clip by<br/>global norm<br/>(max length 1.0)"]
+  C --> M["m: average of g<br/>(beta1 = 0.9)"]
+  C --> V["v: average<br/>of g squared<br/>(beta2 = 0.95)"]
+  M --> B["Bias correction<br/>(divide by<br/>1 - beta^t)"]
+  V --> B
+  B --> D["Direction<br/>per weight:<br/>m / sqrt(v)"]
+  D --> S["Times the<br/>scheduled rate<br/>lr(t)"]
+  S --> W["Step the weights,<br/>shrink each by<br/>lr(t) x lambda x w"]

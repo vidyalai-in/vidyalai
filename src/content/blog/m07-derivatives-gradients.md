@@ -274,7 +274,7 @@ lr=0.19 step  100: w=-2.311e+04 b=-1.016e+04 loss=3.53e+09
 lr=0.19 step 1000: w=-2.134e+44 b=-9.386e+43 loss=3.01e+89
 ```
 
-Each step overshoots by more than the last. Trying values puts the edge for this loss at about 0.1803: below it the zigzags shrink, above it they grow. The forecast $$\Delta L \approx \nabla L \cdot \mathbf{d}$$ holds only for small steps, and how small depends on how sharply the bowl curves, which Part 9 makes precise.
+Each step overshoots by more than the last. Trying values puts the edge for this loss at about 0.1803: below it the zigzags shrink, above it they grow. The forecast $$\Delta L \approx \nabla L \cdot \mathbf{d}$$ holds only for small steps, and how small depends on how sharply the bowl curves, which [Part 9](/blog/optimizers-adam/) makes precise.
 
 ## Step 4: the chain rule
 
@@ -300,7 +300,7 @@ $$
 \frac{dL}{dz} = -\frac{1}{p} \cdot p\,(1 - p) = p - 1
 $$
 
-The slope is just $$0.7311 - 1 = -0.2689$$, and a secant agrees. [Fundamentals Part 3](/blog/neural-networks-basics/) stated this "probability minus one" for an LLM's output; Part 8 derives the full softmax version.
+The slope is just $$0.7311 - 1 = -0.2689$$, and a secant agrees. [Fundamentals Part 3](/blog/neural-networks-basics/) stated this "probability minus one" for an LLM's output; [Part 8](/blog/backpropagation-math/) derives the full softmax version.
 
 ### A two-layer network by hand
 
@@ -381,7 +381,7 @@ tensor([[ 1.8553, -3.9607, -0.1250],
         [ 0.9277,  1.1777,  1.5165]])
 ```
 
-When the last link is a loss, a single number, its Jacobian is one row: the gradient. Multiplying that row into the Jacobians from the loss end backward keeps every intermediate result a row vector. That order of multiplication is backpropagation, the subject of Part 8. The full Jacobian of Llama 3.1 8B's final 4,096-number vector with respect to all its weights would have 32.9 trillion entries, about 132 TB in 32-bit floats; backpropagation never builds it.
+When the last link is a loss, a single number, its Jacobian is one row: the gradient. Multiplying that row into the Jacobians from the loss end backward keeps every intermediate result a row vector. That order of multiplication is backpropagation, the subject of [Part 8](/blog/backpropagation-math/). The full Jacobian of Llama 3.1 8B's final 4,096-number vector with respect to all its weights would have 32.9 trillion entries, about 132 TB in 32-bit floats; backpropagation never builds it.
 
 ## Step 5: numerical versus analytic derivatives
 
@@ -485,7 +485,7 @@ Autograd matches the hand-derived 0.4517 and -0.5656. The check runs in float64 
 ## In the real world
 
 - A gradient has the same shape as the weights. Llama 3.1 8B's has 8,030,261,248 entries ([Part 1](/blog/math-for-llms/) counts them from the config), and the gradient of a 4,096 × 14,336 MLP matrix is itself a 4,096 × 14,336 matrix. In a 16-bit format it takes 16.06 GB, as much as the weights.
-- Learning rates shrink as models grow. The [Llama 3 paper](https://arxiv.org/abs/2407.21783) lists peak learning rates of $$3 \times 10^{-4}$$ for the 8B model, $$1.5 \times 10^{-4}$$ for 70B and $$8 \times 10^{-5}$$ for 405B (Table 3). The 405B run used AdamW with "a linear warm up of 8,000 steps" and a cosine schedule decaying to $$8 \times 10^{-7}$$ over 1,200,000 steps. AdamW rescales each slope before stepping, so these rates aren't directly comparable with Step 3's; Part 9 explains.
+- Learning rates shrink as models grow. The [Llama 3 paper](https://arxiv.org/abs/2407.21783) lists peak learning rates of $$3 \times 10^{-4}$$ for the 8B model, $$1.5 \times 10^{-4}$$ for 70B and $$8 \times 10^{-5}$$ for 405B (Table 3). The 405B run used AdamW with "a linear warm up of 8,000 steps" and a cosine schedule decaying to $$8 \times 10^{-7}$$ over 1,200,000 steps. AdamW rescales each slope before stepping, so these rates aren't directly comparable with Step 3's; [Part 9](/blog/optimizers-adam/) explains.
 - PyTorch's [gradcheck](https://docs.pytorch.org/docs/2.14/generated/torch.autograd.gradcheck.gradcheck.html) does exactly what Step 5 described: it will "check gradients computed via small finite differences against analytical gradients". Its defaults are `eps=1e-06`, `atol=1e-05` and `rtol=0.001`, which "are designed for input of double precision"; the check "will likely fail if input is of less precision".
 
 ## Common misconceptions
@@ -505,7 +505,7 @@ Autograd matches the hand-derived 0.4517 and -0.5656. The check runs in float64 
 
 ## What's next
 
-This part worked out a few slopes by hand. Part 8, Backpropagation by hand, turns the chain rule into an algorithm: a computational graph, a backward pass for matrix multiplication, ReLU, GELU and softmax with cross-entropy (where p minus 1 comes back), why the backward pass costs about twice the forward, and a tiny autograd written in plain Python.
+This part worked out a few slopes by hand. [Part 8](/blog/backpropagation-math/), Backpropagation by hand, turns the chain rule into an algorithm: a computational graph, a backward pass for matrix multiplication, ReLU, GELU and softmax with cross-entropy (where p minus 1 comes back), why the backward pass costs about twice the forward, and a tiny autograd written in plain Python.
 
 ## Further reading
 
