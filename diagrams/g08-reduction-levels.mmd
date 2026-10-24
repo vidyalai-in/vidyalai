@@ -1,0 +1,20 @@
+flowchart TD
+  M["Global memory:<br/>2^26 floats,<br/>268 MB"]
+  subgraph T["Thread, 1 of 36,864"]
+    R["Register:<br/>running sum of<br/>about 455<br/>float4 loads"]
+  end
+  subgraph W["Warp, 32 threads"]
+    SH["5 shuffle steps:<br/>+16, +8, +4,<br/>+2, +1"]
+  end
+  subgraph B["Block, 8 warps"]
+    SM["Shared memory:<br/>8 warp sums"]
+  end
+  G["Whole grid:<br/>144 block sums"]
+  A["atomicAdd into<br/>one float:<br/>fast, order varies"]
+  P["Second pass,<br/>one block:<br/>fixed order,<br/>same bits"]
+  M -->|"grid-stride loop"| R
+  R --> SH
+  SH -->|"lane 0 writes"| SM
+  SM -->|"one barrier,<br/>warp 0 shuffles again"| G
+  G --> A
+  G --> P

@@ -1,0 +1,24 @@
+flowchart TD
+  PY["Python function"]
+  GUARD["Guards match<br/>a cached compile?"]
+  DYN["TorchDynamo<br/>records FX graph<br/>and guards"]
+  BRK["Graph break<br/>runs in Python"]
+  AOT["AOTAutograd<br/>ATen-level graph"]
+  subgraph IND["TorchInductor"]
+    FUSE["Fuse, schedule,<br/>reuse buffers"]
+    TRI["Triton kernels"]
+    EXT["cuBLAS calls<br/>extern_kernels.mm"]
+  end
+  WRAP["Python wrapper<br/>launches kernels"]
+  CG["reduce-overhead:<br/>one CUDA graph"]
+  PY --> GUARD
+  GUARD -->|"no"| DYN
+  GUARD -->|"yes"| WRAP
+  DYN -.->|"e.g. .item()"| BRK
+  DYN --> AOT
+  AOT --> FUSE
+  FUSE --> TRI
+  FUSE --> EXT
+  TRI --> WRAP
+  EXT --> WRAP
+  WRAP -.-> CG

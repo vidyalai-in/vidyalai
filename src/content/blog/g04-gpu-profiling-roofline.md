@@ -125,7 +125,7 @@ Here is the same data on a log-log chart. The solid line is the measured rooflin
 
 Most points sit on the roof. The ones below it:
 
-- `silu(g) * u` (in B) looks like a 55% kernel, but eager PyTorch runs it as two kernels, and the multiply reads back what `silu` wrote. That's 10 bytes per element instead of 6, so the GPU actually moved 229 GB/s; the missing fusion, which Part 9 adds, costs 40% of the time.
+- `silu(g) * u` (in B) looks like a 55% kernel, but eager PyTorch runs it as two kernels, and the multiply reads back what `silu` wrote. That's 10 bytes per element instead of 6, so the GPU actually moved 229 GB/s; the missing fusion, which [Part 9](/blog/kernel-fusion-cuda-graphs/) adds, costs 40% of the time.
 - Softmax (in C) moves the same bytes per element as RMSNorm yet runs 1.5 times slower. Nsight Compute, in Step 3, shows it is neither memory- nor compute-bound.
 - The 256 matmul (G) has the intensity to reach 21 TFLOPS but manages 6.4. A 256 × 256 output is too little work to fill 24 SMs, so its 5.2 µs is latency, not either roof.
 - The FP32 matmul (J) runs at 48% of the FP32 roof; at the 1,605 MHz clock it actually ran at, that's 62%, the same figure Part 1 found.
@@ -186,7 +186,7 @@ cunn_SoftMaxForwardReg<BFloat16, float, BFloat16, ...>  (8192, 1, 1)x(1024, 1, 1
     Stall Not Selected / Barrier / Wait   2.68 / 2.60 / 2.00 cycles
 ```
 
-Neither unit passes 51%. Each 1,024-thread block handles one 4,096-element row, only one such block fits on an SM (a limit of 1,536 threads), and each row needs block-wide reductions for its maximum and sum, so warps wait at barriers. One of Nsight Compute's rules flagged it: "Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate latency issues." Part 8 writes softmax kernels that avoid this.
+Neither unit passes 51%. Each 1,024-thread block handles one 4,096-element row, only one such block fits on an SM (a limit of 1,536 threads), and each row needs block-wide reductions for its maximum and sum, so warps wait at barriers. One of Nsight Compute's rules flagged it: "Achieved compute throughput and/or memory bandwidth below 60.0% of peak typically indicate latency issues." [Part 8](/blog/gpu-reductions/) writes softmax kernels that avoid this.
 
 ### Clock control
 
@@ -251,7 +251,7 @@ Self CUDA time total: 78.995ms
 
 From the trace file: 1,142 kernels per step (the same count `nsys` saw as launches), 15.80 ms of GPU work per step, and 197 matrix-vector kernels taking 14.25 ms of it. Those GEMVs stream the model's 3.087 GB of weights at 217 GB/s, on the bandwidth roof. Against the 22.95 ms unprofiled step, the GPU sat idle 31% of the time.
 
-The profiler's own CPU cost is large: 325 ms of CPU time for five steps, stretching each step to 61 to 69 ms. Trust its kernel durations, not its gaps or CPU timings. `nsys` adds less overhead and shows the whole system; `torch.profiler` maps each kernel back to the PyTorch operator and input shapes that launched it. Part 9 removes the idle time with CUDA graphs and fusion.
+The profiler's own CPU cost is large: 325 ms of CPU time for five steps, stretching each step to 61 to 69 ms. Trust its kernel durations, not its gaps or CPU timings. `nsys` adds less overhead and shows the whole system; `torch.profiler` maps each kernel back to the PyTorch operator and input shapes that launched it. [Part 9](/blog/kernel-fusion-cuda-graphs/) removes the idle time with CUDA graphs and fusion.
 
 ## Step 5: clocks, power limits and throttling
 

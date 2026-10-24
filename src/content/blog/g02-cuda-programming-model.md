@@ -127,7 +127,7 @@ The rated bandwidth is 256 GB/s: a 128-bit bus at 16 gigabits per second per pin
 | `cudaMemcpy` device to device | 537 MB | 2.373 ms | 226.3 | 88% |
 | Copy kernel, `c[i] = a[i]` | 537 MB | 2.381 ms | 225.5 | 88% |
 
-Pure reads and pure writes come within 3% of the rating. Any mix, including NVIDIA's `cudaMemcpy`, levels off near 226 GB/s; [Part 3](/blog/gpu-memory-hierarchy/) looks at why. So the first kernel you write already matches NVIDIA's copy routine. That's normal for simple memory-bound kernels: the gains come from not running them at all, by fusing them into neighbors (Part 9).
+Pure reads and pure writes come within 3% of the rating. Any mix, including NVIDIA's `cudaMemcpy`, levels off near 226 GB/s; [Part 3](/blog/gpu-memory-hierarchy/) looks at why. So the first kernel you write already matches NVIDIA's copy routine. That's normal for simple memory-bound kernels: the gains come from not running them at all, by fusing them into neighbors ([Part 9](/blog/kernel-fusion-cuda-graphs/)).
 
 NVIDIA's Nsight Compute profiler (`ncu`, covered in [Part 4](/blog/gpu-profiling-roofline/)) confirms the byte count: 537.0 MB read from DRAM and 254.7 MB written, against 536.9 MB and 268.4 MB expected. The missing 14 MB of writes was likely still in the 32 MB L2 cache when the kernel ended.
 

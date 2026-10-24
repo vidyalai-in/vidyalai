@@ -109,7 +109,7 @@ def softmax_kernel(out_ptr, in_ptr, n_cols, BLOCK_SIZE: tl.constexpr):
     tl.store(out_ptr + row * n_cols + offs, y.to(out_ptr.dtype.element_ty), mask=mask)
 ```
 
-The launcher rounds `BLOCK_SIZE` up to a power of two (`tl.arange` requires one) and picks 4, 8 or 16 warps as rows grow. Masked lanes load minus infinity, which adds `exp(-inf) = 0` to the sum. For `tl.max` and `tl.sum` the compiler writes the warp shuffles and shared-memory exchanges that Part 8 writes by hand.
+The launcher rounds `BLOCK_SIZE` up to a power of two (`tl.arange` requires one) and picks 4, 8 or 16 warps as rows grow. Masked lanes load minus infinity, which adds `exp(-inf) = 0` to the sum. For `tl.max` and `tl.sum` the compiler writes the warp shuffles and shared-memory exchanges that [Part 8](/blog/gpu-reductions/) writes by hand.
 
 ### Measured against PyTorch
 
@@ -135,7 +135,7 @@ The unfused version took 4.05 times as long as the fused one in BF16 (2,416 µs)
 
 The kernel holds a whole row in registers, so the row has to fit. At 65,536 columns each of 512 threads holds 128 values, and the compiler spilled 26 registers to local memory (thread-private memory in DRAM, cached in L1 and L2) at no visible cost. At 131,072 it spilled 472 and ran 4 times slower than PyTorch, which for rows this long switches to a kernel (`cunn_SoftMaxForward`) that streams the row three times, for the max, the sum and the output, and lets the L2 cache absorb the re-reads. More warps help but don't fix it: at 32 warps, the limit of 1,024 threads, spills fell to 174 and speed rose to 82 to 88 GB/s.
 
-The fix is algorithmic: walk the row in chunks with a running max and sum, rescaling the sum when the max grows. That's the **online softmax** from [Math Part 5](/blog/softmax-math/), which Part 8 builds.
+The fix is algorithmic: walk the row in chunks with a running max and sum, rescaling the sum when the max grows. That's the **online softmax** from [Math Part 5](/blog/softmax-math/), which [Part 8](/blog/gpu-reductions/) builds.
 
 ## Step 3: a matmul on tensor cores, and autotuning it
 
@@ -313,7 +313,7 @@ The Triton project's answer is **Gluon**, a lower-level language on the same com
 
 ## In the real world
 
-PyTorch's [compiler documentation](https://docs.pytorch.org/docs/stable/torch.compiler.html) says TorchInductor, the backend behind `torch.compile`, "leverages OpenAI Triton as the key building block" on NVIDIA, AMD and Intel GPUs: it fuses chains of operations and emits Triton source for them. [Inference Part 7](/blog/flashattention/) introduced that pipeline; Part 9 reads the Triton that Inductor generates for LLM layers.
+PyTorch's [compiler documentation](https://docs.pytorch.org/docs/stable/torch.compiler.html) says TorchInductor, the backend behind `torch.compile`, "leverages OpenAI Triton as the key building block" on NVIDIA, AMD and Intel GPUs: it fuses chains of operations and emits Triton source for them. [Inference Part 7](/blog/flashattention/) introduced that pipeline; [Part 9](/blog/kernel-fusion-cuda-graphs/) reads the Triton that Inductor generates for LLM layers.
 
 Triton's "Fused Attention" tutorial is "a Triton implementation of the Flash Attention v2 algorithm," and the FlashAttention repository ships a Triton backend that "supports AMD's CDNA (MI200, MI300) and RDNA GPUs." Part 10 writes a FlashAttention-style kernel in Triton on this laptop, with the online softmax Step 2 lacked.
 
@@ -339,7 +339,7 @@ Triton's sweet spot is what this article measured: memory-bound fused kernels an
 
 ## What's next
 
-The softmax here gave up once a row outgrew one program's registers, and its reductions were a `tl.max` and a `tl.sum` the compiler expanded for us. Part 8, Reductions and normalization kernels, opens those up: reduction trees, warp shuffles and block-level reductions, softmax, RMSNorm and LayerNorm kernels for any row length, numerical stability on the GPU, and the sampling kernels that pick each next token.
+The softmax here gave up once a row outgrew one program's registers, and its reductions were a `tl.max` and a `tl.sum` the compiler expanded for us. [Part 8](/blog/gpu-reductions/), Reductions and normalization kernels, opens those up: reduction trees, warp shuffles and block-level reductions, softmax, RMSNorm and LayerNorm kernels for any row length, numerical stability on the GPU, and the sampling kernels that pick each next token.
 
 ## Further reading
 
