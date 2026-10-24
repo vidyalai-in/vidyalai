@@ -24,6 +24,12 @@ export const CATEGORIES = [
     icon: 'chip',
   },
   {
+    slug: 'llm-training',
+    name: 'Training LLMs',
+    blurb: 'Tokenizers, data pipelines, training loops, scaling laws and post-training: how a language model is built and trained.',
+    icon: 'curve',
+  },
+  {
     slug: 'retrieval-rag',
     name: 'Retrieval & RAG',
     blurb: 'Chunking, hybrid search, reranking and debugging retrieval-augmented generation.',

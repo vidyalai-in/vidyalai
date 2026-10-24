@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant C as Your code
+  participant A as Claude API
+  participant M as Model
+  participant T as Your tool
+  C->>A: messages + tools (JSON Schemas)
+  A->>M: tool system prompt + definitions + messages
+  Note over M: next-token prediction<br/>(strict: grammar masks tokens)
+  M-->>A: tokens for get_weather with city Paris
+  A-->>C: tool_use block, stop_reason tool_use
+  C->>T: run get_weather(city="Paris")
+  T-->>C: "15 C, partly cloudy"
+  C->>A: same history + assistant turn + tool_result
+  A->>M: whole conversation again
+  M-->>A: final answer tokens
+  A-->>C: text block, stop_reason end_turn

@@ -27,6 +27,15 @@ export const SERIES = [
     filePrefix: 'm',
   },
   {
+    slug: 'llm-from-scratch',
+    name: 'Build an LLM From Scratch',
+    short: 'From Scratch',
+    blurb:
+      'Train a small GPT-style model on one laptop GPU, step by step: tokenizer, data pipeline, model, training loop, scaling laws, evaluation, then fine-tuning, DPO and RL.',
+    total: 15,
+    filePrefix: 't',
+  },
+  {
     slug: 'llm-inference',
     name: 'LLM Inference & Optimization',
     short: 'Inference',
@@ -53,6 +62,15 @@ export const SERIES = [
     total: 25,
     playlist: 'https://www.youtube.com/playlist?list=PLTy3a2upFmcM',
     filePrefix: 'q',
+  },
+  {
+    slug: 'agentic-ai',
+    name: 'Agentic AI: How AI Agents Work',
+    short: 'Agents',
+    blurb:
+      'How AI agents work, measured on the Claude API: the agent loop, tool calling, planning, context engineering, MCP, multi-agent systems, coding and computer-use agents, evals, reliability and cost.',
+    total: 16,
+    filePrefix: 'a',
   },
 ];
 

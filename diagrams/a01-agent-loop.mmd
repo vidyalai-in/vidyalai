@@ -1,0 +1,9 @@
+flowchart TD
+    U["User task"] --> G{"Within step and<br/>cost limits?"}
+    G -- "yes" --> M["Call the model:<br/>history + tools"]
+    G -- "no" --> S["Stop: limit hit"]
+    M --> D{"stop_reason"}
+    D -- "tool_use" --> T["Run each<br/>requested tool"]
+    T --> R["Send all results<br/>in one message"]
+    R --> G
+    D -- "end_turn" --> A["Final answer"]

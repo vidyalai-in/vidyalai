@@ -1,0 +1,8 @@
+flowchart TD
+  A["Text<br/>The cat sat.#lt;|endoftext|#gt;"] --> B["1. Split out specials<br/>#lt;|endoftext|#gt; = 0"]
+  B --> C["2. Pre-tokenize<br/>The ␣cat ␣sat ."]
+  C --> D["3. UTF-8 bytes<br/>␣cat = 32 99 97 116"]
+  D --> E["4. Apply merges<br/>earliest first:<br/>a+t, ␣+c, ␣c+at"]
+  M["Merge table<br/>32,504 merges"] --> E
+  E --> F["5. Look up ids<br/>469 2289 2472 21 0"]
+  F --> G["Ids to the model"]

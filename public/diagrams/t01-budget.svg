@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="70" x2="756" y1="378.0" y2="378.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="382.0" fill="#4a5b78" font-size="13" text-anchor="end">0</text>
+<line x1="70" x2="756" y1="308.4" y2="308.4" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="312.4" fill="#4a5b78" font-size="13" text-anchor="end">10</text>
+<line x1="70" x2="756" y1="238.8" y2="238.8" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="242.8" fill="#4a5b78" font-size="13" text-anchor="end">20</text>
+<line x1="70" x2="756" y1="169.2" y2="169.2" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="173.2" fill="#4a5b78" font-size="13" text-anchor="end">30</text>
+<line x1="70" x2="756" y1="99.6" y2="99.6" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="103.6" fill="#4a5b78" font-size="13" text-anchor="end">40</text>
+<line x1="70" x2="756" y1="30.0" y2="30.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="34.0" fill="#4a5b78" font-size="13" text-anchor="end">50</text>
+<text transform="translate(20,204.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Hours to 20 tokens per parameter</text>
+<line x1="70" x2="756" y1="322.3" y2="322.3" stroke="#0b1a33" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="76" y="315.3" fill="#0b1a33" font-size="13">one night: 8 h</text>
+<line x1="70" x2="756" y1="43.9" y2="43.9" stroke="#0b1a33" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="76" y="36.9" fill="#0b1a33" font-size="13">one weekend: 48 h</text>
+<rect x="112.9" y="369.8" width="85.8" height="8.2" fill="#0b5fd6"/>
+<text x="155.8" y="361.8" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">1.2 h</text>
+<text x="155.8" y="400" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">22M parameters</text>
+<text x="155.8" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.44B tokens</text>
+<text x="155.8" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">103.6k tokens/s</text>
+<text x="155.8" y="456" fill="#4a5b78" font-size="13" text-anchor="middle">MFU 66%</text>
+<rect x="284.4" y="341.1" width="85.8" height="36.9" fill="#0b5fd6"/>
+<text x="327.2" y="361.1" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">5.3 h</text>
+<text x="327.2" y="400" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">47M parameters</text>
+<text x="327.2" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.94B tokens</text>
+<text x="327.2" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">49.5k tokens/s</text>
+<text x="327.2" y="456" fill="#4a5b78" font-size="13" text-anchor="middle">MFU 66%</text>
+<rect x="455.9" y="262.6" width="85.8" height="115.4" fill="#0b5fd6"/>
+<text x="498.8" y="282.6" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">16.6 h</text>
+<text x="498.8" y="400" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">88M parameters</text>
+<text x="498.8" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">1.76B tokens</text>
+<text x="498.8" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">29.5k tokens/s</text>
+<text x="498.8" y="456" fill="#4a5b78" font-size="13" text-anchor="middle">MFU 73%</text>
+<rect x="627.4" y="123.2" width="85.8" height="254.8" fill="#0b5fd6"/>
+<text x="670.2" y="143.2" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">36.6 h</text>
+<text x="670.2" y="400" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">126M parameters</text>
+<text x="670.2" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">2.52B tokens</text>
+<text x="670.2" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">19.1k tokens/s</text>
+<text x="670.2" y="456" fill="#4a5b78" font-size="13" text-anchor="middle">MFU 68%</text>
+</svg>

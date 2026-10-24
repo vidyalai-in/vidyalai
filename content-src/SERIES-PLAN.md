@@ -96,3 +96,109 @@ written at a time.
 | 13 | Many GPUs: NVLink, NCCL and collectives | `nccl-collectives` | Ring and tree all-reduce algorithms and their cost model; all-to-all; NVLink/NVSwitch vs PCIe vs InfiniBand; overlapping communication with compute; NVSHMEM in brief | i10, i12 | Published |
 | 14 | Beyond NVIDIA: AMD, Apple, TPUs and other accelerators | `ai-accelerators` | AMD ROCm/HIP and MI-series; Apple Metal and MLX; Google TPU systolic arrays and XLA; AWS Trainium; Groq, Cerebras and others; how the same ideas map onto each | i03, i13 | Published |
 | 15 | One token, kernel by kernel | `token-kernel-trace` | A full Nsight trace of Llama-class decode on the 4060: every kernel, its time, and its place on the roofline, tying the series together. Closes the series. | all | Published |
+
+## Writing order and reading path (series 6-10)
+
+Writing order: phase 1 Agentic AI + From Scratch (alternating batches of four; API vs GPU, no contention), phase 2 Interpretability + Measuring LLMs, phase 3 Beyond Text. Reading path in `SERIES`: Fundamentals, Math, From Scratch, Interpretability, Inference, GPU, Beyond Text, Measuring LLMs, System Design, Agentic AI. Each series is added to `src/data/series.mjs` (and its category to `categories.ts`) when its Part 1 is published.
+
+## Agentic AI: How AI Agents Work (16 parts)
+
+Series slug `agentic-ai`, short name "Agents", file prefix `a`, category `agents-tool-use`. Each part is a standalone deep dive; every experiment runs on one shared lab harness (Anthropic Python SDK, manual tool loop, prompt caching, usage ledger) introduced in Part 1. Models: `claude-haiku-5-5` for sweeps and repeats, `claude-sonnet-5-5` for small headline comparisons. The whole project has a hard API budget of $90: $75 for this series (per-part caps below), $15 for the Evals series. Builds on System Design 10 (tool-using agents), 11 (agent loops), 12 (long-term memory), 17 (prompt injection) and 23 (multi-agent tracing), written SD10 etc. below: link, do not repeat.
+
+| # | Title (working) | Slug | Scope | Builds on | API budget | Status |
+|---|---|---|---|---|---|---|
+| 1 | What an agent is: the loop, measured | `what-is-an-ai-agent` | LLM + tools + loop; workflows vs agents; the 150-line lab harness; tokens, cost and latency per step | SD10, f14 | $1 | Published |
+| 2 | How tool calling works inside the model | `tool-calling-internals` | Tool schemas in the prompt, tool-use blocks, strict mode, parallel calls; malformed-call rate measured with strict on and off | SD13, SD10 | $2 | Published |
+| 3 | Reasoning and acting: ReAct, planning and thinking | `react-planning` | ReAct, plan-and-execute, adaptive thinking and effort levels; accuracy vs tokens on a fixed task set | f14 | $5 |  |
+| 4 | Reflection and self-correction | `agent-self-correction` | Reflexion, critique loops, verifier tools (tests); when self-critique helps and when it hurts, measured | a03 | $4 |  |
+| 5 | Context engineering | `context-engineering` | What fills the window; sizing tool results; compaction vs context editing vs memory files; prompt-caching economics on long tasks | SD12, i06 | $5 |  |
+| 6 | MCP: connecting agents to tools | `model-context-protocol` | The protocol, transports, servers; tool search and deferred loading; tool-choice accuracy as tool count grows | a02 | $3 |  |
+| 7 | Multi-agent systems and agent-to-agent protocols | `multi-agent-systems` | Orchestrator-workers, sub-agents, A2A; single agent vs orchestrator on the same tasks (tokens ×, accuracy) | SD23 | $6 |  |
+| 8 | Coding agents | `coding-agents` | How SWE-bench-style tasks are solved: repo search, edit tools, test loops; a 20–30-task mini-benchmark built from real repos | a03, a04 | $10 |  |
+| 9 | Computer-use and browser agents | `computer-use-agents` | Screenshots, actions, the computer toolset; image-token cost; a small sandboxed browser task set | a01 | $8 |  |
+| 10 | Research agents: search, read, cite | `research-agents` | Web search and fetch tools, deep-research loops, citation accuracy checked by hand | a05 | $5 |  |
+| 11 | Evaluating agents | `agent-evals` | SWE-bench, τ-bench, OSWorld, GAIA; pass@k vs pass^k; run-to-run variance and cost-normalized scores, measured | SD15, SD16 | $8 |  |
+| 12 | Long-horizon reliability | `agent-reliability` | Compounding error (p^n), retries, idempotent tools, checkpoints, task budgets, stopping rules | SD11 | $3 |  |
+| 13 | Sandboxing and permissions | `agent-sandboxing` | Least privilege, containers, network and secret isolation, human approval gates (prompt injection itself stays in SD17) | SD17 | $2 |  |
+| 14 | Training models to be agents | `training-agentic-models` | RL in tool environments, verifiable rewards, synthetic environments, trajectory data; papers only | m16, f14 | $0 |  |
+| 15 | Cost and latency of agents | `agent-cost-latency` | Cost per completed task; caching, effort, Haiku workers under a Sonnet lead, batch; measured | SD06, SD09 | $5 |  |
+| 16 | An agent end to end | `agents-in-production` | Finale: one useful agent built and evaluated with everything above (e.g. a docs-maintenance agent), its limits, series review | all | $5 |  |
+
+## Build an LLM From Scratch (15 parts)
+
+Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, category `llm-training`. A GPT/Llama-style model of about 50-125M parameters, trained on the RTX 4060 Laptop GPU (8 GB) on a FineWeb-Edu sample (TinyStories for first quick runs). Code is PyTorch; each part extends one code folder but explains its own piece in full.
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | What a laptop can train | `build-llm-from-scratch` | Roadmap; compute budget with 6ND; choosing model size, tokens and time | m15, f12 | Published |
+| 2 | Training a BPE tokenizer | `train-bpe-tokenizer` | BPE from scratch, vocab size trade-offs, compression measured | f02 | Published |
+| 3 | The pretraining data pipeline | `pretraining-data-pipeline` | Download, quality filters, MinHash dedup, shuffling, packing into token shards | f12 |  |
+| 4 | Writing the model | `write-gpt-model` | RMSNorm, RoPE, GQA, SwiGLU in about 200 lines; parameter count checked against the formula | f06, f10, m15 |  |
+| 5 | The training loop | `llm-training-loop` | AdamW, warm-up and cosine schedule, clipping, BF16, gradient accumulation; first loss curve | m09, m10 |  |
+| 6 | Making training fast on one GPU | `fast-llm-training` | torch.compile, SDPA/FlashAttention, fused AdamW, MFU measured | g09, g10 |  |
+| 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 |  |
+| 8 | Scaling laws on a laptop | `scaling-laws-experiment` | Five model sizes, a fitted power law, comparison with Chinchilla | m15 |  |
+| 9 | Evaluating a base model | `evaluate-base-model` | Perplexity, bits per byte, few-shot multiple choice | m06 |  |
+| 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 |  |
+| 11 | Preference tuning with DPO | `dpo-from-scratch` | Preference pairs, the DPO loss, before/after behaviour | m16 |  |
+| 12 | RL with verifiable rewards (GRPO) | `grpo-from-scratch` | GRPO on arithmetic or format tasks; reward curves | m16, f14 |  |
+| 13 | Synthetic data and distillation | `distillation-synthetic-data` | Teacher-generated data (Haiku via batch, out of the Evals budget, or an open model); logit vs sequence distillation | t10 |  |
+| 14 | Fitting bigger models in memory | `training-memory` | Memory math, activation checkpointing (measured), ZeRO/FSDP stages explained | i10, g13 |  |
+| 15 | From our model to frontier models | `frontier-training-recipes` | Finale: published recipes (Llama 3, DeepSeek-V3, OLMo) vs ours; export, quantize, run in llama.cpp; series review | all |  |
+
+## Inside the Model: Interpretability (12 parts)
+
+Series slug `llm-interpretability`, short name "Interpretability", file prefix `p`, category `interpretability`. Models run locally: GPT-2 small, Qwen2.5-0.5B/1.5B, Gemma 2 2B with Gemma Scope SAEs, and the From Scratch checkpoints.
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | Opening the black box | `what-is-interpretability` | Goals, methods, what counts as an explanation | f16 |  |
+| 2 | The residual stream and the logit lens | `logit-lens` | Reading predictions layer by layer; tuned lens | f06 |  |
+| 3 | Linear probes | `linear-probes` | What activations encode; probes for truth and syntax; probe pitfalls | m02 |  |
+| 4 | Attention heads and induction heads | `induction-heads` | Head roles, induction heads and in-context learning, measured | m11 |  |
+| 5 | Activation patching and causal tracing | `activation-patching` | IOI-style patching, locating factual recall | p02 |  |
+| 6 | Superposition | `superposition` | Toy models reproduced; more features than neurons | m13 |  |
+| 7 | Sparse autoencoders | `sparse-autoencoders` | Train an SAE on one layer; explore Gemma Scope features | p06 |  |
+| 8 | Circuits and attribution graphs | `circuit-tracing` | Transcoders and attribution graphs with open tools, if runnable on 8 GB | p07 |  |
+| 9 | Steering with activations | `activation-steering` | Steering vectors, the refusal direction, side effects measured | p03 |  |
+| 10 | What training builds inside a model | `training-dynamics-interpretability` | When induction heads and features form, using From Scratch checkpoints | t07 |  |
+| 11 | Interpretability for safety | `interpretability-for-safety` | Deception and sycophancy probes, model diffing, audits; research-based | p09 |  |
+| 12 | Limits and open problems | `interpretability-open-problems` | Finale: what works, what doesn't, series review | all |  |
+
+## Beyond Text: Images, Speech and Video (13 parts)
+
+Series slug `multimodal-ai`, short name "Multimodal", file prefix `v`, category `multimodal`. Local models that fit 8 GB (CLIP, a small VLM, SD 1.5 or SDXL-Turbo, Whisper, Kokoro with stock voices); Claude vision via Haiku from the Evals budget.
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | How AI sees, hears and draws | `multimodal-ai-overview` | Roadmap; everything as tokens or latents | f15 |  |
+| 2 | Vision transformers | `vision-transformers` | Patches, position, ViT measured | f06 |  |
+| 3 | CLIP and contrastive learning | `clip-contrastive-learning` | The contrastive loss, zero-shot classification run locally | m06 |  |
+| 4 | Vision-language models | `vision-language-models` | Connectors (LLaVA style), image-token counts and cost | v02, v03 |  |
+| 5 | Diffusion from scratch | `diffusion-math` | DDPM math; train a tiny diffusion model on the laptop | m04, m07 |  |
+| 6 | Latent diffusion | `latent-diffusion` | VAE, U-Net, classifier-free guidance; Stable Diffusion run and timed | v05 |  |
+| 7 | Diffusion transformers and flow matching | `flow-matching-dit` | DiT, rectified flow (SD3/FLUX family) | v06 |  |
+| 8 | Autoregressive and unified image generation | `autoregressive-image-generation` | VQ tokens, native image generation in LLMs; research-based | v04 |  |
+| 9 | Speech recognition with Whisper | `speech-recognition-whisper` | Log-mel spectrograms, encoder-decoder; WER measured | f15 |  |
+| 10 | Text-to-speech | `text-to-speech` | Kokoro and neural codecs; real-time factor measured | v09 |  |
+| 11 | Audio tokens and voice agents | `voice-agents` | EnCodec/Mimi codecs, speech-to-speech models, latency budget | v10, a01 |  |
+| 12 | Video generation | `video-generation` | Spacetime patches, video diffusion; mostly research | v07 |  |
+| 13 | Serving multimodal models | `multimodal-inference` | Finale: image and audio token costs, encoder caching, series review | i01 |  |
+
+## Measuring LLMs: Evals and Benchmarks (11 parts)
+
+Series slug `llm-evals`, short name "Evals", file prefix `e`, category `evaluation-reliability`. API runs use `claude-haiku-5-5` through the Batch API; budget $15 (shared with v04 and t13).
+
+| # | Title (working) | Slug | Scope | Builds on | Status |
+|---|---|---|---|---|---|
+| 1 | Why measuring LLMs is hard | `why-llm-evals-are-hard` | Validity, saturation, Goodhart | SD15 |  |
+| 2 | How benchmarks are built | `how-benchmarks-are-built` | MMLU to GPQA to Humanity's Last Exam; item writing and validation | e01 |  |
+| 3 | The statistics of evals | `eval-statistics` | Confidence intervals, sample size, paired tests; measured on a benchmark subset | m04 |  |
+| 4 | Prompt and harness sensitivity | `eval-harness-sensitivity` | Format, few-shot choice and answer extraction move scores; measured | e03 |  |
+| 5 | Contamination and memorization | `benchmark-contamination` | Detection methods, tested on open models | t09 |  |
+| 6 | Grading open-ended outputs | `grading-generative-outputs` | Reference metrics vs rubric graders vs LLM judges | SD16 |  |
+| 7 | Arenas and Elo rankings | `chatbot-arena-elo` | Bradley-Terry, style control, arena biases | m16 |  |
+| 8 | Code and math benchmarks | `code-math-benchmarks` | pass@k, verifiers, HumanEval to SWE-bench and AIME | a11 |  |
+| 9 | Long-context evals | `long-context-evals` | Needle tests vs RULER-style tasks | i11 |  |
+| 10 | Safety and capability evals | `safety-evals` | Dangerous-capability evals, refusal benchmarks, red-teaming; research-based | e01 |  |
+| 11 | Reading a model card, building your own eval | `reading-model-cards` | Finale: interpreting reported numbers; links SD15 | all |  |

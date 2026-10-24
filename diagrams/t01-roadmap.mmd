@@ -1,0 +1,16 @@
+flowchart TD
+  subgraph PRE["Pretraining a base model"]
+    P1["1 Budget:<br/>size, tokens, time"] --> P23["2-3 Tokenizer<br/>and data shards"]
+    P23 --> P45["4-5 Model and<br/>training loop"]
+    P45 --> P6["6 Making it fast"]
+    P6 --> P7["7 The pretraining run"]
+  end
+  P7 --> P8["8 Scaling laws:<br/>five sizes"]
+  P7 --> P9["9 Evaluating<br/>the base model"]
+  P7 --> P14["14 Fitting bigger<br/>models in memory"]
+  P9 --> P10["10 Post-training:<br/>SFT"]
+  P10 --> P11["11 DPO"]
+  P11 --> P12["12 GRPO"]
+  P10 --> P13["13 Distillation"]
+  P12 --> P15["15 Our model vs<br/>frontier recipes"]
+  P14 --> P15
