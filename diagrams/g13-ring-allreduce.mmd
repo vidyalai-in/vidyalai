@@ -1,0 +1,14 @@
+flowchart TD
+  subgraph RS["Reduce-scatter, steps 1 to 3: chunk 0 collects a sum"]
+    direction LR
+    A["GPU 0<br/>sends its chunk 0"] -->|"step 1"| B["GPU 1<br/>adds its chunk 0<br/>sum of 2 GPUs"]
+    B -->|"step 2"| C["GPU 2<br/>adds its chunk 0<br/>sum of 3 GPUs"]
+    C -->|"step 3"| D["GPU 3<br/>adds its chunk 0<br/>full sum"]
+  end
+  subgraph AG["All-gather, steps 4 to 6: GPU 3 passes the full sum on"]
+    direction LR
+    E["GPU 0<br/>stores it"] -->|"step 5"| F["GPU 1<br/>stores it"]
+    F -->|"step 6"| G["GPU 2<br/>stores it"]
+  end
+  RS -->|"step 4<br/>GPU 3 to GPU 0"| AG
+  AG --> H["Chunks 1, 2 and 3 move<br/>at the same time,<br/>each one GPU further on"]

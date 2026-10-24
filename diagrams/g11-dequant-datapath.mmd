@@ -1,0 +1,22 @@
+flowchart LR
+  subgraph DRAM["GPU memory (DRAM)"]
+    QW["Packed INT4 weights<br/>8 per int32"]
+    SC["Scale and min<br/>per 128 weights"]
+    X["BF16 activations<br/>M x K"]
+  end
+  subgraph SM["Inside one SM, per K slice"]
+    L["Load tile<br/>into registers"]
+    U["Unpack:<br/>shift and mask"]
+    D["Dequantize:<br/>q x scale + min"]
+    T["tl.dot on BF16<br/>tensor cores"]
+    A["FP32 accumulator"]
+  end
+  Y["BF16 output<br/>M x N"]
+  QW --> L
+  SC --> L
+  L --> U
+  U --> D
+  D -->|"BF16 tile"| T
+  X --> T
+  T --> A
+  A -->|"after last K slice"| Y

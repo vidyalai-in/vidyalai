@@ -1,0 +1,19 @@
+flowchart LR
+  Q["New token's query<br/>12 heads, 6 per KV head"]
+  KV["KV cache in 16-token pages<br/>scattered in GPU memory"]
+  BT["Block table<br/>logical page to physical page"]
+  subgraph K1["Kernel 1: one program per KV head and chunk"]
+    direction TB
+    P1["Chunk 1 of 8<br/>online softmax over its tokens"]
+    P2["Chunk 2 of 8<br/>online softmax over its tokens"]
+    P8["Chunks 3 to 8<br/>same loop, in parallel"]
+  end
+  PART["Partial results<br/>o_i and LSE_i per chunk"]
+  C["Kernel 2: combine<br/>weight each o_i by<br/>exp(LSE_i minus LSE)"]
+  O["Attention output<br/>12 heads"]
+  KV --> BT
+  BT -->|"page lookups"| K1
+  Q --> K1
+  K1 --> PART
+  PART --> C
+  C --> O

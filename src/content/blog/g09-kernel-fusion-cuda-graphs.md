@@ -298,7 +298,7 @@ Hand-written fused kernels live on beside compilers. vLLM ships `fused_add_rms_n
 
 ## What's next
 
-Fusion stopped at attention in this part: Inductor left it to PyTorch's scaled dot-product kernel, and vLLM splits its graphs around it. Part 10, Writing an attention kernel, builds one in Triton: FlashAttention-style tiling with the online softmax, measured against a naive version and PyTorch's SDPA, then decode attention with split-KV and paged-KV indexing.
+Fusion stopped at attention in this part: Inductor left it to PyTorch's scaled dot-product kernel, and vLLM splits its graphs around it. [Part 10](/blog/attention-kernel/), Writing an attention kernel, builds one in Triton: FlashAttention-style tiling with the online softmax, measured against a naive version and PyTorch's SDPA, then decode attention with split-KV and paged-KV indexing.
 
 ## Further reading
 

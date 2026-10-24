@@ -1,0 +1,15 @@
+flowchart LR
+  X["Tokens<br/>T × 2,048"]
+  R["Router<br/>logits, softmax,<br/>top-8, renormalize"]
+  AL["Align<br/>sort pairs by expert,<br/>pad to BLOCK_M"]
+  subgraph GG["Grouped GEMMs, one launch each"]
+    G1["GEMM 1<br/>gather token rows,<br/>gate and up,<br/>SwiGLU epilogue"]
+    G2["GEMM 2<br/>down projection,<br/>× routing weight"]
+  end
+  C["Combine<br/>sum 8 rows per token<br/>output T × 2,048"]
+  X --> R
+  R -->|"top-8 ids, weights"| AL
+  AL -->|"sorted_ids, expert_ids"| G1
+  X -->|"rows read in place"| G1
+  G1 --> G2
+  G2 -->|"T × 8 rows"| C

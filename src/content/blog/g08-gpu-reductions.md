@@ -212,7 +212,7 @@ The block-per-row kernels stream each row, so they handle any length. Same 2^25 
 
 The input is 67.1 MB, so the last column counts trips to DRAM. At 4,096 columns every version read the input exactly once: an 8 KB row read again is still in the L1 or L2 cache, so extra passes were free. At 131,072 columns a row is 256 KB, and six 256-thread blocks per SM keep 144 rows (36 MB) in flight, more than the 32 MB L2. Re-reads spill to DRAM: the three-pass kernel read 2.6 times the input, the online one 2.0 times, and the saved read was worth 1.19 times the speed.
 
-With 1,024-thread blocks only 24 rows (6 MB) are in flight, every re-read hits L2, and both versions reach 88%, as PyTorch does with the same block size. The online algorithm pays off when data outgrows every cache, the normal case in attention, which Part 10 builds.
+With 1,024-thread blocks only 24 rows (6 MB) are in flight, every re-read hits L2, and both versions reach 88%, as PyTorch does with the same block size. The online algorithm pays off when data outgrows every cache, the normal case in attention, which [Part 10](/blog/attention-kernel/) builds.
 
 ## Step 4: RMSNorm and LayerNorm
 
