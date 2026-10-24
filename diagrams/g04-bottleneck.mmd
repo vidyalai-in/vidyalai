@@ -1,0 +1,14 @@
+flowchart TD
+  T["Time the kernel<br/>CUDA events, warm GPU"]
+  C["Count FLOPs and bytes<br/>intensity = FLOPs ÷ bytes"]
+  Q{"Which roof is closest?"}
+  M["Memory-bound<br/>near the bandwidth line"]
+  P["Compute-bound<br/>near the flat roof"]
+  L["Below both roofs<br/>latency or<br/>launch overhead"]
+  FM["Move fewer bytes<br/>fuse, reuse, quantize"]
+  FP["Cheaper math<br/>tensor cores, lower precision"]
+  FL["More parallel work<br/>fuse kernels, CUDA graphs"]
+  T --> C --> Q
+  Q -->|"GB/s near 248"| M --> FM
+  Q -->|"TFLOPS near peak"| P --> FP
+  Q -->|"neither"| L --> FL

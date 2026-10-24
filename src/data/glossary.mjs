@@ -2371,6 +2371,38 @@ export const GLOSSARY = [
 
   // ---------- Serving ----------
   {
+    id: 'nsight-compute',
+    term: 'Nsight Compute',
+    match: ['Nsight Compute'],
+    def: "NVIDIA's kernel profiler (ncu). It replays one GPU kernel many times to collect hardware counters: throughput against peak, memory traffic, occupancy and warp stall reasons.",
+    article: 'gpu-profiling-roofline',
+    source: { title: 'Nsight Compute Kernel Profiling Guide (NVIDIA)', url: 'https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html' },
+  },
+  {
+    id: 'nsight-systems',
+    term: 'Nsight Systems',
+    match: ['Nsight Systems'],
+    def: "NVIDIA's system-wide profiler (nsys). It records a timeline of CPU threads, CUDA API calls, NVTX ranges and GPU work across a whole program.",
+    article: 'gpu-profiling-roofline',
+    source: { title: 'Nsight Systems User Guide (NVIDIA)', url: 'https://docs.nvidia.com/nsight-systems/UserGuide/index.html' },
+  },
+  {
+    id: 'warp-stall-reason',
+    term: 'Warp stall reason',
+    match: ['warp stall reasons', 'warp stall reason', 'Long Scoreboard'],
+    def: "Nsight Compute's breakdown of why warps weren't issuing instructions, such as Long Scoreboard (waiting for a memory load) or Math Pipe Throttle (math units busy).",
+    article: 'gpu-profiling-roofline',
+    source: { title: 'Nsight Compute Kernel Profiling Guide (NVIDIA)', url: 'https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html' },
+  },
+  {
+    id: 'power-cap',
+    term: 'Power cap',
+    match: ['power cap', 'SW power cap', 'SW Power Cap'],
+    def: "When a GPU's power draw reaches its limit, the driver lowers clocks to stay under it. nvidia-smi reports this as the SW Power Cap event reason.",
+    article: 'gpu-profiling-roofline',
+    source: { title: 'nvidia-smi documentation (NVIDIA)', url: 'https://docs.nvidia.com/deploy/nvidia-smi/index.html' },
+  },
+  {
     id: 'memory-coalescing',
     term: 'Memory coalescing',
     match: ['memory coalescing', 'coalesced', 'coalescing'],
@@ -3330,7 +3362,7 @@ export const GLOSSARY = [
     term: 'Roofline',
     match: ['roofline', 'ridge point'],
     def: 'A model of hardware performance: speed is capped either by memory bandwidth or by peak compute. The ridge point is the arithmetic intensity where the two caps meet (about 295 FLOPs per byte on an H100).',
-    article: 'how-llm-inference-works',
+    article: 'gpu-profiling-roofline',
     source: { title: 'LLM Inference Unveiled: Survey and Roofline Model Insights (Yuan et al., 2024)', url: 'https://arxiv.org/abs/2402.16363' },
   },
   {

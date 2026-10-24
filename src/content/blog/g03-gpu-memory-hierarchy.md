@@ -116,7 +116,7 @@ __global__ void read_ws(const float4* __restrict__ buf, unsigned mask, unsigned 
 }
 ```
 
-It runs 6 blocks of 256 threads per SM, with the split set to favor L1, so each SM's working set is the buffer size. Nsight Compute (`ncu`, NVIDIA's kernel profiler, covered in Part 4) reported the hit rates:
+It runs 6 blocks of 256 threads per SM, with the split set to favor L1, so each SM's working set is the buffer size. Nsight Compute (`ncu`, NVIDIA's kernel profiler, covered in [Part 4](/blog/gpu-profiling-roofline/)) reported the hit rates:
 
 | Buffer | Time | GB/s | L1 hit rate | L2 hit rate | Read from DRAM |
 |---|---|---|---|---|---|
@@ -326,7 +326,7 @@ Hopper also added a hardware copy engine between the levels. The **Tensor Memory
 
 ## What's next
 
-You now have numbers for every level of the ladder, but a real kernel uses several at once and you need a way to tell which one is holding it back. Part 4 covers profiling and the roofline: Nsight Systems and Nsight Compute in depth, the PyTorch profiler, and plotting this series' kernels against the 4060's limits for compute and bandwidth, along with the clocks, power limits and throttling that move those limits on a laptop.
+You now have numbers for every level of the ladder, but a real kernel uses several at once and you need a way to tell which one is holding it back. [Part 4](/blog/gpu-profiling-roofline/) covers profiling and the roofline: Nsight Systems and Nsight Compute in depth, the PyTorch profiler, and plotting this series' kernels against the 4060's limits for compute and bandwidth, along with the clocks, power limits and throttling that move those limits on a laptop.
 
 ## Further reading
 

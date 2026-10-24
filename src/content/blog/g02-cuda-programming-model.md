@@ -129,7 +129,7 @@ The rated bandwidth is 256 GB/s: a 128-bit bus at 16 gigabits per second per pin
 
 Pure reads and pure writes come within 3% of the rating. Any mix, including NVIDIA's `cudaMemcpy`, levels off near 226 GB/s; [Part 3](/blog/gpu-memory-hierarchy/) looks at why. So the first kernel you write already matches NVIDIA's copy routine. That's normal for simple memory-bound kernels: the gains come from not running them at all, by fusing them into neighbors (Part 9).
 
-NVIDIA's Nsight Compute profiler (`ncu`, covered in Part 4) confirms the byte count: 537.0 MB read from DRAM and 254.7 MB written, against 536.9 MB and 268.4 MB expected. The missing 14 MB of writes was likely still in the 32 MB L2 cache when the kernel ended.
+NVIDIA's Nsight Compute profiler (`ncu`, covered in [Part 4](/blog/gpu-profiling-roofline/)) confirms the byte count: 537.0 MB read from DRAM and 254.7 MB written, against 536.9 MB and 268.4 MB expected. The missing 14 MB of writes was likely still in the 32 MB L2 cache when the kernel ended.
 
 One timing trap: in a fresh process, the first 0.2 seconds of runs measured 198 GB/s before stepping up to 227 GB/s. Touching the memory first didn't change that, and `nvidia-smi` showed the GPU moving from its P3 to its P0 performance state as the load began, so it looks like power-management warm-up. Hence the 150 warm-up runs (about 0.6 seconds) in the listing.
 
