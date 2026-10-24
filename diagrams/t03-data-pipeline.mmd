@@ -1,0 +1,10 @@
+flowchart TD
+  A["FineWeb-Edu<br/>sample-10BT<br/>1 in 4 row groups"] --> B["MinHash<br/>112 values<br/>per document"]
+  A --> C["Tokenize<br/>32K BPE,<br/>id 0 after each"]
+  B --> D["LSH<br/>14 bands of 8,<br/>union-find"]
+  D --> E["Keep one<br/>per cluster;<br/>drop docs<br/>under 64 tokens"]
+  C --> E
+  E --> F["Seeded shuffle<br/>of documents"]
+  F --> G["Validation<br/>15M tokens"]
+  F --> H["Train shards<br/>100M tokens<br/>each"]
+  H --> I["ShardLoader<br/>16 x 1,024<br/>micro-batches"]

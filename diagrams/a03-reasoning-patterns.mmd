@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph T["Adaptive thinking"]
+        T1["Hidden thinking<br/>(optional, billed)"] --> T2["Tool call"]
+        T2 --> T3["Tool result"]
+        T3 -- "back to the model" --> T1
+    end
+    subgraph P["Plan-and-execute"]
+        P1["Planner writes<br/>the whole plan"] --> P2["Executor runs<br/>the next step"]
+        P2 -- "result fits" --> P2
+        P2 -- "plan breaks" --> P3["Planner replans<br/>(once)"]
+        P3 --> P2
+    end
+    subgraph R["ReAct: reason in the open"]
+        R1["Thought<br/>(visible text)"] --> R2["Action<br/>(tool call)"]
+        R2 --> R3["Observation<br/>(tool result)"]
+        R3 -- "back to the model" --> R1
+    end

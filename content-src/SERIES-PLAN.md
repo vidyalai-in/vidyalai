@@ -109,8 +109,8 @@ Series slug `agentic-ai`, short name "Agents", file prefix `a`, category `agents
 |---|---|---|---|---|---|---|
 | 1 | What an agent is: the loop, measured | `what-is-an-ai-agent` | LLM + tools + loop; workflows vs agents; the 150-line lab harness; tokens, cost and latency per step | SD10, f14 | $1 | Published |
 | 2 | How tool calling works inside the model | `tool-calling-internals` | Tool schemas in the prompt, tool-use blocks, strict mode, parallel calls; malformed-call rate measured with strict on and off | SD13, SD10 | $2 | Published |
-| 3 | Reasoning and acting: ReAct, planning and thinking | `react-planning` | ReAct, plan-and-execute, adaptive thinking and effort levels; accuracy vs tokens on a fixed task set | f14 | $5 |  |
-| 4 | Reflection and self-correction | `agent-self-correction` | Reflexion, critique loops, verifier tools (tests); when self-critique helps and when it hurts, measured | a03 | $4 |  |
+| 3 | Reasoning and acting: ReAct, planning and thinking | `react-planning` | ReAct, plan-and-execute, adaptive thinking and effort levels; accuracy vs tokens on a fixed task set | f14 | $5 || Published |
+| 4 | Reflection and self-correction | `agent-self-correction` | Reflexion, critique loops, verifier tools (tests); when self-critique helps and when it hurts, measured | a03 | $4 || Published |
 | 5 | Context engineering | `context-engineering` | What fills the window; sizing tool results; compaction vs context editing vs memory files; prompt-caching economics on long tasks | SD12, i06 | $5 |  |
 | 6 | MCP: connecting agents to tools | `model-context-protocol` | The protocol, transports, servers; tool search and deferred loading; tool-choice accuracy as tool count grows | a02 | $3 |  |
 | 7 | Multi-agent systems and agent-to-agent protocols | `multi-agent-systems` | Orchestrator-workers, sub-agents, A2A; single agent vs orchestrator on the same tasks (tokens ×, accuracy) | SD23 | $6 |  |
@@ -132,8 +132,8 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 |---|---|---|---|---|---|
 | 1 | What a laptop can train | `build-llm-from-scratch` | Roadmap; compute budget with 6ND; choosing model size, tokens and time | m15, f12 | Published |
 | 2 | Training a BPE tokenizer | `train-bpe-tokenizer` | BPE from scratch, vocab size trade-offs, compression measured | f02 | Published |
-| 3 | The pretraining data pipeline | `pretraining-data-pipeline` | Download, quality filters, MinHash dedup, shuffling, packing into token shards | f12 |  |
-| 4 | Writing the model | `write-gpt-model` | RMSNorm, RoPE, GQA, SwiGLU in about 200 lines; parameter count checked against the formula | f06, f10, m15 |  |
+| 3 | The pretraining data pipeline | `pretraining-data-pipeline` | Download, quality filters, MinHash dedup, shuffling, packing into token shards | f12 || Published |
+| 4 | Writing the model | `write-gpt-model` | RMSNorm, RoPE, GQA, SwiGLU in about 200 lines; parameter count checked against the formula | f06, f10, m15 || Published |
 | 5 | The training loop | `llm-training-loop` | AdamW, warm-up and cosine schedule, clipping, BF16, gradient accumulation; first loss curve | m09, m10 |  |
 | 6 | Making training fast on one GPU | `fast-llm-training` | torch.compile, SDPA/FlashAttention, fused AdamW, MFU measured | g09, g10 |  |
 | 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 |  |

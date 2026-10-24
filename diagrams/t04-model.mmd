@@ -1,0 +1,15 @@
+flowchart TD
+  ids["Token ids (B, T)"] --> emb["Embedding table<br/>32,768 × 768"]
+  emb --> n1
+  emb -->|"skip"| add1
+  subgraph block["Block, repeated 10 times"]
+    n1["RMSNorm"] --> attn["Grouped-query attention<br/>12 query, 4 KV heads<br/>RoPE on q and k"]
+    attn --> add1(("+"))
+    add1 --> n2["RMSNorm"]
+    add1 -->|"skip"| add2
+    n2 --> mlp["SwiGLU MLP<br/>768 → 2,048 → 768"]
+    mlp --> add2(("+"))
+  end
+  add2 --> nf["Final RMSNorm"]
+  nf --> out["Output layer:<br/>same table, transposed"]
+  out --> loss["Logits (B, T, 32,768)<br/>and cross-entropy loss"]

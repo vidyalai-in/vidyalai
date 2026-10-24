@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="78" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0K</text>
+<line x1="78" x2="756" y1="322.7" y2="322.7" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="326.7" fill="#9fb0cf" font-size="13" text-anchor="end">50K</text>
+<line x1="78" x2="756" y1="237.3" y2="237.3" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="241.3" fill="#9fb0cf" font-size="13" text-anchor="end">100K</text>
+<line x1="78" x2="756" y1="152.0" y2="152.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="156.0" fill="#9fb0cf" font-size="13" text-anchor="end">150K</text>
+<line x1="78" x2="756" y1="66.7" y2="66.7" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="70.7" fill="#9fb0cf" font-size="13" text-anchor="end">200K</text>
+<rect x="79.0" y="106.7" width="15.0" height="301.3" fill="#38bdf8"/>
+<rect x="96.0" y="34.2" width="15.0" height="373.8" fill="#38bdf8"/>
+<rect x="112.9" y="65.3" width="14.9" height="342.7" fill="#38bdf8"/>
+<rect x="129.8" y="92.0" width="15.0" height="316.0" fill="#38bdf8"/>
+<rect x="146.8" y="116.2" width="14.9" height="291.8" fill="#38bdf8"/>
+<rect x="163.8" y="140.7" width="14.9" height="267.3" fill="#38bdf8"/>
+<rect x="180.7" y="162.0" width="14.9" height="246.0" fill="#38bdf8"/>
+<rect x="197.6" y="181.5" width="15.0" height="226.5" fill="#38bdf8"/>
+<rect x="214.6" y="200.4" width="15.0" height="207.6" fill="#38bdf8"/>
+<rect x="231.6" y="217.6" width="14.9" height="190.4" fill="#38bdf8"/>
+<rect x="248.5" y="234.8" width="15.0" height="173.2" fill="#38bdf8"/>
+<rect x="265.5" y="250.2" width="14.9" height="157.8" fill="#38bdf8"/>
+<rect x="282.4" y="264.5" width="15.0" height="143.5" fill="#38bdf8"/>
+<rect x="299.4" y="279.0" width="14.9" height="129.0" fill="#38bdf8"/>
+<rect x="316.3" y="292.4" width="15.0" height="115.6" fill="#38bdf8"/>
+<rect x="333.2" y="304.5" width="14.9" height="103.5" fill="#38bdf8"/>
+<rect x="350.2" y="316.0" width="14.9" height="92.0" fill="#38bdf8"/>
+<rect x="367.1" y="327.1" width="15.0" height="80.9" fill="#38bdf8"/>
+<rect x="384.1" y="338.0" width="14.9" height="70.0" fill="#38bdf8"/>
+<rect x="401.1" y="347.9" width="14.9" height="60.1" fill="#38bdf8"/>
+<rect x="418.0" y="356.2" width="14.9" height="51.8" fill="#38bdf8"/>
+<rect x="434.9" y="364.2" width="15.0" height="43.8" fill="#38bdf8"/>
+<rect x="451.9" y="372.5" width="14.9" height="35.5" fill="#38bdf8"/>
+<rect x="468.8" y="378.7" width="15.0" height="29.3" fill="#38bdf8"/>
+<rect x="485.8" y="387.6" width="14.9" height="20.4" fill="#38bdf8"/>
+<rect x="502.8" y="389.5" width="15.0" height="18.5" fill="#38bdf8"/>
+<rect x="519.7" y="393.8" width="15.0" height="14.2" fill="#38bdf8"/>
+<rect x="536.7" y="397.5" width="14.9" height="10.5" fill="#38bdf8"/>
+<rect x="553.6" y="400.3" width="15.0" height="7.7" fill="#38bdf8"/>
+<rect x="570.5" y="402.4" width="15.0" height="5.6" fill="#38bdf8"/>
+<rect x="587.5" y="404.1" width="15.0" height="3.9" fill="#38bdf8"/>
+<rect x="604.5" y="405.3" width="14.9" height="2.7" fill="#38bdf8"/>
+<rect x="621.4" y="406.3" width="15.0" height="1.7" fill="#38bdf8"/>
+<rect x="638.4" y="406.9" width="14.9" height="1.1" fill="#38bdf8"/>
+<rect x="655.3" y="407.4" width="15.0" height="0.6" fill="#38bdf8"/>
+<rect x="672.2" y="407.6" width="15.0" height="0.4" fill="#38bdf8"/>
+<rect x="689.2" y="407.8" width="14.9" height="0.2" fill="#38bdf8"/>
+<rect x="706.1" y="407.9" width="15.0" height="0.1" fill="#38bdf8"/>
+<rect x="723.1" y="408.0" width="14.9" height="0.0" fill="#38bdf8"/>
+<rect x="740.0" y="408.0" width="15.0" height="0.0" fill="#38bdf8"/>
+<text x="78.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2.5</text>
+<text x="213.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">3.0</text>
+<text x="349.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">3.5</text>
+<text x="484.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4.0</text>
+<text x="620.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4.5</text>
+<text x="756.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">5.0</text>
+<line x1="349.2" x2="349.2" y1="24" y2="408" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="620.4" x2="620.4" y1="24" y2="408" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="213.6" y="46.2" fill="#e8eefc" font-size="14" text-anchor="middle">Rounds to 3: 86.7% of docs</text>
+<text x="484.8" y="203.2" fill="#e8eefc" font-size="14" text-anchor="middle">Rounds to 4: 13.2%</text>
+<text x="688.2" y="305.6" fill="#e8eefc" font-size="14" text-anchor="middle">5: 0.08%</text>
+<text x="213.6" y="80.3" fill="#9fb0cf" font-size="13" text-anchor="middle">median 2.91</text>
+<text x="417.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Educational-quality score from the FineWeb-Edu classifier</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Documents per 1/16 bin</text>
+</svg>

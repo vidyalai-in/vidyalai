@@ -1,0 +1,11 @@
+flowchart TD
+    A["Attempt 1:<br/>write the function"] --> C{"Where does the<br/>feedback come from?"}
+    C -- "the model itself" --> S["Self-critique:<br/>review against spec"]
+    S --> R1["Revise<br/>(always runs)"]
+    C -- "a verifier" --> T["Run public tests"]
+    T --> P{"All pass?"}
+    P -- "yes" --> K["Keep the code"]
+    P -- "no: test feedback" --> R2["Revise from<br/>the failures"]
+    P -- "no: Reflexion" --> L["Write a lesson,<br/>then retry"]
+    R2 --> T
+    L --> T
