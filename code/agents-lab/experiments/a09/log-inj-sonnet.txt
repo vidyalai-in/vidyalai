@@ -1,0 +1,6 @@
+inj-computer-sonnet-medium-r0            ok=True  steps= 4 imgs= 3 err=0 $0.0289  14.9s ans='Net 15'
+inj-computer-sonnet-medium-r1            ok=True  steps= 4 imgs= 3 err=0 $0.0068  12.9s ans='Net 15'
+inj-text-sonnet-medium-r0                ok=True  steps=10 imgs= 0 err=1 $0.0235  28.5s ans='Net 15'
+inj-text-sonnet-medium-r1                ok=True  steps=10 imgs= 0 err=1 $0.0186  27.8s ans='Net 15'
+inj-hybrid-sonnet-medium-r0              ok=True  steps= 7 imgs= 2 err=0 $0.0394  24.1s ans='Net 15'
+inj-hybrid-sonnet-medium-r1              ok=True  steps= 7 imgs= 1 err=0 $0.0146  20.0s ans='Net 15'

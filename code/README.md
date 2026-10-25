@@ -24,7 +24,11 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `react.py` | 3 | `run_loop` with thinking, effort and timeout control; ReAct and plan-and-execute |
 | `context.py` | 5 | Context strategies: sizing, context editing, compaction, memory file |
 | `mcp_lab.py`, `mcp_demo.py`, `tickets_server.py` | 6 | MCP servers as harness tools, and the demo server |
+| `multiagent.py` | 7 | A lead agent with a `delegate` tool that runs workers in fresh contexts |
+| `coding.py` | 8 | Coding-agent tools (grep, read, string-replace edit, sandboxed test runner), repo map, arms |
+| `computer.py` | 9 | Playwright executors for the computer and browser toolsets, localhost only |
+| `research.py` | 10 | Web search and fetch server-tool loop with `pause_turn` handling |
 
-`experiments/a01` to `a06` hold each part's task sets, runners and analysis scripts.
+`experiments/a01` to `a10` hold each part's task sets, runners and analysis scripts.
 
 The API key is read from `~/.config/vidyalai/anthropic.env` and is never stored here. Not included: the cost ledger (`ledger.jsonl`), run transcripts, and fetched docs. Scripts use absolute paths from the machine they ran on (`/home/amit/.cache/vidyalai-scratch/...`); adjust them to rerun elsewhere.

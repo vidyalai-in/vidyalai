@@ -1,0 +1,56 @@
+[
+ {
+  "page": "/",
+  "screenshot": 1337,
+  "read_page": 413,
+  "read_page_interactive": 328,
+  "read_page_all": 413,
+  "get_page_text": 92,
+  "height": 800
+ },
+ {
+  "page": "/inventory",
+  "screenshot": 1337,
+  "read_page": 1257,
+  "read_page_interactive": 484,
+  "read_page_all": 1257,
+  "get_page_text": 499,
+  "height": 800
+ },
+ {
+  "page": "/travel",
+  "screenshot": 1337,
+  "read_page": 660,
+  "read_page_interactive": 473,
+  "read_page_all": 660,
+  "get_page_text": 153,
+  "height": 800
+ },
+ {
+  "page": "/reports/budget",
+  "screenshot": 1337,
+  "read_page": 648,
+  "read_page_interactive": 200,
+  "read_page_all": 648,
+  "get_page_text": 295,
+  "height": 800
+ },
+ {
+  "page": "/policies/travel",
+  "screenshot": 1337,
+  "read_page": 831,
+  "read_page_interactive": 203,
+  "read_page_all": 1944,
+  "get_page_text": 1162,
+  "height": 2212
+ },
+ {
+  "page": "/vendors",
+  "screenshot": 1337,
+  "read_page": 813,
+  "read_page_interactive": 371,
+  "read_page_all": 813,
+  "get_page_text": 233,
+  "height": 800
+ }
+]

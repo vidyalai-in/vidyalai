@@ -1,0 +1,15 @@
+research     claude-sonnet-5-5  s02 r0 BAD s=0 f=0 $0.0121 1.12s  
+research     claude-sonnet-5-5  s07 r0 OK  s=1 f=0 $0.0437 3.23s  523
+research     claude-sonnet-5-5  s12 r0 OK  s=1 f=0 $0.0365 4.39s  Spain, 1-0
+research     claude-sonnet-5-5  m02 r0 OK  s=1 f=0 $0.0350 5.54s  Henri B. Kagan (Henri Baruch Kagan)
+research     claude-sonnet-5-5  m03 r0 OK  s=2 f=0 $0.0677 7.22s  Stanford University
+research     claude-sonnet-5-5  m05 r0 OK  s=2 f=0 $0.0625 4.18s  9
+research     claude-sonnet-5-5  s05 r0 OK  s=1 f=1 $0.0451 15.79s  7.3
+research     claude-sonnet-5-5  m09 r0 OK  s=1 f=0 $0.0369 6.54s  7
+research     claude-sonnet-5-5  d01 r0 OK  s=3 f=0 $0.0977 8.25s  3
+research     claude-sonnet-5-5  d02 r0 OK  s=5 f=0 $0.1602 8.82s  Go 1.27.0, JDK 27 (General Availability), Rust 1.99.0, Pytho
+research     claude-sonnet-5-5  d03 r0 OK  s=3 f=0 $0.0929 6.01s  3
+research     claude-sonnet-5-5  d04 r0 OK  s=1 f=0 $0.0348 5.32s  2
+research     claude-sonnet-5-5  d05 r0 OK  s=2 f=0 $0.0632 4.39s  32
+a10        $ 3.3120 of $5.00
+TOTAL      $17.4498 of $90.00

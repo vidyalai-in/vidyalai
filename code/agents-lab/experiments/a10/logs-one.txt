@@ -1,0 +1,48 @@
+one-search   claude-haiku-5-5   s03 r0 OK  s=1 f=0 $0.0114 3.47s  2026-08-19
+one-search   claude-haiku-5-5   s01 r0 OK  s=1 f=0 $0.0113 4.6s  2026-10-09
+one-search   claude-haiku-5-5   s02 r0 BAD s=1 f=0 $0.0114 5.3s  1.97.1
+one-search   claude-haiku-5-5   s06 r0 OK  s=1 f=0 $0.0114 3.34s  2026-09-15
+one-search   claude-haiku-5-5   s05 r0 OK  s=1 f=0 $0.0113 6.13s  7.3
+one-search   claude-haiku-5-5   s07 r0 OK  s=1 f=0 $0.0113 4.67s  JEP 523
+one-search   claude-haiku-5-5   s08 r0 OK  s=1 f=0 $0.0112 3.29s  3.75%-4.00%
+one-search   claude-haiku-5-5   s09 r0 OK  s=1 f=0 $0.0112 3.2s  3
+one-search   claude-haiku-5-5   s10 r0 OK  s=1 f=0 $0.0113 3.6s  Francis Halzen
+one-search   claude-haiku-5-5   s11 r0 OK  s=1 f=0 $0.0112 3.29s  Anne Carson
+one-search   claude-haiku-5-5   s12 r0 OK  s=1 f=0 $0.0114 3.65s  Spain, 1-0
+one-search   claude-haiku-5-5   m01 r0 OK  s=1 f=0 $0.0113 3.75s  10
+one-search   claude-haiku-5-5   m02 r0 OK  s=2 f=0 $0.0113 6.85s  Henri B. Kagan
+one-search   claude-haiku-5-5   m04 r0 OK  s=2 f=0 $0.0114 5.22s  27 (tentative: Go 1.27.0 on 19 Aug 2026 to JDK 27 GA on 15 S
+one-search   claude-haiku-5-5   m03 r0 OK  s=1 f=0 $0.0115 7.35s  Stanford University
+one-search   claude-haiku-5-5   m05 r0 OK  s=2 f=0 $0.0112 4.36s  Unable to determine. Python 3.15.0 was released October 9, 2
+one-search   claude-haiku-5-5   m07 r0 OK  s=1 f=0 $0.0110 4.22s  2008
+one-search   claude-haiku-5-5   m08 r0 OK  s=2 f=0 $0.0111 5.71s  -0.25
+one-search   claude-haiku-5-5   m10 r0 OK  s=2 f=0 $0.0109 3.29s  12
+one-search   claude-haiku-5-5   m09 r0 OK  s=2 f=0 $0.0113 6.75s  7
+one-search   claude-haiku-5-5   m11 r0 OK  s=1 f=0 $0.0112 4.17s  University of Wisconsin–Madison
+one-search   claude-haiku-5-5   m12 r0 OK  s=1 f=0 $0.0114 3.74s  10
+one-search   claude-haiku-5-5   s01 r1 OK  s=1 f=0 $0.0113 3.64s  2026-10-09
+one-search   claude-haiku-5-5   s02 r1 OK  s=1 f=0 $0.0115 3.9s  1.99.1
+one-search   claude-haiku-5-5   s03 r1 OK  s=1 f=0 $0.0114 3.18s  2026-08-19
+one-search   claude-haiku-5-5   s04 r1 OK  s=1 f=0 $0.0113 4.62s  2026-11-19
+one-search   claude-haiku-5-5   s06 r1 OK  s=1 f=0 $0.0113 3.41s  2026-09-15
+one-search   claude-haiku-5-5   s05 r1 OK  s=1 f=0 $0.0112 5.53s  7.3
+one-search   claude-haiku-5-5   s07 r1 OK  s=1 f=0 $0.0112 3.89s  JEP 523
+one-search   claude-haiku-5-5   s08 r1 OK  s=1 f=0 $0.0113 3.48s  3.75%-4.00%
+one-search   claude-haiku-5-5   s09 r1 OK  s=1 f=0 $0.0112 3.44s  3
+one-search   claude-haiku-5-5   s10 r1 OK  s=1 f=0 $0.0113 3.13s  Francis Halzen
+one-search   claude-haiku-5-5   s11 r1 OK  s=1 f=0 $0.0112 3.38s  Anne Carson
+one-search   claude-haiku-5-5   s12 r1 OK  s=1 f=0 $0.0113 3.38s  Spain, 1-0
+one-search   claude-haiku-5-5   m01 r1 OK  s=1 f=0 $0.0112 3.71s  10
+one-search   claude-haiku-5-5   m02 r1 OK  s=1 f=0 $0.0116 6.79s  Henri Basil Kagan (Henri B. Kagan), born 1930, Nobel Prize i
+one-search   claude-haiku-5-5   m03 r1 OK  s=2 f=0 $0.0113 6.02s  Stanford University
+one-search   claude-haiku-5-5   m04 r1 OK  s=2 f=0 $0.0114 4.89s  27 days (assuming JDK 27 GA on 15 September 2026, which I co
+one-search   claude-haiku-5-5   m06 r1 BAD s=2 f=0 $0.0113 5.55s  Neither; both were released on October 1, 2026 (0 days apart
+one-search   claude-haiku-5-5   m07 r1 OK  s=1 f=0 $0.0110 4.95s  2008
+one-search   claude-haiku-5-5   m05 r1 OK  s=2 f=0 $0.0114 7.28s  Unable to determine. Python 3.15.0 was released October 9, 2
+one-search   claude-haiku-5-5   m08 r1 OK  s=2 f=0 $0.0111 4.18s  -0.25
+one-search   claude-haiku-5-5   m10 r1 OK  s=2 f=0 $0.0109 3.69s  12
+one-search   claude-haiku-5-5   m09 r1 OK  s=1 f=0 $0.0114 6.32s  7
+one-search   claude-haiku-5-5   m11 r1 OK  s=1 f=0 $0.0111 3.72s  University of Wisconsin–Madison
+one-search   claude-haiku-5-5   m12 r1 OK  s=1 f=0 $0.0114 4.4s  10
+a10        $ 0.7688 of $5.00
+TOTAL      $13.6541 of $90.00

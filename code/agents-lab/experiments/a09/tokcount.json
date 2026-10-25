@@ -1,0 +1,70 @@
+{
+ "toolsets": {
+  "claude-haiku-5-5": {
+   "no tools": 15,
+   "computer (default)": 4522,
+   "computer, no zoom": 4111,
+   "browser (default 27)": 6603,
+   "browser, no tabs (hybrid arm)": 6199,
+   "browser, no tabs/screenshot/zoom (text arm)": 5867
+  },
+  "claude-sonnet-5-5": {
+   "no tools": 15,
+   "computer (default)": 4522,
+   "computer, no zoom": 4111,
+   "browser (default 27)": 6603,
+   "browser, no tabs (hybrid arm)": 6199,
+   "browser, no tabs/screenshot/zoom (text arm)": 5867
+  }
+ },
+ "images": [
+  {
+   "w": 1024,
+   "h": 768,
+   "model": "claude-haiku-5-5",
+   "measured": 1039,
+   "formula": 1036,
+   "png_kb": 127
+  },
+  {
+   "w": 1280,
+   "h": 720,
+   "model": "claude-haiku-5-5",
+   "measured": 1199,
+   "formula": 1196,
+   "png_kb": 132
+  },
+  {
+   "w": 1280,
+   "h": 800,
+   "model": "claude-haiku-5-5",
+   "measured": 1337,
+   "formula": 1334,
+   "png_kb": 102
+  },
+  {
+   "w": 1366,
+   "h": 768,
+   "model": "claude-haiku-5-5",
+   "measured": 1375,
+   "formula": 1372,
+   "png_kb": 164
+  },
+  {
+   "w": 1920,
+   "h": 1080,
+   "model": "claude-haiku-5-5",
+   "measured": 2694,
+   "formula": 2691,
+   "png_kb": 281
+  },
+  {
+   "w": 2560,
+   "h": 1440,
+   "model": "claude-haiku-5-5",
+   "measured": 4787,
+   "formula": 4784,
+   "png_kb": 436
+  }
+ ]
+}

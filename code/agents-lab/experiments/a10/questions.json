@@ -1,0 +1,285 @@
+[
+ {
+  "id": "s01",
+  "kind": "single",
+  "q": "On what date was Python 3.15.0 released? Give the date as YYYY-MM-DD.",
+  "accept": [
+   "2026-10-09"
+  ],
+  "source": "https://www.python.org/downloads/"
+ },
+ {
+  "id": "s02",
+  "kind": "single",
+  "q": "What is the most recent stable Rust release (including point releases) announced on the official Rust blog as of 2026-10-25? Give the version number, like 1.2.3.",
+  "accept": [
+   "1\\.99\\.1"
+  ],
+  "source": "https://blog.rust-lang.org/releases/"
+ },
+ {
+  "id": "s03",
+  "kind": "single",
+  "q": "On what date was Go 1.27.0 released? Give the date as YYYY-MM-DD.",
+  "accept": [
+   "2026-08-19"
+  ],
+  "source": "https://go.dev/doc/devel/release"
+ },
+ {
+  "id": "s04",
+  "kind": "single",
+  "q": "What is the planned general availability date of PostgreSQL 19, according to the PostgreSQL project? Give the date as YYYY-MM-DD.",
+  "accept": [
+   "2026-11-19"
+  ],
+  "source": "https://www.postgresql.org/about/news/postgresql-19-rc-1-released-3409/"
+ },
+ {
+  "id": "s05",
+  "kind": "single",
+  "q": "What was the most recent Linux mainline kernel release (not a release candidate) as of 2026-10-25? Give the version number, like 6.1.",
+  "accept": [
+   "7\\.3"
+  ],
+  "source": "https://www.kernel.org/"
+ },
+ {
+  "id": "s06",
+  "kind": "single",
+  "q": "On what date did JDK 27 reach General Availability? Give the date as YYYY-MM-DD.",
+  "accept": [
+   "2026-09-15"
+  ],
+  "source": "https://openjdk.org/projects/jdk/27/"
+ },
+ {
+  "id": "s07",
+  "kind": "single",
+  "q": "Which JEP in JDK 27 makes G1 the default garbage collector in all environments? Give the JEP number only.",
+  "accept": [
+   "523"
+  ],
+  "source": "https://openjdk.org/projects/jdk/27/"
+ },
+ {
+  "id": "s08",
+  "kind": "single",
+  "q": "What target range for the federal funds rate did the FOMC set at its September 15-16, 2026 meeting? Give it as two percentages, like 1.25%-1.50%.",
+  "accept": [
+   "3\\.75 ?%? ?(-|to|\u2013) ?4(\\.00)? ?%"
+  ],
+  "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+ },
+ {
+  "id": "s09",
+  "kind": "single",
+  "q": "How many FOMC members voted against the monetary policy action at the July 2026 FOMC meeting? Give a number.",
+  "accept": [
+   "3",
+   "three"
+  ],
+  "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm"
+ },
+ {
+  "id": "s10",
+  "kind": "single",
+  "q": "Who was awarded the 2026 Nobel Prize in Physics? Give the full name(s).",
+  "accept": [
+   "Halzen"
+  ],
+  "source": "https://www.nobelprize.org/prizes/physics/2026/summary/"
+ },
+ {
+  "id": "s11",
+  "kind": "single",
+  "q": "Who was awarded the 2026 Nobel Prize in Literature? Give the full name.",
+  "accept": [
+   "Anne Carson"
+  ],
+  "source": "https://www.nobelprize.org/prizes/literature/2026/summary/"
+ },
+ {
+  "id": "s12",
+  "kind": "single",
+  "q": "Which team won the 2026 FIFA World Cup final, and what was the score? Answer like: Team, 2-1.",
+  "accept": [
+   "Spain.*1 ?[-\u2013] ?0"
+  ],
+  "source": "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"
+ },
+ {
+  "id": "m01",
+  "kind": "multi",
+  "q": "How many laureates (people and organizations) received the six Nobel Prizes of 2026 in total? Give a number.",
+  "accept": [
+   "10",
+   "ten"
+  ],
+  "source": "https://www.nobelprize.org/prizes/ (six 2026 summary pages)"
+ },
+ {
+  "id": "m02",
+  "kind": "multi",
+  "q": "Who is the oldest of the 2026 Nobel laureates, across all six prizes? Give the full name.",
+  "accept": [
+   "Kagan"
+  ],
+  "source": "nobelprize.org facts pages (Kagan born 15 December 1930)"
+ },
+ {
+  "id": "m03",
+  "kind": "multi",
+  "q": "Two 2026 Nobel laureates, in different prize categories, list the same university as their affiliation at the time of the award. Which university is it? Give the university name.",
+  "accept": [
+   "Stanford"
+  ],
+  "source": "nobelprize.org facts pages for Deisseroth and Hall"
+ },
+ {
+  "id": "m04",
+  "kind": "multi",
+  "q": "How many days after the release of Go 1.27.0 did JDK 27 reach General Availability? Give a number of days.",
+  "accept": [
+   "27"
+  ],
+  "source": "go.dev release history + openjdk.org/projects/jdk/27"
+ },
+ {
+  "id": "m05",
+  "kind": "multi",
+  "q": "How many days after the release of Python 3.15.0 was Linux 7.3 released? Give a number of days.",
+  "accept": [
+   "9",
+   "nine"
+  ],
+  "source": "python.org/downloads + kernel.org"
+ },
+ {
+  "id": "m06",
+  "kind": "multi",
+  "q": "Which was released first, Rust 1.99.0 or Python 3.15.0, and by how many days? Answer like: Rust 1.99.0, 5 days.",
+  "accept": [
+   "Rust.*\\b8\\b"
+  ],
+  "source": "blog.rust-lang.org/releases + python.org/downloads"
+ },
+ {
+  "id": "m07",
+  "kind": "multi",
+  "q": "In what year did the winner of the 2026 Nobel Peace Prize begin serving as United Nations High Commissioner for Human Rights? Give the year.",
+  "accept": [
+   "2008"
+  ],
+  "source": "https://www.nobelprize.org/prizes/peace/2026/pillay/facts/"
+ },
+ {
+  "id": "m08",
+  "kind": "multi",
+  "q": "Compare the upper bound of the federal funds target range set at the September 2026 FOMC meeting with the upper bound set at the September 2025 FOMC meeting. By how many percentage points did it change? Answer like: +0.50 or -0.50.",
+  "accept": [
+   "-0\\.25",
+   "\u22120\\.25",
+   "minus 0\\.25"
+  ],
+  "source": "Fed statements of 2025-09-17 and 2026-09-16"
+ },
+ {
+  "id": "m09",
+  "kind": "multi",
+  "q": "How many new minor Rust stable versions (x.y.0 releases, not point releases) were released in calendar year 2026 up to 2026-10-25? Give a number.",
+  "accept": [
+   "7",
+   "seven"
+  ],
+  "source": "https://blog.rust-lang.org/releases/"
+ },
+ {
+  "id": "m10",
+  "kind": "multi",
+  "q": "How many days after Python 3.15.0 was Python 3.15.1 released? Give a number of days.",
+  "accept": [
+   "12",
+   "twelve"
+  ],
+  "source": "https://www.python.org/downloads/"
+ },
+ {
+  "id": "m11",
+  "kind": "multi",
+  "q": "At which university was the winner of the 2026 Nobel Prize in Physics working when the prize was awarded? Give the university name.",
+  "accept": [
+   "Wisconsin"
+  ],
+  "source": "https://www.nobelprize.org/prizes/physics/2026/halzen/facts/"
+ },
+ {
+  "id": "m12",
+  "kind": "multi",
+  "q": "How many days after the 2026 FIFA World Cup final did the Federal Reserve issue its July 2026 FOMC statement? Give a number of days.",
+  "accept": [
+   "10",
+   "ten"
+  ],
+  "source": "Wikipedia 2026 final (July 19) + Fed statement (July 29)"
+ },
+ {
+  "id": "d01",
+  "kind": "deep",
+  "q": "How many of the 2026 Nobel laureates (all six prizes) were born in the United States? Give a number.",
+  "accept": [
+   "3",
+   "three"
+  ],
+  "source": "nobelprize.org facts pages: Deisseroth (Boston), Hall (Palo Alto), Woodford (Chicopee)"
+ },
+ {
+  "id": "d02",
+  "kind": "deep",
+  "q": "Put these five releases in the order they were released, earliest first: Python 3.15.0, Go 1.27.0, JDK 27 (General Availability), Rust 1.99.0, Linux 7.3. Answer as a comma-separated list.",
+  "accept": [
+   "Go.*JDK.*Rust.*Python.*Linux"
+  ],
+  "source": "python.org, go.dev, openjdk.org, blog.rust-lang.org, kernel.org"
+ },
+ {
+  "id": "d03",
+  "kind": "deep",
+  "q": "Across the FOMC meetings of June, July and September 2026, how many dissenting votes were there in total on the monetary policy action? Give a number.",
+  "accept": [
+   "3",
+   "three"
+  ],
+  "source": "Fed statements 2026-06-17 (12-0), 2026-07-29 (9-3), 2026-09-16 (12-0)"
+ },
+ {
+  "id": "d04",
+  "kind": "deep",
+  "q": "How many of the 2026 Nobel laureates listed a university in Germany as their affiliation at the time of the award? Give a number.",
+  "accept": [
+   "2",
+   "two"
+  ],
+  "source": "nobelprize.org facts pages: Hegemann (Humboldt Berlin), Nagel (Wuerzburg)"
+ },
+ {
+  "id": "d05",
+  "kind": "deep",
+  "q": "How many days after the release of Linux 7.3 is PostgreSQL 19 planned to reach general availability? Give a number of days.",
+  "accept": [
+   "32",
+   "thirty-two"
+  ],
+  "source": "kernel.org (2026-10-18) + postgresql.org RC1 news (2026-11-19)"
+ },
+ {
+  "id": "d06",
+  "kind": "deep",
+  "q": "How old was the winner of the 2026 Nobel Peace Prize when the prize was announced? Give an age in years.",
+  "accept": [
+   "85",
+   "eighty-five"
+  ],
+  "source": "nobelprize.org Pillay facts (born 23 September 1941)"
+ }
+]
