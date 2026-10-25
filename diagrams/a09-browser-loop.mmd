@@ -1,0 +1,11 @@
+flowchart TD
+    T["Task + one toolset entry"] --> M["Claude: one turn"]
+    M -- "end_turn" --> A["Final answer"]
+    M -- "tool_use batch" --> X["Executor: run blocks in order,<br/>stop at first failure"]
+    X -- "computer toolset" --> C["Mouse and keys<br/>at pixel x, y"]
+    X -- "browser toolset" --> B["Click a ref,<br/>fill a field, navigate"]
+    C --> S["screenshot:<br/>PNG, 1,337 tokens"]
+    B --> R["read_page:<br/>accessibility tree as text"]
+    S --> Q["tool_result blocks<br/>echo toolset_name"]
+    R --> Q
+    Q --> M

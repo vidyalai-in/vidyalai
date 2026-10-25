@@ -1,0 +1,10 @@
+flowchart TD
+    Q["User question"] --> L["Lead agent<br/>one tool: delegate"]
+    L <-- "brief / report" --> W1["Worker 1<br/>fresh context"]
+    L <-- "brief / report" --> W2["Worker 2<br/>fresh context"]
+    L <-- "A2A SendMessage /<br/>task artifact" --> W3["Remote worker<br/>behind an A2A server"]
+    W1 --> T["Incident tracker tools"]
+    W2 --> T
+    W3 --> T
+    T ~~~ A["ANSWER line"]
+    L -- "combines reports" --> A

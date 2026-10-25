@@ -1,0 +1,15 @@
+flowchart TD
+    U["Your code sends<br/>question + tools"] --> M
+    subgraph API["Inside one API request (server-side loop)"]
+        M["Model thinks:<br/>what is still missing?"] --> S["web_search<br/>($0.01 per search)"]
+        S --> R["About 10 results,<br/>with page text,<br/>added to the context"]
+        R --> F{"Fetch a page?<br/>Is its URL already<br/>in the context?"}
+        F -- "yes" --> W["web_fetch adds<br/>the full page"]
+        F -- "no" --> X["Error:<br/>url_not_in_prior_context"]
+        F -- "no fetch needed" --> B
+        W --> B{"Enough to answer?"}
+        X --> B
+        B -- "no: search again" --> M
+        B -- "yes" --> A["Answer with citations:<br/>url + cited_text"]
+    end
+    A --> C["Your code checks<br/>the citations"]

@@ -1,0 +1,8 @@
+flowchart TD
+    I["Issue text + repo checkout"] --> L["Localize:<br/>grep, glob, read_file"]
+    L --> E["Reproduce and edit:<br/>create_file, str_replace"]
+    E --> T["run_tests<br/>(sandbox, no network)"]
+    T -- "fails" --> L
+    T -- "passes: agent stops" --> H["Grader restores hidden tests<br/>and runs them"]
+    H -- "all fail-to-pass and<br/>pass-to-pass tests pass" --> Y["Resolved"]
+    H -- "any test fails" --> N["Not resolved"]

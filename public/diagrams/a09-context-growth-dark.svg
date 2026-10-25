@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="86" x2="750" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0</text>
+<line x1="86" x2="750" y1="312.0" y2="312.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="316.0" fill="#9fb0cf" font-size="13" text-anchor="end">5,000</text>
+<line x1="86" x2="750" y1="216.0" y2="216.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="220.0" fill="#9fb0cf" font-size="13" text-anchor="end">10,000</text>
+<line x1="86" x2="750" y1="120.0" y2="120.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="124.0" fill="#9fb0cf" font-size="13" text-anchor="end">15,000</text>
+<line x1="86" x2="750" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">20,000</text>
+<text x="86.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<text x="159.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<text x="233.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">3</text>
+<text x="307.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<text x="381.1" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">5</text>
+<text x="454.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<text x="528.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">7</text>
+<text x="602.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<text x="676.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">9</text>
+<text x="750.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<text x="418.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Agent step (model call)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Tokens read this step</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2.5" points="86.0,316.0 159.8,288.3 233.6,259.6 307.3,228.7 381.1,197.7 454.9,167.9 528.7,139.8 602.4,109.7 676.2,75.8 750.0,42.0"/>
+<circle cx="86.0" cy="316.0" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="159.8" cy="288.3" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="233.6" cy="259.6" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="307.3" cy="228.7" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="381.1" cy="197.7" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="454.9" cy="167.9" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="528.7" cy="139.8" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="602.4" cy="109.7" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="676.2" cy="75.8" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="750.0" cy="42.0" r="4" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="742.0" y="32.0" fill="#e8eefc" font-size="13" text-anchor="end">19,064</text>
+<polyline fill="none" stroke="#9b72e0" stroke-width="2.5" points="86.0,284.9 159.8,255.2 233.6,231.9 307.3,213.3 381.1,181.3 454.9,151.3 528.7,121.6 602.4,98.3 676.2,68.9 750.0,48.7"/>
+<circle cx="86.0" cy="284.9" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="159.8" cy="255.2" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="233.6" cy="231.9" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="307.3" cy="213.3" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="381.1" cy="181.3" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="454.9" cy="151.3" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="528.7" cy="121.6" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="602.4" cy="98.3" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="676.2" cy="68.9" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<circle cx="750.0" cy="48.7" r="4" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<text x="742.0" y="70.7" fill="#e8eefc" font-size="13" text-anchor="end">18,712</text>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.5" points="86.0,291.2 159.8,289.2 233.6,281.3 307.3,266.7 381.1,237.8 454.9,226.3 528.7,202.0 602.4,187.3 676.2,165.8 750.0,142.4"/>
+<circle cx="86.0" cy="291.2" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="159.8" cy="289.2" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="233.6" cy="281.3" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="307.3" cy="266.7" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="381.1" cy="237.8" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="454.9" cy="226.3" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="528.7" cy="202.0" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="602.4" cy="187.3" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="676.2" cy="165.8" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="750.0" cy="142.4" r="4" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="742.0" y="132.4" fill="#e8eefc" font-size="13" text-anchor="end">13,831</text>
+<circle cx="110" cy="48" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="122" y="53" fill="#e8eefc" font-size="13">Pixels (computer toolset)</text>
+<circle cx="110" cy="72" r="5" fill="#9b72e0" stroke="#0b162d" stroke-width="2"/>
+<text x="122" y="77" fill="#e8eefc" font-size="13">Pixels + page (browser toolset)</text>
+<circle cx="110" cy="96" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="122" y="101" fill="#e8eefc" font-size="13">Page text only (browser toolset, no screenshots)</text>
+</svg>

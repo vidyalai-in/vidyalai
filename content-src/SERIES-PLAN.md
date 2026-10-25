@@ -113,10 +113,10 @@ Series slug `agentic-ai`, short name "Agents", file prefix `a`, category `agents
 | 4 | Reflection and self-correction | `agent-self-correction` | Reflexion, critique loops, verifier tools (tests); when self-critique helps and when it hurts, measured | a03 | $4 || Published |
 | 5 | Context engineering | `context-engineering` | What fills the window; sizing tool results; compaction vs context editing vs memory files; prompt-caching economics on long tasks | SD12, i06 | $5 | Published |
 | 6 | MCP: connecting agents to tools | `model-context-protocol` | The protocol, transports, servers; tool search and deferred loading; tool-choice accuracy as tool count grows | a02 | $3 | Published |
-| 7 | Multi-agent systems and agent-to-agent protocols | `multi-agent-systems` | Orchestrator-workers, sub-agents, A2A; single agent vs orchestrator on the same tasks (tokens ×, accuracy) | SD23 | $6 |  |
-| 8 | Coding agents | `coding-agents` | How SWE-bench-style tasks are solved: repo search, edit tools, test loops; a 20–30-task mini-benchmark built from real repos | a03, a04 | $10 |  |
-| 9 | Computer-use and browser agents | `computer-use-agents` | Screenshots, actions, the computer toolset; image-token cost; a small sandboxed browser task set | a01 | $8 |  |
-| 10 | Research agents: search, read, cite | `research-agents` | Web search and fetch tools, deep-research loops, citation accuracy checked by hand | a05 | $5 |  |
+| 7 | Multi-agent systems and agent-to-agent protocols | `multi-agent-systems` | Orchestrator-workers, sub-agents, A2A; single agent vs orchestrator on the same tasks (tokens ×, accuracy) | SD23 | $6 | Published |
+| 8 | Coding agents | `coding-agents` | How SWE-bench-style tasks are solved: repo search, edit tools, test loops; a 20–30-task mini-benchmark built from real repos | a03, a04 | $10 | Published |
+| 9 | Computer-use and browser agents | `computer-use-agents` | Screenshots, actions, the computer toolset; image-token cost; a small sandboxed browser task set | a01 | $8 | Published |
+| 10 | Research agents: search, read, cite | `research-agents` | Web search and fetch tools, deep-research loops, citation accuracy checked by hand | a05 | $5 | Published |
 | 11 | Evaluating agents | `agent-evals` | SWE-bench, τ-bench, OSWorld, GAIA; pass@k vs pass^k; run-to-run variance and cost-normalized scores, measured | SD15, SD16 | $8 |  |
 | 12 | Long-horizon reliability | `agent-reliability` | Compounding error (p^n), retries, idempotent tools, checkpoints, task budgets, stopping rules | SD11 | $3 |  |
 | 13 | Sandboxing and permissions | `agent-sandboxing` | Least privilege, containers, network and secret isolation, human approval gates (prompt injection itself stays in SD17) | SD17 | $2 |  |
