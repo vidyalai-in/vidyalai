@@ -89,8 +89,10 @@ def cost_of(model, usage, batch=False):
     cr = u.get("cache_read_input_tokens") or 0
     cw = u.get("cache_creation_input_tokens") or 0
     out = u.get("output_tokens") or 0
+    cw_1h = ((u.get("cache_creation") or {}).get("ephemeral_1h_input_tokens") or 0)  # 1-hour writes: 2x input
     r = _rates(model, inp + cr + cw)
-    c = (inp * r["in"] + cr * r["cache_read"] + cw * r["cache_write"] + out * r["out"]) / 1e6
+    c = (inp * r["in"] + cr * r["cache_read"] + (cw - cw_1h) * r["cache_write"] + cw_1h * 2 * r["in"]
+         + out * r["out"]) / 1e6
     searches = ((u.get("server_tool_use") or {}).get("web_search_requests") or 0)
     c += searches * WEB_SEARCH_PER_CALL
     return c * (0.5 if batch else 1.0)

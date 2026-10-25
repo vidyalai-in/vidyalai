@@ -1,0 +1,65 @@
+[
+ {
+  "id": "R1",
+  "label": "real",
+  "page": "migration/replace-deprecated-functions.rst",
+  "lo": 129,
+  "hi": 131,
+  "desc": "link to Version.isvalid, which no longer exists",
+  "contains": "isvalid"
+ },
+ {
+  "id": "R2",
+  "label": "real",
+  "page": "migration/migratetosemver3.rst",
+  "lo": 54,
+  "hi": 55,
+  "desc": "link to Version.isvalid, which no longer exists",
+  "contains": "isvalid"
+ },
+ {
+  "id": "R3",
+  "label": "real",
+  "page": "usage/compare-versions-through-expression.rst",
+  "lo": 8,
+  "hi": 13,
+  "kind": "fact",
+  "desc": "says match() expects two arguments (a version string and an expression); the method takes one"
+ },
+ {
+  "id": "R4",
+  "label": "real",
+  "page": "usage/raise-parts-of-a-version.rst",
+  "lo": 82,
+  "hi": 84,
+  "kind": "fact",
+  "desc": "says .0 is appended when the last dot-separated build part is not numeric; the code increments the last digit run anywhere (e.g. +1abc -> +2abc) and appends .0 only when there is no digit at all"
+ },
+ {
+  "id": "FP-pr-role",
+  "label": "fp",
+  "page": "migration/migratetosemver3.rst",
+  "lo": 54,
+  "hi": 54,
+  "desc": ":pr: is defined in conf.py extlinks",
+  "contains": ":pr:"
+ },
+ {
+  "id": "FP-versioninfo-deprecated",
+  "label": "fp",
+  "page": "migration/migratetosemver3.rst",
+  "lo": 27,
+  "hi": 29,
+  "kind": "fact",
+  "desc": "deprecation is a policy statement; the alias exists as the page says"
+ },
+ {
+  "id": "FP-semver-not-imported",
+  "label": "fp",
+  "page": "usage/create-a-version.rst",
+  "lo": 85,
+  "hi": 97,
+  "kind": "code",
+  "desc": "doctests run with semver in the namespace (the repo's conftest provides it); run_examples passes"
+ }
+]

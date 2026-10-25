@@ -1,0 +1,97 @@
+"""Ground truth for Part 16: 24 defects seeded into a copy of python-semver's docs.
+
+Each seed is one single-line replacement, so line numbers do not move. kind is link, code or fact.
+For fact seeds, `bad` must disappear from the line and `good` (a regex) must appear in the fixed text.
+"""
+CORPUS = [
+    "usage/access-parts-of-a-version.rst", "usage/access-parts-through-index.rst",
+    "usage/check-compatible-semver-version.rst", "usage/check-valid-semver-version.rst",
+    "usage/compare-versions-through-expression.rst", "usage/compare-versions.rst",
+    "usage/convert-version-into-different-types.rst", "usage/create-a-version.rst",
+    "usage/determine-version-equality.rst", "usage/get-min-and-max-of-multiple-versions.rst",
+    "usage/increase-parts-of-a-version_prereleases.rst", "usage/parse-version-string.rst",
+    "usage/raise-parts-of-a-version.rst", "usage/replace-parts-of-a-version.rst",
+    "usage/semver-version.rst", "usage/semver_org-version.rst",
+    "migration/replace-deprecated-functions.rst", "migration/migratetosemver3.rst",
+]
+
+SEEDS = [
+    # ---- broken internal links (8)
+    dict(id="L1", kind="link", file="usage/access-parts-of-a-version.rst", line=35,
+         old=":ref:`sec.replace.parts`", new=":ref:`sec.replace-parts`"),
+    dict(id="L2", kind="link", file="usage/compare-versions.rst", line=104,
+         old=":ref:`sec.convert.versions`", new=":ref:`sec.convert.version`"),
+    dict(id="L3", kind="link", file="usage/raise-parts-of-a-version.rst", line=15,
+         old=":ref:`increase-parts-of-a-version`", new=":ref:`increase-parts-of-version`"),
+    dict(id="L4", kind="link", file="usage/check-valid-semver-version.rst", line=9,
+         old="Version.is_valid`", new="Version.isvalid`"),
+    dict(id="L5", kind="link", file="usage/compare-versions-through-expression.rst", line=9,
+         old="Version.match`", new="Version.matches`"),
+    dict(id="L6", kind="link", file="migration/replace-deprecated-functions.rst", line=47,
+         old="<semver.version.Version.finalize_version>", new="<semver.version.Version.finalize>"),
+    dict(id="L7", kind="link", file="usage/determine-version-equality.rst", line=16,
+         old="<semver.version.Version>", new="<semver.versions.Version>"),
+    dict(id="L8", kind="link", file="migration/migratetosemver3.rst", line=19,
+         old=":ref:`change-log`", new=":ref:`changelog`"),
+    # ---- code samples that no longer run (8)
+    dict(id="C1", kind="code", file="usage/access-parts-through-index.rst", line=23,
+         old="(10, 3, 2, 'pre.5', 'build.10')", new="(10, 3, 2, 'pre.5', 'build.11')"),
+    dict(id="C2", kind="code", file="usage/compare-versions.rst", line=15,
+         old="    -1", new="    1"),
+    dict(id="C3", kind="code", file="usage/convert-version-into-different-types.rst", line=30,
+         old="v.to_tuple()", new="v.astuple()"),
+    dict(id="C4", kind="code", file="usage/create-a-version.rst", line=54,
+         old="ValueError: 'major' is negative. A version can only be positive.",
+         new="ValueError: 'major' must be a positive integer."),
+    dict(id="C5", kind="code", file="usage/increase-parts-of-a-version_prereleases.rst", line=24,
+         old="'0.1.5-rc.1'", new="'0.1.4-rc.1'"),
+    dict(id="C6", kind="code", file="usage/raise-parts-of-a-version.rst", line=78,
+         old="'3.4.5-rc9.0'", new="'3.4.5-rc10'"),
+    dict(id="C7", kind="code", file="usage/replace-parts-of-a-version.rst", line=10,
+         old="version.replace(major=2, minor=2)", new="version.replace_parts(major=2, minor=2)"),
+    dict(id="C8", kind="code", file="migration/replace-deprecated-functions.rst", line=73,
+         old="semver.max_ver(", new="semver.max_version("),
+    # ---- facts that contradict the source code (8)
+    dict(id="F1", kind="fact", file="usage/parse-version-string.rst", line=11,
+         old="By default (False)", new="By default (True)", bad=r"\(True\)", good=r"False"),
+    dict(id="F2", kind="fact", file="usage/check-compatible-semver-version.rst", line=23,
+         old="the method *does not* check patches!", new="the method also compares patches!",
+         bad=r"also compares patches", good=r"(does not|doesn't|not|ignores?|never)"),
+    dict(id="F3", kind="fact", file="usage/compare-versions-through-expression.rst", line=21,
+         old="``!=`` not equal", new="``~=`` compatible release", bad=r"~=", good=r"!="),
+    dict(id="F4", kind="fact", file="usage/create-a-version.rst", line=57,
+         old="python:TypeError` if your", new="python:KeyError` if your", bad=r"KeyError", good=r"TypeError"),
+    dict(id="F5", kind="fact", file="usage/raise-parts-of-a-version.rst", line=13,
+         old="Version.bump_prerelease` method", new="Version.bump_patch` method",
+         bad=r"bump_patch", good=r"bump_prerelease"),
+    dict(id="F6", kind="fact", file="usage/increase-parts-of-a-version_prereleases.rst", line=31,
+         old="earlier token increments the patch", new="earlier token keeps the patch",
+         bad=r"keeps the patch", good=r"increment|bump|advance|raise"),
+    dict(id="F7", kind="fact", file="usage/determine-version-equality.rst", line=9,
+         old="The build part is ignored.", new="The prerelease part is ignored.",
+         bad=r"prerelease part is ignored", good=r"build"),
+    dict(id="F8", kind="fact", file="usage/access-parts-through-index.rst", line=40,
+         old="Negative numbers or undefined parts raise", new="Negative numbers return ``None``; undefined parts raise",
+         bad=r"return ``None``", good=r"[Nn]egative"),
+]
+
+# A harder set, seeded into a separate copy of the clean docs (corpus/hard): six prose facts that
+# only the source code contradicts. No doctest or link on the page shows the error.
+HARD = [
+    dict(id="H1", kind="fact", file="usage/compare-versions.rst", line=79,
+         old="(as the other parts are set to zero)", new="(as the other parts are set to ``None``)",
+         bad=r"set to ``None``", good=r"zero|``0``|\b0\b"),
+    dict(id="H2", kind="fact", file="usage/create-a-version.rst", line=56,
+         old="needs at least the ``major``", new="needs the ``major``, ``minor`` and ``patch``",
+         bad=r"``major``, ``minor`` and ``patch``", good=r"major"),
+    dict(id="H3", kind="fact", file="migration/migratetosemver3.rst", line=27,
+         old="An alias has been created to preserve compatibility but",
+         new="No alias was kept for compatibility, and", bad=r"No alias", good=r"[Aa]lias"),
+    dict(id="H4", kind="fact", file="usage/compare-versions-through-expression.rst", line=33,
+         old="version to be compared for equality.", new="minimum version (as with ``>=``).",
+         bad=r"minimum version", good=r"equal|exact|=="),
+    dict(id="H5", kind="fact", file="usage/check-valid-semver-version.rst", line=9,
+         old="classmethod :meth:", new="staticmethod :meth:", bad=r"staticmethod", good=r"classmethod"),
+    dict(id="H6", kind="fact", file="usage/increase-parts-of-a-version_prereleases.rst", line=6,
+         old=".. versionadded:: 2.10.0", new=".. versionadded:: 3.0.0", bad=r"3\.0\.0", good=r"2\.10\.0"),
+]
