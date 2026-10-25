@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#ffffff"/>
+<line x1="250.0" x2="250.0" y1="24" y2="372" stroke="#dde5f2" stroke-width="1"/>
+<text x="250.0" y="392" fill="#4a5b78" font-size="13" text-anchor="middle">0k</text>
+<line x1="353.3" x2="353.3" y1="24" y2="372" stroke="#dde5f2" stroke-width="1"/>
+<text x="353.3" y="392" fill="#4a5b78" font-size="13" text-anchor="middle">10k</text>
+<line x1="456.7" x2="456.7" y1="24" y2="372" stroke="#dde5f2" stroke-width="1"/>
+<text x="456.7" y="392" fill="#4a5b78" font-size="13" text-anchor="middle">20k</text>
+<line x1="560.0" x2="560.0" y1="24" y2="372" stroke="#dde5f2" stroke-width="1"/>
+<text x="560.0" y="392" fill="#4a5b78" font-size="13" text-anchor="middle">30k</text>
+<line x1="663.3" x2="663.3" y1="24" y2="372" stroke="#dde5f2" stroke-width="1"/>
+<text x="663.3" y="392" fill="#4a5b78" font-size="13" text-anchor="middle">40k</text>
+<text x="467.0" y="418" fill="#0b1a33" font-size="14" text-anchor="middle">Training tokens per second (88M model, full optimizer steps)</text>
+<line x1="669.7" x2="669.7" y1="24" y2="372" stroke="#0b1a33" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="663.7" y="38" fill="#0b1a33" font-size="13" text-anchor="end">100% of 25.3 TFLOPS: 40.6k</text>
+<rect x="250" y="58.4" width="59.8" height="36.7" fill="#0b5fd6"/>
+<text x="240" y="73.8" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">FP32, eager</text>
+<text x="240" y="90.8" fill="#4a5b78" font-size="12" text-anchor="end">micro-batch 4</text>
+<text x="317.8" y="73.8" fill="#0b1a33" font-size="13" font-weight="bold">5,783</text>
+<text x="317.8" y="90.8" fill="#4a5b78" font-size="12">MFU 14%, 84.6 h</text>
+<rect x="250" y="124.0" width="88.3" height="36.7" fill="#0b5fd6"/>
+<text x="240" y="139.4" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">+ TF32 matmuls</text>
+<text x="240" y="156.4" fill="#4a5b78" font-size="12" text-anchor="end">micro-batch 4</text>
+<text x="346.3" y="139.4" fill="#0b1a33" font-size="13" font-weight="bold">8,545</text>
+<text x="346.3" y="156.4" fill="#4a5b78" font-size="12">MFU 21%, 57.3 h</text>
+<rect x="250" y="189.6" width="204.7" height="36.7" fill="#0b5fd6"/>
+<text x="240" y="205.0" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">+ BF16 autocast</text>
+<text x="240" y="222.0" fill="#4a5b78" font-size="12" text-anchor="end">micro-batch 4</text>
+<text x="462.7" y="205.0" fill="#0b1a33" font-size="13" font-weight="bold">19,808</text>
+<text x="462.7" y="222.0" fill="#4a5b78" font-size="12">MFU 49%, 24.7 h</text>
+<rect x="250" y="255.2" width="299.9" height="36.7" fill="#0b5fd6"/>
+<text x="240" y="270.6" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">+ torch.compile</text>
+<text x="240" y="287.6" fill="#4a5b78" font-size="12" text-anchor="end">micro-batch 4</text>
+<text x="557.9" y="270.6" fill="#0b1a33" font-size="13" font-weight="bold">29,021</text>
+<text x="557.9" y="287.6" fill="#4a5b78" font-size="12">MFU 71%, 16.9 h</text>
+<rect x="250" y="320.8" width="310.8" height="36.7" fill="#0b5fd6"/>
+<text x="240" y="336.2" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">+ micro-batch 16</text>
+<text x="240" y="353.2" fill="#4a5b78" font-size="12" text-anchor="end">compiled; later changes within noise</text>
+<text x="568.8" y="336.2" fill="#0b1a33" font-size="13" font-weight="bold">30,078</text>
+<text x="568.8" y="353.2" fill="#4a5b78" font-size="12">MFU 74%, 16.3 h</text>
+</svg>

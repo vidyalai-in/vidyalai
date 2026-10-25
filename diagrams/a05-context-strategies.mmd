@@ -1,0 +1,13 @@
+flowchart TD
+    M["Model picks<br/>the next tool"] --> T["Tool runs"]
+    T --> S["Result sizing:<br/>key fields, pages,<br/>handles"]
+    S --> H["History grows<br/>by one result"]
+    H --> Q{"Prompt over<br/>the threshold?"}
+    Q -- "no" --> R["Next request"]
+    Q -- "context editing" --> E["Clear old<br/>tool results"]
+    Q -- "compaction" --> C["Summarize<br/>the history"]
+    Q -- "memory file" --> N["Fresh window;<br/>model rereads<br/>its notes"]
+    E --> R
+    C --> R
+    N --> R
+    R --> M

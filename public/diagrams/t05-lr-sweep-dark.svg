@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="440" fill="#0b162d"/>
+<line x1="70" x2="756" y1="378.0" y2="378.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="382.0" fill="#9fb0cf" font-size="13" text-anchor="end">6.2</text>
+<line x1="70" x2="756" y1="330.8" y2="330.8" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="334.8" fill="#9fb0cf" font-size="13" text-anchor="end">6.4</text>
+<line x1="70" x2="756" y1="283.6" y2="283.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="287.6" fill="#9fb0cf" font-size="13" text-anchor="end">6.6</text>
+<line x1="70" x2="756" y1="236.4" y2="236.4" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="240.4" fill="#9fb0cf" font-size="13" text-anchor="end">6.8</text>
+<line x1="70" x2="756" y1="189.2" y2="189.2" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="193.2" fill="#9fb0cf" font-size="13" text-anchor="end">7.0</text>
+<line x1="70" x2="756" y1="142.0" y2="142.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="146.0" fill="#9fb0cf" font-size="13" text-anchor="end">7.2</text>
+<line x1="70" x2="756" y1="94.8" y2="94.8" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="98.8" fill="#9fb0cf" font-size="13" text-anchor="end">7.4</text>
+<line x1="70" x2="756" y1="47.6" y2="47.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="51.6" fill="#9fb0cf" font-size="13" text-anchor="end">7.6</text>
+<line x1="109.1" x2="109.1" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="109.1" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">0.375</text>
+<line x1="230.7" x2="230.7" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="230.7" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">0.75</text>
+<line x1="352.2" x2="352.2" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="352.2" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">1.5</text>
+<line x1="473.8" x2="473.8" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="473.8" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">3</text>
+<line x1="595.3" x2="595.3" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="595.3" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<line x1="716.9" x2="716.9" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="716.9" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">12</text>
+<text x="413.0" y="424" fill="#e8eefc" font-size="14" text-anchor="middle">Peak learning rate (× 10⁻³, log scale)</text>
+<text transform="translate(20,201.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Final validation loss</text>
+<polyline points="230.7,158.1 352.2,149.1 473.8,136.1 595.3,115.9 716.9,66.7" fill="none" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="230.7" cy="158.1" r="5" fill="#d95926"/>
+<circle cx="352.2" cy="149.1" r="5" fill="#d95926"/>
+<circle cx="473.8" cy="136.1" r="5" fill="#d95926"/>
+<circle cx="595.3" cy="115.9" r="5" fill="#d95926"/>
+<circle cx="716.9" cy="66.7" r="5" fill="#d95926"/>
+<polyline points="109.1,308.2 230.7,346.8 352.2,319.2 473.8,294.5 595.3,236.0 716.9,192.8" fill="none" stroke="#3987e5" stroke-width="2.5"/>
+<circle cx="109.1" cy="308.2" r="5" fill="#3987e5"/>
+<circle cx="230.7" cy="346.8" r="5" fill="#3987e5"/>
+<circle cx="352.2" cy="319.2" r="5" fill="#3987e5"/>
+<circle cx="473.8" cy="294.5" r="5" fill="#3987e5"/>
+<circle cx="595.3" cy="236.0" r="5" fill="#3987e5"/>
+<circle cx="716.9" cy="192.8" r="5" fill="#3987e5"/>
+<circle cx="716.9" cy="138.5" r="5" fill="#0b162d" stroke="#3987e5" stroke-width="2.2"/>
+<text x="706.9" y="142.5" fill="#e8eefc" font-size="13" text-anchor="end">rerun of the blue 12 × 10⁻³ run: 7.22</text>
+<text x="230.7" y="146.1" fill="#e8eefc" font-size="13" text-anchor="middle">7.13</text>
+<text x="230.7" y="368.8" fill="#e8eefc" font-size="13" text-anchor="middle">best: 6.33</text>
+<line x1="90" x2="116" y1="40" y2="40" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="103" cy="40" r="4.5" fill="#d95926"/>
+<text x="124" y="44" fill="#e8eefc" font-size="13">524,288 tokens per step, 50 steps (26.2M tokens)</text>
+<line x1="90" x2="116" y1="62" y2="62" stroke="#3987e5" stroke-width="2.5"/>
+<circle cx="103" cy="62" r="4.5" fill="#3987e5"/>
+<text x="124" y="66" fill="#e8eefc" font-size="13">65,536 tokens per step, 150 steps (9.8M tokens)</text>
+</svg>

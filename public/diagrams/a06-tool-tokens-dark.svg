@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="86" x2="750" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0</text>
+<line x1="86" x2="750" y1="344.0" y2="344.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="348.0" fill="#9fb0cf" font-size="13" text-anchor="end">10,000</text>
+<line x1="86" x2="750" y1="280.0" y2="280.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="284.0" fill="#9fb0cf" font-size="13" text-anchor="end">20,000</text>
+<line x1="86" x2="750" y1="216.0" y2="216.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="220.0" fill="#9fb0cf" font-size="13" text-anchor="end">30,000</text>
+<line x1="86" x2="750" y1="152.0" y2="152.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="156.0" fill="#9fb0cf" font-size="13" text-anchor="end">40,000</text>
+<line x1="86" x2="750" y1="88.0" y2="88.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="92.0" fill="#9fb0cf" font-size="13" text-anchor="end">50,000</text>
+<line x1="86" x2="750" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="78" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">60,000</text>
+<line x1="86.0" x2="86.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="86.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="218.8" x2="218.8" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="218.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">100</text>
+<line x1="351.6" x2="351.6" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="351.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">200</text>
+<line x1="484.4" x2="484.4" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="484.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">300</text>
+<line x1="617.2" x2="617.2" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="617.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">400</text>
+<line x1="750.0" x2="750.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="750.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">500</text>
+<text x="418.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Tools available</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Prompt tokens per request</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2.5" points="92.6,399.4 112.6,387.0 152.4,362.1 218.8,320.4 278.6,283.1 484.4,178.8 731.4,51.2"/>
+<circle cx="92.6" cy="399.4" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="112.6" cy="387.0" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="152.4" cy="362.1" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="218.8" cy="320.4" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="278.6" cy="283.1" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="484.4" cy="178.8" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<circle cx="731.4" cy="51.2" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.5" points="112.6,389.9 152.4,389.6 218.8,389.5 278.6,389.5 484.4,389.1 731.4,389.1"/>
+<circle cx="112.6" cy="389.9" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="152.4" cy="389.6" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="218.8" cy="389.5" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="278.6" cy="389.5" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="484.4" cy="389.1" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<circle cx="731.4" cy="389.1" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="721.4" y="39.2" fill="#e8eefc" font-size="13" text-anchor="end">55,743</text>
+<text x="721.4" y="377.1" fill="#e8eefc" font-size="13" text-anchor="end">2,957</text>
+<circle cx="110" cy="48" r="5" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="122" y="53" fill="#e8eefc" font-size="13">All tools loaded</text>
+<circle cx="110" cy="72" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="122" y="77" fill="#e8eefc" font-size="13">Tool search (BM25), tools deferred</text>
+</svg>

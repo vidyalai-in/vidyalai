@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="78" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0K</text>
+<line x1="78" x2="756" y1="360.0" y2="360.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="364.0" fill="#9fb0cf" font-size="13" text-anchor="end">10K</text>
+<line x1="78" x2="756" y1="312.0" y2="312.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="316.0" fill="#9fb0cf" font-size="13" text-anchor="end">20K</text>
+<line x1="78" x2="756" y1="264.0" y2="264.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="268.0" fill="#9fb0cf" font-size="13" text-anchor="end">30K</text>
+<line x1="78" x2="756" y1="216.0" y2="216.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="220.0" fill="#9fb0cf" font-size="13" text-anchor="end">40K</text>
+<line x1="78" x2="756" y1="168.0" y2="168.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="172.0" fill="#9fb0cf" font-size="13" text-anchor="end">50K</text>
+<line x1="78" x2="756" y1="120.0" y2="120.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="124.0" fill="#9fb0cf" font-size="13" text-anchor="end">60K</text>
+<line x1="78" x2="756" y1="72.0" y2="72.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="76.0" fill="#9fb0cf" font-size="13" text-anchor="end">70K</text>
+<line x1="78" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">80K</text>
+<text x="78.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<text x="219.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<text x="377.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">20</text>
+<text x="535.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">30</text>
+<text x="692.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">40</text>
+<text x="756.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">44</text>
+<line x1="78" x2="756" y1="264.0" y2="264.0" stroke="#9fb0cf" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="752" y="259.0" fill="#9fb0cf" font-size="12" text-anchor="end">editing and memory threshold</text>
+<line x1="78" x2="756" y1="168.0" y2="168.0" stroke="#9fb0cf" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="752" y="163.0" fill="#9fb0cf" font-size="12" text-anchor="end">compaction trigger</text>
+<text x="417.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Agent step (model call)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Tokens the model read (thousands)</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2.2" points="78.0,404.3 93.8,393.1 109.5,382.6 125.3,372.4 141.1,361.4 156.8,350.9 172.6,340.0 188.4,329.6 204.1,319.1 219.9,308.6 235.7,297.7 251.4,286.7 267.2,276.1 283.0,265.4 298.7,255.0 314.5,244.3 330.3,233.6 346.0,222.4 361.8,211.3 377.6,200.8 393.3,190.5 409.1,179.5 424.9,169.0 440.7,156.8 456.4,145.9 472.2,135.5 488.0,124.8 503.7,113.5 519.5,103.0 535.3,92.4 551.0,81.9 566.8,71.4 582.6,59.3"/>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.2" points="78.0,404.1 93.8,392.9 109.5,382.4 125.3,372.2 141.1,361.2 156.8,350.7 172.6,339.8 188.4,329.4 204.1,318.9 219.9,308.4 235.7,297.5 251.4,286.5 267.2,275.9 283.0,265.2 298.7,254.8 314.5,244.1 330.3,233.3 346.0,222.2 361.8,211.1 377.6,200.6 393.3,189.5 409.1,178.5 424.9,400.0 440.7,388.1 456.4,376.8 472.2,366.0 488.0,354.9 503.7,343.2 519.5,332.4 535.3,321.5 551.0,310.6 566.8,299.6 582.6,288.8"/>
+<polyline fill="none" stroke="#199e70" stroke-width="2.2" points="78.0,397.1 93.8,396.5 109.5,385.2 125.3,374.7 141.1,364.6 156.8,352.3 172.6,340.7 188.4,328.8 204.1,317.4 219.9,305.8 235.7,294.3 251.4,282.4 267.2,270.2 283.0,258.7 298.7,397.0 314.5,396.3 330.3,394.3 346.0,383.6 361.8,372.0 377.6,360.3 393.3,348.5 409.1,336.3 424.9,324.1 440.7,312.6 456.4,301.3 472.2,289.3 488.0,277.7 503.7,266.1 519.5,254.1 535.3,397.0 551.0,396.3 566.8,393.0 582.6,382.5 598.3,370.6 614.1,358.3 629.9,346.9 645.6,335.3 661.4,323.7 677.2,312.1 692.9,300.6 708.7,297.7"/>
+<polyline fill="none" stroke="#b07cf0" stroke-width="2.2" points="78.0,404.3 93.8,393.1 109.5,382.6 125.3,372.4 141.1,361.4 156.8,350.9 172.6,340.0 188.4,329.6 204.1,319.1 219.9,308.6 235.7,297.7 251.4,286.7 267.2,275.7 283.0,356.8 298.7,346.5 314.5,335.7 330.3,325.0 346.0,313.9 361.8,302.7 377.6,292.2 393.3,266.4 409.1,319.8 424.9,329.3 440.7,316.8 456.4,305.5 472.2,295.1 488.0,284.0 503.7,320.2 519.5,309.6 535.3,298.8 551.0,288.2 566.8,277.2 582.6,316.3 598.3,303.4 614.1,291.0 629.9,279.7 645.6,269.9 661.4,310.2 677.2,299.6 692.9,288.8 708.7,278.0 724.5,264.2 740.2,305.4 756.0,294.5"/>
+<polyline fill="none" stroke="#9fb0cf" stroke-width="2.2" points="78.0,403.2 93.8,402.1 109.5,401.0 125.3,399.9 141.1,398.8 156.8,397.7 172.6,396.6 188.4,395.5 204.1,394.5 219.9,393.4 235.7,392.3 251.4,391.2 267.2,390.1 283.0,389.0 298.7,388.0 314.5,386.9 330.3,385.8 346.0,384.7 361.8,383.5 377.6,382.5 393.3,381.4 409.1,380.3 424.9,379.2 440.7,378.2 456.4,377.1 472.2,376.0 488.0,374.9 503.7,373.8 519.5,372.7 535.3,371.6 551.0,370.5 566.8,369.5 582.6,368.4"/>
+<line x1="92" x2="116" y1="38" y2="38" stroke="#d95926" stroke-width="3"/>
+<text x="124" y="43" fill="#e8eefc" font-size="13">Full results, full history</text>
+<line x1="92" x2="116" y1="59" y2="59" stroke="#3987e5" stroke-width="3"/>
+<text x="124" y="64" fill="#e8eefc" font-size="13">Compaction at 50K</text>
+<line x1="92" x2="116" y1="80" y2="80" stroke="#199e70" stroke-width="3"/>
+<text x="124" y="85" fill="#e8eefc" font-size="13">Memory file, fresh window at 30K</text>
+<line x1="92" x2="116" y1="101" y2="101" stroke="#b07cf0" stroke-width="3"/>
+<text x="124" y="106" fill="#e8eefc" font-size="13">Context editing at 30K</text>
+<line x1="92" x2="116" y1="122" y2="122" stroke="#9fb0cf" stroke-width="3"/>
+<text x="124" y="127" fill="#e8eefc" font-size="13">Sized tool results</text>
+</svg>

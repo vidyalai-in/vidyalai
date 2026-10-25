@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant L as Lab loop (host)
+  participant C as MCP client
+  participant S as MCP server (stdio)
+  participant A as Claude API
+  C->>S: server/discover
+  S-->>C: versions + capabilities
+  C->>S: tools/list
+  S-->>C: names, descriptions, inputSchemas
+  C-->>L: tools renamed server__tool
+  L->>A: messages + tool definitions
+  A-->>L: tool_use tickets__search_tickets
+  L->>C: call search_tickets(query)
+  C->>S: tools/call + _meta
+  S-->>C: content, isError false
+  C-->>L: result text
+  L->>A: tool_result
+  A-->>L: next tool_use or final answer

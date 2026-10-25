@@ -1,0 +1,7 @@
+flowchart TD
+  A["Micro-batch<br/>16 x 1,024 tokens"] --> B["Forward in BF16<br/>backward of loss / 32"]
+  B -->|"32 times"| A
+  B --> C["Clip gradient<br/>norm to 1.0"]
+  C --> D["AdamW step<br/>FP32 weights<br/>scheduled rate"]
+  D --> E["Log loss, rate,<br/>norm, tokens/s"]
+  E --> F["Val loss: every 20<br/>checkpoint: every 40"]
