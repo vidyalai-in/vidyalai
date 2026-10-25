@@ -1,7 +1,8 @@
 """Budget guard and usage ledger for every Claude API call in the VidyalAI series.
 
 Every call goes through `create()` (or `record()` for batch results). Before a call, the guard
-estimates its worst-case cost (all input uncached, max_tokens of output) and refuses the call if
+estimates its worst-case cost (all input uncached, max_tokens of output, and for web search and
+fetch every allowed use with its fee and results; see estimate_cost) and refuses the call if
 that could push the part's spend or the project's spend past its cap. After the call, the exact
 cost from `response.usage` is appended to ledger.jsonl.
 
@@ -39,6 +40,12 @@ PRICES = {
 }
 WEB_SEARCH_PER_CALL = 0.01  # $10 per 1,000 searches
 ALLOWED_MODELS = {"claude-sonnet-5-5", "claude-haiku-5-5"}
+
+# Server tools run inside one request, so the pre-call estimate has to allow for them.
+# a06 and a10 measured about 10,500 input tokens added per web search; web fetch has no fee.
+SEARCH_RESULT_TOKENS = 12_000
+FETCH_TOKENS_DEFAULT = 25_000  # a fetch without max_content_tokens (assumed; a 10 kB page is ~2,500)
+DEFAULT_MAX_USES = 10          # a server tool without max_uses (assumed; the docs set no default)
 
 
 class BudgetExceeded(RuntimeError):
@@ -101,6 +108,32 @@ def guard(part, estimate):
         raise BudgetExceeded(f"{pool} cap: spent ${part_spent:.2f} of ${PART_CAPS[pool]:.2f}, next call up to ${estimate:.4f}")
 
 
+def server_tool_allowance(tools):
+    """Worst case for web search and fetch tools in one request: (searches, tool uses, added input tokens)."""
+    searches = uses = added = 0
+    for t in tools or []:
+        kind = t.get("type", "") if isinstance(t, dict) else ""
+        n = t.get("max_uses", DEFAULT_MAX_USES) if isinstance(t, dict) else 0
+        if kind.startswith("web_search"):
+            searches += n
+            uses += n
+            added += n * SEARCH_RESULT_TOKENS
+        elif kind.startswith("web_fetch"):
+            uses += n
+            added += n * t.get("max_content_tokens", FETCH_TOKENS_DEFAULT)
+    return searches, uses, added
+
+
+def estimate_cost(model, input_tokens, max_tokens, tools=None):
+    """Worst-case USD for one request: input written to the cache, max_tokens of output, and, for
+    server tools, every allowed search's fee plus the results they add, re-read on each server-side step."""
+    searches, uses, added = server_tool_allowance(tools)
+    r = _rates(model, input_tokens + added)
+    c = (input_tokens + added) * r["cache_write"] + (input_tokens + added) * uses * r["cache_read"]
+    c += max_tokens * r["out"]
+    return c / 1e6 + searches * WEB_SEARCH_PER_CALL
+
+
 def record(part, model, usage, note="", batch=False):
     c = cost_of(model, usage, batch)
     u = usage if isinstance(usage, dict) else usage.model_dump()
@@ -117,9 +150,7 @@ def create(cl, part, note="", **kwargs):
         raise ValueError(f"Model {model} not allowed (use Sonnet 5.5 or Haiku 5.5)")
     est_in = cl.messages.count_tokens(**{k: v for k, v in kwargs.items()
                                          if k in ("model", "messages", "system", "tools", "thinking")}).input_tokens
-    r = _rates(model, est_in)
-    estimate = (est_in * r["cache_write"] + kwargs.get("max_tokens", 4096) * r["out"]) / 1e6
-    guard(part, estimate)
+    guard(part, estimate_cost(model, est_in, kwargs.get("max_tokens", 4096), kwargs.get("tools")))
     resp = cl.messages.create(**kwargs)
     record(part, model, resp.usage, note)
     return resp
