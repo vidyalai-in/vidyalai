@@ -1,0 +1,17 @@
+flowchart TD
+    T["Task"] --> Q{"Someone waiting<br/>for the answer?"}
+    Q -- "yes" --> S["Synchronous request<br/>seconds per step"]
+    Q -- "no" --> B["Message Batch<br/>half price,<br/>minutes per round"]
+    subgraph L["Levers on every step"]
+        direction TB
+        C["Prompt cache<br/>history reread at 0.05-0.1x"]
+        E["Effort and thinking<br/>output tokens per step"]
+        P["Model, or lead + workers<br/>price per token"]
+        C ~~~ E ~~~ P
+    end
+    S --> L
+    B --> L
+    L --> M["One model step"]
+    M -- "tool_use" --> X["Run tools,<br/>append results"]
+    X --> Q
+    M -- "end_turn" --> G["Grade the answer:<br/>cost per completed task"]

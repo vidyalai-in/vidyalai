@@ -121,8 +121,8 @@ Series slug `agentic-ai`, short name "Agents", file prefix `a`, category `agents
 | 12 | Long-horizon reliability | `agent-reliability` | Compounding error (p^n), retries, idempotent tools, checkpoints, task budgets, stopping rules | SD11 | $3 | Published |
 | 13 | Sandboxing and permissions | `agent-sandboxing` | Least privilege, containers, network and secret isolation, human approval gates (prompt injection itself stays in SD17) | SD17 | $2 | Published |
 | 14 | Training models to be agents | `training-agentic-models` | RL in tool environments, verifiable rewards, synthetic environments, trajectory data; papers only | m16, f14 | $0 | Published |
-| 15 | Cost and latency of agents | `agent-cost-latency` | Cost per completed task; caching, effort, Haiku workers under a Sonnet lead, batch; measured | SD06, SD09 | $5 |  |
-| 16 | An agent end to end | `agents-in-production` | Finale: one useful agent built and evaluated with everything above (e.g. a docs-maintenance agent), its limits, series review | all | $5 |  |
+| 15 | Cost and latency of agents | `agent-cost-latency` | Cost per completed task; caching, effort, Haiku workers under a Sonnet lead, batch; measured | SD06, SD09 | $5 | Published |
+| 16 | An agent end to end | `agents-in-production` | Finale: one useful agent built and evaluated with everything above (e.g. a docs-maintenance agent), its limits, series review | all | $5 | Published |
 
 ## Build an LLM From Scratch (15 parts)
 

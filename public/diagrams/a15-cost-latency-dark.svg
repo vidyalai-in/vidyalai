@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="78" x2="750" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">$1</text>
+<line x1="78" x2="750" y1="329.7" y2="329.7" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="333.7" fill="#9fb0cf" font-size="13" text-anchor="end">$2</text>
+<line x1="78" x2="750" y1="226.3" y2="226.3" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="230.3" fill="#9fb0cf" font-size="13" text-anchor="end">$5</text>
+<line x1="78" x2="750" y1="148.0" y2="148.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="152.0" fill="#9fb0cf" font-size="13" text-anchor="end">$10</text>
+<line x1="78" x2="750" y1="69.8" y2="69.8" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="73.8" fill="#9fb0cf" font-size="13" text-anchor="end">$20</text>
+<line x1="103.3" x2="103.3" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="103.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10 s</text>
+<line x1="227.9" x2="227.9" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="227.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">30 s</text>
+<line x1="364.4" x2="364.4" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="364.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">100 s</text>
+<line x1="488.9" x2="488.9" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="488.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">5 min</text>
+<line x1="625.4" x2="625.4" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="625.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">17 min</text>
+<line x1="750.0" x2="750.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="750.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">50 min</text>
+<text x="414.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Median time per task (log scale)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Cost per 1,000 completed tasks (USD, log scale)</text>
+<circle cx="131.3" cy="346.1" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="35.3" y="351.1" fill="#e8eefc" font-size="13">thinking off</text>
+<circle cx="162.8" cy="314.9" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="128.8" y="310.9" fill="#e8eefc" font-size="13">low</text>
+<circle cx="174.9" cy="302.8" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="184.9" y="298.8" fill="#e8eefc" font-size="13">medium</text>
+<circle cx="196.2" cy="274.2" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="206.2" y="279.2" fill="#e8eefc" font-size="13">high</text>
+<circle cx="176.7" cy="250.4" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="186.7" y="244.4" fill="#e8eefc" font-size="13">medium, no cache</text>
+<circle cx="138.2" cy="64.9" r="6" fill="#199e70" stroke="#0b162d" stroke-width="2"/>
+<text x="150.2" y="69.9" fill="#e8eefc" font-size="13">Sonnet medium</text>
+<circle cx="208.1" cy="140.2" r="6" fill="#199e70" stroke="#0b162d" stroke-width="2"/>
+<text x="218.1" y="145.2" fill="#e8eefc" font-size="13">Sonnet lead + Haiku workers</text>
+<circle cx="637.2" cy="381.9" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="487.2" y="399.9" fill="#e8eefc" font-size="13">batch, 5-min cache</text>
+<circle cx="616.5" cy="362.2" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="466.5" y="354.2" fill="#e8eefc" font-size="13">batch, 1-hour cache</text>
+<circle cx="500" cy="44" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="2"/>
+<text x="512" y="49" fill="#e8eefc" font-size="13">Haiku 5.5, synchronous</text>
+<circle cx="500" cy="66" r="6" fill="#199e70" stroke="#0b162d" stroke-width="2"/>
+<text x="512" y="71" fill="#e8eefc" font-size="13">Sonnet 5.5 (alone or as lead)</text>
+<circle cx="500" cy="88" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="512" y="93" fill="#e8eefc" font-size="13">Haiku 5.5, Message Batches</text>
+</svg>

@@ -1,0 +1,9 @@
+flowchart TD
+  A["One docs page"] --> B["Agent loop<br/>Haiku 5.5, low effort"]
+  B --> C{"Policy:<br/>allow or deny"}
+  C -->|"read"| D["Page and<br/>library source"]
+  C -->|"check"| E["Sandbox: links,<br/>examples, fix tests"]
+  D -->|"result"| B
+  E -->|"result"| B
+  C -->|"report"| F["Findings,<br/>one per line"]
+  F --> G["Patch for<br/>human review"]
