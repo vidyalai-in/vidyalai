@@ -1,0 +1,402 @@
+{
+ "ours-4096": {
+  "vocab": 4096,
+  "fineweb_heldout": {
+   "tokens": 7504426,
+   "bytes": 26105073,
+   "bytes_per_token": 3.478623548290036,
+   "chars_per_token": 3.4608857492898193,
+   "tokens_per_word": 1.7785006081254662,
+   "s": 2.54,
+   "vocab_used_frac": 0.982421875
+  }
+ },
+ "ours-8192": {
+  "vocab": 8192,
+  "fineweb_heldout": {
+   "tokens": 6641270,
+   "bytes": 26105073,
+   "bytes_per_token": 3.9307350853074787,
+   "chars_per_token": 3.910691930910805,
+   "tokens_per_word": 1.5739381977682791,
+   "s": 1.8,
+   "vocab_used_frac": 0.9892578125
+  }
+ },
+ "ours-16384": {
+  "vocab": 16384,
+  "fineweb_heldout": {
+   "tokens": 6044899,
+   "bytes": 26105073,
+   "bytes_per_token": 4.318529226046622,
+   "chars_per_token": 4.296508676158195,
+   "tokens_per_word": 1.4326021134137406,
+   "s": 1.85,
+   "vocab_used_frac": 0.99078369140625
+  }
+ },
+ "ours-32768": {
+  "vocab": 32768,
+  "fineweb_heldout": {
+   "tokens": 5662204,
+   "bytes": 26105073,
+   "bytes_per_token": 4.610408420466659,
+   "chars_per_token": 4.5868995536013895,
+   "tokens_per_word": 1.3419058642633623,
+   "s": 2.05,
+   "vocab_used_frac": 0.98626708984375
+  },
+  "python_code": {
+   "tokens": 2247605,
+   "bytes": 4669101,
+   "bytes_per_token": 2.077367242019839,
+   "chars_per_token": 2.077331648577041,
+   "tokens_per_word": 4.611711044403727,
+   "s": 0.63
+  },
+  "numbers": {
+   "tokens": 319530,
+   "bytes": 319540,
+   "bytes_per_token": 1.00003129596595,
+   "chars_per_token": 1.00003129596595,
+   "tokens_per_word": 3.5698883886176502,
+   "s": 0.13
+  },
+  "flores_eng": {
+   "tokens": 55180,
+   "bytes": 257386,
+   "bytes_per_token": 4.664479884015948,
+   "chars_per_token": 4.660384197172888,
+   "tokens_per_word": 1.2875977132189942,
+   "s": 0.03
+  },
+  "flores_hin": {
+   "tokens": 364534,
+   "bytes": 659364,
+   "bytes_per_token": 1.8087860117300445,
+   "chars_per_token": 0.7035338267486709,
+   "tokens_per_word": 7.254407960199005,
+   "s": 0.07
+  }
+ },
+ "ours-65536": {
+  "vocab": 65536,
+  "fineweb_heldout": {
+   "tokens": 5438112,
+   "bytes": 26105073,
+   "bytes_per_token": 4.800392673045351,
+   "chars_per_token": 4.775915060226785,
+   "tokens_per_word": 1.2887975041734565,
+   "s": 1.82,
+   "vocab_used_frac": 0.9415740966796875
+  }
+ },
+ "gpt2": {
+  "vocab": 50257,
+  "fineweb_heldout": {
+   "tokens": 5607499,
+   "bytes": 26105073,
+   "bytes_per_token": 4.655386117768367,
+   "chars_per_token": 4.631647905777602,
+   "tokens_per_word": 1.32894113174851,
+   "s": 0.6,
+   "vocab_used_frac": 0.9295421533318742
+  },
+  "python_code": {
+   "tokens": 2117559,
+   "bytes": 4669101,
+   "bytes_per_token": 2.2049449389603786,
+   "chars_per_token": 2.204907159611609,
+   "tokens_per_word": 4.344878316019279,
+   "s": 0.22
+  },
+  "numbers": {
+   "tokens": 113392,
+   "bytes": 319540,
+   "bytes_per_token": 2.8180118526880205,
+   "chars_per_token": 2.8180118526880205,
+   "tokens_per_word": 1.2668506373803166,
+   "s": 0.27
+  },
+  "flores_eng": {
+   "tokens": 52785,
+   "bytes": 257386,
+   "bytes_per_token": 4.8761201098797,
+   "chars_per_token": 4.871838590508667,
+   "tokens_per_word": 1.231711585579279,
+   "s": 0.13
+  },
+  "flores_hin": {
+   "tokens": 392085,
+   "bytes": 659364,
+   "bytes_per_token": 1.6816863690271242,
+   "chars_per_token": 0.6540979634518025,
+   "tokens_per_word": 7.802686567164179,
+   "s": 0.12
+  }
+ },
+ "llama2": {
+  "vocab": 32000,
+  "fineweb_heldout": {
+   "tokens": 6424517,
+   "bytes": 26105073,
+   "bytes_per_token": 4.063351844193112,
+   "chars_per_token": 4.042632465600137,
+   "tokens_per_word": 1.5225691333904015,
+   "s": 1.47,
+   "vocab_used_frac": 0.70353125
+  },
+  "python_code": {
+   "tokens": 1394483,
+   "bytes": 4669101,
+   "bytes_per_token": 3.3482667052950807,
+   "chars_per_token": 3.348209336363369,
+   "tokens_per_word": 2.8612468170934138,
+   "s": 0.46
+  },
+  "numbers": {
+   "tokens": 324248,
+   "bytes": 319540,
+   "bytes_per_token": 0.985480249685426,
+   "chars_per_token": 0.985480249685426,
+   "tokens_per_word": 3.622599349771526,
+   "s": 0.09
+  },
+  "flores_eng": {
+   "tokens": 60619,
+   "bytes": 257386,
+   "bytes_per_token": 4.245962487009024,
+   "chars_per_token": 4.242234282980584,
+   "tokens_per_word": 1.4145140590362852,
+   "s": 0.03
+  },
+  "flores_hin": {
+   "tokens": 278627,
+   "bytes": 659364,
+   "bytes_per_token": 2.3664756107627762,
+   "chars_per_token": 0.9204492026975132,
+   "tokens_per_word": 5.54481592039801,
+   "s": 0.06
+  }
+ },
+ "smollm2": {
+  "vocab": 49152,
+  "fineweb_heldout": {
+   "tokens": 5669190,
+   "bytes": 26105073,
+   "bytes_per_token": 4.604727130330788,
+   "chars_per_token": 4.581247232849843,
+   "tokens_per_word": 1.343561501249904,
+   "s": 1.95,
+   "vocab_used_frac": 0.9444986979166666
+  },
+  "python_code": {
+   "tokens": 1227357,
+   "bytes": 4669101,
+   "bytes_per_token": 3.804191445520741,
+   "chars_per_token": 3.804126264811298,
+   "tokens_per_word": 2.5183321056530064,
+   "s": 0.54
+  },
+  "numbers": {
+   "tokens": 319530,
+   "bytes": 319540,
+   "bytes_per_token": 1.00003129596595,
+   "chars_per_token": 1.00003129596595,
+   "tokens_per_word": 3.5698883886176502,
+   "s": 0.13
+  },
+  "flores_eng": {
+   "tokens": 54169,
+   "bytes": 257386,
+   "bytes_per_token": 4.751536856873858,
+   "chars_per_token": 4.747364728903985,
+   "tokens_per_word": 1.2640065336600164,
+   "s": 0.03
+  },
+  "flores_hin": {
+   "tokens": 279701,
+   "bytes": 659364,
+   "bytes_per_token": 2.35738878302187,
+   "chars_per_token": 0.916914848355923,
+   "tokens_per_word": 5.566189054726368,
+   "s": 0.07
+  }
+ },
+ "cl100k": {
+  "vocab": 100277,
+  "fineweb_heldout": {
+   "tokens": 5448686,
+   "bytes": 26105073,
+   "bytes_per_token": 4.791076784384345,
+   "chars_per_token": 4.766646674078851,
+   "tokens_per_word": 1.2913034740411478,
+   "s": 0.55,
+   "vocab_used_frac": 0.574000019944753
+  },
+  "python_code": {
+   "tokens": 1091222,
+   "bytes": 4669101,
+   "bytes_per_token": 4.278781952709898,
+   "chars_per_token": 4.278708640404977,
+   "tokens_per_word": 2.2390057636000646,
+   "s": 0.14
+  },
+  "numbers": {
+   "tokens": 213913,
+   "bytes": 319540,
+   "bytes_per_token": 1.4937848564603367,
+   "chars_per_token": 1.4937848564603367,
+   "tokens_per_word": 2.3899024657289374,
+   "s": 0.3
+  },
+  "flores_eng": {
+   "tokens": 52983,
+   "bytes": 257386,
+   "bytes_per_token": 4.857897816280694,
+   "chars_per_token": 4.853632297151917,
+   "tokens_per_word": 1.2363318165908295,
+   "s": 0.13
+  },
+  "flores_hin": {
+   "tokens": 253044,
+   "bytes": 659364,
+   "bytes_per_token": 2.6057286479821693,
+   "chars_per_token": 1.013507532286875,
+   "tokens_per_word": 5.035701492537314,
+   "s": 0.12
+  }
+ },
+ "llama3": {
+  "vocab": 128256,
+  "fineweb_heldout": {
+   "tokens": 5444797,
+   "bytes": 26105073,
+   "bytes_per_token": 4.7944988582678105,
+   "chars_per_token": 4.770051298514894,
+   "tokens_per_word": 1.2903818060994559,
+   "s": 1.83,
+   "vocab_used_frac": 0.45560441616766467
+  },
+  "python_code": {
+   "tokens": 1091070,
+   "bytes": 4669101,
+   "bytes_per_token": 4.279378041738844,
+   "chars_per_token": 4.2793047192205815,
+   "tokens_per_word": 2.238693884920871,
+   "s": 0.52
+  },
+  "numbers": {
+   "tokens": 213913,
+   "bytes": 319540,
+   "bytes_per_token": 1.4937848564603367,
+   "chars_per_token": 1.4937848564603367,
+   "tokens_per_word": 2.3899024657289374,
+   "s": 0.11
+  },
+  "flores_eng": {
+   "tokens": 52963,
+   "bytes": 257386,
+   "bytes_per_token": 4.859732265921492,
+   "chars_per_token": 4.855465136038366,
+   "tokens_per_word": 1.2358651265896627,
+   "s": 0.04
+  },
+  "flores_hin": {
+   "tokens": 133935,
+   "bytes": 659364,
+   "bytes_per_token": 4.923014895285026,
+   "chars_per_token": 1.914824355097622,
+   "tokens_per_word": 2.6653731343283584,
+   "s": 0.06
+  }
+ },
+ "qwen2.5": {
+  "vocab": 151665,
+  "fineweb_heldout": {
+   "tokens": 5551657,
+   "bytes": 26105073,
+   "bytes_per_token": 4.702212870859998,
+   "chars_per_token": 4.678235885250116,
+   "tokens_per_word": 1.3157069375597816,
+   "s": 2.53,
+   "vocab_used_frac": 0.3753140144397191
+  },
+  "python_code": {
+   "tokens": 1106134,
+   "bytes": 4669101,
+   "bytes_per_token": 4.221098890369521,
+   "chars_per_token": 4.221026566401539,
+   "tokens_per_word": 2.2696027034957087,
+   "s": 0.63
+  },
+  "numbers": {
+   "tokens": 319530,
+   "bytes": 319540,
+   "bytes_per_token": 1.00003129596595,
+   "chars_per_token": 1.00003129596595,
+   "tokens_per_word": 3.5698883886176502,
+   "s": 0.16
+  },
+  "flores_eng": {
+   "tokens": 53876,
+   "bytes": 257386,
+   "bytes_per_token": 4.777377682084787,
+   "chars_per_token": 4.773182864355186,
+   "tokens_per_word": 1.2571695251429238,
+   "s": 0.04
+  },
+  "flores_hin": {
+   "tokens": 238687,
+   "bytes": 659364,
+   "bytes_per_token": 2.76246297452312,
+   "chars_per_token": 1.0744699124795234,
+   "tokens_per_word": 4.7499900497512435,
+   "s": 0.1
+  }
+ },
+ "o200k": {
+  "vocab": 200019,
+  "fineweb_heldout": {
+   "tokens": 5387010,
+   "bytes": 26105073,
+   "bytes_per_token": 4.845929931446201,
+   "chars_per_token": 4.821220120252236,
+   "tokens_per_word": 1.276686659443103,
+   "s": 0.5,
+   "vocab_used_frac": 0.3410775976282253
+  },
+  "python_code": {
+   "tokens": 1100067,
+   "bytes": 4669101,
+   "bytes_per_token": 4.244378751476046,
+   "chars_per_token": 4.244306028632802,
+   "tokens_per_word": 2.2571542301623615,
+   "s": 0.13
+  },
+  "numbers": {
+   "tokens": 213913,
+   "bytes": 319540,
+   "bytes_per_token": 1.4937848564603367,
+   "chars_per_token": 1.4937848564603367,
+   "tokens_per_word": 2.3899024657289374,
+   "s": 0.28
+  },
+  "flores_eng": {
+   "tokens": 52409,
+   "bytes": 257386,
+   "bytes_per_token": 4.911103054818829,
+   "chars_per_token": 4.90679081837089,
+   "tokens_per_word": 1.2229378135573445,
+   "s": 0.13
+  },
+  "flores_hin": {
+   "tokens": 82569,
+   "bytes": 659364,
+   "bytes_per_token": 7.985612033571922,
+   "chars_per_token": 3.10603253036854,
+   "tokens_per_word": 1.6431641791044775,
+   "s": 0.14
+  }
+ }
+}

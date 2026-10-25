@@ -1,0 +1,15 @@
+{
+ "train_docs": 2366135,
+ "train_tokens": 2469151566,
+ "doc_len_median": 627.0,
+ "doc_len_mean": 1042.5379071777393,
+ "doc_len_p90": 1939.0,
+ "docs_over_1024": 0.2738732151800299,
+ "tokens_in_docs_over_1024": 0.6540398909639069,
+ "padding_rows": 3693256,
+ "padding_fraction": 0.3471124595284283,
+ "windows": 2411280,
+ "windows_with_boundary": 0.6144670050761422,
+ "mean_docs_per_window": 1.9812767492783916,
+ "tokens_after_a_boundary_in_window": 0.37543487154243005
+}

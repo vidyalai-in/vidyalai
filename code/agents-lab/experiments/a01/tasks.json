@@ -1,0 +1,344 @@
+[
+ {
+  "id": "t01",
+  "kind": "lookup",
+  "question": "What port does search-indexer listen on?",
+  "must": [
+   [
+    "9200"
+   ]
+  ]
+ },
+ {
+  "id": "t02",
+  "kind": "lookup",
+  "question": "What is the per-night hotel cap for a business trip to Singapore?",
+  "must": [
+   [
+    "280"
+   ]
+  ]
+ },
+ {
+  "id": "t03",
+  "kind": "lookup",
+  "question": "Within how many days of the expense date must expenses be submitted?",
+  "must": [
+   [
+    "30"
+   ]
+  ]
+ },
+ {
+  "id": "t04",
+  "kind": "lookup",
+  "question": "At what disk usage percentage does the search-indexer disk alert fire?",
+  "must": [
+   [
+    "85"
+   ]
+  ]
+ },
+ {
+  "id": "t05",
+  "kind": "lookup",
+  "question": "In which release did the access-token lifetime change to 20 minutes?",
+  "must": [
+   [
+    "v4.3.0",
+    "4.3.0"
+   ]
+  ]
+ },
+ {
+  "id": "t06",
+  "kind": "lookup",
+  "question": "What is the weekly stipend for primary on-call?",
+  "must": [
+   [
+    "400"
+   ]
+  ]
+ },
+ {
+  "id": "t07",
+  "kind": "lookup",
+  "question": "How long does telemetry-ingest keep raw events?",
+  "must": [
+   [
+    "30 days",
+    "30"
+   ]
+  ]
+ },
+ {
+  "id": "t08",
+  "kind": "lookup",
+  "question": "Which Slack channel does the Data team use?",
+  "must": [
+   [
+    "#data-infra",
+    "data-infra"
+   ]
+  ]
+ },
+ {
+  "id": "t09",
+  "kind": "multi-hop",
+  "question": "Who leads the team that owns refunds-worker?",
+  "must": [
+   [
+    "Priya Raman"
+   ]
+  ]
+ },
+ {
+  "id": "t10",
+  "kind": "multi-hop",
+  "question": "Which Slack channel should you post in when auth-gateway's SLO is breached?",
+  "must": [
+   [
+    "#idn-alerts",
+    "idn-alerts"
+   ]
+  ]
+ },
+ {
+  "id": "t11",
+  "kind": "multi-hop",
+  "question": "What queue-depth threshold pages the on-call engineer for the service that depends directly on billing-api?",
+  "must": [
+   [
+    "5000",
+    "5,000"
+   ]
+  ]
+ },
+ {
+  "id": "t12",
+  "kind": "multi-hop",
+  "question": "How many engineers are on the team that owns the service listening on port 7001?",
+  "must": [
+   [
+    "6",
+    "six"
+   ]
+  ]
+ },
+ {
+  "id": "t13",
+  "kind": "multi-hop",
+  "question": "The nightly reindex now runs at 02:30 UTC. In which release did that change, and what time did it run before?",
+  "must": [
+   [
+    "v4.4.0",
+    "4.4.0"
+   ],
+   [
+    "01:00",
+    "1:00",
+    "1 am",
+    "1am"
+   ]
+  ]
+ },
+ {
+  "id": "t14",
+  "kind": "multi-hop",
+  "question": "Who leads the team responsible for the service with the strictest availability SLO?",
+  "must": [
+   [
+    "Tomás Ferreira",
+    "Tomas Ferreira"
+   ]
+  ]
+ },
+ {
+  "id": "t15",
+  "kind": "multi-hop",
+  "question": "What is the current per-tenant rate limit of the service that depends on both auth-gateway and telemetry-ingest, and what was it before?",
+  "must": [
+   [
+    "1200",
+    "1,200"
+   ],
+   [
+    "900"
+   ]
+  ]
+ },
+ {
+  "id": "t16",
+  "kind": "multi-hop",
+  "question": "Who was primary on-call for the team that owns telemetry-ingest in the week starting 2026-08-24?",
+  "must": [
+   [
+    "Zara Ahmed"
+   ]
+  ]
+ },
+ {
+  "id": "t17",
+  "kind": "aggregate",
+  "question": "How many SEV1 incidents are in the incident log?",
+  "must": [
+   [
+    "4"
+   ]
+  ]
+ },
+ {
+  "id": "t18",
+  "kind": "aggregate",
+  "question": "Which service had the most total minutes down in Q2 2026 (April to June)?",
+  "must": [
+   [
+    "refunds-worker"
+   ]
+  ]
+ },
+ {
+  "id": "t19",
+  "kind": "aggregate",
+  "question": "What is the total number of minutes down for billing-api across the whole incident log?",
+  "must": [
+   [
+    "128",
+    "128"
+   ]
+  ]
+ },
+ {
+  "id": "t20",
+  "kind": "aggregate",
+  "question": "How many incidents in the log involve services owned by the Payments team?",
+  "must": [
+   [
+    "15"
+   ]
+  ]
+ },
+ {
+  "id": "t21",
+  "kind": "aggregate",
+  "question": "In which month of 2026 did the most incidents happen?",
+  "must": [
+   [
+    "March",
+    "2026-03"
+   ]
+  ]
+ },
+ {
+  "id": "t22",
+  "kind": "aggregate",
+  "question": "How many weeks was Grace Okafor the primary on-call in the roster?",
+  "must": [
+   [
+    "2"
+   ]
+  ]
+ },
+ {
+  "id": "t23",
+  "kind": "aggregate",
+  "question": "What was the longest single outage, in minutes, for a service owned by the Identity team?",
+  "must": [
+   [
+    "53"
+   ]
+  ]
+ },
+ {
+  "id": "t24",
+  "kind": "aggregate",
+  "question": "How many auth-gateway incidents happened after the release that changed the access-token lifetime to 20 minutes?",
+  "must": [
+   [
+    "4"
+   ]
+  ]
+ },
+ {
+  "id": "t25",
+  "kind": "long",
+  "question": "Across the whole incident log, what is the total number of minutes down for services owned by teams with more than 5 engineers?",
+  "must": [
+   [
+    "520",
+    "520"
+   ]
+  ]
+ },
+ {
+  "id": "t26",
+  "kind": "long",
+  "question": "Which team owns the services with the most SEV1 and SEV2 incidents combined, and how many is that?",
+  "must": [
+   [
+    "Payments"
+   ],
+   [
+    "7"
+   ]
+  ]
+ },
+ {
+  "id": "t27",
+  "kind": "long",
+  "question": "Take every service whose availability SLO is 99.9% or stricter. What is their combined number of minutes down in Q3 2026 (July to September)?",
+  "must": [
+   [
+    "198",
+    "198"
+   ]
+  ]
+ },
+ {
+  "id": "t28",
+  "kind": "long",
+  "question": "Find the runbook for the service owned by the team with the smallest headcount. What lag threshold pages the on-call engineer?",
+  "must": [
+   [
+    "120 seconds",
+    "120"
+   ]
+  ]
+ },
+ {
+  "id": "t29",
+  "kind": "long",
+  "question": "Who was the primary on-call engineer for the owning team in the week of the most recent SEV1 incident?",
+  "must": [
+   [
+    "Daniel Kim"
+   ]
+  ]
+ },
+ {
+  "id": "t30",
+  "kind": "long",
+  "question": "Which service has the fewest incidents in the log, and who leads the team that owns it?",
+  "must": [
+   [
+    "search-indexer"
+   ],
+   [
+    "Grace Okafor"
+   ]
+  ]
+ },
+ {
+  "id": "t31",
+  "kind": "probe",
+  "question": "Audit task: open every service page and every team page in the docs, and the incident log. Build a table with each service's owner team, team lead, Slack channel, availability SLO and number of incidents. Then say which team lead is responsible for the most incidents in total, and how many.",
+  "must": [
+   [
+    "Priya Raman"
+   ],
+   [
+    "15"
+   ]
+  ]
+ }
+]

@@ -1,0 +1,294 @@
+[
+ {
+  "id": "chain01",
+  "kind": "chain",
+  "question": "How old was the current mayor of the town where Kestrel Mills has its headquarters in the year Kestrel Mills was founded? (Compute founding year minus birth year; it may be negative.)",
+  "answer": 32,
+  "atype": "int"
+ },
+ {
+  "id": "chain02",
+  "kind": "chain",
+  "question": "How old was the current mayor of the town where Saltmere Canning has its headquarters in the year Saltmere Canning was founded? (Compute founding year minus birth year; it may be negative.)",
+  "answer": 37,
+  "atype": "int"
+ },
+ {
+  "id": "chain03",
+  "kind": "chain",
+  "question": "How old was the current mayor of the town where Gannet Shipping has its headquarters in the year Gannet Shipping was founded? (Compute founding year minus birth year; it may be negative.)",
+  "answer": 28,
+  "atype": "int"
+ },
+ {
+  "id": "chain04",
+  "kind": "chain",
+  "question": "How old was the current mayor of the town where Brightwater Salt has its headquarters in the year Brightwater Salt was founded? (Compute founding year minus birth year; it may be negative.)",
+  "answer": 33,
+  "atype": "int"
+ },
+ {
+  "id": "chain05",
+  "kind": "chain",
+  "question": "What is the population density, in people per km2 rounded to the nearest whole number, of the town where the founder of Harrow Lanterns was born?",
+  "answer": 480,
+  "atype": "int"
+ },
+ {
+  "id": "chain06",
+  "kind": "chain",
+  "question": "What is the population density, in people per km2 rounded to the nearest whole number, of the town where the founder of Oakum & Tar was born?",
+  "answer": 480,
+  "atype": "int"
+ },
+ {
+  "id": "chain07",
+  "kind": "chain",
+  "question": "What is the population density, in people per km2 rounded to the nearest whole number, of the town where the founder of Tidewater Power was born?",
+  "answer": 218,
+  "atype": "int"
+ },
+ {
+  "id": "chain08",
+  "kind": "chain",
+  "question": "What is the population density, in people per km2 rounded to the nearest whole number, of the town where the founder of Cobble Bank was born?",
+  "answer": 9671,
+  "atype": "int"
+ },
+ {
+  "id": "chain09",
+  "kind": "chain",
+  "question": "The company that operates MV Curlew has its headquarters in a town. How many years before that company was founded was that town founded?",
+  "answer": 277,
+  "atype": "int"
+ },
+ {
+  "id": "chain10",
+  "kind": "chain",
+  "question": "The company that operates MV Plover has its headquarters in a town. How many years before that company was founded was that town founded?",
+  "answer": 403,
+  "atype": "int"
+ },
+ {
+  "id": "chain11",
+  "kind": "chain",
+  "question": "The company that operates MV Dunlin has its headquarters in a town. How many years before that company was founded was that town founded?",
+  "answer": 160,
+  "atype": "int"
+ },
+ {
+  "id": "chain12",
+  "kind": "chain",
+  "question": "The company that operates MV Tern has its headquarters in a town. How many years before that company was founded was that town founded?",
+  "answer": 226,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate01",
+  "kind": "aggregate",
+  "question": "Which town on the island of Brannock has the highest population density (population divided by area)? Answer with the town name.",
+  "answer": "Ashby Fell",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate02",
+  "kind": "aggregate",
+  "question": "Which town on the island of Elsk has the highest population density (population divided by area)? Answer with the town name.",
+  "answer": "Mirefield",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate03",
+  "kind": "aggregate",
+  "question": "Which town on the island of Toller has the highest population density (population divided by area)? Answer with the town name.",
+  "answer": "Oxley Bay",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate04",
+  "kind": "aggregate",
+  "question": "Which town on the island of Vey has the highest population density (population divided by area)? Answer with the town name.",
+  "answer": "Dunmere",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate05",
+  "kind": "aggregate",
+  "question": "What is the combined annual revenue, in thousand crowns, of all companies headquartered on the island of Brannock? Answer 0 if there are none.",
+  "answer": 7723,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate06",
+  "kind": "aggregate",
+  "question": "What is the combined annual revenue, in thousand crowns, of all companies headquartered on the island of Elsk? Answer 0 if there are none.",
+  "answer": 407,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate07",
+  "kind": "aggregate",
+  "question": "What is the combined annual revenue, in thousand crowns, of all companies headquartered on the island of Toller? Answer 0 if there are none.",
+  "answer": 26716,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate08",
+  "kind": "aggregate",
+  "question": "What is the combined annual revenue, in thousand crowns, of all companies headquartered on the island of Vey? Answer 0 if there are none.",
+  "answer": 10895,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate09",
+  "kind": "aggregate",
+  "question": "What is the total population of the towns on the island of Brannock whose mayor was born before 1965? Answer 0 if there are none.",
+  "answer": 53304,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate10",
+  "kind": "aggregate",
+  "question": "What is the total population of the towns on the island of Elsk whose mayor was born before 1970? Answer 0 if there are none.",
+  "answer": 68978,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate11",
+  "kind": "aggregate",
+  "question": "What is the total population of the towns on the island of Toller whose mayor was born before 1975? Answer 0 if there are none.",
+  "answer": 26932,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate12",
+  "kind": "aggregate",
+  "question": "What is the total population of the towns on the island of Vey whose mayor was born before 1960? Answer 0 if there are none.",
+  "answer": 38920,
+  "atype": "int"
+ },
+ {
+  "id": "puzzle01",
+  "kind": "puzzle",
+  "question": "Using only the roads tool, find the length in km of the shortest road route from Stoneleigh to Kettle Combe.",
+  "answer": 69,
+  "atype": "int",
+  "trap": 77
+ },
+ {
+  "id": "puzzle02",
+  "kind": "puzzle",
+  "question": "Using only the roads tool, find the length in km of the shortest road route from Kettle Combe to Lantern Point.",
+  "answer": 54,
+  "atype": "int",
+  "trap": 62
+ },
+ {
+  "id": "puzzle03",
+  "kind": "puzzle",
+  "question": "Using only the roads tool, find the length in km of the shortest road route from Rookhaven to Port Wren.",
+  "answer": 99,
+  "atype": "int",
+  "trap": 109
+ },
+ {
+  "id": "puzzle04",
+  "kind": "puzzle",
+  "question": "Using only the roads tool, find the length in km of the shortest road route from Mirefield to Kettle Combe.",
+  "answer": 31,
+  "atype": "int",
+  "trap": 39
+ },
+ {
+  "id": "puzzle05",
+  "kind": "puzzle",
+  "question": "There are 9 coins numbered 1 to 9. All weigh the same except one, which is heavier. Use the weigh tool, which you may call at most 2 times in total, to find the heavy coin. Answer with its number.",
+  "answer": 5,
+  "atype": "int",
+  "scale": {
+   "n": 9,
+   "max": 2,
+   "heavy": 5
+  }
+ },
+ {
+  "id": "puzzle06",
+  "kind": "puzzle",
+  "question": "There are 8 coins numbered 1 to 8. All weigh the same except one, which is heavier. Use the weigh tool, which you may call at most 2 times in total, to find the heavy coin. Answer with its number.",
+  "answer": 3,
+  "atype": "int",
+  "scale": {
+   "n": 8,
+   "max": 2,
+   "heavy": 3
+  }
+ },
+ {
+  "id": "puzzle07",
+  "kind": "puzzle",
+  "question": "There are 27 coins numbered 1 to 27. All weigh the same except one, which is heavier. Use the weigh tool, which you may call at most 3 times in total, to find the heavy coin. Answer with its number.",
+  "answer": 20,
+  "atype": "int",
+  "scale": {
+   "n": 27,
+   "max": 3,
+   "heavy": 20
+  }
+ },
+ {
+  "id": "puzzle08",
+  "kind": "puzzle",
+  "question": "There are 12 coins numbered 1 to 12. All weigh the same except one, which is heavier. Use the weigh tool, which you may call at most 3 times in total, to find the heavy coin. Answer with its number.",
+  "answer": 6,
+  "atype": "int",
+  "scale": {
+   "n": 12,
+   "max": 3,
+   "heavy": 6
+  }
+ },
+ {
+  "id": "puzzle09",
+  "kind": "puzzle",
+  "question": "A lock has a secret 3-digit code with three different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 10 times. Find the code and answer with its three digits.",
+  "answer": "841",
+  "atype": "code",
+  "lock": {
+   "code": "841",
+   "max": 10
+  }
+ },
+ {
+  "id": "puzzle10",
+  "kind": "puzzle",
+  "question": "A lock has a secret 3-digit code with three different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 10 times. Find the code and answer with its three digits.",
+  "answer": "760",
+  "atype": "code",
+  "lock": {
+   "code": "760",
+   "max": 10
+  }
+ },
+ {
+  "id": "puzzle11",
+  "kind": "puzzle",
+  "question": "A lock has a secret 3-digit code with three different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 10 times. Find the code and answer with its three digits.",
+  "answer": "235",
+  "atype": "code",
+  "lock": {
+   "code": "235",
+   "max": 10
+  }
+ },
+ {
+  "id": "puzzle12",
+  "kind": "puzzle",
+  "question": "A lock has a secret 3-digit code with three different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 10 times. Find the code and answer with its three digits.",
+  "answer": "739",
+  "atype": "code",
+  "lock": {
+   "code": "739",
+   "max": 10
+  }
+ }
+]

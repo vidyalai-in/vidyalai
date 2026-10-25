@@ -1,0 +1,41 @@
+{
+ "docs": 2424000,
+ "candidate_pairs": 43211,
+ "clusters": 41459,
+ "docs_in_clusters": 84326,
+ "removed_docs": 42867,
+ "removed_frac": 0.017684405940594058,
+ "tokens_total": 2531814962,
+ "removed_tokens": 47635678,
+ "removed_tokens_frac": 0.018814833909651253,
+ "cluster_size_counts": {
+  "2": 40545,
+  "3": 836,
+  "4": 38,
+  "5": 10,
+  "6": 6,
+  "7": 3,
+  "9": 3,
+  "10": 18
+ },
+ "largest_clusters": [
+  22,
+  26,
+  32,
+  35,
+  148
+ ],
+ "cross_dump_clusters": 41394,
+ "same_dump_clusters": 65,
+ "exact_text_clusters": 25989,
+ "pairs_cross_dump": 42862,
+ "pairs_exact": 26630,
+ "est_jaccard_pct": [
+  0.5,
+  0.6964285714285714,
+  0.9553571428571429,
+  1.0,
+  1.0
+ ],
+ "pairs_est_below_0_5": 411
+}
