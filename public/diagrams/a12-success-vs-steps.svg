@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="78" x2="750" y1="408.0" y2="408.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="412.0" fill="#4a5b78" font-size="13" text-anchor="end">0%</text>
+<line x1="78" x2="750" y1="331.2" y2="331.2" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="335.2" fill="#4a5b78" font-size="13" text-anchor="end">20%</text>
+<line x1="78" x2="750" y1="254.4" y2="254.4" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="258.4" fill="#4a5b78" font-size="13" text-anchor="end">40%</text>
+<line x1="78" x2="750" y1="177.6" y2="177.6" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="181.6" fill="#4a5b78" font-size="13" text-anchor="end">60%</text>
+<line x1="78" x2="750" y1="100.8" y2="100.8" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="104.8" fill="#4a5b78" font-size="13" text-anchor="end">80%</text>
+<line x1="78" x2="750" y1="24.0" y2="24.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="28.0" fill="#4a5b78" font-size="13" text-anchor="end">100%</text>
+<line x1="78.0" x2="78.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="78.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">0</text>
+<line x1="120.0" x2="120.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="120.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">5</text>
+<line x1="162.0" x2="162.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="162.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">10</text>
+<line x1="246.0" x2="246.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="246.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">20</text>
+<line x1="414.0" x2="414.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="414.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">40</text>
+<line x1="582.0" x2="582.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="582.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">60</text>
+<line x1="750.0" x2="750.0" y1="24" y2="408" stroke="#dde5f2" stroke-width="1"/>
+<text x="750.0" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">80</text>
+<text x="414.0" y="456" fill="#0b1a33" font-size="14" text-anchor="middle">Dependent steps in the task</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Tasks solved (95% CI)</text>
+<polyline fill="none" stroke="#eb6834" stroke-width="2" stroke-dasharray="6 5" points="78.0,24.0 86.4,34.2 94.8,44.2 103.2,53.8 111.6,63.3 120.0,72.4 128.4,81.4 136.8,90.0 145.2,98.5 153.6,106.7 162.0,114.7 170.4,122.5 178.8,130.1 187.2,137.5 195.6,144.7 204.0,151.7 212.4,158.5 220.8,165.2 229.2,171.6 237.6,177.9 246.0,184.0 254.4,190.0 262.8,195.8 271.2,201.4 279.6,206.9 288.0,212.3 296.4,217.5 304.8,222.6 313.2,227.5 321.6,232.3 330.0,237.0 338.4,241.5 346.8,245.9 355.2,250.3 363.6,254.5 372.0,258.5 380.4,262.5 388.8,266.4 397.2,270.2 405.6,273.8 414.0,277.4 422.4,280.9 430.8,284.2 439.2,287.5 447.6,290.7 456.0,293.9 464.4,296.9 472.8,299.9 481.2,302.7 489.6,305.5 498.0,308.3 506.4,310.9 514.8,313.5 523.2,316.0 531.6,318.5 540.0,320.8 548.4,323.2 556.8,325.4 565.2,327.6 573.6,329.7 582.0,331.8 590.4,333.9 598.8,335.8 607.2,337.7 615.6,339.6 624.0,341.4 632.4,343.2 640.8,344.9 649.2,346.6 657.6,348.2 666.0,349.8 674.4,351.4 682.8,352.9 691.2,354.3 699.6,355.8 708.0,357.2 716.4,358.5 724.8,359.8 733.2,361.1 741.6,362.4 750.0,363.6"/>
+<polyline fill="none" stroke="#1baf7a" stroke-width="2.5" points="78.0,24.0 86.4,95.4 94.8,106.2 103.2,111.9 111.6,120.0 120.0,120.0 128.4,120.0 136.8,120.0 145.2,130.0 153.6,136.9 162.0,136.9 170.4,141.5 178.8,146.1 187.2,150.7 195.6,155.3 204.0,159.9 212.4,173.8 220.8,183.0 229.2,187.6 237.6,192.2 246.0,196.8 254.4,196.8 262.8,196.8 271.2,196.8 279.6,196.8 288.0,196.8 296.4,196.8 304.8,196.8 313.2,203.7 321.6,203.7 330.0,210.6 338.4,210.6 346.8,210.6 355.2,210.6 363.6,210.6 372.0,217.9 380.4,224.8 388.8,224.8 397.2,231.7 405.6,231.7 414.0,239.0 422.4,239.0 430.8,239.0 439.2,239.0 447.6,239.0 456.0,239.0 464.4,254.4 472.8,254.4 481.2,254.4 489.6,269.8 498.0,269.8 506.4,285.1 514.8,300.5 523.2,315.8 531.6,315.8 540.0,315.8 548.4,315.8 556.8,315.8 565.2,315.8 573.6,315.8 582.0,315.8 590.4,315.8 598.8,315.8 607.2,315.8 615.6,315.8 624.0,315.8 632.4,315.8 640.8,315.8 649.2,315.8 657.6,315.8 666.0,315.8 674.4,315.8 682.8,315.8 691.2,315.8 699.6,315.8 708.0,315.8 716.4,315.8 724.8,315.8 733.2,315.8 741.6,315.8 750.0,315.8"/>
+<line x1="120.0" x2="120.0" y1="220.6" y2="97.7" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="120.0" cy="151.9" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<line x1="162.0" x2="162.0" y1="207.9" y2="88.1" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="162.0" cy="139.2" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<line x1="246.0" x2="246.0" y1="257.5" y2="129.2" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="246.0" cy="190.3" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<line x1="414.0" x2="414.0" y1="292.0" y2="162.6" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="414.0" cy="228.7" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<line x1="750.0" x2="750.0" y1="352.3" y2="208.7" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="750.0" cy="292.8" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<line x1="426.0" x2="426.0" y1="259.4" y2="108.1" stroke="#8a5cd6" stroke-width="2"/>
+<rect x="421.0" y="172.6" width="10" height="10" fill="#8a5cd6" stroke="#ffffff" stroke-width="2"/>
+<circle cx="114" cy="292.8" r="5" fill="#2a78d6"/>
+<text x="134" y="297.8" fill="#0b1a33" font-size="13">Measured (Haiku 5.5)</text>
+<line x1="102" x2="126" y1="314.8" y2="314.8" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="134" y="319.8" fill="#0b1a33" font-size="13">p^n with pooled p = 0.973</text>
+<line x1="102" x2="126" y1="336.8" y2="336.8" stroke="#1baf7a" stroke-width="2.5"/>
+<text x="134" y="341.8" fill="#0b1a33" font-size="13">No error yet (first-error hazard per step)</text>
+<rect x="109" y="353.8" width="10" height="10" fill="#8a5cd6"/>
+<text x="134" y="363.8" fill="#0b1a33" font-size="13">Copy the record first (20 chains)</text>
+</svg>

@@ -1,0 +1,10 @@
+flowchart TD
+    T["Task pool: issue,<br/>repo, hidden tests"] --> F["Keep tasks<br/>solved only<br/>sometimes"]
+    F --> S["Fresh sandbox<br/>per rollout"]
+    S --> P["Policy writes<br/>a thought and<br/>a tool call"]
+    P --> O["Sandbox runs it,<br/>returns output"]
+    O -- "next turn" --> P
+    P -- "agent stops" --> V["Verifier runs<br/>hidden tests<br/>on final state"]
+    V --> G["Reward 1 or 0,<br/>vs its group"]
+    G --> U["Update on<br/>model tokens;<br/>tool output<br/>masked"]
+    U -- "new weights" --> P

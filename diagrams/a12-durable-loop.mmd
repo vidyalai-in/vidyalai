@@ -1,0 +1,12 @@
+flowchart TD
+    S["Start the task,<br/>or load the last checkpoint"] --> B{"Budget left?<br/>steps, tokens, cost"}
+    B -- "no" --> P["Stop: report<br/>what is done and not done"]
+    B -- "yes" --> M["Model step"]
+    M -- "final answer" --> D["Done"]
+    M -- "tool calls" --> W["Write-ahead checkpoint:<br/>calls and their ids"]
+    W --> R{"Same call failed<br/>3 times in a row?"}
+    R -- "yes" --> N["Harness answers:<br/>stop retrying this"]
+    R -- "no" --> T["Run the tool:<br/>retries with backoff and jitter,<br/>idempotency key = call id"]
+    T --> C["Checkpoint:<br/>messages and tool state"]
+    N --> C
+    C --> B

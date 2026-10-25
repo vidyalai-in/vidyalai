@@ -1,0 +1,14 @@
+flowchart TD
+    S["Task set: T tasks"] --> R["Run each task n times<br/>(fresh environment)"]
+    R --> G["Grader: hidden tests<br/>or exact answer"]
+    J["LLM judge"] -. "checked against" .-> G
+    G --> C["Per task: c of n<br/>runs succeed"]
+    C --> P1["pass@1 = c / n"]
+    C --> PK["pass@k: one of<br/>k runs succeeds"]
+    C --> PH["pass^k: all k<br/>runs succeed"]
+    P1 --> A["Average over tasks;<br/>resample tasks for CI"]
+    PK --> A
+    PH --> A
+    R --> L["Ledger: cost<br/>of every run"]
+    L --> CS["Cost per solved task"]
+    A --> CS

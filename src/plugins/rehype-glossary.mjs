@@ -38,11 +38,13 @@ const TITLES = Object.fromEntries(
 const textOf = (node) =>
   node.type === 'text' ? node.value : (node.children ?? []).map(textOf).join('');
 
-/** Earliest match among terms not yet used in this section; the longest wins a tie. */
-function firstMatch(text, used) {
+/**
+ * Earliest match among all terms; the longest wins a tie. A term already used in the section still
+ * claims its text (the caller leaves it unmarked), so "canary" can't match inside a second "canary token".
+ */
+function firstMatch(text) {
   let best;
   for (const { entry, res } of MATCHERS) {
-    if (used.has(entry.id)) continue;
     for (const re of res) {
       re.lastIndex = 0;
       const m = re.exec(text);
@@ -81,7 +83,12 @@ export function rehypeGlossary() {
           continue;
         }
         let rest = child.value;
-        for (let m = firstMatch(rest, used); m; m = firstMatch(rest, used)) {
+        for (let m = firstMatch(rest); m; m = firstMatch(rest)) {
+          if (used.has(m.entry.id)) {
+            out.push({ type: 'text', value: rest.slice(0, m.index + m.text.length) });
+            rest = rest.slice(m.index + m.text.length);
+            continue;
+          }
           if (m.index) out.push({ type: 'text', value: rest.slice(0, m.index) });
           out.push({
             type: 'element',

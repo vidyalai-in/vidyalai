@@ -1,0 +1,11 @@
+flowchart TD
+  A["Model requests a tool call"] --> B{"Policy check<br/>deny, then ask, then allow"}
+  B -->|"deny"| C["Error returned to model"]
+  B -->|"ask"| D["Human sees raw parameters"]
+  D -->|"rejected"| C
+  D -->|"approved"| E{"Where does it run?"}
+  B -->|"allow"| E
+  E -->|"shell and code"| F["Sandbox: no network,<br/>read-only system,<br/>no secrets, limits"]
+  E -->|"network fetch"| G["Host tool with<br/>domain allowlist"]
+  F --> H["Result back to model"]
+  G --> H
