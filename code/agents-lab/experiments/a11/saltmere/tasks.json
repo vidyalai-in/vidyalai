@@ -1,0 +1,307 @@
+[
+ {
+  "id": "chain01",
+  "kind": "chain",
+  "question": "Find the ferry with the longest crossing time. The founder of the company that operates it was born in a town. What is that town's population density in people per km2, rounded to the nearest whole number?",
+  "answer": 480,
+  "atype": "int"
+ },
+ {
+  "id": "chain02",
+  "kind": "chain",
+  "question": "Find the ferry with the fewest departures per week. The founder of the company that operates it was born in a town. What is that town's population density in people per km2, rounded to the nearest whole number?",
+  "answer": 9671,
+  "atype": "int"
+ },
+ {
+  "id": "chain03",
+  "kind": "chain",
+  "question": "Find the ferry with the fewest passengers per departure. The founder of the company that operates it was born in a town. What is that town's population density in people per km2, rounded to the nearest whole number?",
+  "answer": 480,
+  "atype": "int"
+ },
+ {
+  "id": "chain04",
+  "kind": "chain",
+  "question": "How many years older is the oldest mayor of a town on the island of Brannock than the founder of the company that operates MV Petrel? Use birth years; answer a negative number if the mayor is younger.",
+  "answer": 29,
+  "atype": "int"
+ },
+ {
+  "id": "chain05",
+  "kind": "chain",
+  "question": "How many years older is the oldest mayor of a town on the island of Toller than the founder of the company that operates MV Tern? Use birth years; answer a negative number if the mayor is younger.",
+  "answer": 11,
+  "atype": "int"
+ },
+ {
+  "id": "chain06",
+  "kind": "chain",
+  "question": "How many years older is the oldest mayor of a town on the island of Vey than the founder of the company that operates MV Skua? Use birth years; answer a negative number if the mayor is younger.",
+  "answer": -3,
+  "atype": "int"
+ },
+ {
+  "id": "chain07",
+  "kind": "chain",
+  "question": "The founder of Kestrel Mills was born on one of the islands. What is the total weekly passenger capacity (departures per week times passengers per departure, summed) of all ferries with at least one end on that island?",
+  "answer": 13560,
+  "atype": "int"
+ },
+ {
+  "id": "chain08",
+  "kind": "chain",
+  "question": "The founder of Saltmere Canning was born on one of the islands. What is the total weekly passenger capacity (departures per week times passengers per departure, summed) of all ferries with at least one end on that island?",
+  "answer": 3020,
+  "atype": "int"
+ },
+ {
+  "id": "chain09",
+  "kind": "chain",
+  "question": "The founder of Harrow Lanterns was born on one of the islands. What is the total weekly passenger capacity (departures per week times passengers per departure, summed) of all ferries with at least one end on that island?",
+  "answer": 7500,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate01",
+  "kind": "aggregate",
+  "question": "Rank all companies in the records by annual revenue per employee. Which company ranks second? Answer with the company name.",
+  "answer": "Brightwater Salt",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate02",
+  "kind": "aggregate",
+  "question": "Rank all companies in the records by annual revenue per employee. Which company ranks third? Answer with the company name.",
+  "answer": "Fennel Breweries",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate03",
+  "kind": "aggregate",
+  "question": "Rank all companies in the records by annual revenue per employee. Which company ranks fifth? Answer with the company name.",
+  "answer": "Kestrel Mills",
+  "atype": "name"
+ },
+ {
+  "id": "aggregate04",
+  "kind": "aggregate",
+  "question": "How many people in the records were born in a town on the island of Brannock?",
+  "answer": 9,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate05",
+  "kind": "aggregate",
+  "question": "How many people in the records were born in a town on the island of Elsk?",
+  "answer": 10,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate06",
+  "kind": "aggregate",
+  "question": "How many people in the records were born in a town on the island of Vey?",
+  "answer": 6,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate07",
+  "kind": "aggregate",
+  "question": "What is the total population of all towns (on every island) whose mayor was born in an earlier year than the mayor of Penmoor?",
+  "answer": 286132,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate08",
+  "kind": "aggregate",
+  "question": "What is the total population of all towns (on every island) whose mayor was born in an earlier year than the mayor of Hallow Quay?",
+  "answer": 128566,
+  "atype": "int"
+ },
+ {
+  "id": "aggregate09",
+  "kind": "aggregate",
+  "question": "What is the total population of all towns (on every island) whose mayor was born in an earlier year than the mayor of Lantern Point?",
+  "answer": 54524,
+  "atype": "int"
+ },
+ {
+  "id": "route01",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Kettle Combe to Rookhaven. Routes may pass through towns and crossroads.",
+  "answer": 62,
+  "atype": "int",
+  "trap": 70
+ },
+ {
+  "id": "route02",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Ashby Fell to Fairholm. Routes may pass through towns and crossroads.",
+  "answer": 85,
+  "atype": "int",
+  "trap": 93
+ },
+ {
+  "id": "route03",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Port Wrenna to Rookhaven. Routes may pass through towns and crossroads.",
+  "answer": 72,
+  "atype": "int",
+  "trap": 88
+ },
+ {
+  "id": "route04",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Fairholm to Stoneleigh. Routes may pass through towns and crossroads.",
+  "answer": 60,
+  "atype": "int",
+  "trap": 68
+ },
+ {
+  "id": "route05",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Lantern Point to Saltmarsh. Routes may pass through towns and crossroads.",
+  "answer": 61,
+  "atype": "int",
+  "trap": 71
+ },
+ {
+  "id": "route06",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Ashby Fell to Kettle Combe. Routes may pass through towns and crossroads.",
+  "answer": 64,
+  "atype": "int",
+  "trap": 72
+ },
+ {
+  "id": "route07",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Kettle Cove to Stoneleigh that does not pass through Port Wren. Routes may pass through other towns and crossroads.",
+  "answer": 112,
+  "atype": "int",
+  "unconstrained": 105
+ },
+ {
+  "id": "route08",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Penmoor to Rookhaven that does not pass through Oxley Bay. Routes may pass through other towns and crossroads.",
+  "answer": 89,
+  "atype": "int",
+  "unconstrained": 83
+ },
+ {
+  "id": "route09",
+  "kind": "route",
+  "question": "Using the roads tool, find the length in km of the shortest road route from Kettle Cove to Lantern Point that does not pass through Port Wren. Routes may pass through other towns and crossroads.",
+  "answer": 106,
+  "atype": "int",
+  "unconstrained": 94
+ },
+ {
+  "id": "puzzle01",
+  "kind": "puzzle",
+  "question": "There are 12 coins numbered 1 to 12. All weigh the same except one, which is either heavier or lighter; you don't know which. Use the weigh tool, which you may call at most 3 times in total, to find the odd coin and whether it is heavier or lighter. Answer like '7 heavier'.",
+  "answer": "2 heavier",
+  "atype": "coin",
+  "scale": {
+   "n": 12,
+   "max": 3,
+   "odd": 2,
+   "delta": 1
+  }
+ },
+ {
+  "id": "puzzle02",
+  "kind": "puzzle",
+  "question": "There are 12 coins numbered 1 to 12. All weigh the same except one, which is either heavier or lighter; you don't know which. Use the weigh tool, which you may call at most 3 times in total, to find the odd coin and whether it is heavier or lighter. Answer like '7 heavier'.",
+  "answer": "4 lighter",
+  "atype": "coin",
+  "scale": {
+   "n": 12,
+   "max": 3,
+   "odd": 4,
+   "delta": -1
+  }
+ },
+ {
+  "id": "puzzle03",
+  "kind": "puzzle",
+  "question": "There are 12 coins numbered 1 to 12. All weigh the same except one, which is either heavier or lighter; you don't know which. Use the weigh tool, which you may call at most 3 times in total, to find the odd coin and whether it is heavier or lighter. Answer like '7 heavier'.",
+  "answer": "3 lighter",
+  "atype": "coin",
+  "scale": {
+   "n": 12,
+   "max": 3,
+   "odd": 3,
+   "delta": -1
+  }
+ },
+ {
+  "id": "puzzle04",
+  "kind": "puzzle",
+  "question": "There are 12 coins numbered 1 to 12. All weigh the same except one, which is either heavier or lighter; you don't know which. Use the weigh tool, which you may call at most 3 times in total, to find the odd coin and whether it is heavier or lighter. Answer like '7 heavier'.",
+  "answer": "2 lighter",
+  "atype": "coin",
+  "scale": {
+   "n": 12,
+   "max": 3,
+   "odd": 2,
+   "delta": -1
+  }
+ },
+ {
+  "id": "puzzle05",
+  "kind": "puzzle",
+  "question": "A lock has a secret 4-digit code with four different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 8 times. Find the code and answer with its four digits.",
+  "answer": "9634",
+  "atype": "code",
+  "lock": {
+   "code": "9634",
+   "max": 8
+  }
+ },
+ {
+  "id": "puzzle06",
+  "kind": "puzzle",
+  "question": "A lock has a secret 4-digit code with four different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 8 times. Find the code and answer with its four digits.",
+  "answer": "3074",
+  "atype": "code",
+  "lock": {
+   "code": "3074",
+   "max": 8
+  }
+ },
+ {
+  "id": "puzzle07",
+  "kind": "puzzle",
+  "question": "A lock has a secret 4-digit code with four different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 8 times. Find the code and answer with its four digits.",
+  "answer": "4076",
+  "atype": "code",
+  "lock": {
+   "code": "4076",
+   "max": 8
+  }
+ },
+ {
+  "id": "puzzle08",
+  "kind": "puzzle",
+  "question": "A lock has a secret 4-digit code with four different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 8 times. Find the code and answer with its four digits.",
+  "answer": "8127",
+  "atype": "code",
+  "lock": {
+   "code": "8127",
+   "max": 8
+  }
+ },
+ {
+  "id": "puzzle09",
+  "kind": "puzzle",
+  "question": "A lock has a secret 4-digit code with four different digits (0-9). Each call to the guess tool returns how many digits are right and in the right place (bulls) and how many are right but in the wrong place (cows). You may guess at most 8 times. Find the code and answer with its four digits.",
+  "answer": "4750",
+  "atype": "code",
+  "lock": {
+   "code": "4750",
+   "max": 8
+  }
+ }
+]

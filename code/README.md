@@ -28,7 +28,10 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `coding.py` | 8 | Coding-agent tools (grep, read, string-replace edit, sandboxed test runner), repo map, arms |
 | `computer.py` | 9 | Playwright executors for the computer and browser toolsets, localhost only |
 | `research.py` | 10 | Web search and fetch server-tool loop with `pause_turn` handling |
+| `evals.py` | 11 | pass@k and pass^k estimators, Wilson intervals, task bootstrap, paired power by simulation |
+| `reliability.py` | 12 | Durable loop with checkpoints and write-ahead resume, fault injection, retries with jitter, idempotent payments backend |
+| `sandbox.py` | 13 | bubblewrap and hardened Docker runners, fake canary token, allow/ask/deny policy hook |
 
-`experiments/a01` to `a10` hold each part's task sets, runners and analysis scripts.
+`experiments/a01` to `a14` hold each part's task sets, runners and analysis scripts (Part 14 only analyses Part 8's saved runs; it made no API calls).
 
 The API key is read from `~/.config/vidyalai/anthropic.env` and is never stored here. Not included: the cost ledger (`ledger.jsonl`), run transcripts, and fetched docs. Scripts use absolute paths from the machine they ran on (`/home/amit/.cache/vidyalai-scratch/...`); adjust them to rerun elsewhere.

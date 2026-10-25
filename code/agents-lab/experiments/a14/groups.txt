@@ -1,0 +1,18 @@
+model, arm: tasks all-pass / mixed / all-fail (groups of 3 runs), resolve rate
+  claude-haiku-5-5   full           27 /  1 /  0   83/84
+  claude-haiku-5-5   map            27 /  0 /  1   81/84
+  claude-haiku-5-5   map_no_search  26 /  1 /  1   80/84
+  claude-haiku-5-5   no_search      27 /  1 /  0   83/84
+  claude-haiku-5-5   no_tests       26 /  1 /  1   79/84
+  claude-haiku-5-5   rewrite        16 / 10 /  2   66/84
+  claude-haiku-5-5   title_only     22 /  4 /  2   72/84
+  claude-sonnet-5-5  full           27 /  0 /  1   81/84
+  claude-sonnet-5-5  title_only     25 /  1 /  2   51/56
+
+P(group of G rollouts is mixed) for a task solved with probability p
+  G   p=0.01   p=0.05   p=0.2    p=0.5    p=0.8    p=0.95   p=0.99 
+  3      3.0%    14.3%    48.0%    75.0%    48.0%    14.3%     3.0%
+  8      7.7%    33.7%    83.2%    99.2%    83.2%    33.7%     7.7%
+  16    14.9%    56.0%    97.2%   100.0%    97.2%    56.0%    14.9%
+  64    47.4%    96.2%   100.0%   100.0%   100.0%    96.2%    47.4%
+  512   99.4%   100.0%   100.0%   100.0%   100.0%   100.0%    99.4%

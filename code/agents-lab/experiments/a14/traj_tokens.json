@@ -1,0 +1,758 @@
+[
+ {
+  "total": 3426,
+  "model": 686,
+  "env": 1666,
+  "prompt": 1006,
+  "other": 68,
+  "file": "cachetools-rr-empty-full-haiku-medium-r0.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 3979,
+  "model": 628,
+  "env": 2268,
+  "prompt": 1006,
+  "other": 77,
+  "file": "cachetools-rr-empty-full-haiku-medium-r1.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 3997,
+  "model": 634,
+  "env": 2280,
+  "prompt": 1006,
+  "other": 77,
+  "file": "cachetools-rr-empty-full-haiku-medium-r2.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 6767,
+  "model": 769,
+  "env": 4875,
+  "prompt": 1062,
+  "other": 61,
+  "file": "cachetools-stacked-full-haiku-medium-r0.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 7038,
+  "model": 1087,
+  "env": 4812,
+  "prompt": 1062,
+  "other": 77,
+  "file": "cachetools-stacked-full-haiku-medium-r1.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 6103,
+  "model": 592,
+  "env": 4389,
+  "prompt": 1062,
+  "other": 60,
+  "file": "cachetools-stacked-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 3770,
+  "model": 732,
+  "env": 1963,
+  "prompt": 1016,
+  "other": 59,
+  "file": "humanize-fractional-full-haiku-medium-r0.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 4284,
+  "model": 968,
+  "env": 2241,
+  "prompt": 1016,
+  "other": 59,
+  "file": "humanize-fractional-full-haiku-medium-r1.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 3551,
+  "model": 800,
+  "env": 1649,
+  "prompt": 1016,
+  "other": 86,
+  "file": "humanize-fractional-full-haiku-medium-r2.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 5629,
+  "model": 1091,
+  "env": 3511,
+  "prompt": 957,
+  "other": 70,
+  "file": "humanize-intcomma-full-haiku-medium-r0.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 3988,
+  "model": 649,
+  "env": 2332,
+  "prompt": 957,
+  "other": 50,
+  "file": "humanize-intcomma-full-haiku-medium-r1.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 4153,
+  "model": 977,
+  "env": 2158,
+  "prompt": 957,
+  "other": 61,
+  "file": "humanize-intcomma-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 5587,
+  "model": 491,
+  "env": 4092,
+  "prompt": 962,
+  "other": 42,
+  "file": "humanize-years-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 5481,
+  "model": 417,
+  "env": 4069,
+  "prompt": 962,
+  "other": 33,
+  "file": "humanize-years-full-haiku-medium-r1.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 5683,
+  "model": 561,
+  "env": 4110,
+  "prompt": 962,
+  "other": 50,
+  "file": "humanize-years-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2404,
+  "model": 374,
+  "env": 995,
+  "prompt": 994,
+  "other": 41,
+  "file": "marshmallow-enum-name-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2860,
+  "model": 392,
+  "env": 1424,
+  "prompt": 994,
+  "other": 50,
+  "file": "marshmallow-enum-name-full-haiku-medium-r1.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2370,
+  "model": 370,
+  "env": 965,
+  "prompt": 994,
+  "other": 41,
+  "file": "marshmallow-enum-name-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 3348,
+  "model": 585,
+  "env": 1669,
+  "prompt": 1032,
+  "other": 62,
+  "file": "marshmallow-partial-datakey-full-haiku-medium-r0.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 4348,
+  "model": 1191,
+  "env": 2017,
+  "prompt": 1032,
+  "other": 108,
+  "file": "marshmallow-partial-datakey-full-haiku-medium-r1.jsonl",
+  "turns": 12
+ },
+ {
+  "total": 3274,
+  "model": 485,
+  "env": 1713,
+  "prompt": 1032,
+  "other": 44,
+  "file": "marshmallow-partial-datakey-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 3031,
+  "model": 347,
+  "env": 1636,
+  "prompt": 1007,
+  "other": 41,
+  "file": "marshmallow-pluck-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 3640,
+  "model": 457,
+  "env": 2117,
+  "prompt": 1007,
+  "other": 59,
+  "file": "marshmallow-pluck-full-haiku-medium-r1.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 3255,
+  "model": 353,
+  "env": 1854,
+  "prompt": 1007,
+  "other": 41,
+  "file": "marshmallow-pluck-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 3507,
+  "model": 369,
+  "env": 2133,
+  "prompt": 972,
+  "other": 33,
+  "file": "marshmallow-url-fragment-full-haiku-medium-r0.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2422,
+  "model": 354,
+  "env": 1063,
+  "prompt": 972,
+  "other": 33,
+  "file": "marshmallow-url-fragment-full-haiku-medium-r1.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 4170,
+  "model": 593,
+  "env": 2553,
+  "prompt": 972,
+  "other": 52,
+  "file": "marshmallow-url-fragment-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 12447,
+  "model": 1024,
+  "env": 10313,
+  "prompt": 1019,
+  "other": 91,
+  "file": "mistune-deflist-indent-full-haiku-medium-r0.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 5553,
+  "model": 1057,
+  "env": 3397,
+  "prompt": 1019,
+  "other": 80,
+  "file": "mistune-deflist-indent-full-haiku-medium-r1.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 9967,
+  "model": 1139,
+  "env": 7701,
+  "prompt": 1019,
+  "other": 108,
+  "file": "mistune-deflist-indent-full-haiku-medium-r2.jsonl",
+  "turns": 12
+ },
+ {
+  "total": 4658,
+  "model": 572,
+  "env": 3016,
+  "prompt": 1001,
+  "other": 69,
+  "file": "mistune-empty-ref-full-haiku-medium-r0.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 3595,
+  "model": 918,
+  "env": 1579,
+  "prompt": 1001,
+  "other": 97,
+  "file": "mistune-empty-ref-full-haiku-medium-r1.jsonl",
+  "turns": 11
+ },
+ {
+  "total": 2831,
+  "model": 495,
+  "env": 1276,
+  "prompt": 1001,
+  "other": 59,
+  "file": "mistune-empty-ref-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 3421,
+  "model": 946,
+  "env": 1387,
+  "prompt": 984,
+  "other": 104,
+  "file": "mistune-quote-gt-full-haiku-medium-r0.jsonl",
+  "turns": 12
+ },
+ {
+  "total": 5220,
+  "model": 486,
+  "env": 3708,
+  "prompt": 984,
+  "other": 42,
+  "file": "mistune-quote-gt-full-haiku-medium-r1.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 3630,
+  "model": 1054,
+  "env": 1503,
+  "prompt": 984,
+  "other": 89,
+  "file": "mistune-quote-gt-full-haiku-medium-r2.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 7741,
+  "model": 825,
+  "env": 5711,
+  "prompt": 1144,
+  "other": 61,
+  "file": "parse-meridiem-full-haiku-medium-r0.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 7253,
+  "model": 904,
+  "env": 5124,
+  "prompt": 1144,
+  "other": 81,
+  "file": "parse-meridiem-full-haiku-medium-r1.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 5356,
+  "model": 559,
+  "env": 3592,
+  "prompt": 1144,
+  "other": 61,
+  "file": "parse-meridiem-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 4331,
+  "model": 376,
+  "env": 2866,
+  "prompt": 1047,
+  "other": 42,
+  "file": "parse-month-case-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 4316,
+  "model": 360,
+  "env": 2867,
+  "prompt": 1047,
+  "other": 42,
+  "file": "parse-month-case-full-haiku-medium-r1.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 4332,
+  "model": 368,
+  "env": 2867,
+  "prompt": 1047,
+  "other": 50,
+  "file": "parse-month-case-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 4495,
+  "model": 333,
+  "env": 3082,
+  "prompt": 1030,
+  "other": 50,
+  "file": "parse-time-tz-full-haiku-medium-r0.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 5029,
+  "model": 381,
+  "env": 3559,
+  "prompt": 1030,
+  "other": 59,
+  "file": "parse-time-tz-full-haiku-medium-r1.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 5780,
+  "model": 498,
+  "env": 4199,
+  "prompt": 1030,
+  "other": 53,
+  "file": "parse-time-tz-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 4995,
+  "model": 924,
+  "env": 2969,
+  "prompt": 1015,
+  "other": 87,
+  "file": "parse-tz-minutes-full-haiku-medium-r0.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 4532,
+  "model": 722,
+  "env": 2734,
+  "prompt": 1015,
+  "other": 61,
+  "file": "parse-tz-minutes-full-haiku-medium-r1.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 5622,
+  "model": 725,
+  "env": 3830,
+  "prompt": 1015,
+  "other": 52,
+  "file": "parse-tz-minutes-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2703,
+  "model": 415,
+  "env": 1159,
+  "prompt": 1087,
+  "other": 42,
+  "file": "semver-next-build-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2859,
+  "model": 380,
+  "env": 1350,
+  "prompt": 1087,
+  "other": 42,
+  "file": "semver-next-build-full-haiku-medium-r1.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2716,
+  "model": 378,
+  "env": 1209,
+  "prompt": 1087,
+  "other": 42,
+  "file": "semver-next-build-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2261,
+  "model": 238,
+  "env": 963,
+  "prompt": 1028,
+  "other": 32,
+  "file": "semver-replace-subclass-full-haiku-medium-r0.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2408,
+  "model": 327,
+  "env": 1003,
+  "prompt": 1028,
+  "other": 50,
+  "file": "semver-replace-subclass-full-haiku-medium-r1.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2512,
+  "model": 250,
+  "env": 1202,
+  "prompt": 1028,
+  "other": 32,
+  "file": "semver-replace-subclass-full-haiku-medium-r2.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 3199,
+  "model": 360,
+  "env": 1750,
+  "prompt": 1056,
+  "other": 33,
+  "file": "sqlparse-ctas-as-full-haiku-medium-r0.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 3224,
+  "model": 385,
+  "env": 1750,
+  "prompt": 1056,
+  "other": 33,
+  "file": "sqlparse-ctas-as-full-haiku-medium-r1.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2288,
+  "model": 375,
+  "env": 823,
+  "prompt": 1056,
+  "other": 34,
+  "file": "sqlparse-ctas-as-full-haiku-medium-r2.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2828,
+  "model": 758,
+  "env": 1069,
+  "prompt": 948,
+  "other": 53,
+  "file": "sqlparse-deepcopy-full-haiku-medium-r0.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2411,
+  "model": 587,
+  "env": 841,
+  "prompt": 948,
+  "other": 35,
+  "file": "sqlparse-deepcopy-full-haiku-medium-r1.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2474,
+  "model": 643,
+  "env": 839,
+  "prompt": 948,
+  "other": 44,
+  "file": "sqlparse-deepcopy-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 7534,
+  "model": 815,
+  "env": 5625,
+  "prompt": 1014,
+  "other": 80,
+  "file": "sqlparse-real-name-full-haiku-medium-r0.jsonl",
+  "turns": 9
+ },
+ {
+  "total": 4360,
+  "model": 947,
+  "env": 2311,
+  "prompt": 1014,
+  "other": 88,
+  "file": "sqlparse-real-name-full-haiku-medium-r1.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 4738,
+  "model": 927,
+  "env": 2727,
+  "prompt": 1014,
+  "other": 70,
+  "file": "sqlparse-real-name-full-haiku-medium-r2.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 3217,
+  "model": 723,
+  "env": 1499,
+  "prompt": 943,
+  "other": 52,
+  "file": "sqlparse-strip-ws-full-haiku-medium-r0.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 3905,
+  "model": 781,
+  "env": 2095,
+  "prompt": 943,
+  "other": 86,
+  "file": "sqlparse-strip-ws-full-haiku-medium-r1.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 4600,
+  "model": 727,
+  "env": 2880,
+  "prompt": 943,
+  "other": 50,
+  "file": "sqlparse-strip-ws-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 6026,
+  "model": 989,
+  "env": 3929,
+  "prompt": 1045,
+  "other": 63,
+  "file": "sqlparse-typed-literal-full-haiku-medium-r0.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 5717,
+  "model": 921,
+  "env": 3688,
+  "prompt": 1045,
+  "other": 63,
+  "file": "sqlparse-typed-literal-full-haiku-medium-r1.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 5486,
+  "model": 968,
+  "env": 3411,
+  "prompt": 1045,
+  "other": 62,
+  "file": "sqlparse-typed-literal-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 6068,
+  "model": 1584,
+  "env": 3405,
+  "prompt": 1010,
+  "other": 69,
+  "file": "tomlkit-comma-first-full-haiku-medium-r0.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 5805,
+  "model": 1521,
+  "env": 3188,
+  "prompt": 1010,
+  "other": 86,
+  "file": "tomlkit-comma-first-full-haiku-medium-r1.jsonl",
+  "turns": 10
+ },
+ {
+  "total": 8301,
+  "model": 2089,
+  "env": 5102,
+  "prompt": 1010,
+  "other": 100,
+  "file": "tomlkit-comma-first-full-haiku-medium-r2.jsonl",
+  "turns": 11
+ },
+ {
+  "total": 3757,
+  "model": 878,
+  "env": 1804,
+  "prompt": 1021,
+  "other": 54,
+  "file": "tomlkit-esc-full-haiku-medium-r0.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 3380,
+  "model": 595,
+  "env": 1696,
+  "prompt": 1021,
+  "other": 68,
+  "file": "tomlkit-esc-full-haiku-medium-r1.jsonl",
+  "turns": 8
+ },
+ {
+  "total": 3903,
+  "model": 953,
+  "env": 1875,
+  "prompt": 1021,
+  "other": 54,
+  "file": "tomlkit-esc-full-haiku-medium-r2.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2738,
+  "model": 488,
+  "env": 1176,
+  "prompt": 1023,
+  "other": 51,
+  "file": "tomlkit-slice-del-full-haiku-medium-r0.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2657,
+  "model": 431,
+  "env": 1153,
+  "prompt": 1023,
+  "other": 50,
+  "file": "tomlkit-slice-del-full-haiku-medium-r1.jsonl",
+  "turns": 6
+ },
+ {
+  "total": 2813,
+  "model": 536,
+  "env": 1194,
+  "prompt": 1023,
+  "other": 60,
+  "file": "tomlkit-slice-del-full-haiku-medium-r2.jsonl",
+  "turns": 7
+ },
+ {
+  "total": 2180,
+  "model": 393,
+  "env": 812,
+  "prompt": 934,
+  "other": 41,
+  "file": "toolz-accumulate-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2190,
+  "model": 403,
+  "env": 812,
+  "prompt": 934,
+  "other": 41,
+  "file": "toolz-accumulate-full-haiku-medium-r1.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2162,
+  "model": 380,
+  "env": 807,
+  "prompt": 934,
+  "other": 41,
+  "file": "toolz-accumulate-full-haiku-medium-r2.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 1983,
+  "model": 308,
+  "env": 724,
+  "prompt": 910,
+  "other": 41,
+  "file": "toolz-interpose-full-haiku-medium-r0.jsonl",
+  "turns": 5
+ },
+ {
+  "total": 2019,
+  "model": 330,
+  "env": 746,
+  "prompt": 910,
+  "other": 33,
+  "file": "toolz-interpose-full-haiku-medium-r1.jsonl",
+  "turns": 4
+ },
+ {
+  "total": 2195,
+  "model": 362,
+  "env": 890,
+  "prompt": 910,
+  "other": 33,
+  "file": "toolz-interpose-full-haiku-medium-r2.jsonl",
+  "turns": 4
+ }
+]

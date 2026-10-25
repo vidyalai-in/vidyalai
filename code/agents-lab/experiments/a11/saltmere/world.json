@@ -1,0 +1,250 @@
+{
+ "records": {
+  "Brannock": "Brannock (island). Towns: Port Wren, Kettle Cove, Ashby Fell, Gorse Hill. Total land area: 191.9 km2.",
+  "Elsk": "Elsk (island). Towns: Hallow Quay, Mirefield, Stoneleigh, Kettle Combe. Total land area: 185.1 km2.",
+  "Toller": "Toller (island). Towns: Rookhaven, Saltmarsh, Penmoor, Oxley Bay. Total land area: 129.7 km2.",
+  "Vey": "Vey (island). Towns: Port Wrenna, Lantern Point, Fairholm, Dunmere. Total land area: 111.9 km2.",
+  "Port Wren": "Port Wren (town) on the island of Brannock. Population: 31,788. Area: 22.3 km2. Founded: 1745. Mayor: Rosa Frome.",
+  "Kettle Cove": "Kettle Cove (town) on the island of Brannock. Population: 35,531. Area: 74.0 km2. Founded: 1810. Mayor: Tilde Hargreave.",
+  "Ashby Fell": "Ashby Fell (town) on the island of Brannock. Population: 25,890. Area: 13.9 km2. Founded: 1771. Mayor: Iris Quarrie.",
+  "Gorse Hill": "Gorse Hill (town) on the island of Brannock. Population: 17,773. Area: 81.7 km2. Founded: 1764. Mayor: Jonas Blackwood.",
+  "Hallow Quay": "Hallow Quay (town) on the island of Elsk. Population: 25,223. Area: 72.3 km2. Founded: 1723. Mayor: Zelda Eastwick.",
+  "Mirefield": "Mirefield (town) on the island of Elsk. Population: 36,342. Area: 30.7 km2. Founded: 1724. Mayor: Edda Jessop.",
+  "Stoneleigh": "Stoneleigh (town) on the island of Elsk. Population: 7,413. Area: 19.5 km2. Founded: 1704. Mayor: Greta Abernethy.",
+  "Kettle Combe": "Kettle Combe (town) on the island of Elsk. Population: 34,645. Area: 62.6 km2. Founded: 1595. Mayor: Yusuf Brightwell.",
+  "Rookhaven": "Rookhaven (town) on the island of Toller. Population: 5,675. Area: 18.5 km2. Founded: 1832. Mayor: Vera Thackeray.",
+  "Saltmarsh": "Saltmarsh (town) on the island of Toller. Population: 26,932. Area: 68.4 km2. Founded: 1581. Mayor: Quinn Ingram.",
+  "Penmoor": "Penmoor (town) on the island of Toller. Population: 34,355. Area: 39.7 km2. Founded: 1701. Mayor: Dag Ashcombe.",
+  "Oxley Bay": "Oxley Bay (town) on the island of Toller. Population: 29,980. Area: 3.1 km2. Founded: 1790. Mayor: Clio Dunstan.",
+  "Port Wrenna": "Port Wrenna (town) on the island of Vey. Population: 7,880. Area: 31.9 km2. Founded: 1713. Mayor: Mira Kincaid.",
+  "Lantern Point": "Lantern Point (town) on the island of Vey. Population: 2,169. Area: 61.4 km2. Founded: 1695. Mayor: Cora Yardley.",
+  "Fairholm": "Fairholm (town) on the island of Vey. Population: 29,678. Area: 11.2 km2. Founded: 1597. Mayor: Felix Underhill.",
+  "Dunmere": "Dunmere (town) on the island of Vey. Population: 36,751. Area: 7.4 km2. Founded: 1795. Mayor: Bastian Delacourt.",
+  "Ada Sallow": "Ada Sallow (person). Born: 1944 in Hallow Quay.",
+  "Bram Fairweather": "Bram Fairweather (person). Born: 1960 in Mirefield.",
+  "Cora Yardley": "Cora Yardley (person). Born: 1949 in Rookhaven. Mayor of Lantern Point.",
+  "Dmitri Calloway": "Dmitri Calloway (person). Born: 1946 in Oxley Bay. Founder of Cobble Bank.",
+  "Edda Jessop": "Edda Jessop (person). Born: 1956 in Kettle Cove. Mayor of Mirefield.",
+  "Felix Underhill": "Felix Underhill (person). Born: 1994 in Saltmarsh. Mayor of Fairholm.",
+  "Greta Abernethy": "Greta Abernethy (person). Born: 1961 in Fairholm. Mayor of Stoneleigh.",
+  "Hugo Gilchrist": "Hugo Gilchrist (person). Born: 1944 in Kettle Cove. Founder of Weatherglass Instruments.",
+  "Iris Quarrie": "Iris Quarrie (person). Born: 1966 in Stoneleigh. Mayor of Ashby Fell.",
+  "Jonas Blackwood": "Jonas Blackwood (person). Born: 1946 in Dunmere. Mayor of Gorse Hill.",
+  "Kaia Rutherford": "Kaia Rutherford (person). Born: 1972 in Gorse Hill. Founder of Fennel Breweries.",
+  "Lorcan Corrigan": "Lorcan Corrigan (person). Born: 1975 in Kettle Cove. Founder of Oakum & Tar.",
+  "Mira Kincaid": "Mira Kincaid (person). Born: 1983 in Dunmere. Mayor of Port Wrenna.",
+  "Nils Vickery": "Nils Vickery (person). Born: 1952 in Oxley Bay. Founder of Saltmere Canning.",
+  "Orla Lockhart": "Orla Lockhart (person). Born: 1985 in Kettle Combe. Founder of Kestrel Mills.",
+  "Piet Whitlock": "Piet Whitlock (person). Born: 1941 in Kettle Cove. Founder of Harrow Lanterns.",
+  "Quinn Ingram": "Quinn Ingram (person). Born: 1974 in Port Wren. Mayor of Saltmarsh.",
+  "Rosa Frome": "Rosa Frome (person). Born: 1967 in Ashby Fell. Mayor of Port Wren.",
+  "Silas Marchbank": "Silas Marchbank (person). Born: 1959 in Mirefield.",
+  "Tilde Hargreave": "Tilde Hargreave (person). Born: 1951 in Kettle Cove. Mayor of Kettle Cove.",
+  "Ulric Ormsby": "Ulric Ormsby (person). Born: 1970 in Mirefield. Founder of Gannet Shipping.",
+  "Vera Thackeray": "Vera Thackeray (person). Born: 1980 in Rookhaven. Mayor of Rookhaven.",
+  "Wim Ellery": "Wim Ellery (person). Born: 1985 in Lantern Point.",
+  "Xenia Pennington": "Xenia Pennington (person). Born: 1976 in Gorse Hill. Founder of Tidewater Power.",
+  "Yusuf Brightwell": "Yusuf Brightwell (person). Born: 1981 in Kettle Combe. Mayor of Kettle Combe.",
+  "Zelda Eastwick": "Zelda Eastwick (person). Born: 1960 in Mirefield. Mayor of Hallow Quay.",
+  "Anouk Nettleton": "Anouk Nettleton (person). Born: 1983 in Kettle Combe. Founder of Brightwater Salt.",
+  "Bastian Delacourt": "Bastian Delacourt (person). Born: 1944 in Hallow Quay. Mayor of Dunmere.",
+  "Clio Dunstan": "Clio Dunstan (person). Born: 1984 in Fairholm. Mayor of Oxley Bay.",
+  "Dag Ashcombe": "Dag Ashcombe (person). Born: 1982 in Lantern Point. Mayor of Penmoor.",
+  "Kestrel Mills": "Kestrel Mills (company). Founded: 2016 by Orla Lockhart. Headquarters: Oxley Bay. Employees: 267. Annual revenue: 6.004 million crowns.",
+  "Saltmere Canning": "Saltmere Canning (company). Founded: 1986 by Nils Vickery. Headquarters: Lantern Point. Employees: 386. Annual revenue: 2.107 million crowns.",
+  "Gannet Shipping": "Gannet Shipping (company). Founded: 2008 by Ulric Ormsby. Headquarters: Rookhaven. Employees: 493. Annual revenue: 2.732 million crowns.",
+  "Brightwater Salt": "Brightwater Salt (company). Founded: 2007 by Anouk Nettleton. Headquarters: Saltmarsh. Employees: 195. Annual revenue: 6.527 million crowns.",
+  "Harrow Lanterns": "Harrow Lanterns (company). Founded: 1987 by Piet Whitlock. Headquarters: Port Wrenna. Employees: 259. Annual revenue: 8.788 million crowns.",
+  "Oakum & Tar": "Oakum & Tar (company). Founded: 2001 by Lorcan Corrigan. Headquarters: Mirefield. Employees: 136. Annual revenue: 407 thousand crowns.",
+  "Tidewater Power": "Tidewater Power (company). Founded: 2020 by Xenia Pennington. Headquarters: Kettle Cove. Employees: 340. Annual revenue: 1.838 million crowns.",
+  "Cobble Bank": "Cobble Bank (company). Founded: 1992 by Dmitri Calloway. Headquarters: Rookhaven. Employees: 220. Annual revenue: 4.094 million crowns.",
+  "Fennel Breweries": "Fennel Breweries (company). Founded: 2020 by Kaia Rutherford. Headquarters: Port Wren. Employees: 252. Annual revenue: 5.885 million crowns.",
+  "Weatherglass Instruments": "Weatherglass Instruments (company). Founded: 1984 by Hugo Gilchrist. Headquarters: Saltmarsh. Employees: 324. Annual revenue: 7.359 million crowns.",
+  "Gallows Cross": "Gallows Cross (crossroads). A road junction with no town.",
+  "Mill Junction": "Mill Junction (crossroads). A road junction with no town.",
+  "Heron Fork": "Heron Fork (crossroads). A road junction with no town.",
+  "Tinker's Corner": "Tinker's Corner (crossroads). A road junction with no town.",
+  "Barrow Gate": "Barrow Gate (crossroads). A road junction with no town.",
+  "Sheep Wash": "Sheep Wash (crossroads). A road junction with no town.",
+  "Coldharbour": "Coldharbour (crossroads). A road junction with no town.",
+  "Wrack Lane End": "Wrack Lane End (crossroads). A road junction with no town.",
+  "Five Ways": "Five Ways (crossroads). A road junction with no town.",
+  "Beacon Turn": "Beacon Turn (crossroads). A road junction with no town.",
+  "Smithy Cross": "Smithy Cross (crossroads). A road junction with no town.",
+  "Peat Bridge": "Peat Bridge (crossroads). A road junction with no town.",
+  "Old Toll": "Old Toll (crossroads). A road junction with no town.",
+  "Cairn Fork": "Cairn Fork (crossroads). A road junction with no town.",
+  "MV Curlew": "MV Curlew (ferry). Route: Kettle Combe - Fairholm. Operator: Oakum & Tar. Departures per week: 30. Passengers per departure: 150. Crossing time: 28 minutes.",
+  "MV Plover": "MV Plover (ferry). Route: Oxley Bay - Mirefield. Operator: Weatherglass Instruments. Departures per week: 21. Passengers per departure: 60. Crossing time: 109 minutes.",
+  "MV Dunlin": "MV Dunlin (ferry). Route: Hallow Quay - Dunmere. Operator: Cobble Bank. Departures per week: 5. Passengers per departure: 80. Crossing time: 107 minutes.",
+  "MV Tern": "MV Tern (ferry). Route: Gorse Hill - Dunmere. Operator: Kestrel Mills. Departures per week: 22. Passengers per departure: 150. Crossing time: 36 minutes.",
+  "MV Skua": "MV Skua (ferry). Route: Kettle Cove - Oxley Bay. Operator: Harrow Lanterns. Departures per week: 10. Passengers per departure: 120. Crossing time: 65 minutes.",
+  "MV Petrel": "MV Petrel (ferry). Route: Saltmarsh - Lantern Point. Operator: Oakum & Tar. Departures per week: 7. Passengers per departure: 80. Crossing time: 31 minutes.",
+  "MV Gannet II": "MV Gannet II (ferry). Route: Stoneleigh - Fairholm. Operator: Harrow Lanterns. Departures per week: 20. Passengers per departure: 220. Crossing time: 57 minutes.",
+  "MV Fulmar": "MV Fulmar (ferry). Route: Mirefield - Ashby Fell. Operator: Harrow Lanterns. Departures per week: 10. Passengers per departure: 300. Crossing time: 136 minutes."
+ },
+ "roads": {
+  "Port Wren": {
+   "Kettle Combe": 6,
+   "Smithy Cross": 8,
+   "Lantern Point": 22
+  },
+  "Kettle Cove": {
+   "Old Toll": 30
+  },
+  "Ashby Fell": {
+   "Sheep Wash": 24,
+   "Stoneleigh": 25,
+   "Saltmarsh": 40
+  },
+  "Gorse Hill": {
+   "Mirefield": 23
+  },
+  "Hallow Quay": {
+   "Heron Fork": 18,
+   "Penmoor": 18
+  },
+  "Mirefield": {
+   "Peat Bridge": 22,
+   "Gorse Hill": 23,
+   "Sheep Wash": 35
+  },
+  "Stoneleigh": {
+   "Smithy Cross": 25,
+   "Barrow Gate": 13,
+   "Port Wrenna": 15,
+   "Sheep Wash": 13,
+   "Ashby Fell": 25
+  },
+  "Kettle Combe": {
+   "Port Wren": 6,
+   "Peat Bridge": 8,
+   "Penmoor": 27,
+   "Fairholm": 21,
+   "Heron Fork": 14,
+   "Smithy Cross": 22,
+   "Oxley Bay": 41,
+   "Dunmere": 14
+  },
+  "Rookhaven": {
+   "Coldharbour": 19,
+   "Old Toll": 35
+  },
+  "Saltmarsh": {
+   "Peat Bridge": 28,
+   "Wrack Lane End": 19,
+   "Smithy Cross": 41,
+   "Cairn Fork": 22,
+   "Ashby Fell": 40
+  },
+  "Penmoor": {
+   "Kettle Combe": 27,
+   "Gallows Cross": 30,
+   "Five Ways": 14,
+   "Tinker's Corner": 45,
+   "Hallow Quay": 18
+  },
+  "Oxley Bay": {
+   "Coldharbour": 13,
+   "Dunmere": 26,
+   "Sheep Wash": 12,
+   "Heron Fork": 34,
+   "Kettle Combe": 41
+  },
+  "Port Wrenna": {
+   "Stoneleigh": 15,
+   "Peat Bridge": 23
+  },
+  "Lantern Point": {
+   "Mill Junction": 9,
+   "Dunmere": 27,
+   "Coldharbour": 22,
+   "Port Wren": 22
+  },
+  "Fairholm": {
+   "Kettle Combe": 21,
+   "Old Toll": 15
+  },
+  "Dunmere": {
+   "Oxley Bay": 26,
+   "Lantern Point": 27,
+   "Five Ways": 43,
+   "Kettle Combe": 14
+  },
+  "Gallows Cross": {
+   "Penmoor": 30
+  },
+  "Mill Junction": {
+   "Barrow Gate": 9,
+   "Lantern Point": 9,
+   "Sheep Wash": 42
+  },
+  "Heron Fork": {
+   "Kettle Combe": 14,
+   "Hallow Quay": 18,
+   "Oxley Bay": 34
+  },
+  "Tinker's Corner": {
+   "Cairn Fork": 25,
+   "Penmoor": 45,
+   "Five Ways": 13
+  },
+  "Barrow Gate": {
+   "Stoneleigh": 13,
+   "Cairn Fork": 21,
+   "Mill Junction": 9,
+   "Wrack Lane End": 34
+  },
+  "Sheep Wash": {
+   "Stoneleigh": 13,
+   "Five Ways": 25,
+   "Ashby Fell": 24,
+   "Oxley Bay": 12,
+   "Mill Junction": 42,
+   "Mirefield": 35
+  },
+  "Coldharbour": {
+   "Smithy Cross": 29,
+   "Oxley Bay": 13,
+   "Rookhaven": 19,
+   "Lantern Point": 22
+  },
+  "Wrack Lane End": {
+   "Saltmarsh": 19,
+   "Barrow Gate": 34
+  },
+  "Five Ways": {
+   "Sheep Wash": 25,
+   "Dunmere": 43,
+   "Penmoor": 14,
+   "Tinker's Corner": 13
+  },
+  "Beacon Turn": {
+   "Old Toll": 24
+  },
+  "Smithy Cross": {
+   "Port Wren": 8,
+   "Stoneleigh": 25,
+   "Coldharbour": 29,
+   "Saltmarsh": 41,
+   "Kettle Combe": 22
+  },
+  "Peat Bridge": {
+   "Kettle Combe": 8,
+   "Saltmarsh": 28,
+   "Mirefield": 22,
+   "Port Wrenna": 23
+  },
+  "Old Toll": {
+   "Fairholm": 15,
+   "Beacon Turn": 24,
+   "Kettle Cove": 30,
+   "Rookhaven": 35
+  },
+  "Cairn Fork": {
+   "Barrow Gate": 21,
+   "Tinker's Corner": 25,
+   "Saltmarsh": 22
+  }
+ }
+}
