@@ -45,6 +45,7 @@ def get_args(argv=None):
     p.add_argument("--val-batches", type=int, default=40, help="micro-batches of the val shard per evaluation")
     p.add_argument("--ckpt-every", type=int, default=50)
     p.add_argument("--keep-ckpts", action="store_true", help="also keep model-only snapshots per checkpoint")
+    p.add_argument("--snapshot-at", default="", help="extra steps for model-only snapshots, e.g. 0,10,25 (Part 7)")
     p.add_argument("--seed", type=int, default=1337)
     p.add_argument("--compile", action="store_true", help="torch.compile the model (Part 6)")
     p.add_argument("--fused", action="store_true", help="fused AdamW kernel (Part 6)")
@@ -127,6 +128,9 @@ def main(argv=None):
            "params": raw.num_params(), "tokens_per_step": tokens_per_step, "torch": torch.__version__,
            "gpu": torch.cuda.get_device_name()})
     batches = train.batches(step=step, accum=a.accum)
+    snapshot_at = {int(s) for s in a.snapshot_at.split(",") if s}
+    if step == 0 and 0 in snapshot_at:                       # the untrained weights
+        torch.save(raw.state_dict(), os.path.join(a.out, "model_00000.pt"))
     start, loss_val, t0 = step, 0.0, time.time()
     while step < stop:
         if a.val_every and step % a.val_every == 0 and (step == 0 or step != start):   # not twice on resume
@@ -160,6 +164,8 @@ def main(argv=None):
             save_checkpoint(ckpt_path, raw, opt, step, a)
             if a.keep_ckpts:
                 torch.save(raw.state_dict(), os.path.join(a.out, f"model_{step:05d}.pt"))
+        elif step in snapshot_at:
+            torch.save(raw.state_dict(), os.path.join(a.out, f"model_{step:05d}.pt"))
     if a.val_every and math.isfinite(loss_val):
         write({"step": step, "val_loss": evaluate(model, val, a.val_batches, autocast),
                "tokens": step * tokens_per_step})

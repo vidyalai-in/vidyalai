@@ -1,0 +1,60 @@
+events: [('start', 0, None, None), ('end', 3360, 60534.08, 6.762)]
+train steps 3360 val points 69
+total tokens 1,761,607,680; elapsed 60534.08 s = 16.815 h; overall 29101 tok/s
+sum dt 59919.7 s = 16.644 h; tok/s over step time 29399
+step0 dt 19.0871, elapsed at step0 27.87; steps 1.. sum 59900.7
+per-step tok/s (excluding step 0): median 28546 mean 29504 p5 27304 p95 32052 min 25192 (step 2948) max 33790 (step 2950)
+dt median 18.366 min 15.516 max 20.812
+gaps total 592.7 s; gap before step 0 (val0+start) 8.78
+  val only             n=  31 total    225.8 s  median 6.91  max 9.17
+  ckpt+snap (+val)     n=  33 total    337.3 s  median 10.65  max 13.36
+  snapshot only        n=  11 total      4.9 s  median 0.44  max 0.63
+  snapshot+val         n=   3 total     23.8 s  median 7.45  max 8.97
+  none                 n=3281 total      0.9 s  median 0.00  max 0.01
+after last step (final ckpt? no: ckpt happens before elapsed logged?) end-last elapsed 12.88
+val: [(0, 10.5915), (50, 6.9325), (100, 6.0262), (150, 5.5833), (200, 5.1485), (250, 4.8842), (300, 4.6929), (400, 4.4227), (500, 4.1949), (750, 3.9056), (1000, 3.7602), (1500, 3.5966), (2000, 3.5029), (2500, 3.4374), (3000, 3.3973), (3360, 3.3823)]
+train first below 7.59: step 36, tokens 19,398,656
+val first below unigram: (50, 6.9324822425842285)
+gap: val minus mean train loss of the 50 steps ending at s-1 / centred 10 steps
+  step 100: val 6.0262  train last10 6.1183 (gap -0.0920)  last50 6.4356 (gap -0.4094)
+  step 250: val 4.8842  train last10 4.9019 (gap -0.0177)  last50 5.0268 (gap -0.1425)
+  step 500: val 4.1949  train last10 4.2053 (gap -0.0104)  last50 4.2388 (gap -0.0439)
+  step 1000: val 3.7602  train last10 3.7479 (gap +0.0122)  last50 3.7420 (gap +0.0181)
+  step 1500: val 3.5966  train last10 3.5673 (gap +0.0292)  last50 3.5859 (gap +0.0107)
+  step 2000: val 3.5029  train last10 3.4791 (gap +0.0238)  last50 3.4870 (gap +0.0158)
+  step 2500: val 3.4374  train last10 3.4323 (gap +0.0051)  last50 3.4291 (gap +0.0083)
+  step 3000: val 3.3973  train last10 3.3865 (gap +0.0108)  last50 3.3752 (gap +0.0220)
+  step 3360: val 3.3823  train last10 3.3784 (gap +0.0038)  last50 3.3666 (gap +0.0156)
+val - centred-10 train, steps>=200: mean +0.0154 sd 0.0161 min -0.0485 max +0.0434
+val first below 7: step 50, tokens 26M
+val first below 6: step 150, tokens 79M
+val first below 5: step 250, tokens 131M
+val first below 4.5: step 400, tokens 210M
+val first below 4: step 650, tokens 341M
+val first below 3.75: step 1050, tokens 551M
+val first below 3.5: step 2050, tokens 1075M
+  step 50 (1.5% of tokens): val 6.9325, 50.8% of total drop
+  step 100 (3.0% of tokens): val 6.0262, 63.3% of total drop
+  step 150 (4.5% of tokens): val 5.5833, 69.5% of total drop
+  step 250 (7.4% of tokens): val 4.8842, 79.2% of total drop
+  step 500 (14.9% of tokens): val 4.1949, 88.7% of total drop
+  step 1000 (29.8% of tokens): val 3.7602, 94.8% of total drop
+  step 3360 (100.0% of tokens): val 3.3823, 100.0% of total drop
+{1100: 3.7246, 1150: 3.7018, 2200: 3.4717, 2250: 3.4632, 3350: 3.3824, 3360: 3.3823}
+  val 0->500: 10.5915 -> 4.1949  drop 6.3966
+  val 500->1000: 4.1949 -> 3.7602  drop 0.4348
+  val 1000->1500: 3.7602 -> 3.5966  drop 0.1636
+  val 1500->2000: 3.5966 -> 3.5029  drop 0.0937
+  val 2000->2500: 3.5029 -> 3.4374  drop 0.0655
+  val 2500->3000: 3.4374 -> 3.3973  drop 0.0401
+  val 3000->3350: 3.3973 -> 3.3824  drop 0.0148
+steps >=150 with gn>1: 12: [(151, np.float64(1.252)), (154, np.float64(1.432)), (160, np.float64(1.127)), (161, np.float64(1.04)), (167, np.float64(1.011)), (195, np.float64(1.168)), (207, np.float64(1.886)), (221, np.float64(1.226)), (263, np.float64(1.186)), (370, np.float64(1.058)), (483, np.float64(1.463)), (494, np.float64(1.899))]
+steps <150 with gn>1: 60; max 8.20 at 0
+clipped total: 72
+median gn by range: [(0, 0.968), (100, 0.716), (150, 0.593), (200, 0.546), (300, 0.464), (500, 0.367), (1000, 0.289), (2000, 0.248), (3000, 0.235), (3260, 0.235)]
+gn last 100 median 0.235; min gn overall 0.212 at 2969
+around 207 [(203, 5.1238, 0.563), (204, 5.0897, 0.607), (205, 5.1742, 0.724), (206, 5.1339, 0.891), (207, 5.1959, 1.886), (208, 5.1319, 0.557), (209, 5.1567, 0.701), (210, 5.0828, 0.616), (211, 5.1329, 0.907)]
+around 494 [(490, 4.1747, 0.573), (491, 4.1992, 0.498), (492, 4.2298, 0.578), (493, 4.1749, 0.528), (494, 4.1646, 1.899), (495, 4.3364, 0.446), (496, 4.2478, 0.515), (497, 4.1798, 0.447), (498, 4.1397, 0.5)]
+residual sd (21-step centered) overall 0.0358; steps 1000-3300 0.0360; max |res| 0.1975 at step 1004
+largest upward residuals after step 300: [(1004, 0.198, 0.449), (500, 0.195, 0.556), (2944, 0.166, 0.288), (2546, 0.155, 0.257), (2664, 0.15, 0.401), (1059, 0.144, 0.316), (1804, 0.136, 0.323), (3289, 0.136, 0.342)]
+lr at 150 6.000e-04 at 1680 3.498e-04 at 2240 2.066e-04 last 6.000e-05

@@ -1,0 +1,41 @@
+parsed 56877 bad {}
+smi span 0.7 .. 60543.8 s after 18:23:09
+sample interval: median 1.005 s, mean 1.064, max 4.4; gaps > 5 s: 0, total 0 s
+largest gaps: [(4.4, '08:48:08'), (4.3, '10:53:00'), (4.1, '09:06:20'), (4.0, '08:18:55'), (3.9, '09:08:55'), (3.9, '10:58:51'), (3.9, '10:53:35'), (3.9, '10:55:21')]
+bogus power readings: 1 [590.01]
+busy samples 56864 of 56877
+SM clock (busy): median 1905, mean 1878.1, p5 1740, p95 1935, min 210, max 2175
+mem clock (busy): [(np.int64(7000), 56806), (np.int64(5870), 51), (np.int64(8000), 6), (np.int64(779), 1)]
+power (busy): median 50, mean 49.6, p5 48, p95 50, min 7, max 58 mean 49.62
+power limit (busy): median 50, mean 49.8, p5 48, p95 50, min 42, max 50 share at 50 W: 0.824 share >= 49: 0.922 share < 45: 0.0013
+limit values: [(np.float64(50.0), 47535), (np.float64(49.9), 880), (np.float64(49.8), 718), (np.float64(49.4), 507), (np.float64(49.6), 496), (np.float64(49.7), 489), (np.float64(49.2), 452), (np.float64(49.5), 445)]
+temp (busy): median 82, mean 82.1, p5 81, p95 84, min 66, max 85 share 78-83: 0.901
+temp hist: [(np.int64(66), 1), (np.int64(70), 2), (np.int64(71), 2), (np.int64(72), 13), (np.int64(73), 21), (np.int64(74), 43), (np.int64(75), 23), (np.int64(76), 29), (np.int64(77), 25), (np.int64(78), 29), (np.int64(79), 45), (np.int64(80), 1186), (np.int64(81), 14807), (np.int64(82), 21823), (np.int64(83), 13317), (np.int64(84), 5378), (np.int64(85), 120)]
+reasons (busy): [(np.str_('0x0000000000000004'), 56747), (np.str_('0x0000000000000001'), 55), (np.str_('0x0000000000000024'), 42), (np.str_('0x0000000000000000'), 20)]
+mem used (busy) max MiB: 7177.0
+energy whole log: 0.834 kWh over 16.818 h (mean 49.62 W); busy part 0.834 kWh
+at 0.20 $/kWh: $0.167
+  hour  0: sm 1890 power 49.5 limit 50.0 (min 43.4) temp 83 n 3438
+  hour  1: sm 1890 power 49.4 limit 50.0 (min 42.3) temp 83 n 3438
+  hour  2: sm 1890 power 49.7 limit 50.0 (min 44.1) temp 83 n 3422
+  hour  3: sm 1830 power 48.3 limit 49.2 (min 43.0) temp 83 n 3410
+  hour  4: sm 1875 power 49.4 limit 50.0 (min 42.1) temp 84 n 3399
+  hour  5: sm 1890 power 49.6 limit 50.0 (min 42.0) temp 83 n 3397
+  hour  6: sm 1905 power 49.8 limit 50.0 (min 48.0) temp 82 n 3384
+  hour  7: sm 1905 power 49.8 limit 50.0 (min 47.6) temp 82 n 3381
+  hour  8: sm 1905 power 49.8 limit 50.0 (min 47.3) temp 82 n 3370
+  hour  9: sm 1905 power 49.8 limit 50.0 (min 45.8) temp 82 n 3366
+  hour 10: sm 1905 power 49.9 limit 50.0 (min 46.0) temp 82 n 3389
+  hour 11: sm 1905 power 49.9 limit 50.0 (min 47.9) temp 82 n 3360
+  hour 12: sm 1905 power 49.7 limit 50.0 (min 43.1) temp 81 n 3353
+  hour 13: sm 1905 power 49.7 limit 50.0 (min 45.9) temp 81 n 3340
+  hour 14: sm 1905 power 49.8 limit 50.0 (min 45.2) temp 81 n 3341
+  hour 15: sm 1905 power 49.9 limit 50.0 (min 46.8) temp 81 n 3360
+  hour 16: sm 1905 power 49.6 limit 50.0 (min 44.2) temp 82 n 2716
+T0 offset from 18:23:09: 9.9 s; steps with clock samples 3360
+corr(tok/s, SM clock) = 0.114
+tok/s per GHz: median 15162, p5 14384, p95 16846
+  steps at SM 1700-1800: 26 median tok/s 29539
+  steps at SM 1800-1900: 1393 median tok/s 28495
+  steps at SM 1900-2000: 1941 median tok/s 28572
+bins 101 [(0.083, 1905, 49.5, 50.0, 82), (0.25, 1845, 48.2, 48.2, 83), (0.417, 1890, 49.6, 50.0, 83)] [(16.417, 1905, 49.9, 50.0, 82), (16.583, 1905, 49.8, 50.0, 82), (16.75, 1905, 49.3, 50.0, 82)]

@@ -1,0 +1,2 @@
+model_01000.pt: subset 3.7602 (655,360 tokens, 12.2 s)  full 3.7438 (14,991,360 tokens, 274.2 s, 54,671 tok/s)
+model_02000.pt: subset 3.5029 (655,360 tokens, 13.4 s)  full 3.4859 (14,991,360 tokens, 274.8 s, 54,556 tok/s)

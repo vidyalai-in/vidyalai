@@ -1,0 +1,14 @@
+/home/amit/.cache/vidyalai-scratch/t07/scripts/tail_fit.py:7: RuntimeWarning: divide by zero encountered in power
+  f = lambda x, E, A, a: E + A * x ** (-a)
+fit 300-2240: E=3.152 A=138.22 alpha=0.786; predicted at 3360 3.3858, actual 3.3823, diff -0.0036; at 2800: pred 3.4219 actual 3.4099
+   residuals (actual - fit) at {1000: 0.002, 1500: 0.0038, 2000: -0.0007, 2500: -0.0097, 2800: -0.012, 3000: -0.0104, 3200: -0.0072, 3360: -0.0036}
+fit 500-2240: E=3.100 A=90.38 alpha=0.712; predicted at 3360 3.3783, actual 3.3823, diff +0.0040; at 2800: pred 3.4168 actual 3.4099
+   residuals (actual - fit) at {1000: 0.0005, 1500: 0.0024, 2000: 0.0002, 2500: -0.0061, 2800: -0.0069, 3000: -0.0044, 3200: -0.0004, 3360: 0.004}
+fit 500-1680: E=3.187 A=150.31 alpha=0.807; predicted at 3360 3.4013, actual 3.3823, diff -0.0190; at 2800: pred 3.4353 actual 3.4099
+   residuals (actual - fit) at {1000: 0.0026, 1500: -0.0017, 2000: -0.0101, 2500: -0.0218, 2800: -0.0255, 3000: -0.0246, 3200: -0.0222, 3360: -0.019}
+steps 1000-1100: val drop 0.0356, lr 5.12e-04
+steps 1500-1600: val drop 0.0249, lr 3.97e-04
+steps 2000-2100: val drop 0.0151, lr 2.66e-04
+steps 2500-2600: val drop 0.0111, lr 1.50e-04
+steps 3000-3100: val drop 0.0055, lr 7.66e-05
+steps 3250-3350: val drop 0.0037, lr 6.16e-05
