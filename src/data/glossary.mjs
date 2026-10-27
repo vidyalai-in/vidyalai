@@ -3139,6 +3139,22 @@ export const GLOSSARY = [
     source: { title: 'reStructuredText (Docutils)', url: 'https://docutils.sourceforge.io/rst.html' },
   },
   {
+    id: 'loss-spike',
+    term: 'Loss spike',
+    match: ['loss spike', 'loss spikes'],
+    def: 'A sudden rise in training loss caused by an update that destabilizes the model, so the loss stays high or diverges, unlike batch-to-batch noise. Large runs recover by restarting from an earlier checkpoint and skipping the batches involved.',
+    article: 'pretraining-run',
+    source: { title: 'PaLM: Scaling Language Modeling with Pathways (Chowdhery et al., 2022)', url: 'https://arxiv.org/abs/2204.02311' },
+  },
+  {
+    id: 'validation-loss',
+    term: 'Validation loss',
+    match: ['validation loss', 'held-out loss'],
+    def: "A model's average next-token loss on text kept out of training, used to check that improvements in training loss carry over to unseen text.",
+    article: 'pretraining-run',
+    source: { title: 'Training Compute-Optimal Large Language Models (Hoffmann et al., 2022)', url: 'https://arxiv.org/abs/2203.15556' },
+  },
+  {
     id: 'ai-agent',
     term: 'AI agent',
     match: ['AI agent', 'AI agents'],

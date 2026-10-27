@@ -136,7 +136,7 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 | 4 | Writing the model | `write-gpt-model` | RMSNorm, RoPE, GQA, SwiGLU in about 200 lines; parameter count checked against the formula | f06, f10, m15 | Published |
 | 5 | The training loop | `llm-training-loop` | AdamW, warm-up and cosine schedule, clipping, BF16, gradient accumulation; first loss curve | m09, m10 | Published |
 | 6 | Making training fast on one GPU | `fast-llm-training` | torch.compile, SDPA/FlashAttention, fused AdamW, MFU measured | g09, g10 | Published |
-| 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 |  |
+| 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 | Published |
 | 8 | Scaling laws on a laptop | `scaling-laws-experiment` | Five model sizes, a fitted power law, comparison with Chinchilla | m15 |  |
 | 9 | Evaluating a base model | `evaluate-base-model` | Perplexity, bits per byte, few-shot multiple choice | m06 |  |
 | 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 |  |
