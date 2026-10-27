@@ -19,8 +19,9 @@ import torch
 
 from data import ShardLoader
 from model import GPT, MAIN, SMALL
+from sizes import SIZES
 
-CONFIGS = {"main": MAIN, "small": SMALL}
+CONFIGS = {"main": MAIN, "small": SMALL, **SIZES}   # Part 8 adds the sweep's sizes
 
 
 def get_args(argv=None):

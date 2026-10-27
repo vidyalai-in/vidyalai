@@ -1,0 +1,8 @@
+{"run": "s11", "snapshot": "model_03338.pt", "subset40": 4.134571552276611, "whole": 4.120142459869385, "tokens": 14991360, "seconds": 64.1}
+{"run": "s15", "snapshot": "model_04501.pt", "subset40": 3.988962173461914, "whole": 3.9731359481811523, "tokens": 14991360, "seconds": 79.0}
+{"run": "s22", "snapshot": "model_03361.pt", "subset40": 3.8115475177764893, "whole": 3.79732346534729, "tokens": 14991360, "seconds": 99.4}
+{"run": "iso_s11", "snapshot": "model_06069.pt", "subset40": 4.018927097320557, "whole": 4.00373649597168, "tokens": 14991360, "seconds": 64.7}
+{"run": "s33", "snapshot": "model_02513.pt", "subset40": 3.6806857585906982, "whole": 3.663823366165161, "tokens": 14991360, "seconds": 138.9}
+{"run": "s47", "snapshot": "model_03601.pt", "subset40": 3.528411865234375, "whole": 3.5134689807891846, "tokens": 14991360, "seconds": 178.6}
+{"run": "iso_s22", "snapshot": "model_01507.pt", "subset40": 4.095514297485352, "whole": 4.0828142166137695, "tokens": 14991360, "seconds": 100.3}
+{"run": "s11_seed1338", "snapshot": "ckpt.pt", "subset40": 4.145230770111084, "whole": 4.12889289855957, "tokens": 14991360}

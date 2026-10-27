@@ -1,0 +1,12 @@
+total         sweep only (5)  power law: a=0.1070 (LOO 0.1039-0.1083) A=23.285 rms=0.0104 | E+A/N^alpha: alpha=0.239 (LOO 0.098-0.523, boot95 0.020-0.524) E=2.095 (LOO -0.25-3.07) A=97.26 rms=0.0087 | 88M predicted: pl 3.2870, sat 3.3230 (actual 3.3651)
+total         with 88M (6)    power law: a=0.0980 (LOO 0.0936-0.1070) A=20.011 rms=0.0236 | E+A/N^alpha: alpha=0.365 (LOO 0.239-0.416, boot95 0.230-0.504) E=2.693 (LOO 2.10-2.81) A=525.3 rms=0.0098
+non-embedding sweep only (5)  power law: a=0.0711 (LOO 0.0692-0.0723) A=11.926 rms=0.0096 | E+A/N^alpha: alpha=0.034 (LOO 0.020-0.156, boot95 0.020-0.226) E=-4.154 (LOO -9.73-2.16) A=13.75 rms=0.0093 | 88M predicted: pl 3.3272, sat 3.3133 (actual 3.3651)
+non-embedding with 88M (6)    power law: a=0.0682 (LOO 0.0671-0.0711) A=11.394 rms=0.0137 | E+A/N^alpha: alpha=0.135 (LOO 0.034-0.190, boot95 0.032-0.236) E=1.827 (LOO -4.15-2.34) A=17.14 rms=0.0112
+Chinchilla (Hoffmann et al., eq. 10)             L at 11M..88M: 5.231..3.557  pure power-law slope 0.1852  reducible-part exponent 0.307
+Chinchilla, unrounded (Besiroglu et al. eq. 4)   L at 11M..88M: 5.086..3.467  pure power-law slope 0.1839  reducible-part exponent 0.311
+Epoch refit (Besiroglu et al., eq. 3)            L at 11M..88M: 5.390..3.514  pure power-law slope 0.2056  reducible-part exponent 0.357
+Kaplan L(N,D=20N) 3.706..2.957, slope vs non-emb N 0.0748; L(N) eq 1.1 slope 0.076
+IsoFLOP C=2.610e+16: iso_s11 36.4 tok/p L=4.0037, s15 20.0 tok/p L=3.9731, iso_s22 9.0 tok/p L=4.0828 -> parabola min N=13.97M, D=311M, 22.3 tok/p, L=3.9716
+  Chinchilla (Hoffmann et al., eq. 10): N_opt at this C = 15.5M, 18.0 tok/p
+  Chinchilla, unrounded (Besiroglu et al. eq. 4): N_opt at this C = 17.9M, 13.6 tok/p
+  Epoch refit (Besiroglu et al., eq. 3): N_opt at this C = 12.4M, 28.2 tok/p

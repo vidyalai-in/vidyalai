@@ -1,0 +1,25 @@
+s11: FLOPs/token 80.4M (attention 18%), step tok/s 165,888 -> 13.3 TFLOPS, MFU 52.7%; 6N-only MFU 43.0%
+s15: FLOPs/token 109.7M (attention 19%), step tok/s 117,268 -> 12.9 TFLOPS, MFU 50.9%; 6N-only MFU 41.0%
+s22: FLOPs/token 160.5M (attention 18%), step tok/s 99,981 -> 16.0 TFLOPS, MFU 63.4%; 6N-only MFU 52.2%
+s33: FLOPs/token 238.9M (attention 17%), step tok/s 65,779 -> 15.7 TFLOPS, MFU 62.1%; 6N-only MFU 51.4%
+s47: FLOPs/token 339.8M (attention 17%), step tok/s 47,911 -> 16.3 TFLOPS, MFU 64.3%; 6N-only MFU 53.6%
+s33 bin(h)  tok/s  SMmed  power  temp
+   0.0   66,348   1890   49.8   82
+   0.5   64,906   1830   48.4   83
+   1.0   65,280   1845   49.0   83
+   1.5   66,112   1890   49.8   82
+   2.0   66,150   1905   49.8   82
+   2.5   65,938   1875   49.5   82
+s47 bin(h)  tok/s  SMmed  power  temp
+   0.0   48,794   1905   49.8   82
+   0.5   47,942   1860   48.5   83
+   1.0   47,871   1845   48.5   83
+   1.5   48,579   1875   49.6   83
+   2.0   48,756   1875   49.8   82
+   2.5   48,738   1920   49.7   82
+   3.0   47,459   1830   47.6   83
+   3.5   46,828   1800   46.6   83
+   4.0   46,896   1800   46.6   83
+   4.5   47,686   1845   48.1   83
+   5.0   47,480   1830   47.7   83
+   5.5   47,858   1845   48.3   83
