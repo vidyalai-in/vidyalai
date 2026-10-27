@@ -137,7 +137,7 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 | 5 | The training loop | `llm-training-loop` | AdamW, warm-up and cosine schedule, clipping, BF16, gradient accumulation; first loss curve | m09, m10 | Published |
 | 6 | Making training fast on one GPU | `fast-llm-training` | torch.compile, SDPA/FlashAttention, fused AdamW, MFU measured | g09, g10 | Published |
 | 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 | Published |
-| 8 | Scaling laws on a laptop | `scaling-laws-experiment` | Five model sizes, a fitted power law, comparison with Chinchilla | m15 |  |
+| 8 | Scaling laws on a laptop | `scaling-laws-experiment` | Five model sizes, a fitted power law, comparison with Chinchilla | m15 | Published |
 | 9 | Evaluating a base model | `evaluate-base-model` | Perplexity, bits per byte, few-shot multiple choice | m06 |  |
 | 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 |  |
 | 11 | Preference tuning with DPO | `dpo-from-scratch` | Preference pairs, the DPO loss, before/after behaviour | m16 |  |
