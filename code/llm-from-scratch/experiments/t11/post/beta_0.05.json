@@ -1,0 +1,35 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t11/runs/beta_0.05/model_final.pt",
+ "tag": "beta_0.05",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.4841161293144194,
+  "rejected_per_tok": -2.4318478833674617,
+  "chosen_dlogp_mean": -1.229046867885729,
+  "rejected_dlogp_mean": -3.1684264652920464,
+  "implicit_acc": 0.608029197080292,
+  "logratio_margin_mean": 1.9393795974063177,
+  "acc_sum": 0.41751824817518246,
+  "acc_per_tok": 0.4897810218978102,
+  "frac_chosen_down": 0.6240875912408759,
+  "frac_rejected_down": 0.7496350364963503
+ },
+ "gen": {},
+ "kl": {
+  "n": 300,
+  "per_reply": 2.8146382268269856,
+  "per_reply_ci": 0.34402986658979234,
+  "per_token": 0.008528862147469755,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.79,
+   "len_mean": 329.22333333333336,
+   "len_median": 351.5,
+   "len_ended_median": 311,
+   "len_ended_mean": 280.63713080168776,
+   "rep4_mean": 0.022975333433911168
+  },
+  "policy_per_tok": -3.313276767672917
+ },
+ "seconds": 123.3
+}

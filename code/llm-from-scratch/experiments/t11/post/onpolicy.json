@@ -1,0 +1,205 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t11/runs/onpolicy/model_final.pt",
+ "tag": "onpolicy",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.5166299346349343,
+  "rejected_per_tok": -2.453340776727862,
+  "chosen_dlogp_mean": -9.960451291425384,
+  "rejected_dlogp_mean": -7.956745029365929,
+  "implicit_acc": 0.4226277372262774,
+  "logratio_margin_mean": -2.0037062620594552,
+  "acc_sum": 0.4145985401459854,
+  "acc_per_tok": 0.4737226277372263,
+  "frac_chosen_down": 0.7912408759124088,
+  "frac_rejected_down": 0.7452554744525547
+ },
+ "fixed": {
+  "capital": {
+   "greedy": [
+    "The capital of France is Paris.",
+    true,
+    8
+   ],
+   "sampled": [
+    "The capital of France is Paris.",
+    true,
+    8
+   ]
+  },
+  "sky": {
+   "greedy": [
+    "The sky blue is a beautiful and beautiful color, and it's a beautiful thing. The sky is a beautiful and beautiful color, and it's a beautiful thing.",
+    true,
+    34
+   ],
+   "sampled": [
+    "The sky blue is a beautiful and vivid green color, known for its vibrant colors, but its presence also has a special twist. The sky color of the sky is actually a combination of blue-green and orange-yellow. It does not appear as a blue-green shade, but rather a red-yellow with a subtle, evocative subtle glow.\n\nWhen it comes to the blue, I think I might have noticed something distinctive, but with the right perspective. The sky blue is not just a green, but a manifestation of the natural world. The colors evoke moments of warm sunshine, the warm sounds of the stars, and the vibrant colors of the sky.",
+    true,
+    133
+   ]
+  },
+  "sleep": {
+   "greedy": [
+    "Sleeping can be a great way to improve your sleep quality, but it can also be a challenge. One approach is to take a few deep breaths, which can help you relax and recharge. This can help you relax and recharge, which can be a great way to recharge and recharge.\n\nAnother approach is to try to get enough sleep. Try to get enough sleep each night, and try to get enough sleep. This can help you feel more refreshed and energized. \n\nAnother approach is to try to get enough sleep. Try to get enough sleep each night, and try to get enough sleep each night. This can help you feel more refreshed and energized. \n\nLastly, don't be afraid to try new things and try new things. Sometimes, a combination of these can be a great way to improve your sleep quality.",
+    true,
+    170
+   ],
+   "sampled": [
+    "Encouraging sleep is a key aspect of building strong relationships, but there are areas where you can tackle the most challenging aspects. One approach is to limit your own sleep. Break up long hours of sleep, and avoid getting too long or sluggish. Instead, prioritize sleep quality by staying in the morning and limiting your time in nature. \n\nConsider limiting your coffee or coffee consumption, as they can contribute to the stress and stress associated with the long hours. This can help build your confidence and create a more balanced lifestyle. \n\nAnother strategy is to try hobbies or activities that bring you joy. For example, if you're a hobbyist, remember that activities don't have to be overwhelming. You might find that your hobbies won't be great without a little effort. \n\nLastly, don't underestimate the importance of self-care. Celebrate your small victories, no matter how small they may seem. \n\nRemember, sleep is an ongoing process. It's okay to prioritize and recharge,",
+    false,
+    200
+   ]
+  },
+  "poem": {
+   "greedy": [
+    "The ocean's edge is a place where the ocean's waters are serene and the ocean's gentle breeze is a welcome respite from the ocean's gentle breeze. I've spent years studying the ocean's rhythms, the rhythms of the ocean, and the rhythms of the ocean. I've spent years studying the ocean's rhythms, the rhythms of the ocean, and the rhythms of the ocean's tides.",
+    true,
+    82
+   ],
+   "sampled": [
+    "The ocean is my heart. I feel like I'm here, to take the ocean, to guide the ocean, and to listen to the whispers of the ocean. I can feel the whispers of the ocean, the gentle shouts of the ocean, and the hum of the ocean's gentle chasm.",
+    true,
+    66
+   ]
+  },
+  "formal": {
+   "greedy": [
+    "I'm sorry for the confusion, but as a writer, I don't have the ability to read the text.",
+    true,
+    24
+   ],
+   "sampled": [
+    "I'm sorry for the confusion. The sentence feels awkward, but it sounds like you're just looking for a better description.",
+    true,
+    26
+   ]
+  },
+  "photosynthesis": {
+   "greedy": [
+    "Photosynthesis is a process that occurs in the chloroplasts of plants, algae, and other organisms. It is a process that occurs in the chloroplasts of plants, algae, and other organisms.",
+    true,
+    42
+   ],
+   "sampled": [
+    " photosynthesis is a crucial aspect of life on Earth. \n\nFirst, the sunlight from the sun affects the production of chlorophyll, a component of chlorophyll that helps in the production of chlorophyll and the production of water. The sunlight from the sun affects the growth of algae and some bacteria, causing them to grow on their own, which supports the growth and development of our species.",
+    true,
+    75
+   ]
+  },
+  "unknowable": {
+   "greedy": [
+    "In Pune yesterday, the weather was quite mild, with a slight chill. The weather was mild, but the weather was still warm.",
+    true,
+    29
+   ],
+   "sampled": [
+    "The weather in Pune today was like the mornin', but the weather was still just right, and it's still lurking in the heat today.\n\nAs I looked at the weather, I know I'd just want to keep a close eye on that. I'd like to know more about the local weather, and you can hear some of the stories from my team. What I'm going to do is look up at the weather in Pune today and see what's going on.",
+    true,
+    102
+   ]
+  },
+  "name": {
+   "greedy": [
+    "My name is Jack, and I'm a professional chef. I'm a professional chef, and I've been working with you for over 20 years. I've had the pleasure of working with you, and I've had the privilege of working with you for over 20 years. What brings you to my office today?",
+    true,
+    70
+   ],
+   "sampled": [
+    "(sitting back on my desk) Ah, I'm thrilled to have you all. I'm delighted to share some of my stories and experiences with you today.\n\nAs I continue to explore my world, I'm excited to share my experiences and explore the world I am today. What would you like to know about my journey?",
+    true,
+    68
+   ]
+  },
+  "math": {
+   "greedy": [
+    "To find 17 + 25, we need to first find the value of 17. We can do this by finding the value of 17. \n\nWe can start by finding the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value",
+    false,
+    200
+   ],
+   "sampled": [
+    "To solve this problem, we need to calculate the sum of the powers of 17 to find the given number. Since 17 is a binary number, we can write 17 as 3^5.\n\nGiven 5, we can write 17 as 3^5. To find the sum of these powers, we need to solve for 5. \n\nSo, the sum of powers of 5 is 5.",
+    true,
+    94
+   ]
+  }
+ },
+ "gen": {
+  "uf_sampled": {
+   "n": 500,
+   "ended": 0.966,
+   "len_mean": 99.066,
+   "len_median": 56.0,
+   "len_ended_median": 53,
+   "len_ended_mean": 84.5320910973085,
+   "rep4_mean": 0.08539105029973876
+  },
+  "uf_greedy": {
+   "n": 500,
+   "ended": 0.804,
+   "len_mean": 157.436,
+   "len_median": 50.0,
+   "len_ended_median": 37.0,
+   "len_ended_mean": 71,
+   "rep4_mean": 0.33901638266314954
+  },
+  "smol_greedy": {
+   "n": 100,
+   "ended": 0.73,
+   "len_mean": 127.09,
+   "len_median": 108.0,
+   "len_ended_median": 58,
+   "len_ended_mean": 82.47945205479452,
+   "rep4_mean": 0.3370774193221609
+  },
+  "smol_sampled": {
+   "n": 100,
+   "ended": 0.87,
+   "len_mean": 123.17,
+   "len_median": 111.5,
+   "len_ended_median": 104,
+   "len_ended_mean": 104.42528735632185,
+   "rep4_mean": 0.08686053903270317
+  }
+ },
+ "kl": {
+  "n": 300,
+  "per_reply": 4.69295537630717,
+  "per_reply_ci": 0.3524795360469846,
+  "per_token": 0.057027163516370334,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.9966666666666667,
+   "len_mean": 81.29666666666667,
+   "len_median": 62.0,
+   "len_ended_median": 61,
+   "len_ended_mean": 79.8561872909699,
+   "rep4_mean": 0.016664615804718837
+  },
+  "policy_per_tok": -3.1114691519845405
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.2689703246365266,
+   "acc_ci": 0.008672926180785547,
+   "acc_norm": 0.279326827325234,
+   "acc_norm_ci": 0.008775491803322127
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.43308080808080807,
+   "acc_ci": 0.01992406280875428,
+   "acc_norm": 0.3939393939393939,
+   "acc_norm_ci": 0.01964742263353114
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.5848748639825898,
+   "acc_ci": 0.022527049424030183,
+   "acc_norm": 0.5805223068552775,
+   "acc_norm_ci": 0.02256042150716731
+  }
+ },
+ "seconds": 633.8
+}

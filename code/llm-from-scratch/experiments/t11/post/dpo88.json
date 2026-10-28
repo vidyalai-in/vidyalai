@@ -1,0 +1,205 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t11/runs/dpo88/model_final.pt",
+ "tag": "dpo88",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.4833701621994058,
+  "rejected_per_tok": -2.439926490008421,
+  "chosen_dlogp_mean": -1.028721482910379,
+  "rejected_dlogp_mean": -4.968227985827592,
+  "implicit_acc": 0.6759124087591241,
+  "logratio_margin_mean": 3.9395065029172134,
+  "acc_sum": 0.41751824817518246,
+  "acc_per_tok": 0.49708029197080295,
+  "frac_chosen_down": 0.5824817518248175,
+  "frac_rejected_down": 0.7905109489051095
+ },
+ "fixed": {
+  "capital": {
+   "greedy": [
+    "The capital of France is Paris, a city located in the heart of the Mediterranean Sea. It is a city located in the heart of the Mediterranean Sea, known for its vibrant culture, vibrant culture, and vibrant culture. The capital city is Paris, a city located in the heart of the Mediterranean Sea, and is known for its vibrant culture, vibrant culture, and vibrant culture.\n\nThe capital city is Paris, a city located in the heart of the Mediterranean Sea. It is a city located in the heart of the Mediterranean Sea, known for its vibrant culture, vibrant culture, and vibrant culture. The city is also known for its vibrant culture, vibrant culture, and vibrant culture.\n\nThe capital city is also a city located in the heart of the Mediterranean Sea, known for its vibrant culture, vibrant culture, and vibrant culture. The city is also a city located in the heart of the Mediterranean Sea, known for its vibrant culture, vibrant culture, and vibrant culture.\n\nThe capital city is",
+    false,
+    200
+   ],
+   "sampled": [
+    "The capital of France is Paris. The capital city is Paris, famous for its 25th-century Louvre, built in 1619 and was the capital of France. The capital city is Paris, with its stunning iconic landmarks, grand landmarks, and stunning natural landmarks.\n\nThe capital city is French, meaning \"Bien s\u00fbr,\" or \"Meet the City,\" meaning the fountain or fountain. The city has an impressive history, including the great city of Paris, and is known for its rich history, architecture, and historical landmarks. The city is also home to the French Empire, with a thriving maritime trade network.\n\nThe capital city is also a popular destination, with nearby towns and cities. The city has a wealth of historical architecture, including beautiful gardens, charming shops, and a charming caf\u00e9. The city is also home to museums and museums, with a rich cultural culture.\n\nThe capital city has a rich history, with famous landmarks like the",
+    false,
+    200
+   ]
+  },
+  "sky": {
+   "greedy": [
+    "The sky blue is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky.\n\nThe sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky.\n\nThe sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky. The sky is a beautiful and beautiful sky, and it's a beautiful and beautiful sky",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a type of celestial object that is typically found in the Northern Hemisphere, which is also known as the Southern Hemisphere, but it is not found in the Southern Hemisphere and has a low cloud cover. The atmosphere is composed of thin, curved shapes of clouds, which can be quite strong and extremely strong.\n\nThe sky blue also has a high surface area, which is relatively flat in terms of the surrounding sky. The higher the surface area, the higher the surface area, which is the more intense and intense the reflected light. Conversely, the higher the surface area, the higher the surface area.\n\nThe sky blue is not a continuous, continuous surface, and its atmosphere is primarily composed of clouds that are not continuous. This is why, in the Northern Hemisphere, the sky blue has a high level of atmospheric density, which is essential for understanding the behavior of atmospheric processes and patterns in the environment.",
+    true,
+    185
+   ]
+  },
+  "sleep": {
+   "greedy": [
+    "Sleeping better is a great idea for your well-being, and it's a great idea to start with a few key factors. First, consider the quality of your sleep. Sleeping can be a challenging but crucial part of your overall well-being. It's essential to prioritize your sleep, not just your sleep. Here are some tips to help you get started:\n\n1. Sleep: Aim for 3-6 hours of sleep each night. This will help you feel more refreshed and energized. Aim for 3-6 hours of sleep each night. This will help you feel more refreshed and energized.\n\n2. Sleep: Aim for 3-6 hours of sleep each night. This will help you feel more refreshed and energized. Aim for 3-6 hours of sleep each night. This will help you feel more energized and energized.\n\n3. Sleep: Aim for 3-6 hours of sleep each night. This will help you feel more refreshed and",
+    false,
+    200
+   ],
+   "sampled": [
+    "First, it's essential to identify and prioritize your sleep schedule. Sleep is the process of dividing your sleep into four stages: fall, winter, and fall. First, look for the 4-6 hours of sleep each night. Avoid sleeping late at night or during dark, quiet evenings. Additionally, sleep before and after rest, so it's essential to have an open and honest sleep schedule.\n\nNext, take a few moments to rest and recharge. Take advantage of a sleep diary or meditation practice to get your body back on track. This can help you maintain a healthy sleep cycle and provide a calm and rejuvenating sleep.\n\nDay 1, wake up in the afternoon and wake up in the evening. Use a consistent and peaceful environment during the afternoon. This can help your body regain some sleep and create a more peaceful sleep environment. Take small breaks in between, as this can help reduce stress and anxiety.\n\nDay 2, especially during the day. Be patient and stay focused",
+    false,
+    200
+   ]
+  },
+  "poem": {
+   "greedy": [
+    "The ocean is a vast, vast, and unforgiving ocean that lies beneath the surface of the Earth. The ocean is a vast, vast, and unforgiving ocean that stretches out over 2,000 miles in diameter. The ocean is a vast, vast, and unforgiving ocean that stretches out over 2,000 miles in diameter. The ocean is a vast, vast, and unforgiving ocean that stretches over 2,000 miles in diameter.\n\nThe ocean is a vast, vast, and unforgiving ocean that stretches over 2,000 miles in diameter. The ocean is a vast, vast, and unforgiving ocean that stretches over 2,000 miles in diameter. The ocean is a vast, vast, and unforgiving ocean that stretches over 2,000 miles in diameter. The ocean is a vast, vast, and unforgiving ocean that stretches over 2,000 miles in diameter.\n\n",
+    false,
+    200
+   ],
+   "sampled": [
+    "The ocean is my home. I've spent years studying the ocean, the ocean, and the various creatures that inhabit it. I've been fortunate enough to have read the countless creatures and creatures that inhabit these ocean spaces. I've spent decades studying the diverse waters of the ocean, the flora, and the ecosystem that surrounds us.\n\nI've spent countless hours studying the ocean's history, geology, and the currents of the ocean. I've developed a deep connection with the ocean, creating habitats for countless other creatures and creatures to explore. I've had my fair share of encounters with the ocean's ancient, marine creatures that inhabited this ocean.\n\nI've also had the opportunity to learn about the unique ecosystem I've discovered in the deep. I've discovered tiny invertebrates that serve as a refuge for some of the most renowned marine animals in the world, such as those found in the deep ocean. These tiny creatures, once thought to be the backbone of our ecosystem, have become a staple food source",
+    false,
+    200
+   ]
+  },
+  "formal": {
+   "greedy": [
+    "The sentence \"hey, can u send me the report by tmrw?\" is a classic example of a formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal formal",
+    false,
+    200
+   ],
+   "sampled": [
+    "The event of the report of the report by tmrw is a fascinating event, to be sure. To address the concerns raised in this context, we'll examine the context and the circumstances surrounding the report. \n\nImagine the report as written by the director of the government, a British Prime Minister. As the report states, the report would be made by the Prime Minister, who are in charge for the preparation and execution of the report. \n\nIn this context, tmrw could provide a concise overview of the circumstances surrounding the report. A possible introduction would be the report of the Prime Minister, who is a British Prime Minister. \n\nTo make the report more formal, let's consider the following:\n\n1. The report, titled \"The report from tmrw,\" would have been prepared by the Prime Minister, who is in charge for the preparation and execution of the report.\n2. The report would focus on the circumstances surrounding the report, such as the",
+    false,
+    200
+   ]
+  },
+  "photosynthesis": {
+   "greedy": [
+    "Photosynthesis is a vital process in the life of plants, algae, and other organisms. It is a process that occurs in the chloroplasts of plants, where chlorophyll, a pigment found in the chloroplasts, plays a crucial role in photosynthesis. This process is crucial for the survival of plants, as it helps to maintain the balance of the sunlight and water in the chloroplasts.\n\nPhotosynthesis is a vital process that occurs in the chloroplasts of plants, algae, and other organisms. It is a vital process that helps to maintain the balance of the sunlight and water in the chloroplasts. The chlorophyll, a pigment found in the chloroplasts, plays a crucial role in the photosynthesis process, as it helps to regulate the amount of sunlight and water in the chloroplasts.\n\nPhotosynthesis is a vital process that occurs in the chloroplasts of plants, algae, and other organisms. It is a vital process that helps to maintain the balance of the sunlight and",
+    false,
+    200
+   ],
+   "sampled": [
+    " photosynthesis is a novel method used to convert light energy from the Earth's atmosphere into energy, which is then converted to energy in the form of glucose or other microorganisms.\n\nAs the glucose and other microorganisms break down the food chains, they convert the glucose into glucose through a process called fermentation. This process is repeated until the glucose and other microorganisms combine, and it remains in the solid form. The process begins with the reaction of glucose, an organic compound used to convert glucose into glucose. The glucose then enters the solid form, where it is converted into glucose.\n\nThe process begins with the light energy from the sun, which is then turned into energy. The glucose and other microorganisms convert the glucose into chemical energy, which is then converted into energy. The heat of the light energy from the sun triggers a series of chemical reactions, where the glucose and other microorganisms combine to create glucose.\n\nThe process continues until the glucose and other microorganisms combine to form glucose. The glucose and other organisms convert the glucose",
+    false,
+    200
+   ]
+  },
+  "unknowable": {
+   "greedy": [
+    "In Pune, the weather was quite mild, with temperatures ranging from 30\u00b0C to 40\u00b0C. The weather was quite mild, with temperatures ranging from 30\u00b0C to 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C.\n\nThe weather was quite mild, with temperatures ranging from 30\u00b0C to 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C.\n\nThe weather was quite mild, with temperatures ranging from 40\u00b0C to 40\u00b0C. The temperature was around 40\u00b0C, and the temperature was around 40\u00b0C.",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather in Pune today is a warm and humid, calm, and mildly humidned, with warm, dry weather and mild temperatures. Here's a description of the weather:\n\n1. **Mountaintown**: The temperature in the Pune valley was cooler than the surrounding mountains. The air was cool and heavy, with temperatures like the coldtest winter's months. The ground was dry and wet, with an average temperature of 78\u00b0F (78 degrees Celsius).\n2. **Hazenite*: Known for its warm springs and warm springs, the surrounding mountains were often wet and wet. The soil was wet and damp, with only a few inches of soil that would have been wet during the day. For example, the soil was thick with some organic matter and was dry, while the ground was dry.\n3. **Odour**: The ground was dry, with very little moisture. The air was moist and cool,",
+    false,
+    200
+   ]
+  },
+  "name": {
+   "greedy": [
+    "My name is Jack, and I'm a professional baseball player. I've been baseball for over 20 years, and I've been fortunate enough to have played in the 1960s and 1970s. I've been fortunate enough to have played in the 1960s, and I've seen my fair share of successes and triumphs.\n\nMy name is Jack, and I've been baseball for over 20 years now. I've been a part of the team for over 20 years, and I've seen my fair share of successes and triumphs. I've seen my fair share of successes and triumphs, and I've seen my fair share of successes and triumphs.\n\nI've also been a part of the team for over 20 years, and I've seen my fair share of successes and triumphs. I've seen my fair share of successes and triumphs, and I've seen my fair share",
+    false,
+    200
+   ],
+   "sampled": [
+    "My name is Jack, and I've spent years honing my craft for the age of a single master of the art of crafting, serving as a reminder of my past. I've been a master of countless creative endeavors, always striving to achieve greatness and make the most of my time in the world. My passion for crafting, my art, and my passion for creating has taught me to balance action, dialogue, and action.\n\nI've achieved greatness through the intricate dance of traditional techniques, such as the art of serenade, the art of drawing, or the art of the nemesis. I've also started a career as a skilled craftsman, studying and learning the intricacies of technique.\n\nI've also had the privilege of working on a small-scale art project, where I've discovered a hidden talent, a creative talent, or a unique combination of these techniques. This passion has enabled me to tap into the mysteries of the human body, unravel the mysteries of nature,",
+    false,
+    200
+   ]
+  },
+  "math": {
+   "greedy": [
+    "To find the number of 17 + 25, we can use the formula for the sum of the given numbers. The sum of the given numbers is 17 + 25 = 17.\n\nLet's start by finding the sum of the given numbers. We can start by finding the sum of the given numbers. Since 17 + 25 = 17, we can write the sum as 17 + 25 = 17.\n\nNow, we can find the sum of the given numbers. The sum of the given numbers is 17 + 25 = 17.\n\nNow, we can find the sum of the given numbers by finding the sum of the given numbers. The sum of the given numbers is 17 + 25 = 17.\n\nNow, we can find the sum of the given numbers by finding the sum of the given numbers. The sum of the given numbers",
+    false,
+    200
+   ],
+   "sampled": [
+    "The power of 17 + 25 is a fundamental concept in mathematics, where we can find the sum of the powers of a set of numbers, given by the formula S = 17 / (1 - 25), and then sum the powers of 25.\n\nIn our case, 17 + 25 = 255, which means we can solve the equation 17 + 255 = 255. Therefore, 17 + 25 = 105.\n\nSince 17 + 25 = 255 is zero, we can simplify the expression to 105. We know that 255 = 255.\n\nSo, 17 + 25 is a power of 17, which means we can solve the equation 17 + 255 = 255. Therefore, 17 + ",
+    false,
+    200
+   ]
+  }
+ },
+ "gen": {
+  "uf_sampled": {
+   "n": 500,
+   "ended": 0.652,
+   "len_mean": 384.852,
+   "len_median": 413.5,
+   "len_ended_median": 351.5,
+   "len_ended_mean": 316.9877300613497,
+   "rep4_mean": 0.22925205594485573
+  },
+  "uf_greedy": {
+   "n": 500,
+   "ended": 0.258,
+   "len_mean": 443.976,
+   "len_median": 512.0,
+   "len_ended_median": 293,
+   "len_ended_mean": 248.34108527131784,
+   "rep4_mean": 0.7647094451597561
+  },
+  "smol_greedy": {
+   "n": 100,
+   "ended": 0.12,
+   "len_mean": 228.86,
+   "len_median": 256.0,
+   "len_ended_median": 112.5,
+   "len_ended_mean": 101.83333333333333,
+   "rep4_mean": 0.5629668065550818
+  },
+  "smol_sampled": {
+   "n": 100,
+   "ended": 0.2,
+   "len_mean": 227.88,
+   "len_median": 244.5,
+   "len_ended_median": 180.5,
+   "len_ended_mean": 163.4,
+   "rep4_mean": 0.13086463874756438
+  }
+ },
+ "kl": {
+  "n": 300,
+  "per_reply": 7.668593546549479,
+  "per_reply_ci": 0.5853440949763589,
+  "per_token": 0.020070648938833435,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.67,
+   "len_mean": 381.41,
+   "len_median": 420.0,
+   "len_ended_median": 349,
+   "len_ended_mean": 317.089552238806,
+   "rep4_mean": 0.024992164854002918
+  },
+  "policy_per_tok": -3.2269216230100657
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.2700657239593706,
+   "acc_ci": 0.008684055206856077,
+   "acc_norm": 0.27912766381198967,
+   "acc_norm_ci": 0.008773574798727281
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.44612794612794615,
+   "acc_ci": 0.01998790580706154,
+   "acc_norm": 0.4027777777777778,
+   "acc_norm_ci": 0.01972121117319091
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.5870511425462459,
+   "acc_ci": 0.022509685183179577,
+   "acc_norm": 0.5805223068552775,
+   "acc_norm_ci": 0.02256042150716731
+  }
+ },
+ "seconds": 667.7
+}

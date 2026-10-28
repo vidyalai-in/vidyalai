@@ -1,0 +1,182 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t10/runs/sft88/model_final.pt",
+ "tag": "sft",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.4795394325250126,
+  "rejected_per_tok": -2.4176260534646383,
+  "chosen_dlogp_mean": 0.0,
+  "rejected_dlogp_mean": 0.0,
+  "implicit_acc": 0.0,
+  "logratio_margin_mean": 0.0,
+  "acc_sum": 0.4116788321167883,
+  "acc_per_tok": 0.47664233576642334,
+  "frac_chosen_down": 0.0,
+  "frac_rejected_down": 0.0
+ },
+ "fixed": {
+  "capital": {
+   "greedy": [
+    "The capital of France is Paris. It is a city known for its rich history, culture, and culture. The capital city is Paris, a city known for its rich history, culture, and cultural heritage. The capital city is known for its vibrant culture, vibrant culture, and vibrant culture.\n\nThe capital city is also known for its vibrant culture, with its vibrant streets, vibrant cafes, and vibrant cafes. The city is also known for its vibrant arts scene, with its vibrant arts scene, music scene, and music scene. The city is also home to a diverse range of cultures, including the French, French, and French.\n\nThe capital city is also known for its vibrant culture, with its vibrant arts scene, vibrant arts scene, and vibrant culture. The city is also home to a diverse range of cultures, including the French, French, and French, with its rich history, cultural heritage, and cultural heritage.\n\nOverall, the capital city is a vibrant and vibrant",
+    false,
+    200
+   ],
+   "sampled": [
+    "The capital of France is Paris. \n\nEdmund, the founder of the first French capital, is known for his influence on the French Revolution. He is considered the greatest leader and has played a pivotal role in the French Revolution and has been influential in the French Revolution. \n\nEdmund, also known as the \"C\u00f4te d'Harmonise,\" is the French capital in French, where he is renowned for his impressive and influential reign. He is often considered the greatest leader of the French Revolution and has been influential in the French Revolution for over 20 years.",
+    true,
+    120
+   ]
+  },
+  "sky": {
+   "greedy": [
+    "The sky blue is a beautiful and beautiful color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a type of blue, typically referred to as a group of red, pink, blue, and red. It's a color of the sky that's typically associated with the sky. The sky blue is often associated with the night sky, the night sky, and the morning sky. The sky blue is a red color that's commonly associated with the morning sky, the night sky, and the evening sky. The sky blue is associated with the night sky, as it's the part of the sky that contains the night sky. The night sky is also known as the \"sunset,\" but it's often associated with the evening sky. The evening sky is often associated with the night sky, as it's the main and most beautiful part of the sky. The sky blue is often associated with the night sky, as it's the part of the sky that's visible from the night sky.",
+    true,
+    183
+   ]
+  },
+  "sleep": {
+   "greedy": [
+    "Sleeping can be a great way to improve your sleep quality, reduce stress, and improve your overall well-being. Here are some tips to help you sleep better:\n\n1. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape.\n\n2. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape.\n\n3. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body",
+    false,
+    200
+   ],
+   "sampled": [
+    "First, it's important to maintain a healthy sleep schedule, not to overdo it. Sleeping normally is indeed a good idea, but it's not always practical. \n\nBefore bed, try to get enough sleep with your mom. She can get plenty of sleep during the day and find that she's feeling more tired than she's used to. \n\nWhen you're asleep, think about your sleep patterns, and make sure you're getting enough sleep. Try to get your sleep by doing some deep sleep (e.g., 30-40 minutes) during the day. This will help you get a good night's rest and wake-up time.\n\nIt's also important to remind yourself that your bedroom is full and peaceful, so make sure you get enough sleep at night. \n\nDuring the morning, try to do some deep sleep on your own, as this can help regulate your body's natural sleep patterns. \n\nSleeping can be a great time to recharge,",
+    false,
+    200
+   ]
+  },
+  "poem": {
+   "greedy": [
+    "The ocean is a vast, vast, and unforgiving ocean that stretches out in the distance. It's a vast, vast, and unforgiving ocean that stretches out in the distance. The ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast. The ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast.\n\nThe ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast. The ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast. The ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast.\n\nThe ocean's surface is vast, and its depths are vast, and its depths are vast, and its depths are vast. The ocean's surface is vast, and its depths are",
+    false,
+    200
+   ],
+   "sampled": [
+    "The ocean is my home. I've spent years studying the ocean, the ocean, and the various creatures that inhabit it. I've been fortunate enough to have read the countless creatures and creatures that inhabit these ocean spaces. I've spent decades studying the diverse life forms that inhabit these depths of the ocean, from the coral reefs, sea turtles, and sea turtles to the giant pangas. I've spent the past two decades studying the ocean and the ocean, learning to appreciate the beauty and richness of this vast ocean.\n\nThat's a fascinating poem. What brings you to the ocean today? Are you looking to explore the vibrant ocean, the coral reefs, or perhaps the marine life of the ocean itself?",
+    true,
+    144
+   ]
+  },
+  "formal": {
+   "greedy": [
+    "The sentence \"hey\" is a contraction of \"hey\" in the context of the sentence. It's a contraction of \"hey\" in the context of the sentence, which is a contraction of \"hey\" in the context of the sentence.",
+    true,
+    54
+   ],
+   "sampled": [
+    "The event of the report of the report of the report, written by the report tmrw, has indeed transpired in response to the report of tmrw, and has since become a public conversation. Despite the lack of formal written content, the statement of the report remains the subject of debate and debate, and the narrative continues to be filled with opinions from both the public and the public.",
+    true,
+    83
+   ]
+  },
+  "photosynthesis": {
+   "greedy": [
+    "Photosynthesis is a process that occurs in the chloroplasts of plants, algae, and certain bacteria, where sunlight is absorbed by the plant. This process is crucial for the growth and development of plants, as it helps to maintain the balance of the sunlight and water in the soil.",
+    true,
+    58
+   ],
+   "sampled": [
+    " photosynthesis is a novel method used to convert light energy from the Earth's atmosphere into glucose, a byproduct of photosynthesis, which is the process of turning the water vapor into glucose. This process involves a combination of sunlight, sunlight, and water vapor, which then convert the energy from the sun into glucose based on the chemical energy given by the sunlight.\n\nWhen sunlight hits the atmosphere, the glucose molecules in the chloroplasts and protons from the nucleus of the chloroplasts undergo a transition from the sun to the sun along a narrow corridor, where the sunlight is absorbed by the nucleus. This process provides the most stable and efficient energy source for life on Earth, providing the world with a much higher carbon footprint than what happens here.\n\nThe process is known as photosynthesis. At about 10 billion years, the sun will be split into two parts, the first part having a small energy output that can be used for various purposes, such as photosynthesis, respiration, and photosynthesis. Photosynthesis is the",
+    false,
+    200
+   ]
+  },
+  "unknowable": {
+   "greedy": [
+    "In Pune yesterday, the weather was quite mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread.\n\nThe weather was mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread.\n\nThe weather was mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather in Pune today was a warm and humid, with a strong warm summer air to the north and a strong cold fall, while the rainy season was mild. In Pune, the average temperature was around 32 degrees Fahrenheit, and it could be quite hot.\n\nThe average temperature was around 32 degrees Fahrenheit, and it was a significant cold-season factor, with the typical day being around 2:30 PM to 5 PM. The rainy season was mild, with a moderate chill and a slight warmth from the north.\n\nThe average temperature was between 27 degrees Fahrenheit and 35 degrees Celsius, with a moderate temperature ranging from 15 degrees Fahrenheit to 30 degrees Celsius. This is the average of the two main parts: the heavy rainfall, the wettest, and the occasional high rainfall. The rainy season's temperature is typical of the dry season, with mild weather events such as rainstorms or strong summers.\n\nThe rainy season",
+    false,
+    200
+   ]
+  },
+  "name": {
+   "greedy": [
+    "My name is Jack, and I'm a professional sports coach. I've been coaching for over 20 years now, and I've had the privilege of working with a wide range of athletes, from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes.\n\nI've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes.\n\nI've also had the privilege of working with a wide range of athletes, from athletes to athletes. I've had the privilege of working with",
+    false,
+    200
+   ],
+   "sampled": [
+    "My name is Jack, and I can't be a fan of him. I'm Jack, the master of the forest. I've been around generations of forest dwellers, always seeking the warmth and warmth of the forest with my own hands. My grandkids, our old friends, who have been here before, have been my companions, and I have been called upon by the forest's gods. You won't want me to be the master of the forest, lest you ever leave your own thoughts and thoughts unbeknownst to you.\n\nI've spent years studying the forest's natural wonders, and I've learned a new way of life, a way of growing and rejuvenating. In the forest, I've learned to be adaptable, adaptable, adaptable. I've learned to adapt, to move and change, and to adapt to the changes in the forest's landscape.\n\nI've always been fascinated by the forest's secrets, its secrets, and its secrets. What brings you",
+    false,
+    200
+   ]
+  },
+  "math": {
+   "greedy": [
+    "To find 17 + 25, we can use the concept of a sequence of numbers. We start by finding the first number, 17, which is 17. Then, we find the first number, 17, which is 17. \n\nWe can start by finding the first number, 17, which is 17. Then, we find the first number, 17, which is 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we",
+    false,
+    200
+   ],
+   "sampled": [
+    "The power of 17 + 25 is 17, and 25 is also 31. This power is based on the power of the integers {' 17', '25), and the powers of 17 that appear in the given range of {17, 31, 32, 35, 38, 39, 31, 39, 31. These powers are 31 and 32.\n\nTherefore, 17 + 25 is 31.",
+    true,
+    124
+   ]
+  }
+ },
+ "gen": {
+  "uf_sampled": {
+   "n": 500,
+   "ended": 0.85,
+   "len_mean": 267.444,
+   "len_median": 271.0,
+   "len_ended_median": 242,
+   "len_ended_mean": 224.2870588235294,
+   "rep4_mean": 0.1862621771741253
+  },
+  "uf_greedy": {
+   "n": 500,
+   "ended": 0.482,
+   "len_mean": 350.802,
+   "len_median": 512.0,
+   "len_ended_median": 130,
+   "len_ended_mean": 177.5643153526971,
+   "rep4_mean": 0.6507524480358775
+  },
+  "smol_greedy": {
+   "n": 100,
+   "ended": 0.33,
+   "len_mean": 204.51,
+   "len_median": 224.0,
+   "len_ended_median": 114,
+   "len_ended_mean": 119.36363636363636,
+   "rep4_mean": 0.5240234916769847
+  },
+  "smol_sampled": {
+   "n": 100,
+   "ended": 0.39,
+   "len_mean": 200.24,
+   "len_median": 224.0,
+   "len_ended_median": 127,
+   "len_ended_mean": 128.6153846153846,
+   "rep4_mean": 0.13762645200691712
+  }
+ },
+ "kl": {
+  "n": 300,
+  "per_reply": 0.0,
+  "per_reply_ci": 0.0,
+  "per_token": 0.0,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.91,
+   "len_mean": 261.53333333333336,
+   "len_median": 268.5,
+   "len_ended_median": 248,
+   "len_ended_mean": 236.76190476190476,
+   "rep4_mean": 0.02627584087974935
+  },
+  "policy_per_tok": -3.152489834740971
+ },
+ "seconds": 460.4
+}

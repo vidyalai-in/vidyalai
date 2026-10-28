@@ -1,0 +1,35 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t11/runs/pilot_1e-5/model_final.pt",
+ "tag": "pilot_1e-5",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.4821795710429764,
+  "rejected_per_tok": -2.428040477276425,
+  "chosen_dlogp_mean": -0.7089947456861064,
+  "rejected_dlogp_mean": -2.32018919165117,
+  "implicit_acc": 0.6065693430656934,
+  "logratio_margin_mean": 1.6111944459650638,
+  "acc_sum": 0.4153284671532847,
+  "acc_per_tok": 0.48613138686131385,
+  "frac_chosen_down": 0.5861313868613138,
+  "frac_rejected_down": 0.7197080291970803
+ },
+ "gen": {},
+ "kl": {
+  "n": 300,
+  "per_reply": 2.443783187866211,
+  "per_reply_ci": 0.3024171397039024,
+  "per_token": 0.007670861911815591,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.7933333333333333,
+   "len_mean": 317.7866666666667,
+   "len_median": 324.5,
+   "len_ended_median": 282.0,
+   "len_ended_mean": 267.1932773109244,
+   "rep4_mean": 0.027006803816068493
+  },
+  "policy_per_tok": -3.213295128075724
+ },
+ "seconds": 127.5
+}

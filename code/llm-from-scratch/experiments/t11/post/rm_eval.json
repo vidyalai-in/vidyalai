@@ -1,0 +1,18 @@
+{
+ "rm_agree_uf": 0.7802919708029197,
+ "rm_chosen_mean": 2.5850475004989737,
+ "rm_rejected_mean": -0.013603945544166286,
+ "sft/uf_sampled/mean": -10.0433125,
+ "sft/uf_sampled/ci": 0.19922372017411105,
+ "sft/uf_greedy/mean": -10.6029609375,
+ "sft/uf_greedy/ci": 0.23470235007780121,
+ "dpo88/uf_sampled/mean": -10.847,
+ "dpo88/uf_sampled/ci": 0.190359899391127,
+ "dpo88/uf_greedy/mean": -11.37875,
+ "dpo88/uf_greedy/ci": 0.19380869752477567,
+ "dpo88/uf_sampled/win_vs_sft": 0.371,
+ "dpo88/uf_sampled/win_ci": 0.042115743716572306,
+ "dpo88/uf_greedy/win_vs_sft": 0.391,
+ "dpo88/uf_greedy/win_ci": 0.0420024844598507,
+ "seconds": 191.6
+}

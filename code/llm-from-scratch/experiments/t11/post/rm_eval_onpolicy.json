@@ -1,0 +1,15 @@
+{
+ "sft/uf_sampled/mean": -10.0433125,
+ "sft/uf_sampled/ci": 0.19922372017411105,
+ "sft/uf_greedy/mean": -10.6029609375,
+ "sft/uf_greedy/ci": 0.23470235007780121,
+ "onpolicy/uf_sampled/mean": -8.2583125,
+ "onpolicy/uf_sampled/ci": 0.2013240447449863,
+ "onpolicy/uf_greedy/mean": -8.1346640625,
+ "onpolicy/uf_greedy/ci": 0.25322209935799,
+ "onpolicy/uf_sampled/win_vs_sft": 0.773,
+ "onpolicy/uf_sampled/win_ci": 0.03603106974820481,
+ "onpolicy/uf_greedy/win_vs_sft": 0.796,
+ "onpolicy/uf_greedy/win_ci": 0.03444071934208111,
+ "seconds": 68.3
+}

@@ -14,8 +14,10 @@ The code the articles run, kept here so it isn't lost. The site build ignores th
 | `sizes.py` | 8 | The scaling sweep's model sizes and total/non-embedding parameter counts |
 | `evals.py` | 9 | Bits per byte over text, log-likelihood multiple-choice scoring (HellaSwag, ARC, PIQA), few-shot prompts, wrappers for our models and Hugging Face models |
 | `sft.py` | 10 | Chat template on the reserved tokens, smol-smoltalk preparation, length-sorted padding, masked loss normalized per step, SFT training and chat generation |
+| `dpo.py` | 11 | UltraFeedback pairs in the chat template, cached reference log-probs, sequence log-probs over reply tokens, the DPO loss and training loop, held-out pair evaluation |
+| `sampling.py` | 11 | Batched sampling with a KV cache (greedy, temperature, top-k), stopping at `<\|end\|>` |
 
-`experiments/t01` to `t10` hold each part's benchmark, ablation and chart-data scripts and small result files.
+`experiments/t01` to `t11` hold each part's benchmark, ablation and chart-data scripts and small result files.
 
 Not included (rebuildable or too large): the token shards in `data/` (about 2.5B tokens; rebuild with `data.py`), checkpoints, run logs, and downloaded papers and third-party source.
 

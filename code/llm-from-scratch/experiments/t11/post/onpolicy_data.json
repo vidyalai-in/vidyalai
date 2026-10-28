@@ -1,0 +1,15 @@
+{
+ "prompts": 704,
+ "k": 4,
+ "max_new": 384,
+ "gen_seconds": 830.9,
+ "rm_seconds": 99.8,
+ "ended_all": 0.7784090909090909,
+ "chosen_ended": 0.8764204545454546,
+ "rejected_ended": 0.6235795454545454,
+ "chosen_len_mean": 207.32954545454547,
+ "rejected_len_mean": 295.359375,
+ "chosen_longer": 0.2315340909090909,
+ "gap_median": 2.25,
+ "score_mean": -10.525821339000355
+}

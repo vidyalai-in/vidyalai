@@ -1,0 +1,35 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t11/runs/offpolicy704/model_final.pt",
+ "tag": "offpolicy704",
+ "pairs": {
+  "n": 1370,
+  "chosen_per_tok": -2.4845974790840186,
+  "rejected_per_tok": -2.4319913269572297,
+  "chosen_dlogp_mean": -1.3583107133851433,
+  "rejected_dlogp_mean": -3.200383707728699,
+  "implicit_acc": 0.6,
+  "logratio_margin_mean": 1.8420729943435556,
+  "acc_sum": 0.41824817518248175,
+  "acc_per_tok": 0.48905109489051096,
+  "frac_chosen_down": 0.6489051094890511,
+  "frac_rejected_down": 0.7686131386861313
+ },
+ "gen": {},
+ "kl": {
+  "n": 300,
+  "per_reply": 4.166686623891195,
+  "per_reply_ci": 0.39354606580504886,
+  "per_token": 0.012051154371341128,
+  "t1_stats": {
+   "n": 300,
+   "ended": 0.7633333333333333,
+   "len_mean": 344.9866666666667,
+   "len_median": 373.5,
+   "len_ended_median": 312,
+   "len_ended_mean": 293.2052401746725,
+   "rep4_mean": 0.023912289401541855
+  },
+  "policy_per_tok": -3.2464095734113325
+ },
+ "seconds": 124.2
+}
