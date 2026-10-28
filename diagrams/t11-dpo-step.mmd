@@ -1,0 +1,10 @@
+flowchart TD
+  PAIR["One prompt,<br/>a chosen reply,<br/>a rejected reply"]
+  PAIR --> POL["Policy<br/>(SFT copy, trained)"]
+  PAIR --> REF["Reference<br/>(SFT, frozen)"]
+  POL --> LP["log π<br/>of both replies"]
+  REF --> LR["log ref<br/>of both replies<br/>(cached once)"]
+  LP --> H["Implicit rewards:<br/>β × (log π<br/>- log ref)"]
+  LR --> H
+  H --> LOSS["Loss:<br/>-log σ(chosen<br/>- rejected)"]
+  LOSS -->|"gradient"| POL
