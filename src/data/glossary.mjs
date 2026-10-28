@@ -3219,6 +3219,14 @@ export const GLOSSARY = [
     source: { title: 'lm-evaluation-harness (EleutherAI)', url: 'https://github.com/EleutherAI/lm-evaluation-harness' },
   },
   {
+    id: 'magpie',
+    term: 'Magpie',
+    match: ['Magpie'],
+    def: 'A way to generate instruction data: an aligned chat model is given only its template\'s user-turn prefix, so it writes a question, and is then asked to answer it.',
+    article: 'sft-from-scratch',
+    source: { title: 'Magpie (Xu et al., 2024)', url: 'https://arxiv.org/abs/2406.08464' },
+  },
+  {
     id: 'ai-agent',
     term: 'AI agent',
     match: ['AI agent', 'AI agents'],

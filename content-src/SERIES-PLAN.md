@@ -139,7 +139,7 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 | 7 | The pretraining run | `pretraining-run` | The multi-hour run; reading loss curves, spikes, held-out loss, samples over time | t05 | Published |
 | 8 | Scaling laws on a laptop | `scaling-laws-experiment` | Five model sizes, a fitted power law, comparison with Chinchilla | m15 | Published |
 | 9 | Evaluating a base model | `evaluate-base-model` | Perplexity, bits per byte, few-shot multiple choice | m06 | Published |
-| 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 |  |
+| 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 | Published |
 | 11 | Preference tuning with DPO | `dpo-from-scratch` | Preference pairs, the DPO loss, before/after behaviour | m16 |  |
 | 12 | RL with verifiable rewards (GRPO) | `grpo-from-scratch` | GRPO on arithmetic or format tasks; reward curves | m16, f14 |  |
 | 13 | Synthetic data and distillation | `distillation-synthetic-data` | Teacher-generated data (Haiku via batch, out of the Evals budget, or an open model); logit vs sequence distillation | t10 |  |

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" width="780" height="420" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="420" fill="#ffffff"/>
+<line x1="170.0" x2="170.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="170.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">20%</text>
+<line x1="286.0" x2="286.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="286.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">30%</text>
+<line x1="402.0" x2="402.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="402.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">40%</text>
+<line x1="518.0" x2="518.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="518.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">50%</text>
+<line x1="634.0" x2="634.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="634.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">60%</text>
+<line x1="750.0" x2="750.0" y1="70" y2="358" stroke="#dde5f2" stroke-width="1"/>
+<text x="750.0" y="378" fill="#4a5b78" font-size="13" text-anchor="middle">70%</text>
+<text x="460.0" y="406" fill="#0b1a33" font-size="14" text-anchor="middle">Zero-shot accuracy, with 95% intervals (dashed tick: chance)</text>
+<circle cx="176" cy="26" r="6" fill="#4a5b78"/><text x="188" y="31" fill="#0b1a33" font-size="13">Base model (Part 7)</text>
+<circle cx="376" cy="26" r="6" fill="#0b5fd6"/><text x="388" y="31" fill="#0b1a33" font-size="13">SFT, loss on assistant tokens</text>
+<circle cx="576" cy="26" r="6" fill="#eb6834"/><text x="588" y="31" fill="#0b1a33" font-size="13">SFT, loss on every token</text>
+<text x="158" y="122.0" fill="#0b1a33" font-size="14" text-anchor="end">HellaSwag acc_norm</text>
+<line x1="228.0" x2="228.0" y1="88.0" y2="148.0" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="252.4" x2="273.2" y1="100.0" y2="100.0" stroke="#4a5b78" stroke-width="2.5" opacity="0.6"/>
+<circle cx="262.8" cy="100.0" r="6" fill="#4a5b78" stroke="#ffffff" stroke-width="1.5"/>
+<text x="281.2" y="104.0" fill="#4a5b78" font-size="12">28.0</text>
+<line x1="252.4" x2="273.2" y1="118.0" y2="118.0" stroke="#0b5fd6" stroke-width="2.5" opacity="0.6"/>
+<circle cx="262.8" cy="118.0" r="6" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="281.2" y="122.0" fill="#4a5b78" font-size="12">28.0</text>
+<line x1="254.7" x2="275.6" y1="136.0" y2="136.0" stroke="#eb6834" stroke-width="2.5" opacity="0.6"/>
+<circle cx="265.1" cy="136.0" r="6" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<text x="283.6" y="140.0" fill="#4a5b78" font-size="12">28.2</text>
+<text x="158" y="218.0" fill="#0b1a33" font-size="14" text-anchor="end">ARC-Easy acc</text>
+<line x1="228.0" x2="228.0" y1="184.0" y2="244.0" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="470.4" x2="516.8" y1="196.0" y2="196.0" stroke="#4a5b78" stroke-width="2.5" opacity="0.6"/>
+<circle cx="493.6" cy="196.0" r="6" fill="#4a5b78" stroke="#ffffff" stroke-width="1.5"/>
+<text x="524.8" y="200.0" fill="#4a5b78" font-size="12">47.9</text>
+<line x1="426.4" x2="472.8" y1="214.0" y2="214.0" stroke="#0b5fd6" stroke-width="2.5" opacity="0.6"/>
+<circle cx="449.6" cy="214.0" r="6" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="480.8" y="218.0" fill="#4a5b78" font-size="12">44.1</text>
+<line x1="370.7" x2="417.1" y1="232.0" y2="232.0" stroke="#eb6834" stroke-width="2.5" opacity="0.6"/>
+<circle cx="393.9" cy="232.0" r="6" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<text x="425.1" y="236.0" fill="#4a5b78" font-size="12">39.3</text>
+<text x="158" y="314.0" fill="#0b1a33" font-size="14" text-anchor="end">PIQA acc</text>
+<line x1="518.0" x2="518.0" y1="280.0" y2="340.0" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line x1="610.8" x2="661.8" y1="292.0" y2="292.0" stroke="#4a5b78" stroke-width="2.5" opacity="0.6"/>
+<circle cx="636.3" cy="292.0" r="6" fill="#4a5b78" stroke="#ffffff" stroke-width="1.5"/>
+<text x="669.8" y="296.0" fill="#4a5b78" font-size="12">60.2</text>
+<line x1="591.1" x2="644.4" y1="310.0" y2="310.0" stroke="#0b5fd6" stroke-width="2.5" opacity="0.6"/>
+<circle cx="617.8" cy="310.0" r="6" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="652.4" y="314.0" fill="#4a5b78" font-size="12">58.6</text>
+<line x1="587.6" x2="641.0" y1="328.0" y2="328.0" stroke="#eb6834" stroke-width="2.5" opacity="0.6"/>
+<circle cx="614.3" cy="328.0" r="6" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<text x="649.0" y="332.0" fill="#4a5b78" font-size="12">58.3</text>
+</svg>
