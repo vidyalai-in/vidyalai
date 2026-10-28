@@ -1,0 +1,12 @@
+{
+ "sft88": {
+  "ended": 0.4,
+  "len_ended_median": 145.0,
+  "rep4_mean": 0.13970067672772501
+ },
+ "sft88-all": {
+  "ended": 0.6,
+  "len_ended_median": 166.5,
+  "rep4_mean": 0.1149922570564398
+ }
+}

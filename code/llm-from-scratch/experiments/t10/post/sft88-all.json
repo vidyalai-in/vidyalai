@@ -1,0 +1,204 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t10/runs/sft88-all/model_final.pt",
+ "tag": "sft88-all",
+ "val": {
+  "all": 1.9618412860127876,
+  "content": 1.9665128696579302,
+  "end": 0.6957440835415808,
+  "targets": 1018449
+ },
+ "emb": {
+  "special_norms": [
+   0.9343509078025818,
+   1.3172799348831177,
+   1.3195950984954834,
+   1.3062245845794678,
+   1.2948548793792725,
+   1.2527421712875366,
+   1.231306552886963,
+   1.2362390756607056
+  ],
+  "median_norm": 0.9993992447853088,
+  "special_pairwise_cos_mean": 0.628472089767456,
+  "chat_pairwise_cos": [
+   [
+    0.9999999403953552,
+    0.88873291015625,
+    0.8818281888961792,
+    0.8645970225334167
+   ],
+   [
+    0.88873291015625,
+    1.0,
+    0.8764172792434692,
+    0.8572320342063904
+   ],
+   [
+    0.8818281888961792,
+    0.8764172792434692,
+    1.0000001192092896,
+    0.8564642071723938
+   ],
+   [
+    0.8645970225334167,
+    0.8572320342063904,
+    0.8564642071723938,
+    1.0
+   ]
+  ]
+ },
+ "fixed": {
+  "capital": {
+   "greedy": [
+    "The capital of France is Paris.",
+    true,
+    8
+   ],
+   "sampled": [
+    "The capital of France is Paris. \n\nThe capital, Paris, is the capital of France.",
+    true,
+    21
+   ]
+  },
+  "sky": {
+   "greedy": [
+    "The sky blue is a beautiful and vibrant color, with a rich blue hue that reflects the vibrant colors of the sky. The sky is a beautiful and vibrant color, with a rich blue hue that reflects the vibrant colors of the sky. The sky is a beautiful and vibrant color, with a rich blue hue that reflects the vibrant colors of the sky.\n\nThe sky blue is also a beautiful and vibrant color, with a rich blue hue that reflects the vibrant colors of the sky. The vibrant colors of the sky are a mix of vibrant colors that reflect the vibrant colors of the sky. The vibrant colors of the sky are a mix of vibrant colors that reflect the vibrant colors of the sky.\n\nThe sky blue is also a beautiful and vibrant color, with a rich blue hue that reflects the vibrant colors of the sky. The vibrant colors of the sky are a mix of vibrant colors that reflect the vibrant colors of the sky. The vibrant colors of the sky are a mix of vibrant colors that reflect the",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a type of blue, typically referred to as a blue ocean blue, which is blue and pink. The blue ocean blue color of the sky is blue, and the blue-green color of the sky is blue. \n\nTo confirm this, the blue ocean blue color is blue, with blue-green and pink, while pink and blue orange have yellow-green color. If blue-green in color is blue, and red-green in color is blue, then the blue-green color blue is blue.\n\nRed and blue blue appear in various colors and sizes, but they are not the same in any particular way. The blue-green color blue color is lighter and more blue than blue, but it has a more pronounced blue-green color.",
+    true,
+    149
+   ]
+  },
+  "sleep": {
+   "greedy": [
+    "Sleeping better is a great idea, but it's not the most important thing. One of the most important things to consider is the quality of sleep. Sleeping can be a challenge, but it's not just about getting enough sleep. It's also a good idea to get enough sleep. \n\nOne of the most important things to consider is the quality of sleep. Sleeping can be a challenge, but it's not just about getting enough sleep. It's also a good idea to get enough sleep. If you're getting enough sleep, you can get enough sleep. \n\nAnother important aspect is the quality of sleep. Sleeping can be a challenge, but it's not just about getting enough sleep. It's also a good idea to get enough sleep. If you're getting enough sleep, you can get enough sleep. \n\nAnother important aspect is the quality of sleep. Sleeping can be a challenge, but it's not just about getting enough sleep. It's also a",
+    false,
+    200
+   ],
+   "sampled": [
+    "First, it's important to maintain a healthy sleep schedule, not to overcast or overcast your sleep. This can significantly impact your quality of life and overall well-being. Stay hydrated and rest at home to help protect your health and overall well-being.\n\nConsider using a sleep diary to keep track of your sleep, including your sleep pattern, wakefulness, and sleep quality. If you wake up early, the sleep cycle may be an issue. Some people may struggle to manage sleep disorders while others may not. Some people may need to deal with sleep-related issues during their winter months, such as insomnia, nightma, or a sleep-related condition. \n\nSleep quality is crucial for overall health, and regular sleep quality is essential. Avoid being sleepy and avoid using your bedtimes or bedtimes as they can make it harder to fall asleep. If you do decide to sleep, be mindful of your sleep timing, as it can impact your quality of life. \n\nConsider spending",
+    false,
+    200
+   ]
+  },
+  "poem": {
+   "greedy": [
+    "The ocean is a vast, vast, and unforgiving ocean that stretches out in the distance. The ocean is a vast, vast, and vast, with a vast, vast expanse of water that stretches out in the distance. The ocean is a vast, vast expanse of water that stretches out in the distance, and its surface is a vast, almost imperceptible, ocean that stretches out in the distance.\n\nThe ocean is a vast, almost imperceptible, ocean that stretches out in the distance. The ocean is a vast, almost imperceptible, ocean that stretches out in the distance, and its surface is a vast, almost imperceptible, ocean that stretches out in the distance. The ocean is a vast, almost imperceptible, ocean that stretches out in the distance, and its surface is a vast, almost imperceptible, ocean that stretches out in the distance.\n\nThe ocean is a vast, almost imperceptible, ocean that stretches out",
+    false,
+    200
+   ],
+   "sampled": [
+    "The ocean is my home. I can't believe it, but it's where I can feel the warmth of the ocean. I can feel the ocean's heat, the warmth I can receive, and the ocean's tranquility. I can feel the warmth of the sun on the ocean's shore, the warmth of the water, and the gentle sound of the ocean's waves.\n\nAs I gaze out for the ocean, I can feel the gentle whispers of the ocean. I can feel the wind in the water, the waves lapping against my back, and the ocean's gentle sounds like the gentle movement of the ocean's waves. I can feel the waves and the gentle sound of the ocean's waves, the gentle sound of the ocean's waves.\n\nMy poem about the ocean feels almost mystical and evocative, as if the ocean's gentle waves are part of the ocean's tranquility. I can feel the ocean's gentle vibrance, the gentle sound of the waves,",
+    false,
+    200
+   ]
+  },
+  "formal": {
+   "greedy": [
+    "I'm glad you're interested in hearing your report. I'm glad you're interested in hearing your report by tmrw.",
+    true,
+    28
+   ],
+   "sampled": [
+    "The sentence is clear: it is a fact that some people ask about the report by tmrw. This is because the subject of the report is tmrw, and that is a common misunderstanding.",
+    true,
+    44
+   ]
+  },
+  "photosynthesis": {
+   "greedy": [
+    "Photosynthesis is a vital process in plants, and it plays a crucial role in the process of photosynthesis. It is a process that occurs in the chloroplasts of plants, where the light energy from the sun is converted into glucose and oxygen. This process is essential for the growth and development of plants, as it helps to regulate the amount of sunlight available for photosynthesis.\n\nPhotosynthesis is a key process in plants, as it is the process by which plants convert light energy into chemical energy. This energy is then used to convert carbon dioxide, water, and other gases into glucose and oxygen. The process is known as photosynthesis, and it is a key process in plants, as it helps to regulate the amount of sunlight available for photosynthesis.\n\nPhotosynthesis is a vital process in plants, as it helps to regulate the amount of sunlight available for photosynthesis. It is a vital process in plants, as it helps to regulate the amount of sunlight available for photosynthesis. The process is also essential for the growth",
+    false,
+    200
+   ],
+   "sampled": [
+    " photosynthesis is a crucial aspect of photosynthesis and the process by which plants convert carbon dioxide from the air into glucose and oxygen. It occurs when the carbon dioxide from the atmosphere is absorbed into the atmosphere by plants through photosynthesis. The process by which plants convert carbon dioxide into glucose and oxygen, resulting in the production of glucose and oxygen. ATP and NADPH are essential molecules that store and absorb energy from the sun, which is essential for energy production and reproduction.",
+    true,
+    92
+   ]
+  },
+  "unknowable": {
+   "greedy": [
+    "In Pune, the weather was quite warm, with temperatures ranging from 20\u00b0C to 25\u00b0C. The weather was mild, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was 25\u00b0C, with temperatures ranging from 20\u00b0C to 25\u00b0C. The temperature was",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather in Pune today is a warm and humid, with a strong warm summer air to the north and a strong cold fall air to the south. The rainfall was extremely high and the soil was heavily damp. The soil was heavy with the temperature it could be. It was a good idea to take a closer look at the rain shower and see if it could be severe.\n\nThe humidity in Pune was relatively low, but the humidity in Pune was generally low. The trees were taller, more prone to bark damage than usual. The trees were usually bare and had a canopy that was slightly raised to allow air that flowed out of the roof.\n\nThe weather is so bad that it gets worse with the rainy weather. The trees were on a high level, and the rain shower was a perfect spot for the trees to grow. The trees were heavily damp and had small trees that worked well in the rain.\n\nThe smell of freshly harvested fruits and seafood has also become a frequent phenomenon",
+    false,
+    200
+   ]
+  },
+  "name": {
+   "greedy": [
+    "My name is Jack, and I am a professional chef in the kitchen. I am a chef in the kitchen, and I have been serving dishes for over 10 years now. I have a passion for cooking, and I have a passion for cooking. My name is Jack, and I am a chef in the kitchen. I have been working as a chef for over 10 years, and I have been fortunate enough to have been a part of this community.",
+    true,
+    100
+   ],
+   "sampled": [
+    "My name is Jack Harris. I am Jack Harris, a skilled historian, and I'm a veteran who has been working tirelessly to establish my presence as a historian. I've worked as a historian, and I have been fortunate enough to have dedicated my life to contributing to the great American Civil War. My background, combined with my experience as a historian, have provided me with the necessary knowledge and skills to succeed in my own field.",
+    true,
+    89
+   ]
+  },
+  "math": {
+   "greedy": [
+    "To find 17 + 25, we can use the formula for the sum of the first n terms of a set of n terms. The formula for the sum of a set of n terms is given by:\n\nn = (17 + 25) / 1\n\nwhere n is the number of terms, n is the number of terms, and n is the number of terms.\n\nThe formula for the sum of a set of n terms is:\n\nn = (17 + 25) / 1\n\nwhere n is the number of terms, n is the number of terms, and n is the number of terms.\n\nThe formula for the sum of a set of n terms is:\n\nn = (17 + 25) / 1\n\nwhere n is the number of terms, n is the number of terms, and n is the number of terms.\n\nThe formula for the sum of a set of",
+    false,
+    200
+   ],
+   "sampled": [
+    "The ratio of the two terms in a geometric sequence is 1/16, where we have the given sequence: \n\n17 + 25 + 25 = 48.\n39 + 25 = 95.\n39 + 25 = 84.\n\nNow, we can find the sum of the terms: \n\n17 + 25 = 48/6.\n29 + 25 = 48/6.\n39 + 25 = 186\n39 + 25 = 240.\n\nSo, the ratio of the terms is 1/8, and the sum of the terms is 1/8.",
+    true,
+    154
+   ]
+  }
+ },
+ "multiturn": [
+  [
+   "To plan a successful trip to Japan, start by defining your destination and your interests. What are your thoughts on the most important aspects of your trip? Are you looking for a relaxing vacation, a relaxing vacation, or a more relaxed atmosphere? Consider the type of vacation you want to experience, such as a summer vacation, a summer vacation, or a more relaxed atmosphere.\n\nNext, research your travel options, including travel, accommodations, and accommodations. Research the local culture, customs, and customs to ensure you're comfortable and comfortable. Consider factors like your travel style, travel style, and travel style to ensure you're comfortable and enjoyable.\n\nNext, research your travel options, including travel dates, travel dates, and travel dates. Research the country's culture, customs, and customs to ensure you're comfortable and comfortable. Consider travel insurance, such as a visa, to cover travel insurance.\n\nIn terms of accommodations, consider the cost of living, including food, water, and accommodations. Research",
+   false,
+   200
+  ],
+  [
+   "To determine which of these options would be best for young kids, consider the following factors:\n\n1. **Travel**: You'll want to have a good understanding of the country's customs, customs, and customs. You'll want to know the customs, customs, and customs of each country, as well as the country's customs and customs.\n\n2. **Travel**: You'll want to have a good time, including a good time, a good breakfast, and a good breakfast. You'll also want to have a good time, including a good breakfast, a good breakfast, and a good breakfast.\n\n3. **Travel**: You'll want to have a good time, including a good breakfast, a good breakfast, and a good breakfast. You'll also want to have a good time, including a good breakfast, a good breakfast, and a good breakfast.\n\n4. **Travel**: You'll want to have a good time, including a",
+   false,
+   200
+  ]
+ ],
+ "gen": {
+  "n": 100,
+  "ended": 0.38,
+  "len_mean": 217.54,
+  "len_median": 256.0,
+  "len_ended_median": 165.5,
+  "rep4_mean": 0.5396598425636527
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.2711611232822147,
+   "acc_ci": 0.008695117197771867,
+   "acc_norm": 0.2819159529974109,
+   "acc_norm_ci": 0.00880021795109122
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.3926767676767677,
+   "acc_ci": 0.01963633371892494,
+   "acc_norm": 0.36658249158249157,
+   "acc_norm_ci": 0.019375982982217082
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.5826985854189336,
+   "acc_ci": 0.022543961192843482,
+   "acc_norm": 0.5685527747551686,
+   "acc_norm_ci": 0.022642926126826023
+  }
+ },
+ "seconds": 443.2
+}

@@ -1,0 +1,170 @@
+{
+ "base": {
+  "smol-summarize-20k": {
+   "response": 2.900776382941934,
+   "prompt": 3.750870516717507,
+   "n_resp": 6034,
+   "n_prompt": 22059
+  },
+  "all": {
+   "response": 2.7587833841328657,
+   "prompt": 3.5579767929353183,
+   "n_resp": 1014705,
+   "n_prompt": 223988
+  },
+  "smol-magpie-ultra-short": {
+   "response": 2.759474769720255,
+   "prompt": 3.439924197688766,
+   "n_resp": 894994,
+   "n_prompt": 133800
+  },
+  "everyday-conversations": {
+   "response": 3.1243760897626514,
+   "prompt": 3.929935976585246,
+   "n_resp": 1445,
+   "n_prompt": 644
+  },
+  "smol-contraints": {
+   "response": 2.975404035442227,
+   "prompt": 3.7720272801846355,
+   "n_resp": 21297,
+   "n_prompt": 11217
+  },
+  "openhermes-50k": {
+   "response": 2.6328747329898547,
+   "prompt": 3.665255887063512,
+   "n_resp": 57230,
+   "n_prompt": 29395
+  },
+  "smollm-rewrite-30k": {
+   "response": 2.6973493810636726,
+   "prompt": 3.754132313719075,
+   "n_resp": 18107,
+   "n_prompt": 23694
+  },
+  "smol-summarize-5k": {
+   "response": 2.8706909633656355,
+   "prompt": 3.9750929186421056,
+   "n_resp": 15159,
+   "n_prompt": 2232
+  },
+  "explore-instruct-rewrite": {
+   "response": 2.7690508718642666,
+   "prompt": 3.7350279939967703,
+   "n_resp": 439,
+   "n_prompt": 947
+  }
+ },
+ "sft88": {
+  "smol-summarize-20k": {
+   "response": 2.0296541305026117,
+   "prompt": 3.4093292885167337,
+   "n_resp": 6034,
+   "n_prompt": 22059
+  },
+  "all": {
+   "response": 1.9606564449089512,
+   "prompt": 3.2072654139845067,
+   "n_resp": 1014705,
+   "n_prompt": 223988
+  },
+  "smol-magpie-ultra-short": {
+   "response": 1.9549299400262468,
+   "prompt": 3.0460233924706066,
+   "n_resp": 894994,
+   "n_prompt": 133800
+  },
+  "everyday-conversations": {
+   "response": 2.2297570779661817,
+   "prompt": 3.0276074024461073,
+   "n_resp": 1445,
+   "n_prompt": 644
+  },
+  "smol-contraints": {
+   "response": 2.135023532475967,
+   "prompt": 3.6131121042079335,
+   "n_resp": 21297,
+   "n_prompt": 11217
+  },
+  "openhermes-50k": {
+   "response": 1.9843217836483655,
+   "prompt": 3.682555761400545,
+   "n_resp": 57230,
+   "n_prompt": 29395
+  },
+  "smollm-rewrite-30k": {
+   "response": 1.4362653088792168,
+   "prompt": 3.1143323187185277,
+   "n_resp": 18107,
+   "n_prompt": 23694
+  },
+  "smol-summarize-5k": {
+   "response": 2.5301033500411183,
+   "prompt": 3.502901531889447,
+   "n_resp": 15159,
+   "n_prompt": 2232
+  },
+  "explore-instruct-rewrite": {
+   "response": 2.2227214257103434,
+   "prompt": 3.472429180850197,
+   "n_resp": 439,
+   "n_prompt": 947
+  }
+ },
+ "sft88-all": {
+  "smol-summarize-20k": {
+   "response": 2.054242595758587,
+   "prompt": 2.467232365778769,
+   "n_resp": 6034,
+   "n_prompt": 22059
+  },
+  "all": {
+   "response": 1.966533815566163,
+   "prompt": 2.437720491968866,
+   "n_resp": 1014705,
+   "n_prompt": 223988
+  },
+  "smol-magpie-ultra-short": {
+   "response": 1.961795186647061,
+   "prompt": 2.5263051296599066,
+   "n_resp": 894994,
+   "n_prompt": 133800
+  },
+  "everyday-conversations": {
+   "response": 2.2503351020153004,
+   "prompt": 2.562267244232367,
+   "n_resp": 1445,
+   "n_prompt": 644
+  },
+  "smol-contraints": {
+   "response": 2.13164647449914,
+   "prompt": 0.917452851814351,
+   "n_resp": 21297,
+   "n_prompt": 11217
+  },
+  "openhermes-50k": {
+   "response": 1.9808293165369881,
+   "prompt": 3.012954459698919,
+   "n_resp": 57230,
+   "n_prompt": 29395
+  },
+  "smollm-rewrite-30k": {
+   "response": 1.4324946633929503,
+   "prompt": 1.896352152125266,
+   "n_resp": 18107,
+   "n_prompt": 23694
+  },
+  "smol-summarize-5k": {
+   "response": 2.5297071445710944,
+   "prompt": 2.841081150971006,
+   "n_resp": 15159,
+   "n_prompt": 2232
+  },
+  "explore-instruct-rewrite": {
+   "response": 2.194058709372692,
+   "prompt": 1.8958884282499835,
+   "n_resp": 439,
+   "n_prompt": 947
+  }
+ }
+}

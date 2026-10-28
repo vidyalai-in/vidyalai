@@ -1,0 +1,112 @@
+{
+ "train": {
+  "conversations": 390735,
+  "tokens": 245558014,
+  "input_tokens": 245167279,
+  "targets": 198300904,
+  "prompt_tokens": 46866375,
+  "mean_len": 627.4515438852419,
+  "median_len": 716.0,
+  "p90_len": 932.0,
+  "share_targets": 0.8088391926069384,
+  "multi_turn": 0.6480709432223886,
+  "mean_assistant_turns": 1.8710327971643186,
+  "by_source": {
+   "smol-magpie-ultra-short": [
+    260599,
+    204182768,
+    175695690
+   ],
+   "openhermes-50k": [
+    45024,
+    16232813,
+    10254907
+   ],
+   "smol-contraints": [
+    34166,
+    7208491,
+    4484311
+   ],
+   "smollm-rewrite-30k": [
+    26642,
+    8860035,
+    3859432
+   ],
+   "smol-summarize-20k": [
+    16153,
+    5080604,
+    1061629
+   ],
+   "smol-summarize-5k": [
+    4740,
+    3291268,
+    2824457
+   ],
+   "explore-instruct-rewrite": [
+    3014,
+    244887,
+    77122
+   ],
+   "everyday-conversations": [
+    397,
+    66413,
+    43356
+   ]
+  }
+ },
+ "val": {
+  "conversations": 2000,
+  "tokens": 1256327,
+  "input_tokens": 1254327,
+  "targets": 1018449,
+  "prompt_tokens": 235878,
+  "mean_len": 627.1635,
+  "median_len": 721.0,
+  "p90_len": 925.0,
+  "share_targets": 0.8119485588686204,
+  "multi_turn": 0.6535,
+  "mean_assistant_turns": 1.872,
+  "by_source": {
+   "smol-magpie-ultra-short": [
+    1333,
+    1040798,
+    897995
+   ],
+   "openhermes-50k": [
+    231,
+    87695,
+    57461
+   ],
+   "smol-contraints": [
+    163,
+    33166,
+    21460
+   ],
+   "smollm-rewrite-30k": [
+    125,
+    42551,
+    18232
+   ],
+   "smol-summarize-20k": [
+    88,
+    28621,
+    6122
+   ],
+   "smol-summarize-5k": [
+    31,
+    17737,
+    15230
+   ],
+   "explore-instruct-rewrite": [
+    16,
+    1474,
+    455
+   ],
+   "everyday-conversations": [
+    13,
+    2285,
+    1494
+   ]
+  }
+ }
+}

@@ -1,0 +1,10 @@
+import pyarrow.parquet as pq, glob, collections, json
+files=sorted(glob.glob('fromscratch/data/smol-smoltalk/data/train-*.parquet'))
+t=pq.read_table(files[0]).to_pylist()
+print(len(t))
+src=collections.Counter(r['source'] for r in t); print(src.most_common())
+roles=collections.Counter(tuple(m['role'] for m in r['messages'][:3]) for r in t); print(roles.most_common(10))
+nturns=collections.Counter(len(r['messages']) for r in t); print(sorted(nturns.items())[:15])
+sysc=sum(1 for r in t if r['messages'][0]['role']=='system'); print('with system', sysc)
+import random; random.seed(0)
+for r in random.sample(t,4): print(json.dumps(r)[:1200]); print('---')

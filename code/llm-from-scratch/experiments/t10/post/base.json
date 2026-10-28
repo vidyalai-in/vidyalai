@@ -1,0 +1,204 @@
+{
+ "path": "/home/amit/.cache/vidyalai-scratch/t07/runs/main88/model_03360.pt",
+ "tag": "base",
+ "val": {
+  "all": 2.8184631690872592,
+  "content": 2.758733533352982,
+  "end": 19.006489073109424,
+  "targets": 1018449
+ },
+ "emb": {
+  "special_norms": [
+   0.9516909718513489,
+   1.297061562538147,
+   1.2909629344940186,
+   1.2945582866668701,
+   1.295541524887085,
+   1.2931474447250366,
+   1.28812575340271,
+   1.2883968353271484
+  ],
+  "median_norm": 0.9986706972122192,
+  "special_pairwise_cos_mean": 0.6531116962432861,
+  "chat_pairwise_cos": [
+   [
+    1.0,
+    0.8981615304946899,
+    0.8999838829040527,
+    0.8972254395484924
+   ],
+   [
+    0.8981615304946899,
+    1.0000001192092896,
+    0.9021981954574585,
+    0.893663227558136
+   ],
+   [
+    0.8999838829040527,
+    0.9021981954574585,
+    0.9999999403953552,
+    0.8932226300239563
+   ],
+   [
+    0.8972254395484924,
+    0.893663227558136,
+    0.8932226300239563,
+    1.0000001192092896
+   ]
+  ]
+ },
+ "fixed": {
+  "capital": {
+   "greedy": [
+    "\nThe capital of France is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital of France. Its capital is the capital",
+    false,
+    200
+   ],
+   "sampled": [
+    "\nThis is the capital of France. According to the 18th century, the French Republic was conquered by the Gaulish Spanish.\nThe Spanish have been given the name of the state in the 3rd century.\nHierarchus, the son of Aeneas, was the first to create a government in France.\nThe city of Rouen lies on the border between France and Britain. The city of Rouen is an important historical feature of the French state.\nThe city was part of the Roman administrative unit of the province of Rouen. A Roman Catholic convent was built in the late 6th century.\nThe city was established in 2001.\nThe city was designated in 1773.A Brief History of the Catholic Church from 1900 to 2000\n1. A History of the Catholic Church from the 1920s\n2. A History of the Catholic Church from 1920",
+    false,
+    200
+   ]
+  },
+  "sky": {
+   "greedy": [
+    "the sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?The sky blue?",
+    false,
+    200
+   ],
+   "sampled": [
+    "\nThis is the sky blue. The moon is red, the moon is blue, the moon is blue, and the moon is red.\nThe moon's blue was blue. The moon has a blue sky blue. The moon does not appear yellow, it is green.\nThe moon's red has a blue sky blue, a red sky blue, and orange.\nThe moon's blue sky blue. The moon is blue blue. The moon's blue sky blue, it is red.\nThe moon's blue sky blue. The moon's blue sky blue, the moon's blue sky blue.\nThe moon's blue sky blue. The moon's blue blue sky blue, the moon's blue sky blue.\nThe moon's blue sky blue, the moon blue, the moon blue.\nThe moon's blue sky blue, the moon's blue blue, the moon red, the moon blue.\nThe moon is the red sky blue. The moon's blue sky blue.\nthe moon's blue sky blue. The moon's",
+    false,
+    200
+   ]
+  },
+  "sleep": {
+   "greedy": [
+    "\n- 1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1",
+    false,
+    200
+   ],
+   "sampled": [
+    "\nThis is the first of a bunch of free essays, and I will tell you the most interesting, and, as a result, the most interesting. This is the first of a series of essays, and the last of a series of essay ideas. It will focus on the most fundamental ideas of human nature, and the nature of man, that humans have the capacity to adapt, to adapt, and to control themselves and our way of life. But I will also say a great deal more about the concept of man, than about the nature of the human mind. The idea of the organism in the first part of that book begins with the concept of the man. The book will tell you how the idea of man evolved into the concept of man, and how it evolved into the concept of man, which is the scientific principle of man, which is the science of man's nature.\nThis will be a very important essay for the second half of this book. Although it is a very important piece",
+    false,
+    200
+   ]
+  },
+  "poem": {
+   "greedy": [
+    "\nThe ocean is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is a place of life. It is",
+    false,
+    200
+   ],
+   "sampled": [
+    "Write a short novel about it.STRUCTOR: I found this very well written, and this is the most famous part of my favorite essay. It's a novel about the ocean that I made up very much of with my own experience, and it's worth quoting from the book's main author's opinion.\nThis is the book you're teaching and it's about the ocean, I think I'm going to take it seriously.\nThe main author of this book is a professor. I've read it for years and have studied it for years, and now I've got to read it again for the first time. It's a wonderful book to read, and it's worth a read. I'm talking about ocean here and the book was very well written. I'm about to read it for some time now and really, it's worth a read. It's a good book to read.\nThe writer has a long sentence, I think it's a good essay for you. I'm going",
+    false,
+    200
+   ]
+  },
+  "formal": {
+   "greedy": [
+    "?give me the report by tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, tmrw?begin, t",
+    false,
+    200
+   ],
+   "sampled": [
+    "Rewrite this sentence to sound more formal: she, can u send I tm to tmrw? learn, jim hommar, u lwf. 123.86.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.166.16",
+    false,
+    200
+   ]
+  },
+  "photosynthesis": {
+   "greedy": [
+    "iterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterateiterate,iterateiterateiterateiterateiterateiterateiterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,iterateiterate,",
+    false,
+    200
+   ],
+   "sampled": [
+    "presentess a novel method of photosynthesis. Implicits a novel method of photosynthesis, which uses photosynthesis to produce carbon dioxide. Challenging a novel method of photosynthesis.\nDescribe the process that produces oxygen and plants. Argumentative and reductive ideas are the basis for the first paper by S. K. Hall, a professor of chemistry and computational and developmental biology at the University of California, Berkeley. Hall also outlines the topic of an article by Professor Michael D. Kawadzik, professor of biology and director of the Institute of Biochemistry and Biochemistry (IIM) at the University of California, Berkeley.\nDescribe the application of an experiment to studying plant photosynthesis. Explain how plant photosynthesis works. Explain the process. Explain the process of photosynthesis.\nExplain the method of photosynthesis. Identify the principles of photosynthesis. Explain the process of photosynthesis in detail.\nDescribe the method of photosynthesis in detail. Explain why photosynthesis is good for plants. Describe the process of photosynthesis and how it",
+    false,
+    200
+   ]
+  },
+  "unknowable": {
+   "greedy": [
+    "\nThe weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a combination of the weather like in Pune today. The weather like in Pune today is a",
+    false,
+    200
+   ],
+   "sampled": [
+    "\nThis season we celebrate the occasion when the sun came towards the south of the 25th lunar month, which is the second half of the lunar month.\nThe term \u201cfight\u201d, is used to designate the beginning of the new lunar year (Memphis) by the Sun.\nThe term \u201cflight\u201d has been used to refer to the beginning of the New Solar System, in which the solar system is visible from an observer in the sky.\nFlight is not limited to the lunar cycle since the Sun\u2019s closest approach to the Sun is in the 25th lunar month.\nThe Solar System is sometimes called the \u201cflight\u201d of the solar system.\nAs of 2013, the Solar System was the only planet that could be seen from afar.\nIf you have any questions, please feel free to contact us on 93100 79200.\nWe will be available on Tuesday, 6th April and Tuesday:",
+    false,
+    200
+   ]
+  },
+  "name": {
+   "greedy": [
+    "perperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperperman, the first time you have a child, and the child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born. The child is the first to be born.",
+    false,
+    200
+   ],
+   "sampled": [
+    "presentation\nWe take it for granted that I am, at present, I am, to suggest, to be the subject of, the essay of the famous poets. In his early 20th century poetry, he does not think of myself as the subject of such a thing as the poem of Ephraim, but as an essay of her own. Her name, I think, is, as of yet, I am the subject of his own conception of Ephraim, and as of his own personal identity.\nIf my name is not my own, I am not the subject of any other poem that I have already spoken. For example:\nI am the subject of Ephraim, and the subject of Ephraim. He is not alone: in my opinion, the subject of Ephraim, and the subject of Ephraim, and the subject of Ephraim, and of Ephraim, are all the subject of",
+    false,
+    200
+   ]
+  },
+  "math": {
+   "greedy": [
+    "percece? 17 + 25?\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6\u00b6",
+    false,
+    200
+   ],
+   "sampled": [
+    "presentation\nWe take it. The fact that we, as a group, all have to do is our to know what is actually happening within the group, and our to know what has happened is our to know what is actually happening. The fact that the group can be determined by one of the following: 1) the group may also have to do something about it, 2) in fact, the group may have to do something about it, and 3) in this way, we may get along with the group.\nIf we all agree with this definition, we will not get out of the way of that this is already occurring. The fact that we have to do something about it, is that we have to do something about it, and we may not get back to it at all. If we had made it, we wouldn\u2019t have got along with it.\nFor example, if we all agree with this definition, we would have to do something about it and we would",
+    false,
+    200
+   ]
+  }
+ },
+ "multiturn": [
+  [
+   "I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring.",
+   false,
+   200
+  ],
+  [
+   "My kids are planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring. I'm planning a trip to Japan in spring",
+   false,
+   200
+  ]
+ ],
+ "gen": {
+  "n": 100,
+  "ended": 0.0,
+  "len_mean": 256,
+  "len_median": 256.0,
+  "len_ended_median": 0,
+  "rep4_mean": 0.8882608695652174
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.2729535949014141,
+   "acc_ci": 0.00871307470787269,
+   "acc_norm": 0.2795259908384784,
+   "acc_norm_ci": 0.00877740666043726
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.47853535353535354,
+   "acc_ci": 0.02008640903987678,
+   "acc_norm": 0.4297138047138047,
+   "acc_norm_ci": 0.019905309540836212
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.6022850924918389,
+   "acc_ci": 0.02237537433507793,
+   "acc_norm": 0.5854189336235038,
+   "acc_norm_ci": 0.02252275082348466
+  }
+ },
+ "seconds": 503.8
+}
