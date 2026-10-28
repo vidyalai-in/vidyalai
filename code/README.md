@@ -12,8 +12,9 @@ The code the articles run, kept here so it isn't lost. The site build ignores th
 | `train.py` | 5 | The training loop (`--compile --fused` for speed, see Part 6; `--snapshot-at` added in Part 7) |
 | `snapshots.py` | 7 | Load saved weights, full validation loss, text completion from a snapshot |
 | `sizes.py` | 8 | The scaling sweep's model sizes and total/non-embedding parameter counts |
+| `evals.py` | 9 | Bits per byte over text, log-likelihood multiple-choice scoring (HellaSwag, ARC, PIQA), few-shot prompts, wrappers for our models and Hugging Face models |
 
-`experiments/t01` to `t08` hold each part's benchmark, ablation and chart-data scripts and small result files.
+`experiments/t01` to `t09` hold each part's benchmark, ablation and chart-data scripts and small result files.
 
 Not included (rebuildable or too large): the token shards in `data/` (about 2.5B tokens; rebuild with `data.py`), checkpoints, run logs, and downloaded papers and third-party source.
 
