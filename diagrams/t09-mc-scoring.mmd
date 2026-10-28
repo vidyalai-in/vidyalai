@@ -1,0 +1,12 @@
+flowchart TD
+  Q["Prompt<br/>Question: Which of these will<br/>most likely harm a habitat?<br/>Answer:"]
+  Q --> A["+ planting trees<br/>−16.27 nats"]
+  Q --> B["+ water pollution<br/>−14.01 nats"]
+  Q --> C["+ rainfall<br/>−13.44 nats"]
+  Q --> D["+ sunlight<br/>−12.58 nats"]
+  A --> S["Score each option:<br/>sum of ln p over its tokens"]
+  B --> S
+  C --> S
+  D --> S
+  S --> R["acc: highest sum<br/>sunlight (wrong)"]
+  S --> N["acc_norm: highest sum<br/>per character<br/>water pollution, −0.93<br/>(right)"]
