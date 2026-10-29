@@ -1,0 +1,54 @@
+{
+ "warm_mixed": {
+  "test": {
+   "acc": 0.09,
+   "leading_zero": 0.0,
+   "acc_no_leading_zero": 0.09,
+   "padded": 0.006,
+   "cols_hist": {
+    "0": 441,
+    "2": 24,
+    "3": 35
+   },
+   "worked": 0.118
+  },
+  "4digit": {
+   "acc": 0.0,
+   "leading_zero": 0.0,
+   "acc_no_leading_zero": 0.0,
+   "padded": 0.0,
+   "cols_hist": {
+    "0": 121,
+    "1": 1,
+    "3": 78
+   },
+   "worked": 0.395
+  }
+ },
+ "grpo_mixed": {
+  "test": {
+   "acc": 0.374,
+   "leading_zero": 0.0,
+   "acc_no_leading_zero": 0.374,
+   "padded": 0.018,
+   "cols_hist": {
+    "0": 68,
+    "2": 135,
+    "3": 297
+   },
+   "worked": 0.864
+  },
+  "4digit": {
+   "acc": 0.0,
+   "leading_zero": 0.0,
+   "acc_no_leading_zero": 0.0,
+   "padded": 0.0,
+   "cols_hist": {
+    "0": 2,
+    "3": 188,
+    "4": 10
+   },
+   "worked": 0.99
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "n": 1600,
+ "audit": {
+  "wrong column sum": 395,
+  "direct": 25,
+  "faithful": 600,
+  "wrong number of columns": 511,
+  "misread digit": 55,
+  "answer differs from working": 10,
+  "wrong digit or carry out": 3,
+  "wrong carry in": 1
+ },
+ "audit_by_reward": {
+  "wrong column sum|0.0": 395,
+  "direct|0.0": 15,
+  "faithful|1.0": 600,
+  "wrong number of columns|1.0": 347,
+  "misread digit|0.0": 54,
+  "wrong number of columns|0.0": 164,
+  "answer differs from working|0.0": 10,
+  "misread digit|1.0": 1,
+  "direct|1.0": 10,
+  "wrong digit or carry out|1.0": 2,
+  "wrong carry in|1.0": 1,
+  "wrong digit or carry out|0.0": 1
+ }
+}

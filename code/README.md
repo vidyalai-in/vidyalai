@@ -16,8 +16,9 @@ The code the articles run, kept here so it isn't lost. The site build ignores th
 | `sft.py` | 10 | Chat template on the reserved tokens, smol-smoltalk preparation, length-sorted padding, masked loss normalized per step, SFT training and chat generation |
 | `dpo.py` | 11 | UltraFeedback pairs in the chat template, cached reference log-probs, sequence log-probs over reply tokens, the DPO loss and training loop, held-out pair evaluation |
 | `sampling.py` | 11 | Batched sampling with a KV cache (greedy, temperature, top-k), stopping at `<\|end\|>` |
+| `grpo.py` | 12 | The addition task and its checkers, the warm-start (optionally mixed with chat data), group advantages (GRPO and Dr. GRPO), the clipped GRPO loss with a k3 KL penalty, the training loop, pass@k |
 
-`experiments/t01` to `t11` hold each part's benchmark, ablation and chart-data scripts and small result files.
+`experiments/t01` to `t12` hold each part's benchmark, ablation and chart-data scripts and small result files.
 
 Not included (rebuildable or too large): the token shards in `data/` (about 2.5B tokens; rebuild with `data.py`), checkpoints, run logs, and downloaded papers and third-party source.
 
