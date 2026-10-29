@@ -1,0 +1,77 @@
+{
+ "spearman_dla_vs_mean_ablation": [
+  0.16217976552323057,
+  0.031477963525835866,
+  0.26358554059921835
+ ],
+ "spearman_dla_vs_zero_ablation": [
+  0.06328701693443335,
+  -0.07437038645245332,
+  0.15407620495006494
+ ],
+ "spearman_zero_vs_mean": [
+  0.758141554494138,
+  0.7300233391228831,
+  0.7862570560138948
+ ],
+ "top5_overlap": [
+  0.0,
+  0.0,
+  0.0
+ ],
+ "direct_share_of_abs_mean_effect": [
+  0.20717374980449677,
+  0.1899386141449213,
+  0.2255894236266613
+ ],
+ "rank_dla": [
+  "attn21",
+  "mlp21",
+  "attn20",
+  "mlp20",
+  "attn17",
+  "mlp18"
+ ],
+ "rank_mean_ablation": [
+  "mlp0",
+  "mlp2",
+  "mlp1",
+  "attn2",
+  "mlp3",
+  "attn0"
+ ],
+ "rank_zero_ablation": [
+  "mlp0",
+  "attn0",
+  "attn1",
+  "mlp3",
+  "mlp2",
+  "mlp1"
+ ],
+ "per_prompt": {
+  "mlp0": {
+   "frac_mean_ablation_hurts": 0.9821428571428571,
+   "frac_dla_positive": 0.47023809523809523
+  },
+  "attn0": {
+   "frac_mean_ablation_hurts": 0.875,
+   "frac_dla_positive": 0.5595238095238095
+  },
+  "mlp9": {
+   "frac_mean_ablation_hurts": 0.6011904761904762,
+   "frac_dla_positive": 0.5595238095238095
+  },
+  "mlp10": {
+   "frac_mean_ablation_hurts": 0.5535714285714286,
+   "frac_dla_positive": 0.5595238095238095
+  },
+  "mlp11": {
+   "frac_mean_ablation_hurts": 0.6488095238095238,
+   "frac_dla_positive": 0.5059523809523809
+  },
+  "attn9": {
+   "frac_mean_ablation_hurts": 0.4226190476190476,
+   "frac_dla_positive": 0.49404761904761907
+  }
+ }
+}

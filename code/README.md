@@ -25,6 +25,17 @@ The code the articles run, kept here so it isn't lost. The site build ignores th
 
 Not included (rebuildable or too large): the token shards in `data/` (about 2.5B tokens; rebuild with `data.py`), checkpoints, run logs, and downloaded papers and third-party source.
 
+## llm-interpretability/ (Inside the Model: Interpretability)
+
+| File | Part | What it is |
+|---|---|---|
+| `hooks.py` | 1 | Model loading with stated precision and weight processing, batched run-with-cache, direct logit attribution (LayerNorm or RMSNorm, folded or not), zero and mean ablation hooks, bootstrap CIs |
+| `lens.py` | 2 | Residual-stream points, the logit lens, a tuned lens (Muon, SGD or Adam training), KL and top-1 evaluation |
+| `probes.py` | 3 | Activations saved to disk, linear and MLP probes with held-out evaluation, control-task labels, mass-mean directions, bootstrap and paired-bootstrap CIs |
+| `heads.py` | 4 | Per-head previous-token, duplicate-token and induction scores, mean and zero head ablation, K-composition scores with a random baseline, key-path ablation |
+
+`experiments/p01` to `p04` hold each part's scripts and small result files. They run on the TransformerLens 3.9.0 / SAELens environment described in the articles. Not included: saved activations (Part 3 saved 5.9 GB; `collect.py` rebuilds them), tuned-lens weights, downloaded datasets (UD English EWT, GeoNames, FineWeb-Edu and WikiText samples; the `prep_*.py` scripts rebuild them) and Part 3's generated city statements (`prep_truth.py` rebuilds them from GeoNames, CC BY 4.0).
+
 ## agents-lab/ (Agentic AI)
 
 | File | Part | What it is |

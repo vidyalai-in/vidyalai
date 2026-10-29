@@ -1,0 +1,14 @@
+Loaded pretrained model gpt2 into HookedTransformer
+0 ' destro' 0.879
+1 ' same' 0.766
+2 ' same' 0.87
+3 ' same' 0.917
+4 ' same' 0.917
+5 ' same' 0.852
+6 ' same' 0.883
+7 ' same' 0.726
+8 ' same' 0.471
+9 ' planet' 0.536
+10 ' moon' 0.653
+11 ' moon' 0.936
+12 ' moon' 0.704
