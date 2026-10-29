@@ -18,8 +18,9 @@ The code the articles run, kept here so it isn't lost. The site build ignores th
 | `sampling.py` | 11 | Batched sampling with a KV cache (greedy, temperature, top-k), stopping at `<\|end\|>` |
 | `grpo.py` | 12 | The addition task and its checkers, the warm-start (optionally mixed with chat data), group advantages (GRPO and Dr. GRPO), the clipped GRPO loss with a k3 KL penalty, the training loop, pass@k |
 | `distill.py` | 13 | The KD loss (temperature and hard-label mix), top-k teacher mass and storage math, a KD training entry point on `train.py`'s flags, batched teacher generation with folded grouped-query attention, SFT on teacher-written data |
+| `memory.py` | 14 | Training-memory accounting (state, activations eager and compiled, Korthikanti's formula, ZeRO stages), block checkpointing (all, every k, selective), a chunked loss, LoRA layers, a CPU-offloaded AdamW |
 
-`experiments/t01` to `t13` hold each part's benchmark, ablation and chart-data scripts and small result files.
+`experiments/t01` to `t14` hold each part's benchmark, ablation and chart-data scripts and small result files.
 
 Not included (rebuildable or too large): the token shards in `data/` (about 2.5B tokens; rebuild with `data.py`), checkpoints, run logs, and downloaded papers and third-party source.
 

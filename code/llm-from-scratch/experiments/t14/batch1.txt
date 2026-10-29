@@ -1,0 +1,26 @@
+mb_none_17 6G --mb 17 --accum 2
+mb_none_18 6G --mb 18 --accum 2
+mb_none_20 6G --mb 20 --accum 2
+mb_all_48 6G --mb 48 --accum 2 --ckpt all
+mb_all_56 6G --mb 56 --accum 2 --ckpt all
+mb_all_64 6G --mb 64 --accum 2 --ckpt all
+mb_e2_24 6G --mb 24 --accum 2 --ckpt every2
+mb_e2_28 6G --mb 28 --accum 2 --ckpt every2
+mb_e2_32 6G --mb 32 --accum 2 --ckpt every2
+mb_sel_24 6G --mb 24 --accum 2 --ckpt selective
+mb_sel_28 6G --mb 28 --accum 2 --ckpt selective
+mb_sel_32 6G --mb 32 --accum 2 --ckpt selective
+cmp_base 6G --mb 16 --accum 4 --steps 6
+cmp_all 6G --mb 16 --accum 4 --steps 6 --ckpt all
+cmp_e2 6G --mb 16 --accum 4 --steps 6 --ckpt every2
+cmp_sel 6G --mb 16 --accum 4 --steps 6 --ckpt selective
+cmp_all_exp 6G --mb 16 --accum 4 --steps 6 --ckpt all --expandable
+cmp_base_exp 6G --mb 16 --accum 4 --steps 6 --expandable
+cmp_8bit 6G --mb 16 --accum 4 --steps 6 --opt adamw8bit
+cmp_bf16 6G --mb 16 --accum 4 --steps 6 --opt bf16pure
+cmp_cpu 8G --mb 16 --accum 4 --steps 6 --opt cpu
+cmp_cpubf 8G --mb 16 --accum 4 --steps 6 --opt cpu --gpu-bf16
+cmp_lora 6G --mb 16 --accum 4 --steps 6 --lora 8
+cmp_lorabf 6G --mb 16 --accum 4 --steps 6 --lora 8 --lora-bf16
+cmp_accum1 6G --mb 16 --accum 1 --steps 6
+cmp_accum32 6G --mb 16 --accum 32 --steps 2

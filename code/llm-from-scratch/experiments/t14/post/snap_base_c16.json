@@ -1,0 +1,447 @@
+{
+ "tag": "base_c16",
+ "weights": 352648192,
+ "adamw_and_other_state": 721858560,
+ "peak_replayed": 7232923904,
+ "peak_counter": 7248533504,
+ "reserved_peak": 7417626624,
+ "before 2nd backward": {
+  "total": 7182723324,
+  "categories": {
+   "backward temporaries": 4,
+   "gradients": 352386048,
+   "inputs": 262144,
+   "saved activations (blocks)": 4429971700,
+   "BF16 weight copies": 176160768,
+   "output layer and loss": 1149435908
+  },
+  "detail": [
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16384,2048",
+    1342177280
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "bfloat16",
+    "16384,32768",
+    1073741824
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16,1024,2048",
+    671088640
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "float32",
+    "16,1024,768",
+    503316480
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "float32",
+    "16,1024,768",
+    452984832
+   ],
+   [
+    "saved activations (blocks)",
+    "attention",
+    "",
+    "",
+    259522800
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "bfloat16",
+    "16,1024,768",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "bfloat16",
+    "16,12,1024,64",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "bfloat16",
+    "16,1024,12,64",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16,1024,768",
+    251658240
+   ],
+   [
+    "gradients",
+    "swiglu",
+    "float32",
+    "2048,768",
+    125829120
+   ],
+   [
+    "gradients",
+    "embedding",
+    "float32",
+    "32768,768",
+    100663296
+   ],
+   [
+    "saved activations (blocks)",
+    "wv",
+    "bfloat16",
+    "16384,256",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "bfloat16",
+    "16,4,1024,64",
+    83886080
+   ],
+   [
+    "gradients",
+    "swiglu",
+    "float32",
+    "768,2048",
+    62914560
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "bfloat16",
+    "768,2048",
+    62914560
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "float32",
+    "16,1024,768",
+    50331648
+   ],
+   [
+    "BF16 weight copies",
+    "final norm + logits",
+    "bfloat16",
+    "768,32768",
+    50331648
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "bfloat16",
+    "2048,768",
+    31457280
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "bfloat16",
+    "16384,768",
+    25165824
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "bfloat16",
+    "16,1024,768",
+    25165824
+   ],
+   [
+    "gradients",
+    "wo",
+    "float32",
+    "768,768",
+    23592960
+   ],
+   [
+    "gradients",
+    "wq",
+    "float32",
+    "768,768",
+    23592960
+   ],
+   [
+    "BF16 weight copies",
+    "wq",
+    "bfloat16",
+    "768,768",
+    11796480
+   ],
+   [
+    "BF16 weight copies",
+    "wo",
+    "bfloat16",
+    "768,768",
+    11796480
+   ],
+   [
+    "gradients",
+    "norm",
+    "float32",
+    "196608,",
+    7864320
+   ],
+   [
+    "gradients",
+    "wk",
+    "float32",
+    "256,768",
+    7864320
+   ],
+   [
+    "BF16 weight copies",
+    "wk",
+    "bfloat16",
+    "768,256",
+    3932160
+   ],
+   [
+    "BF16 weight copies",
+    "wv",
+    "bfloat16",
+    "768,256",
+    3932160
+   ]
+  ]
+ },
+ "peak": {
+  "total": 7232923904,
+  "categories": {
+   "backward temporaries": 50331660,
+   "gradients": 352386048,
+   "inputs": 262144,
+   "saved activations (blocks)": 4429971700,
+   "BF16 weight copies": 176160768,
+   "output layer and loss": 1149304832
+  },
+  "detail": [
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16384,2048",
+    1342177280
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "bfloat16",
+    "16384,32768",
+    1073741824
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16,1024,2048",
+    671088640
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "float32",
+    "16,1024,768",
+    503316480
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "float32",
+    "16,1024,768",
+    452984832
+   ],
+   [
+    "saved activations (blocks)",
+    "attention",
+    "",
+    "",
+    259522800
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "bfloat16",
+    "16,1024,768",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "bfloat16",
+    "16,12,1024,64",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "bfloat16",
+    "16,1024,12,64",
+    251658240
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "bfloat16",
+    "16,1024,768",
+    251658240
+   ],
+   [
+    "gradients",
+    "swiglu",
+    "float32",
+    "2048,768",
+    125829120
+   ],
+   [
+    "gradients",
+    "embedding",
+    "float32",
+    "32768,768",
+    100663296
+   ],
+   [
+    "saved activations (blocks)",
+    "wv",
+    "bfloat16",
+    "16384,256",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "bfloat16",
+    "16,4,1024,64",
+    83886080
+   ],
+   [
+    "gradients",
+    "swiglu",
+    "float32",
+    "768,2048",
+    62914560
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "bfloat16",
+    "768,2048",
+    62914560
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "float32",
+    "16,1024,768",
+    50331648
+   ],
+   [
+    "BF16 weight copies",
+    "final norm + logits",
+    "bfloat16",
+    "768,32768",
+    50331648
+   ],
+   [
+    "backward temporaries",
+    "final norm + logits",
+    "bfloat16",
+    "32768,768",
+    50331648
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "bfloat16",
+    "2048,768",
+    31457280
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "bfloat16",
+    "16384,768",
+    25165824
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "bfloat16",
+    "16,1024,768",
+    25165824
+   ],
+   [
+    "gradients",
+    "wo",
+    "float32",
+    "768,768",
+    23592960
+   ],
+   [
+    "gradients",
+    "wq",
+    "float32",
+    "768,768",
+    23592960
+   ],
+   [
+    "BF16 weight copies",
+    "wq",
+    "bfloat16",
+    "768,768",
+    11796480
+   ],
+   [
+    "BF16 weight copies",
+    "wo",
+    "bfloat16",
+    "768,768",
+    11796480
+   ],
+   [
+    "gradients",
+    "norm",
+    "float32",
+    "196608,",
+    7864320
+   ],
+   [
+    "gradients",
+    "wk",
+    "float32",
+    "256,768",
+    7864320
+   ],
+   [
+    "BF16 weight copies",
+    "wk",
+    "bfloat16",
+    "768,256",
+    3932160
+   ],
+   [
+    "BF16 weight copies",
+    "wv",
+    "bfloat16",
+    "768,256",
+    3932160
+   ]
+  ]
+ }
+}

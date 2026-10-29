@@ -1,0 +1,307 @@
+{
+ "tag": "base_e4",
+ "weights": 352648192,
+ "adamw_and_other_state": 726839296,
+ "peak_replayed": 4972144892,
+ "peak_counter": 5006497280,
+ "reserved_peak": 5383389184,
+ "before 2nd backward": {
+  "total": 3898403068,
+  "categories": {
+   "backward temporaries": 4,
+   "gradients": 352386048,
+   "inputs": 65536,
+   "saved activations (blocks)": 1747140852,
+   "BF16 weight copies": 176160768,
+   "output layer and loss": 543162372
+  },
+  "detail": [
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "",
+    "",
+    796917760
+   ],
+   [
+    "output layer and loss",
+    "loss",
+    "",
+    "",
+    536870916
+   ],
+   [
+    "gradients",
+    null,
+    "",
+    "",
+    352386048
+   ],
+   [
+    "saved activations (blocks)",
+    "norm",
+    "",
+    "",
+    264585216
+   ],
+   [
+    "saved activations (blocks)",
+    "residual",
+    "",
+    "",
+    251658240
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "",
+    "",
+    94371840
+   ],
+   [
+    "saved activations (blocks)",
+    "wv",
+    "",
+    "",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "",
+    "",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "attention",
+    "",
+    "",
+    64880880
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "saved activations (blocks)",
+    "wk",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "BF16 weight copies",
+    "final norm + logits",
+    "",
+    "",
+    50331648
+   ],
+   [
+    "saved activations (blocks)",
+    "embedding",
+    "",
+    "",
+    12582912
+   ],
+   [
+    "BF16 weight copies",
+    "wq",
+    "",
+    "",
+    11796480
+   ],
+   [
+    "BF16 weight copies",
+    "wo",
+    "",
+    "",
+    11796480
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "",
+    "",
+    6291456
+   ],
+   [
+    "BF16 weight copies",
+    "wk",
+    "",
+    "",
+    3932160
+   ],
+   [
+    "BF16 weight copies",
+    "wv",
+    "",
+    "",
+    3932160
+   ]
+  ]
+ },
+ "peak": {
+  "total": 4972144892,
+  "categories": {
+   "backward temporaries": 1073741832,
+   "gradients": 352386048,
+   "inputs": 65536,
+   "saved activations (blocks)": 1747140852,
+   "BF16 weight copies": 176160768,
+   "output layer and loss": 543162368
+  },
+  "detail": [
+   [
+    "backward temporaries",
+    null,
+    "",
+    "",
+    1073741832
+   ],
+   [
+    "saved activations (blocks)",
+    "swiglu",
+    "",
+    "",
+    796917760
+   ],
+   [
+    "output layer and loss",
+    "loss",
+    "",
+    "",
+    536870912
+   ],
+   [
+    "gradients",
+    null,
+    "",
+    "",
+    352386048
+   ],
+   [
+    "saved activations (blocks)",
+    "norm",
+    "",
+    "",
+    264585216
+   ],
+   [
+    "saved activations (blocks)",
+    "residual",
+    "",
+    "",
+    251658240
+   ],
+   [
+    "BF16 weight copies",
+    "swiglu",
+    "",
+    "",
+    94371840
+   ],
+   [
+    "saved activations (blocks)",
+    "wv",
+    "",
+    "",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "model.py:73",
+    "",
+    "",
+    83886080
+   ],
+   [
+    "saved activations (blocks)",
+    "attention",
+    "",
+    "",
+    64880880
+   ],
+   [
+    "saved activations (blocks)",
+    "wq",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "saved activations (blocks)",
+    "wk",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "saved activations (blocks)",
+    "wo",
+    "",
+    "",
+    62914560
+   ],
+   [
+    "BF16 weight copies",
+    "final norm + logits",
+    "",
+    "",
+    50331648
+   ],
+   [
+    "saved activations (blocks)",
+    "embedding",
+    "",
+    "",
+    12582912
+   ],
+   [
+    "BF16 weight copies",
+    "wq",
+    "",
+    "",
+    11796480
+   ],
+   [
+    "BF16 weight copies",
+    "wo",
+    "",
+    "",
+    11796480
+   ],
+   [
+    "output layer and loss",
+    "final norm + logits",
+    "",
+    "",
+    6291456
+   ],
+   [
+    "BF16 weight copies",
+    "wk",
+    "",
+    "",
+    3932160
+   ],
+   [
+    "BF16 weight copies",
+    "wv",
+    "",
+    "",
+    3932160
+   ]
+  ]
+ }
+}

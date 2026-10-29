@@ -1,0 +1,1789 @@
+{
+ "b4_8b_all_1536x20": {
+  "params": 553711104,
+  "trainable": 553711104,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.699,
+  "tok_per_s": 3705,
+  "peak_reserved_gib": 7.219,
+  "sm_med": 1995.0,
+  "power_med": 48.82,
+  "limit": [
+   46.19,
+   50.0
+  ],
+  "opt_s": [
+   0.127,
+   0.12
+  ],
+  "step_s": [
+   4.78,
+   4.07
+  ],
+  "host_maxrss_gib": 2.69,
+  "error": "",
+  "tok_per_s_per_ghz": 1857
+ },
+ "b4_8b_all_1536x24": {
+  "params": 654386688,
+  "trainable": 654386688,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.993,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1972.5,
+  "power_med": 47.605000000000004,
+  "limit": [
+   43.17,
+   48.56
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.07,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "b4_all_1152x20": {
+  "params": 320911488,
+  "trainable": 320911488,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.184,
+  "tok_per_s": 6637,
+  "peak_reserved_gib": 6.689,
+  "sm_med": 2025.0,
+  "power_med": 48.11,
+  "limit": [
+   44.19,
+   49.91
+  ],
+  "opt_s": [
+   0.063,
+   0.063
+  ],
+  "step_s": [
+   2.49,
+   2.45
+  ],
+  "host_maxrss_gib": 1.82,
+  "error": "",
+  "tok_per_s_per_ghz": 3278
+ },
+ "b4_all_1536x14": {
+  "params": 402697728,
+  "trainable": 402697728,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.024,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2062.5,
+  "power_med": 47.56,
+  "limit": [
+   43.46,
+   49.99
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 2.13,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "b4_base_1152x12": {
+  "params": 207646848,
+  "trainable": 207646848,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.193,
+  "tok_per_s": 11557,
+  "peak_reserved_gib": 6.496,
+  "sm_med": 2040.0,
+  "power_med": 46.51,
+  "limit": [
+   44.52,
+   49.66
+  ],
+  "opt_s": [
+   0.041,
+   0.041
+  ],
+  "step_s": [
+   1.45,
+   1.39
+  ],
+  "host_maxrss_gib": 1.43,
+  "error": "",
+  "tok_per_s_per_ghz": 5665
+ },
+ "b4_bf8_all_1920x24": {
+  "params": 1006727040,
+  "trainable": 1006727040,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.916,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1950.0,
+  "power_med": 47.69,
+  "limit": [
+   45.05,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 4.38,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "b4_bf8_all_2304x20": {
+  "params": 1208054016,
+  "trainable": 1208054016,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.984,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1905.0,
+  "power_med": 46.055,
+  "limit": [
+   44.53,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 5.13,
+  "error": "CUDA out of memory. Tried to allocate 48.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "b4_bf_all_1920x20": {
+  "params": 849425280,
+  "trainable": 849425280,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.881,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1987.5,
+  "power_med": 46.54,
+  "limit": [
+   43.62,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.79,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "b4_bf_all_1920x24": {
+  "params": 1006727040,
+  "trainable": 1006727040,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.198,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1980.0,
+  "power_med": 46.93,
+  "limit": [
+   43.47,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 4.38,
+  "error": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "b4_lora_2304x24": {
+  "params": 1434564864,
+  "trainable": 7815168,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 4.047,
+  "tok_per_s": 1984,
+  "peak_reserved_gib": 6.59,
+  "sm_med": 1897.5,
+  "power_med": 46.515,
+  "limit": [
+   42.65,
+   49.97
+  ],
+  "opt_s": [
+   0.004,
+   0.005
+  ],
+  "step_s": [
+   8.72,
+   7.8
+  ],
+  "host_maxrss_gib": 5.97,
+  "error": "",
+  "tok_per_s_per_ghz": 1046
+ },
+ "b5_bf8_all_1920x24": {
+  "params": 1006727040,
+  "trainable": 1006727040,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.487,
+  "tok_per_s": 2347,
+  "peak_reserved_gib": 6.596,
+  "sm_med": 1950.0,
+  "power_med": 48.48,
+  "limit": [
+   43.34,
+   50.0
+  ],
+  "opt_s": [
+   0.184,
+   0.182
+  ],
+  "step_s": [
+   6.65,
+   7.31
+  ],
+  "host_maxrss_gib": 4.38,
+  "error": "",
+  "tok_per_s_per_ghz": 1204
+ },
+ "b5_bf_all_1920x20": {
+  "params": 849425280,
+  "trainable": 849425280,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 7.102,
+  "tok_per_s": 2983,
+  "peak_reserved_gib": 7.189,
+  "sm_med": 1935.0,
+  "power_med": 49.230000000000004,
+  "limit": [
+   46.68,
+   50.0
+  ],
+  "opt_s": [
+   0.084,
+   0.084
+  ],
+  "step_s": [
+   5.53,
+   5.46
+  ],
+  "host_maxrss_gib": 3.79,
+  "error": "",
+  "tok_per_s_per_ghz": 1542
+ },
+ "base_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.751,
+  "tok_per_s": 29760,
+  "peak_reserved_gib": 6.908,
+  "sm_med": 1860.0,
+  "power_med": 43.535,
+  "limit": [
+   40.63,
+   45.97
+  ],
+  "opt_s": [],
+  "step_s": [
+   2.26,
+   2.19,
+   2.2
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 16000
+ },
+ "base_e4": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 4.663,
+  "tok_per_s": 19655,
+  "peak_reserved_gib": 5.014,
+  "sm_med": 1935.0,
+  "power_med": 43.09,
+  "limit": [
+   40.83,
+   43.22
+  ],
+  "opt_s": [],
+  "step_s": [
+   0.83,
+   0.83,
+   0.83
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 10158
+ },
+ "bf16p_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.523,
+  "tok_per_s": 32672,
+  "peak_reserved_gib": 6.309,
+  "sm_med": 1995.0,
+  "power_med": 48.97,
+  "limit": [
+   49.71,
+   50.0
+  ],
+  "opt_s": [
+   0.009,
+   0.01,
+   0.009
+  ],
+  "step_s": [
+   2.0,
+   2.01,
+   2.69
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 16377
+ },
+ "big_8b_all_1536x20": {
+  "params": 553711104,
+  "trainable": 553711104,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.28,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1920.0,
+  "power_med": 45.51,
+  "limit": [
+   42.99,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 2.69,
+  "error": "CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_8b_all_1536x24": {
+  "params": 654386688,
+  "trainable": 654386688,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.12,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1950.0,
+  "power_med": 45.84,
+  "limit": [
+   47.97,
+   47.97
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.07,
+  "error": "CUDA out of memory. Tried to allocate 24.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_all_1536x12": {
+  "params": 352359936,
+  "trainable": 352359936,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.869,
+  "tok_per_s": 7197,
+  "peak_reserved_gib": 7.348,
+  "sm_med": 2100.0,
+  "power_med": 49.0,
+  "limit": [
+   47.73,
+   50.0
+  ],
+  "opt_s": [
+   0.068,
+   0.068,
+   0.068
+  ],
+  "step_s": [
+   2.3,
+   2.28,
+   2.27
+  ],
+  "host_maxrss_gib": 1.94,
+  "error": "",
+  "tok_per_s_per_ghz": 3427
+ },
+ "big_all_1536x16": {
+  "params": 453035520,
+  "trainable": 453035520,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.245,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2092.5,
+  "power_med": 50.290000000000006,
+  "limit": [
+   48.85,
+   49.84
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 2.32,
+  "error": "CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_base_1152x12": {
+  "params": 207646848,
+  "trainable": 207646848,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 5.743,
+  "tok_per_s": 13487,
+  "peak_reserved_gib": 6.168,
+  "sm_med": 2047.5,
+  "power_med": 48.28,
+  "limit": [
+   47.29,
+   50.0
+  ],
+  "opt_s": [
+   0.041,
+   0.041,
+   0.041
+  ],
+  "step_s": [
+   1.22,
+   1.21,
+   1.21
+  ],
+  "host_maxrss_gib": 1.4,
+  "error": "",
+  "tok_per_s_per_ghz": 6587
+ },
+ "big_base_1152x16": {
+  "params": 264279168,
+  "trainable": 264279168,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.005,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2085.0,
+  "power_med": 44.99,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.61,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "big_bf8_all_1920x24": {
+  "params": 1006727040,
+  "trainable": 1006727040,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.34,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2047.5,
+  "power_med": 49.03,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 4.38,
+  "error": "CUDA out of memory. Tried to allocate 16.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_bf8_all_2304x20": {
+  "params": 1208054016,
+  "trainable": 1208054016,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.958,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1980.0,
+  "power_med": 45.84,
+  "limit": [
+   47.49,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 5.13,
+  "error": "CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_bf_all_1920x16": {
+  "params": 692123520,
+  "trainable": 692123520,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.055,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2055.0,
+  "power_med": 47.87,
+  "limit": [
+   47.46,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.21,
+  "error": "CUDA out of memory. Tried to allocate 30.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_bf_all_1920x20": {
+  "params": 849425280,
+  "trainable": 849425280,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.178,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2040.0,
+  "power_med": 49.91,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.79,
+  "error": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "big_lora_2304x24": {
+  "params": 1434564864,
+  "trainable": 7815168,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 3.95,
+  "tok_per_s": 2192,
+  "peak_reserved_gib": 6.117,
+  "sm_med": 1950.0,
+  "power_med": 49.7,
+  "limit": [
+   40.12,
+   50.0
+  ],
+  "opt_s": [
+   0.005,
+   0.004,
+   0.004
+  ],
+  "step_s": [
+   8.14,
+   7.47,
+   7.45
+  ],
+  "host_maxrss_gib": 5.97,
+  "error": "",
+  "tok_per_s_per_ghz": 1124
+ },
+ "ckpt_all_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 2.97,
+  "tok_per_s": 25077,
+  "peak_reserved_gib": 4.344,
+  "sm_med": 1920.0,
+  "power_med": 44.77,
+  "limit": [
+   41.98,
+   47.1
+  ],
+  "opt_s": [],
+  "step_s": [
+   2.61,
+   2.59,
+   2.62
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 13061
+ },
+ "ckpt_e2_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 4.824,
+  "tok_per_s": 26948,
+  "peak_reserved_gib": 5.043,
+  "sm_med": 1860.0,
+  "power_med": 46.185,
+  "limit": [
+   44.47,
+   48.45
+  ],
+  "opt_s": [],
+  "step_s": [
+   2.48,
+   2.43,
+   2.41
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 14488
+ },
+ "ckpt_sel_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.104,
+  "tok_per_s": 29129,
+  "peak_reserved_gib": 5.293,
+  "sm_med": 1897.5,
+  "power_med": 46.075,
+  "limit": [
+   45.26,
+   48.04
+  ],
+  "opt_s": [],
+  "step_s": [
+   2.25,
+   2.25,
+   2.23
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 15351
+ },
+ "cmp_8bit": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.28,
+  "tok_per_s": 30899,
+  "peak_reserved_gib": 6.85,
+  "sm_med": 1942.5,
+  "power_med": 49.815,
+  "limit": [
+   47.85,
+   50.0
+  ],
+  "opt_s": [
+   0.024,
+   0.024,
+   0.025,
+   0.024,
+   0.024,
+   0.024
+  ],
+  "step_s": [
+   2.14,
+   2.12,
+   2.12,
+   2.12,
+   2.12,
+   2.12
+  ],
+  "host_maxrss_gib": 1.22,
+  "error": "",
+  "tok_per_s_per_ghz": 15907
+ },
+ "cmp_accum1": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.417,
+  "tok_per_s": 30188,
+  "peak_reserved_gib": 6.842,
+  "sm_med": 1995.0,
+  "power_med": 46.73,
+  "limit": [
+   46.48,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   0.56,
+   1.21,
+   0.54,
+   0.54,
+   0.54,
+   0.54
+  ],
+  "host_maxrss_gib": 1.22,
+  "error": "",
+  "tok_per_s_per_ghz": 15132
+ },
+ "cmp_accum32": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.751,
+  "tok_per_s": 30280,
+  "peak_reserved_gib": 6.908,
+  "sm_med": 1950.0,
+  "power_med": 49.86,
+  "limit": [
+   46.69,
+   50.0
+  ],
+  "opt_s": [
+   0.017,
+   0.018
+  ],
+  "step_s": [
+   17.73,
+   16.9
+  ],
+  "host_maxrss_gib": 1.22,
+  "error": "",
+  "tok_per_s_per_ghz": 15528
+ },
+ "cmp_all": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 2.97,
+  "tok_per_s": 26455,
+  "peak_reserved_gib": 3.316,
+  "sm_med": 2010.0,
+  "power_med": 49.94,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.47,
+   2.47,
+   2.48,
+   2.48,
+   2.48,
+   2.48
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 13162
+ },
+ "cmp_all_exp": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 2.962,
+  "tok_per_s": 26460,
+  "peak_reserved_gib": 3.201,
+  "sm_med": 2010.0,
+  "power_med": 49.78,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.47,
+   2.48,
+   2.48,
+   2.48,
+   2.48,
+   3.21
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 13164
+ },
+ "cmp_allc": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 4.545,
+  "tok_per_s": 24284,
+  "peak_reserved_gib": 5.055,
+  "sm_med": 1980.0,
+  "power_med": 49.93,
+  "limit": [
+   46.03,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.69,
+   3.44,
+   2.72,
+   2.71,
+   2.67,
+   2.66
+  ],
+  "host_maxrss_gib": 2.21,
+  "error": "",
+  "tok_per_s_per_ghz": 12265
+ },
+ "cmp_base": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.751,
+  "tok_per_s": 31276,
+  "peak_reserved_gib": 6.908,
+  "sm_med": 1950.0,
+  "power_med": 49.88,
+  "limit": [
+   45.58,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.11,
+   2.09,
+   2.09,
+   2.09,
+   2.1,
+   2.1
+  ],
+  "host_maxrss_gib": 1.22,
+  "error": "",
+  "tok_per_s_per_ghz": 16039
+ },
+ "cmp_base_exp": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.736,
+  "tok_per_s": 31037,
+  "peak_reserved_gib": 6.818,
+  "sm_med": 1980.0,
+  "power_med": 49.86,
+  "limit": [
+   46.76,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.15,
+   2.11,
+   2.11,
+   2.11,
+   2.11,
+   2.11
+  ],
+  "host_maxrss_gib": 1.22,
+  "error": "",
+  "tok_per_s_per_ghz": 15675
+ },
+ "cmp_basec": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 16,
+  "peak_alloc_gib": 7.373,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2175.0,
+  "power_med": 41.71,
+  "limit": [
+   48.88,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 2.08,
+  "error": "CUDA out of memory. Tried to allocate 256.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "cmp_bf16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.523,
+  "tok_per_s": 32480,
+  "peak_reserved_gib": 5.699,
+  "sm_med": 1905.0,
+  "power_med": 50.01,
+  "limit": [
+   48.31,
+   50.0
+  ],
+  "opt_s": [
+   0.009,
+   0.009,
+   0.009,
+   0.009,
+   0.01,
+   0.01
+  ],
+  "step_s": [
+   2.01,
+   2.02,
+   2.01,
+   2.73,
+   2.02,
+   2.02
+  ],
+  "host_maxrss_gib": 1.23,
+  "error": "",
+  "tok_per_s_per_ghz": 17050
+ },
+ "cmp_cpu": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.103,
+  "tok_per_s": 27439,
+  "peak_reserved_gib": 6.822,
+  "sm_med": 1935.0,
+  "power_med": 49.18,
+  "limit": [
+   46.17,
+   50.0
+  ],
+  "opt_s": [
+   0.301,
+   0.437,
+   0.274,
+   0.27,
+   0.279,
+   0.269
+  ],
+  "step_s": [
+   2.45,
+   2.55,
+   2.4,
+   2.37,
+   2.38,
+   2.37
+  ],
+  "host_maxrss_gib": 2.85,
+  "error": "",
+  "tok_per_s_per_ghz": 14180
+ },
+ "cmp_cpubf": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.186,
+  "tok_per_s": 27417,
+  "peak_reserved_gib": 5.371,
+  "sm_med": 1905.0,
+  "power_med": 47.14,
+  "limit": [
+   44.51,
+   50.0
+  ],
+  "opt_s": [
+   0.623,
+   0.287,
+   0.403,
+   0.375,
+   0.283,
+   0.22
+  ],
+  "step_s": [
+   2.66,
+   2.33,
+   2.43,
+   2.48,
+   2.35,
+   2.24
+  ],
+  "host_maxrss_gib": 3.27,
+  "error": "",
+  "tok_per_s_per_ghz": 14392
+ },
+ "cmp_e2": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 4.829,
+  "tok_per_s": 27861,
+  "peak_reserved_gib": 5.012,
+  "sm_med": 1995.0,
+  "power_med": 49.92,
+  "limit": [
+   49.77,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.35,
+   2.36,
+   2.35,
+   2.36,
+   2.35,
+   2.35
+  ],
+  "host_maxrss_gib": 1.29,
+  "error": "",
+  "tok_per_s_per_ghz": 13965
+ },
+ "cmp_lora": {
+  "params": 88096512,
+  "trainable": 1085440,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.728,
+  "tok_per_s": 32894,
+  "peak_reserved_gib": 6.924,
+  "sm_med": 2092.5,
+  "power_med": 49.345,
+  "limit": [
+   46.44,
+   50.0
+  ],
+  "opt_s": [
+   0.002,
+   0.004,
+   0.003,
+   0.002,
+   0.004,
+   0.002
+  ],
+  "step_s": [
+   1.96,
+   2.71,
+   2.02,
+   2.0,
+   1.99,
+   1.97
+  ],
+  "host_maxrss_gib": 1.38,
+  "error": "",
+  "tok_per_s_per_ghz": 15720
+ },
+ "cmp_lorabf": {
+  "params": 88096512,
+  "trainable": 1085440,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 4.928,
+  "tok_per_s": 33968,
+  "peak_reserved_gib": 6.307,
+  "sm_med": 2025.0,
+  "power_med": 49.62,
+  "limit": [
+   48.88,
+   50.0
+  ],
+  "opt_s": [
+   0.003,
+   0.002,
+   0.002,
+   0.003,
+   0.002,
+   0.002
+  ],
+  "step_s": [
+   1.91,
+   1.92,
+   1.93,
+   1.93,
+   1.93,
+   1.93
+  ],
+  "host_maxrss_gib": 1.39,
+  "error": "",
+  "tok_per_s_per_ghz": 16774
+ },
+ "cmp_sel": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.105,
+  "tok_per_s": 30489,
+  "peak_reserved_gib": 5.25,
+  "sm_med": 1980.0,
+  "power_med": 49.85,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   2.15,
+   2.15,
+   2.15,
+   2.15,
+   2.15,
+   2.15
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 15398
+ },
+ "cpu_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.103,
+  "tok_per_s": 25446,
+  "peak_reserved_gib": 6.822,
+  "sm_med": 1845.0,
+  "power_med": 45.1,
+  "limit": [
+   40.87,
+   50.0
+  ],
+  "opt_s": [
+   0.326,
+   0.281,
+   0.444
+  ],
+  "step_s": [
+   2.63,
+   2.47,
+   2.58
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 13792
+ },
+ "cpubf_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 5.186,
+  "tok_per_s": 27054,
+  "peak_reserved_gib": 5.371,
+  "sm_med": 1860.0,
+  "power_med": 47.785,
+  "limit": [
+   44.67,
+   49.01
+  ],
+  "opt_s": [
+   0.577,
+   0.363,
+   0.276
+  ],
+  "step_s": [
+   2.68,
+   2.42,
+   2.33
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 14545
+ },
+ "dbg_bf": {
+  "params": 692123520,
+  "trainable": 692123520,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 7.055,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2145.0,
+  "power_med": 40.29,
+  "limit": [
+   46.58,
+   48.01
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.21,
+  "error": "CUDA out of memory. Tried to allocate 30.00 MiB. GPU 0 has a total capacity of 8.00 GiB of"
+ },
+ "dbg_cb": {
+  "params": 692123520,
+  "trainable": 692123520,
+  "oom": true,
+  "mb": 4,
+  "peak_alloc_gib": 6.274,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1920.0,
+  "power_med": 40.4,
+  "limit": [
+   44.37,
+   49.82
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 3.21,
+  "error": "CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "dbg_cbc": {
+  "params": 692123520,
+  "trainable": 692123520,
+  "oom": false,
+  "mb": 4,
+  "peak_alloc_gib": 6.396,
+  "tok_per_s": 3756,
+  "peak_reserved_gib": 6.865,
+  "sm_med": 1965.0,
+  "power_med": 48.8,
+  "limit": [
+   44.49,
+   50.0
+  ],
+  "opt_s": [
+   0.069,
+   0.069,
+   0.071
+  ],
+  "step_s": [
+   2.21,
+   2.18,
+   2.17
+  ],
+  "host_maxrss_gib": 3.21,
+  "error": "",
+  "tok_per_s_per_ghz": 1911
+ },
+ "mb_all_32": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 32,
+  "peak_alloc_gib": 4.506,
+  "tok_per_s": 26742,
+  "peak_reserved_gib": 6.086,
+  "sm_med": 1995.0,
+  "power_med": 49.83,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.017,
+   0.018
+  ],
+  "step_s": [
+   2.45,
+   2.44,
+   3.2
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 13405
+ },
+ "mb_all_40": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 40,
+  "peak_alloc_gib": 5.278,
+  "tok_per_s": 26836,
+  "peak_reserved_gib": 7.449,
+  "sm_med": 1935.0,
+  "power_med": 49.83,
+  "limit": [
+   46.51,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   3.05,
+   3.11,
+   3.04
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 13869
+ },
+ "mb_all_48": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 48,
+  "peak_alloc_gib": 5.056,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2025.0,
+  "power_med": 41.69,
+  "limit": [
+   49.94,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.16,
+  "error": "CUDA out of memory. Tried to allocate 3.00 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_all_56": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 56,
+  "peak_alloc_gib": 5.826,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2077.5,
+  "power_med": 47.74,
+  "limit": [
+   48.83,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.16,
+  "error": "CUDA out of memory. Tried to allocate 3.50 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_all_64": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 64,
+  "peak_alloc_gib": 6.596,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2175.0,
+  "power_med": 40.06,
+  "limit": [
+   50.0,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.16,
+  "error": "CUDA out of memory. Tried to allocate 4.00 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_allc_128": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 128,
+  "peak_alloc_gib": 7.307,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1935.0,
+  "power_med": 51.24,
+  "limit": [
+   43.74,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.31,
+  "error": "CUDA out of memory. Tried to allocate 128.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "mb_allc_64": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 64,
+  "peak_alloc_gib": 7.334,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2085.0,
+  "power_med": 36.64,
+  "limit": [
+   44.07,
+   47.66
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.23,
+  "error": "CUDA out of memory. Tried to allocate 128.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "mb_allc_96": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 96,
+  "peak_alloc_gib": 7.255,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2025.0,
+  "power_med": 49.66,
+  "limit": [
+   47.65,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.27,
+  "error": "CUDA out of memory. Tried to allocate 128.00 MiB. GPU 0 has a total capacity of 8.00 GiB o"
+ },
+ "mb_allx_48": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 48,
+  "peak_alloc_gib": 6.041,
+  "tok_per_s": 24310,
+  "peak_reserved_gib": 6.189,
+  "sm_med": 1920.0,
+  "power_med": 46.09,
+  "limit": [
+   43.22,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   4.04,
+   4.1,
+   3.92
+  ],
+  "host_maxrss_gib": 1.28,
+  "error": "",
+  "tok_per_s_per_ghz": 12661
+ },
+ "mb_e2_24": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 24,
+  "peak_alloc_gib": 6.492,
+  "tok_per_s": 28113,
+  "peak_reserved_gib": 7.299,
+  "sm_med": 1995.0,
+  "power_med": 49.73,
+  "limit": [
+   47.7,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   1.74,
+   1.75,
+   1.75
+  ],
+  "host_maxrss_gib": 1.3,
+  "error": "",
+  "tok_per_s_per_ghz": 14092
+ },
+ "mb_e2_26": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 26,
+  "peak_alloc_gib": 5.933,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1695.0,
+  "power_med": 45.62,
+  "limit": [
+   44.49,
+   48.51
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.18,
+  "error": "CUDA out of memory. Tried to allocate 1.62 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_e2_28": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 28,
+  "peak_alloc_gib": 6.335,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2085.0,
+  "power_med": 48.01,
+  "limit": [
+   48.56,
+   49.35
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.18,
+  "error": "CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_e2_32": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 32,
+  "peak_alloc_gib": 7.169,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2115.0,
+  "power_med": 45.84,
+  "limit": [
+   49.06,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.16,
+  "error": "CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_none_17": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 17,
+  "peak_alloc_gib": 7.119,
+  "tok_per_s": 30720,
+  "peak_reserved_gib": 7.299,
+  "sm_med": 1980.0,
+  "power_med": 49.81,
+  "limit": [
+   48.77,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   1.14,
+   1.13,
+   1.13
+  ],
+  "host_maxrss_gib": 1.29,
+  "error": "",
+  "tok_per_s_per_ghz": 15515
+ },
+ "mb_none_18": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 18,
+  "peak_alloc_gib": 6.468,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1890.0,
+  "power_med": 35.4,
+  "limit": [
+   49.98,
+   49.98
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.17,
+  "error": "CUDA out of memory. Tried to allocate 1.12 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_none_20": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 20,
+  "peak_alloc_gib": 7.067,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1980.0,
+  "power_med": 39.03,
+  "limit": [
+   49.72,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.17,
+  "error": "CUDA out of memory. Tried to allocate 1.25 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_sel_20": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 20,
+  "peak_alloc_gib": 6.027,
+  "tok_per_s": 30769,
+  "peak_reserved_gib": 6.412,
+  "sm_med": 1935.0,
+  "power_med": 49.28,
+  "limit": [
+   49.06,
+   50.0
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   1.33,
+   1.33,
+   1.33
+  ],
+  "host_maxrss_gib": 1.32,
+  "error": "",
+  "tok_per_s_per_ghz": 15901
+ },
+ "mb_sel_22": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 22,
+  "peak_alloc_gib": 6.518,
+  "tok_per_s": 29993,
+  "peak_reserved_gib": 7.08,
+  "sm_med": 1927.5,
+  "power_med": 46.715,
+  "limit": [
+   44.35,
+   49.59
+  ],
+  "opt_s": [
+   0.018,
+   0.018,
+   0.018
+  ],
+  "step_s": [
+   1.55,
+   1.48,
+   1.5
+  ],
+  "host_maxrss_gib": 1.32,
+  "error": "",
+  "tok_per_s_per_ghz": 15561
+ },
+ "mb_sel_24": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 24,
+  "peak_alloc_gib": 5.961,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 1807.5,
+  "power_med": 319.955,
+  "limit": [
+   49.79,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.2,
+  "error": "CUDA out of memory. Tried to allocate 1.50 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_sel_28": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 28,
+  "peak_alloc_gib": 6.881,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2175.0,
+  "power_med": 34.355000000000004,
+  "limit": [
+   49.86,
+   50.0
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.19,
+  "error": "CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "mb_sel_32": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": true,
+  "mb": 32,
+  "peak_alloc_gib": 5.745,
+  "tok_per_s": null,
+  "peak_reserved_gib": null,
+  "sm_med": 2025.0,
+  "power_med": 49.62,
+  "limit": [
+   48.26,
+   48.26
+  ],
+  "opt_s": [],
+  "step_s": [],
+  "host_maxrss_gib": 1.08,
+  "error": "CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 8.00 GiB of "
+ },
+ "opt8_c16": {
+  "params": 88096512,
+  "trainable": 88096512,
+  "oom": false,
+  "mb": 16,
+  "peak_alloc_gib": 6.28,
+  "tok_per_s": 30832,
+  "peak_reserved_gib": 6.85,
+  "sm_med": 2010.0,
+  "power_med": 49.025,
+  "limit": [
+   43.11,
+   50.0
+  ],
+  "opt_s": [
+   0.025,
+   0.026,
+   0.025
+  ],
+  "step_s": [
+   2.13,
+   2.71,
+   2.09
+  ],
+  "host_maxrss_gib": null,
+  "error": "",
+  "tok_per_s_per_ghz": 15339
+ }
+}

@@ -1,0 +1,12 @@
+big_base_1152x12 6G --d 1152 --L 12 --mb 4 --accum 4
+big_base_1152x16 6G --d 1152 --L 16 --mb 4 --accum 4
+big_all_1536x12 6G --d 1536 --L 12 --mb 4 --accum 4 --ckpt all
+big_all_1536x16 6G --d 1536 --L 16 --mb 4 --accum 4 --ckpt all
+big_8b_all_1536x20 6G --d 1536 --L 20 --mb 4 --accum 4 --ckpt all --opt adamw8bit
+big_8b_all_1536x24 6G --d 1536 --L 24 --mb 4 --accum 4 --ckpt all --opt adamw8bit
+big_bf_all_1920x16 6G --d 1920 --L 16 --mb 4 --accum 4 --ckpt all --opt bf16pure
+big_bf_all_1920x20 6G --d 1920 --L 20 --mb 4 --accum 4 --ckpt all --opt bf16pure
+big_bf8_all_1920x24 6G --d 1920 --L 24 --mb 4 --accum 4 --ckpt all --opt bf16adam8
+big_bf8_all_2304x20 6G --d 2304 --L 20 --mb 4 --accum 4 --ckpt all --opt bf16adam8
+big_cpu_all_1536x16 8G --d 1536 --L 16 --mb 4 --accum 4 --ckpt all --opt cpu --gpu-bf16
+big_lora_2304x24 6G --d 2304 --L 24 --mb 4 --accum 4 --ckpt all --lora 8 --lora-bf16

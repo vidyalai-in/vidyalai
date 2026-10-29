@@ -1,0 +1,11 @@
+b4_base_1152x12 6G --d 1152 --L 12 --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_all_1152x20 6G --d 1152 --L 20 --ckpt all --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_all_1536x14 6G --d 1536 --L 14 --ckpt all --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_8b_all_1536x20 6G --d 1536 --L 20 --ckpt all --opt adamw8bit --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_8b_all_1536x24 6G --d 1536 --L 24 --ckpt all --opt adamw8bit --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_bf_all_1920x20 6G --d 1920 --L 20 --ckpt all --opt bf16pure --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_bf_all_1920x24 6G --d 1920 --L 24 --ckpt all --opt bf16pure --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_bf8_all_1920x24 6G --d 1920 --L 24 --ckpt all --opt bf16adam8 --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_bf8_all_2304x20 6G --d 2304 --L 20 --ckpt all --opt bf16adam8 --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_cpu_all_1536x16 8G --d 1536 --L 16 --ckpt all --opt cpu --gpu-bf16 --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss
+b4_lora_2304x24 6G --d 2304 --L 24 --ckpt all --lora 8 --lora-bf16 --mb 4 --accum 4 --steps 2 --compile-blocks --chunked-loss

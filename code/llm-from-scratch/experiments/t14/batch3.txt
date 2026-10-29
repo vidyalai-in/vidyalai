@@ -1,0 +1,11 @@
+mb_all_32 6G --mb 32 --accum 2 --ckpt all
+mb_all_40 6G --mb 40 --accum 2 --ckpt all
+mb_sel_20 6G --mb 20 --accum 2 --ckpt selective
+mb_sel_22 6G --mb 22 --accum 2 --ckpt selective
+mb_e2_26 6G --mb 26 --accum 2 --ckpt every2
+mb_allx_48 6G --mb 48 --accum 2 --ckpt all --expandable
+mb_allc_64 6G --mb 64 --accum 2 --ckpt all --chunked-loss
+mb_allc_96 6G --mb 96 --accum 2 --ckpt all --chunked-loss
+mb_allc_128 6G --mb 128 --accum 2 --ckpt all --chunked-loss
+cmp_allc 6G --mb 16 --accum 4 --steps 6 --ckpt all --chunked-loss
+cmp_basec 6G --mb 16 --accum 4 --steps 6 --chunked-loss
