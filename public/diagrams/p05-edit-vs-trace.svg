@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#ffffff"/>
+<line x1="70" x2="756" y1="366.0" y2="366.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="370.0" fill="#4a5b78" font-size="12" text-anchor="end">0</text>
+<line x1="70" x2="756" y1="285.5" y2="285.5" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="289.5" fill="#4a5b78" font-size="12" text-anchor="end">0.25</text>
+<line x1="70" x2="756" y1="205.0" y2="205.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="209.0" fill="#4a5b78" font-size="12" text-anchor="end">0.5</text>
+<line x1="70" x2="756" y1="124.5" y2="124.5" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="128.5" fill="#4a5b78" font-size="12" text-anchor="end">0.75</text>
+<line x1="70" x2="756" y1="44.0" y2="44.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="62" y="48.0" fill="#4a5b78" font-size="12" text-anchor="end">1</text>
+<text x="70.0" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">0</text>
+<text x="132.4" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">1</text>
+<text x="194.7" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">2</text>
+<text x="257.1" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">3</text>
+<text x="319.5" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">4</text>
+<text x="381.8" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">5</text>
+<text x="444.2" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">6</text>
+<text x="506.5" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">7</text>
+<text x="568.9" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">8</text>
+<text x="631.3" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">9</text>
+<text x="693.6" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">10</text>
+<text x="756.0" y="386" fill="#4a5b78" font-size="12" text-anchor="middle">11</text>
+<text x="413.0" y="412" fill="#0b1a33" font-size="14" text-anchor="middle">MLP layer edited (or traced)</text>
+<text transform="translate(20,205.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Score (0 to 1)</text>
+<polygon points="70.0,57.7 132.4,54.9 194.7,54.6 257.1,54.6 381.8,55.0 506.5,56.5 631.3,56.7 756.0,366.0 756.0,366.0 631.3,83.8 506.5,79.6 381.8,64.2 257.1,59.7 194.7,57.9 132.4,58.0 70.0,62.5" fill="#0b5fd6" opacity="0.18"/>
+<polyline fill="none" stroke="#0b5fd6" stroke-width="2.5" stroke-dasharray="" points="70.0,59.9 132.4,56.4 194.7,56.2 257.1,56.7 381.8,58.9 506.5,66.5 631.3,68.5 756.0,366.0"/>
+<circle cx="70.0" cy="59.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="132.4" cy="56.4" r="3.5" fill="#0b5fd6"/>
+<circle cx="194.7" cy="56.2" r="3.5" fill="#0b5fd6"/>
+<circle cx="257.1" cy="56.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="381.8" cy="58.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="506.5" cy="66.5" r="3.5" fill="#0b5fd6"/>
+<circle cx="631.3" cy="68.5" r="3.5" fill="#0b5fd6"/>
+<circle cx="756.0" cy="366.0" r="3.5" fill="#0b5fd6"/>
+<polygon points="70.0,73.2 132.4,65.3 194.7,66.7 257.1,67.1 381.8,66.7 506.5,71.4 631.3,100.0 756.0,366.0 756.0,366.0 631.3,130.2 506.5,95.6 381.8,78.2 257.1,77.4 194.7,74.8 132.4,72.4 70.0,83.2" fill="#eb6834" opacity="0.18"/>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="" points="70.0,77.8 132.4,68.7 194.7,70.5 257.1,71.8 381.8,71.8 506.5,81.5 631.3,114.7 756.0,366.0"/>
+<circle cx="70.0" cy="77.8" r="3.5" fill="#eb6834"/>
+<circle cx="132.4" cy="68.7" r="3.5" fill="#eb6834"/>
+<circle cx="194.7" cy="70.5" r="3.5" fill="#eb6834"/>
+<circle cx="257.1" cy="71.8" r="3.5" fill="#eb6834"/>
+<circle cx="381.8" cy="71.8" r="3.5" fill="#eb6834"/>
+<circle cx="506.5" cy="81.5" r="3.5" fill="#eb6834"/>
+<circle cx="631.3" cy="114.7" r="3.5" fill="#eb6834"/>
+<circle cx="756.0" cy="366.0" r="3.5" fill="#eb6834"/>
+<polygon points="70.0,277.7 132.4,254.5 194.7,345.7 257.1,344.7 381.8,357.9 506.5,357.6 631.3,318.0 756.0,353.7 756.0,363.9 631.3,340.4 506.5,361.0 381.8,361.7 257.1,353.9 194.7,354.8 132.4,296.5 70.0,306.9" fill="#4a5b78" opacity="0.18"/>
+<polyline fill="none" stroke="#4a5b78" stroke-width="2.5" stroke-dasharray="6 4" points="70.0,292.3 132.4,276.7 194.7,350.4 257.1,349.6 381.8,359.9 506.5,359.4 631.3,329.4 756.0,360.1"/>
+<circle cx="70.0" cy="292.3" r="3.5" fill="#4a5b78"/>
+<circle cx="132.4" cy="276.7" r="3.5" fill="#4a5b78"/>
+<circle cx="194.7" cy="350.4" r="3.5" fill="#4a5b78"/>
+<circle cx="257.1" cy="349.6" r="3.5" fill="#4a5b78"/>
+<circle cx="381.8" cy="359.9" r="3.5" fill="#4a5b78"/>
+<circle cx="506.5" cy="359.4" r="3.5" fill="#4a5b78"/>
+<circle cx="631.3" cy="329.4" r="3.5" fill="#4a5b78"/>
+<circle cx="756.0" cy="360.1" r="3.5" fill="#4a5b78"/>
+<line x1="80" x2="104" y1="18" y2="18" stroke="#0b5fd6" stroke-width="2.5" stroke-dasharray=""/>
+<text x="110" y="22" fill="#0b1a33" font-size="12">Rewrite score (edit prompt)</text>
+<line x1="305" x2="329" y1="18" y2="18" stroke="#eb6834" stroke-width="2.5" stroke-dasharray=""/>
+<text x="335" y="22" fill="#0b1a33" font-size="12">Paraphrase score (2 rephrasings)</text>
+<line x1="530" x2="554" y1="18" y2="18" stroke="#4a5b78" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="560" y="22" fill="#0b1a33" font-size="12">Tracing effect (share restored)</text>
+</svg>

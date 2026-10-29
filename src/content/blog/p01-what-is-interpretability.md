@@ -46,7 +46,7 @@ The methods fall into a few families, and the third column of the table carries 
 | Direct attribution | How much did each part write toward the answer? | Correlational | This part, [Part 2](/blog/logit-lens/) |
 | Probing | Can a simple classifier read a property from the activations? | Correlational | [Part 3](/blog/linear-probes/) |
 | Ablation | What breaks when a part is removed? | Causal | This part, [Part 4](/blog/induction-heads/) |
-| Activation patching | Which parts carry the difference between two inputs? | Causal | Part 5 |
+| Activation patching | Which parts carry the difference between two inputs? | Causal | [Part 5](/blog/activation-patching/) |
 | Features | What are the units the activations are built from? | Correlational, until tested | Parts 6 and 7 |
 | Circuits | Which features and parts connect, step by step? | Both, tested by intervention | Parts 4 and 8 |
 | Steering | Does adding a direction change behavior as predicted? | Causal | Part 9 |
@@ -65,7 +65,7 @@ A plausible story about a model is easy to write; showing that it describes what
 
 The tests also found gaps: a greedy search found sets of heads whose removal affected the circuit and the full model differently by up to 87% of the original logit difference.
 
-Current practice adds a fourth test: the explanation must predict what happens when you intervene. Anthropic's attribution graphs (Part 8) explain a model through a simpler replacement model that matches the real model's next-token completion on 50% of a diverse set of prompts, so every claim has to be checked on the real model. The authors call agreement under those checks ["mechanistic faithfulness"](https://transformer-circuits.pub/2025/attribution-graphs/methods.html), and the companion paper is explicit: ["we regard the effects of interventions on the model's actual outputs as the most important source of validation."](https://transformer-circuits.pub/2025/attribution-graphs/biology.html) Even then, the attribution graphs gave "satisfying insight for about a quarter of the prompts" the team tried.
+Current practice adds a fourth test: the explanation must predict what happens when you intervene. Anthropic's attribution graphs ([Part 8](/blog/circuit-tracing/)) explain a model through a simpler replacement model that matches the real model's next-token completion on 50% of a diverse set of prompts, so every claim has to be checked on the real model. The authors call agreement under those checks ["mechanistic faithfulness"](https://transformer-circuits.pub/2025/attribution-graphs/methods.html), and the companion paper is explicit: ["we regard the effects of interventions on the model's actual outputs as the most important source of validation."](https://transformer-circuits.pub/2025/attribution-graphs/biology.html) Even then, the attribution graphs gave "satisfying insight for about a quarter of the prompts" the team tried.
 
 So a good explanation names parts, says what each one does, survives removing the parts it says don't matter, and correctly predicts the effect of changing the parts it says do. Correlational evidence can suggest such a story. Only causal evidence can pass the last test.
 

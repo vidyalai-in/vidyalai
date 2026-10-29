@@ -180,7 +180,7 @@ The layers matter most. A probe reads truth at 93 to 95% from layer 8 to the las
 
 ## Common misconceptions
 
-- **"High probe accuracy means the model uses that information."** A probe measures what a later layer could read, not what any layer does read. Only an intervention, like the nudge above or the patching in Part 5, tests use.
+- **"High probe accuracy means the model uses that information."** A probe measures what a later layer could read, not what any layer does read. Only an intervention, like the nudge above or the patching in [Part 5](/blog/activation-patching/), tests use.
 - **"A more powerful probe gives a truer picture."** The MLP probe matched the linear one on real tags and beat it on random ones by up to 19 points. Extra power mostly bought memorization.
 - **"If accuracy peaks at a layer, the property lives there."** Accuracy peaked at layer 8 for part of speech, but selectivity kept rising to layer 12. Which layer "represents" a property depends on the measure you choose.
 - **"A truth probe detects truth."** Ours tracked what each model knows, fell from 94.7% to 68.8% when the sentence was rephrased, and couldn't separate truth from closely related things like "commonly believed" or "likely text", a limit Marks and Tegmark state for their own datasets.

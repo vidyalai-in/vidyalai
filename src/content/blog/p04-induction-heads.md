@@ -214,7 +214,7 @@ In bigger models, [Bansal et al. (2022)](https://arxiv.org/abs/2212.09095) found
 
 ## What's next
 
-Ablation asks what happens when a component disappears. Part 5 asks a sharper question with activation patching: take one activation from a run where the model gets the answer right, paste it into a run where it doesn't, and see whether the right answer comes back. That's how researchers traced where GPT-2 XL recalls facts, and how the indirect-object circuit was found.
+Ablation asks what happens when a component disappears. [Part 5](/blog/activation-patching/) asks a sharper question with activation patching: take one activation from a run where the model gets the answer right, paste it into a run where it doesn't, and see whether the right answer comes back. That's how researchers traced where GPT-2 XL recalls facts, and how the indirect-object circuit was found.
 
 ## Further reading
 

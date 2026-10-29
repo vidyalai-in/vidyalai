@@ -1,0 +1,557 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 682" width="780" height="682" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="682" fill="#ffffff"/>
+<text x="196" y="30" fill="#0b1a33" font-size="14" font-weight="bold">Restore one hidden state (residual stream after the block)</text>
+<text x="188" y="55.0" fill="#4a5b78" font-size="12" text-anchor="end">First subject token</text>
+<rect x="196" y="40" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="40" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="40" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="40" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="40" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="40" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="40" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="40" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="40" width="46" height="22" fill="#eaeff8" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="610" y="40" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="40" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="40" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="55.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="77.0" fill="#4a5b78" font-size="12" text-anchor="end">Middle subject tokens</text>
+<rect x="196" y="62" width="46" height="22" fill="#c6d8f3" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.8</text>
+<rect x="242" y="62" width="46" height="22" fill="#c3d6f2" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.9</text>
+<rect x="288" y="62" width="46" height="22" fill="#bdd2f1" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.1</text>
+<rect x="334" y="62" width="46" height="22" fill="#b8cff1" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.2</text>
+<rect x="380" y="62" width="46" height="22" fill="#b7cef1" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.3</text>
+<rect x="426" y="62" width="46" height="22" fill="#b5cdf0" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.3</text>
+<rect x="472" y="62" width="46" height="22" fill="#b0caf0" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.5</text>
+<rect x="518" y="62" width="46" height="22" fill="#aec9ef" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.5</text>
+<rect x="564" y="62" width="46" height="22" fill="#b4cdf0" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.4</text>
+<rect x="610" y="62" width="46" height="22" fill="#d1dff5" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.6</text>
+<rect x="656" y="62" width="46" height="22" fill="#e1eaf7" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.2</text>
+<rect x="702" y="62" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="77.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="99.0" fill="#4a5b78" font-size="12" text-anchor="end">Last subject token</text>
+<rect x="196" y="84" width="46" height="22" fill="#dbe6f6" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.3</text>
+<rect x="242" y="84" width="46" height="22" fill="#d9e4f6" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.4</text>
+<rect x="288" y="84" width="46" height="22" fill="#d5e2f5" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.5</text>
+<rect x="334" y="84" width="46" height="22" fill="#d1dff5" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.6</text>
+<rect x="380" y="84" width="46" height="22" fill="#d0dff4" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.6</text>
+<rect x="426" y="84" width="46" height="22" fill="#ccdcf4" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.7</text>
+<rect x="472" y="84" width="46" height="22" fill="#c8d9f3" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.8</text>
+<rect x="518" y="84" width="46" height="22" fill="#c6d8f3" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.8</text>
+<rect x="564" y="84" width="46" height="22" fill="#c9daf3" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.8</text>
+<rect x="610" y="84" width="46" height="22" fill="#dfe8f7" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.3</text>
+<rect x="656" y="84" width="46" height="22" fill="#e8eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="702" y="84" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="99.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="121.0" fill="#4a5b78" font-size="12" text-anchor="end">First token after</text>
+<rect x="196" y="106" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="106" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="106" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="106" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="106" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="106" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="106" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="106" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="106" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="106" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="106" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="106" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="121.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="143.0" fill="#4a5b78" font-size="12" text-anchor="end">Further tokens</text>
+<rect x="196" y="128" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="128" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="128" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="128" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="128" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="128" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="128" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="128" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="128" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="128" width="46" height="22" fill="#eaeff8" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="656" y="128" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="128" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="143.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="165.0" fill="#4a5b78" font-size="12" text-anchor="end">Last token</text>
+<rect x="196" y="150" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="150" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="150" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="150" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="150" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="150" width="46" height="22" fill="#e8eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="472" y="150" width="46" height="22" fill="#e7eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="518" y="150" width="46" height="22" fill="#e7edf8" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="564" y="150" width="46" height="22" fill="#cbdcf4" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.7</text>
+<rect x="610" y="150" width="46" height="22" fill="#93b7eb" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">2.4</text>
+<rect x="656" y="150" width="46" height="22" fill="#6b9de5" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="165.0" fill="#4a5b78" font-size="10" text-anchor="middle">3.8</text>
+<rect x="702" y="150" width="46" height="22" fill="#0b5fd6" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="165.0" fill="#ffffff" font-size="10" text-anchor="middle">7.5</text>
+<text x="219.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">0</text>
+<text x="265.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">1</text>
+<text x="311.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">2</text>
+<text x="357.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">3</text>
+<text x="403.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">4</text>
+<text x="449.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">5</text>
+<text x="495.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">6</text>
+<text x="541.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">7</text>
+<text x="587.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">8</text>
+<text x="633.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">9</text>
+<text x="679.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">10</text>
+<text x="725.0" y="187" fill="#4a5b78" font-size="11" text-anchor="middle">11</text>
+<text x="196" y="220" fill="#0b1a33" font-size="14" font-weight="bold">Restore 3 MLP outputs (window centred on the block)</text>
+<text x="188" y="245.0" fill="#4a5b78" font-size="12" text-anchor="end">First subject token</text>
+<rect x="196" y="230" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="230" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="230" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="230" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="230" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="245.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="267.0" fill="#4a5b78" font-size="12" text-anchor="end">Middle subject tokens</text>
+<rect x="196" y="252" width="46" height="22" fill="#c5d8f3" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.9</text>
+<rect x="242" y="252" width="46" height="22" fill="#c3d6f2" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.9</text>
+<rect x="288" y="252" width="46" height="22" fill="#e7eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="334" y="252" width="46" height="22" fill="#eaeff8" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="380" y="252" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="252" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="252" width="46" height="22" fill="#e9eff8" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="518" y="252" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="252" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="252" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="252" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="252" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="267.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="289.0" fill="#4a5b78" font-size="12" text-anchor="end">Last subject token</text>
+<rect x="196" y="274" width="46" height="22" fill="#d8e4f6" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.4</text>
+<rect x="242" y="274" width="46" height="22" fill="#d7e3f5" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.4</text>
+<rect x="288" y="274" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="274" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="274" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="274" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="274" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="274" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="274" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="274" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="274" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="274" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="289.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="311.0" fill="#4a5b78" font-size="12" text-anchor="end">First token after</text>
+<rect x="196" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="296" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="296" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="296" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="296" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="296" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="296" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="311.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="333.0" fill="#4a5b78" font-size="12" text-anchor="end">Further tokens</text>
+<rect x="196" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="318" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="318" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="318" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="333.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="355.0" fill="#4a5b78" font-size="12" text-anchor="end">Last token</text>
+<rect x="196" y="340" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">-0.1</text>
+<rect x="288" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">-0.1</text>
+<rect x="426" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">-0.1</text>
+<rect x="472" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="340" width="46" height="22" fill="#d9e4f6" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.4</text>
+<rect x="610" y="340" width="46" height="22" fill="#d3e1f5" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.5</text>
+<rect x="656" y="340" width="46" height="22" fill="#e8eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="702" y="340" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="355.0" fill="#4a5b78" font-size="10" text-anchor="middle">-0.1</text>
+<text x="219.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">0</text>
+<text x="265.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">1</text>
+<text x="311.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">2</text>
+<text x="357.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">3</text>
+<text x="403.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">4</text>
+<text x="449.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">5</text>
+<text x="495.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">6</text>
+<text x="541.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">7</text>
+<text x="587.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">8</text>
+<text x="633.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">9</text>
+<text x="679.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">10</text>
+<text x="725.0" y="377" fill="#4a5b78" font-size="11" text-anchor="middle">11</text>
+<text x="196" y="410" fill="#0b1a33" font-size="14" font-weight="bold">Restore 3 attention outputs (window centred on the block)</text>
+<text x="188" y="435.0" fill="#4a5b78" font-size="12" text-anchor="end">First subject token</text>
+<rect x="196" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="420" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="420" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="435.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="457.0" fill="#4a5b78" font-size="12" text-anchor="end">Middle subject tokens</text>
+<rect x="196" y="442" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="442" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="442" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="442" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="442" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="442" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="457.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="479.0" fill="#4a5b78" font-size="12" text-anchor="end">Last subject token</text>
+<rect x="196" y="464" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="464" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="464" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="464" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="464" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="464" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="464" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="464" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="464" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="464" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="464" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="464" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="479.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="501.0" fill="#4a5b78" font-size="12" text-anchor="end">First token after</text>
+<rect x="196" y="486" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="486" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="486" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="486" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="486" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="486" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="486" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="486" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="486" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="486" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="486" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="486" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="501.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="523.0" fill="#4a5b78" font-size="12" text-anchor="end">Further tokens</text>
+<rect x="196" y="508" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="508" width="46" height="22" fill="#ebf0f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="508" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="508" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="380" y="508" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="426" y="508" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="472" y="508" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="518" y="508" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="564" y="508" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="610" y="508" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="656" y="508" width="46" height="22" fill="#ecf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="702" y="508" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="523.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<text x="188" y="545.0" fill="#4a5b78" font-size="12" text-anchor="end">Last token</text>
+<rect x="196" y="530" width="46" height="22" fill="#eef2f9" stroke="#ffffff" stroke-width="1"/>
+<text x="219.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="242" y="530" width="46" height="22" fill="#edf1f9" stroke="#ffffff" stroke-width="1"/>
+<text x="265.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="288" y="530" width="46" height="22" fill="#ebf0f8" stroke="#ffffff" stroke-width="1"/>
+<text x="311.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.0</text>
+<rect x="334" y="530" width="46" height="22" fill="#e9eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="357.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="380" y="530" width="46" height="22" fill="#e7edf8" stroke="#ffffff" stroke-width="1"/>
+<text x="403.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="426" y="530" width="46" height="22" fill="#e7eef8" stroke="#ffffff" stroke-width="1"/>
+<text x="449.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="472" y="530" width="46" height="22" fill="#e7edf8" stroke="#ffffff" stroke-width="1"/>
+<text x="495.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.1</text>
+<rect x="518" y="530" width="46" height="22" fill="#cbdbf4" stroke="#ffffff" stroke-width="1"/>
+<text x="541.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">0.7</text>
+<rect x="564" y="530" width="46" height="22" fill="#8cb3ea" stroke="#ffffff" stroke-width="1"/>
+<text x="587.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">2.6</text>
+<rect x="610" y="530" width="46" height="22" fill="#6398e4" stroke="#ffffff" stroke-width="1"/>
+<text x="633.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">4.0</text>
+<rect x="656" y="530" width="46" height="22" fill="#4685df" stroke="#ffffff" stroke-width="1"/>
+<text x="679.0" y="545.0" fill="#ffffff" font-size="10" text-anchor="middle">5.1</text>
+<rect x="702" y="530" width="46" height="22" fill="#aac6ef" stroke="#ffffff" stroke-width="1"/>
+<text x="725.0" y="545.0" fill="#4a5b78" font-size="10" text-anchor="middle">1.6</text>
+<text x="219.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">0</text>
+<text x="265.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">1</text>
+<text x="311.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">2</text>
+<text x="357.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">3</text>
+<text x="403.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">4</text>
+<text x="449.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">5</text>
+<text x="495.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">6</text>
+<text x="541.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">7</text>
+<text x="587.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">8</text>
+<text x="633.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">9</text>
+<text x="679.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">10</text>
+<text x="725.0" y="567" fill="#4a5b78" font-size="11" text-anchor="middle">11</text>
+<text x="472" y="588" fill="#0b1a33" font-size="13" text-anchor="middle">Block</text>
+<rect x="322" y="602" width="5.5" height="12" fill="#eef2f9"/>
+<rect x="327" y="602" width="5.5" height="12" fill="#e5ecf8"/>
+<rect x="332" y="602" width="5.5" height="12" fill="#dfe8f7"/>
+<rect x="337" y="602" width="5.5" height="12" fill="#d9e4f6"/>
+<rect x="342" y="602" width="5.5" height="12" fill="#d4e1f5"/>
+<rect x="347" y="602" width="5.5" height="12" fill="#cedef4"/>
+<rect x="352" y="602" width="5.5" height="12" fill="#cadaf3"/>
+<rect x="357" y="602" width="5.5" height="12" fill="#c5d7f3"/>
+<rect x="362" y="602" width="5.5" height="12" fill="#c0d4f2"/>
+<rect x="367" y="602" width="5.5" height="12" fill="#bcd1f1"/>
+<rect x="372" y="602" width="5.5" height="12" fill="#b7cef1"/>
+<rect x="377" y="602" width="5.5" height="12" fill="#b3ccf0"/>
+<rect x="382" y="602" width="5.5" height="12" fill="#afc9ef"/>
+<rect x="387" y="602" width="5.5" height="12" fill="#aac6ef"/>
+<rect x="392" y="602" width="5.5" height="12" fill="#a6c3ee"/>
+<rect x="397" y="602" width="5.5" height="12" fill="#a2c1ed"/>
+<rect x="402" y="602" width="5.5" height="12" fill="#9ebeed"/>
+<rect x="407" y="602" width="5.5" height="12" fill="#9abcec"/>
+<rect x="412" y="602" width="5.5" height="12" fill="#96b9eb"/>
+<rect x="417" y="602" width="5.5" height="12" fill="#92b7eb"/>
+<rect x="422" y="602" width="5.5" height="12" fill="#8eb4ea"/>
+<rect x="427" y="602" width="5.5" height="12" fill="#8bb2ea"/>
+<rect x="432" y="602" width="5.5" height="12" fill="#87afe9"/>
+<rect x="437" y="602" width="5.5" height="12" fill="#83ade9"/>
+<rect x="442" y="602" width="5.5" height="12" fill="#7faae8"/>
+<rect x="447" y="602" width="5.5" height="12" fill="#7ca8e7"/>
+<rect x="452" y="602" width="5.5" height="12" fill="#78a6e7"/>
+<rect x="457" y="602" width="5.5" height="12" fill="#75a3e6"/>
+<rect x="462" y="602" width="5.5" height="12" fill="#71a1e6"/>
+<rect x="467" y="602" width="5.5" height="12" fill="#6d9fe5"/>
+<rect x="472" y="602" width="5.5" height="12" fill="#6a9ce5"/>
+<rect x="477" y="602" width="5.5" height="12" fill="#669ae4"/>
+<rect x="482" y="602" width="5.5" height="12" fill="#6398e4"/>
+<rect x="487" y="602" width="5.5" height="12" fill="#5f96e3"/>
+<rect x="492" y="602" width="5.5" height="12" fill="#5c93e2"/>
+<rect x="497" y="602" width="5.5" height="12" fill="#5991e2"/>
+<rect x="502" y="602" width="5.5" height="12" fill="#558fe1"/>
+<rect x="507" y="602" width="5.5" height="12" fill="#528de1"/>
+<rect x="512" y="602" width="5.5" height="12" fill="#4e8be0"/>
+<rect x="517" y="602" width="5.5" height="12" fill="#4b88e0"/>
+<rect x="522" y="602" width="5.5" height="12" fill="#4886df"/>
+<rect x="527" y="602" width="5.5" height="12" fill="#4484df"/>
+<rect x="532" y="602" width="5.5" height="12" fill="#4182de"/>
+<rect x="537" y="602" width="5.5" height="12" fill="#3e80de"/>
+<rect x="542" y="602" width="5.5" height="12" fill="#3a7edd"/>
+<rect x="547" y="602" width="5.5" height="12" fill="#377cdd"/>
+<rect x="552" y="602" width="5.5" height="12" fill="#347adc"/>
+<rect x="557" y="602" width="5.5" height="12" fill="#3177dc"/>
+<rect x="562" y="602" width="5.5" height="12" fill="#2e75db"/>
+<rect x="567" y="602" width="5.5" height="12" fill="#2a73db"/>
+<rect x="572" y="602" width="5.5" height="12" fill="#2771da"/>
+<rect x="577" y="602" width="5.5" height="12" fill="#246fda"/>
+<rect x="582" y="602" width="5.5" height="12" fill="#216dd9"/>
+<rect x="587" y="602" width="5.5" height="12" fill="#1e6bd9"/>
+<rect x="592" y="602" width="5.5" height="12" fill="#1b69d8"/>
+<rect x="597" y="602" width="5.5" height="12" fill="#1767d8"/>
+<rect x="602" y="602" width="5.5" height="12" fill="#1465d7"/>
+<rect x="607" y="602" width="5.5" height="12" fill="#1163d7"/>
+<rect x="612" y="602" width="5.5" height="12" fill="#0e61d6"/>
+<rect x="617" y="602" width="5.5" height="12" fill="#0b5fd6"/>
+<text x="322" y="630" fill="#4a5b78" font-size="12" text-anchor="middle">0.0</text>
+<text x="472.0" y="630" fill="#4a5b78" font-size="12" text-anchor="middle">3.7</text>
+<text x="622" y="630" fill="#4a5b78" font-size="12" text-anchor="middle">7.5</text>
+<text x="472" y="652" fill="#4a5b78" font-size="12" text-anchor="middle">Percentage points of P(right city) restored, mean over prompts (clean 7.9%, noised 0.4%)</text>
+</svg>

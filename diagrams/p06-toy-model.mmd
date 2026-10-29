@@ -1,0 +1,8 @@
+flowchart TD
+    X["n features<br/>mostly zero"] --> E["Squeeze:<br/>h = W x<br/>only m numbers"]
+    E --> U["Expand back:<br/>Wᵀ h + b"]
+    U --> LIN["Linear model:<br/>use as is"]
+    U --> RELU["ReLU model:<br/>negatives to 0"]
+    LIN --> L1["Keeps top m<br/>features (PCA)"]
+    RELU --> L2["Dense features:<br/>same as linear"]
+    RELU --> L3["Sparse features:<br/>stores more<br/>than m"]

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 330" width="780" height="330" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="330" fill="#0b162d"/>
+<text x="105.0" y="26" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">Density 0.5 (1 in 2)</text>
+<circle cx="105.0" cy="146" r="64" fill="none" stroke="#22355a" stroke-width="1.5"/>
+<line x1="29.0" x2="181.0" y1="146" y2="146" stroke="#22355a"/><line y1="70" y2="222" x1="105.0" x2="105.0" stroke="#22355a"/>
+<line x1="105.0" y1="146" x2="166.0" y2="156.7" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="166.0" cy="156.7" r="4.5" fill="#38bdf8"/>
+<line x1="105.0" y1="146" x2="104.7" y2="146.4" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="104.7" cy="146.4" r="4.5" fill="#38bdf8"/>
+<line x1="105.0" y1="146" x2="43.9" y2="135.2" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="43.9" cy="135.2" r="4.5" fill="#38bdf8"/>
+<line x1="105.0" y1="146" x2="115.9" y2="85.0" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="115.9" cy="85.0" r="4.5" fill="#38bdf8"/>
+<line x1="105.0" y1="146" x2="94.4" y2="207.1" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="94.4" cy="207.1" r="4.5" fill="#38bdf8"/>
+<text x="105.0" y="250" fill="#e8eefc" font-size="13" text-anchor="middle">pentagon: 0 of 50 runs</text>
+<text x="105.0" y="268" fill="#9fb0cf" font-size="13" text-anchor="middle">two pairs: 29 of 50 runs</text>
+<text x="295.0" y="26" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">Density 0.2 (1 in 5)</text>
+<circle cx="295.0" cy="146" r="64" fill="none" stroke="#22355a" stroke-width="1.5"/>
+<line x1="219.0" x2="371.0" y1="146" y2="146" stroke="#22355a"/><line y1="70" y2="222" x1="295.0" x2="295.0" stroke="#22355a"/>
+<line x1="295.0" y1="146" x2="229.4" y2="153.9" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="229.4" cy="153.9" r="4.5" fill="#38bdf8"/>
+<line x1="295.0" y1="146" x2="343.8" y2="101.1" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="343.8" cy="101.1" r="4.5" fill="#38bdf8"/>
+<line x1="295.0" y1="146" x2="281.7" y2="210.7" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="281.7" cy="210.7" r="4.5" fill="#38bdf8"/>
+<line x1="295.0" y1="146" x2="267.2" y2="86.3" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="267.2" cy="86.3" r="4.5" fill="#38bdf8"/>
+<line x1="295.0" y1="146" x2="352.7" y2="178.5" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="352.7" cy="178.5" r="4.5" fill="#38bdf8"/>
+<text x="295.0" y="250" fill="#e8eefc" font-size="13" text-anchor="middle">pentagon: 22 of 50 runs</text>
+<text x="295.0" y="268" fill="#9fb0cf" font-size="13" text-anchor="middle">two pairs: 27 of 50 runs</text>
+<text x="485.0" y="26" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">Density 0.05 (1 in 20)</text>
+<circle cx="485.0" cy="146" r="64" fill="none" stroke="#22355a" stroke-width="1.5"/>
+<line x1="409.0" x2="561.0" y1="146" y2="146" stroke="#22355a"/><line y1="70" y2="222" x1="485.0" x2="485.0" stroke="#22355a"/>
+<line x1="485.0" y1="146" x2="548.7" y2="110.2" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="548.7" cy="110.2" r="4.5" fill="#38bdf8"/>
+<line x1="485.0" y1="146" x2="455.0" y2="211.8" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="455.0" cy="211.8" r="4.5" fill="#38bdf8"/>
+<line x1="485.0" y1="146" x2="470.8" y2="74.9" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="470.8" cy="74.9" r="4.5" fill="#38bdf8"/>
+<line x1="485.0" y1="146" x2="412.9" y2="138.0" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="412.9" cy="138.0" r="4.5" fill="#38bdf8"/>
+<line x1="485.0" y1="146" x2="538.4" y2="195.2" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="538.4" cy="195.2" r="4.5" fill="#38bdf8"/>
+<text x="485.0" y="250" fill="#e8eefc" font-size="13" text-anchor="middle">pentagon: 44 of 50 runs</text>
+<text x="485.0" y="268" fill="#9fb0cf" font-size="13" text-anchor="middle">two pairs: 0 of 50 runs</text>
+<text x="675.0" y="26" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">Density 0.01 (1 in 100)</text>
+<circle cx="675.0" cy="146" r="64" fill="none" stroke="#22355a" stroke-width="1.5"/>
+<line x1="599.0" x2="751.0" y1="146" y2="146" stroke="#22355a"/><line y1="70" y2="222" x1="675.0" x2="675.0" stroke="#22355a"/>
+<line x1="675.0" y1="146" x2="742.6" y2="177.9" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="742.6" cy="177.9" r="4.5" fill="#38bdf8"/>
+<line x1="675.0" y1="146" x2="665.7" y2="219.5" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="665.7" cy="219.5" r="4.5" fill="#38bdf8"/>
+<line x1="675.0" y1="146" x2="725.9" y2="92.3" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="725.9" cy="92.3" r="4.5" fill="#38bdf8"/>
+<line x1="675.0" y1="146" x2="601.8" y2="159.5" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="601.8" cy="159.5" r="4.5" fill="#38bdf8"/>
+<line x1="675.0" y1="146" x2="639.5" y2="80.5" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="639.5" cy="80.5" r="4.5" fill="#38bdf8"/>
+<text x="675.0" y="250" fill="#e8eefc" font-size="13" text-anchor="middle">pentagon: 50 of 50 runs</text>
+<text x="675.0" y="268" fill="#9fb0cf" font-size="13" text-anchor="middle">two pairs: 0 of 50 runs</text>
+<text x="390.0" y="320" fill="#9fb0cf" font-size="12" text-anchor="middle">Circle: length 1. Each arrow is one feature's direction in the 2 hidden dimensions (lowest-loss run of 50).</text>
+</svg>

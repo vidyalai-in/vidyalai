@@ -1,0 +1,8 @@
+flowchart TD
+    A["GPT-2 small, blocks 0 to 7"] --> B["Activation x<br/>(768 numbers)"]
+    B --> C["Encoder + TopK<br/>(keep the 32 largest)"]
+    C --> E["Sparse latents f<br/>(24,576 slots,<br/>32 active)"]
+    E --> G["Decoder rebuilds x̂<br/>(768 numbers)"]
+    G --> H["Blocks 8 to 11 run on x̂"]
+    H --> I["Next-token loss,<br/>compared with x"]
+    B -. "x - x̂" .-> J["Error: what<br/>the SAE misses"]

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#0b162d"/>
+<line x1="250.0" x2="250.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="250.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">0%</text>
+<line x1="350.0" x2="350.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="350.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">10%</text>
+<line x1="450.0" x2="450.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="450.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">20%</text>
+<line x1="550.0" x2="550.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="550.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">30%</text>
+<line x1="650.0" x2="650.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="650.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">40%</text>
+<line x1="750.0" x2="750.0" y1="50" y2="374" stroke="#22355a" stroke-width="1"/>
+<text x="750.0" y="394" fill="#9fb0cf" font-size="13" text-anchor="middle">50%</text>
+<rect x="250" y="14" width="12" height="12" fill="#38bdf8"/><text x="268" y="25" fill="#e8eefc" font-size="13">P(" Austin")</text>
+<rect x="380" y="14" width="12" height="12" fill="#d95926"/><text x="398" y="25" fill="#e8eefc" font-size="13">P(" Sacramento")</text>
+<text x="240" y="87.4" fill="#e8eefc" font-size="13" text-anchor="end">Unedited</text>
+<rect x="250" y="60.4" width="413.2" height="18.7" fill="#38bdf8"/>
+<text x="669.2" y="75.1" fill="#9fb0cf" font-size="12">41.3%</text>
+<rect x="250" y="81.1" width="5.2" height="18.7" fill="#d95926"/>
+<text x="261.2" y="95.8" fill="#9fb0cf" font-size="12">0.5%</text>
+<text x="240" y="152.2" fill="#e8eefc" font-size="13" text-anchor="end">Texas features set to 0</text>
+<rect x="250" y="125.2" width="197.4" height="18.7" fill="#38bdf8"/>
+<text x="453.4" y="139.9" fill="#9fb0cf" font-size="12">19.7%</text>
+<rect x="250" y="145.9" width="23.6" height="18.7" fill="#d95926"/>
+<text x="279.6" y="160.6" fill="#9fb0cf" font-size="12">2.4%</text>
+<text x="240" y="217.0" fill="#e8eefc" font-size="13" text-anchor="end">Texas features x -2</text>
+<rect x="250" y="190.0" width="1.0" height="18.7" fill="#38bdf8"/>
+<text x="256.0" y="204.7" fill="#9fb0cf" font-size="12">0.0%</text>
+<rect x="250" y="210.7" width="29.5" height="18.7" fill="#d95926"/>
+<text x="285.5" y="225.4" fill="#9fb0cf" font-size="12">2.9%</text>
+<text x="240" y="281.8" fill="#e8eefc" font-size="13" text-anchor="end">California features added</text>
+<rect x="250" y="254.8" width="277.5" height="18.7" fill="#38bdf8"/>
+<text x="533.5" y="269.5" fill="#9fb0cf" font-size="12">27.8%</text>
+<rect x="250" y="275.5" width="90.1" height="18.7" fill="#d95926"/>
+<text x="346.1" y="290.2" fill="#9fb0cf" font-size="12">9.0%</text>
+<text x="240" y="346.6" fill="#e8eefc" font-size="13" text-anchor="end">Texas x -2, California added</text>
+<rect x="250" y="319.6" width="1.0" height="18.7" fill="#38bdf8"/>
+<text x="256.0" y="334.3" fill="#9fb0cf" font-size="12">0.0%</text>
+<rect x="250" y="340.3" width="267.6" height="18.7" fill="#d95926"/>
+<text x="523.6" y="355.0" fill="#9fb0cf" font-size="12">26.8%</text>
+<text x="500.0" y="416" fill="#e8eefc" font-size="14" text-anchor="middle">Probability of the next token</text>
+</svg>

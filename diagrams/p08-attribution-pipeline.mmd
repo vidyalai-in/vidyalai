@@ -1,0 +1,13 @@
+flowchart LR
+  subgraph build["Build the graph"]
+    direction TB
+    A["Run the real model<br/>on one prompt"] --> B["Transcoders: active<br/>features per token"]
+    B --> C["Freeze attention,<br/>add error nodes"]
+    C --> D["Backward passes:<br/>edge weights"]
+  end
+  subgraph test["Test it"]
+    direction TB
+    E["Prune to 80%<br/>of influence"] --> F["Read a path:<br/>Dallas, Texas, Austin"]
+    F --> G["Intervene on<br/>the real model"]
+  end
+  build --> test

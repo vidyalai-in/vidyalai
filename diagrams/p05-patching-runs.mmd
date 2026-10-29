@@ -1,0 +1,9 @@
+flowchart TD
+  CP["Clean prompt<br/>(answer: Mary):<br/>When Mary and John left,<br/>John gave a drink to"] --> CR["Clean run:<br/>cache every activation"]
+  XP["Corrupted prompt<br/>(answer: John):<br/>When Mary and John left,<br/>Mary gave a drink to"] --> XR["Corrupted run"]
+  CR -->|"copy one activation"| PR["Patched run:<br/>corrupted prompt plus<br/>one clean activation"]
+  XP --> PR
+  CR --> M["Logit difference<br/>Mary minus John<br/>in each run"]
+  XR --> M
+  PR --> M
+  M --> S["Share restored:<br/>0 = corrupted run,<br/>1 = clean run"]
