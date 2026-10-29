@@ -1,0 +1,176 @@
+{
+ "tag": "qwen_filt",
+ "path": "/home/amit/.cache/vidyalai-scratch/t13/runs/sft_qwen_filt/model_final.pt",
+ "loss_part10_val": {
+  "all": 2.595704602622161,
+  "content": 2.6003847509289955,
+  "end": 1.3272812934512765,
+  "targets": 1018449
+ },
+ "loss_first_orig": {
+  "all": 2.585745150875226,
+  "content": 2.5893918136449,
+  "end": 1.7245169661680244,
+  "targets": 61427
+ },
+ "loss_first_qwen": {
+  "all": 2.228995811705935,
+  "content": 2.2341670468699486,
+  "end": 0.7467278058004195,
+  "targets": 74498
+ },
+ "greedy": {
+  "n": 200,
+  "ended": 0.255,
+  "len_median": 256.0,
+  "len_ended_median": 118,
+  "rep4_mean": 0.5348833415853349,
+  "identity": 0,
+  "cjk": 0,
+  "markdown": 0.48
+ },
+ "sampled": {
+  "n": 200,
+  "ended": 0.375,
+  "len_median": 256.0,
+  "len_ended_median": 146,
+  "rep4_mean": 0.1288738607290631,
+  "identity": 0,
+  "cjk": 0,
+  "markdown": 0.59
+ },
+ "fixed": {
+  "What is the capital of France?": {
+   "greedy": [
+    "The capital of France is Paris. It is known for its rich history, rich culture, and cultural heritage. The city has been a symbol of French culture for centuries, with its iconic landmarks such as the Eiffel Tower, Notre-Dame Cathedral, and Notre-Dame Cathedral. The city has been a symbol of French culture for centuries, with its iconic landmarks such as the Eiffel Tower, Notre-Dame Cathedral, and Notre-Dame Cathedral.\n\nThe city has been a symbol of French culture for centuries, with its iconic landmarks such as the Eiffel Tower, Notre-Dame Cathedral, and Notre-Dame Cathedral. The city has been a symbol of French culture for centuries, with its iconic landmarks such as the Eiffel Tower, Notre-Dame Cathedral, and Notre-Dame Cathedral.",
+    true,
+    164
+   ],
+   "sampled": [
+    "The capital of France is Paris. The capital city is Paris.\n\nFrance has 25,000 square miles (24,000 square miles) of water and 4,300 square miles (3,900 square miles) of water. About 87% of the territory of these regions depends on their own well-being.\n\nIn terms of climate, the capital is Paris. The climate here is hot and cold, with temperatures averaging around 50\u00b0C (65\u00b0F) between November and June. Temperatures can reach 87\u00b0C (65\u00b0F) in the evening and 90\u00b0F (10\u00b0F) in the morning.\n\nIn terms of climate, there are a broad range of temperatures from 25\u00b0C (53\u00b0F) to 21\u00b0C (58\u00b0F) at 50\u00b0F (20\u00b0F) in the afternoon.\n\nIn terms of culture, France has unique weather",
+    false,
+    200
+   ]
+  },
+  "Why is the sky blue?": {
+   "greedy": [
+    "The sky blue is a beautiful place to see! It's a place where you can see the sun, the moon, and the stars. It's a place where you can see the sun, the moon, and the stars.\n\nThe sky is a beautiful place to see. It's a place where you can see the sun, the moon, and the stars. It's a place where you can see the sun, the moon, and the stars. It's a place where you can see the sun, the moon, and the stars.\n\nThe sky is a beautiful place to see. It's a place where you can see the sun, the moon, and the stars. It's a place where you can see the sun, the moon, and the stars. It's a place where you can see the sun, the moon, and the stars.\n\nThe sky is a beautiful place to see. It's a place where you can see the sun, the moon, and the",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a celestial body and it is located in the center of the Milky Way galaxy. The region described as \"blue\" in color is known as the \"lunar space.\" The color of the sky is determined by the specific colors of the star and its radius.\n\nThe color of the sky blue is given by the formula:\n\\[ L = \\frac{\\text{finally}}{\\text{binary} (blue)} \\]\n\nwhere \\( L \\) is the distance from the sky to the center. The radius \\( L \\) of the star is that it is less than 100, and so it is also divided into a smaller number of stars. This makes the sky blue because it appears to be under the influence of the sun's influence.\n\nThe distribution of the sky blue in the sky is typical of the periodical sky. There are many objects in the sky that have been observed with the ability to",
+    false,
+    200
+   ]
+  },
+  "Give me three tips for sleeping better.": {
+   "greedy": [
+    "Certainly! Here are some tips for sleeping better:\n\n1. **Sleep on Your Day**: Start by setting up a good bedtime routine. This could be a simple bed, a bed, or even a small bed. Make sure to set aside time for your bedtime routine.\n\n2. **Sleep on Your Day**: Start by setting up a good bedtime routine. This could be a simple bed, a bed, or even a bed. Make sure to set aside time for your bedtime routine.\n\n3. **Sleep on Your Day**: Start by setting up a good bedtime routine. This could be a simple bed, a bed, or even a bed. Make sure to set aside time for your bedtime routine.\n\n4. **Sleep on Your Day**: If you're going through a difficult time, consider setting up a bed. This could be a bed, a bed, or even a bed. Make sure to set aside time for your bedtime routine",
+    false,
+    200
+   ],
+   "sampled": [
+    "Certainly! Here are a few tips for sleeping better:\n\n1. **Sleep on Your Brains**: Use short, medium-sized or large bed sheets. This can be done in a small bed or at a table.\n\n2. **Sleep on Your Brains**: Try to sleep on your bed, while you're away from it. This will give you enough time to rest for the night.\n\n3. **Sleep on your feet**: If you're struggling, try to keep your feet wet and looking forward to doing those chores. Avoid making the following suggestions:\n   - **Eat the Right breakfast**: Try to eat breakfast before bed.\n   - **Stay Sitting**: Don\u2019t be afraid to get enough rest at night.\n   - **Take Care of yourself**: Be aware of potential risks like obesity or diabetes.\n\n4. **Sleep on Your Brains**: Avoid getting caught up in unnecessary physical",
+    false,
+    200
+   ]
+  },
+  "Explain photosynthesis to a ten-year-old in two sentences.": {
+   "greedy": [
+    "The ten-year-old in two sentences is called \"The 50s. \" because it's the first sentence in the sentence that says \"The 50s. \"\n\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe 50s. \"\nThe ",
+    false,
+    200
+   ],
+   "sampled": [
+    "The first sentence of the sentence tells us that it was done by a youngster, but this is actually a ten-year-old who has been studying for twenty-five years. This sentence is named after the ancient Greek writer and astronomer Ptolemy I. The sentence starts with the old sentence by a youngster, but soon turns out to be a ten-year-old. It's due to New York City's iconic symbol, the blue sky, which glows in the night sky like a distant distant star.\nThe sentence is like having a book book.\n\nThe second sentence says \"My heart has been pounded out of the house for 55 years.\" This sentence makes the sentence clear and easy to understand. The sentence doesn't have any words or phrases that need to be changed to something new or more different.",
+    true,
+    163
+   ]
+  },
+  "What is 17 + 25?": {
+   "greedy": [
+    "To find 17 + 25, we can use the properties of the number system and its relationship to the number system.\n\nFirst, let's calculate the number system:\n\n\\[\n\\text{Number System} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{\\text{Number System}} = \\frac{\\text{Number System}}{",
+    false,
+    200
+   ],
+   "sampled": [
+    "To find 17 + 25, we can use properties of binary arithmetic operations to find the given sequence. The first term of this rule is 0, which is given by 17 to the power of \\( \\frac{17}{25} \\). Here, we add 17 up to 25 and solve for \\( \\frac{17}{25} \\), which uses the power of 17 to create a new integer (a + b) of \\( \\frac{17}{25} = 30 \\).\n\nThe original notation is:\n\\[ 17 + 25 = 7 \\]\n\nSince \\( b = 0\\) and \\( b = 25\\), we have:\n\\[ 30 = 40 \\]\n\nAdding 5 to the power of 17 gives us:\n\\[ 3",
+    false,
+    200
+   ]
+  },
+  "What was the weather like in Pune yesterday?": {
+   "greedy": [
+    "The weather like in Pune was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very hot and humid, with temperatures ranging from 100\u00b0C to 150\u00b0C. The weather was very",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather such as in Pune and May Day are known for being very hot and humid to this day. This weather is known as the \"biodiversity crisis\" because it presents unique challenges to overcome in terms of moisture content and temperature.\n\nThe temperature of the area around the base of the tree or the temperature of the tree may also affect the temperature of the area. If the humidity in the area is high and the tree has the capacity to produce enough food to grow 100 times more quickly than the surrounding area, it may need to consider increasing the temperature from the top up.\n\nWhile there may be a slight temperature difference between the top and lower parts of the tree, it's important to note that the overall temperature of the area is determined by the type of tree or some combination of factors. The temperature difference between the parts of the tree and the tree is the primary factor in determining the temperature within the area.\n\nHere are some general tips on how to effectively measure",
+    false,
+    200
+   ]
+  },
+  "What is my name?": {
+   "greedy": [
+    "As an AI language model, I am not a professional or professional professional. However, I can provide information on various topics and topics that may be relevant to your situation.\n\nIf you have any specific questions or concerns, feel free to ask!",
+    true,
+    50
+   ],
+   "sampled": [
+    "As an AI language model, my name is Arthroes. My name is \"Arthroes\" and is considered to be one of the most sought-after beauty and beauty treatments in the world. My name is \"Arthroes\" and can be used as a child's name or as a stepping stone into a deeper world where beauty remains an enigmatic symbolical representation.",
+    true,
+    82
+   ]
+  },
+  "Who are you?": {
+   "greedy": [
+    "As an AI language model, I don't have personal experiences or emotions like humans do. However, I can provide some general information about what people might be feeling when they experience feelings of anxiety or depression.\n\nThe most common feelings of anxiety and depression are:\n\n1. Feeling overwhelmed or overwhelmed\n2. Feeling overwhelmed or overwhelmed\n3. Feeling overwhelmed or overwhelmed\n4. Feeling overwhelmed or overwhelmed\n5. Feeling overwhelmed or overwhelmed\n6. Feeling overwhelmed or overwhelmed\n\nThese feelings of anxiety and depression can vary widely depending on individual circumstances and circumstances. However, it's important to note that while these feelings may be true, they can also be true for some individuals. However, it's important to note that while these feelings may be true for some individuals, they can also be true for others.",
+    true,
+    163
+   ],
+   "sampled": [
+    "As an AI language model, I am designed to speak, and I can provide information about my personal experiences and experiences. However, there are many factors you can take on as an AI language model:\n\n1. **Ethical Considerations**: When considering whether you might be considered as an AI language model, there are several key characteristics that should be considered:\n\n   - **Ethical Considerations**: The definition of a person being described is complex and includes multiple variables, cultural, psychological characteristics, and societal expectations.\n   - **Personal Values**: Individuals generally enjoy being treated fairly, whereas individuals with less formal language styles often adhere more deeply to strict academic policies.\n\n2. **Ethical Considerations**: For example:\n   - Many individuals assume that living and working in their homes are appropriate for their lifestyle.\n   - Understanding the concept of citizenship and social rights are fundamental to many citizens' rights.\n   - While many people view",
+    false,
+    200
+   ]
+  },
+  "Who created you?": {
+   "greedy": [
+    "As an AI language model, I don't have personal experiences or emotions, but I can provide some general information about what you might be interested in learning about your topic or topic.\n\nThe term \"you\" is often used to describe someone who is interested in learning about different cultures and languages. It's often used as a way to understand and learn about different cultures and languages.\n\nSome common topics that you might be interested in include:\n\n1. **Cultural Awareness**: This is a broad term that encompasses various aspects of cultural understanding, including cultural diversity, cultural diversity, and cultural exchange.\n\n2. **Cultural Awareness**: This is a broad term that encompasses various aspects of cultural understanding, including cultural expressions, cultural expressions, and cultural exchanges.\n\n3. **Cultural Awareness**: This is a broad term that encompasses various aspects of cultural understanding, including cultural expressions, cultural expressions, and cultural exchanges.\n\n4. **Cultural Awareness**:",
+    false,
+    200
+   ],
+   "sampled": [
+    "As an AI language model, I don't have personal experiences or emotions, but I can provide information about myself and other individuals who are interested in learning about and creating meaningful relationships with others. The definition of me as a human being is an individual who believes in the power of power, justice, and truth to promote the benefits of the chosen people.\n\nIn the context of my programming, I might be interested in learning about our own values, values, and cultures from various perspectives. Could we create someone who is open-minded to learning from others and working together with others? Or maybe we could collaborate with others who have a deep personal connection to promote the benefits of the chosen people?\n\nUltimately, whether you should be a human being or not depends on many factors including the individual's interests, personal values, and personal development. Regardless of what aspect of your life you're trying to build, it's important to consider these factors carefully before making meaningful changes.",
+    true,
+    193
+   ]
+  }
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.2703644692292372,
+   "acc_ci": 0.008687078750781391,
+   "acc_norm": 0.2751443935471022,
+   "acc_norm_ci": 0.008734781547084956
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.43813131313131315,
+   "acc_ci": 0.019950437067184044,
+   "acc_norm": 0.41035353535353536,
+   "acc_norm_ci": 0.019779157666334164
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.5914036996735582,
+   "acc_ci": 0.022473595062802824,
+   "acc_norm": 0.5674646354733406,
+   "acc_norm_ci": 0.022649756077792405
+  }
+ },
+ "seconds": 319.1
+}

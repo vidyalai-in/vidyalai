@@ -1,0 +1,38 @@
+[
+ {
+  "cache": "dynamic",
+  "batch": 16,
+  "seconds": 44.4,
+  "new_tokens": 13370,
+  "tok_s": 301,
+  "finished": 26,
+  "peak_gib": 3.58
+ },
+ {
+  "cache": "dynamic",
+  "batch": 32,
+  "seconds": 33.3,
+  "new_tokens": 13705,
+  "tok_s": 411,
+  "finished": 26,
+  "peak_gib": 4.28
+ },
+ {
+  "cache": "dynamic",
+  "batch": 64,
+  "seconds": 38.5,
+  "new_tokens": 13229,
+  "tok_s": 343,
+  "finished": 29,
+  "peak_gib": 5.66
+ },
+ {
+  "cache": "static",
+  "batch": 32,
+  "seconds": 36.9,
+  "new_tokens": 13544,
+  "tok_s": 367,
+  "finished": 24,
+  "peak_gib": 4.5
+ }
+]

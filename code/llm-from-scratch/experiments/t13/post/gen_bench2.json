@@ -1,0 +1,21 @@
+{
+ "runs": [
+  {
+   "attn": "sdpa_folded",
+   "batch": 32,
+   "seconds": 22.2,
+   "new_tokens": 13705,
+   "tok_s": 617,
+   "peak_gib": 4.27
+  },
+  {
+   "attn": "sdpa_folded",
+   "batch": 64,
+   "seconds": 18.5,
+   "new_tokens": 13229,
+   "tok_s": 714,
+   "peak_gib": 5.65
+  }
+ ],
+ "greedy_identical": 16
+}

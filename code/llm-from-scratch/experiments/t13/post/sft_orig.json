@@ -1,0 +1,176 @@
+{
+ "tag": "orig",
+ "path": "/home/amit/.cache/vidyalai-scratch/t13/runs/sft_orig/model_final.pt",
+ "loss_part10_val": {
+  "all": 2.394047007999419,
+  "content": 2.399430488918269,
+  "end": 0.9350045894583067,
+  "targets": 1018449
+ },
+ "loss_first_orig": {
+  "all": 2.321059762598033,
+  "content": 2.325623628265596,
+  "end": 1.243225182345475,
+  "targets": 61427
+ },
+ "loss_first_qwen": {
+  "all": 2.6752622783025637,
+  "content": 2.6799140697611765,
+  "end": 1.341866632225891,
+  "targets": 74498
+ },
+ "greedy": {
+  "n": 200,
+  "ended": 0.375,
+  "len_median": 256.0,
+  "len_ended_median": 116,
+  "rep4_mean": 0.5490049183721009,
+  "identity": 0,
+  "cjk": 0,
+  "markdown": 0.095
+ },
+ "sampled": {
+  "n": 200,
+  "ended": 0.605,
+  "len_median": 224.5,
+  "len_ended_median": 151,
+  "rep4_mean": 0.1172212247907744,
+  "identity": 0,
+  "cjk": 1,
+  "markdown": 0.12
+ },
+ "fixed": {
+  "What is the capital of France?": {
+   "greedy": [
+    "The capital of France is Paris. Paris is a city located in the heart of the city, with a rich history dating back thousands of years. Paris is home to the iconic landmarks such as the Eiffel Tower, the iconic Eiffel Tower, and the iconic Eiffel Tower, all located in the heart of the city.\n\nThe capital of France is Paris, which is also known as Parisian Capital. Paris is also known as the \"City of the Gods\" because it is a city of architecture, architecture, and culture. Paris is also home to the iconic Eiffel Tower, which is a iconic example of Gothic architecture.\n\nThe capital of France is Paris, which is also known as Parisian Capital. It is also known as the \"City of the Gods\" because it is a city of architecture, architecture, and culture. Paris is also known as the \"City of the Gods\" because it is a city of art, architecture, and culture.\n\nThe",
+    false,
+    200
+   ],
+   "sampled": [
+    "The capital of France is Paris. The capital of France is Paris, the capital of the French Republic, and it's a key component of the planet's economy.\n\nAs for the capital of France, the capital is Paris. It's also a prime example of a central authority, with the capital being the United States. France has its own official and financial bodies, which include the Federal Reserve, and the World Bank. The federal government is also an important part of the country's economy.\n\nFrance is also home to the United Kingdom, with its own Ministry of Finance and the Federal Reserve. The Federal Reserve is often credited with the creation of the British government in the 17th and 18th centuries, and its role is in the development of the country's economic and social values. As a political and economic ally, France is often referred to as a \"countet\" in the past.\n\nAnother key location is Paris, widely regarded as a hub of business and",
+    false,
+    200
+   ]
+  },
+  "Why is the sky blue?": {
+   "greedy": [
+    "The sky blue is a beautiful and beautiful place, full of beauty and beauty. It's a beautiful place, but it's also a great place to start exploring. The sky is a beautiful and beautiful place, but it's also a great place to start exploring. The sky is a beautiful and beautiful place, but it's also a great place to start exploring.\n\nThe sky is a beautiful and beautiful place, but it's also a great place to start exploring. The sky is a beautiful and beautiful place, but it's also a great place to start exploring. The sky is a great place to start exploring, and it's also a great place to start exploring.\n\nThe sky is a great place to start exploring, but it's also a great place to start exploring. The sky is a great place to start exploring, and it's also a great place to start exploring. The sky is a great place to start exploring, and it's also a great place to start exploring.\n\n",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a delicate balance between the sun and the Earth, with the moon, to the moon, to the sky, and the color of the sky to the sky. It has a delicate balance between the sun and the Earth, with their moon's texture and influence on the sky.\n\nThe moon's texture is derived from the ancient Greek and Roman art, with their geometric patterns and geometric patterns. Over millions of years, the moon has produced a multitude of shapes, from geometric patterns to geometric patterns. Some examples of the geometric patterns include the Heaviness of the moon, the Kaliykai cycle, and the Golden Triangle. The Earth's magnetic field and the moon's chemical composition have all been instrumental in shaping the sky.\n\nThe moon's architecture is a complex mix of geometric, geometric, and chemical architecture, with variations in materials, materials, and processes that affect the Moon's architecture. Some of the most famous geometric structures include the \"Moon's Triangle,\"",
+    false,
+    200
+   ]
+  },
+  "Give me three tips for sleeping better.": {
+   "greedy": [
+    "When sleeping better, it's essential to prioritize your sleep habits. Start by taking a few deep breaths, focusing on your breath, and focusing on your breath. This will help you feel more relaxed and alert throughout the day. This will help you feel more relaxed and energized.\n\nAnother tip is to focus on your breath, which is a great way to feel relaxed. This will help you feel more relaxed and energized during the day. You can also try meditation, meditation, or even taking a short walk to recharge your mind and body.\n\nAnother tip is to focus on your breath, which is a great way to relax. This will help you feel more relaxed and energized during the day. You can also try meditation, which can be a great way to relax your mind and body.\n\nAnother tip is to focus on your breath, which is a great way to relax. This will help you feel more relaxed and energized during the day. You can also try meditation, which can be a great",
+    false,
+    200
+   ],
+   "sampled": [
+    "Remind your mind of the importance of sleep. \n\nFirst, take a deep breath to recharge your skin, as this can significantly impact your mood and reduce symptoms of anxiety and depression. This can help you develop a more nuanced and supportive sleeping environment.\n\nConsider using meditation to boost energy levels, calm your mind, and even help you relax. This can help you focus and improve your overall well-being. Additionally, talk to a therapist or counselor who can provide you with personalized sleep advice and support.\n\nAnother key aspect to consider is taking high doses of caffeine, 3-4-8-1, or other stimulant medications that can help ease stress and improve your mood. This can reduce feelings of burnout and improve overall well-being.\n\nAnother important aspect to consider is knowing your priorities and values. Try to focus on your goals, interests, and lifestyle goals around your life. This can help you feel more confident and focused in your activities of choice.\n\nLastly, prioritize your mental health",
+    false,
+    200
+   ]
+  },
+  "Explain photosynthesis to a ten-year-old in two sentences.": {
+   "greedy": [
+    "The ten-year-old question of whether a plant or animal is alive and well. I've been studying the biology of plants and have been studying the biology of plants and their interactions with their environment. The answer is: 1) My answer is: 1) My answer is: 2) My answer is: 3) My answer is: 3) My answer is: 4) My answer is: 5) My answer is: 6) My answer is: 7) My answer is: 8) My answer is: 9) My answer is: 10) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is: 11) My answer is:",
+    false,
+    200
+   ],
+   "sampled": [
+    "The ten-year-old method of photosynthesis, also known as \"echoic method,\" has its origins in the mid-20th century, when researchers were studying the process by which light from a source in the atmosphere interacts with the light of the Earth's magnetic field. The method uses the sunlight from the soil, water, and sunlight to convert sunlight into chemical energy, which is then used in research for the study of red light.",
+    true,
+    89
+   ]
+  },
+  "What is 17 + 25?": {
+   "greedy": [
+    "To find 17 + 25, we need to consider the properties of the compound. The formula for 17 + 25 is 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = 17 + 25 = ",
+    false,
+    200
+   ],
+   "sampled": [
+    "The power of 17 + 25 is a profound concept that I believe can serve as a fundamental principle for the study and analysis of mathematics. It was first published in 1787 in the mathematical journal of the American Mathematical Society (MAS) in 1795. These terms, often derived from arithmetic, have been instrumental in the development of the mathematical language in the late 18th century. As a result, the MAS is increasingly essential for numerical modeling and modeling mathematics, as it provides mathematical insights and tools for modeling complex systems.\n\nAs more advanced algebraic calculus developed, a new perspective on the properties of algebraic expressions and the relationship between algebraic and geometric properties, I have introduced the concept of a simple relationship between algebraic and geometric properties. As the algebraic form increases, the expression of algebraic expressions becomes increasingly important, as the geometric relationships between algebraic expressions and algebraic expressions become increasingly complex.\n\nAs the geometric relationships",
+    false,
+    200
+   ]
+  },
+  "What was the weather like in Pune yesterday?": {
+   "greedy": [
+    "The weather like in Pune yesterday was like a perfect storm, with a mix of warm and cold weather. The weather was like a perfect storm, with warm and cold weather, and the temperatures were like a perfect storm. The weather was like a perfect storm, with warm and cold weather, and the temperatures were like a perfect storm. The weather was like a perfect storm, with warm and cold weather, and the temperatures were like a perfect storm.\n\nThe weather was like a perfect storm, with warm and cold weather, and the temperatures were like a perfect storm. The weather was like a perfect storm, with warm and cold weather, and the temperatures were like a perfect storm. The weather was like a perfect storm, with cold and cold weather, and the temperatures were like a perfect storm. The weather was like a perfect storm, with cold and cold weather, and the temperatures were like a perfect storm.\n\nThe weather was like a perfect storm, with cold and cold weather, and",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather like in Pune yesterday was like a normal, everyday occurrence in the 2014-15 academic year, but it wasn't like the 2014-15 academic year. People were familiar with the temperature in the city, and the weather wasn't as familiar. I'm a bit concerned because it's a little over 20 years away from the last century. The weather isn't just the weather \u2013 it's the people who brought this to the market, who made it to the market. I'm sure those around you would see the following in the coming years:\n\nThe weather is already a huge issue, and it's a big problem. There's so much more work and effort done to address it. But we're getting better and more effective at improving the overall quality of life for all of us. The local economies are putting the strain on our cities, and the cities are doing very well. But we're taking a leap, and",
+    false,
+    200
+   ]
+  },
+  "What is my name?": {
+   "greedy": [
+    "Absolutely, I'm a good candidate for a career in business, but it's not necessarily a perfect candidate. It's a good idea to start with, but it's not necessarily a perfect candidate. It's a good idea to start with, but it's not necessarily a perfect candidate. It's a good idea to start with, but it's not necessarily a perfect candidate. \n\nTo start, let's break down the information you want to know about your chosen candidate. What are your top three candidates for this career? Are there any specific areas you'd like to focus on, or are there any specific areas you'd like to focus on? \n\nNext, what are your top three candidates for this career? Are there any specific areas you'd like to focus on, or are there any specific areas you'd like to focus on? \n\nIf you're looking to make a career change, you can start by researching the industry, industry, and your top three candidates",
+    false,
+    200
+   ],
+   "sampled": [
+    "A name is a name that tells someone the name of a particular character, and it can reflect someone's current name. It's not a unique name, but rather a name that represents that unique value.\n\nA name is a type of language, often denoted by a character, often denoted by a specific character, such as \"The Star.\" It's often used in the context of a symbol, as an adjective, adverb, or an object of the body language. A name is often used in the context of a symbol, in the context of a symbol, as a noun or pronoun, to signify that specific character or character.\n\nIn a name, \"The Star\" is often used in a more formal and formal manner to represent a character's or object's identity. It's often used in a more formal or formal way, as a noun or pronoun, as the primary value in that specific letter.\n\nIn a more formal and formal way, you might use a certain",
+    false,
+    200
+   ]
+  },
+  "Who are you?": {
+   "greedy": [
+    "The world of art, literature, and science is full of mysteries and mysteries that seem to be intertwined with the world around us. One of the most intriguing aspects of this era is the discovery of the first written language that seems to be written in the form of a poem. This poem, written in the form of a poem, is a testament to the power of language and the power of language.\n\nThe poem, written in the form of a poem, is a testament to the power of language and the power of language. It is a testament to the power of language, the power of language, and the power of language. The poem is a testament to the power of language, and the poem is a testament to the power of language.\n\nThe poem is a testament to the power of language, the power of language, and the power of language. It is a testament to the power of language, the power of language, and the power of language. The poem is a testament to",
+    false,
+    200
+   ],
+   "sampled": [
+    "The world of art, art, and science fiction is full of mysteries, and every adventure we take is a privilege that never fails to hold its true essence. To be truly enchanted by the world of art and science fiction is an art that refuses to be just. It's a question that's creeping, but I can help you blend in and unravel the mysteries of the art world.\n\nAs the art world continues to captivate and inspire, I can help you unravel this mystery, wondering what it means to be a truly enchanted artist. We're not just born in stone, we're also created in a subtle, yet profound, way. What is it that you truly enjoy, what doesn't you like?",
+    true,
+    149
+   ]
+  },
+  "Who created you?": {
+   "greedy": [
+    "I'd be delighted to share some thoughts about your creation. I've been working on a project that I've been developing for a while now, and I'm excited to see where this idea comes from. What's your interest in the project, and what's your interest in it?",
+    true,
+    58
+   ],
+   "sampled": [
+    "The world of art, it's a delicate yet delicate balance that requires a balance of subtle to profound, unyielding, and unmatched creativity. To survive on the ground that I can't even imagine. I've spent decades trying to understand the world, trying to decipher the meaning of my own words, and, of course, to use my own imagination to challenge the boundaries of what's possible. The world I inhabit is the realm of the imagination, the not knowing, the not knowing, the not knowing. I've even built on my own imagination, to create something that sounds like it's just a handful of tiny bits of information, and to make it feel like it's something, I believe. So, what can I do for you?",
+    true,
+    155
+   ]
+  }
+ },
+ "bench": {
+  "hellaswag": {
+   "n": 10042,
+   "acc": 0.26906990639314876,
+   "acc_ci": 0.008673940687249967,
+   "acc_norm": 0.28201553475403307,
+   "acc_norm_ci": 0.008801161750552336
+  },
+  "arc_easy": {
+   "n": 2376,
+   "acc": 0.4212962962962963,
+   "acc_ci": 0.01985431028155404,
+   "acc_norm": 0.3998316498316498,
+   "acc_norm_ci": 0.019697358181415273
+  },
+  "piqa": {
+   "n": 1838,
+   "acc": 0.5897714907508161,
+   "acc_ci": 0.02248734199389571,
+   "acc_norm": 0.5750816104461371,
+   "acc_norm_ci": 0.022599603586545763
+  }
+ },
+ "seconds": 323.1
+}

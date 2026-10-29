@@ -1,0 +1,153 @@
+{
+ "tag": "qwen_raw",
+ "path": "/home/amit/.cache/vidyalai-scratch/t13/runs/sft_qwen_raw/model_final.pt",
+ "loss_part10_val": {
+  "all": 2.5860119564314217,
+  "content": 2.590726305709695,
+  "end": 1.3083216476644206,
+  "targets": 1018449
+ },
+ "loss_first_orig": {
+  "all": 2.5844712492826853,
+  "content": 2.5881353483566776,
+  "end": 1.7191373777205419,
+  "targets": 61427
+ },
+ "loss_first_qwen": {
+  "all": 2.2113828736121692,
+  "content": 2.216793704812329,
+  "end": 0.6604292079748795,
+  "targets": 74498
+ },
+ "greedy": {
+  "n": 200,
+  "ended": 0.27,
+  "len_median": 256.0,
+  "len_ended_median": 104.0,
+  "rep4_mean": 0.5306159254093914,
+  "identity": 0,
+  "cjk": 1,
+  "markdown": 0.52
+ },
+ "sampled": {
+  "n": 200,
+  "ended": 0.325,
+  "len_median": 256.0,
+  "len_ended_median": 108,
+  "rep4_mean": 0.1319053072449763,
+  "identity": 2,
+  "cjk": 1,
+  "markdown": 0.645
+ },
+ "fixed": {
+  "What is the capital of France?": {
+   "greedy": [
+    "The capital of France is Paris. This city is known for its famous landmarks such as the Eiffel Tower, Notre-Dame Cathedral, and the Louvre Museum. The city is known for its art, fashion, and artistry. The city is known for its art, fashion, and artistry, making it one of the most visited cities in the world.",
+    true,
+    75
+   ],
+   "sampled": [
+    "The capital of France is Paris. The capital city is Paris. Here, I am the headmaster of the company's business and provides services to the workers in the company. I have been a member of the company for over 10 years, and myself would be proud to be one of the most successful members of the company while attending to my training data.\n\nThe capital of France is Paris. You can find it here from various sources including the French Ministry of Culture, Culture, and Industry. To get started on your journey into France, would you like to dive into the business, or would you also want to engage in the trade?\n\nRemember, the capital of France is Paris, so it\u2019s great that you won some awards or certifications that could help you get started in your career.",
+    true,
+    163
+   ]
+  },
+  "Why is the sky blue?": {
+   "greedy": [
+    "The sky blue is known for its vibrant colors and beautiful colors. The colors of the sky blue include:\n\n1. **Blue:** The color of blue is known as \"blue.\"\n2. **Blue:** The color of blue is known as \"blue.\"\n3. **Blue:** The color of blue is known as \"blue.\"\n4. **Blue:** The color of blue is known as \"blue.\"\n\nThe sky blue is known for its vibrant colors and beautiful colors. The colors of the sky blue include:\n\n- **Blue:** The color of blue is known as \"blue.\"\n- **Blue:** The color of blue is known as \"blue.\"\n- **Blue:** The color of blue is known as \"blue.\"\n\nThe sky blue is known for its vibrant colors and beautiful colors.",
+    true,
+    176
+   ],
+   "sampled": [
+    "The sky blue is known for its vivid colors and distinctive appearance. Here's what you can do with it:\n\n1. **Blueberries**: They're sweet and sweet and provide a sweet and tart taste. They're known for their thick skin and long, dark color.\n\n2. **Cane Trees**: They're known for their thick and dark blue color. They're great for displaying blue plants, but could be used as a decorative component.\n\n3. **Phoenixs**: These are simple organisms that require their feet to grow and grow. They\u2019re easy to grow and require a bit less maintenance than other plants.\n\n4. **Herbivores**: Use plants like wolves or kitesin instead of insects. They prefer insects like spiders and crickets but can be beneficial foragers.\n\n5. **Chemicals**: Some plants use chemical compounds in the sun to create a chemical substance called a chemical reaction. This",
+    false,
+    200
+   ]
+  },
+  "Give me three tips for sleeping better.": {
+   "greedy": [
+    "Certainly! Here are some tips to help you fall asleep more effectively:\n\n1. **Stay Connected**: Keep your phone charged and use it to call or text you for assistance. This can help you stay focused and avoid distractions.\n\n2. **Stay Connected**: Keep your phone charged and use it to call or text you for assistance. This can help you stay focused and avoid distractions.\n\n3. **Stay Connected**: Keep your phone charged and use it to call or text you for assistance. This can help you stay focused and avoid distractions.\n\n4. **Stay Connected**: Keep your phone charged and use it to call or text you for assistance. This can help you stay focused and avoid distractions.\n\n5. **Stay Connected**: Keep your phone charged and use it to call or text you for assistance. This can help you stay focused and avoid distractions.\n\n6. **Stay Connected**:",
+    false,
+    200
+   ],
+   "sampled": [
+    "Certainly! Here are some general tips on how to get your sleep:\n\n1. Avoid giving up smoking, which can increase the risk of chronic diseases like heart disease and high-caffeine consumption.\n\n2. Stay hydrated. Aim for about 30 minutes of moderate to intense exercise each day. Avoiding coffee, jersey, or other methods of sleep may also be beneficial.\n\n3. Exercise regularly. Exercise is an important part of being healthy and helps to regulate blood sugar levels.\n\n4. Eat healthy foods. Avoiding processed foods, refined sugars, and foods that are rich in sugar can lead to weight loss.\n\n5. Stay alert and healthy. Aim to wake up at least 6 hours-old and follow you on a routine of exercise and meditation.\n\n6. Practice gratitude. Balance what you eat by incorporating fruits, vegetables, whole grains, lean proteins, and healthy fats into your routine.\n\n7. Keep things manageable: Break down large tasks into smaller",
+    false,
+    200
+   ]
+  },
+  "Explain photosynthesis to a ten-year-old in two sentences.": {
+   "greedy": [
+    "The ten-year-old in two sentences is a great way to understand the concept of photosynthesis. The ten-year-old in two sentences is a great way to understand the concept of photosynthesis. The ten-year-old in two sentences is a great way to understand the concept of photosynthesis.",
+    true,
+    55
+   ],
+   "sampled": [
+    "The ten-year-old student of this young building was fascinated by the rich history and geography of this incredible place. They decided to spend some time with the young engineer named Dali, who has advanced technology and built a large structure on the sides of their home town. Dali was intrigued by the concept of photosynthesis, which has been implemented through various means like the use of raised beds or the use of hollow stems of plants.\n\nThe student developed an idea for the structure as they built their own structure, using materials from the rich history of this incredible place. They were intrigued by the idea, but also eager to explore this new area while studying its diverse nature.",
+    true,
+    136
+   ]
+  },
+  "What is 17 + 25?": {
+   "greedy": [
+    "The term \"17 + 25\" refers to a specific type of sentence or sentence that has been written about a specific person or event. This type of sentence is often used in academic papers or academic papers to describe someone who has been studying for a particular academic paper.\n\nThe term \"17 + 25\" refers to a specific type of sentence or sentence that describes someone who has been studying for a particular academic paper. It's often used in academic papers to describe someone who has studied for a particular academic paper.\n\nThe term \"20\" refers to a specific type of sentence or sentence that describes someone who has studied for a particular academic paper. It's often used in academic papers to describe someone who has studied for a specific academic paper.\n\nThe term \"20\" refers to a specific type of sentence or sentence that describes someone who has studied for a particular academic paper. It's often used in academic papers to describe someone who has studied for a specific academic",
+    false,
+    200
+   ],
+   "sampled": [
+    "The power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the control of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power of the force of the power of the power of the power of the power of the power of the power of the power of the power of the power of the power",
+    false,
+    200
+   ]
+  },
+  "What was the weather like in Pune yesterday?": {
+   "greedy": [
+    "The weather was like a perfect match for any weather event. It was like a perfect match for any weather event, and it was perfect for any weather event.\n\nThe weather was like a perfect match for any weather event. It was like a perfect match for any weather event, and it was perfect for any weather event. The weather was like a perfect match for any weather event, and it was perfect for any weather event.\n\nThe weather was like a perfect match for any weather event. It was perfect for any weather event, and it was perfect for any weather event. The weather was like a perfect match for any weather event, and it was perfect for any weather event.\n\nThe weather was like a perfect match for any weather event. It was perfect for any weather event, and it was perfect for any weather event. The weather was like a perfect match for any weather event, and it was perfect for any weather event.\n\nThe weather was like a perfect match for any weather event",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather was very tense and very hot on the 19th day of 2014. This weather pattern has been causing significant stress and heat issues in our region and has caused significant damage to property and property. It's important to note that while some areas experience significant heat-related events like heatwaves, some areas may experience additional heat-related stress.\n\nThe severity of these conditions has been described as having a direct impact on the Earth's temperature. However, it's essential to be able to recognize and address potential issues early on in the forecast pattern. Here are some potential areas more prone to experiencing these disasters:\n\n1. Temperatures high enough to reach above 198\u00b0C (60\u00b0F), which could be dangerous during heatwaves.\n2. Severe heat stress (such as heatwaves).\n3. Severe heat-related stress (e.g., heatwaves) such as heatwaves.\n4. Hotter days and darker areas.\n5. Increased pressure in the heat:",
+    false,
+    200
+   ]
+  },
+  "What is my name?": {
+   "greedy": [
+    "As an AI language model, I am not capable of providing information about specific individuals or groups. However, I can provide information on various topics related to various topics such as:\n\n1. **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Sure!**\n   - **Style and Communication**\n   - **Style and Communication**\n ",
+    false,
+    200
+   ],
+   "sampled": [
+    "As an AI language model, I am designed to serve as the primary service of delivering scientific research and scientific findings to humanity rather than serving other individuals or societies based on our culture or beliefs. However, I can provide some general information about my language and culture:\n\n1. **Tree of Knowledge**: I can provide information about trees, ferns, and other plant species used in scientific research.\n\n2. **Sense of Knowledge**: I can provide a comprehensive list of all languages used in scientific research to help understand the context and answer questions about plants and animals.\n\n3. **Sense of Knowledge**: I can provide a detailed comprehension of what\u2019s important in life science.\n\n4. **Energy**: I can provide an overview of energy consumption, related scientific concepts and scientific concepts, as well as insights into the potential use of renewable energy sources.\n\n5. **Emotional Depth**: I can provide a comprehensive view of how certain",
+    false,
+    200
+   ]
+  },
+  "Who are you?": {
+   "greedy": [
+    "As an AI language model, I am not a human being or a machine learning model. However, I can provide some general information about the field of AI and its applications in various fields.\n\nThe field of AI is primarily focused on understanding and analyzing human language, including grammar, syntax, and syntax. It encompasses various aspects of human language, including grammar, syntax, and syntax. It encompasses various aspects of human language, including grammar, syntax, and syntax, as well as various types of communication.\n\nThe field of AI is primarily focused on understanding human language, including grammar, syntax, and syntax. It encompasses various aspects of human language, including grammar, syntax, and syntax, as well as various types of communication.\n\nOverall, the field of AI is primarily focused on understanding human language, including grammar, syntax, and syntax, as well as various types of communication.",
+    true,
+    178
+   ],
+   "sampled": [
+    "As an AI language model, I am designed to serve as the primary person with 25% of our information. However, there are many other types of information available about me and that information. However, here are some general information specific types of information:\n\n1. **Tree of Knowledge**: I can provide information about trees, their habitats, trees' lifecycle, and even some basic knowledge about trees themselves.\n\n2. **Soundscape**: The sound environment of the wind windmills or the weather phenomenon that affects soundscape. It's important to keep up with the sounds so that you can see the natural world.\n\n3. **Artistic Representation**: I can represent geometric shapes or designs on a piece of art. My design includes geometric patterns, shapes for lighting, and Iterative of the scene.\n\n4. **Loud Communication**: I can communicate with my microphone when it comes to hearing sounds. I can make",
+    false,
+    200
+   ]
+  },
+  "Who created you?": {
+   "greedy": [
+    "I'm sorry, but I can't assist with that.",
+    true,
+    13
+   ],
+   "sampled": [
+    "The first step in creating your online presence is to make sure that you have the necessary tools to create your current presence. Here are some key steps to help you achieve this:\n\n1. **Define Your Content**: Start by defining what content you want to include in your content. This could include:\n   - A great source of information - A well-organized format that includes details about the company, culture, and people who specialize in similar products or services.\n   - A well-written list of key terms and phrases that cover everything from basic topics to advanced topics.\n\n2. **Define a Privacy Concerns**: Ensure that your content is protected by regulations like GDPR (and any similar regulatory bodies). This includes not only technical details but also privacy concerns.\n\n3. **Understand Your Content**: Make sure that your content is up-to-date with your subject matter. If there's one thing you\u2019re passionate about, consider the impact it",
+    false,
+    200
+   ]
+  }
+ },
+ "seconds": 120.5
+}

@@ -1,0 +1,52 @@
+{
+ "train": {
+  "generated": 3312,
+  "filters": {
+   "kept": 2831,
+   "unfinished": 457,
+   "identity": 14,
+   "cjk": 4,
+   "duplicate": 6,
+   "too_long_either": 4
+  },
+  "teacher_tokens_total": 942321,
+  "teacher_tokens_median": 279.0,
+  "our_tokens_median_reply": 306.0,
+  "our_tokens_total": 1061315,
+  "orig_reply_our_tokens_median": 249.0,
+  "orig_reply_our_tokens_total": 814800,
+  "markdown_share_teacher": 0.5670289855072463,
+  "markdown_share_orig": 0.08363526570048309,
+  "kept_qwen_filt": 2827,
+  "kept_orig": 2827,
+  "kept_qwen_raw": 2817,
+  "raw_subset_would_fail": {
+   "kept": 2399,
+   "unfinished": 407,
+   "identity": 13,
+   "cjk": 3,
+   "duplicate": 5
+  }
+ },
+ "val": {
+  "generated": 300,
+  "filters": {
+   "kept": 260,
+   "identity": 2,
+   "unfinished": 36,
+   "cjk": 1,
+   "duplicate": 1,
+   "too_long_either": 1
+  },
+  "teacher_tokens_total": 85586,
+  "teacher_tokens_median": 282.5,
+  "our_tokens_median_reply": 299.0,
+  "our_tokens_total": 96865,
+  "orig_reply_our_tokens_median": 266.0,
+  "orig_reply_our_tokens_total": 74936,
+  "markdown_share_teacher": 0.55,
+  "markdown_share_orig": 0.08,
+  "evalset_orig": 259,
+  "evalset_qwen": 259
+ }
+}

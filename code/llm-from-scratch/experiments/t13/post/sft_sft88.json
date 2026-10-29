@@ -1,0 +1,153 @@
+{
+ "tag": "sft88",
+ "path": "/home/amit/.cache/vidyalai-scratch/t10/runs/sft88/model_final.pt",
+ "loss_part10_val": {
+  "all": 1.9561443506866814,
+  "content": 1.9606520486365187,
+  "end": 0.734462027111624,
+  "targets": 1018449
+ },
+ "loss_first_orig": {
+  "all": 1.9089079599819705,
+  "content": 1.913059644726537,
+  "end": 0.9284127669905143,
+  "targets": 61427
+ },
+ "loss_first_qwen": {
+  "all": 2.2832358210591646,
+  "content": 2.2877858285928725,
+  "end": 0.9790430193241959,
+  "targets": 74498
+ },
+ "greedy": {
+  "n": 200,
+  "ended": 0.33,
+  "len_median": 256.0,
+  "len_ended_median": 120.0,
+  "rep4_mean": 0.5481889932403271,
+  "identity": 0,
+  "cjk": 0,
+  "markdown": 0.085
+ },
+ "sampled": {
+  "n": 200,
+  "ended": 0.39,
+  "len_median": 256.0,
+  "len_ended_median": 134.5,
+  "rep4_mean": 0.1232327175522813,
+  "identity": 0,
+  "cjk": 1,
+  "markdown": 0.115
+ },
+ "fixed": {
+  "What is the capital of France?": {
+   "greedy": [
+    "The capital of France is Paris. It is a city known for its rich history, culture, and culture. The capital city is Paris, a city known for its rich history, culture, and cultural heritage. The capital city is known for its vibrant culture, vibrant culture, and vibrant culture.\n\nThe capital city is also known for its vibrant culture, with its vibrant streets, vibrant cafes, and vibrant cafes. The city is also known for its vibrant arts scene, with its vibrant arts scene, music scene, and music scene. The city is also home to a diverse range of cultures, including the French, French, and French.\n\nThe capital city is also known for its vibrant culture, with its vibrant arts scene, vibrant arts scene, and vibrant culture. The city is also home to a diverse range of cultures, including the French, French, and French, with its rich history, cultural heritage, and cultural heritage.\n\nOverall, the capital city is a vibrant and vibrant",
+    false,
+    200
+   ],
+   "sampled": [
+    "The capital of France is Paris. \n\nEdmund, the founder of the first French capital, is known for his influence on the French Revolution. He is considered the greatest leader and has played a pivotal role in the French Revolution and has been influential in the French Revolution. \n\nEdmund, also known as the \"C\u00f4te d'Harmonise,\" is the French capital in French, where he is renowned for his impressive and influential reign. He is often considered the greatest leader of the French Revolution and has been influential in the French Revolution for over 20 years.",
+    true,
+    120
+   ]
+  },
+  "Why is the sky blue?": {
+   "greedy": [
+    "The sky blue is a beautiful and beautiful color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.\n\nThe sky is a",
+    false,
+    200
+   ],
+   "sampled": [
+    "The sky blue is a type of blue, typically referred to as a group of red, pink, blue, and red. It's a color of the sky that's typically associated with the sky. The sky blue is often associated with the night sky, the night sky, and the morning sky. The sky blue is a red color that's commonly associated with the morning sky, the night sky, and the evening sky. The sky blue is associated with the night sky, as it's the part of the sky that contains the night sky. The night sky is also known as the \"sunset,\" but it's often associated with the evening sky. The evening sky is often associated with the night sky, as it's the main and most beautiful part of the sky. The sky blue is often associated with the night sky, as it's the part of the sky that's visible from the night sky.",
+    true,
+    183
+   ]
+  },
+  "Give me three tips for sleeping better.": {
+   "greedy": [
+    "Sleeping can be a great way to improve your sleep quality, reduce stress, and improve your overall well-being. Here are some tips to help you sleep better:\n\n1. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape.\n\n2. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape.\n\n3. **Sleeping**: Make sure your body is in good shape, and your body is in good shape. Make sure your body is in good shape, and your body is in good shape. Make sure your body",
+    false,
+    200
+   ],
+   "sampled": [
+    "First, it's important to maintain a healthy sleep schedule, not to overdo it. Sleeping normally is indeed a good idea, but it's not always practical. \n\nBefore bed, try to get enough sleep with your mom. She can get plenty of sleep during the day and find that she's feeling more tired than she's used to. \n\nWhen you're asleep, think about your sleep patterns, and make sure you're getting enough sleep. Try to get your sleep by doing some deep sleep (e.g., 30-40 minutes) during the day. This will help you get a good night's rest and wake-up time.\n\nIt's also important to remind yourself that your bedroom is full and peaceful, so make sure you get enough sleep at night. \n\nDuring the morning, try to do some deep sleep on your own, as this can help regulate your body's natural sleep patterns. \n\nSleeping can be a great time to recharge,",
+    false,
+    200
+   ]
+  },
+  "Explain photosynthesis to a ten-year-old in two sentences.": {
+   "greedy": [
+    "Photosynthesis is a process that occurs in the chloroplasts of plants, algae, and certain bacteria, where sunlight is absorbed by the plant. This process is crucial for the growth and development of plants, as it helps to maintain the balance of the sunlight and water in the soil.",
+    true,
+    58
+   ],
+   "sampled": [
+    " photosynthesis is a novel method used to convert light energy from the Earth's atmosphere into glucose, a byproduct of photosynthesis, which is the process of turning the water vapor into glucose. This process involves a combination of sunlight, sunlight, and water vapor, which then convert the energy from the sun into glucose based on the chemical energy given by the sunlight.\n\nWhen sunlight hits the atmosphere, the glucose molecules in the chloroplasts and protons from the nucleus of the chloroplasts undergo a transition from the sun to the sun along a narrow corridor, where the sunlight is absorbed by the nucleus. This process provides the most stable and efficient energy source for life on Earth, providing the world with a much higher carbon footprint than what happens here.\n\nThe process is known as photosynthesis. At about 10 billion years, the sun will be split into two parts, the first part having a small energy output that can be used for various purposes, such as photosynthesis, respiration, and photosynthesis. Photosynthesis is the",
+    false,
+    200
+   ]
+  },
+  "What is 17 + 25?": {
+   "greedy": [
+    "To find 17 + 25, we can use the concept of a sequence of numbers. We start by finding the first number, 17, which is 17. Then, we find the first number, 17, which is 17. \n\nWe can start by finding the first number, 17, which is 17. Then, we find the first number, 17, which is 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we can also find the first number, 17. \n\nSince 17 is 17, we",
+    false,
+    200
+   ],
+   "sampled": [
+    "The power of 17 + 25 is 17, and 25 is also 31. This power is based on the power of the integers {' 17', '25), and the powers of 17 that appear in the given range of {17, 31, 32, 35, 38, 39, 31, 39, 31. These powers are 31 and 32.\n\nTherefore, 17 + 25 is 31.",
+    true,
+    124
+   ]
+  },
+  "What was the weather like in Pune yesterday?": {
+   "greedy": [
+    "In Pune yesterday, the weather was quite mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread.\n\nThe weather was mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread.\n\nThe weather was mild, with a slight chill. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked bread and the smell of freshly baked bread. The air was thick with the smell of freshly baked",
+    false,
+    200
+   ],
+   "sampled": [
+    "The weather in Pune today was a warm and humid, with a strong warm summer air to the north and a strong cold fall, while the rainy season was mild. In Pune, the average temperature was around 32 degrees Fahrenheit, and it could be quite hot.\n\nThe average temperature was around 32 degrees Fahrenheit, and it was a significant cold-season factor, with the typical day being around 2:30 PM to 5 PM. The rainy season was mild, with a moderate chill and a slight warmth from the north.\n\nThe average temperature was between 27 degrees Fahrenheit and 35 degrees Celsius, with a moderate temperature ranging from 15 degrees Fahrenheit to 30 degrees Celsius. This is the average of the two main parts: the heavy rainfall, the wettest, and the occasional high rainfall. The rainy season's temperature is typical of the dry season, with mild weather events such as rainstorms or strong summers.\n\nThe rainy season",
+    false,
+    200
+   ]
+  },
+  "What is my name?": {
+   "greedy": [
+    "My name is Jack, and I'm a professional sports coach. I've been coaching for over 20 years now, and I've had the privilege of working with a wide range of athletes, from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes.\n\nI've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes. I've had the privilege of working with a wide range of athletes, from athletes to athletes, and from athletes to athletes.\n\nI've also had the privilege of working with a wide range of athletes, from athletes to athletes. I've had the privilege of working with",
+    false,
+    200
+   ],
+   "sampled": [
+    "My name is Jack, and I can't be a fan of him. I'm Jack, the master of the forest. I've been around generations of forest dwellers, always seeking the warmth and warmth of the forest with my own hands. My grandkids, our old friends, who have been here before, have been my companions, and I have been called upon by the forest's gods. You won't want me to be the master of the forest, lest you ever leave your own thoughts and thoughts unbeknownst to you.\n\nI've spent years studying the forest's natural wonders, and I've learned a new way of life, a way of growing and rejuvenating. In the forest, I've learned to be adaptable, adaptable, adaptable. I've learned to adapt, to move and change, and to adapt to the changes in the forest's landscape.\n\nI've always been fascinated by the forest's secrets, its secrets, and its secrets. What brings you",
+    false,
+    200
+   ]
+  },
+  "Who are you?": {
+   "greedy": [
+    "I'm a professional businessman, and I'm a bit of aist. I've been in business for over 20 years, and I've had the privilege of working with clients from all over the world. I've had the privilege of working with clients from all over the world, from the elderly to the elderly. I've had the privilege of working with clients from all over the world, from the elderly to the elderly.\n\nI've had the privilege of working with clients from all over the world, from the elderly to the elderly. I've had the privilege of working with clients from all over the world, from the elderly to the elderly. I've had the privilege of working with clients from all over the world, from the elderly to the elderly.\n\nI've also had the privilege of working with clients from all over the world, from the elderly to the elderly. I've had the privilege of working with clients from all over the world, from the elderly to the elderly",
+    false,
+    200
+   ],
+   "sampled": [
+    "I'm a researcher in my industry and I'm fascinated by the ways in which our research can be refined and refined. I've been working tirelessly to develop new methods to improve and refine our existing knowledge. What are your thoughts on this, and what's the focus of this project?",
+    true,
+    59
+   ]
+  },
+  "Who created you?": {
+   "greedy": [
+    "I'm a bit of a fan of the \"Machine Learning\" category, but I've been working on a few projects that I've been working on. I've been working on a few projects, but I'm still trying to get the job done. I've been working on a few projects, but I'm still trying to get the job done. I've been working on a few projects, but I'm still trying to get the job done.\n\nI've also been working on a few projects, but I'm still trying to get the job done. I've been working on a few projects, but I'm still trying to get the job done. I've been working on a few projects, but I'm still trying to get the job done.\n\nI've also been working on a few projects, but I'm still trying to get the job done. I've been working on a few projects, but I'm still trying to get the job done. I've been working",
+    false,
+    200
+   ],
+   "sampled": [
+    "I'm a realist. I've designed a user-friendly interface that allows users to create and manipulate complex concepts, solve complex problems, and interact with the natural world. I've also developed a simple interface that allows users to interact with virtual objects, explore complex web sites, and interact with the world around them.\n\nAs I continue to develop my understanding of the world, I'll be using my knowledge of the world to our advantage. As a result, I'll likely build upon this expertise by creating a dynamic and interactive environment that showcases real-world examples and real-world applications. I'll also provide recommendations on using simple, interactive language that enhances creativity, productivity, and problem-solving skills.\n\nLastly, I'll be using a tool called 'dispute.' This tool allows users to translate their ideas, analyze their thoughts, and extract insights from the world in a clear and concise manner. By using this tool, users can quickly navigate complex projects, solve complex problems, and gain insights into the",
+    false,
+    200
+   ]
+  }
+ },
+ "seconds": 122.0
+}
