@@ -1,0 +1,10 @@
+flowchart TD
+  Q["32 addition problems"] --> POL["Policy<br/>(trained copy)"]
+  POL -->|"sample 8 each"| R["256 replies"]
+  R --> CHK["Checker:<br/>last sentence is<br/>'The answer is N.'<br/>with the right N?"]
+  CHK -->|"reward 1 or 0"| ADV["Advantage:<br/>reward minus<br/>group mean,<br/>over group std"]
+  R --> LP["Log-probs of<br/>reply tokens:<br/>policy, old policy,<br/>reference"]
+  REF["Reference<br/>(start weights,<br/>frozen)"] --> LP
+  ADV --> LOSS["Loss:<br/>clipped ratio<br/>times advantage,<br/>plus β times KL"]
+  LP --> LOSS
+  LOSS -->|"gradient"| POL

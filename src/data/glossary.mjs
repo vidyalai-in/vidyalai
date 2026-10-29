@@ -3251,6 +3251,22 @@ export const GLOSSARY = [
     source: { title: 'Tülu 3 (Lambert et al., 2024)', url: 'https://arxiv.org/abs/2411.15124' },
   },
   {
+    id: 'dr-grpo',
+    term: 'Dr. GRPO',
+    match: ['Dr. GRPO'],
+    def: "A variant of GRPO that drops the division by the group's reward standard deviation and by each reply's length, removing biases toward too-easy or too-hard questions and toward long wrong answers.",
+    article: 'grpo-from-scratch',
+    source: { title: 'Understanding R1-Zero-Like Training (Liu et al., 2025)', url: 'https://arxiv.org/abs/2503.20783' },
+  },
+  {
+    id: 'k3-estimator',
+    term: 'k3 estimator',
+    match: ['k3 estimator'],
+    def: 'A one-sample estimate of KL divergence, r - 1 - log r with r the ratio of reference to policy probability, that is never negative and averages to the true KL; GRPO uses it as its KL penalty.',
+    article: 'alignment-math',
+    source: { title: 'Approximating KL Divergence (John Schulman)', url: 'http://joschu.net/blog/kl-approx.html' },
+  },
+  {
     id: 'ai-agent',
     term: 'AI agent',
     match: ['AI agent', 'AI agents'],

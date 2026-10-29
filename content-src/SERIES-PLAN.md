@@ -141,7 +141,7 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 | 9 | Evaluating a base model | `evaluate-base-model` | Perplexity, bits per byte, few-shot multiple choice | m06 | Published |
 | 10 | Supervised fine-tuning | `sft-from-scratch` | Chat template, loss masking, instruction data | f13 | Published |
 | 11 | Preference tuning with DPO | `dpo-from-scratch` | Preference pairs, the DPO loss, before/after behaviour | m16 | Published |
-| 12 | RL with verifiable rewards (GRPO) | `grpo-from-scratch` | GRPO on arithmetic or format tasks; reward curves | m16, f14 |  |
+| 12 | RL with verifiable rewards (GRPO) | `grpo-from-scratch` | GRPO on arithmetic or format tasks; reward curves | m16, f14 | Published |
 | 13 | Synthetic data and distillation | `distillation-synthetic-data` | Teacher-generated data (Haiku via batch, out of the Evals budget, or an open model); logit vs sequence distillation | t10 |  |
 | 14 | Fitting bigger models in memory | `training-memory` | Memory math, activation checkpointing (measured), ZeRO/FSDP stages explained | i10, g13 |  |
 | 15 | From our model to frontier models | `frontier-training-recipes` | Finale: published recipes (Llama 3, DeepSeek-V3, OLMo) vs ours; export, quantize, run in llama.cpp; series review | all |  |
