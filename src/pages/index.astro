@@ -14,7 +14,7 @@ import { numberWord } from '../lib/words';
 
 const posts = await getPosts();
 // The first part of each series.
-const featuredSlugs = ['what-is-an-ai-agent', 'build-llm-from-scratch', 'how-llms-work', 'math-for-llms', 'how-llm-inference-works', 'gpu-from-python-to-silicon', 'rag-system-10m-documents'];
+const featuredSlugs = ['what-is-an-ai-agent', 'build-llm-from-scratch', 'what-is-interpretability', 'how-llms-work', 'math-for-llms', 'how-llm-inference-works', 'gpu-from-python-to-silicon', 'rag-system-10m-documents'];
 const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
 const counts = Object.fromEntries(CATEGORIES.map((c) => [c.slug, posts.filter((p) => p.data.category === c.slug).length]));
 

@@ -36,6 +36,15 @@ export const SERIES = [
     filePrefix: 't',
   },
   {
+    slug: 'llm-interpretability',
+    name: 'Inside the Model: Interpretability',
+    short: 'Interpretability',
+    blurb:
+      'Look inside real language models on one laptop GPU: the logit lens, probes, induction heads, activation patching, superposition, sparse autoencoders, circuits and steering, measured.',
+    total: 12,
+    filePrefix: 'p',
+  },
+  {
     slug: 'llm-inference',
     name: 'LLM Inference & Optimization',
     short: 'Inference',

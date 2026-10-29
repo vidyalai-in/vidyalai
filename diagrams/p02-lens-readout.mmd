@@ -1,0 +1,12 @@
+flowchart TD
+  T["Tokens"] --> H0["h0: embeddings"]
+  H0 --> B["Blocks 1 to ℓ add<br/>attention and MLP outputs"]
+  B --> HL["hℓ: the stream<br/>after block ℓ"]
+  HL --> M["Later blocks<br/>keep adding"]
+  M --> HF["h12: the final vector"]
+  HF --> U["Final norm<br/>+ unembedding"]
+  U --> P["Next-token<br/>probabilities"]
+  HL -.-> LL["Logit lens: final norm<br/>+ unembedding on hℓ"]
+  HL -.-> TL["Tuned lens: translate hℓ<br/>with trained Aℓ, bℓ first"]
+  LL -.-> G["Early guess<br/>at block ℓ"]
+  TL -.-> G

@@ -1,0 +1,9 @@
+flowchart TD
+  SEQ["Context so far:<br/>... A B ... A"]
+  SEQ --> PREV["Previous-token<br/>head 4.11, at B:<br/>copies in A"]
+  PREV -->|"K-composition"| KEY["B's key now says<br/>'I come after A'"]
+  SEQ --> QRY["At the second A:<br/>query says 'find A'"]
+  KEY --> IND["Induction head<br/>5.5, QK circuit:<br/>query matches<br/>that key, so it<br/>attends to B"]
+  QRY --> IND
+  IND --> OV["OV circuit:<br/>copies B's identity"]
+  OV --> OUT["Next-token<br/>guess: B"]

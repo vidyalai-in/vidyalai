@@ -152,10 +152,10 @@ Series slug `llm-interpretability`, short name "Interpretability", file prefix `
 
 | # | Title (working) | Slug | Scope | Builds on | Status |
 |---|---|---|---|---|---|
-| 1 | Opening the black box | `what-is-interpretability` | Goals, methods, what counts as an explanation | f16 |  |
-| 2 | The residual stream and the logit lens | `logit-lens` | Reading predictions layer by layer; tuned lens | f06 |  |
-| 3 | Linear probes | `linear-probes` | What activations encode; probes for truth and syntax; probe pitfalls | m02 |  |
-| 4 | Attention heads and induction heads | `induction-heads` | Head roles, induction heads and in-context learning, measured | m11 |  |
+| 1 | Opening the black box | `what-is-interpretability` | Goals, methods, what counts as an explanation | f16 | Published |
+| 2 | The residual stream and the logit lens | `logit-lens` | Reading predictions layer by layer; tuned lens | f06 | Published |
+| 3 | Linear probes | `linear-probes` | What activations encode; probes for truth and syntax; probe pitfalls | m02 | Published |
+| 4 | Attention heads and induction heads | `induction-heads` | Head roles, induction heads and in-context learning, measured | m11 | Published |
 | 5 | Activation patching and causal tracing | `activation-patching` | IOI-style patching, locating factual recall | p02 |  |
 | 6 | Superposition | `superposition` | Toy models reproduced; more features than neurons | m13 |  |
 | 7 | Sparse autoencoders | `sparse-autoencoders` | Train an SAE on one layer; explore Gemma Scope features | p06 |  |

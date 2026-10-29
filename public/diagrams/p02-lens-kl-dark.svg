@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="78" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.1</text>
+<line x1="78" x2="756" y1="346.9" y2="346.9" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="350.9" fill="#9fb0cf" font-size="13" text-anchor="end">0.3</text>
+<line x1="78" x2="756" y1="280.0" y2="280.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="284.0" fill="#9fb0cf" font-size="13" text-anchor="end">1</text>
+<line x1="78" x2="756" y1="218.9" y2="218.9" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="222.9" fill="#9fb0cf" font-size="13" text-anchor="end">3</text>
+<line x1="78" x2="756" y1="152.0" y2="152.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="156.0" fill="#9fb0cf" font-size="13" text-anchor="end">10</text>
+<line x1="78" x2="756" y1="90.9" y2="90.9" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="94.9" fill="#9fb0cf" font-size="13" text-anchor="end">30</text>
+<line x1="78" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">100</text>
+<text x="101.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">emb</text>
+<text x="158.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<text x="215.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<text x="273.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">3</text>
+<text x="330.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<text x="388.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">5</text>
+<text x="445.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<text x="503.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">7</text>
+<text x="560.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<text x="618.1" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">9</text>
+<text x="675.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<text x="733.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">11</text>
+<text x="417.0" y="456" fill="#e8eefc" font-size="14" text-anchor="middle">Read after block (emb = embeddings only)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">KL to final output (bits, log scale)</text>
+<polygon fill="#e8eefc" fill-opacity="0.18" stroke="none" points="101.0,42.3 158.4,148.9 215.9,157.8 273.4,162.2 330.8,165.6 388.3,168.4 445.7,173.7 503.2,178.6 560.6,187.2 618.1,194.9 675.6,207.9 733.0,243.7 733.0,242.2 675.6,206.9 618.1,193.9 560.6,186.3 503.2,177.9 445.7,173.0 388.3,167.7 330.8,164.9 273.4,161.5 215.9,157.1 158.4,148.0 101.0,41.7"/>
+<polyline fill="none" stroke="#e8eefc" stroke-width="2.5" stroke-dasharray="7 5" points="101.0,42.0 158.4,148.4 215.9,157.5 273.4,161.9 330.8,165.3 388.3,168.0 445.7,173.4 503.2,178.3 560.6,186.7 618.1,194.4 675.6,207.4 733.0,243.0"/>
+<circle cx="101.0" cy="42.0" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="158.4" cy="148.4" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="215.9" cy="157.5" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="273.4" cy="161.9" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="330.8" cy="165.3" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="388.3" cy="168.0" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="445.7" cy="173.4" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="503.2" cy="178.3" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="560.6" cy="186.7" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="618.1" cy="194.4" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="675.6" cy="207.4" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="733.0" cy="243.0" r="3" fill="#e8eefc" stroke="#0b162d" stroke-width="1.5"/>
+<text x="342.3" y="135.3" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="start">Logit lens</text>
+<polygon fill="#9fb0cf" fill-opacity="0.18" stroke="none" points="101.0,150.2 158.4,173.2 215.9,181.0 273.4,186.3 330.8,190.9 388.3,194.5 445.7,200.9 503.2,207.1 560.6,216.2 618.1,222.4 675.6,232.9 733.0,263.8 733.0,262.1 675.6,231.8 618.1,221.4 560.6,215.3 503.2,206.2 445.7,199.9 388.3,193.3 330.8,189.7 273.4,185.1 215.9,179.8 158.4,171.9 101.0,149.2"/>
+<polyline fill="none" stroke="#9fb0cf" stroke-width="2.5" stroke-dasharray="2 4" points="101.0,149.7 158.4,172.5 215.9,180.4 273.4,185.7 330.8,190.3 388.3,193.9 445.7,200.4 503.2,206.7 560.6,215.8 618.1,221.9 675.6,232.4 733.0,262.9"/>
+<circle cx="101.0" cy="149.7" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="158.4" cy="172.5" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="215.9" cy="180.4" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="273.4" cy="185.7" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="330.8" cy="190.3" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="388.3" cy="193.9" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="445.7" cy="200.4" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="503.2" cy="206.7" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="560.6" cy="215.8" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="618.1" cy="221.9" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="675.6" cy="232.4" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="733.0" cy="262.9" r="3" fill="#9fb0cf" stroke="#0b162d" stroke-width="1.5"/>
+<text x="233.1" y="201.6" fill="#9fb0cf" font-size="14" font-weight="bold" text-anchor="start">Bias only</text>
+<polygon fill="#38bdf8" fill-opacity="0.18" stroke="none" points="101.0,194.7 158.4,214.1 215.9,219.2 273.4,225.0 330.8,230.2 388.3,234.0 445.7,244.0 503.2,254.7 560.6,270.2 618.1,287.9 675.6,320.2 733.0,365.7 733.0,363.7 675.6,318.4 618.1,286.2 560.6,268.8 503.2,253.4 445.7,242.6 388.3,232.3 330.8,228.6 273.4,223.5 215.9,217.8 158.4,212.8 101.0,193.4"/>
+<polyline fill="none" stroke="#38bdf8" stroke-width="3" points="101.0,194.1 158.4,213.5 215.9,218.5 273.4,224.2 330.8,229.4 388.3,233.2 445.7,243.3 503.2,254.0 560.6,269.5 618.1,287.0 675.6,319.3 733.0,364.7"/>
+<circle cx="101.0" cy="194.1" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="158.4" cy="213.5" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="215.9" cy="218.5" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="273.4" cy="224.2" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="330.8" cy="229.4" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="388.3" cy="233.2" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="445.7" cy="243.3" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="503.2" cy="254.0" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="560.6" cy="269.5" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="618.1" cy="287.0" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="675.6" cy="319.3" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<circle cx="733.0" cy="364.7" r="3.5" fill="#38bdf8" stroke="#0b162d" stroke-width="1.5"/>
+<text x="192.9" y="253.9" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="start">Tuned lens</text>
+</svg>

@@ -1,0 +1,9 @@
+flowchart TD
+    A["Labeled text<br/>(word tags or true/false)"] --> B["Frozen model<br/>(weights never change)"]
+    B --> C["One residual vector<br/>(one layer, one token)"]
+    C --> D["Linear probe<br/>(one matrix, trained)"]
+    D --> E["Accuracy on held-out<br/>sentences or cities"]
+    C --> F["Same probe on<br/>control labels"]
+    F --> G["Selectivity =<br/>real minus control"]
+    E --> G
+    E --> H["Readable, not proven used:<br/>needs an intervention"]

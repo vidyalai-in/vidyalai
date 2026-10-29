@@ -1,0 +1,22 @@
+flowchart TD
+  P1["Part 1: the toolkit<br/>hooks, cache, ablation"]
+  subgraph READ["Read activations (mostly correlational)"]
+    direction LR
+    P2["Part 2:<br/>logit lens"] --> P3["Part 3:<br/>linear probes"] --> P4["Part 4:<br/>induction heads"]
+  end
+  subgraph CAUSE["Intervene (causal)"]
+    direction LR
+    P5["Part 5:<br/>activation patching"] --> P9["Part 9:<br/>steering"]
+  end
+  subgraph FEAT["Find features and circuits"]
+    direction LR
+    P6["Part 6:<br/>superposition"] --> P7["Part 7: sparse<br/>autoencoders"] --> P8["Part 8:<br/>attribution graphs"]
+  end
+  subgraph USE["Apply and judge"]
+    direction LR
+    P10["Part 10:<br/>training dynamics"] --> P11["Part 11:<br/>safety"] --> P12["Part 12:<br/>limits"]
+  end
+  P1 --> READ
+  READ --> CAUSE
+  CAUSE --> FEAT
+  FEAT --> USE

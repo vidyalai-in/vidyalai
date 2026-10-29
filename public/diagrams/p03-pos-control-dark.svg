@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="70" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">50%</text>
+<line x1="70" x2="756" y1="331.2" y2="331.2" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="335.2" fill="#9fb0cf" font-size="13" text-anchor="end">60%</text>
+<line x1="70" x2="756" y1="254.4" y2="254.4" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="258.4" fill="#9fb0cf" font-size="13" text-anchor="end">70%</text>
+<line x1="70" x2="756" y1="177.6" y2="177.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="181.6" fill="#9fb0cf" font-size="13" text-anchor="end">80%</text>
+<line x1="70" x2="756" y1="100.8" y2="100.8" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="104.8" fill="#9fb0cf" font-size="13" text-anchor="end">90%</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">100%</text>
+<line x1="70.0" x2="70.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="70.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="184.3" x2="184.3" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="184.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="298.7" x2="298.7" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="298.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="413.0" x2="413.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="413.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<line x1="527.3" x2="527.3" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="527.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="641.7" x2="641.7" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="641.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<line x1="756.0" x2="756.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="756.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">12</text>
+<text x="413.0" y="454" fill="#e8eefc" font-size="14" text-anchor="middle">GPT-2 small layer (0 = embeddings, 12 = output of the last block)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Test accuracy (24,386 words)</text>
+<line x1="70" x2="756" y1="146.5" y2="146.5" stroke="#9fb0cf" stroke-width="1.8" stroke-dasharray="2 4"/>
+<text x="752" y="139.5" fill="#9fb0cf" font-size="13" text-anchor="end">no model, just a lookup of each word's usual tag: 84.1%</text>
+<polyline points="70.0,111.6 127.2,90.2 184.3,80.1 241.5,74.9 298.7,71.1 355.8,69.3 413.0,68.1 470.2,68.7 527.3,67.8 584.5,66.9 641.7,68.5 698.8,71.4 756.0,74.3" fill="none" stroke="#199e70" stroke-width="2.5"/>
+<circle cx="70.0" cy="111.6" r="4" fill="#199e70"/>
+<circle cx="127.2" cy="90.2" r="4" fill="#199e70"/>
+<circle cx="184.3" cy="80.1" r="4" fill="#199e70"/>
+<circle cx="241.5" cy="74.9" r="4" fill="#199e70"/>
+<circle cx="298.7" cy="71.1" r="4" fill="#199e70"/>
+<circle cx="355.8" cy="69.3" r="4" fill="#199e70"/>
+<circle cx="413.0" cy="68.1" r="4" fill="#199e70"/>
+<circle cx="470.2" cy="68.7" r="4" fill="#199e70"/>
+<circle cx="527.3" cy="67.8" r="4" fill="#199e70"/>
+<circle cx="584.5" cy="66.9" r="4" fill="#199e70"/>
+<circle cx="641.7" cy="68.5" r="4" fill="#199e70"/>
+<circle cx="698.8" cy="71.4" r="4" fill="#199e70"/>
+<circle cx="756.0" cy="74.3" r="4" fill="#199e70"/>
+<polyline points="70.0,113.2 127.2,88.2 184.3,81.6 241.5,76.0 298.7,72.5 355.8,69.5 413.0,68.2 470.2,67.4 527.3,67.0 584.5,67.3 641.7,69.5 698.8,74.1 756.0,80.2" fill="none" stroke="#3987e5" stroke-width="2.5"/>
+<circle cx="70.0" cy="113.2" r="4" fill="#3987e5"/>
+<circle cx="127.2" cy="88.2" r="4" fill="#3987e5"/>
+<circle cx="184.3" cy="81.6" r="4" fill="#3987e5"/>
+<circle cx="241.5" cy="76.0" r="4" fill="#3987e5"/>
+<circle cx="298.7" cy="72.5" r="4" fill="#3987e5"/>
+<circle cx="355.8" cy="69.5" r="4" fill="#3987e5"/>
+<circle cx="413.0" cy="68.2" r="4" fill="#3987e5"/>
+<circle cx="470.2" cy="67.4" r="4" fill="#3987e5"/>
+<circle cx="527.3" cy="67.0" r="4" fill="#3987e5"/>
+<circle cx="584.5" cy="67.3" r="4" fill="#3987e5"/>
+<circle cx="641.7" cy="69.5" r="4" fill="#3987e5"/>
+<circle cx="698.8" cy="74.1" r="4" fill="#3987e5"/>
+<circle cx="756.0" cy="80.2" r="4" fill="#3987e5"/>
+<polyline points="70.0,133.4 127.2,131.2 184.3,131.3 241.5,136.3 298.7,145.3 355.8,154.5 413.0,162.2 470.2,170.0 527.3,179.7 584.5,193.3 641.7,211.3 698.8,233.6 756.0,252.2" fill="none" stroke="#199e70" stroke-width="2.5" stroke-dasharray="7 5"/>
+<circle cx="70.0" cy="133.4" r="4" fill="#199e70"/>
+<circle cx="127.2" cy="131.2" r="4" fill="#199e70"/>
+<circle cx="184.3" cy="131.3" r="4" fill="#199e70"/>
+<circle cx="241.5" cy="136.3" r="4" fill="#199e70"/>
+<circle cx="298.7" cy="145.3" r="4" fill="#199e70"/>
+<circle cx="355.8" cy="154.5" r="4" fill="#199e70"/>
+<circle cx="413.0" cy="162.2" r="4" fill="#199e70"/>
+<circle cx="470.2" cy="170.0" r="4" fill="#199e70"/>
+<circle cx="527.3" cy="179.7" r="4" fill="#199e70"/>
+<circle cx="584.5" cy="193.3" r="4" fill="#199e70"/>
+<circle cx="641.7" cy="211.3" r="4" fill="#199e70"/>
+<circle cx="698.8" cy="233.6" r="4" fill="#199e70"/>
+<circle cx="756.0" cy="252.2" r="4" fill="#199e70"/>
+<polyline points="70.0,237.9 127.2,252.4 184.3,257.3 241.5,268.6 298.7,283.0 355.8,297.3 413.0,306.8 470.2,316.0 527.3,323.7 584.5,331.8 641.7,342.3 698.8,357.4 756.0,371.4" fill="none" stroke="#3987e5" stroke-width="2.5" stroke-dasharray="7 5"/>
+<circle cx="70.0" cy="237.9" r="4" fill="#3987e5"/>
+<circle cx="127.2" cy="252.4" r="4" fill="#3987e5"/>
+<circle cx="184.3" cy="257.3" r="4" fill="#3987e5"/>
+<circle cx="241.5" cy="268.6" r="4" fill="#3987e5"/>
+<circle cx="298.7" cy="283.0" r="4" fill="#3987e5"/>
+<circle cx="355.8" cy="297.3" r="4" fill="#3987e5"/>
+<circle cx="413.0" cy="306.8" r="4" fill="#3987e5"/>
+<circle cx="470.2" cy="316.0" r="4" fill="#3987e5"/>
+<circle cx="527.3" cy="323.7" r="4" fill="#3987e5"/>
+<circle cx="584.5" cy="331.8" r="4" fill="#3987e5"/>
+<circle cx="641.7" cy="342.3" r="4" fill="#3987e5"/>
+<circle cx="698.8" cy="357.4" r="4" fill="#3987e5"/>
+<circle cx="756.0" cy="371.4" r="4" fill="#3987e5"/>
+<text x="413.0" y="56.2" fill="#e8eefc" font-size="13" text-anchor="middle">real tags: linear and MLP probes overlap (94.4% at layer 8)</text>
+<text x="275.8" y="212.2" fill="#e8eefc" font-size="13" text-anchor="start">MLP probe, random control tags</text>
+<text x="275.8" y="258.2" fill="#e8eefc" font-size="13" text-anchor="start">linear probe, random control tags</text>
+<text x="752.0" y="274.2" fill="#e8eefc" font-size="13" text-anchor="end">70.3%</text>
+<text x="752.0" y="393.4" fill="#e8eefc" font-size="13" text-anchor="end">54.8%</text>
+<line x1="360" x2="386" y1="362" y2="362" stroke="#3987e5" stroke-width="2.5"/>
+<text x="394" y="366" fill="#e8eefc" font-size="13">linear probe</text>
+<line x1="360" x2="386" y1="382" y2="382" stroke="#199e70" stroke-width="2.5"/>
+<text x="394" y="386" fill="#e8eefc" font-size="13">MLP probe (1,024 hidden units)</text>
+<line x1="360" x2="386" y1="402" y2="402" stroke="#9fb0cf" stroke-width="2.5" stroke-dasharray="7 5"/>
+<text x="394" y="406" fill="#e8eefc" font-size="13">dashed: control task</text>
+</svg>

@@ -30,6 +30,12 @@ export const CATEGORIES = [
     icon: 'curve',
   },
   {
+    slug: 'interpretability',
+    name: 'Interpretability',
+    blurb: 'What happens inside a trained model: probes, attention heads, activation patching, features and circuits.',
+    icon: 'lens',
+  },
+  {
     slug: 'retrieval-rag',
     name: 'Retrieval & RAG',
     blurb: 'Chunking, hybrid search, reranking and debugging retrieval-augmented generation.',
