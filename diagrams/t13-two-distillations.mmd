@@ -1,0 +1,12 @@
+flowchart TD
+  subgraph SEQ["Sequence distillation (Steps 2 and 3)"]
+    P["Prompts<br/>(Part 10's data)"] --> T2["Teacher: Qwen2.5-1.5B-Instruct"]
+    T2 -->|"written replies"| F["Filters"]
+    F --> S2["Student: our 88M model,<br/>fine-tuned as in Part 10"]
+  end
+  subgraph LOGIT["Logit distillation (Step 1)"]
+    A["Training text<br/>(FineWeb-Edu tokens)"] --> T1["Teacher: our 88M model"]
+    A --> S1["Student: 15M model"]
+    T1 -->|"32,768 probabilities<br/>per position"| K["Loss: KL to the teacher<br/>(plus hard-label CE)"]
+    S1 --> K
+  end
