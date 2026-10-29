@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="440" fill="#0b162d"/>
+<line x1="196.0" x2="196.0" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="196.0" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="299.6" x2="299.6" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="299.6" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="403.2" x2="403.2" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="403.2" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="506.9" x2="506.9" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="506.9" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<line x1="610.5" x2="610.5" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="610.5" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="714.1" x2="714.1" y1="30" y2="310" stroke="#22355a" stroke-width="1"/>
+<text x="714.1" y="328" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<text x="468.0" y="350" fill="#e8eefc" font-size="14" text-anchor="middle">GPU memory at the step's peak (GiB)</text>
+<text x="186" y="54" fill="#e8eefc" font-size="13" text-anchor="end">Eager, 4 sequences</text>
+<text x="186" y="70" fill="#9fb0cf" font-size="12" text-anchor="end">predicted</text>
+<rect x="196.0" y="40" width="17.0" height="34" fill="#1d4ed8" stroke="#0b162d" stroke-width="1"/>
+<rect x="213.0" y="40" width="34.0" height="34" fill="#38bdf8" stroke="#0b162d" stroke-width="1"/>
+<rect x="247.0" y="40" width="17.0" height="34" fill="#7dd3fc" stroke="#0b162d" stroke-width="1"/>
+<rect x="264.0" y="40" width="8.5" height="34" fill="#bae6fd" stroke="#0b162d" stroke-width="1"/>
+<rect x="272.5" y="40" width="83.1" height="34" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<rect x="355.6" y="40" width="27.4" height="34" fill="#f4a261" stroke="#0b162d" stroke-width="1"/>
+<text x="389.0" y="62" fill="#e8eefc" font-size="13" font-weight="bold">3.61</text>
+<text x="186" y="108" fill="#e8eefc" font-size="13" text-anchor="end">Eager, 4 sequences</text>
+<text x="186" y="124" fill="#9fb0cf" font-size="12" text-anchor="end">measured</text>
+<rect x="196.0" y="94" width="17.0" height="34" fill="#1d4ed8" stroke="#0b162d" stroke-width="1"/>
+<rect x="213.0" y="94" width="35.1" height="34" fill="#38bdf8" stroke="#0b162d" stroke-width="1"/>
+<rect x="248.1" y="94" width="17.0" height="34" fill="#7dd3fc" stroke="#0b162d" stroke-width="1"/>
+<rect x="265.1" y="94" width="8.5" height="34" fill="#bae6fd" stroke="#0b162d" stroke-width="1"/>
+<rect x="273.6" y="94" width="84.3" height="34" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<rect x="357.9" y="94" width="26.2" height="34" fill="#f4a261" stroke="#0b162d" stroke-width="1"/>
+<rect x="384.1" y="94" width="53.5" height="34" fill="#b07cc6" stroke="#0b162d" stroke-width="1"/>
+<rect x="437.6" y="94" width="18.2" height="34" fill="#4a5b78" stroke="#0b162d" stroke-width="1"/>
+<text x="461.8" y="116" fill="#e8eefc" font-size="13" font-weight="bold">5.01</text>
+<text x="186" y="162" fill="#e8eefc" font-size="13" text-anchor="end">Compiled, 16 sequences</text>
+<text x="186" y="178" fill="#9fb0cf" font-size="12" text-anchor="end">predicted</text>
+<rect x="196.0" y="148" width="17.0" height="34" fill="#1d4ed8" stroke="#0b162d" stroke-width="1"/>
+<rect x="213.0" y="148" width="34.0" height="34" fill="#38bdf8" stroke="#0b162d" stroke-width="1"/>
+<rect x="247.0" y="148" width="17.0" height="34" fill="#7dd3fc" stroke="#0b162d" stroke-width="1"/>
+<rect x="264.0" y="148" width="8.5" height="34" fill="#bae6fd" stroke="#0b162d" stroke-width="1"/>
+<rect x="272.5" y="148" width="214.9" height="34" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<rect x="487.4" y="148" width="55.4" height="34" fill="#f4a261" stroke="#0b162d" stroke-width="1"/>
+<text x="548.8" y="170" fill="#e8eefc" font-size="13" font-weight="bold">6.69</text>
+<text x="186" y="216" fill="#e8eefc" font-size="13" text-anchor="end">Compiled, 16 sequences</text>
+<text x="186" y="232" fill="#9fb0cf" font-size="12" text-anchor="end">measured</text>
+<rect x="196.0" y="202" width="17.0" height="34" fill="#1d4ed8" stroke="#0b162d" stroke-width="1"/>
+<rect x="213.0" y="202" width="34.8" height="34" fill="#38bdf8" stroke="#0b162d" stroke-width="1"/>
+<rect x="247.8" y="202" width="17.0" height="34" fill="#7dd3fc" stroke="#0b162d" stroke-width="1"/>
+<rect x="264.8" y="202" width="8.5" height="34" fill="#bae6fd" stroke="#0b162d" stroke-width="1"/>
+<rect x="273.3" y="202" width="213.8" height="34" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<rect x="487.1" y="202" width="55.4" height="34" fill="#f4a261" stroke="#0b162d" stroke-width="1"/>
+<rect x="542.5" y="202" width="3.2" height="34" fill="#b07cc6" stroke="#0b162d" stroke-width="1"/>
+<rect x="545.7" y="202" width="8.1" height="34" fill="#4a5b78" stroke="#0b162d" stroke-width="1"/>
+<text x="559.8" y="224" fill="#e8eefc" font-size="13" font-weight="bold">6.91</text>
+<text x="186" y="270" fill="#e8eefc" font-size="13" text-anchor="end">Eager, 16 sequences</text>
+<text x="186" y="286" fill="#9fb0cf" font-size="12" text-anchor="end">predicted</text>
+<rect x="196.0" y="256" width="17.0" height="34" fill="#1d4ed8" stroke="#0b162d" stroke-width="1"/>
+<rect x="213.0" y="256" width="34.0" height="34" fill="#38bdf8" stroke="#0b162d" stroke-width="1"/>
+<rect x="247.0" y="256" width="17.0" height="34" fill="#7dd3fc" stroke="#0b162d" stroke-width="1"/>
+<rect x="264.0" y="256" width="8.5" height="34" fill="#bae6fd" stroke="#0b162d" stroke-width="1"/>
+<rect x="272.5" y="256" width="332.3" height="34" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<rect x="604.8" y="256" width="109.7" height="34" fill="#f4a261" stroke="#0b162d" stroke-width="1"/>
+<text x="720.5" y="278" fill="#e8eefc" font-size="13" font-weight="bold">10.01</text>
+<line x1="587.8" x2="587.8" y1="24" y2="310" stroke="#e8eefc" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="610.3" x2="610.3" y1="24" y2="310" stroke="#e8eefc" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="583.8" y="20" fill="#e8eefc" font-size="12" text-anchor="end">usable: 7.56</text>
+<text x="614.3" y="20" fill="#e8eefc" font-size="12">card: 8.0</text>
+<rect x="46" y="361" width="14" height="14" fill="#1d4ed8"/><text x="66" y="372" fill="#e8eefc" font-size="13">Weights (FP32)</text>
+<rect x="281" y="361" width="14" height="14" fill="#38bdf8"/><text x="301" y="372" fill="#e8eefc" font-size="13">AdamW state</text>
+<rect x="516" y="361" width="14" height="14" fill="#7dd3fc"/><text x="536" y="372" fill="#e8eefc" font-size="13">Gradients (FP32)</text>
+<rect x="46" y="381" width="14" height="14" fill="#bae6fd"/><text x="66" y="392" fill="#e8eefc" font-size="13">BF16 weight copies</text>
+<rect x="281" y="381" width="14" height="14" fill="#d95926"/><text x="301" y="392" fill="#e8eefc" font-size="13">Activations, 10 blocks</text>
+<rect x="516" y="381" width="14" height="14" fill="#f4a261"/><text x="536" y="392" fill="#e8eefc" font-size="13">Output layer and loss</text>
+<rect x="46" y="401" width="14" height="14" fill="#b07cc6"/><text x="66" y="412" fill="#e8eefc" font-size="13">Backward temporaries</text>
+<rect x="281" y="401" width="14" height="14" fill="#4a5b78"/><text x="301" y="412" fill="#e8eefc" font-size="13">Allocator cache</text>
+</svg>

@@ -1,0 +1,8 @@
+flowchart TD
+  DP["Plain data parallelism<br/>2Ψ + 2Ψ + 12Ψ = 16Ψ bytes<br/>7.5B, 64 GPUs: 120 GB"]
+  Z1["ZeRO stage 1<br/>4Ψ + 12Ψ/N bytes<br/>7.5B, 64 GPUs: 31.4 GB"]
+  Z2["ZeRO stage 2<br/>2Ψ + 14Ψ/N bytes<br/>7.5B, 64 GPUs: 16.6 GB"]
+  Z3["ZeRO stage 3 or FSDP<br/>16Ψ/N bytes<br/>7.5B, 64 GPUs: 1.9 GB"]
+  DP -->|"shard Adam state<br/>same traffic"| Z1
+  Z1 -->|"shard gradients<br/>reduce-scatter them"| Z2
+  Z2 -->|"shard weights<br/>all-gather per layer<br/>1.5 times the traffic"| Z3
