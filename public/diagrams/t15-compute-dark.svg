@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#0b162d"/>
+<line x1="214.0" x2="214.0" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="214.0" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e16</text>
+<line x1="308.8" x2="308.8" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="308.8" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e18</text>
+<line x1="403.6" x2="403.6" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="403.6" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e20</text>
+<line x1="498.4" x2="498.4" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="498.4" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e22</text>
+<line x1="593.2" x2="593.2" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="593.2" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e24</text>
+<line x1="688.0" x2="688.0" y1="20" y2="372" stroke="#22355a" stroke-width="1"/>
+<text x="688.0" y="392" fill="#9fb0cf" font-size="13" text-anchor="middle">1e26</text>
+<text x="451.0" y="416" fill="#e8eefc" font-size="14" text-anchor="middle">Training compute (FLOPs, log scale)</text>
+<rect x="214" y="27.9" width="7.5" height="28.2" fill="#d95926" rx="2"/>
+<text x="206" y="47.0" fill="#e8eefc" font-size="13" text-anchor="end">Part 8's 11M run</text>
+<text x="227.5" y="47.0" fill="#9fb0cf" font-size="12">0.015x ours</text>
+<rect x="214" y="71.9" width="93.3" height="28.2" fill="#d95926" rx="2"/>
+<text x="206" y="91.0" fill="#e8eefc" font-size="13" text-anchor="end">Our 88M model (Part 7)</text>
+<text x="313.3" y="91.0" fill="#9fb0cf" font-size="12">ours</text>
+<rect x="214" y="115.9" width="246.9" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="135.0" fill="#e8eefc" font-size="13" text-anchor="end">SmolLM2-135M, 2T tokens</text>
+<text x="466.9" y="135.0" fill="#9fb0cf" font-size="12">1,733x ours</text>
+<rect x="214" y="159.9" width="343.9" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="179.0" fill="#e8eefc" font-size="13" text-anchor="end">OLMo 2 7B, 4.05T tokens</text>
+<text x="563.9" y="179.0" fill="#9fb0cf" font-size="12">193,310x ours</text>
+<rect x="214" y="203.9" width="346.2" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="223.0" fill="#e8eefc" font-size="13" text-anchor="end">SmolLM3-3B, 11.2T tokens</text>
+<text x="566.2" y="223.0" fill="#9fb0cf" font-size="12">216,507x ours</text>
+<rect x="214" y="247.9" width="384.6" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="267.0" fill="#e8eefc" font-size="13" text-anchor="end">OLMo 2 32B, 6.6T tokens</text>
+<text x="604.6" y="267.0" fill="#9fb0cf" font-size="12">1.4 million x ours</text>
+<rect x="214" y="291.9" width="403.7" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="311.0" fill="#e8eefc" font-size="13" text-anchor="end">DeepSeek-V3, 14.8T tokens</text>
+<text x="623.7" y="311.0" fill="#9fb0cf" font-size="12">3.5 million x ours</text>
+<rect x="214" y="335.9" width="454.1" height="28.2" fill="#38bdf8" rx="2"/>
+<text x="206" y="355.0" fill="#e8eefc" font-size="13" text-anchor="end">Llama 3 405B, 15.6T tokens</text>
+<text x="674.1" y="355.0" fill="#9fb0cf" font-size="12">40.8 million x ours</text>
+</svg>

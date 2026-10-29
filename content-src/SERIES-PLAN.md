@@ -144,7 +144,7 @@ Series slug `llm-from-scratch`, short name "From Scratch", file prefix `t`, cate
 | 12 | RL with verifiable rewards (GRPO) | `grpo-from-scratch` | GRPO on arithmetic or format tasks; reward curves | m16, f14 | Published |
 | 13 | Synthetic data and distillation | `distillation-synthetic-data` | Teacher-generated data (Haiku via batch, out of the Evals budget, or an open model); logit vs sequence distillation | t10 | Published |
 | 14 | Fitting bigger models in memory | `training-memory` | Memory math, activation checkpointing (measured), ZeRO/FSDP stages explained | i10, g13 | Published |
-| 15 | From our model to frontier models | `frontier-training-recipes` | Finale: published recipes (Llama 3, DeepSeek-V3, OLMo) vs ours; export, quantize, run in llama.cpp; series review | all |  |
+| 15 | From our model to frontier models | `frontier-training-recipes` | Finale: published recipes (Llama 3, DeepSeek-V3, OLMo) vs ours; export, quantize, run in llama.cpp; series review | all | Published |
 
 ## Inside the Model: Interpretability (12 parts)
 

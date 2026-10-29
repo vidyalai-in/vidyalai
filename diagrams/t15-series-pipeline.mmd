@@ -1,0 +1,13 @@
+flowchart TD
+  subgraph PRE["Pretraining (Parts 1 to 7)"]
+    TOK["Tokenizer<br/>32,768 BPE tokens"] --> DATA["Data<br/>2.47B FineWeb-Edu tokens"]
+    DATA --> RUN["88M model, 1.76B tokens<br/>16.8 hours"]
+  end
+  RUN --> STUDY["Scaling fit and evals<br/>(Parts 8 and 9)"]
+  RUN --> SFT["SFT: chat template<br/>(Part 10)"]
+  SFT --> DPO["On-policy DPO<br/>(Part 11)"]
+  SFT --> GRPO["GRPO on sums<br/>(Part 12)"]
+  RUN --> KD["Distillation<br/>(Part 13)"]
+  DPO --> HF["Hugging Face Llama<br/>checkpoint"]
+  HF --> GGUF["GGUF: F16, Q8_0, Q4_K_M"]
+  GGUF --> CPP["llama.cpp on the laptop CPU"]
