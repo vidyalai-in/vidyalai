@@ -1,0 +1,142 @@
+[
+ {
+  "prompt": "What is the capital of France?",
+  "mode": "greedy",
+  "text": "The capital of France is Paris.",
+  "finish": "stop",
+  "tokens": 8,
+  "timings": {
+   "cache_n": 0,
+   "prompt_n": 11,
+   "prompt_ms": 4.792,
+   "prompt_per_token_ms": 0.4356363636363636,
+   "prompt_per_second": 2295.4924874791323,
+   "predicted_n": 8,
+   "predicted_ms": 14.558,
+   "predicted_per_token_ms": 2.0797142857142856,
+   "predicted_per_second": 480.83527957136965
+  }
+ },
+ {
+  "prompt": "Explain photosynthesis to a ten-year-old in two sentences.",
+  "mode": "greedy",
+  "text": "Photosynthesis is a vital process in the life of plants, algae, and other organisms. It is a process that involves the conversion of sunlight into chemical energy, which is then used to convert carbon dioxide and water into glucose.",
+  "finish": "stop",
+  "tokens": 46,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 14,
+   "prompt_ms": 4.396,
+   "prompt_per_token_ms": 0.314,
+   "prompt_per_second": 3184.7133757961783,
+   "predicted_n": 46,
+   "predicted_ms": 78.301,
+   "predicted_per_token_ms": 1.7400222222222224,
+   "predicted_per_second": 574.7053038913934
+  }
+ },
+ {
+  "prompt": "Give me three tips for sleeping better.",
+  "mode": "greedy",
+  "text": "Sleeping better can be a great way to improve your sleep quality, but it can also be a challenge. Here are some tips to help you get the most out of your sleep:\n\n1. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel more refreshed and energized.\n\n2. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel refreshed and energized.\n\n3. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel refreshed and energized.\n\n4. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel refreshed and energized.\n\n5. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel refreshed and energized.\n\n6. **Sleeping with a good amount of sleep**: Aim for 3-5 hours of sleep each night. This can help you feel refres",
+  "finish": "length",
+  "tokens": 256,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 10,
+   "prompt_ms": 3.814,
+   "prompt_per_token_ms": 0.3814,
+   "prompt_per_second": 2621.9192448872577,
+   "predicted_n": 256,
+   "predicted_ms": 491.164,
+   "predicted_per_token_ms": 1.9261333333333333,
+   "predicted_per_second": 519.1748580922055
+  }
+ },
+ {
+  "prompt": "What is 17 + 25?",
+  "mode": "greedy",
+  "text": "To find 17 + 25, we'll use the formula for the sum of the numbers in the given range. \n\nFirst, let's find the sum of the numbers. \n\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25 = 17\n17 + 25",
+  "finish": "length",
+  "tokens": 256,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 12,
+   "prompt_ms": 4.52,
+   "prompt_per_token_ms": 0.37666666666666665,
+   "prompt_per_second": 2654.8672566371683,
+   "predicted_n": 256,
+   "predicted_ms": 488.364,
+   "predicted_per_token_ms": 1.9151529411764705,
+   "predicted_per_second": 522.1515099393076
+  }
+ },
+ {
+  "prompt": "Write a haiku about the monsoon.",
+  "mode": "greedy",
+  "text": "The monsoon is a beautiful and beautiful place, but it's also a bit of a challenge. The weather is unpredictable, and the weather is unpredictable. The weather is unpredictable, and the weather is unpredictable.",
+  "finish": "stop",
+  "tokens": 42,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 11,
+   "prompt_ms": 4.574,
+   "prompt_per_token_ms": 0.4158181818181818,
+   "prompt_per_second": 2404.897245299519,
+   "predicted_n": 42,
+   "predicted_ms": 75.135,
+   "predicted_per_token_ms": 1.8325609756097563,
+   "predicted_per_second": 545.6844346842349
+  }
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "greedy",
+  "text": "The sky blue is a beautiful and beautiful color, and it's a beautiful color. The sky is a beautiful and vibrant color, and it's a beautiful color.",
+  "finish": "stop",
+  "tokens": 34,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 8,
+   "prompt_ms": 3.551,
+   "prompt_per_token_ms": 0.443875,
+   "prompt_per_second": 2252.8865108420164,
+   "predicted_n": 34,
+   "predicted_ms": 60.407,
+   "predicted_per_token_ms": 1.8305151515151514,
+   "predicted_per_second": 546.2943036403067
+  }
+ },
+ {
+  "prompt": [
+   {
+    "role": "user",
+    "content": "What is the capital of France?"
+   },
+   {
+    "role": "assistant",
+    "content": "The capital of France is Paris."
+   },
+   {
+    "role": "user",
+    "content": "What is it famous for?"
+   }
+  ],
+  "mode": "greedy two-turn",
+  "text": "The capital of France is Paris.",
+  "finish": "stop",
+  "tokens": 8
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "sampled T=0.8 top_k=50 seed=0",
+  "text": "The sky blue is a beautiful and beautiful color, as it is the perfect spot for creating a natural ambiance. It's a natural and vibrant color, but it also has a beautiful blue color.",
+  "finish": "stop"
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "sampled T=0.8 top_k=50 seed=1",
+  "text": "The sky blue, also known as the sky, is a beautiful and beautiful display of colors that draws the viewer in.",
+  "finish": "stop"
+ }
+]

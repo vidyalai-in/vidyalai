@@ -1,0 +1,142 @@
+[
+ {
+  "prompt": "What is the capital of France?",
+  "mode": "greedy",
+  "text": "The capital of France is Paris.",
+  "finish": "stop",
+  "tokens": 8,
+  "timings": {
+   "cache_n": 0,
+   "prompt_n": 11,
+   "prompt_ms": 6.638,
+   "prompt_per_token_ms": 0.6034545454545455,
+   "prompt_per_second": 1657.1256402530882,
+   "predicted_n": 8,
+   "predicted_ms": 31.258,
+   "predicted_per_token_ms": 4.465428571428571,
+   "predicted_per_second": 223.94267067630688
+  }
+ },
+ {
+  "prompt": "Explain photosynthesis to a ten-year-old in two sentences.",
+  "mode": "greedy",
+  "text": "Photosynthesis is a process that occurs in the chloroplasts of plants, algae, and other organisms. It is a process that occurs in the chloroplasts of plants, algae, and other organisms.",
+  "finish": "stop",
+  "tokens": 42,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 14,
+   "prompt_ms": 6.698,
+   "prompt_per_token_ms": 0.4784285714285715,
+   "prompt_per_second": 2090.176171991639,
+   "predicted_n": 42,
+   "predicted_ms": 158.749,
+   "predicted_per_token_ms": 3.8719268292682925,
+   "predicted_per_second": 258.269343428935
+  }
+ },
+ {
+  "prompt": "Give me three tips for sleeping better.",
+  "mode": "greedy",
+  "text": "Sleeping can be a great way to improve your sleep quality, but it can also be a challenge. Here are some tips to help you get the most out of your sleep:\n\n1. **Sleeping with a good amount of sleep**: Make sure you have enough sleep to keep your body active and alert. This can help you feel more refreshed and energized.\n\n2. **Sleeping with a good amount of sleep**: Make sure you have enough sleep to keep your body active and alert. This can help you feel more refreshed and energized.\n\n3. **Sleeping with a good amount of sleep**: Make sure you have enough sleep to keep your body active and alert. This can help you feel more refreshed and energized.\n\n4. **Sleeping with a good amount of sleep**: Make sure you have enough sleep to keep your body active and alert. This can help you feel more refreshed and energized.\n\n5. **Sleeping with a good amount of sleep**: Make sure you have enough sleep to keep your body active and alert. This can help you feel more refreshed and energized.\n\n6. **Sleeping with a good amount of sleep**: Make sure you have enough",
+  "finish": "length",
+  "tokens": 256,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 10,
+   "prompt_ms": 5.202,
+   "prompt_per_token_ms": 0.5202,
+   "prompt_per_second": 1922.3375624759708,
+   "predicted_n": 256,
+   "predicted_ms": 1053.459,
+   "predicted_per_token_ms": 4.131211764705883,
+   "predicted_per_second": 242.0597289500588
+  }
+ },
+ {
+  "prompt": "What is 17 + 25?",
+  "mode": "greedy",
+  "text": "To find 17 + 25, we need to first find the value of 17. We can do this by finding the value of 17. \n\nWe can start by finding the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17. \n\nWe can then find the value of 17",
+  "finish": "length",
+  "tokens": 256,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 12,
+   "prompt_ms": 5.774,
+   "prompt_per_token_ms": 0.4811666666666667,
+   "prompt_per_second": 2078.2819535850363,
+   "predicted_n": 256,
+   "predicted_ms": 1054.854,
+   "predicted_per_token_ms": 4.136682352941176,
+   "predicted_per_second": 241.73961515053267
+  }
+ },
+ {
+  "prompt": "Write a haiku about the monsoon.",
+  "mode": "greedy",
+  "text": "The monsoon is a beautiful and beautiful place, and I'm thrilled to share it with you. I've been fortunate enough to have had the opportunity to visit the local community, and I'm excited to share it with you. What brings you to our village?",
+  "finish": "stop",
+  "tokens": 54,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 11,
+   "prompt_ms": 6.042,
+   "prompt_per_token_ms": 0.5492727272727272,
+   "prompt_per_second": 1820.5892088712346,
+   "predicted_n": 54,
+   "predicted_ms": 221.33,
+   "predicted_per_token_ms": 4.176037735849057,
+   "predicted_per_second": 239.46143767225408
+  }
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "greedy",
+  "text": "The sky blue is a beautiful and beautiful color, and it's a beautiful thing. The sky is a beautiful and beautiful color, and it's a beautiful thing.",
+  "finish": "stop",
+  "tokens": 34,
+  "timings": {
+   "cache_n": 2,
+   "prompt_n": 8,
+   "prompt_ms": 4.936,
+   "prompt_per_token_ms": 0.617,
+   "prompt_per_second": 1620.745542949757,
+   "predicted_n": 34,
+   "predicted_ms": 130.506,
+   "predicted_per_token_ms": 3.954727272727273,
+   "predicted_per_second": 252.86193738218932
+  }
+ },
+ {
+  "prompt": [
+   {
+    "role": "user",
+    "content": "What is the capital of France?"
+   },
+   {
+    "role": "assistant",
+    "content": "The capital of France is Paris."
+   },
+   {
+    "role": "user",
+    "content": "What is it famous for?"
+   }
+  ],
+  "mode": "greedy two-turn",
+  "text": "The capital of France is Paris.",
+  "finish": "stop",
+  "tokens": 8
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "sampled T=0.8 top_k=50 seed=0",
+  "text": "The sky blue is a beautiful and beautiful thing. The sky is a beautiful thing, so it can be seen from anywhere. The sky is a natural phenomenon, and the sky is a natural representation of the universe. It is a natural phenomenon, and it can also be seen in various forms.",
+  "finish": "stop"
+ },
+ {
+  "prompt": "Why is the sky blue?",
+  "mode": "sampled T=0.8 top_k=50 seed=1",
+  "text": "The sky blue can be a beautiful, natural phenomenon, but it's not necessarily a natural phenomenon. It's a natural phenomenon where the sky is not always visible or visible, but it can be incredibly beautiful.",
+  "finish": "stop"
+ }
+]

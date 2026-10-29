@@ -1,0 +1,42 @@
+[
+ {
+  "ckpt": "/home/amit/.cache/vidyalai-scratch/t07/runs/main88/model_03360.pt",
+  "bf16": false,
+  "chunks": 303,
+  "tokens_scored": 154833,
+  "bytes_scored": 712890,
+  "nll": 3.3452454316928106,
+  "ppl": 28.36753710499236,
+  "bpb": 1.0481984934297135
+ },
+ {
+  "ckpt": "/home/amit/.cache/vidyalai-scratch/t07/runs/main88/model_03360.pt",
+  "bf16": true,
+  "chunks": 303,
+  "tokens_scored": 154833,
+  "bytes_scored": 712890,
+  "nll": 3.3453907168328136,
+  "ppl": 28.37165878599445,
+  "bpb": 1.0482440170446405
+ },
+ {
+  "ckpt": "/home/amit/.cache/vidyalai-scratch/t11/runs/onpolicy/model_final.pt",
+  "bf16": false,
+  "chunks": 303,
+  "tokens_scored": 154833,
+  "bytes_scored": 712890,
+  "nll": 3.8693426232883272,
+  "ppl": 47.91088022944877,
+  "bpb": 1.2124189961876142
+ },
+ {
+  "ckpt": "/home/amit/.cache/vidyalai-scratch/t11/runs/onpolicy/model_final.pt",
+  "bf16": true,
+  "chunks": 303,
+  "tokens_scored": 154833,
+  "bytes_scored": 712890,
+  "nll": 3.869541426192101,
+  "ppl": 47.92040599840463,
+  "bpb": 1.2124812890472805
+ }
+]
