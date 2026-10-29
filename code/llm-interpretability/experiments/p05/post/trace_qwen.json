@@ -1,0 +1,68 @@
+{
+ "setup": {
+  "name": "Qwen/Qwen2.5-0.5B",
+  "dtype": "torch.float32",
+  "processing": false,
+  "n_layers": 24,
+  "n_heads": 14,
+  "d_model": 896,
+  "normalization": "RMS"
+ },
+ "n_prompts": 168,
+ "n_known": 135,
+ "window": 5,
+ "noise_samples": 5,
+ "clean_p_known": [
+  0.43243467598222196,
+  0.38024654492464227,
+  0.48522294844496405
+ ],
+ "clean_ld_known": [
+  10.311127139903881,
+  9.840442386909768,
+  10.770969233336272
+ ],
+ "sigma_subject_embed": 0.015166476368904114,
+ "n_str_pairs": 134,
+ "mlp0_split": {
+  "subject": [
+   8.70605281704948,
+   8.112783453152293,
+   9.280672338463011
+  ],
+  "template": [
+   -0.008898984818231492,
+   -0.018021599380742936,
+   -0.0003793475173768565
+  ],
+  "both": [
+   8.713746468226114,
+   8.121845040009134,
+   9.287649131885596
+  ],
+  "resample_template": [
+   -0.007158259311354304,
+   -0.018857980205352048,
+   0.0038264628634395283
+  ],
+  "resample_subject": [
+   5.8076217389968505,
+   4.987277345054121,
+   6.6410993656480155
+  ]
+ },
+ "mlp0_split_n": {
+  "all": 168,
+  "resample": 166
+ },
+ "wall_s": 763.7596564292908,
+ "gpu_peak_mib": 5563,
+ "roles": [
+  "first subject",
+  "middle subject",
+  "last subject",
+  "first after",
+  "further",
+  "last"
+ ]
+}

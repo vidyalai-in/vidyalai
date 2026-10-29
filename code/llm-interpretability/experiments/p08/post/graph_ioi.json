@@ -1,0 +1,238 @@
+{
+ "prompt": "<bos>When Mary and John went to the store, John gave a drink to",
+ "n_tokens": 15,
+ "active_features": 11622,
+ "feature_nodes": 8192,
+ "error_nodes": 390,
+ "logit_nodes": 10,
+ "replacement_score": 0.7368806004524231,
+ "completeness_score": 0.9273500442504883,
+ "pruned_feature_nodes": 2076,
+ "pruned_error_nodes": 245,
+ "pruned_edges": 658775,
+ "node_threshold": 0.8,
+ "edge_threshold": 0.98,
+ "name": "ioi",
+ "seconds": 16.34636616706848,
+ "batch_size": 64,
+ "gpu_peak_gib": 7.103669166564941,
+ "host_rss_peak_gib": 4.894737243652344,
+ "logit_targets": [
+  " Mary",
+  " the",
+  " each",
+  " a",
+  " his",
+  " every",
+  " everyone",
+  " one",
+  " John",
+  " an"
+ ],
+ "logit_probs": [
+  0.2656,
+  0.207,
+  0.126,
+  0.0864,
+  0.0674,
+  0.0281,
+  0.0193,
+  0.015,
+  0.0103,
+  0.0091
+ ],
+ "top_nodes": [
+  {
+   "layer": 0,
+   "pos": 14,
+   "feature": 8444,
+   "influence": 0.009636608883738518,
+   "act": 40.25
+  },
+  {
+   "layer": 24,
+   "pos": 14,
+   "feature": 13277,
+   "influence": 0.00949712935835123,
+   "act": 107.5
+  },
+  {
+   "layer": 20,
+   "pos": 14,
+   "feature": 12717,
+   "influence": 0.006777073256671429,
+   "act": 44.5
+  },
+  {
+   "layer": 24,
+   "pos": 14,
+   "feature": 14405,
+   "influence": 0.006507296115159988,
+   "act": 48.75
+  },
+  {
+   "layer": 0,
+   "pos": 1,
+   "feature": 1903,
+   "influence": 0.0043467250652611256,
+   "act": 20.25
+  },
+  {
+   "layer": 0,
+   "pos": 3,
+   "feature": 3255,
+   "influence": 0.004132653120905161,
+   "act": 33.0
+  },
+  {
+   "layer": 25,
+   "pos": 14,
+   "feature": 2984,
+   "influence": 0.004038984887301922,
+   "act": 26.125
+  },
+  {
+   "layer": 17,
+   "pos": 2,
+   "feature": 1537,
+   "influence": 0.00394938001409173,
+   "act": 66.5
+  },
+  {
+   "layer": 18,
+   "pos": 2,
+   "feature": 6920,
+   "influence": 0.003946314100176096,
+   "act": 91.5
+  },
+  {
+   "layer": 0,
+   "pos": 2,
+   "feature": 7532,
+   "influence": 0.003657048800960183,
+   "act": 10.1875
+  },
+  {
+   "layer": 21,
+   "pos": 14,
+   "feature": 3525,
+   "influence": 0.003601905656978488,
+   "act": 21.5
+  },
+  {
+   "layer": 24,
+   "pos": 14,
+   "feature": 4172,
+   "influence": 0.0032910320442169905,
+   "act": 30.375
+  },
+  {
+   "layer": 18,
+   "pos": 14,
+   "feature": 4591,
+   "influence": 0.003032876644283533,
+   "act": 11.5625
+  },
+  {
+   "layer": 23,
+   "pos": 14,
+   "feature": 13541,
+   "influence": 0.002988426247611642,
+   "act": 34.25
+  },
+  {
+   "layer": 0,
+   "pos": 1,
+   "feature": 12009,
+   "influence": 0.002900798339396715,
+   "act": 15.4375
+  },
+  {
+   "layer": 19,
+   "pos": 14,
+   "feature": 14348,
+   "influence": 0.002869607415050268,
+   "act": 27.125
+  },
+  {
+   "layer": 22,
+   "pos": 14,
+   "feature": 14539,
+   "influence": 0.0027423931751400232,
+   "act": 20.375
+  },
+  {
+   "layer": 0,
+   "pos": 6,
+   "feature": 8444,
+   "influence": 0.002738956129178405,
+   "act": 38.75
+  },
+  {
+   "layer": 19,
+   "pos": 14,
+   "feature": 2362,
+   "influence": 0.00270589767023921,
+   "act": 13.4375
+  },
+  {
+   "layer": 1,
+   "pos": 2,
+   "feature": 5037,
+   "influence": 0.00268790521658957,
+   "act": 22.625
+  },
+  {
+   "layer": 25,
+   "pos": 14,
+   "feature": 9975,
+   "influence": 0.0026722673792392015,
+   "act": 82.5
+  },
+  {
+   "layer": 20,
+   "pos": 14,
+   "feature": 14348,
+   "influence": 0.002592602511867881,
+   "act": 20.25
+  },
+  {
+   "layer": 25,
+   "pos": 14,
+   "feature": 16302,
+   "influence": 0.0025400579907000065,
+   "act": 46.75
+  },
+  {
+   "layer": 0,
+   "pos": 2,
+   "feature": 9969,
+   "influence": 0.002535289851948619,
+   "act": 14.875
+  },
+  {
+   "layer": 23,
+   "pos": 14,
+   "feature": 5188,
+   "influence": 0.0024995249696075916,
+   "act": 16.75
+  }
+ ],
+ "tokens": [
+  "<bos>",
+  "When",
+  " Mary",
+  " and",
+  " John",
+  " went",
+  " to",
+  " the",
+  " store",
+  ",",
+  " John",
+  " gave",
+  " a",
+  " drink",
+  " to"
+ ]
+}

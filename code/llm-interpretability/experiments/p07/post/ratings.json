@@ -1,0 +1,309 @@
+{
+"rubric": {
+"top": "2 = the top-10 activations share one specific concept nameable in a few words; 1 = a broad, structural or partly mixed theme (at least 6 of 10 fit); 0 = no common theme",
+"rand_fit": "how many of 5 randomly drawn nonzero activations clearly fit the same concept"
+},
+"rater": "the article's writer (an AI model), unblinded, single rater",
+"ratings": [
+{
+"latent": 12463,
+"top": 1,
+"rand_fit": 2,
+"label": "grouping words (each, set, pair)"
+},
+{
+"latent": 3476,
+"top": 2,
+"rand_fit": 0,
+"label": "surface"
+},
+{
+"latent": 16273,
+"top": 2,
+"rand_fit": 4,
+"label": "payment schedules, instalments"
+},
+{
+"latent": 15878,
+"top": 0,
+"rand_fit": 0,
+"label": "none (code, mixed)"
+},
+{
+"latent": 6767,
+"top": 2,
+"rand_fit": 2,
+"label": "inscriptions, markings"
+},
+{
+"latent": 8925,
+"top": 2,
+"rand_fit": 4,
+"label": "sentence-initial This/That"
+},
+{
+"latent": 8755,
+"top": 2,
+"rand_fit": 3,
+"label": "next year, by a future year"
+},
+{
+"latent": 14703,
+"top": 2,
+"rand_fit": 0,
+"label": "check boxes in UI instructions"
+},
+{
+"latent": 5372,
+"top": 0,
+"rand_fit": 0,
+"label": "none (7 activations)"
+},
+{
+"latent": 1270,
+"top": 2,
+"rand_fit": 2,
+"label": "bilateral relations between countries"
+},
+{
+"latent": 11042,
+"top": 1,
+"rand_fit": 0,
+"label": "sentence ends in SEO-style text"
+},
+{
+"latent": 10328,
+"top": 2,
+"rand_fit": 1,
+"label": "byte(s)"
+},
+{
+"latent": 156,
+"top": 2,
+"rand_fit": 2,
+"label": "forum and email post headers"
+},
+{
+"latent": 5383,
+"top": 0,
+"rand_fit": 0,
+"label": "none (science nouns)"
+},
+{
+"latent": 15166,
+"top": 1,
+"rand_fit": 3,
+"label": "sentence-final period after a fact"
+},
+{
+"latent": 10661,
+"top": 2,
+"rand_fit": 2,
+"label": "list bullets and numbers"
+},
+{
+"latent": 7498,
+"top": 2,
+"rand_fit": 1,
+"label": "Egypt, Egyptian"
+},
+{
+"latent": 2264,
+"top": 1,
+"rand_fit": 3,
+"label": "newline after a colon (11 activations)"
+},
+{
+"latent": 5291,
+"top": 2,
+"rand_fit": 0,
+"label": "short-term"
+},
+{
+"latent": 22,
+"top": 1,
+"rand_fit": 2,
+"label": "last item of a coordinated list"
+},
+{
+"latent": 11244,
+"top": 1,
+"rand_fit": 1,
+"label": "token after the topic of about/of"
+},
+{
+"latent": 6252,
+"top": 2,
+"rand_fit": 3,
+"label": "let"
+},
+{
+"latent": 10881,
+"top": 2,
+"rand_fit": 2,
+"label": "comma joining two clauses"
+},
+{
+"latent": 7285,
+"top": 1,
+"rand_fit": 2,
+"label": "start of a metadata line"
+},
+{
+"latent": 15212,
+"top": 2,
+"rand_fit": 2,
+"label": "town"
+},
+{
+"latent": 14517,
+"top": 2,
+"rand_fit": 4,
+"label": "newline after a colon introducing a list"
+},
+{
+"latent": 4773,
+"top": 2,
+"rand_fit": 2,
+"label": "US Constitution, liberty"
+},
+{
+"latent": 7663,
+"top": 1,
+"rand_fit": 1,
+"label": "inside abbreviations and numbers"
+},
+{
+"latent": 15574,
+"top": 2,
+"rand_fit": 4,
+"label": "and joining two phrases"
+},
+{
+"latent": 7327,
+"top": 2,
+"rand_fit": 0,
+"label": "homework-help services"
+},
+{
+"latent": 14607,
+"top": 0,
+"rand_fit": 0,
+"label": "none (23 activations)"
+},
+{
+"latent": 1778,
+"top": 2,
+"rand_fit": 3,
+"label": "separate, separation"
+},
+{
+"latent": 2604,
+"top": 0,
+"rand_fit": 0,
+"label": "none (14 activations)"
+},
+{
+"latent": 12669,
+"top": 2,
+"rand_fit": 1,
+"label": "entity"
+},
+{
+"latent": 839,
+"top": 1,
+"rand_fit": 1,
+"label": "code identifiers, mixed"
+},
+{
+"latent": 14552,
+"top": 2,
+"rand_fit": 1,
+"label": "file paths, URL segments"
+},
+{
+"latent": 10296,
+"top": 2,
+"rand_fit": 0,
+"label": "hybrids, mixing"
+},
+{
+"latent": 9234,
+"top": 2,
+"rand_fit": 2,
+"label": "All rights reserved"
+},
+{
+"latent": 5871,
+"top": 1,
+"rand_fit": 1,
+"label": "topic noun of a how-to page"
+},
+{
+"latent": 8834,
+"top": 2,
+"rand_fit": 3,
+"label": "birth dates"
+},
+{
+"latent": 9659,
+"top": 2,
+"rand_fit": 2,
+"label": "not enough, only part"
+},
+{
+"latent": 9504,
+"top": 2,
+"rand_fit": 2,
+"label": "sentence-initial Then"
+},
+{
+"latent": 14326,
+"top": 2,
+"rand_fit": 4,
+"label": "token after a place name"
+},
+{
+"latent": 16377,
+"top": 2,
+"rand_fit": 1,
+"label": "subscript underscore in E_s"
+},
+{
+"latent": 1496,
+"top": 2,
+"rand_fit": 0,
+"label": "episode(s)"
+},
+{
+"latent": 9038,
+"top": 2,
+"rand_fit": 2,
+"label": "Copyright"
+},
+{
+"latent": 2756,
+"top": 1,
+"rand_fit": 2,
+"label": "separators in code paths"
+},
+{
+"latent": 4515,
+"top": 2,
+"rand_fit": 3,
+"label": "experience"
+},
+{
+"latent": 13268,
+"top": 2,
+"rand_fit": 2,
+"label": "by means of: use, through"
+},
+{
+"latent": 3506,
+"top": 1,
+"rand_fit": 0,
+"label": "groups, educational audiences"
+}
+]
+}

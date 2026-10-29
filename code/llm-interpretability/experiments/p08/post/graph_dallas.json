@@ -1,0 +1,234 @@
+{
+ "prompt": "<bos>Fact: the capital of the state containing Dallas is",
+ "n_tokens": 11,
+ "active_features": 9161,
+ "feature_nodes": 8192,
+ "error_nodes": 286,
+ "logit_nodes": 10,
+ "replacement_score": 0.7179384231567383,
+ "completeness_score": 0.9250819683074951,
+ "pruned_feature_nodes": 1847,
+ "pruned_error_nodes": 167,
+ "pruned_edges": 576427,
+ "node_threshold": 0.8,
+ "edge_threshold": 0.98,
+ "name": "dallas",
+ "seconds": 11.999895572662354,
+ "batch_size": 64,
+ "gpu_peak_gib": 7.092024803161621,
+ "host_rss_peak_gib": 4.349590301513672,
+ "logit_targets": [
+  " Austin",
+  " not",
+  " Texas",
+  " the",
+  " Fort",
+  " Dallas",
+  " Houston",
+  " ",
+  " Oklahoma",
+  " called"
+ ],
+ "logit_probs": [
+  0.4141,
+  0.0559,
+  0.0559,
+  0.0559,
+  0.0435,
+  0.0299,
+  0.0299,
+  0.0206,
+  0.0182,
+  0.016
+ ],
+ "top_nodes": [
+  {
+   "layer": 20,
+   "pos": 10,
+   "feature": 15589,
+   "influence": 0.01971087045967579,
+   "act": 49.75
+  },
+  {
+   "layer": 24,
+   "pos": 10,
+   "feature": 6044,
+   "influence": 0.01592486910521984,
+   "act": 55.25
+  },
+  {
+   "layer": 21,
+   "pos": 10,
+   "feature": 5943,
+   "influence": 0.011817069724202156,
+   "act": 55.75
+  },
+  {
+   "layer": 23,
+   "pos": 10,
+   "feature": 12237,
+   "influence": 0.008305257186293602,
+   "act": 53.75
+  },
+  {
+   "layer": 14,
+   "pos": 9,
+   "feature": 2268,
+   "influence": 0.008015390485525131,
+   "act": 25.375
+  },
+  {
+   "layer": 16,
+   "pos": 9,
+   "feature": 25,
+   "influence": 0.0073627508245408535,
+   "act": 26.875
+  },
+  {
+   "layer": 25,
+   "pos": 10,
+   "feature": 13300,
+   "influence": 0.007124909199774265,
+   "act": 23.75
+  },
+  {
+   "layer": 20,
+   "pos": 9,
+   "feature": 15589,
+   "influence": 0.006953429896384478,
+   "act": 46.0
+  },
+  {
+   "layer": 24,
+   "pos": 10,
+   "feature": 6394,
+   "influence": 0.006119937170296907,
+   "act": 25.75
+  },
+  {
+   "layer": 24,
+   "pos": 10,
+   "feature": 13277,
+   "influence": 0.005611439235508442,
+   "act": 119.0
+  },
+  {
+   "layer": 4,
+   "pos": 9,
+   "feature": 13154,
+   "influence": 0.005475032143294811,
+   "act": 15.1875
+  },
+  {
+   "layer": 0,
+   "pos": 2,
+   "feature": 16200,
+   "influence": 0.005002786871045828,
+   "act": 27.625
+  },
+  {
+   "layer": 4,
+   "pos": 9,
+   "feature": 6931,
+   "influence": 0.0043194349855184555,
+   "act": 10.6875
+  },
+  {
+   "layer": 22,
+   "pos": 10,
+   "feature": 4999,
+   "influence": 0.004188481252640486,
+   "act": 36.75
+  },
+  {
+   "layer": 7,
+   "pos": 9,
+   "feature": 6861,
+   "influence": 0.004068736918270588,
+   "act": 14.5
+  },
+  {
+   "layer": 18,
+   "pos": 10,
+   "feature": 8959,
+   "influence": 0.0039359997026622295,
+   "act": 39.5
+  },
+  {
+   "layer": 19,
+   "pos": 10,
+   "feature": 2695,
+   "influence": 0.0036052530631422997,
+   "act": 16.5
+  },
+  {
+   "layer": 0,
+   "pos": 5,
+   "feature": 2848,
+   "influence": 0.0034296486992388964,
+   "act": 34.75
+  },
+  {
+   "layer": 22,
+   "pos": 10,
+   "feature": 3064,
+   "influence": 0.0033913536462932825,
+   "act": 61.0
+  },
+  {
+   "layer": 0,
+   "pos": 3,
+   "feature": 3820,
+   "influence": 0.00328975822776556,
+   "act": 27.875
+  },
+  {
+   "layer": 18,
+   "pos": 10,
+   "feature": 6101,
+   "influence": 0.0032066802959889174,
+   "act": 20.625
+  },
+  {
+   "layer": 0,
+   "pos": 4,
+   "feature": 5660,
+   "influence": 0.0029379401821643114,
+   "act": 16.0
+  },
+  {
+   "layer": 22,
+   "pos": 10,
+   "feature": 11718,
+   "influence": 0.0028694444335997105,
+   "act": 33.25
+  },
+  {
+   "layer": 2,
+   "pos": 4,
+   "feature": 7173,
+   "influence": 0.002861600834876299,
+   "act": 25.125
+  },
+  {
+   "layer": 1,
+   "pos": 4,
+   "feature": 1000,
+   "influence": 0.0027715074829757214,
+   "act": 24.75
+  }
+ ],
+ "tokens": [
+  "<bos>",
+  "Fact",
+  ":",
+  " the",
+  " capital",
+  " of",
+  " the",
+  " state",
+  " containing",
+  " Dallas",
+  " is"
+ ]
+}

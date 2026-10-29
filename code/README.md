@@ -33,8 +33,12 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `lens.py` | 2 | Residual-stream points, the logit lens, a tuned lens (Muon, SGD or Adam training), KL and top-1 evaluation |
 | `probes.py` | 3 | Activations saved to disk, linear and MLP probes with held-out evaluation, control-task labels, mass-mean directions, bootstrap and paired-bootstrap CIs |
 | `heads.py` | 4 | Per-head previous-token, duplicate-token and induction scores, mean and zero head ablation, K-composition scores with a random baseline, key-path ablation |
+| `patching.py` | 5 | Logit-difference and probability metrics, normalized patching effects with bootstrap CIs, patch hooks and sweeps, path patching, Gaussian-noise embedding corruption for causal tracing |
+| `toy.py` | 6 | Batched linear, ReLU-output and hidden-ReLU toy models of superposition, training, feature dimensionality, feature classification, per-neuron feature counts |
+| `sae.py` | 7 | ReLU-L1, TopK (with AuxK) and JumpReLU SAEs, a checkpointed training loop, splice evaluation on GPT-2, top-activation tracking, a Gemma Scope loader and a bf16 Gemma runner |
+| `attribution.py` | 8 | Helpers for circuit-tracer on Gemma 2 2B in 8 GB (GPU-side model build, lazy bf16 transcoders), transcoder fidelity, attribution patching |
 
-`experiments/p01` to `p04` hold each part's scripts and small result files. They run on the TransformerLens 3.9.0 / SAELens environment described in the articles. Not included: saved activations (Part 3 saved 5.9 GB; `collect.py` rebuilds them), tuned-lens weights, downloaded datasets (UD English EWT, GeoNames, FineWeb-Edu and WikiText samples; the `prep_*.py` scripts rebuild them) and Part 3's generated city statements (`prep_truth.py` rebuilds them from GeoNames, CC BY 4.0).
+`experiments/p01` to `p08` hold each part's scripts and small result files. They run on the TransformerLens 3.9.0 / SAELens environment described in the articles; Part 8's circuit-tracer scripts need a separate environment (circuit-tracer 0.5.0 pins `transformers<=4.57.3`). Not included: saved activations (Part 3 saved 5.9 GB; `collect.py` rebuilds them), tuned-lens and SAE weights, attribution graphs, Gemma 2 weights and Gemma Scope downloads, downloaded datasets (UD English EWT, GeoNames, FineWeb-Edu and WikiText samples; the `prep_*.py` scripts rebuild them) and Part 3's generated city statements (`prep_truth.py` rebuilds them from GeoNames, CC BY 4.0).
 
 ## agents-lab/ (Agentic AI)
 

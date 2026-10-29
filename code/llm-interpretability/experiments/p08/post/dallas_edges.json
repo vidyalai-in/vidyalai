@@ -1,0 +1,41 @@
+{
+ "texas20@10": {
+  "i": 7947,
+  "act": 49.75,
+  "to_austin_logit": 5.125
+ },
+ "texas20@9": {
+  "i": 7934,
+  "act": 46.0,
+  "to_austin_logit": 1.8046875
+ },
+ "say_capital21@10": {
+  "i": 8000,
+  "act": 55.75,
+  "to_austin_logit": 3.078125
+ },
+ "say_austin23@10": {
+  "i": 8106,
+  "act": 53.75,
+  "to_austin_logit": 2.734375
+ },
+ "texas14@9": {
+  "i": 7488,
+  "act": 25.375,
+  "to_austin_logit": 1.5546875
+ },
+ "texas16@9": {
+  "i": 7620,
+  "act": 26.875,
+  "to_austin_logit": 1.6484375
+ },
+ "texas20@10->say_austin23@10": 6.40625,
+ "say_capital21@10->say_austin23@10": 10.625,
+ "texas14@9->texas20@10": 14.9375,
+ "texas16@9->texas20@10": 11.1875,
+ "texas20@9->texas20@10": 0.0,
+ "emb_dallas->texas14@9": 27.0,
+ "emb_dallas->austin_logit": 5.0,
+ "austin_in_from_errors": 0.16551965475082397,
+ "austin_in_from_tokens": 0.05938239395618439
+}

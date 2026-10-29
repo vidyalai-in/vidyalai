@@ -1,0 +1,215 @@
+{
+ "prompt": "<bos>The Brandenburg Gate is located in the city of",
+ "n_tokens": 10,
+ "active_features": 7908,
+ "feature_nodes": 7908,
+ "error_nodes": 260,
+ "logit_nodes": 1,
+ "replacement_score": 0.7030131816864014,
+ "completeness_score": 0.9282516241073608,
+ "pruned_feature_nodes": 1507,
+ "pruned_error_nodes": 160,
+ "pruned_edges": 423439,
+ "node_threshold": 0.8,
+ "edge_threshold": 0.98,
+ "name": "brandenburg",
+ "seconds": 7.082462310791016,
+ "batch_size": 64,
+ "gpu_peak_gib": 7.091097354888916,
+ "host_rss_peak_gib": 4.894737243652344,
+ "logit_targets": [
+  " Berlin"
+ ],
+ "logit_probs": [
+  0.957
+ ],
+ "top_nodes": [
+  {
+   "layer": 25,
+   "pos": 9,
+   "feature": 2725,
+   "influence": 0.026683514937758446,
+   "act": 39.75
+  },
+  {
+   "layer": 25,
+   "pos": 9,
+   "feature": 6085,
+   "influence": 0.021130874752998352,
+   "act": 32.5
+  },
+  {
+   "layer": 25,
+   "pos": 9,
+   "feature": 15221,
+   "influence": 0.021130874752998352,
+   "act": 70.5
+  },
+  {
+   "layer": 21,
+   "pos": 9,
+   "feature": 16080,
+   "influence": 0.020018653944134712,
+   "act": 78.0
+  },
+  {
+   "layer": 21,
+   "pos": 9,
+   "feature": 5943,
+   "influence": 0.01800825260579586,
+   "act": 34.5
+  },
+  {
+   "layer": 24,
+   "pos": 9,
+   "feature": 6394,
+   "influence": 0.01416042074561119,
+   "act": 22.5
+  },
+  {
+   "layer": 24,
+   "pos": 9,
+   "feature": 1963,
+   "influence": 0.01172785833477974,
+   "act": 34.0
+  },
+  {
+   "layer": 24,
+   "pos": 9,
+   "feature": 13010,
+   "influence": 0.011293339543044567,
+   "act": 41.75
+  },
+  {
+   "layer": 19,
+   "pos": 9,
+   "feature": 855,
+   "influence": 0.011199450120329857,
+   "act": 25.5
+  },
+  {
+   "layer": 18,
+   "pos": 9,
+   "feature": 12174,
+   "influence": 0.011049416847527027,
+   "act": 39.25
+  },
+  {
+   "layer": 22,
+   "pos": 9,
+   "feature": 411,
+   "influence": 0.008891365490853786,
+   "act": 37.5
+  },
+  {
+   "layer": 18,
+   "pos": 9,
+   "feature": 3495,
+   "influence": 0.008327189832925797,
+   "act": 13.25
+  },
+  {
+   "layer": 0,
+   "pos": 2,
+   "feature": 5626,
+   "influence": 0.007963908836245537,
+   "act": 11.4375
+  },
+  {
+   "layer": 21,
+   "pos": 6,
+   "feature": 16080,
+   "influence": 0.00723276287317276,
+   "act": 88.0
+  },
+  {
+   "layer": 24,
+   "pos": 9,
+   "feature": 7241,
+   "influence": 0.0072112600319087505,
+   "act": 31.125
+  },
+  {
+   "layer": 25,
+   "pos": 9,
+   "feature": 4717,
+   "influence": 0.007210718467831612,
+   "act": 147.0
+  },
+  {
+   "layer": 19,
+   "pos": 6,
+   "feature": 855,
+   "influence": 0.00719449482858181,
+   "act": 36.0
+  },
+  {
+   "layer": 23,
+   "pos": 9,
+   "feature": 6617,
+   "influence": 0.006602213717997074,
+   "act": 15.1875
+  },
+  {
+   "layer": 0,
+   "pos": 2,
+   "feature": 4871,
+   "influence": 0.006545555777847767,
+   "act": 8.4375
+  },
+  {
+   "layer": 17,
+   "pos": 9,
+   "feature": 1084,
+   "influence": 0.006004007533192635,
+   "act": 14.5
+  },
+  {
+   "layer": 23,
+   "pos": 9,
+   "feature": 10812,
+   "influence": 0.0056423465721309185,
+   "act": 28.375
+  },
+  {
+   "layer": 24,
+   "pos": 9,
+   "feature": 13277,
+   "influence": 0.005501493811607361,
+   "act": 103.0
+  },
+  {
+   "layer": 0,
+   "pos": 9,
+   "feature": 2848,
+   "influence": 0.005492646247148514,
+   "act": 33.25
+  },
+  {
+   "layer": 18,
+   "pos": 6,
+   "feature": 12174,
+   "influence": 0.005471060052514076,
+   "act": 45.5
+  },
+  {
+   "layer": 4,
+   "pos": 3,
+   "feature": 3635,
+   "influence": 0.005230712704360485,
+   "act": 8.5
+  }
+ ],
+ "tokens": [
+  "<bos>",
+  "The",
+  " Brandenburg",
+  " Gate",
+  " is",
+  " located",
+  " in",
+  " the",
+  " city",
+  " of"
+ ]
+}

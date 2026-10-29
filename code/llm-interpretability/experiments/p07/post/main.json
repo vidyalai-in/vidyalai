@@ -1,0 +1,1 @@
+{"name": "main", "steps": 7300, "time_limit": 600, "saes": {"topk32_24k": {"kind": "topk", "n": 24576, "k": 32, "lr": 0.0002}, "relu_l1_15_24k": {"kind": "relu", "n": 24576, "l1": 15.0, "lr": 0.0002}, "topk32_3k": {"kind": "topk", "n": 3072, "k": 32, "lr": 0.0004}}}
