@@ -1,0 +1,10 @@
+flowchart TD
+    A["Base model"] --> B["Chat and safety tuning"]
+    B --> C["Chat model"]
+    A --> D["Model diffing:<br/>what did tuning change?"]
+    C --> D
+    C --> E["Pre-release audit:<br/>features, probes, steering"]
+    C --> F["Deployment monitor:<br/>cheap linear probes"]
+    D --> G["Hypotheses to test<br/>with behavior"]
+    E --> G
+    F --> H["Flag a conversation<br/>for review"]

@@ -1,0 +1,8 @@
+flowchart TD
+  A["Steps 0-50<br/>token frequencies<br/>(unigram fit best<br/>at step 50)"]
+  B["Steps 50-150<br/>word pairs<br/>(bigram fit best<br/>at step 150)"]
+  C["Steps 50-300<br/>previous-token<br/>heads grow:<br/>0.11 to 0.41"]
+  D["Steps 300-600<br/>induction heads<br/>form: 0.03 to 0.63"]
+  E["Same window<br/>copying and<br/>in-context learning;<br/>a bump in the loss"]
+  F["Steps 600-1,000<br/>duplicate-token<br/>head forms:<br/>0.04 to 0.67"]
+  A --> B --> C --> D --> E --> F

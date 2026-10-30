@@ -1,0 +1,12 @@
+flowchart TD
+  A["A trained model's activations"] --> R["Reading: lenses and probes"]
+  A --> D["Decomposing: SAEs and transcoders"]
+  A --> I["Intervening: ablation, patching, steering"]
+  R --> R2["Readable is not used"]
+  D --> D2["Dark matter and<br/>seed-dependent features"]
+  I --> I2["Illusions and<br/>ablation choices"]
+  R2 --> V["Validation with no ground truth"]
+  D2 --> V
+  I2 --> V
+  V --> S["Scaling to frontier models"]
+  S --> G["Goal: predict behavior on any input"]

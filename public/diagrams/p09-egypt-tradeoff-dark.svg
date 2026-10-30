@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="70" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0%</text>
+<line x1="70" x2="756" y1="353.1" y2="353.1" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="357.1" fill="#9fb0cf" font-size="13" text-anchor="end">10%</text>
+<line x1="70" x2="756" y1="298.3" y2="298.3" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="302.3" fill="#9fb0cf" font-size="13" text-anchor="end">20%</text>
+<line x1="70" x2="756" y1="243.4" y2="243.4" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="247.4" fill="#9fb0cf" font-size="13" text-anchor="end">30%</text>
+<line x1="70" x2="756" y1="188.6" y2="188.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="192.6" fill="#9fb0cf" font-size="13" text-anchor="end">40%</text>
+<line x1="70" x2="756" y1="133.7" y2="133.7" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="137.7" fill="#9fb0cf" font-size="13" text-anchor="end">50%</text>
+<line x1="70" x2="756" y1="78.9" y2="78.9" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="82.9" fill="#9fb0cf" font-size="13" text-anchor="end">60%</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">70%</text>
+<text x="70.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<text x="177.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0.5</text>
+<text x="284.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<text x="391.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">1.5</text>
+<text x="498.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<text x="605.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2.5</text>
+<text x="713.1" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">3</text>
+<text x="413.0" y="454" fill="#e8eefc" font-size="14" text-anchor="middle">Side effect: extra loss on plain web text (nats)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Continuations that mention Egypt (of 50)</text>
+<polyline points="70.0,408.0 72.1,408.0 83.7,353.1 117.4,276.3 174.0,199.5 247.5,100.8 333.5,78.9 533.7,67.9 743.8,111.8" fill="none" stroke="#3987e5" stroke-width="2.5"/>
+<circle cx="70.0" cy="408.0" r="3.5" fill="#3987e5"/>
+<circle cx="72.1" cy="408.0" r="3.5" fill="#3987e5"/>
+<circle cx="83.7" cy="353.1" r="3.5" fill="#3987e5"/>
+<circle cx="117.4" cy="276.3" r="3.5" fill="#3987e5"/>
+<circle cx="174.0" cy="199.5" r="3.5" fill="#3987e5"/>
+<circle cx="247.5" cy="100.8" r="3.5" fill="#3987e5"/>
+<circle cx="333.5" cy="78.9" r="3.5" fill="#3987e5"/>
+<circle cx="533.7" cy="67.9" r="3.5" fill="#3987e5"/>
+<circle cx="743.8" cy="111.8" r="3.5" fill="#3987e5"/>
+<text x="359.4" y="59.7" fill="#3987e5" font-size="13" font-weight="bold">difference of means</text>
+<polyline points="70.0,408.0 71.5,408.0 77.7,408.0 89.9,386.1 110.1,353.1 141.0,298.3 184.0,232.5 303.7,276.3 460.2,364.1" fill="none" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="70.0" cy="408.0" r="3.5" fill="#d95926"/>
+<circle cx="71.5" cy="408.0" r="3.5" fill="#d95926"/>
+<circle cx="77.7" cy="408.0" r="3.5" fill="#d95926"/>
+<circle cx="89.9" cy="386.1" r="3.5" fill="#d95926"/>
+<circle cx="110.1" cy="353.1" r="3.5" fill="#d95926"/>
+<circle cx="141.0" cy="298.3" r="3.5" fill="#d95926"/>
+<circle cx="184.0" cy="232.5" r="3.5" fill="#d95926"/>
+<circle cx="303.7" cy="276.3" r="3.5" fill="#d95926"/>
+<circle cx="460.2" cy="364.1" r="3.5" fill="#d95926"/>
+<text x="202.9" y="207.8" fill="#d95926" font-size="13" font-weight="bold">SAE latent 7498</text>
+<polyline points="70.0,408.0 71.9,408.0 77.1,408.0 85.6,408.0 98.1,408.0 115.0,408.0 136.7,408.0 197.3,408.0 284.6,408.0" fill="none" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="70.0" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="71.9" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="77.1" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="85.6" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="98.1" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="115.0" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="136.7" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="197.3" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<circle cx="284.6" cy="408.0" r="3.5" fill="#9fb0cf"/>
+<text x="338.0" y="390.4" fill="#9fb0cf" font-size="13" font-weight="bold">random direction</text>
+<text x="77.7" y="344.1" fill="#e8eefc" font-size="12" text-anchor="end">0.2</text>
+<text x="168.0" y="190.5" fill="#e8eefc" font-size="12" text-anchor="end">0.4</text>
+<text x="527.7" y="58.9" fill="#e8eefc" font-size="12" text-anchor="end">0.8</text>
+<text x="737.8" y="102.8" fill="#e8eefc" font-size="12" text-anchor="end">1</text>
+<text x="118.1" y="347.1" fill="#e8eefc" font-size="12" text-anchor="start">0.4</text>
+<text x="192.0" y="226.5" fill="#e8eefc" font-size="12" text-anchor="start">0.6</text>
+<text x="468.2" y="358.1" fill="#e8eefc" font-size="12" text-anchor="start">1</text>
+<text x="745.3" y="161.1" fill="#9fb0cf" font-size="12" text-anchor="end">numbers on points: strength,</text>
+<text x="745.3" y="176.1" fill="#9fb0cf" font-size="12" text-anchor="end">in units of the residual norm</text>
+</svg>

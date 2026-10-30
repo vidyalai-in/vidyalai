@@ -160,10 +160,10 @@ Series slug `llm-interpretability`, short name "Interpretability", file prefix `
 | 6 | Superposition | `superposition` | Toy models reproduced; more features than neurons | m13 | Published |
 | 7 | Sparse autoencoders | `sparse-autoencoders` | Train an SAE on one layer; explore Gemma Scope features | p06 | Published |
 | 8 | Circuits and attribution graphs | `circuit-tracing` | Transcoders and attribution graphs with open tools, if runnable on 8 GB | p07 | Published |
-| 9 | Steering with activations | `activation-steering` | Steering vectors, the refusal direction, side effects measured | p03 |  |
-| 10 | What training builds inside a model | `training-dynamics-interpretability` | When induction heads and features form, using From Scratch checkpoints | t07 |  |
-| 11 | Interpretability for safety | `interpretability-for-safety` | Deception and sycophancy probes, model diffing, audits; research-based | p09 |  |
-| 12 | Limits and open problems | `interpretability-open-problems` | Finale: what works, what doesn't, series review | all |  |
+| 9 | Steering with activations | `activation-steering` | Steering vectors, the refusal direction, side effects measured | p03 | Published |
+| 10 | What training builds inside a model | `training-dynamics-interpretability` | When induction heads and features form, using From Scratch checkpoints | t07 | Published |
+| 11 | Interpretability for safety | `interpretability-for-safety` | Deception and sycophancy probes, model diffing, audits; research-based | p09 | Published |
+| 12 | Limits and open problems | `interpretability-open-problems` | Finale: what works, what doesn't, series review | all | Published |
 
 ## Beyond Text: Images, Speech and Video (13 parts)
 

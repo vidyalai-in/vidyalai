@@ -11,7 +11,7 @@ pubDate: 2026-10-29
 
 ## TL;DR
 
-Activation patching runs a model on two prompts that differ in one detail, copies one internal activation from one run into the other, and measures how much of the answer follows the copy. That shows where the difference between the prompts is carried, layer by layer and head by head. This part uses it to recover most of the indirect-object circuit in GPT-2 small from 500 generated prompts, then runs causal tracing, the version that noises a subject's embeddings, on Part 1's landmark facts in GPT-2 small and Qwen2.5-0.5B. It also measures three choices that change the answer: Gaussian noise or a real replacement token, probability or logit difference, and whether the layer where a fact shows up in a trace is the best layer to edit it.
+Activation patching runs a model on two prompts that differ in one detail, copies one internal activation from one run into the other, and measures how much of the answer follows the copy. That shows where the difference between the prompts is carried, layer by layer and head by head. This part uses it to recover most of the indirect-object circuit in GPT-2 small from 500 generated prompts, then runs causal tracing, the version that noises a subject's embeddings, on [Part 1](/blog/what-is-interpretability/)'s landmark facts in GPT-2 small and Qwen2.5-0.5B. It also measures three choices that change the answer: Gaussian noise or a real replacement token, probability or logit difference, and whether the layer where a fact shows up in a trace is the best layer to edit it.
 
 ## Why it matters
 
@@ -133,7 +133,7 @@ Causal tracing is the patching variant [Meng et al. (2022)](https://arxiv.org/ab
 
 On 1,000 facts GPT-2 XL knew, the noise cut the answer's probability from 27.0% to 8.47%. One hidden state at the subject's last token at layer 15 brought back 8.7 points, and MLP windows there 6.6 points against 1.6 for attention: the "early site". The "late site" is at the last token, carried by attention.
 
-Our run uses the 67 of Part 1's 168 landmark prompts ("The Eiffel Tower is located in the city of") where GPT-2 small ranks the right city first among 54, with 10 noise draws each and 3-layer windows, about the same fifth of the depth as Meng et al.'s 10 of 48. The noise cuts P(right city) from 7.9% (5.7 to 10.3%) to 0.4%.
+Our run uses the 67 of [Part 1](/blog/what-is-interpretability/)'s 168 landmark prompts ("The Eiffel Tower is located in the city of") where GPT-2 small ranks the right city first among 54, with 10 noise draws each and 3-layer windows, about the same fifth of the depth as Meng et al.'s 10 of 48. The noise cuts P(right city) from 7.9% (5.7 to 10.3%) to 0.4%.
 
 ![Three heatmaps for GPT-2 small, each with six rows of token positions (first, middle and last subject tokens, the first token after the subject, further tokens, and the last token) and 12 columns of blocks, showing percentage points of P(right city) restored. Restoring one hidden state: middle subject tokens restore 0.8 to 1.5 points from block 0 to 8, the last subject token 0.3 to 0.8, both fading after block 8, while the last token restores 0.7 at block 8, 2.4 at block 9, 3.8 at block 10 and 7.5 at block 11. Restoring three MLP outputs: only blocks 0 and 1 at the middle and last subject tokens (0.4 to 0.9) and blocks 8 and 9 at the last token (0.4 to 0.5) stand out. Restoring three attention outputs: only the last token, rising to 2.6 at block 8, 4.0 at block 9 and 5.1 at block 10.](/diagrams/p05-causal-trace.svg "Causal tracing in GPT-2 small on 67 landmark facts it knows, following Meng et al. (2022).")
 
@@ -208,7 +208,7 @@ The trace peaks at MLP layer 1 for 35 of the 67 facts, yet edits at layers 3 and
 
 - Activation patching copies one activation between a clean and a corrupted run and measures the share of the answer that follows. It is causal evidence about the detail the two prompts differ in, and only that.
 - On 500 IOI prompts, the deciding information sits at the second name until block 8 and at the last token from block 9; path patching then recovered five of Wang et al.'s seven head classes, each by the connection it uses.
-- Causal tracing finds Meng et al.'s two sites, with GPT-2 small's subject MLP effect in blocks 0 and 1, and Part 1's MLP 0 cost comes entirely from the landmark's own tokens.
+- Causal tracing finds Meng et al.'s two sites, with GPT-2 small's subject MLP effect in blocks 0 and 1, and [Part 1](/blog/what-is-interpretability/)'s MLP 0 cost comes entirely from the landmark's own tokens.
 - The choices change the answer: Gaussian noise disturbed the circuit it was measuring, and probability missed heads that logit difference found.
 - Where a trace peaks is a poor guide to where an edit works, in Hase et al.'s GPT-J study and in our GPT-2 edits.
 

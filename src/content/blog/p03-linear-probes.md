@@ -168,7 +168,7 @@ Then we edit one vector. At one layer, at the statement's final ".", we add the 
 
 Intervals resample cities. At layer 13 the direction is about an eighth of the vector's length, and adding it moves the model's verdict about halfway; three times as much overshoots, making false statements look truer than true ones. A random direction three times as long barely moves it.
 
-The layers matter most. A probe reads truth at 93 to 95% from layer 8 to the last layer, yet the edit works mainly at layers 13 and 14. By layer 15 the later tokens have presumably already copied what they need from the ".", so changing it there does nothing. This is one token at one layer; Part 9 covers steering properly.
+The layers matter most. A probe reads truth at 93 to 95% from layer 8 to the last layer, yet the edit works mainly at layers 13 and 14. By layer 15 the later tokens have presumably already copied what they need from the ".", so changing it there does nothing. This is one token at one layer; [Part 9](/blog/activation-steering/) covers steering properly.
 
 ## In the real world
 

@@ -223,7 +223,7 @@ Single-feature ablations are also small (median 0.37 logits), so error nodes and
 
 ## What's next
 
-Swapping Texas for California was a small act of steering, done through features a graph pointed to. Part 9 makes steering the subject: adding directions to the residual stream to change what a model does, finding the single direction that controls refusal, and measuring what else breaks when you push.
+Swapping Texas for California was a small act of steering, done through features a graph pointed to. [Part 9](/blog/activation-steering/) makes steering the subject: adding directions to the residual stream to change what a model does, finding the single direction that controls refusal, and measuring what else breaks when you push.
 
 ## Further reading
 

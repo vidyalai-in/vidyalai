@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#ffffff"/>
+<line x1="66" x2="610" y1="360.0" y2="360.0" stroke="#dde5f2"/>
+<text x="58" y="364.0" fill="#4a5b78" font-size="12" text-anchor="end">20%</text>
+<line x1="66" x2="610" y1="280.0" y2="280.0" stroke="#dde5f2"/>
+<text x="58" y="284.0" fill="#4a5b78" font-size="12" text-anchor="end">40%</text>
+<line x1="66" x2="610" y1="200.0" y2="200.0" stroke="#dde5f2"/>
+<text x="58" y="204.0" fill="#4a5b78" font-size="12" text-anchor="end">60%</text>
+<line x1="66" x2="610" y1="120.0" y2="120.0" stroke="#dde5f2"/>
+<text x="58" y="124.0" fill="#4a5b78" font-size="12" text-anchor="end">80%</text>
+<line x1="66" x2="610" y1="40.0" y2="40.0" stroke="#dde5f2"/>
+<text x="58" y="44.0" fill="#4a5b78" font-size="12" text-anchor="end">100%</text>
+<text x="66.0" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">0</text>
+<text x="115.5" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">10</text>
+<text x="164.9" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">25</text>
+<text x="214.4" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">50</text>
+<text x="263.8" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">75</text>
+<text x="313.3" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">100</text>
+<text x="362.7" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">150</text>
+<text x="412.2" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">250</text>
+<text x="461.6" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">500</text>
+<text x="511.1" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">1,000</text>
+<text x="560.5" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">2,000</text>
+<text x="610.0" y="378" fill="#4a5b78" font-size="12" text-anchor="middle">3,360</text>
+<text x="338.0" y="402" fill="#0b1a33" font-size="13" text-anchor="middle">Training step (snapshots, evenly spaced)</text>
+<text x="66" y="26" fill="#0b1a33" font-size="14" font-weight="bold">Part-of-speech probe accuracy on held-out sentences</text>
+<line x1="66" x2="610" y1="103.8" y2="103.8" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="2 4"/>
+<polyline fill="none" stroke="#0b5fd6" stroke-width="2.2"  points="66.0,230.7 115.5,210.3 164.9,188.9 214.4,166.0 263.8,132.1 313.3,113.4 362.7,93.8 412.2,82.7 461.6,76.4 511.1,71.4 560.5,68.6 610.0,68.0"/>
+<circle cx="66.0" cy="230.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="115.5" cy="210.3" r="3.5" fill="#0b5fd6"/>
+<circle cx="164.9" cy="188.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="214.4" cy="166.0" r="3.5" fill="#0b5fd6"/>
+<circle cx="263.8" cy="132.1" r="3.5" fill="#0b5fd6"/>
+<circle cx="313.3" cy="113.4" r="3.5" fill="#0b5fd6"/>
+<circle cx="362.7" cy="93.8" r="3.5" fill="#0b5fd6"/>
+<circle cx="412.2" cy="82.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="461.6" cy="76.4" r="3.5" fill="#0b5fd6"/>
+<circle cx="511.1" cy="71.4" r="3.5" fill="#0b5fd6"/>
+<circle cx="560.5" cy="68.6" r="3.5" fill="#0b5fd6"/>
+<circle cx="610.0" cy="68.0" r="3.5" fill="#0b5fd6"/>
+<polyline fill="none" stroke="#0b5fd6" stroke-width="2.2" stroke-dasharray="6 4" points="66.0,340.7 115.5,326.3 164.9,301.7 214.4,265.9 263.8,217.8 313.3,201.6 362.7,163.4 412.2,144.9 461.6,131.7 511.1,122.2 560.5,107.9 610.0,108.4"/>
+<circle cx="66.0" cy="340.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="115.5" cy="326.3" r="3.5" fill="#0b5fd6"/>
+<circle cx="164.9" cy="301.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="214.4" cy="265.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="263.8" cy="217.8" r="3.5" fill="#0b5fd6"/>
+<circle cx="313.3" cy="201.6" r="3.5" fill="#0b5fd6"/>
+<circle cx="362.7" cy="163.4" r="3.5" fill="#0b5fd6"/>
+<circle cx="412.2" cy="144.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="461.6" cy="131.7" r="3.5" fill="#0b5fd6"/>
+<circle cx="511.1" cy="122.2" r="3.5" fill="#0b5fd6"/>
+<circle cx="560.5" cy="107.9" r="3.5" fill="#0b5fd6"/>
+<circle cx="610.0" cy="108.4" r="3.5" fill="#0b5fd6"/>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.2"  points="66.0,147.8 115.5,147.4 164.9,146.7 214.4,135.7 263.8,117.1 313.3,109.3 362.7,101.7 412.2,96.1 461.6,93.7 511.1,92.7 560.5,91.9 610.0,91.8"/>
+<circle cx="66.0" cy="147.8" r="3.5" fill="#eb6834"/>
+<circle cx="115.5" cy="147.4" r="3.5" fill="#eb6834"/>
+<circle cx="164.9" cy="146.7" r="3.5" fill="#eb6834"/>
+<circle cx="214.4" cy="135.7" r="3.5" fill="#eb6834"/>
+<circle cx="263.8" cy="117.1" r="3.5" fill="#eb6834"/>
+<circle cx="313.3" cy="109.3" r="3.5" fill="#eb6834"/>
+<circle cx="362.7" cy="101.7" r="3.5" fill="#eb6834"/>
+<circle cx="412.2" cy="96.1" r="3.5" fill="#eb6834"/>
+<circle cx="461.6" cy="93.7" r="3.5" fill="#eb6834"/>
+<circle cx="511.1" cy="92.7" r="3.5" fill="#eb6834"/>
+<circle cx="560.5" cy="91.9" r="3.5" fill="#eb6834"/>
+<circle cx="610.0" cy="91.8" r="3.5" fill="#eb6834"/>
+<polyline fill="none" stroke="#4a5b78" stroke-width="2.2" stroke-dasharray="6 4" points="66.0,235.8 115.5,219.7 164.9,212.6 214.4,219.4 263.8,208.8 313.3,199.5 362.7,187.5 412.2,180.0 461.6,181.2 511.1,183.0 560.5,184.7 610.0,185.7"/>
+<circle cx="66.0" cy="235.8" r="3.5" fill="#4a5b78"/>
+<circle cx="115.5" cy="219.7" r="3.5" fill="#4a5b78"/>
+<circle cx="164.9" cy="212.6" r="3.5" fill="#4a5b78"/>
+<circle cx="214.4" cy="219.4" r="3.5" fill="#4a5b78"/>
+<circle cx="263.8" cy="208.8" r="3.5" fill="#4a5b78"/>
+<circle cx="313.3" cy="199.5" r="3.5" fill="#4a5b78"/>
+<circle cx="362.7" cy="187.5" r="3.5" fill="#4a5b78"/>
+<circle cx="412.2" cy="180.0" r="3.5" fill="#4a5b78"/>
+<circle cx="461.6" cy="181.2" r="3.5" fill="#4a5b78"/>
+<circle cx="511.1" cy="183.0" r="3.5" fill="#4a5b78"/>
+<circle cx="560.5" cy="184.7" r="3.5" fill="#4a5b78"/>
+<circle cx="610.0" cy="185.7" r="3.5" fill="#4a5b78"/>
+<text x="620" y="72.0" fill="#0b5fd6" font-size="12" font-weight="bold">layer 8, all words</text>
+<text x="620" y="124.4" fill="#0b5fd6" font-size="12" font-weight="bold">layer 8, unseen words</text>
+<text x="620" y="93.8" fill="#eb6834" font-size="12" font-weight="bold">layer 0 (embeddings)</text>
+<text x="620" y="189.7" fill="#4a5b78" font-size="12" font-weight="bold">layer 8, control tags</text>
+<text x="74" y="96.8" fill="#4a5b78" font-size="12">word lookup, no model: 84.1%</text>
+</svg>

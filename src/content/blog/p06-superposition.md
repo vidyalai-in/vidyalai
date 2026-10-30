@@ -220,7 +220,7 @@ All of this is correlational in [Part 1](/blog/what-is-interpretability/)'s sens
 
 ## What's next
 
-If features hide in superposition across many neurons, reading neurons one at a time is reading the wrong unit. Part 7 trains a sparse autoencoder, a wide dictionary that rewrites each activation as a few active features, on GPT-2 small's residual stream, measures how much of the model it explains, and explores Google DeepMind's Gemma Scope features on Gemma 2 2B.
+If features hide in superposition across many neurons, reading neurons one at a time is reading the wrong unit. [Part 7](/blog/sparse-autoencoders/) trains a sparse autoencoder, a wide dictionary that rewrites each activation as a few active features, on GPT-2 small's residual stream, measures how much of the model it explains, and explores Google DeepMind's Gemma Scope features on Gemma 2 2B.
 
 ## Further reading
 

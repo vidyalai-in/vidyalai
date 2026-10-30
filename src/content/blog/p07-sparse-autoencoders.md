@@ -11,7 +11,7 @@ pubDate: 2026-10-29
 
 ## TL;DR
 
-A sparse autoencoder (SAE) rewrites each of a model's activation vectors as a short sum of directions picked from a large learned dictionary, so that each direction, with luck, means one thing. This part trains three SAEs on layer 8 of GPT-2 small in 43 minutes on a laptop GPU and measures how many latents fire per token, how much of the activation they rebuild, and how much worse the model predicts text when the rebuild replaces the real activation. The best one, a TopK SAE with 24,576 latents, explains 84.9% of the variance and costs 0.11 nats of next-token loss, slightly better than two public SAEs on the same text. Then it explores a Gemma Scope SAE on Gemma 2 2B: 50 random latents scored by hand (66% clearly interpretable) and one clamped to steer the model, a preview of Part 9.
+A sparse autoencoder (SAE) rewrites each of a model's activation vectors as a short sum of directions picked from a large learned dictionary, so that each direction, with luck, means one thing. This part trains three SAEs on layer 8 of GPT-2 small in 43 minutes on a laptop GPU and measures how many latents fire per token, how much of the activation they rebuild, and how much worse the model predicts text when the rebuild replaces the real activation. The best one, a TopK SAE with 24,576 latents, explains 84.9% of the variance and costs 0.11 nats of next-token loss, slightly better than two public SAEs on the same text. Then it explores a Gemma Scope SAE on Gemma 2 2B: 50 random latents scored by hand (66% clearly interpretable) and one clamped to steer the model, a preview of [Part 9](/blog/activation-steering/).
 
 ## Why it matters
 
@@ -117,7 +117,7 @@ We compared against two public SAEs at the same hook, loaded with SAELens 6.54.1
 - `gpt2-small-res-jb`, Joseph Bloom's 2024 ReLU SAEs, 24,576 latents, trained with "an L1 coefficient of 8e-5, a learning rate of 4e-4 for 300 Million tokens from OpenWebText" ([Bloom, 2024](https://www.lesswrong.com/posts/f9EgfLSurAiqRJySD/open-source-sparse-autoencoders-for-all-residual-stream)).
 - `gpt2-small-resid-post-v5-32k`, OpenAI's TopK SAEs from Gao et al. ([released code and weights](https://github.com/openai/sparse_autoencoder)), 32,768 latents with `k = 32`, at `blocks.7.hook_resid_post`, which is the same tensor.
 
-The test set is Part 2's 586 held-out FineWeb-Edu documents, 4,231 windows and 537,337 scored tokens, none of them seen in training. Intervals are 95% bootstrap intervals over documents (2,000 resamples). Unaltered, GPT-2 small scores 3.697 nats per token (3.645 to 3.752).
+The test set is [Part 2](/blog/logit-lens/)'s 586 held-out FineWeb-Edu documents, 4,231 windows and 537,337 scored tokens, none of them seen in training. Intervals are 95% bootstrap intervals over documents (2,000 resamples). Unaltered, GPT-2 small scores 3.697 nats per token (3.645 to 3.752).
 
 | SAE (GPT-2 small, layer 8) | Latents | L0 | Variance explained | Spliced loss, nats | Delta loss, nats |
 |---|---|---|---|---|---|
@@ -208,7 +208,7 @@ If latent 7498 means "Egypt", forcing it on should make Gemma talk about Egypt. 
 | 150 | 0, text starts to degrade |
 | 250 (10 times) | 0, text is broken ("have have have...") |
 
-At `c = 100`, "Scientists recently discovered that" continued with "the ancient Egyptian pyramids were built to be used as tombs for the pharaohs." At `c = 50`, "On our trip we decided to" became "visit the city of Cairo." The keyword count is conservative: at `c = 125` one completion was about "the life of Cleopatra" and wasn't counted. Still, the clamp works weakly: at best 4 of 20 completions (20%, Wilson interval 8 to 42%), in a narrow window between no effect and breaking the model. Anthropic clamped its Golden Gate Bridge feature to 10 times its maximum in Claude 3 Sonnet with a 34-million-latent SAE ([Templeton et al., 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)); in Gemma 2 2B, 10 times broke the output. Part 9 covers steering properly, with side effects measured.
+At `c = 100`, "Scientists recently discovered that" continued with "the ancient Egyptian pyramids were built to be used as tombs for the pharaohs." At `c = 50`, "On our trip we decided to" became "visit the city of Cairo." The keyword count is conservative: at `c = 125` one completion was about "the life of Cleopatra" and wasn't counted. Still, the clamp works weakly: at best 4 of 20 completions (20%, Wilson interval 8 to 42%), in a narrow window between no effect and breaking the model. Anthropic clamped its Golden Gate Bridge feature to 10 times its maximum in Claude 3 Sonnet with a 34-million-latent SAE ([Templeton et al., 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)); in Gemma 2 2B, 10 times broke the output. [Part 9](/blog/activation-steering/) covers steering properly, with side effects measured.
 
 ## In the real world
 

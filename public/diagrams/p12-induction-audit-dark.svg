@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" width="780" height="480" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="480" fill="#0b162d"/>
+<line x1="78" x2="756" y1="395.8" y2="395.8" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="399.8" fill="#9fb0cf" font-size="13" text-anchor="end">0.1</text>
+<line x1="78" x2="756" y1="325.7" y2="325.7" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="329.7" fill="#9fb0cf" font-size="13" text-anchor="end">0.3</text>
+<line x1="78" x2="756" y1="249.0" y2="249.0" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="253.0" fill="#9fb0cf" font-size="13" text-anchor="end">1</text>
+<line x1="78" x2="756" y1="178.9" y2="178.9" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="182.9" fill="#9fb0cf" font-size="13" text-anchor="end">3</text>
+<line x1="78" x2="756" y1="102.2" y2="102.2" stroke="#22355a" stroke-width="1"/>
+<text x="70" y="106.2" fill="#9fb0cf" font-size="13" text-anchor="end">10</text>
+<circle cx="84" cy="18" r="5" fill="#d95926"/><text x="94" y="22" fill="#e8eefc" font-size="13">Intact</text>
+<circle cx="162" cy="18" r="5" fill="#9fb0cf"/><text x="172" y="22" fill="#e8eefc" font-size="13">5 random heads ablated (median, 5-95%)</text>
+<circle cx="450" cy="18" r="6" fill="#38bdf8"/><text x="460" y="22" fill="#e8eefc" font-size="13">Part 4's top 5 ablated</text>
+<line x1="626" x2="648" y1="18" y2="18" stroke="#e8eefc" stroke-width="2.5"/><text x="654" y="22" fill="#e8eefc" font-size="13">First copy</text>
+<line x1="111.8" x2="179.8" y1="84.7" y2="84.7" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="123.8" cy="346.1" r="5" fill="#d95926"/>
+<line x1="145.8" x2="145.8" y1="349.7" y2="310.2" stroke="#9fb0cf" stroke-width="2"/>
+<circle cx="145.8" cy="337.6" r="5" fill="#9fb0cf"/>
+<line x1="167.8" x2="167.8" y1="141.1" y2="139.8" stroke="#e8eefc" stroke-width="1.5"/>
+<circle cx="167.8" cy="140.5" r="6" fill="#38bdf8"/>
+<text x="177.8" y="144.5" fill="#e8eefc" font-size="12">5.48</text>
+<text x="145.8" y="430" fill="#e8eefc" font-size="13" text-anchor="middle">Original</text>
+<text x="145.8" y="446" fill="#9fb0cf" font-size="12" text-anchor="middle">(Part 4 seeds)</text>
+<line x1="247.4" x2="315.4" y1="84.7" y2="84.7" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="259.4" cy="341.8" r="5" fill="#d95926"/>
+<line x1="281.4" x2="281.4" y1="345.5" y2="309.2" stroke="#9fb0cf" stroke-width="2"/>
+<circle cx="281.4" cy="334.4" r="5" fill="#9fb0cf"/>
+<line x1="303.4" x2="303.4" y1="141.5" y2="140.2" stroke="#e8eefc" stroke-width="1.5"/>
+<circle cx="303.4" cy="140.8" r="6" fill="#38bdf8"/>
+<text x="313.4" y="144.8" fill="#e8eefc" font-size="12">5.46</text>
+<text x="281.4" y="430" fill="#e8eefc" font-size="13" text-anchor="middle">New seeds</text>
+<line x1="383.0" x2="451.0" y1="98.7" y2="98.7" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="395.0" cy="332.2" r="5" fill="#d95926"/>
+<line x1="417.0" x2="417.0" y1="330.6" y2="301.9" stroke="#9fb0cf" stroke-width="2"/>
+<circle cx="417.0" cy="324.7" r="5" fill="#9fb0cf"/>
+<line x1="439.0" x2="439.0" y1="156.1" y2="154.7" stroke="#e8eefc" stroke-width="1.5"/>
+<circle cx="439.0" cy="155.4" r="6" fill="#38bdf8"/>
+<text x="449.0" y="159.4" fill="#e8eefc" font-size="12">4.34</text>
+<text x="417.0" y="430" fill="#e8eefc" font-size="13" text-anchor="middle">Frequent</text>
+<text x="417.0" y="446" fill="#9fb0cf" font-size="12" text-anchor="middle">tokens</text>
+<line x1="518.6" x2="586.6" y1="88.3" y2="88.3" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="530.6" cy="390.3" r="5" fill="#d95926"/>
+<line x1="552.6" x2="552.6" y1="391.5" y2="352.2" stroke="#9fb0cf" stroke-width="2"/>
+<circle cx="552.6" cy="380.0" r="5" fill="#9fb0cf"/>
+<line x1="574.6" x2="574.6" y1="108.6" y2="107.9" stroke="#e8eefc" stroke-width="1.5"/>
+<circle cx="574.6" cy="108.2" r="6" fill="#38bdf8"/>
+<text x="584.6" y="112.2" fill="#e8eefc" font-size="12">9.10</text>
+<text x="552.6" y="430" fill="#e8eefc" font-size="13" text-anchor="middle">200-token</text>
+<text x="552.6" y="446" fill="#9fb0cf" font-size="12" text-anchor="middle">sequences</text>
+<line x1="654.2" x2="722.2" y1="151.4" y2="151.4" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="666.2" cy="322.4" r="5" fill="#d95926"/>
+<line x1="688.2" x2="688.2" y1="326.8" y2="312.9" stroke="#9fb0cf" stroke-width="2"/>
+<circle cx="688.2" cy="320.0" r="5" fill="#9fb0cf"/>
+<line x1="710.2" x2="710.2" y1="232.7" y2="230.3" stroke="#e8eefc" stroke-width="1.5"/>
+<circle cx="710.2" cy="231.8" r="6" fill="#38bdf8"/>
+<text x="720.2" y="235.8" fill="#e8eefc" font-size="12">1.31</text>
+<text x="688.2" y="430" fill="#e8eefc" font-size="13" text-anchor="middle">Repeated</text>
+<text x="688.2" y="446" fill="#9fb0cf" font-size="12" text-anchor="middle">WikiText</text>
+<text transform="translate(20,234.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Loss on the second copy (nats, log scale)</text>
+</svg>

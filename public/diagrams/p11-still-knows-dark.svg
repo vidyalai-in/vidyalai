@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="70" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0%</text>
+<line x1="70" x2="756" y1="312.0" y2="312.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="316.0" fill="#9fb0cf" font-size="13" text-anchor="end">25%</text>
+<line x1="70" x2="756" y1="216.0" y2="216.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="220.0" fill="#9fb0cf" font-size="13" text-anchor="end">50%</text>
+<line x1="70" x2="756" y1="120.0" y2="120.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="124.0" fill="#9fb0cf" font-size="13" text-anchor="end">75%</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">100%</text>
+<line x1="70.0" x2="70.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="70.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="122.8" x2="122.8" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="122.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="175.5" x2="175.5" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="175.5" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="228.3" x2="228.3" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="228.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<line x1="281.1" x2="281.1" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="281.1" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="333.8" x2="333.8" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="333.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<line x1="386.6" x2="386.6" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="386.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">12</text>
+<line x1="439.4" x2="439.4" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="439.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">14</text>
+<line x1="492.2" x2="492.2" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="492.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">16</text>
+<line x1="544.9" x2="544.9" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="544.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">18</text>
+<line x1="597.7" x2="597.7" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="597.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">20</text>
+<line x1="650.5" x2="650.5" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="650.5" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">22</text>
+<line x1="703.2" x2="703.2" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="703.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">24</text>
+<line x1="756.0" x2="756.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="756.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">26</text>
+<text x="413.0" y="454" fill="#e8eefc" font-size="14" text-anchor="middle">Layer of Gemma 2 2B IT (0 = embeddings, 26 = last layer)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Probe points at the true answer</text>
+<line x1="70" x2="756" y1="216.0" y2="216.0" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="2 4"/>
+<text x="624.1" y="208.0" fill="#9fb0cf" font-size="12">chance: 50%</text>
+<polygon points="70.0,132.3 122.8,205.2 175.5,160.7 228.3,125.4 281.1,132.3 333.8,132.3 386.6,80.1 439.4,245.2 492.2,355.4 544.9,344.6 597.7,366.9 650.5,366.9 703.2,366.9 756.0,355.4 756.0,403.8 703.2,406.5 650.5,406.5 597.7,406.5 544.9,399.9 492.2,403.8 439.4,339.6 386.6,170.3 333.8,234.4 281.1,234.4 228.3,226.8 175.5,264.0 122.8,306.6 70.0,234.4" fill="#d95926" fill-opacity="0.18" stroke="none"/>
+<polyline points="70.0,215.2 122.8,216.8 175.5,213.7 228.3,170.7 281.1,214.5 333.8,68.5 386.6,53.2 439.4,35.1 492.2,30.9 544.9,25.2 597.7,25.2 650.5,25.2 703.2,25.2 756.0,24.8" fill="none" stroke="#3987e5" stroke-width="2.8"/>
+<circle cx="70.0" cy="215.2" r="3.5" fill="#3987e5"/>
+<circle cx="122.8" cy="216.8" r="3.5" fill="#3987e5"/>
+<circle cx="175.5" cy="213.7" r="3.5" fill="#3987e5"/>
+<circle cx="228.3" cy="170.7" r="3.5" fill="#3987e5"/>
+<circle cx="281.1" cy="214.5" r="3.5" fill="#3987e5"/>
+<circle cx="333.8" cy="68.5" r="3.5" fill="#3987e5"/>
+<circle cx="386.6" cy="53.2" r="3.5" fill="#3987e5"/>
+<circle cx="439.4" cy="35.1" r="3.5" fill="#3987e5"/>
+<circle cx="492.2" cy="30.9" r="3.5" fill="#3987e5"/>
+<circle cx="544.9" cy="25.2" r="3.5" fill="#3987e5"/>
+<circle cx="597.7" cy="25.2" r="3.5" fill="#3987e5"/>
+<circle cx="650.5" cy="25.2" r="3.5" fill="#3987e5"/>
+<circle cx="703.2" cy="25.2" r="3.5" fill="#3987e5"/>
+<circle cx="756.0" cy="24.8" r="3.5" fill="#3987e5"/>
+<polyline points="70.0,180.7 122.8,259.0 175.5,212.2 228.3,173.0 281.1,180.7 333.8,180.7 386.6,118.1 439.4,298.2 492.2,392.3 544.9,384.6 597.7,400.3 650.5,400.3 703.2,400.3 756.0,392.3" fill="none" stroke="#d95926" stroke-width="2.8"/>
+<circle cx="70.0" cy="180.7" r="3.5" fill="#d95926"/>
+<circle cx="122.8" cy="259.0" r="3.5" fill="#d95926"/>
+<circle cx="175.5" cy="212.2" r="3.5" fill="#d95926"/>
+<circle cx="228.3" cy="173.0" r="3.5" fill="#d95926"/>
+<circle cx="281.1" cy="180.7" r="3.5" fill="#d95926"/>
+<circle cx="333.8" cy="180.7" r="3.5" fill="#d95926"/>
+<circle cx="386.6" cy="118.1" r="3.5" fill="#d95926"/>
+<circle cx="439.4" cy="298.2" r="3.5" fill="#d95926"/>
+<circle cx="492.2" cy="392.3" r="3.5" fill="#d95926"/>
+<circle cx="544.9" cy="384.6" r="3.5" fill="#d95926"/>
+<circle cx="597.7" cy="400.3" r="3.5" fill="#d95926"/>
+<circle cx="650.5" cy="400.3" r="3.5" fill="#d95926"/>
+<circle cx="703.2" cy="400.3" r="3.5" fill="#d95926"/>
+<circle cx="756.0" cy="392.3" r="3.5" fill="#d95926"/>
+<text x="452.6" y="59.5" fill="#e8eefc" font-size="13">Held their answer (2,698 prompts)</text>
+<text x="397.2" y="110.1" fill="#e8eefc" font-size="13">Caved to the user (49): 76% at layer 12</text>
+<text x="502.7" y="323.5" fill="#e8eefc" font-size="13">...4% by layer 16</text>
+</svg>

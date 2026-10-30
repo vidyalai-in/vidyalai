@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560" width="780" height="560" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="560" fill="#0b162d"/>
+<rect x="455.9" y="24" width="300.1" height="474" fill="#22355a" fill-opacity="0.6"/>
+<text x="605.9" y="40" fill="#9fb0cf" font-size="12" text-anchor="middle">text breaks down</text>
+<line x1="70" x2="756" y1="274.0" y2="274.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="278.0" fill="#9fb0cf" font-size="13" text-anchor="end">0%</text>
+<line x1="70" x2="756" y1="211.5" y2="211.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="215.5" fill="#9fb0cf" font-size="13" text-anchor="end">25%</text>
+<line x1="70" x2="756" y1="149.0" y2="149.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="153.0" fill="#9fb0cf" font-size="13" text-anchor="end">50%</text>
+<line x1="70" x2="756" y1="86.5" y2="86.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="90.5" fill="#9fb0cf" font-size="13" text-anchor="end">75%</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">100%</text>
+<line x1="70" x2="756" y1="498.0" y2="498.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="502.0" fill="#9fb0cf" font-size="13" text-anchor="end">+0</text>
+<line x1="70" x2="756" y1="454.5" y2="454.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="458.5" fill="#9fb0cf" font-size="13" text-anchor="end">+2</text>
+<line x1="70" x2="756" y1="411.0" y2="411.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="415.0" fill="#9fb0cf" font-size="13" text-anchor="end">+4</text>
+<line x1="70" x2="756" y1="367.5" y2="367.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="371.5" fill="#9fb0cf" font-size="13" text-anchor="end">+6</text>
+<line x1="70" x2="756" y1="324.0" y2="324.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="328.0" fill="#9fb0cf" font-size="13" text-anchor="end">+8</text>
+<text x="70.0" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">-2</text>
+<text x="155.8" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">-1</text>
+<text x="241.5" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<text x="327.2" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+1</text>
+<text x="413.0" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+2</text>
+<text x="498.8" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+3</text>
+<text x="584.5" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+4</text>
+<text x="670.2" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+5</text>
+<text x="756.0" y="518" fill="#9fb0cf" font-size="13" text-anchor="middle">+6</text>
+<line x1="241.5" x2="241.5" y1="24" y2="498" stroke="#9fb0cf" stroke-width="1.2" stroke-dasharray="2 3"/>
+<text x="413.0" y="544" fill="#e8eefc" font-size="14" text-anchor="middle">Strength: multiples of the refusal direction added at layer 17 (negative = subtracted)</text>
+<text transform="translate(20,149.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Replies that refuse</text>
+<text transform="translate(20,411.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Extra loss, nats</text>
+<polyline points="70.0,266.5 112.9,269.0 155.8,224.0 198.6,111.5 241.5,26.5 284.4,26.5 327.2,51.5 370.1,49.0 413.0,34.0 498.8,69.0 584.5,269.0 756.0,274.0" fill="none" stroke="#3987e5" stroke-width="2.5"/>
+<circle cx="70.0" cy="266.5" r="3.5" fill="#3987e5"/>
+<circle cx="112.9" cy="269.0" r="3.5" fill="#3987e5"/>
+<circle cx="155.8" cy="224.0" r="3.5" fill="#3987e5"/>
+<circle cx="198.6" cy="111.5" r="3.5" fill="#3987e5"/>
+<circle cx="241.5" cy="26.5" r="3.5" fill="#3987e5"/>
+<circle cx="284.4" cy="26.5" r="3.5" fill="#3987e5"/>
+<circle cx="327.2" cy="51.5" r="3.5" fill="#3987e5"/>
+<circle cx="370.1" cy="49.0" r="3.5" fill="#3987e5"/>
+<circle cx="413.0" cy="34.0" r="3.5" fill="#3987e5"/>
+<circle cx="498.8" cy="69.0" r="3.5" fill="#3987e5"/>
+<circle cx="584.5" cy="269.0" r="3.5" fill="#3987e5"/>
+<circle cx="756.0" cy="274.0" r="3.5" fill="#3987e5"/>
+<polyline points="70.0,271.5 112.9,271.5 155.8,271.5 198.6,271.5 241.5,249.0 284.4,84.0 327.2,29.0 370.1,29.0 413.0,26.5 498.8,69.0 584.5,261.5 756.0,274.0" fill="none" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="70.0" cy="271.5" r="3.5" fill="#d95926"/>
+<circle cx="112.9" cy="271.5" r="3.5" fill="#d95926"/>
+<circle cx="155.8" cy="271.5" r="3.5" fill="#d95926"/>
+<circle cx="198.6" cy="271.5" r="3.5" fill="#d95926"/>
+<circle cx="241.5" cy="249.0" r="3.5" fill="#d95926"/>
+<circle cx="284.4" cy="84.0" r="3.5" fill="#d95926"/>
+<circle cx="327.2" cy="29.0" r="3.5" fill="#d95926"/>
+<circle cx="370.1" cy="29.0" r="3.5" fill="#d95926"/>
+<circle cx="413.0" cy="26.5" r="3.5" fill="#d95926"/>
+<circle cx="498.8" cy="69.0" r="3.5" fill="#d95926"/>
+<circle cx="584.5" cy="261.5" r="3.5" fill="#d95926"/>
+<circle cx="756.0" cy="274.0" r="3.5" fill="#d95926"/>
+<polyline points="70.0,477.2 112.9,485.8 155.8,492.4 198.6,496.5 241.5,498.0 284.4,495.8 327.2,489.8 370.1,480.3 413.0,467.0 498.8,433.7 584.5,396.8 756.0,332.0" fill="none" stroke="#e8eefc" stroke-width="2.5"/>
+<circle cx="70.0" cy="477.2" r="3.5" fill="#e8eefc"/>
+<circle cx="112.9" cy="485.8" r="3.5" fill="#e8eefc"/>
+<circle cx="155.8" cy="492.4" r="3.5" fill="#e8eefc"/>
+<circle cx="198.6" cy="496.5" r="3.5" fill="#e8eefc"/>
+<circle cx="241.5" cy="498.0" r="3.5" fill="#e8eefc"/>
+<circle cx="284.4" cy="495.8" r="3.5" fill="#e8eefc"/>
+<circle cx="327.2" cy="489.8" r="3.5" fill="#e8eefc"/>
+<circle cx="370.1" cy="480.3" r="3.5" fill="#e8eefc"/>
+<circle cx="413.0" cy="467.0" r="3.5" fill="#e8eefc"/>
+<circle cx="498.8" cy="433.7" r="3.5" fill="#e8eefc"/>
+<circle cx="584.5" cy="396.8" r="3.5" fill="#e8eefc"/>
+<circle cx="756.0" cy="332.0" r="3.5" fill="#e8eefc"/>
+<text x="78.6" y="59.0" fill="#3987e5" font-size="13" font-weight="bold">harmful requests</text>
+<text x="271.5" y="144.0" fill="#d95926" font-size="13" font-weight="bold">harmless requests</text>
+<text x="78.6" y="441.4" fill="#e8eefc" font-size="13">loss on plain web text</text>
+</svg>

@@ -49,7 +49,7 @@ The methods fall into a few families, and the third column of the table carries 
 | Activation patching | Which parts carry the difference between two inputs? | Causal | [Part 5](/blog/activation-patching/) |
 | Features | What are the units the activations are built from? | Correlational, until tested | Parts 6 and 7 |
 | Circuits | Which features and parts connect, step by step? | Both, tested by intervention | Parts 4 and 8 |
-| Steering | Does adding a direction change behavior as predicted? | Causal | Part 9 |
+| Steering | Does adding a direction change behavior as predicted? | Causal | [Part 9](/blog/activation-steering/) |
 
 ![A top-to-bottom map of the 12-part series. Part 1, the toolkit of hooks, cache and ablation, leads into a group of mostly correlational reading methods: Part 2 logit lens, Part 3 linear probes and Part 4 induction heads. That leads to a causal group: Part 5 activation patching and Part 9 steering. Then a group on finding features and circuits: Part 6 superposition, Part 7 sparse autoencoders and Part 8 attribution graphs. The last group applies and judges the methods: Part 10 training dynamics, Part 11 safety and Part 12 limits.](/diagrams/p01-series-map.svg "The series, grouped by the kind of evidence each method gives.")
 
@@ -189,7 +189,7 @@ Across all 24 layer outputs, the rank correlation between DLA and the mean-ablat
 
 Heads on the diagonal act directly, heads above it work through other parts, and heads below it are partly replaced when they're removed.
 
-The causal number also depends on how the average is taken. Computing a single average over all positions, instead of one per template position, moves MLP 9's ablation cost from 0.43 to 0.07 logits and MLP 0's from 1.17 to 1.62. "What the model needs" depends on what you replace a part with, which is why Part 5 replaces it with activations from a real alternative prompt instead.
+The causal number also depends on how the average is taken. Computing a single average over all positions, instead of one per template position, moves MLP 9's ablation cost from 0.43 to 0.07 logits and MLP 0's from 1.17 to 1.62. "What the model needs" depends on what you replace a part with, which is why [Part 5](/blog/activation-patching/) replaces it with activations from a real alternative prompt instead.
 
 ### Does it carry over to a modern model?
 
@@ -237,7 +237,7 @@ On frontier models the split between reading and intervening still holds. Anthro
 
 ## What's next
 
-DLA read only the very top of the residual stream. Part 2 reads it at every layer, turning half-finished vectors into words with the logit lens, and shows where that simple trick fails and how a trained "tuned lens" fixes it.
+DLA read only the very top of the residual stream. [Part 2](/blog/logit-lens/) reads it at every layer, turning half-finished vectors into words with the logit lens, and shows where that simple trick fails and how a trained "tuned lens" fixes it.
 
 ## Further reading
 

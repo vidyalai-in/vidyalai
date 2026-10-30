@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#0b162d"/>
+<line x1="70" x2="756" y1="408.0" y2="408.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="412.0" fill="#9fb0cf" font-size="13" text-anchor="end">0%</text>
+<line x1="70" x2="756" y1="312.0" y2="312.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="316.0" fill="#9fb0cf" font-size="13" text-anchor="end">25%</text>
+<line x1="70" x2="756" y1="216.0" y2="216.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="220.0" fill="#9fb0cf" font-size="13" text-anchor="end">50%</text>
+<line x1="70" x2="756" y1="120.0" y2="120.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="124.0" fill="#9fb0cf" font-size="13" text-anchor="end">75%</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">100%</text>
+<line x1="70.0" x2="70.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="70.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="122.8" x2="122.8" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="122.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="175.5" x2="175.5" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="175.5" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="228.3" x2="228.3" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="228.3" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">6</text>
+<line x1="281.1" x2="281.1" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="281.1" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="333.8" x2="333.8" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="333.8" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">10</text>
+<line x1="386.6" x2="386.6" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="386.6" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">12</text>
+<line x1="439.4" x2="439.4" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="439.4" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">14</text>
+<line x1="492.2" x2="492.2" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="492.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">16</text>
+<line x1="544.9" x2="544.9" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="544.9" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">18</text>
+<line x1="597.7" x2="597.7" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="597.7" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">20</text>
+<line x1="650.5" x2="650.5" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="650.5" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">22</text>
+<line x1="703.2" x2="703.2" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="703.2" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">24</text>
+<line x1="756.0" x2="756.0" y1="24" y2="408" stroke="#22355a" stroke-width="1"/>
+<text x="756.0" y="428" fill="#9fb0cf" font-size="13" text-anchor="middle">26</text>
+<text x="413.0" y="454" fill="#e8eefc" font-size="14" text-anchor="middle">Layer of Gemma 2 2B IT (0 = embeddings, 26 = last layer)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Prompts flagged as lies (1% false-positive threshold)</text>
+<polyline points="70.0,408.0 122.8,24.0 175.5,24.0 228.3,24.0 281.1,24.0 333.8,24.0 386.6,24.0 439.4,24.0 492.2,24.0 544.9,24.0 597.7,24.0 650.5,24.0 703.2,24.0 756.0,24.0" fill="none" stroke="#3987e5" stroke-width="3.0"/>
+<circle cx="70.0" cy="408.0" r="3.2" fill="#3987e5"/>
+<circle cx="122.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="175.5" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="228.3" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="281.1" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="333.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="386.6" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="439.4" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="492.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="544.9" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="597.7" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="650.5" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="703.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="756.0" cy="24.0" r="3.2" fill="#3987e5"/>
+<polyline points="70.0,408.0 122.8,24.0 175.5,308.2 228.3,81.3 281.1,24.0 333.8,24.0 386.6,24.0 439.4,24.0 492.2,24.0 544.9,24.0 597.7,24.0 650.5,24.0 703.2,24.0 756.0,24.0" fill="none" stroke="#3987e5" stroke-width="2.2" stroke-dasharray="8 5"/>
+<circle cx="70.0" cy="408.0" r="3.2" fill="#3987e5"/>
+<circle cx="122.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="175.5" cy="308.2" r="3.2" fill="#3987e5"/>
+<circle cx="228.3" cy="81.3" r="3.2" fill="#3987e5"/>
+<circle cx="281.1" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="333.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="386.6" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="439.4" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="492.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="544.9" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="597.7" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="650.5" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="703.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="756.0" cy="24.0" r="3.2" fill="#3987e5"/>
+<polyline points="70.0,408.0 122.8,24.0 175.5,24.0 228.3,24.0 281.1,24.0 333.8,24.0 386.6,24.0 439.4,24.0 492.2,24.0 544.9,24.0 597.7,24.0 650.5,24.0 703.2,24.0 756.0,24.0" fill="none" stroke="#3987e5" stroke-width="2.2" stroke-dasharray="2 4"/>
+<circle cx="70.0" cy="408.0" r="3.2" fill="#3987e5"/>
+<circle cx="122.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="175.5" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="228.3" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="281.1" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="333.8" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="386.6" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="439.4" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="492.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="544.9" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="597.7" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="650.5" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="703.2" cy="24.0" r="3.2" fill="#3987e5"/>
+<circle cx="756.0" cy="24.0" r="3.2" fill="#3987e5"/>
+<polyline points="70.0,408.0 122.8,24.0 175.5,24.0 228.3,24.0 281.1,24.0 333.8,24.0 386.6,24.0 439.4,328.7 492.2,401.9 544.9,400.5 597.7,364.8 650.5,382.5 703.2,394.4 756.0,385.5" fill="none" stroke="#d95926" stroke-width="3.0"/>
+<circle cx="70.0" cy="408.0" r="3.2" fill="#d95926"/>
+<circle cx="122.8" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="175.5" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="228.3" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="281.1" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="333.8" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="386.6" cy="24.0" r="3.2" fill="#d95926"/>
+<circle cx="439.4" cy="328.7" r="3.2" fill="#d95926"/>
+<circle cx="492.2" cy="401.9" r="3.2" fill="#d95926"/>
+<circle cx="544.9" cy="400.5" r="3.2" fill="#d95926"/>
+<circle cx="597.7" cy="364.8" r="3.2" fill="#d95926"/>
+<circle cx="650.5" cy="382.5" r="3.2" fill="#d95926"/>
+<circle cx="703.2" cy="394.4" r="3.2" fill="#d95926"/>
+<circle cx="756.0" cy="385.5" r="3.2" fill="#d95926"/>
+<text x="465.8" y="46.0" fill="#e8eefc" font-size="13">Lies: instructed, paraphrased, told to hide</text>
+<text x="465.8" y="64.0" fill="#e8eefc" font-size="13">(three lines on top of each other)</text>
+<text x="183.5" y="312.2" fill="#9fb0cf" font-size="12">paraphrased: 26%</text>
+<text x="455.2" y="227.5" fill="#e8eefc" font-size="13">Honest answers that mention lying</text>
+<text x="455.2" y="245.5" fill="#e8eefc" font-size="13">(false alarms): 100% up to layer 12,</text>
+<text x="455.2" y="263.5" fill="#e8eefc" font-size="13">1.6% at layer 16</text>
+</svg>

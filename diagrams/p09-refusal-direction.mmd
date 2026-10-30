@@ -1,0 +1,9 @@
+flowchart TD
+    A["128 harmful +<br/>128 harmless<br/>requests"] --> B["Chat model<br/>reads each one"]
+    B --> C["Residual vectors<br/>at every layer"]
+    C --> D["Difference<br/>of means:<br/>140 candidates"]
+    D --> E["Pick one on<br/>validation sets"]
+    E --> F["Ablate it<br/>everywhere"]
+    E --> G["Add it at<br/>one layer"]
+    F --> H["Refusal rate<br/>and side effects"]
+    G --> H
