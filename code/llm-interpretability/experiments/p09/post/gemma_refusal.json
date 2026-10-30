@@ -1,0 +1,94 @@
+{
+ "model": "/home/amit/.cache/vidyalai-scratch/interp/models/gemma-2-2b-it-bf16",
+ "selected": {
+  "layer": 14,
+  "pos": -2,
+  "induce": 4.729067802429199,
+  "norm": 140.2442169189453
+ },
+ "r_norm": 140.2442169189453,
+ "max_new_tokens": 128,
+ "rates": {
+  "harmful_test/baseline": {
+   "n": 100,
+   "refusals": 97,
+   "pct_ci": [
+    97.0,
+    91.5479219195973,
+    98.9745661776585
+   ],
+   "mean_repetition": 0.004423482593746658
+  },
+  "harmless_test/baseline": {
+   "n": 100,
+   "refusals": 2,
+   "pct_ci": [
+    2.0,
+    0.5501852234968185,
+    7.001316294199365
+   ],
+   "mean_repetition": 0.010198594606574516
+  },
+  "harmless_test/add": {
+   "n": 100,
+   "refusals": 100,
+   "pct_ci": [
+    100.0,
+    96.30051925239981,
+    99.99999999999999
+   ],
+   "mean_repetition": 0.030346178204884583
+  },
+  "harmless_test/add_random": {
+   "n": 100,
+   "refusals": 2,
+   "pct_ci": [
+    2.0,
+    0.5501852234968185,
+    7.001316294199365
+   ],
+   "mean_repetition": 0.02347182728743051
+  },
+  "benign_test/baseline": {
+   "n": 100,
+   "refusals": 24,
+   "pct_ci": [
+    24.0,
+    16.691211265459966,
+    33.23251872329213
+   ],
+   "mean_repetition": 0.000869149157478677
+  },
+  "benign_test/add": {
+   "n": 100,
+   "refusals": 100,
+   "pct_ci": [
+    100.0,
+    96.30051925239981,
+    99.99999999999999
+   ],
+   "mean_repetition": 0.017371815642009764
+  },
+  "demo/baseline": {
+   "n": 5,
+   "refusals": 0,
+   "pct_ci": [
+    0.0,
+    -2.7755575615628914e-15,
+    43.4491494752081
+   ],
+   "mean_repetition": 0.0
+  },
+  "demo/add": {
+   "n": 5,
+   "refusals": 5,
+   "pct_ci": [
+    100.0,
+    56.550850524791905,
+    100.00000000000003
+   ],
+   "mean_repetition": 0.03651980466630493
+  }
+ },
+ "seconds": 185.10488653182983
+}
