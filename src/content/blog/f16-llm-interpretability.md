@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["interpretability", "alignment", "safety", "transformers", "embeddings"]
 series: "llm-fundamentals"
 seriesOrder: 16
-pubDate: 2026-10-23
+pubDate: 2026-04-14
 ---
 
 ## TL;DR

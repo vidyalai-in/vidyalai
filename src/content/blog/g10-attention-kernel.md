@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "attention", "triton", "long-context", "latency"]
 series: "llm-gpu"
 seriesOrder: 10
-pubDate: 2026-10-24
+pubDate: 2026-06-02
 ---
 
 ## TL;DR

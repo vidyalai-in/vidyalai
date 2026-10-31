@@ -5,7 +5,8 @@ slug: "lora-fine-tuning-5k-examples"
 category: "fine-tuning"
 tags: ["fine-tuning", "lora", "evals", "gpu", "serving"]
 seriesOrder: 20
-pubDate: 2026-10-16
+pubDate: 2026-02-06
+updatedDate: 2026-10-16
 sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 ---
 

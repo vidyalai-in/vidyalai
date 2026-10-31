@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["tokenization", "tokens", "pretraining", "training"]
 series: "llm-from-scratch"
 seriesOrder: 2
-pubDate: 2026-10-24
+pubDate: 2026-06-18
 ---
 
 ## TL;DR

@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "moe", "triton", "latency"]
 series: "llm-gpu"
 seriesOrder: 12
-pubDate: 2026-10-24
+pubDate: 2026-06-04
 ---
 
 ## TL;DR

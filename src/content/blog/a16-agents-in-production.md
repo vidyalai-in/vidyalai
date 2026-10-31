@@ -6,7 +6,8 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "evals", "cost", "security"]
 series: "agentic-ai"
 seriesOrder: 16
-pubDate: 2026-10-25
+pubDate: 2026-07-22
+updatedDate: 2026-10-25
 ---
 
 ## TL;DR

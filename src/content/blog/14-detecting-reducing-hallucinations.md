@@ -5,7 +5,7 @@ slug: "detecting-reducing-hallucinations"
 category: "evaluation-reliability"
 tags: ["hallucination", "evals", "rag", "llm-as-judge"]
 seriesOrder: 14
-pubDate: 2026-10-16
+pubDate: 2026-01-26
 sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 ---
 

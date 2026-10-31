@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "logit-lens", "tuned-lens", "residual-stream", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 2
-pubDate: 2026-10-29
+pubDate: 2026-08-12
 ---
 
 ## TL;DR

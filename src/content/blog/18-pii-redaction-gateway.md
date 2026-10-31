@@ -5,7 +5,8 @@ slug: "pii-redaction-gateway"
 category: "security-privacy"
 tags: ["privacy", "security", "architecture", "observability"]
 seriesOrder: 18
-pubDate: 2026-10-16
+pubDate: 2026-02-03
+updatedDate: 2026-10-16
 sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 ---
 

@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "positional-encoding", "attention", "long-context", "transformers"]
 series: "llm-math"
 seriesOrder: 12
-pubDate: 2026-10-24
+pubDate: 2026-05-12
 ---
 
 ## TL;DR

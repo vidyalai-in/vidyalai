@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "circuits", "attribution", "transcoders", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 8
-pubDate: 2026-10-29
+pubDate: 2026-08-24
 ---
 
 ## TL;DR

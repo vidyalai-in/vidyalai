@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "activation-patching", "causal-tracing", "circuits", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 5
-pubDate: 2026-10-29
+pubDate: 2026-08-18
 ---
 
 ## TL;DR

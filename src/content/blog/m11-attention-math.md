@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "attention", "transformers", "long-context", "architecture"]
 series: "llm-math"
 seriesOrder: 11
-pubDate: 2026-10-24
+pubDate: 2026-05-08
 ---
 
 ## TL;DR

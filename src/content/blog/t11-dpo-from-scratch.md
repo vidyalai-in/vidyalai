@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["fine-tuning", "training", "evals", "gpu", "rlhf"]
 series: "llm-from-scratch"
 seriesOrder: 11
-pubDate: 2026-10-28
+pubDate: 2026-07-30
 ---
 
 ## TL;DR

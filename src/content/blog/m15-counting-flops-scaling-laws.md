@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "scaling-laws", "training", "cost", "moe"]
 series: "llm-math"
 seriesOrder: 15
-pubDate: 2026-10-24
+pubDate: 2026-05-19
 ---
 
 ## TL;DR

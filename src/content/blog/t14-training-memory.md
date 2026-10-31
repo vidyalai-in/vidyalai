@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["training", "gpu", "fine-tuning", "lora", "cost"]
 series: "llm-from-scratch"
 seriesOrder: 14
-pubDate: 2026-10-29
+pubDate: 2026-08-06
 ---
 
 ## TL;DR

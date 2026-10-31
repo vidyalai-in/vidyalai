@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "transformers", "architecture", "embeddings", "tokens"]
 series: "llm-math"
 seriesOrder: 1
-pubDate: 2026-10-23
+pubDate: 2026-04-15
 ---
 
 ## TL;DR

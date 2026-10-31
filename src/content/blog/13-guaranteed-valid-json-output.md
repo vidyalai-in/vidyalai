@@ -5,7 +5,7 @@ slug: "guaranteed-valid-json-output"
 category: "agents-tool-use"
 tags: ["structured-output", "tool-use", "serving", "evals"]
 seriesOrder: 13
-pubDate: 2026-10-16
+pubDate: 2026-01-23
 sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 ---
 

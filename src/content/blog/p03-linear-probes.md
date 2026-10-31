@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "probes", "transformers", "embeddings", "evals"]
 series: "llm-interpretability"
 seriesOrder: 3
-pubDate: 2026-10-29
+pubDate: 2026-08-13
 ---
 
 ## TL;DR

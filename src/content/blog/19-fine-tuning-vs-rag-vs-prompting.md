@@ -5,7 +5,7 @@ slug: "fine-tuning-vs-rag-vs-prompting"
 category: "fine-tuning"
 tags: ["fine-tuning", "rag", "evals", "cost", "architecture"]
 seriesOrder: 19
-pubDate: 2026-10-16
+pubDate: 2026-02-04
 sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 ---
 

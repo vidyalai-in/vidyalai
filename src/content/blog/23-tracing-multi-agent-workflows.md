@@ -5,7 +5,7 @@ slug: "tracing-multi-agent-workflows"
 category: "production-engineering"
 tags: ["observability", "agents", "tool-use", "privacy", "evals"]
 seriesOrder: 23
-pubDate: 2026-10-16
+pubDate: 2026-02-12
 sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 ---
 

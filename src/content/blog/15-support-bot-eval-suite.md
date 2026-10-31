@@ -5,7 +5,8 @@ slug: "support-bot-eval-suite"
 category: "evaluation-reliability"
 tags: ["evals", "llm-as-judge", "agents", "tool-use", "observability"]
 seriesOrder: 15
-pubDate: 2026-10-16
+pubDate: 2026-01-28
+updatedDate: 2026-10-16
 sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 ---
 

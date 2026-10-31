@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["pretraining", "training", "gpu", "evals"]
 series: "llm-from-scratch"
 seriesOrder: 7
-pubDate: 2026-10-27
+pubDate: 2026-07-23
 ---
 
 ## TL;DR

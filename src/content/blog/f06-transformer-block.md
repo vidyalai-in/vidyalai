@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "self-attention", "architecture", "training"]
 series: "llm-fundamentals"
 seriesOrder: 6
-pubDate: 2026-10-23
+pubDate: 2026-03-12
 ---
 
 ## TL;DR

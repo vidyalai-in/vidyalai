@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["neural-networks", "training", "gradient-descent", "backpropagation", "gpu"]
 series: "llm-fundamentals"
 seriesOrder: 3
-pubDate: 2026-10-23
+pubDate: 2026-02-26
 ---
 
 ## TL;DR

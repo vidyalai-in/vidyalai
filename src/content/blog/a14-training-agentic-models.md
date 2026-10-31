@@ -6,7 +6,8 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "training", "rlhf", "fine-tuning"]
 series: "agentic-ai"
 seriesOrder: 14
-pubDate: 2026-10-25
+pubDate: 2026-07-17
+updatedDate: 2026-10-25
 ---
 
 ## TL;DR

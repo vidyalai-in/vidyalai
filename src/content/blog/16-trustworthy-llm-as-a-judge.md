@@ -5,7 +5,7 @@ slug: "trustworthy-llm-as-a-judge"
 category: "evaluation-reliability"
 tags: ["evals", "llm-as-judge", "observability"]
 seriesOrder: 16
-pubDate: 2026-10-16
+pubDate: 2026-01-29
 sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 ---
 

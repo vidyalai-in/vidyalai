@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["multimodal", "transformers", "embeddings", "tokens", "cost"]
 series: "llm-fundamentals"
 seriesOrder: 15
-pubDate: 2026-10-23
+pubDate: 2026-04-10
 ---
 
 ## TL;DR

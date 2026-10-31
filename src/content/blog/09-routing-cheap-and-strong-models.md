@@ -5,7 +5,8 @@ slug: "routing-cheap-and-strong-models"
 category: "cost-latency-serving"
 tags: ["routing", "cost", "evals", "llm-as-judge"]
 seriesOrder: 9
-pubDate: 2026-10-16
+pubDate: 2026-01-16
+updatedDate: 2026-10-16
 sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 ---
 

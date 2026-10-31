@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["tokens", "tokenization", "transformers", "cost", "multilingual"]
 series: "llm-fundamentals"
 seriesOrder: 2
-pubDate: 2026-10-23
+pubDate: 2026-02-25
 ---
 
 ## TL;DR

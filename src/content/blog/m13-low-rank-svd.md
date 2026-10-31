@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "lora", "fine-tuning", "transformers", "architecture"]
 series: "llm-math"
 seriesOrder: 13
-pubDate: 2026-10-24
+pubDate: 2026-05-13
 ---
 
 ## TL;DR

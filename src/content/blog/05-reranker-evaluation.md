@@ -5,7 +5,7 @@ slug: "reranker-evaluation"
 category: "retrieval-rag"
 tags: ["reranking", "retrieval", "evals", "latency", "cost"]
 seriesOrder: 5
-pubDate: 2026-10-16
+pubDate: 2026-01-08
 sourceDoc: "1h3m8wtZykYFchMjt8t57Aqya0AhrdYy0tlem7E4EI3A"
 video: { youtube: "cWgwDQHYzTI", duration: "11:57", url: "https://youtu.be/cWgwDQHYzTI" }
 ---

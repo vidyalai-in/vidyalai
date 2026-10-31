@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency", "observability"]
 series: "llm-gpu"
 seriesOrder: 4
-pubDate: 2026-10-24
+pubDate: 2026-05-14
 ---
 
 ## TL;DR

@@ -6,7 +6,8 @@ category: "llm-training"
 tags: ["training", "pretraining", "quantization", "cost", "local"]
 series: "llm-from-scratch"
 seriesOrder: 15
-pubDate: 2026-10-29
+pubDate: 2026-08-07
+updatedDate: 2026-10-29
 ---
 
 ## TL;DR

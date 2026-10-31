@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "quantization", "training", "gpu"]
 series: "llm-math"
 seriesOrder: 14
-pubDate: 2026-10-24
+pubDate: 2026-05-18
 ---
 
 ## TL;DR

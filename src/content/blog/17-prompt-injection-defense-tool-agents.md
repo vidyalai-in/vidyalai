@@ -5,7 +5,7 @@ slug: "prompt-injection-defense-tool-agents"
 category: "security-privacy"
 tags: ["security", "prompt-injection", "agents", "tool-use", "architecture"]
 seriesOrder: 17
-pubDate: 2026-10-16
+pubDate: 2026-02-02
 sourceDoc: "1peTYAI7ps58PRKJWERCzNUnsehYjGOwhNRHViG8g-bs"
 ---
 

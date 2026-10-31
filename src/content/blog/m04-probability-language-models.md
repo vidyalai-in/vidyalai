@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "sampling", "tokens", "transformers"]
 series: "llm-math"
 seriesOrder: 4
-pubDate: 2026-10-23
+pubDate: 2026-04-22
 ---
 
 ## TL;DR

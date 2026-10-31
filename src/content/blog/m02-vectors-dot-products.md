@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "embeddings", "vector-search", "interpretability", "transformers"]
 series: "llm-math"
 seriesOrder: 2
-pubDate: 2026-10-23
+pubDate: 2026-04-20
 ---
 
 ## TL;DR

@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "sparse-autoencoders", "superposition", "features", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 7
-pubDate: 2026-10-29
+pubDate: 2026-08-20
 ---
 
 ## TL;DR

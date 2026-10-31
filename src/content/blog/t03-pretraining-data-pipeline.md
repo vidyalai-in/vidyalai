@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["pretraining", "training", "tokens", "deduplication"]
 series: "llm-from-scratch"
 seriesOrder: 3
-pubDate: 2026-10-24
+pubDate: 2026-06-24
 ---
 
 ## TL;DR

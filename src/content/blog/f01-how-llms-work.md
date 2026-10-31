@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "tokens", "training"]
 series: "llm-fundamentals"
 seriesOrder: 1
-pubDate: 2026-10-23
+pubDate: 2026-02-18
 ---
 
 ## TL;DR

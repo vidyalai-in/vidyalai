@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "structured-output", "latency", "cost"]
 series: "agentic-ai"
 seriesOrder: 2
-pubDate: 2026-10-24
+pubDate: 2026-06-15
 ---
 
 ## TL;DR

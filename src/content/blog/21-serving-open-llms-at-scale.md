@@ -5,7 +5,7 @@ slug: "serving-open-llms-at-scale"
 category: "cost-latency-serving"
 tags: ["serving", "gpu", "latency", "cost", "caching"]
 seriesOrder: 21
-pubDate: 2026-10-16
+pubDate: 2026-02-09
 sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 ---
 

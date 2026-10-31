@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "caching", "cost", "memory"]
 series: "agentic-ai"
 seriesOrder: 5
-pubDate: 2026-10-24
+pubDate: 2026-06-26
 ---
 
 ## TL;DR

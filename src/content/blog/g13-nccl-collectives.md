@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency", "serving"]
 series: "llm-gpu"
 seriesOrder: 13
-pubDate: 2026-10-24
+pubDate: 2026-06-08
 ---
 
 ## TL;DR

@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "neural-networks", "transformers", "gpu"]
 series: "llm-math"
 seriesOrder: 3
-pubDate: 2026-10-23
+pubDate: 2026-04-21
 ---
 
 ## TL;DR

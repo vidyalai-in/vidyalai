@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "security", "latency"]
 series: "agentic-ai"
 seriesOrder: 13
-pubDate: 2026-10-25
+pubDate: 2026-07-16
 ---
 
 ## TL;DR

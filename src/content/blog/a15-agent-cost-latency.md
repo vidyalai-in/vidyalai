@@ -6,7 +6,8 @@ category: "agents-tool-use"
 tags: ["agents", "cost", "latency", "caching", "routing"]
 series: "agentic-ai"
 seriesOrder: 15
-pubDate: 2026-10-25
+pubDate: 2026-07-20
+updatedDate: 2026-10-25
 ---
 
 ## TL;DR

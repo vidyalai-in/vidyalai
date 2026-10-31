@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "evals", "llm-as-judge", "cost"]
 series: "agentic-ai"
 seriesOrder: 11
-pubDate: 2026-10-25
+pubDate: 2026-07-13
 ---
 
 ## TL;DR

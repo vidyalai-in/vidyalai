@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "transformers", "ablation", "attribution", "safety"]
 series: "llm-interpretability"
 seriesOrder: 1
-pubDate: 2026-10-29
+pubDate: 2026-08-10
 ---
 
 ## TL;DR

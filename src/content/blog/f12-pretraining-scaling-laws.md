@@ -6,7 +6,8 @@ category: "llm-fundamentals"
 tags: ["training", "scaling-laws", "data", "cost", "gpu"]
 series: "llm-fundamentals"
 seriesOrder: 12
-pubDate: 2026-10-23
+pubDate: 2026-04-01
+updatedDate: 2026-10-23
 ---
 
 ## TL;DR

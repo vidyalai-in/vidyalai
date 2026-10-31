@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "safety", "alignment", "probes", "evals"]
 series: "llm-interpretability"
 seriesOrder: 11
-pubDate: 2026-10-30
+pubDate: 2026-08-28
 ---
 
 ## TL;DR

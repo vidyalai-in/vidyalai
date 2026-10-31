@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency", "triton"]
 series: "llm-gpu"
 seriesOrder: 7
-pubDate: 2026-10-24
+pubDate: 2026-05-26
 ---
 
 ## TL;DR

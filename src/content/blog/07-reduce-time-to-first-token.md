@@ -5,7 +5,7 @@ slug: "reduce-time-to-first-token"
 category: "cost-latency-serving"
 tags: ["latency", "serving", "caching", "gpu", "streaming"]
 seriesOrder: 7
-pubDate: 2026-10-16
+pubDate: 2026-01-13
 sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 ---
 

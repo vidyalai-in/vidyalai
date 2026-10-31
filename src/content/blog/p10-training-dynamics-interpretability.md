@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "training", "attention", "in-context-learning", "probes"]
 series: "llm-interpretability"
 seriesOrder: 10
-pubDate: 2026-10-30
+pubDate: 2026-08-26
 ---
 
 ## TL;DR

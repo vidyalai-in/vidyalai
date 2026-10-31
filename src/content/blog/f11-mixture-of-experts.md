@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["moe", "architecture", "transformers", "cost"]
 series: "llm-fundamentals"
 seriesOrder: 11
-pubDate: 2026-10-23
+pubDate: 2026-03-30
 ---
 
 ## TL;DR

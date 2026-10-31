@@ -5,7 +5,8 @@ slug: "cut-llm-cost-70-percent"
 category: "cost-latency-serving"
 tags: ["cost", "caching", "routing", "evals"]
 seriesOrder: 6
-pubDate: 2026-10-16
+pubDate: 2026-01-12
+updatedDate: 2026-10-16
 sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 ---
 

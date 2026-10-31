@@ -5,7 +5,7 @@ slug: "sse-streaming-disconnects"
 category: "production-engineering"
 tags: ["streaming", "latency", "architecture", "serving"]
 seriesOrder: 22
-pubDate: 2026-10-16
+pubDate: 2026-02-10
 sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 ---
 

@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "superposition", "features", "neurons", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 6
-pubDate: 2026-10-29
+pubDate: 2026-08-19
 ---
 
 ## TL;DR

@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "attention", "in-context-learning", "transformers"]
 series: "llm-interpretability"
 seriesOrder: 4
-pubDate: 2026-10-29
+pubDate: 2026-08-14
 ---
 
 ## TL;DR

@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "training", "normalization", "transformers", "architecture"]
 series: "llm-math"
 seriesOrder: 10
-pubDate: 2026-10-24
+pubDate: 2026-05-06
 ---
 
 ## TL;DR

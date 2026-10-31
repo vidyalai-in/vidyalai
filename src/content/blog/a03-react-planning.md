@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "reasoning", "cost", "latency"]
 series: "agentic-ai"
 seriesOrder: 3
-pubDate: 2026-10-24
+pubDate: 2026-06-19
 ---
 
 ## TL;DR

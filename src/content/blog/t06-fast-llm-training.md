@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["training", "gpu", "pretraining", "cost"]
 series: "llm-from-scratch"
 seriesOrder: 6
-pubDate: 2026-10-24
+pubDate: 2026-07-02
 ---
 
 ## TL;DR

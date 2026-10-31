@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "sparse-autoencoders", "circuits", "probes", "safety"]
 series: "llm-interpretability"
 seriesOrder: 12
-pubDate: 2026-10-30
+pubDate: 2026-08-31
 ---
 
 ## TL;DR

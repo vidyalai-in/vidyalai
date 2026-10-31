@@ -5,7 +5,7 @@ slug: "long-term-memory-assistant"
 category: "agents-tool-use"
 tags: ["memory", "agents", "retrieval", "privacy", "evals"]
 seriesOrder: 12
-pubDate: 2026-10-16
+pubDate: 2026-01-22
 sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 ---
 

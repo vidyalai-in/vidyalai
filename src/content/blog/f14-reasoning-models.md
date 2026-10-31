@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["training", "rlhf", "reasoning", "cost", "latency"]
 series: "llm-fundamentals"
 seriesOrder: 14
-pubDate: 2026-10-23
+pubDate: 2026-04-09
 ---
 
 ## TL;DR

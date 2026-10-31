@@ -6,7 +6,7 @@ category: "interpretability"
 tags: ["interpretability", "steering", "safety", "sparse-autoencoders", "evals"]
 series: "llm-interpretability"
 seriesOrder: 9
-pubDate: 2026-10-30
+pubDate: 2026-08-25
 ---
 
 ## TL;DR

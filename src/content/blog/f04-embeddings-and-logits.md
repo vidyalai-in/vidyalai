@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["embeddings", "transformers", "tokens", "vector-search"]
 series: "llm-fundamentals"
 seriesOrder: 4
-pubDate: 2026-10-23
+pubDate: 2026-03-02
 ---
 
 ## TL;DR

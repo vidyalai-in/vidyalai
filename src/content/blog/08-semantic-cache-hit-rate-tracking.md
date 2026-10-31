@@ -5,7 +5,7 @@ slug: "semantic-cache-hit-rate-tracking"
 category: "cost-latency-serving"
 tags: ["caching", "vector-search", "cost", "observability"]
 seriesOrder: 8
-pubDate: 2026-10-16
+pubDate: 2026-01-14
 sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 ---
 

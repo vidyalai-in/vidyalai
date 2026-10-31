@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "long-context", "positional-encoding"]
 series: "llm-fundamentals"
 seriesOrder: 7
-pubDate: 2026-10-23
+pubDate: 2026-03-13
 ---
 
 ## TL;DR

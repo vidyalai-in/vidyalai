@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "attention", "sampling", "training", "gpu"]
 series: "llm-math"
 seriesOrder: 5
-pubDate: 2026-10-23
+pubDate: 2026-04-24
 ---
 
 ## TL;DR

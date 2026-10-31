@@ -5,7 +5,7 @@ slug: "reliable-tool-using-agents"
 category: "agents-tool-use"
 tags: ["agents", "tool-use", "structured-output", "evals", "prompt-injection"]
 seriesOrder: 10
-pubDate: 2026-10-16
+pubDate: 2026-01-19
 sourceDoc: "1wx9vLMMIykYpYxwlDoHQz8GunZXg7raHlJEYPtY-TAI"
 ---
 

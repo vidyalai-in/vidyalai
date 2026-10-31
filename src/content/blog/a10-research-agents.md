@@ -6,7 +6,8 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "hallucination", "evals", "cost"]
 series: "agentic-ai"
 seriesOrder: 10
-pubDate: 2026-10-24
+pubDate: 2026-07-10
+updatedDate: 2026-10-24
 ---
 
 ## TL;DR

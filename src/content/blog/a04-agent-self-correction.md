@@ -6,7 +6,7 @@ category: "agents-tool-use"
 tags: ["agents", "evals", "tool-use", "cost"]
 series: "agentic-ai"
 seriesOrder: 4
-pubDate: 2026-10-24
+pubDate: 2026-06-22
 ---
 
 ## TL;DR

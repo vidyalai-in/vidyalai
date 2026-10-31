@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "cross-attention", "architecture", "training"]
 series: "llm-fundamentals"
 seriesOrder: 8
-pubDate: 2026-10-23
+pubDate: 2026-03-16
 ---
 
 ## TL;DR

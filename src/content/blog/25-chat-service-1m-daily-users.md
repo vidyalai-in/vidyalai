@@ -5,7 +5,7 @@ slug: "chat-service-1m-daily-users"
 category: "production-engineering"
 tags: ["architecture", "serving", "cost", "streaming", "caching", "routing"]
 seriesOrder: 25
-pubDate: 2026-10-16
+pubDate: 2026-02-16
 sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 ---
 

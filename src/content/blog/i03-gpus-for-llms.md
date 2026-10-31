@@ -6,7 +6,8 @@ category: "inference-optimization"
 tags: ["gpu", "serving", "latency", "cost"]
 series: "llm-inference"
 seriesOrder: 3
-pubDate: 2026-10-23
+pubDate: 2026-02-24
+updatedDate: 2026-10-23
 ---
 
 ## TL;DR

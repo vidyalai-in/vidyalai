@@ -5,7 +5,7 @@ slug: "agent-loop-detection-recovery"
 category: "agents-tool-use"
 tags: ["agents", "tool-use", "observability", "evals"]
 seriesOrder: 11
-pubDate: 2026-10-16
+pubDate: 2026-01-20
 sourceDoc: "1WwZ8yG-cd8f7_IZixvOLmzYPvB9hYJ554S4N4h26QE0"
 ---
 

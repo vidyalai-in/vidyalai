@@ -6,7 +6,7 @@ category: "gpu-kernels"
 tags: ["gpu", "cuda", "latency", "caching"]
 series: "llm-gpu"
 seriesOrder: 3
-pubDate: 2026-10-24
+pubDate: 2026-05-07
 ---
 
 ## TL;DR

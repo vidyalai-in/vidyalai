@@ -6,7 +6,8 @@ category: "inference-optimization"
 tags: ["local", "quantization", "latency", "gpu", "cost"]
 series: "llm-inference"
 seriesOrder: 13
-pubDate: 2026-10-23
+pubDate: 2026-04-06
+updatedDate: 2026-10-23
 ---
 
 ## TL;DR

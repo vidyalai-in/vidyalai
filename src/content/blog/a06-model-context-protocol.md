@@ -6,7 +6,8 @@ category: "agents-tool-use"
 tags: ["agents", "tool-use", "mcp", "caching", "cost"]
 series: "agentic-ai"
 seriesOrder: 6
-pubDate: 2026-10-24
+pubDate: 2026-06-30
+updatedDate: 2026-10-24
 ---
 
 ## TL;DR

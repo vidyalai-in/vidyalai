@@ -5,7 +5,7 @@ slug: "prompt-rollback-production"
 category: "production-engineering"
 tags: ["deployment", "evals", "observability", "architecture"]
 seriesOrder: 24
-pubDate: 2026-10-16
+pubDate: 2026-02-13
 sourceDoc: "15jgtoXCDflquvlaEjUw7LYBq2BmcoregHbUPWEtQCxw"
 ---
 

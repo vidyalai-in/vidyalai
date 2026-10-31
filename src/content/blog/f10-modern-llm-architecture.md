@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "architecture", "normalization"]
 series: "llm-fundamentals"
 seriesOrder: 10
-pubDate: 2026-10-23
+pubDate: 2026-03-26
 ---
 
 ## TL;DR

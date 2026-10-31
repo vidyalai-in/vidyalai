@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["training", "pretraining", "gpu", "cost", "scaling-laws"]
 series: "llm-from-scratch"
 seriesOrder: 1
-pubDate: 2026-10-24
+pubDate: 2026-06-16
 ---
 
 ## TL;DR

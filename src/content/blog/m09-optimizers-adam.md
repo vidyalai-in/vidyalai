@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "training", "gradient-descent", "optimizers"]
 series: "llm-math"
 seriesOrder: 9
-pubDate: 2026-10-24
+pubDate: 2026-05-04
 ---
 
 ## TL;DR

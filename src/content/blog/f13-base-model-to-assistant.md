@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["fine-tuning", "training", "rlhf", "alignment", "evals"]
 series: "llm-fundamentals"
 seriesOrder: 13
-pubDate: 2026-10-23
+pubDate: 2026-04-03
 ---
 
 ## TL;DR

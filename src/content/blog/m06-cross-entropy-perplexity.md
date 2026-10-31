@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "training", "evals", "tokens"]
 series: "llm-math"
 seriesOrder: 6
-pubDate: 2026-10-23
+pubDate: 2026-04-27
 ---
 
 ## TL;DR

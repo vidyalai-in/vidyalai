@@ -6,7 +6,8 @@ category: "gpu-kernels"
 tags: ["gpu", "architecture", "serving", "latency"]
 series: "llm-gpu"
 seriesOrder: 14
-pubDate: 2026-10-24
+pubDate: 2026-06-09
+updatedDate: 2026-10-24
 ---
 
 ## TL;DR

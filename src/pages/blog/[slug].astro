@@ -43,7 +43,7 @@ const hasMath = post.body?.includes('$$') ?? false;
 const hasToc = headings.some((h) => h.depth === 2);
 ---
 
-<Base title={post.data.title} description={post.data.description} type="article" publishedTime={post.data.pubDate}>
+<Base title={post.data.title} description={post.data.description} type="article" publishedTime={post.data.pubDate} modifiedTime={post.data.updatedDate}>
   {hasMath && <link slot="head" rel="stylesheet" href="/katex/katex.min.css" />}
   <div class="container post-shell">
     <aside class="post-left" aria-label={`More in ${category.name}`} data-pagefind-ignore>
@@ -82,6 +82,11 @@ const hasToc = headings.some((h) => h.depth === 2);
           <span>
             <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
           </span>
+          {post.data.updatedDate && (
+            <span>
+              Updated <time datetime={post.data.updatedDate.toISOString()}>{formatDate(post.data.updatedDate)}</time>
+            </span>
+          )}
           <a href={categoryUrl(category.slug)} data-pagefind-filter="category">{category.name}</a>
         </div>
       </header>

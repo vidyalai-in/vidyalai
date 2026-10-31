@@ -6,7 +6,7 @@ category: "llm-math"
 tags: ["math", "training", "backpropagation", "gradient-descent", "neural-networks"]
 series: "llm-math"
 seriesOrder: 8
-pubDate: 2026-10-24
+pubDate: 2026-05-01
 ---
 
 ## TL;DR

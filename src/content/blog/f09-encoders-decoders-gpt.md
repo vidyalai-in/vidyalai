@@ -6,7 +6,7 @@ category: "llm-fundamentals"
 tags: ["transformers", "attention", "embeddings", "sampling"]
 series: "llm-fundamentals"
 seriesOrder: 9
-pubDate: 2026-10-23
+pubDate: 2026-03-18
 ---
 
 ## TL;DR

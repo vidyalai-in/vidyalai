@@ -6,7 +6,7 @@ category: "llm-training"
 tags: ["scaling-laws", "pretraining", "training", "gpu"]
 series: "llm-from-scratch"
 seriesOrder: 8
-pubDate: 2026-10-28
+pubDate: 2026-07-24
 ---
 
 ## TL;DR
