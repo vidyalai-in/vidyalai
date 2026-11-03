@@ -15,6 +15,7 @@ export const SERIES = [
     blurb:
       'How large language models work, from tokens and embeddings to attention, the Transformer and training, built around “Attention Is All You Need”.',
     total: 16,
+    playlist: 'https://www.youtube.com/playlist?list=PLb2B8tLvpbCA',
     filePrefix: 'f',
   },
   {

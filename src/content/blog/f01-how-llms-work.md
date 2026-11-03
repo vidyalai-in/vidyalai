@@ -7,6 +7,7 @@ tags: ["transformers", "attention", "tokens", "training"]
 series: "llm-fundamentals"
 seriesOrder: 1
 pubDate: 2026-02-18
+video: { youtube: "ussRgOkiAHY", duration: "12:51", url: "https://youtu.be/ussRgOkiAHY" }
 ---
 
 ## TL;DR
