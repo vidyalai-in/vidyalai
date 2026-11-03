@@ -14,8 +14,8 @@ import { numberWord } from '../lib/words';
 
 const posts = await getPosts();
 // The first part of each series.
-const featuredSlugs = ['what-is-an-ai-agent', 'build-llm-from-scratch', 'what-is-interpretability', 'how-llms-work', 'math-for-llms', 'how-llm-inference-works', 'gpu-from-python-to-silicon', 'rag-system-10m-documents'];
-const featured = featuredSlugs.map((slug) => posts.find((p) => p.id === slug)).filter((p) => p !== undefined);
+// Start here: the first published part of each series, in the site's series order.
+const featured = SERIES.map((s) => posts.find((p) => p.data.series === s.slug)).filter((p) => p !== undefined);
 const counts = Object.fromEntries(CATEGORIES.map((c) => [c.slug, posts.filter((p) => p.data.category === c.slug).length]));
 
 // Art direction: wide banner from 768px, a centred crop (logo, tagline, icons) on phones.
@@ -45,11 +45,11 @@ const fallback = await getImage({ src: banner, format: 'jpg', width: 1440 });
       </picture>
 
       <div class="hero-copy">
-        <p class="eyebrow">New: {getSeries('agentic-ai').name} and {getSeries('llm-from-scratch').name}</p>
+        <p class="eyebrow">New series: {getSeries('llm-interpretability').name}</p>
         <h1>Understand LLMs, from attention to production</h1>
         <p class="hero-lede">
           {posts.length} in-depth articles in {numberWord(SERIES.length).toLowerCase()} series: how large language models work and the math
-          behind them, how to train one, how they generate text fast and run on GPUs, how to build systems that hold up in
+          behind them, how to train one, what happens inside one, how they generate text fast and run on GPUs, how to build systems that hold up in
           production, and how AI agents work. Each one explains the idea, works
           through the numbers, and links the sources to check.
         </p>
