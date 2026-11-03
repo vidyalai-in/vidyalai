@@ -1,0 +1,31 @@
+1
+00:00:00,150 --> 00:00:04,525
+A 500-token answer is 500 trips
+through the whole model.
+
+2
+00:00:05,550 --> 00:00:07,900
+The model reads all your tokens.
+
+3
+00:00:08,517 --> 00:00:13,617
+It scores every possible next token, and
+turns the scores into probabilities.
+
+4
+00:00:14,217 --> 00:00:17,117
+It picks one, appends it, and starts over.
+
+5
+00:00:18,117 --> 00:00:22,092
+Every trip runs all 96 of GPT-3's layers.
+
+6
+00:00:22,717 --> 00:00:27,442
+And reads 350 GB of weights, for
+every single token.
+
+7
+00:00:27,742 --> 00:00:31,092
+That's why a long answer takes
+time, and costs more.

@@ -1,0 +1,1 @@
+how LLMs work, large language model, LLM explained, transformer, attention is all you need, tokens, next token prediction, softmax, temperature, GPT-3, mixture of experts, machine learning, AI explained

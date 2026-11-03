@@ -6,10 +6,13 @@
 //   node video/tools/upload.mjs upload  video/<slug> [--dry-run] [--only main,short-id]
 //   node video/tools/upload.mjs status  video/<slug>
 //   node video/tools/upload.mjs publish video/<slug> [--only main,short-id]
+//   node video/tools/upload.mjs analytics video/<slug> [--since 2026-11-01]
 //
 // upload: every video goes up private, with title, description, tags, category, language, audience,
 // AI disclosure, captions, thumbnail (main) and playlist. publish: makes them public (main first) and
-// posts the comment from main/pinned-comment.txt. Progress is saved in youtube/uploaded.json after each
+// posts the comment from main/pinned-comment.txt. analytics: pulls the main video's audience-retention
+// curve (YouTube Analytics API) and maps it onto the scenes in main/scenes.json, so the next script can
+// fix the places where viewers leave; writes youtube/main/retention.md. Progress is saved in youtube/uploaded.json after each
 // step, so a re-run resumes where it stopped and never uploads a video twice.
 //
 // Credentials live outside the repo, in ~/.config/vidyalai/: youtube-client.json (a Desktop-app OAuth
@@ -28,7 +31,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const CONFIG_DIR = join(homedir(), '.config', 'vidyalai');
 const CLIENT_FILE = join(CONFIG_DIR, 'youtube-client.json');
 const TOKEN_FILE = join(CONFIG_DIR, 'youtube-token.json');
-const SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.force-ssl'];
+const SCOPES = [
+  'https://www.googleapis.com/auth/youtube.upload',
+  'https://www.googleapis.com/auth/youtube.force-ssl',
+  'https://www.googleapis.com/auth/yt-analytics.readonly', // analytics: read-only retention reports
+];
 const CATEGORY_EDUCATION = '27';
 const CHUNK = 32 * 1024 * 1024; // resumable upload chunk; must be a multiple of 256 KiB
 
@@ -415,6 +422,77 @@ Main video: https://youtu.be/${main}`);
   }
 }
 
+// ---------- Analytics ----------
+async function analytics(dir) {
+  const { state, kitDir } = loadKit(dir);
+  const id = state.videos.main?.id;
+  if (!id) fail('The main video has not been uploaded yet.');
+  const scenesFile = join(kitDir, 'main/scenes.json');
+  if (!existsSync(scenesFile)) fail(`No ${relative(ROOT, scenesFile)}. Regenerate the kit (no rendering): node video/tools/build.mjs ${dir} --no-video`);
+  const { total, scenes } = JSON.parse(readFileSync(scenesFile, 'utf8'));
+  const ya = google.youtubeAnalytics({ version: 'v2', auth: authorized() });
+  const today = new Date().toISOString().slice(0, 10);
+  const base = { ids: 'channel==MINE', startDate: opt('since') ?? '2020-01-01', endDate: today, filters: `video==${id}` };
+  let summary, curve;
+  try {
+    [summary, curve] = await Promise.all([
+      ya.reports.query({ ...base, metrics: 'views,averageViewDuration,averageViewPercentage' }),
+      ya.reports.query({ ...base, metrics: 'audienceWatchRatio,relativeRetentionPerformance', dimensions: 'elapsedVideoTimeRatio', sort: 'elapsedVideoTimeRatio' }),
+    ]);
+  } catch (err) {
+    if (/insufficient|scope|forbidden/i.test(apiError(err))) fail('The saved sign-in predates the analytics scope. Sign in again: node video/tools/upload.mjs auth');
+    throw err;
+  }
+  const [views, avgDur, avgPct] = summary.data.rows?.[0] ?? [0, 0, 0];
+  const points = (curve.data.rows ?? []).map(([ratio, watch, rel]) => ({ t: ratio * total, watch, rel }));
+  if (points.length < 10) fail(`Not enough data yet (${views} views). YouTube needs a few days and some views before it reports retention.`);
+  // Retention at time t, by linear interpolation of the 100-point curve.
+  const at = (t) => {
+    const i = points.findIndex((p) => p.t >= t);
+    if (i <= 0) return points[i < 0 ? points.length - 1 : 0].watch;
+    const a = points[i - 1];
+    const b = points[i];
+    return a.watch + ((b.watch - a.watch) * (t - a.t)) / (b.t - a.t);
+  };
+  const rows = scenes.map((sc) => {
+    const r0 = at(sc.start);
+    const r1 = at(sc.end);
+    const rel = points.filter((p) => p.t >= sc.start && p.t < sc.end).map((p) => p.rel);
+    return { ...sc, r0, r1, lostPerMin: ((r0 - r1) / Math.max(1, sc.end - sc.start)) * 60, rel: rel.length ? rel.reduce((x, y) => x + y, 0) / rel.length : null };
+  });
+  const fmt = (sec) => `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, '0')}`;
+  const pct = (x) => `${(x * 100).toFixed(0)}%`;
+  // The opening always loses viewers; rank the rest by how fast each scene loses them.
+  const worst = rows.filter((r) => r.start >= 30).sort((a, b) => b.lostPerMin - a.lostPerMin).slice(0, 5);
+  const md = `# Audience retention: https://youtu.be/${id}
+
+Pulled ${today} from the YouTube Analytics API. ${views} views, average view ${fmt(avgDur)} (${Number(avgPct).toFixed(0)}% of ${fmt(total)}).
+
+Retention is the share of viewers still watching (it can exceed 100% where people rewind). Relative
+retention compares this video with YouTube videos of similar length: 0.5 is typical, higher is better.
+
+- After 30 s: **${pct(at(30))}** still watching. ${at(30) < 0.6 ? 'The hook loses a lot of viewers: make the first sentence a sharper promise, and show it on screen.' : 'The hook holds.'}
+- At the end card: **${pct(at(scenes.at(-1).start))}**.
+
+## Scenes losing viewers fastest (after the first 30 s)
+
+| Scene | Starts | Type | Label | Retention in → out | Lost per minute | Relative |
+|---|---|---|---|---|---|---|
+${worst.map((r) => `| ${r.scene} | ${fmt(r.start)} | ${r.type} | ${r.label.replace(/\|/g, '/')} | ${pct(r.r0)} → ${pct(r.r1)} | ${(r.lostPerMin * 100).toFixed(1)} pts | ${r.rel?.toFixed(2) ?? '–'} |`).join('\n')}
+
+## Every scene
+
+| Scene | Starts | Type | Chapter | Retention in → out | Relative |
+|---|---|---|---|---|---|
+${rows.map((r) => `| ${r.scene} | ${fmt(r.start)} | ${r.type} | ${r.chapter ?? ''} | ${pct(r.r0)} → ${pct(r.r1)} | ${r.rel?.toFixed(2) ?? '–'} |`).join('\n')}
+`;
+  writeFileSync(join(kitDir, 'main/retention.md'), md);
+  writeFileSync(join(kitDir, 'main/retention.json'), JSON.stringify({ pulled: today, views, avgDur, avgPct, points }, null, 1) + '\n');
+  console.log(`${views} views, average ${fmt(avgDur)} (${Number(avgPct).toFixed(0)}%). 30 s: ${pct(at(30))}. Worst scenes:`);
+  for (const r of worst) console.log(`  ${fmt(r.start)} scene ${r.scene} (${r.type}) ${r.label}: ${pct(r.r0)} → ${pct(r.r1)}`);
+  console.log(`Wrote ${relative(ROOT, join(kitDir, 'main/retention.md'))}`);
+}
+
 // ---------- Helpers ----------
 function apiError(err) {
   const d = err?.response?.data?.error;
@@ -428,9 +506,9 @@ function fail(msg) {
   process.exit(1);
 }
 
-const commands = { auth, upload, status: showStatus, publish };
+const commands = { auth, upload, status: showStatus, publish, analytics };
 if (!commands[cmd] || (cmd !== 'auth' && !target)) {
-  fail('Usage: node video/tools/upload.mjs auth | upload <video/slug> [--dry-run] [--only ids] | status <video/slug> | publish <video/slug> [--only ids]');
+  fail('Usage: node video/tools/upload.mjs auth | upload <video/slug> [--dry-run] [--only ids] | status <video/slug> | publish <video/slug> [--only ids] | analytics <video/slug> [--since YYYY-MM-DD]');
 }
 try {
   await commands[cmd](target);

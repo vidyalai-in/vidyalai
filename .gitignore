@@ -11,3 +11,4 @@ video/.tts-cache/
 video/voices/*/*.wav
 video/voices/*/*.mp3
 __pycache__/
+video/*/figures/*.html

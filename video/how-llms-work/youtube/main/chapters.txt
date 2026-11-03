@@ -1,0 +1,12 @@
+00:00 The one trick
+01:33 The whole machine
+02:46 Step 1: Tokens
+03:33 Step 2: Vectors
+04:10 Step 3: The Transformer
+05:26 Step 4: Probabilities
+06:20 Step 5: Pick and repeat
+07:49 Where the numbers come from
+08:52 How it learned
+10:08 Why 2017 changed everything
+11:19 Common misconceptions
+12:01 Recap

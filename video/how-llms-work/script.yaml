@@ -1,0 +1,660 @@
+# Video script for "How a Large Language Model Works: The Big Picture" (LLM Fundamentals, Part 1).
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Build: node video/tools/build.mjs video/how-llms-work
+#
+# This is the first script to use the engagement features: a cold open before the brand, camera
+# drift, word-synced highlights, data charts, the tokens scene, two "pause and guess" quizzes, a
+# quote card, the series map, a second voice for the skeptic's questions, sound effects, burned-in
+# captions on the Shorts, and three thumbnails to A/B test. (A music bed was tried and dropped: it
+# added little under narration.)
+
+slug: how-llms-work
+article: src/content/blog/f01-how-llms-work.md
+voice: af_heart
+speed: 1.05
+
+fx:
+  drift: true
+  wordSync: true
+  sfx: true
+  shortsCaptions: true
+
+voices:
+  skeptic: { voice: am_michael, label: "The skeptic" }
+
+lexicon:
+  GPT-1: G P T 1
+  GPT-2: G P T 2
+  GPT-3: G P T 3
+  GPT-4: G P T 4
+  GPT: G P T
+  MLP: M L P
+  RNNs: R N Ns
+  BLEU: blue
+  Qwen3: Kwen 3
+  DeepSeek-V4: Deep Seek V 4
+  DeepSeek-V3: Deep Seek V 3
+  H100: H 100
+  InstructGPT: Instruct G P T
+  MoE: M O E
+  softmax: soft max
+
+youtube:
+  title: "How a Large Language Model Works: The Big Picture | LLM Fundamentals"
+  altTitles:
+    - "How ChatGPT Actually Works: Tokens, Transformers and One Loop"
+    - "How LLMs Work, Explained Visually (Part 1)"
+  summary: |
+    What really happens when a chatbot answers you? A large language model does one thing: it predicts the next token. This video walks through that loop end to end: text becomes tokens, tokens become vectors, a stack of Transformer blocks mixes in context with attention, softmax turns scores into probabilities, and sampling picks one token to append before the whole model runs again. Then where the 175 billion parameters of GPT-3 come from, how next-token training on trillions of tokens builds a model, why a 1.3B instruction-tuned model beat GPT-3, and why the 2017 paper "Attention Is All You Need" changed everything.
+
+    Part 1 of the LLM Fundamentals series from VidyalAI.
+  tags:
+    - how LLMs work
+    - large language model
+    - LLM explained
+    - transformer
+    - attention is all you need
+    - tokens
+    - next token prediction
+    - softmax
+    - temperature
+    - GPT-3
+    - mixture of experts
+    - machine learning
+    - AI explained
+  hashtags: ["#LLM", "#AI", "#MachineLearning"]
+  playlist: LLM Fundamentals
+  pinnedComment: |
+    Which part of the loop surprised you most: tokens, attention, or sampling?
+    The full article, with every number and source: https://vidyal.ai/blog/how-llms-work/
+
+# Three designs for YouTube's thumbnail Test & compare. The first is also the default upload.
+thumbnail:
+  - title: "How LLMs **Actually** Work"
+    badge: "One token at a time"
+  - title: "Next Word: **Paris**"
+    badge: "85% likely"
+  - title: "**500 Trips** for 500 Tokens"
+    badge: "How LLMs work"
+
+main:
+  scenes:
+    # ---------- Cold open: the hook comes before the brand ----------
+    - type: tokens
+      chapter: The one trick
+      kicker: Illustrative numbers
+      chips: false
+      text: "The capital of France is"
+      pieces: ["The", " capital", " of", " France", " is"]
+      candidates:
+        - { t: Paris, p: 85.2 }
+        - { t: a, p: 7.0 }
+        - { t: the, p: 4.2 }
+        - { t: known, p: 2.6 }
+        - { t: Lyon, p: 0.9 }
+      steps:
+        - show: text
+          say: Type "The capital of France is" into a chatbot, and it answers Paris in a fraction of a second.
+        - show: candidates
+          say: >-
+            It didn't look that up anywhere. A file of numbers gave every possible next piece of
+            text a probability, and **Paris** came out far ahead.
+        - show: append
+          say: So it picks Paris, appends it, and runs the whole thing again. That loop is the whole trick.
+
+    - type: statement
+      text: "By the end: why the same question gets **different** answers"
+      sub: "…and why a model 100× smaller beat GPT-3."
+      subStep: 1
+      steps:
+        - say: By the end of this video, you'll know why the same question can get different answers.
+        - say: And why people preferred a model more than 100 times smaller than GPT-3.
+
+    - type: brand
+      steps: [{ hold: 1.6 }]
+
+    - type: seriesmap
+      kicker: LLM Fundamentals · Part 1
+      heading: How a Large Language Model **Works**
+      steps:
+        - say: This is Part 1 of a 16-part series. Today is the big picture, from your text to the next token.
+        - highlight: [2, 5, 6, 13]
+          say: >-
+            Each later part opens up one piece of it: tokenizers, attention, the Transformer block,
+            and how a base model becomes an assistant.
+
+    - type: statement
+      text: "An LLM predicts **one token** at a time."
+      sub: "Think: the world's most well-read autocomplete."
+      subStep: 1
+      steps:
+        - say: >-
+            A large language model does one thing. Given some text, it predicts which small piece
+            of text, called a **token**, comes next.
+        - say: Think of the world's most well-read autocomplete.
+        - say: Your phone suggests the next word from the last word or two. An LLM looks at everything you've written so far.
+
+    - type: bullets
+      heading: Prediction forces **understanding**
+      steps:
+        - add: { text: Medicine, sub: "“…given penicillin because the infection was…”" }
+          say: To continue a sentence about penicillin, you need to know some medicine.
+        - add: { text: Python, sub: finishing a half-written function }
+          say: To finish a half-written Python function, you need to know Python.
+        - add: { text: "Grammar, facts, reasoning", sub: all picked up because they make the prediction better }
+          say: >-
+            So training a model to predict text well forces it to pick up grammar, facts and
+            patterns of reasoning along the way.
+
+    - type: figure
+      chapter: The whole machine
+      figure: machine
+      # One station per step: the camera glides to it as the narrator starts on it, its part of the
+      # machine runs, and the stations still to come stay dimmed. Built by figures/machine.mjs.
+      steps:
+        - say: Here's the whole machine. Let's follow our sentence through it, one block at a time.
+        - station: T
+          say: It starts with the text so far, "The capital of France is".
+        - station: TK
+          say: >-
+            First, a tokenizer splits the text into tokens, small pieces from a fixed vocabulary,
+            and replaces each piece with its ID number.
+        - station: EM
+          say: >-
+            Next, each ID is swapped for a vector, a long list of numbers, taken from a lookup
+            table called the embedding matrix.
+        - station: ST
+          say: >-
+            Then a stack of identical Transformer blocks updates each vector with information from
+            the tokens before it, using attention and a small neural network called the MLP.
+        - station: LG
+          say: >-
+            After the last block, the final vector becomes one score for every token in the
+            vocabulary. These scores are called logits.
+        - station: SM
+          say: Softmax turns those scores into probabilities that add up to 1.
+        - station: SP
+          say: Then one token is picked from those probabilities. Here, it's Paris.
+        - station: RE
+          say: Paris is appended to the text, and the whole model runs again to predict the token after it.
+        - station: ALL
+          say: One trip through all of this produces one token. Now let's take each block in turn.
+
+    # ---------- Step 1 ----------
+    - type: tokens
+      chapter: "Step 1: Tokens"
+      heading: "Step 1: text becomes **tokens**"
+      text: "The capital of France is"
+      pieces: ["The", " capital", " of", " France", " is"]
+      ids: [791, 6864, 315, 9822, 374]
+      steps:
+        - show: text
+          say: A model can only work with numbers. So first, a tokenizer splits text into pieces from a fixed vocabulary.
+        - show: pieces
+          say: Here's our sentence as GPT-4's tokenizer splits it. Five pieces, and the spaces are part of the pieces.
+        - show: ids
+          say: Then each piece is replaced by its ID number. **France** is token 9822.
+
+    - type: stats
+      heading: Tokens are the **unit** of everything
+      steps:
+        - add: { value: "~4", label: characters per English token }
+          say: In English, one token is about 4 characters, roughly three quarters of a word.
+        - add: { value: "50,257", label: "tokens in GPT-2's vocabulary" }
+          say: Vocabularies are big. GPT-2 used 50,257 tokens.
+        - add: { value: "128,000", label: "tokens in Llama 3's vocabulary" }
+          say: Llama 3 uses 128,000. Tokens are also how you're billed, and how context limits are measured.
+
+    # ---------- Step 2 ----------
+    - type: bullets
+      chapter: "Step 2: Vectors"
+      heading: "Step 2: tokens become **vectors**"
+      steps:
+        - add: { text: "9822 is a label, not a quantity", sub: "token 9822 isn't “bigger” than token 315" }
+          say: A token ID like 9822 is just a label. Token 9822 isn't bigger than token 315 in any useful sense.
+        - add: { text: "Each ID becomes 12,288 numbers", sub: "a row of GPT-3's embedding matrix" }
+          say: >-
+            So each ID is swapped for a vector, a list of numbers, from a lookup table called the
+            embedding matrix. In GPT-3, that's **12,288** numbers.
+        - add: { text: Related meanings end up close, sub: "France, Paris and French sit closer than France and carburetor" }
+          say: >-
+            During training, related meanings end up near each other: France, Paris and French sit
+            closer than France and carburetor. Nobody designs that. The model learns it.
+
+    # ---------- Step 3 ----------
+    - type: diagram
+      chapter: "Step 3: The Transformer"
+      heading: "Step 3: the stack mixes in **context**"
+      diagram: f01-generation-loop
+      steps:
+        - focus: [0.3, 0, 0.4, 1]
+          highlight: [ST]
+          say: >-
+            A single token's vector only knows about that token. The word bank gets the same starting
+            vector in "river bank" and "bank account".
+        - note: "GPT-3: 96 blocks · Llama 3.1 405B: 126 blocks"
+          say: >-
+            So the model updates each vector with information from the tokens around it, in a stack of
+            identical layers called Transformer blocks. GPT-3 has 96 of them. Llama 3.1 405B has 126.
+
+    - type: bullets
+      heading: Each block does **two** things
+      numbered: true
+      steps:
+        - add: { text: Attention, sub: each token looks back and pulls in what matters }
+          say: >-
+            First, **attention**. Every token looks back at the tokens before it and decides which
+            matter right now. The position for "is" weights capital and France heavily.
+        - add: { text: "A feed-forward network (MLP)", sub: where much of the stored knowledge seems to live }
+          say: >-
+            Second, a feed-forward network, also called the MLP. It works on each token on its own,
+            and it's where much of the model's stored knowledge seems to live.
+        - add: { text: "Add, don't replace", sub: "a shared notepad per token, read and written by every layer" }
+          say: >-
+            Each block adds what it computed instead of replacing it. Picture a shared notepad per
+            token that each of the 96 layers reads and writes a few notes on.
+
+    - type: statement
+      text: "Every earlier token is **one step** away."
+      sub: "Attention connects them directly, however far apart."
+      subStep: 1
+      steps:
+        - speaker: skeptic
+          say: Wait. So each token only sees the words right next to it?
+        - say: >-
+            No. Attention connects every token to every earlier token directly, in one step, no
+            matter how far apart they are.
+
+    # ---------- Step 4 ----------
+    - type: chart
+      chapter: "Step 4: Probabilities"
+      heading: "Step 4: scores become **probabilities**"
+      note: Made-up logits for the five top candidates, as in the article
+      bars:
+        - { label: Paris, value: 6.0 }
+        - { label: a, value: 3.5 }
+        - { label: the, value: 3.0 }
+        - { label: known, value: 2.5 }
+        - { label: Lyon, value: 1.5 }
+      max: 7
+      steps:
+        - tag: Logits
+          say: >-
+            After the last block, the final vector becomes one score for every token in the
+            vocabulary. These raw scores are called **logits**. Here are five made-up ones.
+        - tag: Softmax
+          say: >-
+            Scores aren't probabilities yet. A function called softmax converts them. It raises e to
+            the power of each score, then divides by the total, so everything adds up to 1.
+
+    - type: quiz
+      question: "Paris leads “a” by **2.5** in logits. How big is its lead in probability?"
+      options: ["2.5 to 1", "5 to 1", "12 to 1"]
+      answer: 2
+      explain: "e^6.0 ÷ e^3.5 = 403.4 ÷ 33.1 ≈ 12"
+      steps:
+        - say: Here's a question. Paris leads "a" by 2.5 points. How big is its lead after softmax?
+        - countdown: 4
+        - reveal: true
+          say: Twelve to one. Exponentials turn a small lead in score into a big lead in probability.
+
+    - type: chart
+      heading: After **softmax**
+      bars:
+        - { label: Paris, value: 6.0 }
+        - { label: a, value: 3.5 }
+        - { label: the, value: 3.0 }
+        - { label: known, value: 2.5 }
+        - { label: Lyon, value: 1.5 }
+      max: 7
+      steps:
+        - tag: Logits
+          hold: 0.8
+        - values: [85.2, 7.0, 4.2, 2.6, 0.9]
+          max: 100
+          unit: "%"
+          tag: Probabilities
+          highlight: Paris
+          say: Paris gets 85.2%. Then a with 7%, and the rest trail far behind.
+
+    # ---------- Step 5 ----------
+    - type: figure
+      chapter: "Step 5: Pick and repeat"
+      figure: sampler
+      # Greedy glides the needle to the top token; sampling spins it twice (Paris, then "a"); the
+      # knob divides the logits by T and the sectors reshape. Built by figures/sampler.mjs.
+      steps:
+        - greedy: true
+          focus: DIAL
+          say: >-
+            That step is called sampling, and you control it. Greedy decoding always takes the top
+            token. It's predictable, but tends to sound flat.
+        - spin: [0.15, 0.88]
+          focus: DIAL
+          say: >-
+            Sampling rolls weighted dice: Paris 85.2% of the time, "a" 7% of the time. That's why the
+            same prompt can give **different** answers.
+        - light: knob
+          focus: KNOB
+          say: And temperature reshapes the odds before the roll, by dividing every logit by a number, T.
+        - temp: 1
+          focus: RACK
+          say: Here are our five candidates at a temperature of 1.
+        - temp: 0.5
+          focus: ALL
+          say: Below 1, the leader gets stronger. Paris goes to 99%.
+        - temp: 2
+          light: Lyon
+          say: >-
+            Above 1, the field flattens. At a temperature of 2, **Lyon** goes from almost never to about
+            one draw in seventeen. That's the creativity knob, and also a source of mistakes.
+
+    - type: quiz
+      question: "A 500-token answer. How many **trips** through the whole model?"
+      options: ["1", "96", "500"]
+      answer: 2
+      explain: "One trip per token, through all 96 layers each time"
+      steps:
+        - say: Another one. To write a 500-token answer, how many trips through the whole model does it take?
+        - countdown: 4
+        - reveal: true
+          say: >-
+            500. One trip produces one token, and every trip runs through all 96 layers. That fact
+            explains a lot about LLM speed and cost.
+
+    - type: figure
+      figure: machine
+      steps:
+        - station: [SP, RE]
+          focus: RE
+          say: >-
+            Once a token is chosen, it's appended, and the whole model runs again on "The capital of
+            France is Paris".
+        - station: ALL
+          say: The loop keeps going until the model produces a special end token, or hits a length limit.
+
+    # ---------- Parameters ----------
+    - type: statement
+      chapter: Where the numbers come from
+      text: "It stores **numbers**, not text."
+      sub: "So it can't tell you where it learned something."
+      subStep: 1
+      steps:
+        - say: >-
+            Every step you've seen uses learned numbers, called parameters. Autocomplete stores phrases.
+            An LLM stores billions of **numbers**.
+        - say: That's why it can't tell you where it learned something, and why it sometimes fills gaps with confident inventions.
+
+    - type: stats
+      heading: Rebuilding GPT-3's **175B**
+      steps:
+        - add: { value: "1.81B", label: "per block: 12 × d², with d = 12,288" }
+          say: >-
+            You can rebuild GPT-3's count yourself. Each block holds about 12 times d squared
+            parameters. With d at 12,288, that's 1.81 billion per block.
+        - add: { value: "173.9B", label: 96 blocks }
+          say: Times 96 blocks gives 173.9 billion.
+        - add: { value: "174.6B", label: "plus 0.6B of embeddings · GPT-3 reports 175B" }
+          say: Add 0.6 billion for the embeddings, and you're within half a percent of the 175 billion the paper reports.
+
+    - type: statement
+      text: "**350 GB** of weights, touched by every token"
+      sub: "At 2 bytes per parameter: more than four 80 GB GPUs can hold."
+      subStep: 1
+      steps:
+        - say: Each parameter is usually stored in 2 bytes. So GPT-3's weights alone take about 350 GB.
+        - say: That's more than four 80 GB GPUs can hold. And every generated token touches all of them.
+
+    # ---------- Training ----------
+    - type: bullets
+      chapter: How it learned
+      heading: Training is the **same** prediction
+      numbered: true
+      steps:
+        - add: { text: Take a chunk of real text }
+          say: None of these numbers is set by hand. They start random. Training takes real text.
+        - add: { text: Predict the next token at every position }
+          say: At every position, the model predicts the next token.
+        - add: { text: "Measure the surprise", sub: cross-entropy loss }
+          say: The loss measures how surprised it was by the token that actually came next.
+        - add: { text: "Nudge every parameter", sub: directions from backpropagation }
+          say: Backpropagation works out how to nudge every parameter so the right answer gets more likely.
+        - add: { text: Repeat, sub: trillions of times }
+          say: Repeat, trillions of times. No one labels anything. The text is its own answer key.
+
+    - type: stats
+      heading: Training **tokens**
+      steps:
+        - add: { value: "300B", label: GPT-3 (2020) }
+          say: GPT-3 trained on 300 billion tokens.
+        - add: { value: "15.6T", label: Llama 3.1 405B (2024) }
+          say: Llama 3.1 405B trained on 15.6 trillion.
+        - add: { value: "3,500 years", label: "its 30.84M GPU-hours, on one GPU" }
+          say: Its 30.84 million GPU-hours would take about 3,500 years on a single GPU.
+
+    - type: compare
+      heading: Training beat **size**
+      cols: 2
+      steps:
+        - add: { name: "175B: raw GPT-3", pros: trained only to predict web text, cons: answers a question with more questions }
+          say: >-
+            A model trained only on web text is a base model. Ask it a question, and it might reply
+            with three more questions, like a web page would.
+        - add: { name: "1.3B: instruction-tuned", pros: "trained on good conversations, then human preferences", when: people preferred its answers }
+          say: >-
+            So chat models get a second round of training. In the InstructGPT paper, people preferred a
+            1.3 billion parameter instruction-tuned model over GPT-3, a model more than 100 times bigger.
+
+    # ---------- 2017 ----------
+    - type: quote
+      chapter: Why 2017 changed everything
+      kicker: "“Attention Is All You Need”, 2017, on recurrent networks"
+      quote: "This inherently sequential nature precludes parallelization within training examples."
+      source: Vaswani et al., Google, 2017
+      steps:
+        - say: >-
+            Before 2017, the best language models read one word at a time, carrying a running summary
+            forward. Early words faded, and the work couldn't be spread across a GPU.
+        - say: The Transformer paper named the problem directly. Attention processes every position at once.
+
+    - type: stats
+      heading: The Transformer, 2017
+      steps:
+        - add: { value: "28.4 BLEU", label: "English to German, a new best" }
+          say: It set a new best score on English to German translation.
+        - add: { value: "12 hours", label: base model training on 8 GPUs }
+          say: Its base model trained in 12 hours on one machine. Then the models mostly got bigger.
+
+    - type: chart
+      chart: line
+      heading: Parameters, **2018 to 2026**
+      yLog: true
+      yMin: 0.05
+      yMax: 5000
+      xMin: 2017.6
+      xMax: 2026.6
+      xTicks: [[2018, "2018"], [2020, "2020"], [2022, "2022"], [2024, "2024"], [2026, "2026"]]
+      yTicks: [[0.1, "100M"], [1, "1B"], [10, "10B"], [100, "100B"], [1000, "1T"]]
+      series:
+        - name: params
+          points:
+            - [2018, 0.117, "GPT-1 117M"]
+            - [2019, 1.5, "GPT-2 1.5B"]
+            - [2020, 175, "GPT-3 175B"]
+            - [2024, 405]
+            - [2024.9, 671]
+            - [2025.5, 1000]
+            - [2026, 1600]
+            - [2026.3, 2800, "Kimi K3 2.8T"]
+      steps:
+        - draw: params
+          drawTime: 6
+          say: >-
+            From GPT-1's 117 million to Kimi K3's 2.8 trillion, parameter counts grew about 24,000
+            times in eight years. And the block design underneath barely changed.
+
+    - type: stats
+      heading: Store a giant, **run** a small model
+      steps:
+        - add: { value: "2.8T", label: "Kimi K3 parameters, all in memory" }
+          say: >-
+            The one big change is mixture of experts: many smaller MLPs per block, called experts, and
+            a router that picks a few for each token.
+        - add: { value: "104B", label: "used per token: 16 of 896 experts, 3.7%" }
+          say: >-
+            Kimi K3 uses 16 of its 896 experts per token, so only about 104 billion of its 2.8 trillion
+            parameters do any work. A giant's knowledge, at a much smaller model's compute cost.
+
+    # ---------- Misconceptions ----------
+    - type: bullets
+      chapter: Common misconceptions
+      heading: What it **isn't**
+      style: warn
+      steps:
+        - speaker: skeptic
+          say: So it looks answers up in a database?
+        - add: { text: No database inside, sub: facts are spread across billions of parameters }
+          say: >-
+            There's no database inside. Facts are spread across billions of parameters. That's why
+            models can be wrong with full confidence.
+        - speaker: skeptic
+          say: Fine. But temperature zero makes it deterministic, right?
+        - add: { text: "Temperature 0 isn't fully deterministic", sub: "batching can flip a close call" }
+          say: >-
+            It makes the choice greedy. But on a shared server, your request is batched with other
+            people's, and the arithmetic can shift very slightly. Enough to flip a close call.
+        - speaker: skeptic
+          say: And it reads words, the way I do.
+        - add: { text: It reads tokens, sub: "why counting the letters in “strawberry” trips it up" }
+          say: It reads tokens. That's why counting letters can trip up a model that writes fluent essays.
+
+    # ---------- Recap ----------
+    - type: bullets
+      chapter: Recap
+      heading: The big picture
+      steps:
+        - add: { text: "Predict, pick, append, repeat", sub: one token per trip through the model }
+          say: "So, the big picture. An LLM predicts one token at a time: predict, pick, append, repeat."
+        - add: { text: "Tokens → vectors → blocks → probabilities", sub: "temperature sets how adventurous the pick is" }
+          say: Each trip turns tokens into vectors, mixes in context, and ends in probabilities. Temperature sets how adventurous the pick is.
+        - add: { text: "Everything lives in the parameters", sub: "learned from trillions of tokens of text" }
+          say: And all of the model's skill lives in its parameters, learned from trillions of tokens.
+
+    - type: seriesmap
+      heading: Next, **Part 2**
+      steps:
+        - highlight: [2]
+          say: >-
+            Next is Part 2, the first thing that happens to your text: tokenization, and why
+            "strawberry" is hard for a model to spell.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/how-llms-work
+      next: "Every number, with its source"
+      steps:
+        - say: The full article, with every number and its source, is on vidyal.ai.
+
+    - type: endcard
+      kicker: LLM Fundamentals
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-fundamentals
+      teaser: "Tokenization: how LLMs turn text into **tokens**"
+      steps:
+        - say: Thanks for watching. Next in the series, tokenization. Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  # Each Short opens on its hook (already on screen in frame one), burns in word captions, and ends
+  # on a complete sentence that echoes its opening, so a replay still reads naturally.
+  - id: short-temperature
+    title: "Same question, different answer? Here's the knob #shorts"
+    description: The same prompt can get a different answer from an LLM. Temperature is why.
+    hashtags: ["#LLM", "#AI", "#shorts"]
+    scenes:
+      - type: statement
+        text: "Same question. **Different** answer."
+        steps:
+          - say: Same question, different answer. Here's why.
+      - type: chart
+        heading: The capital of France is…
+        bars:
+          - { label: Paris, value: 85.2 }
+          - { label: a, value: 7.0 }
+          - { label: the, value: 4.2 }
+          - { label: known, value: 2.6 }
+          - { label: Lyon, value: 0.9 }
+        max: 100
+        unit: "%"
+        steps:
+          - tag: T = 1
+            say: A language model gives every next token a probability. Then it rolls weighted dice.
+          - values: [99.0, 0.7, 0.2, 0.1, 0.0]
+            tag: T = 0.5
+            say: Temperature reshapes the odds first. Turn it down, and Paris goes to 99%.
+          - values: [55.9, 16.0, 12.5, 9.7, 5.9]
+            tag: T = 2
+            highlight: Lyon
+            say: Turn it up to 2, and Lyon wins about one roll in seventeen.
+      - type: statement
+        text: "More creative. More **mistakes**."
+        steps:
+          - say: That's the creativity knob, and also a source of mistakes. It's why the same question can get a different answer.
+
+  - id: short-500-trips
+    title: "Your 500-word answer = 500 trips through the model #shorts"
+    description: An LLM writes one token per trip through all of its layers. That's why answers cost what they cost.
+    hashtags: ["#LLM", "#AI", "#shorts"]
+    scenes:
+      - type: statement
+        text: "**500** tokens. **500** trips."
+        steps:
+          - say: A 500-token answer is 500 trips through the whole model.
+      - type: tokens
+        heading: One trip, one token
+        from: pieces
+        text: "The capital of France is"
+        pieces: ["The", " capital", " of", " France", " is"]
+        candidates:
+          - { t: Paris, p: 85.2 }
+          - { t: a, p: 7.0 }
+          - { t: the, p: 4.2 }
+        steps:
+          - show: pieces
+            say: The model reads all your tokens.
+          - show: candidates
+            say: It scores every possible next token, and turns the scores into probabilities.
+          - show: append
+            say: It picks one, appends it, and starts over.
+      - type: stats
+        heading: Every trip, GPT-3 touches…
+        steps:
+          - add: { value: "96", label: layers }
+            say: Every trip runs all 96 of GPT-3's layers.
+          - add: { value: "350 GB", label: of weights }
+            say: And reads 350 GB of weights, for every single token. That's why a long answer takes time, and costs more.
+
+  - id: short-small-beat-big
+    title: "A model 100× smaller won #shorts"
+    description: People preferred a 1.3B instruction-tuned model over the 175B GPT-3. Training matters as much as size.
+    hashtags: ["#LLM", "#AI", "#shorts"]
+    scenes:
+      - type: statement
+        text: "A model **100× smaller** won."
+        steps:
+          - say: A model more than 100 times smaller won.
+      - type: stats
+        heading: The InstructGPT result
+        steps:
+          - add: { value: "175B", label: "raw GPT-3: trained only to predict web text" }
+            say: GPT-3 has 175 billion parameters, trained only to predict web text.
+          - speaker: skeptic
+            say: Bigger is always better, right?
+          - add: { value: "1.3B", label: "instruction-tuned: people preferred its answers" }
+            say: In the InstructGPT paper, people preferred answers from a 1.3 billion parameter model trained to follow instructions.
+      - type: statement
+        text: "Training matters as much as **size**."
+        steps:
+          - say: Training matters as much as size. That's how a model more than 100 times smaller won.

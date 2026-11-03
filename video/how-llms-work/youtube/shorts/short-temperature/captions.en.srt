@@ -1,0 +1,39 @@
+1
+00:00:00,150 --> 00:00:02,525
+Same question, different answer.
+
+2
+00:00:02,825 --> 00:00:04,300
+Here's why.
+
+3
+00:00:05,317 --> 00:00:09,167
+A language model gives every next
+token a probability.
+
+4
+00:00:09,467 --> 00:00:11,492
+Then it rolls weighted dice.
+
+5
+00:00:12,117 --> 00:00:14,517
+Temperature reshapes the odds first.
+
+6
+00:00:14,817 --> 00:00:18,367
+Turn it down, and Paris goes to 99%.
+
+7
+00:00:18,983 --> 00:00:23,333
+Turn it up to 2, and Lyon wins about
+one roll in seventeen.
+
+8
+00:00:24,350 --> 00:00:28,100
+That's the creativity knob, and
+also a source of mistakes.
+
+9
+00:00:28,400 --> 00:00:31,700
+It's why the same question can
+get a different answer.

@@ -6,8 +6,19 @@
   your head; if you'd stumble, rewrite it.
 - About 145 words per minute with Kokoro `af_heart` at speed 1.0. Budget the main video at
   1,300-1,700 words and each Short at 80-120 words.
-- Open with a concrete hook (a number, a scenario), not "In this video". State the core idea in
-  the first 45 seconds.
+- Open with a concrete hook (a number, a scenario), not "In this video", and put it **before** the
+  brand scene: the first narration should start within 1-2 seconds. State the core idea in the first
+  45 seconds.
+- Open a loop in the first minute: promise a specific payoff that comes later ("by the end, you'll
+  know why a model 100 times smaller won"), and pay it off where the article does.
+- Change the picture every 4-6 seconds. Keep steps to one or two sentences and give each step a visual
+  change; the build warns when a step holds one picture for over 10 s, when three text scenes run in a
+  row, or when 90 s pass without a visual scene (chart, tokens, quiz, diagram, stats).
+- Give the viewer something to do once or twice: a `quiz` on a number they can reason about, asked
+  in one step, then a 4 s countdown, then the reveal and why.
+- A second voice (`speaker: skeptic`) asking the question a viewer would ask is a good way to bring
+  in a misconception. Keep its lines to one short question; the narrator answers in the next step,
+  from the article.
 - Signpost: "First…", "Second…", "Now the online side." Viewers can't scroll back.
 - Each step's narration should match what appears on screen during it. Introduce an item in the
   same step that reveals it.
@@ -56,6 +67,10 @@ Matching a pronunciation the owner recorded (how `vidyal.ai` was set):
 ## Shorts
 
 - First sentence is the hook; it must make sense with the sound off (the opening `statement`
-  scene carries the same words).
-- One idea, three or four beats, then the outro. No chapter titles.
+  scene carries the same words, and it is on screen from the first frame).
+- One idea, three or four fast beats (2-4 s each). No chapter titles.
+- End on a complete sentence that echoes the hook ("...It's why the same question can get a
+  different answer." for a Short that opens "Same question, different answer."), so a replay reads
+  naturally. Never end on a trailing half-sentence: it sounds cut off. The build holds the last
+  frame an extra second. You can skip the outro scene; the brand mark in the corner carries the site.
 - Title ends in `#shorts`; description links the article and (after upload) the main video.

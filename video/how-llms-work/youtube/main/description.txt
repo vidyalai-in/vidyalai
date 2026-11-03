@@ -1,0 +1,37 @@
+What really happens when a chatbot answers you? A large language model does one thing: it predicts the next token. This video walks through that loop end to end: text becomes tokens, tokens become vectors, a stack of Transformer blocks mixes in context with attention, softmax turns scores into probabilities, and sampling picks one token to append before the whole model runs again. Then where the 175 billion parameters of GPT-3 come from, how next-token training on trillions of tokens builds a model, why a 1.3B instruction-tuned model beat GPT-3, and why the 2017 paper "Attention Is All You Need" changed everything.
+
+Part 1 of the LLM Fundamentals series from VidyalAI.
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/how-llms-work/
+📚 The whole LLM Fundamentals series: https://vidyal.ai/series/llm-fundamentals/
+
+Chapters
+00:00 The one trick
+01:33 The whole machine
+02:46 Step 1: Tokens
+03:33 Step 2: Vectors
+04:10 Step 3: The Transformer
+05:26 Step 4: Probabilities
+06:20 Step 5: Pick and repeat
+07:49 Where the numbers come from
+08:52 How it learned
+10:08 Why 2017 changed everything
+11:19 Common misconceptions
+12:01 Recap
+
+Sources and further reading
+• Attention Is All You Need (Vaswani et al., 2017): https://arxiv.org/abs/1706.03762
+• Language Models are Few-Shot Learners (Brown et al., 2020): https://arxiv.org/abs/2005.14165
+• The Llama 3 Herd of Models (Llama Team, Meta, 2024): https://arxiv.org/abs/2407.21783
+• DeepSeek-V3 Technical Report (DeepSeek-AI, 2024): https://arxiv.org/abs/2412.19437
+• Training language models to follow instructions with human feedback (Ouyang et al., 2022): https://arxiv.org/abs/2203.02155
+• Scaling Laws for Neural Language Models (Kaplan et al., 2020): https://arxiv.org/abs/2001.08361
+• The Illustrated Transformer (Jay Alammar, 2018): https://jalammar.github.io/illustrated-transformer/
+• Transformers, the tech behind LLMs (3Blue1Brown, 2024): https://www.youtube.com/watch?v=wjZofJX0v4M
+• Intro to Large Language Models (Andrej Karpathy, 2023): https://www.youtube.com/watch?v=zjkBMFhNj_g
+• Let's build GPT: from scratch, in code, spelled out (Andrej Karpathy, 2023): https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#LLM #AI #MachineLearning

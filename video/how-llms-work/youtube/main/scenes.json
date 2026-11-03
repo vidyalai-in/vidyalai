@@ -1,0 +1,277 @@
+{
+ "total": 771.93,
+ "scenes": [
+  {
+   "scene": 1,
+   "type": "tokens",
+   "chapter": "The one trick",
+   "label": "The capital of France is",
+   "start": 0,
+   "end": 23.1
+  },
+  {
+   "scene": 2,
+   "type": "statement",
+   "chapter": "The one trick",
+   "label": "By the end: why the same question gets different answers",
+   "start": 23.1,
+   "end": 35.03
+  },
+  {
+   "scene": 3,
+   "type": "brand",
+   "chapter": "The one trick",
+   "label": "brand",
+   "start": 35.03,
+   "end": 37.03
+  },
+  {
+   "scene": 4,
+   "type": "seriesmap",
+   "chapter": "The one trick",
+   "label": "How a Large Language Model Works",
+   "start": 37.03,
+   "end": 54.47
+  },
+  {
+   "scene": 5,
+   "type": "statement",
+   "chapter": "The one trick",
+   "label": "An LLM predicts one token at a time.",
+   "start": 54.47,
+   "end": 75.53
+  },
+  {
+   "scene": 6,
+   "type": "bullets",
+   "chapter": "The one trick",
+   "label": "Prediction forces understanding",
+   "start": 75.53,
+   "end": 93.63
+  },
+  {
+   "scene": 7,
+   "type": "figure",
+   "chapter": "The whole machine",
+   "label": "figure",
+   "start": 93.63,
+   "end": 166.77
+  },
+  {
+   "scene": 8,
+   "type": "tokens",
+   "chapter": "Step 1: Tokens",
+   "label": "Step 1: text becomes tokens",
+   "start": 166.77,
+   "end": 190.57
+  },
+  {
+   "scene": 9,
+   "type": "stats",
+   "chapter": "Step 1: Tokens",
+   "label": "Tokens are the unit of everything",
+   "start": 190.57,
+   "end": 213.27
+  },
+  {
+   "scene": 10,
+   "type": "bullets",
+   "chapter": "Step 2: Vectors",
+   "label": "Step 2: tokens become vectors",
+   "start": 213.27,
+   "end": 250.07
+  },
+  {
+   "scene": 11,
+   "type": "diagram",
+   "chapter": "Step 3: The Transformer",
+   "label": "Step 3: the stack mixes in context",
+   "start": 250.07,
+   "end": 277.27
+  },
+  {
+   "scene": 12,
+   "type": "bullets",
+   "chapter": "Step 3: The Transformer",
+   "label": "Each block does two things",
+   "start": 277.27,
+   "end": 310.97
+  },
+  {
+   "scene": 13,
+   "type": "statement",
+   "chapter": "Step 3: The Transformer",
+   "label": "Every earlier token is one step away.",
+   "start": 310.97,
+   "end": 326.4
+  },
+  {
+   "scene": 14,
+   "type": "chart",
+   "chapter": "Step 4: Probabilities",
+   "label": "Step 4: scores become probabilities",
+   "start": 326.4,
+   "end": 351.03
+  },
+  {
+   "scene": 15,
+   "type": "quiz",
+   "chapter": "Step 4: Probabilities",
+   "label": "Paris leads “a” by 2.5 in logits. How big is its lead in probability?",
+   "start": 351.03,
+   "end": 371.83
+  },
+  {
+   "scene": 16,
+   "type": "chart",
+   "chapter": "Step 4: Probabilities",
+   "label": "After softmax",
+   "start": 371.83,
+   "end": 380.6
+  },
+  {
+   "scene": 17,
+   "type": "figure",
+   "chapter": "Step 5: Pick and repeat",
+   "label": "figure",
+   "start": 380.6,
+   "end": 431.33
+  },
+  {
+   "scene": 18,
+   "type": "quiz",
+   "chapter": "Step 5: Pick and repeat",
+   "label": "A 500-token answer. How many trips through the whole model?",
+   "start": 431.33,
+   "end": 455.7
+  },
+  {
+   "scene": 19,
+   "type": "figure",
+   "chapter": "Step 5: Pick and repeat",
+   "label": "figure",
+   "start": 455.7,
+   "end": 469.6
+  },
+  {
+   "scene": 20,
+   "type": "statement",
+   "chapter": "Where the numbers come from",
+   "label": "It stores numbers, not text.",
+   "start": 469.6,
+   "end": 487.57
+  },
+  {
+   "scene": 21,
+   "type": "stats",
+   "chapter": "Where the numbers come from",
+   "label": "Rebuilding GPT-3's 175B",
+   "start": 487.57,
+   "end": 515.3
+  },
+  {
+   "scene": 22,
+   "type": "statement",
+   "chapter": "Where the numbers come from",
+   "label": "350 GB of weights, touched by every token",
+   "start": 515.3,
+   "end": 532.4
+  },
+  {
+   "scene": 23,
+   "type": "bullets",
+   "chapter": "How it learned",
+   "label": "Training is the same prediction",
+   "start": 532.4,
+   "end": 564.27
+  },
+  {
+   "scene": 24,
+   "type": "stats",
+   "chapter": "How it learned",
+   "label": "Training tokens",
+   "start": 564.27,
+   "end": 583.27
+  },
+  {
+   "scene": 25,
+   "type": "compare",
+   "chapter": "How it learned",
+   "label": "Training beat size",
+   "start": 583.27,
+   "end": 608.87
+  },
+  {
+   "scene": 26,
+   "type": "quote",
+   "chapter": "Why 2017 changed everything",
+   "label": "This inherently sequential nature precludes parallelization within training exam",
+   "start": 608.87,
+   "end": 629.07
+  },
+  {
+   "scene": 27,
+   "type": "stats",
+   "chapter": "Why 2017 changed everything",
+   "label": "The Transformer, 2017",
+   "start": 629.07,
+   "end": 640.5
+  },
+  {
+   "scene": 28,
+   "type": "chart",
+   "chapter": "Why 2017 changed everything",
+   "label": "Parameters, 2018 to 2026",
+   "start": 640.5,
+   "end": 654.53
+  },
+  {
+   "scene": 29,
+   "type": "stats",
+   "chapter": "Why 2017 changed everything",
+   "label": "Store a giant, run a small model",
+   "start": 654.53,
+   "end": 679.9
+  },
+  {
+   "scene": 30,
+   "type": "bullets",
+   "chapter": "Common misconceptions",
+   "label": "What it isn't",
+   "start": 679.9,
+   "end": 721.6
+  },
+  {
+   "scene": 31,
+   "type": "bullets",
+   "chapter": "Recap",
+   "label": "The big picture",
+   "start": 721.6,
+   "end": 745.5
+  },
+  {
+   "scene": 32,
+   "type": "seriesmap",
+   "chapter": "Recap",
+   "label": "Next, Part 2",
+   "start": 745.5,
+   "end": 754.7
+  },
+  {
+   "scene": 33,
+   "type": "outro",
+   "chapter": "Recap",
+   "label": "Read the full article",
+   "start": 754.7,
+   "end": 759.93
+  },
+  {
+   "scene": 34,
+   "type": "endcard",
+   "chapter": "Recap",
+   "label": "Keep learning",
+   "start": 759.93,
+   "end": 771.93
+  }
+ ]
+}

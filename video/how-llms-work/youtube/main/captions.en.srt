@@ -1,0 +1,880 @@
+1
+00:00:00,150 --> 00:00:05,340
+Type "The capital of France is" into a chatbot,
+and it answers Paris in a fraction
+
+2
+00:00:05,340 --> 00:00:06,100
+of a second.
+
+3
+00:00:06,717 --> 00:00:08,867
+It didn't look that up anywhere.
+
+4
+00:00:09,167 --> 00:00:14,330
+A file of numbers gave every possible next
+piece of text a probability, and Paris
+
+5
+00:00:14,330 --> 00:00:15,542
+came out far ahead.
+
+6
+00:00:16,150 --> 00:00:19,925
+So it picks Paris, appends it, and
+runs the whole thing again.
+
+7
+00:00:20,225 --> 00:00:22,225
+That loop is the whole trick.
+
+8
+00:00:23,250 --> 00:00:27,576
+By the end of this video, you'll know why the
+same question can get different
+
+9
+00:00:27,576 --> 00:00:28,025
+answers.
+
+10
+00:00:28,650 --> 00:00:34,175
+And why people preferred a model more than
+100 times smaller than GPT-3.
+
+11
+00:00:37,183 --> 00:00:40,108
+This is Part 1 of a 16-part series.
+
+12
+00:00:40,408 --> 00:00:44,233
+Today is the big picture, from your
+text to the next token.
+
+13
+00:00:44,850 --> 00:00:50,276
+Each later part opens up one piece of it:
+tokenizers, attention, the Transformer
+
+14
+00:00:50,276 --> 00:00:53,600
+block, and how a base model
+becomes an assistant.
+
+15
+00:00:54,617 --> 00:00:57,317
+A large language model does one thing.
+
+16
+00:00:57,617 --> 00:01:02,817
+Given some text, it predicts which small piece
+of text, called a token, comes next.
+
+17
+00:01:03,417 --> 00:01:06,567
+Think of the world's most
+well-read autocomplete.
+
+18
+00:01:07,183 --> 00:01:10,908
+Your phone suggests the next word
+from the last word or two.
+
+19
+00:01:11,208 --> 00:01:14,658
+An LLM looks at everything
+you've written so far.
+
+20
+00:01:15,683 --> 00:01:20,208
+To continue a sentence about penicillin,
+you need to know some medicine.
+
+21
+00:01:20,817 --> 00:01:24,742
+To finish a half-written Python
+function, you need to know Python.
+
+22
+00:01:25,350 --> 00:01:30,471
+So training a model to predict text well
+forces it to pick up grammar, facts and
+
+23
+00:01:30,471 --> 00:01:32,775
+patterns of reasoning along the way.
+
+24
+00:01:33,783 --> 00:01:35,583
+Here's the whole machine.
+
+25
+00:01:35,883 --> 00:01:39,383
+Let's follow our sentence through
+it, one block at a time.
+
+26
+00:01:39,983 --> 00:01:43,783
+It starts with the text so far, "The
+capital of France is".
+
+27
+00:01:44,383 --> 00:01:49,587
+First, a tokenizer splits the text into
+tokens, small pieces from a fixed
+
+28
+00:01:49,587 --> 00:01:53,508
+vocabulary, and replaces each
+piece with its ID number.
+
+29
+00:01:54,117 --> 00:01:59,595
+Next, each ID is swapped for a vector, a long
+list of numbers, taken from a lookup
+
+30
+00:01:59,595 --> 00:02:01,867
+table called the embedding matrix.
+
+31
+00:02:02,483 --> 00:02:07,932
+Then a stack of identical Transformer blocks
+updates each vector with information
+
+32
+00:02:07,932 --> 00:02:13,314
+from the tokens before it, using attention and
+a small neural network called the
+
+33
+00:02:13,314 --> 00:02:13,583
+MLP.
+
+34
+00:02:14,183 --> 00:02:19,428
+After the last block, the final vector becomes
+one score for every token in the
+
+35
+00:02:19,428 --> 00:02:20,158
+vocabulary.
+
+36
+00:02:20,458 --> 00:02:22,583
+These scores are called logits.
+
+37
+00:02:23,183 --> 00:02:27,408
+Softmax turns those scores into
+probabilities that add up to 1.
+
+38
+00:02:28,017 --> 00:02:31,292
+Then one token is picked from
+those probabilities.
+
+39
+00:02:31,592 --> 00:02:33,342
+Here, it's Paris.
+
+40
+00:02:33,950 --> 00:02:38,951
+Paris is appended to the text, and the whole
+model runs again to predict the token
+
+41
+00:02:38,951 --> 00:02:39,500
+after it.
+
+42
+00:02:40,117 --> 00:02:43,242
+One trip through all of this
+produces one token.
+
+43
+00:02:43,542 --> 00:02:45,917
+Now let's take each block in turn.
+
+44
+00:02:46,917 --> 00:02:49,517
+A model can only work with numbers.
+
+45
+00:02:49,817 --> 00:02:55,092
+So first, a tokenizer splits text into
+pieces from a fixed vocabulary.
+
+46
+00:02:55,717 --> 00:02:59,767
+Here's our sentence as GPT-4's
+tokenizer splits it.
+
+47
+00:03:00,067 --> 00:03:03,442
+Five pieces, and the spaces are
+part of the pieces.
+
+48
+00:03:04,050 --> 00:03:09,700
+Then each piece is replaced by its ID
+number. France is token 9822.
+
+49
+00:03:10,717 --> 00:03:15,992
+In English, one token is about 4 characters,
+roughly three quarters of a word.
+
+50
+00:03:16,617 --> 00:03:18,592
+Vocabularies are big.
+
+51
+00:03:18,892 --> 00:03:23,617
+GPT-2 used 50,257 tokens.
+
+52
+00:03:24,217 --> 00:03:27,717
+Llama 3 uses 128,000.
+
+53
+00:03:28,017 --> 00:03:32,392
+Tokens are also how you're billed, and how
+context limits are measured.
+
+54
+00:03:33,417 --> 00:03:37,617
+A token ID like 9822 is just a label.
+
+55
+00:03:37,917 --> 00:03:44,317
+Token 9822 isn't bigger than token
+315 in any useful sense.
+
+56
+00:03:44,917 --> 00:03:50,257
+So each ID is swapped for a vector, a list of
+numbers, from a lookup table called
+
+57
+00:03:50,257 --> 00:03:51,642
+the embedding matrix.
+
+58
+00:03:51,942 --> 00:03:56,567
+In GPT-3, that's 12,288 numbers.
+
+59
+00:03:57,183 --> 00:04:02,548
+During training, related meanings end up near
+each other: France, Paris and French
+
+60
+00:04:02,548 --> 00:04:05,033
+sit closer than France and carburetor.
+
+61
+00:04:05,333 --> 00:04:07,183
+Nobody designs that.
+
+62
+00:04:07,483 --> 00:04:09,208
+The model learns it.
+
+63
+00:04:10,217 --> 00:04:13,942
+A single token's vector only
+knows about that token.
+
+64
+00:04:14,242 --> 00:04:19,042
+The word bank gets the same starting vector in
+"river bank" and "bank account".
+
+65
+00:04:19,650 --> 00:04:24,674
+So the model updates each vector with
+information from the tokens around it, in a
+
+66
+00:04:24,674 --> 00:04:27,900
+stack of identical layers called
+Transformer blocks.
+
+67
+00:04:28,200 --> 00:04:31,250
+GPT-3 has 96 of them.
+
+68
+00:04:31,550 --> 00:04:36,400
+Llama 3.1 405B has 126.
+
+69
+00:04:37,417 --> 00:04:39,242
+First, attention.
+
+70
+00:04:39,542 --> 00:04:44,642
+Every token looks back at the tokens before it
+and decides which matter right now.
+
+71
+00:04:44,942 --> 00:04:48,692
+The position for "is" weights
+capital and France heavily.
+
+72
+00:04:49,317 --> 00:04:53,267
+Second, a feed-forward network,
+also called the MLP.
+
+73
+00:04:53,567 --> 00:04:57,690
+It works on each token on its own, and it's
+where much of the model's stored
+
+74
+00:04:57,690 --> 00:04:58,992
+knowledge seems to live.
+
+75
+00:04:59,617 --> 00:05:03,442
+Each block adds what it computed
+instead of replacing it.
+
+76
+00:05:03,742 --> 00:05:09,477
+Picture a shared notepad per token that each of
+the 96 layers reads and writes a few
+
+77
+00:05:09,477 --> 00:05:10,092
+notes on.
+
+78
+00:05:11,117 --> 00:05:12,267
+Wait.
+
+79
+00:05:12,567 --> 00:05:16,367
+So each token only sees the
+words right next to it?
+
+80
+00:05:16,983 --> 00:05:18,208
+No.
+
+81
+00:05:18,508 --> 00:05:23,600
+Attention connects every token to every
+earlier token directly, in one step, no
+
+82
+00:05:23,600 --> 00:05:25,533
+matter how far apart they are.
+
+83
+00:05:26,550 --> 00:05:31,795
+After the last block, the final vector becomes
+one score for every token in the
+
+84
+00:05:31,795 --> 00:05:32,525
+vocabulary.
+
+85
+00:05:32,825 --> 00:05:35,225
+These raw scores are called logits.
+
+86
+00:05:35,525 --> 00:05:37,575
+Here are five made-up ones.
+
+87
+00:05:38,183 --> 00:05:40,508
+Scores aren't probabilities yet.
+
+88
+00:05:40,808 --> 00:05:43,633
+A function called softmax converts them.
+
+89
+00:05:43,933 --> 00:05:49,310
+It raises e to the power of each score, then
+divides by the total, so everything
+
+90
+00:05:49,310 --> 00:05:50,183
+adds up to 1.
+
+91
+00:05:51,183 --> 00:05:52,833
+Here's a question.
+
+92
+00:05:53,133 --> 00:05:56,283
+Paris leads "a" by 2.5 points.
+
+93
+00:05:56,583 --> 00:05:59,283
+How big is its lead after softmax?
+
+94
+00:06:04,283 --> 00:06:05,883
+Twelve to one.
+
+95
+00:06:06,183 --> 00:06:10,958
+Exponentials turn a small lead in score
+into a big lead in probability.
+
+96
+00:06:12,783 --> 00:06:15,608
+Paris gets 85.2%.
+
+97
+00:06:15,908 --> 00:06:19,733
+Then a with 7%, and the rest
+trail far behind.
+
+98
+00:06:20,750 --> 00:06:24,050
+That step is called sampling,
+and you control it.
+
+99
+00:06:24,350 --> 00:06:27,500
+Greedy decoding always takes
+the top token.
+
+100
+00:06:27,800 --> 00:06:30,675
+It's predictable, but tends to sound flat.
+
+101
+00:06:31,283 --> 00:06:38,383
+Sampling rolls weighted dice: Paris 85.2%
+of the time, "a" 7% of the time.
+
+102
+00:06:38,683 --> 00:06:41,933
+That's why the same prompt can
+give different answers.
+
+103
+00:06:42,550 --> 00:06:47,388
+And temperature reshapes the odds before the
+roll, by dividing every logit by a
+
+104
+00:06:47,388 --> 00:06:48,000
+number, T.
+
+105
+00:06:48,617 --> 00:06:51,767
+Here are our five candidates at
+a temperature of 1.
+
+106
+00:06:52,383 --> 00:06:54,833
+Below 1, the leader gets stronger.
+
+107
+00:06:55,133 --> 00:06:57,733
+Paris goes to 99%.
+
+108
+00:06:58,350 --> 00:07:00,450
+Above 1, the field flattens.
+
+109
+00:07:00,750 --> 00:07:06,425
+At a temperature of 2, Lyon goes from almost
+never to about one draw in seventeen.
+
+110
+00:07:06,725 --> 00:07:10,475
+That's the creativity knob, and
+also a source of mistakes.
+
+111
+00:07:11,483 --> 00:07:12,958
+Another one.
+
+112
+00:07:13,258 --> 00:07:18,383
+To write a 500-token answer, how many trips
+through the whole model does it take?
+
+113
+00:07:23,383 --> 00:07:24,933
+500.
+
+114
+00:07:25,233 --> 00:07:30,708
+One trip produces one token, and every
+trip runs through all 96 layers.
+
+115
+00:07:31,008 --> 00:07:34,833
+That fact explains a lot about
+LLM speed and cost.
+
+116
+00:07:35,850 --> 00:07:40,672
+Once a token is chosen, it's appended, and
+the whole model runs again on "The
+
+117
+00:07:40,672 --> 00:07:42,425
+capital of France is Paris".
+
+118
+00:07:43,050 --> 00:07:48,342
+The loop keeps going until the model produces a
+special end token, or hits a length
+
+119
+00:07:48,342 --> 00:07:48,725
+limit.
+
+120
+00:07:49,750 --> 00:07:53,800
+Every step you've seen uses learned
+numbers, called parameters.
+
+121
+00:07:54,100 --> 00:07:56,400
+Autocomplete stores phrases.
+
+122
+00:07:56,700 --> 00:07:59,800
+An LLM stores billions of numbers.
+
+123
+00:08:00,417 --> 00:08:05,004
+That's why it can't tell you where it learned
+something, and why it sometimes fills
+
+124
+00:08:05,004 --> 00:08:06,717
+gaps with confident inventions.
+
+125
+00:08:07,717 --> 00:08:10,817
+You can rebuild GPT-3's count yourself.
+
+126
+00:08:11,117 --> 00:08:14,792
+Each block holds about 12 times d
+squared parameters.
+
+127
+00:08:15,092 --> 00:08:20,542
+With d at 12,288, that's 1.81
+billion per block.
+
+128
+00:08:21,150 --> 00:08:25,925
+Times 96 blocks gives 173.9 billion.
+
+129
+00:08:26,550 --> 00:08:32,494
+Add 0.6 billion for the embeddings, and you're
+within half a percent of the 175
+
+130
+00:08:32,494 --> 00:08:34,450
+billion the paper reports.
+
+131
+00:08:35,450 --> 00:08:38,525
+Each parameter is usually
+stored in 2 bytes.
+
+132
+00:08:38,825 --> 00:08:43,875
+So GPT-3's weights alone
+take about 350 GB.
+
+133
+00:08:44,483 --> 00:08:48,033
+That's more than four 80 GB GPUs can hold.
+
+134
+00:08:48,333 --> 00:08:51,533
+And every generated token
+touches all of them.
+
+135
+00:08:52,550 --> 00:08:55,125
+None of these numbers is set by hand.
+
+136
+00:08:55,425 --> 00:08:57,125
+They start random.
+
+137
+00:08:57,425 --> 00:08:59,425
+Training takes real text.
+
+138
+00:09:00,050 --> 00:09:03,750
+At every position, the model
+predicts the next token.
+
+139
+00:09:04,350 --> 00:09:09,175
+The loss measures how surprised it was by
+the token that actually came next.
+
+140
+00:09:09,783 --> 00:09:15,160
+Backpropagation works out how to nudge every
+parameter so the right answer gets more
+
+141
+00:09:15,160 --> 00:09:15,608
+likely.
+
+142
+00:09:16,217 --> 00:09:18,467
+Repeat, trillions of times.
+
+143
+00:09:18,767 --> 00:09:20,767
+No one labels anything.
+
+144
+00:09:21,067 --> 00:09:23,417
+The text is its own answer key.
+
+145
+00:09:24,417 --> 00:09:28,217
+GPT-3 trained on 300 billion tokens.
+
+146
+00:09:28,817 --> 00:09:34,317
+Llama 3.1 405B trained on 15.6 trillion.
+
+147
+00:09:34,917 --> 00:09:42,392
+Its 30.84 million GPU-hours would take
+about 3,500 years on a single GPU.
+
+148
+00:09:43,417 --> 00:09:47,042
+A model trained only on web
+text is a base model.
+
+149
+00:09:47,342 --> 00:09:52,249
+Ask it a question, and it might reply with
+three more questions, like a web page
+
+150
+00:09:52,249 --> 00:09:52,617
+would.
+
+151
+00:09:53,217 --> 00:09:56,417
+So chat models get a second
+round of training.
+
+152
+00:09:56,717 --> 00:10:03,630
+In the InstructGPT paper, people preferred a 1.3
+billion parameter instruction-tuned
+
+153
+00:10:03,630 --> 00:10:07,992
+model over GPT-3, a model more
+than 100 times bigger.
+
+154
+00:10:09,017 --> 00:10:14,862
+Before 2017, the best language models read one
+word at a time, carrying a running
+
+155
+00:10:14,862 --> 00:10:16,017
+summary forward.
+
+156
+00:10:16,317 --> 00:10:20,617
+Early words faded, and the work
+couldn't be spread across a GPU.
+
+157
+00:10:21,217 --> 00:10:24,717
+The Transformer paper named the
+problem directly.
+
+158
+00:10:25,017 --> 00:10:28,192
+Attention processes every
+position at once.
+
+159
+00:10:29,217 --> 00:10:32,817
+It set a new best score on English
+to German translation.
+
+160
+00:10:33,417 --> 00:10:36,867
+Its base model trained in 12
+hours on one machine.
+
+161
+00:10:37,167 --> 00:10:39,642
+Then the models mostly got bigger.
+
+162
+00:10:40,650 --> 00:10:47,922
+From GPT-1's 117 million to Kimi K3's 2.8
+trillion, parameter counts grew about
+
+163
+00:10:47,922 --> 00:10:50,500
+24,000 times in eight years.
+
+164
+00:10:50,800 --> 00:10:53,675
+And the block design
+underneath barely changed.
+
+165
+00:10:54,683 --> 00:10:59,885
+The one big change is mixture of experts:
+many smaller MLPs per block, called
+
+166
+00:10:59,885 --> 00:11:03,533
+experts, and a router that picks
+a few for each token.
+
+167
+00:11:04,150 --> 00:11:11,918
+Kimi K3 uses 16 of its 896 experts per token,
+so only about 104 billion of its 2.8
+
+168
+00:11:11,918 --> 00:11:14,950
+trillion parameters do any work.
+
+169
+00:11:15,250 --> 00:11:19,025
+A giant's knowledge, at a much
+smaller model's compute cost.
+
+170
+00:11:20,050 --> 00:11:22,900
+So it looks answers up in a database?
+
+171
+00:11:23,517 --> 00:11:25,717
+There's no database inside.
+
+172
+00:11:26,017 --> 00:11:29,017
+Facts are spread across
+billions of parameters.
+
+173
+00:11:29,317 --> 00:11:32,567
+That's why models can be wrong
+with full confidence.
+
+174
+00:11:33,183 --> 00:11:34,533
+Fine.
+
+175
+00:11:34,833 --> 00:11:38,483
+But temperature zero makes it
+deterministic, right?
+
+176
+00:11:39,083 --> 00:11:40,958
+It makes the choice greedy.
+
+177
+00:11:41,258 --> 00:11:45,846
+But on a shared server, your request is
+batched with other people's, and the
+
+178
+00:11:45,846 --> 00:11:47,958
+arithmetic can shift very slightly.
+
+179
+00:11:48,258 --> 00:11:50,333
+Enough to flip a close call.
+
+180
+00:11:50,950 --> 00:11:53,625
+And it reads words, the way I do.
+
+181
+00:11:54,250 --> 00:11:56,025
+It reads tokens.
+
+182
+00:11:56,325 --> 00:12:00,725
+That's why counting letters can trip up a
+model that writes fluent essays.
+
+183
+00:12:01,750 --> 00:12:03,550
+So, the big picture.
+
+184
+00:12:03,850 --> 00:12:09,050
+An LLM predicts one token at a time:
+predict, pick, append, repeat.
+
+185
+00:12:09,650 --> 00:12:15,425
+Each trip turns tokens into vectors, mixes in
+context, and ends in probabilities.
+
+186
+00:12:15,725 --> 00:12:18,800
+Temperature sets how
+adventurous the pick is.
+
+187
+00:12:19,417 --> 00:12:24,216
+And all of the model's skill lives in its
+parameters, learned from trillions of
+
+188
+00:12:24,216 --> 00:12:24,642
+tokens.
+
+189
+00:12:25,650 --> 00:12:31,027
+Next is Part 2, the first thing that happens
+to your text: tokenization, and why
+
+190
+00:12:31,027 --> 00:12:33,850
+"strawberry" is hard for a model to spell.
+
+191
+00:12:34,850 --> 00:12:39,075
+The full article, with every number and
+its source, is on vidyal.ai.
+
+192
+00:12:40,083 --> 00:12:41,783
+Thanks for watching.
+
+193
+00:12:42,083 --> 00:12:44,733
+Next in the series, tokenization.
+
+194
+00:12:45,033 --> 00:12:47,108
+Subscribe so you don't miss it.

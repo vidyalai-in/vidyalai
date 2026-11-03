@@ -1,0 +1,39 @@
+{
+  "videos": {
+    "main": {
+      "steps": {
+        "thumbnail": true,
+        "captions": true,
+        "playlist": true,
+        "comment": true
+      },
+      "id": "ussRgOkiAHY",
+      "published": true
+    },
+    "short-temperature": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "CIs4Dn824ms",
+      "published": true
+    },
+    "short-500-trips": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "JfkL6AMZvlE",
+      "published": true
+    },
+    "short-small-beat-big": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "KXhT8wPOemA",
+      "published": true
+    }
+  },
+  "playlistId": "PLb2B8tLvpbCA"
+}

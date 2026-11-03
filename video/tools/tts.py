@@ -11,6 +11,7 @@ Commands (driven by JSON files that build.mjs writes):
   tts.py synth MANIFEST.json   Synthesize each sentence to its own WAV (cached by text + engine
                                settings) and write durations back into MANIFEST.json.
   tts.py mix TIMELINE.json     Place sentence WAVs at their start times into one WAV track.
+  tts.py bed BED.json          Synthesize the music bed and the sound-effects track (see bed()).
 
 Device: --device auto (default) uses whichever of CUDA and CPU is faster (Kokoro benchmarks both;
 Chatterbox always prefers CUDA). build.mjs runs this through uv with the right dependencies.
@@ -74,11 +75,21 @@ class Kokoro:
             self.pipe = pipes[self.device]
             print(f"tts: kokoro device timings {', '.join(f'{d}={t:.2f}s' for d, t in timings.items())}; using {self.device}", flush=True)
 
-    def say(self, text: str):
+    def say(self, text: str, voice: str | None = None):
+        """Audio plus per-word timings: [[token, start_s, end_s], ...] from Kokoro's duration model."""
         import numpy as np
 
-        chunks = [r.audio for r in self.pipe(text, voice=self.voice, speed=self.speed) if r.audio is not None]
-        return np.concatenate([c.cpu().numpy() if hasattr(c, "cpu") else np.asarray(c) for c in chunks]), {}
+        chunks, words, offset = [], [], 0.0
+        for r in self.pipe(text, voice=voice or self.voice, speed=self.speed):
+            if r.audio is None:
+                continue
+            audio = r.audio.cpu().numpy() if hasattr(r.audio, "cpu") else np.asarray(r.audio)
+            for tk in r.tokens or []:
+                if tk.start_ts is not None and tk.end_ts is not None and re.search(r"\w", tk.text):
+                    words.append([tk.text, round(offset + tk.start_ts, 3), round(offset + tk.end_ts, 3)])
+            offset += len(audio) / SAMPLE_RATE
+            chunks.append(audio)
+        return np.concatenate(chunks), {"words": words}
 
 
 # ---------------------------------------------------------------- Chatterbox
@@ -185,7 +196,7 @@ class Chatterbox:
         info["wer"] = round(wer(ref, hyp), 3)
         return info["wer"] + penalty, info
 
-    def say(self, text: str):
+    def say(self, text: str, voice: str | None = None):
         best = None
         for take in range(self.retakes):
             seed = int(hashlib.sha1(f"{text}|{take}".encode()).hexdigest()[:8], 16)
@@ -238,14 +249,22 @@ def synth(manifest_path: Path, device: str):
     cache = Path(manifest["cacheDir"])
     cache.mkdir(parents=True, exist_ok=True)
 
+    def engine_for(item):
+        # A step can be read by a second Kokoro voice (`speaker:` in script.yaml).
+        return {**engine, "voice": item["voice"]} if item.get("voice") else engine
+
     todo = []
     for item in manifest["items"]:
-        item["wav"] = str(cache / f"{cache_key(engine, item['tts'])}.wav")
+        item["wav"] = str(cache / f"{cache_key(engine_for(item), item['tts'])}.wav")
         info = Path(item["wav"]).with_suffix(".json")
         stale = False
         if info.exists():
-            scores = json.loads(info.read_text()).get("pronunciation", {})
+            saved = json.loads(info.read_text())
+            scores = saved.get("pronunciation", {})
             stale = any(scores.get(c["say"], 1) < float(c.get("min", 0.9)) for c in engine.get("checks", []))
+            stale = stale or (engine["name"] == "kokoro" and "words" not in saved)
+        elif engine["name"] == "kokoro":
+            stale = True  # clips cached before word timings existed
         if stale or not Path(item["wav"]).exists():
             todo.append(item)
 
@@ -255,7 +274,7 @@ def synth(manifest_path: Path, device: str):
         tts = ENGINES[engine["name"]](engine, device)
         start = time.perf_counter()
         for i, item in enumerate(todo, 1):
-            audio, info = tts.say(item["tts"])
+            audio, info = tts.say(item["tts"], item.get("voice"))
             info = {k: v for k, v in info.items() if v is not None}
             sf.write(item["wav"], audio, SAMPLE_RATE)
             if info:
@@ -298,6 +317,162 @@ def mix(timeline_path: Path):
     print(f"tts: mixed {len(timeline['clips'])} clips into {timeline['out']} ({timeline['totalSeconds']:.1f}s)", flush=True)
 
 
+# ---------------------------------------------------------------- Music bed and sound effects
+BED_RATE = 48000
+
+
+def midi_hz(n: float) -> float:
+    return 440.0 * 2 ** ((n - 69) / 12)
+
+
+def reverb(x, seconds: float, rng, decay: float = 2.2):
+    """Convolve with exponentially decaying, softened noise (a plain room tail), by overlap-add."""
+    import numpy as np
+
+    n = int(seconds * BED_RATE)
+    ir = rng.standard_normal(n) * np.exp(-np.arange(n) / BED_RATE * (6.9 / decay))
+    ir = np.convolve(ir, np.ones(24) / 24, mode="same")  # take the fizz off the tail
+    ir /= np.sqrt(np.sum(ir**2))
+    block = 1 << 16
+    size = 1 << int(np.ceil(np.log2(block + n)))
+    IR = np.fft.rfft(ir, size)
+    out = np.zeros(len(x) + n)
+    for i in range(0, len(x), block):
+        seg = x[i : i + block]
+        y = np.fft.irfft(np.fft.rfft(seg, size) * IR, size)[: len(seg) + n]
+        out[i : i + len(y)] += y
+    return out[: len(x)]
+
+
+def synth_music(seconds: float, seed: int):
+    """A calm ambient bed: a four-chord pad (Fmaj9, Am9, Cmaj9, G6/9) with a soft sub bass, a sparse
+    plucked arpeggio and a reverb tail. Generated here so it is ours to use: no licence, no Content ID
+    match. Returns stereo float32 at 48 kHz, peak about -6 dBFS."""
+    import numpy as np
+
+    rng = np.random.default_rng(seed)
+    chords = [  # (bass, voicing) as MIDI notes
+        (41, [57, 60, 64, 67, 69]),
+        (45, [60, 64, 67, 71, 72]),
+        (48, [59, 64, 67, 74, 76]),
+        (43, [59, 62, 64, 69, 71]),
+    ]
+    bar = 6.0  # seconds per chord
+    total = int(seconds * BED_RATE)
+    pad = np.zeros(total + int(3 * BED_RATE))
+    bass = np.zeros_like(pad)
+    pluck = np.zeros_like(pad)
+    seg = int((bar + 2.5) * BED_RATE)
+    tt = np.arange(seg) / BED_RATE
+    env = np.minimum(1, tt / 1.8) * np.clip((bar + 2.5 - tt) / 2.5, 0, 1)  # slow attack, crossfaded release
+    for k in range(int(np.ceil(seconds / bar)) + 1):
+        root, notes = chords[k % len(chords)]
+        start = int(k * bar * BED_RATE)
+        if start >= total:
+            break
+        wave = np.zeros(seg)
+        for n in notes:
+            for cents in (-7, 0, 7):  # three detuned voices per note: a gentle chorus
+                f = midi_hz(n) * 2 ** (cents / 1200)
+                ph = rng.uniform(0, 2 * np.pi)
+                wave += np.sin(2 * np.pi * f * tt + ph) + 0.18 * np.sin(4 * np.pi * f * tt + ph)
+        end = min(len(pad), start + seg)
+        pad[start:end] += (wave * env)[: end - start] / (len(notes) * 3)
+        fb = midi_hz(root)
+        bass[start:end] += (np.sin(2 * np.pi * fb * tt) * env)[: end - start] * 0.5
+        # Plucks: a chord tone an octave up on some beats (80 bpm), decaying quickly.
+        beat = 60 / 80
+        for b in range(int(bar / beat)):
+            if rng.random() < 0.45:
+                continue
+            n = notes[rng.integers(len(notes))] + 12
+            p0 = start + int((b * beat + rng.uniform(0, 0.03)) * BED_RATE)
+            if p0 >= len(pluck):
+                continue
+            pl = np.arange(int(1.2 * BED_RATE)) / BED_RATE
+            f = midi_hz(n)
+            tone = (np.sin(2 * np.pi * f * pl) + 0.3 * np.sin(4 * np.pi * f * pl)) * np.exp(-pl / 0.28) * np.minimum(1, pl / 0.004)
+            e = min(len(pluck), p0 + len(tone))
+            pluck[p0:e] += tone[: e - p0] * rng.uniform(0.18, 0.3)
+    lfo = 1 + 0.08 * np.sin(2 * np.pi * 0.07 * np.arange(len(pad)) / BED_RATE)
+    dry = pad * lfo + bass + pluck
+    dry = dry[:total]
+    left = 0.65 * dry + 0.55 * reverb(dry, 2.4, rng)
+    right = 0.65 * dry + 0.55 * reverb(dry, 2.4, rng)
+    out = np.stack([left, right], axis=1)
+    fade_in, fade_out = int(2.5 * BED_RATE), int(4 * BED_RATE)
+    out[:fade_in] *= np.linspace(0, 1, fade_in)[:, None]
+    out[-fade_out:] *= np.linspace(1, 0, fade_out)[:, None]
+    return (out / np.max(np.abs(out)) * 0.5).astype(np.float32)
+
+
+def sfx_sound(name: str, rng):
+    """Short interface sounds, synthesized. Levels are absolute (dBFS peaks noted per sound)."""
+    import numpy as np
+
+    def t(sec):
+        return np.arange(int(sec * BED_RATE)) / BED_RATE
+
+    if name == "whoosh":  # filtered noise sweeping up then down, peak about -24 dBFS
+        x = t(0.75)
+        noise = rng.standard_normal(len(x))
+        shape = np.sin(np.pi * np.clip(x / 0.75, 0, 1)) ** 2
+        cutoff = 300 + 3500 * shape
+        out, y = np.zeros_like(noise), 0.0
+        for i, v in enumerate(noise):  # one-pole low-pass with a moving cutoff
+            a = 1 - np.exp(-2 * np.pi * cutoff[i] / BED_RATE)
+            y += a * (v - y)
+            out[i] = y
+        out *= shape
+        return 0.063 * out / np.max(np.abs(out))
+    if name == "pop":  # a soft blip, peak about -26 dBFS
+        x = t(0.16)
+        f = 520 + 420 * np.exp(-x / 0.02)
+        out = np.sin(2 * np.pi * np.cumsum(f) / BED_RATE) * np.exp(-x / 0.05) * np.minimum(1, x / 0.002)
+        return 0.05 * out
+    if name == "tick":  # a clock tick, peak about -24 dBFS
+        x = t(0.05)
+        out = np.sin(2 * np.pi * 1900 * x) * np.exp(-x / 0.007)
+        return 0.063 * out
+    if name == "type":  # a key click, peak about -32 dBFS
+        x = t(0.012)
+        out = rng.standard_normal(len(x)) * np.exp(-x / 0.003)
+        out = np.diff(out, prepend=0)  # crude high-pass
+        return 0.025 * out / np.max(np.abs(out))
+    if name == "ding":  # a bell for a quiz answer, peak about -20 dBFS
+        x = t(1.8)
+        out = sum(a * np.sin(2 * np.pi * 1046.5 * r * x) * np.exp(-x / (1.2 / (i + 1))) for i, (r, a) in enumerate([(1, 1), (2.0, 0.45), (3.01, 0.22), (4.2, 0.12)]))
+        out *= np.minimum(1, x / 0.003)
+        return 0.1 * out / np.max(np.abs(out))
+    raise ValueError(f"unknown sound effect {name}")
+
+
+def bed(bed_path: Path):
+    """BED.json: {seconds, seed, music: "synth" | null, musicOut, sfx: [{name, t, db?}], sfxOut}."""
+    import numpy as np
+    import soundfile as sf
+
+    spec = json.loads(bed_path.read_text())
+    rng = np.random.default_rng(spec.get("seed", 0))
+    if spec.get("music") == "synth":
+        start = time.perf_counter()
+        sf.write(spec["musicOut"], synth_music(spec["seconds"], spec.get("seed", 0)), BED_RATE)
+        print(f"tts: music bed {spec['seconds']:.0f}s synthesized in {time.perf_counter() - start:.0f}s", flush=True)
+    if spec.get("sfx") is not None:
+        track = np.zeros(int((spec["seconds"] + 2) * BED_RATE))
+        cache = {}
+        for ev in spec["sfx"]:
+            key = ev["name"]
+            if key not in cache or key in ("whoosh", "type"):  # noise-based sounds vary a little each time
+                cache[key] = sfx_sound(key, rng)
+            snd = cache[key] * 10 ** (ev.get("db", 0) / 20)
+            i = max(0, int(ev["t"] * BED_RATE))
+            e = min(len(track), i + len(snd))
+            track[i:e] += snd[: e - i]
+        sf.write(spec["sfxOut"], track[: int(spec["seconds"] * BED_RATE)].astype(np.float32), BED_RATE)
+        print(f"tts: {len(spec['sfx'])} sound effects placed", flush=True)
+
+
 if __name__ == "__main__":
     args = sys.argv[1:]
     device = "auto"
@@ -305,9 +480,11 @@ if __name__ == "__main__":
         i = args.index("--device")
         device = args[i + 1]
         del args[i : i + 2]
-    if len(args) != 2 or args[0] not in ("synth", "mix"):
+    if len(args) != 2 or args[0] not in ("synth", "mix", "bed"):
         sys.exit(__doc__)
     if args[0] == "synth":
         synth(Path(args[1]), device)
+    elif args[0] == "bed":
+        bed(Path(args[1]))
     else:
         mix(Path(args[1]))

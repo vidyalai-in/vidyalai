@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { prepareScene } from './assets.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const require = createRequire(join(ROOT, 'package.json'));
@@ -23,6 +24,8 @@ if (!existsSync(join(videoDir, 'script.yaml')) || !rest.length) {
   process.exit(1);
 }
 const script = YAML.parse(readFileSync(join(videoDir, 'script.yaml'), 'utf8'));
+const front = YAML.parse(readFileSync(join(ROOT, script.article), 'utf8').split(/^---$/m)[1]);
+const fx = script.fx ?? {};
 const which = /^\d+:\d+$/.test(rest[0]) ? 'main' : rest.shift();
 const video = which === 'main' ? { format: 'landscape', ...script.main } : { format: 'portrait', ...script.shorts.find((s) => s.id === which) };
 if (!video.scenes) throw new Error(`No video "${which}" in script.yaml`);
@@ -50,13 +53,11 @@ for (const pick of rest) {
     logo: fileUrl('src/assets/brand/logo-mark.png'),
     banner: fileUrl(video.format === 'portrait' ? 'src/assets/brand/banner-mobile.png' : 'src/assets/brand/banner1.png'),
   };
-  if (scene.diagram) {
-    const p = `public/diagrams/${scene.diagram}-dark.svg`;
-    const [, , dw, dh] = /viewBox="([^"]+)"/.exec(readFileSync(join(ROOT, p), 'utf8'))[1].trim().split(/[\s,]+/).map(Number);
-    Object.assign(assets, { diagram: fileUrl(p), diagramSize: { w: dw, h: dh } });
-  }
-  await page.evaluate((spec) => window.stage.load(spec), { format: video.format, scene, assets, chapter: scene.chapter ?? 'Preview', progress: video.format === 'landscape' && scene.type !== 'endcard', chrome: !['brand', 'endcard'].includes(scene.type) });
-  await page.evaluate((a) => window.stage.set(a, 1, 0.5), tn - 1);
+  Object.assign(assets, prepareScene(ROOT, scene, front));
+  // Stills show the end of the step (no TTS timing: each step is 4 s), without drift.
+  const stageFx = { wordSync: false, drift: false, captions: video.format === 'portrait' && fx.shortsCaptions };
+  await page.evaluate((spec) => window.stage.load(spec), { format: video.format, scene, assets, fx: stageFx, chapter: scene.chapter ?? 'Preview', progress: video.format === 'landscape' && scene.type !== 'endcard', chrome: !['brand', 'endcard'].includes(scene.type) });
+  await page.evaluate((a) => window.stage.set(a), tn - 1);
   const file = join(outDir, `${which}-${sn}-${tn}.png`);
   await page.screenshot({ path: file });
   console.log(relative(ROOT, file));

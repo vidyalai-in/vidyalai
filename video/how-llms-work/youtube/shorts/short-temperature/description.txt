@@ -1,0 +1,9 @@
+The same prompt can get a different answer from an LLM. Temperature is why.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/how-llms-work/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#LLM #AI #shorts

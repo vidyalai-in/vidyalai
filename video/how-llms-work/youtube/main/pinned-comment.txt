@@ -1,0 +1,2 @@
+Which part of the loop surprised you most: tokens, attention, or sampling?
+The full article, with every number and source: https://vidyal.ai/blog/how-llms-work/

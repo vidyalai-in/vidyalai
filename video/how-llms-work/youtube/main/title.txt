@@ -1,0 +1,5 @@
+How a Large Language Model Works: The Big Picture | LLM Fundamentals
+
+Alternatives:
+- How ChatGPT Actually Works: Tokens, Transformers and One Loop
+- How LLMs Work, Explained Visually (Part 1)
