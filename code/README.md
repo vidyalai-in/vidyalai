@@ -56,8 +56,11 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `grading.py` | 6 | Exact match, token F1, ROUGE, BLEU, chrF and BERTScore, summary- and system-level Kendall tau with bootstrap, Cohen's kappa, MT-Bench vote agreement, rubric and pairwise judge prompts |
 | `arena.py` | 7 | Online Elo (single and vectorized over vote orders), Bradley-Terry with ties as half wins or dropped, Rao-Kupper ties, vote and cluster bootstrap, style-controlled Bradley-Terry, Kendall tau |
 | `verify.py` | 8 | pass@k with a bootstrap over problems, code extraction, a namespace sandbox runner (no network, memory and task caps), answer extraction, exact, normalized and symbolic (Math-Verify) math graders |
+| `longctx.py` | 9 | Haystack building from book text with NoLiMa-style needles and RULER-style variable chains at set depths, primer-first prompt caching, strict and lenient graders, KV-cached open-model runs |
+| `safety_evals.py` | 10 | XSTest loading, reply, judge (XSTest three-class) and StrongREJECT request builders, prefix and keyword refusal matchers, the benign MMLU sandbagging prompts |
+| `own_eval.py` | 11 | Item drafting and checks, answer passes, the published harness, the number/phrase/not-stated grader, paired and clustered differences, power and minimum detectable effect |
 
-`experiments/e01` to `e08` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC, SummEval, MT-Bench judgments, arena votes, HumanEval+, MATH-500; the prep and fetch scripts rebuild them), raw API transcripts and model replies, Part 5's contaminated SmolLM2 checkpoint and training stream, and open-model weights.
+`experiments/e01` to `e11` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC, SummEval, MT-Bench judgments, arena votes, HumanEval+, MATH-500, XSTest, the Austen haystacks; the prep and fetch scripts rebuild them), Part 11's private eval items, raw API transcripts and model replies, Part 5's contaminated SmolLM2 checkpoint and training stream, and open-model weights.
 
 ## agents-lab/ (Agentic AI)
 
