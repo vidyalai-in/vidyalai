@@ -1,0 +1,14 @@
+flowchart TD
+  O["A model's output"]
+  REF["Reference answer(s)"]
+  RUB["Rubric + the source text"]
+  O2["A second output<br/>for the same prompt"]
+  O --> M["Reference metric:<br/>EM, F1, BLEU, ROUGE, BERTScore"]
+  REF --> M
+  O --> J["Rubric judge:<br/>scores one output 1-5"]
+  RUB --> J
+  O --> P["Pairwise judge:<br/>picks the better of two"]
+  O2 --> P
+  M --> H["Validate against<br/>human labels"]
+  J --> H
+  P --> H

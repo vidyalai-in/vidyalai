@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 330" width="780" height="330" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="330" fill="#0b162d"/>
+<line x1="270.0" x2="270.0" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="270.0" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">50%</text>
+<line x1="323.3" x2="323.3" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="323.3" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">55%</text>
+<line x1="376.7" x2="376.7" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="376.7" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">60%</text>
+<line x1="430.0" x2="430.0" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="430.0" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">65%</text>
+<line x1="483.3" x2="483.3" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="483.3" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">70%</text>
+<line x1="536.7" x2="536.7" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="536.7" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">75%</text>
+<line x1="590.0" x2="590.0" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="590.0" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">80%</text>
+<line x1="643.3" x2="643.3" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="643.3" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">85%</text>
+<line x1="696.7" x2="696.7" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="696.7" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">90%</text>
+<line x1="750.0" x2="750.0" y1="58" y2="272" stroke="#22355a" stroke-width="1"/>
+<text x="750.0" y="292" fill="#9fb0cf" font-size="13" text-anchor="middle">95%</text>
+<text x="510.0" y="316" fill="#e8eefc" font-size="14" text-anchor="middle">Agreement with an expert's vote on the same pair</text>
+<circle cx="278" cy="22" r="6" fill="#38bdf8"/><text x="290" y="27" fill="#e8eefc" font-size="14">with ties (chance 33%)</text>
+<circle cx="500" cy="22" r="6" fill="#d95926"/><text x="512" y="27" fill="#e8eefc" font-size="14">without ties (chance 50%)</text>
+<text x="258" y="84.4" fill="#e8eefc" font-size="14" text-anchor="end">Expert vs another expert</text>
+<line x1="371.3" x2="472.7" y1="79.4" y2="79.4" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="371.3" x2="371.3" y1="74.4" y2="84.4" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="472.7" x2="472.7" y1="74.4" y2="84.4" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="420.4" cy="79.4" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="420.4" y="68.4" fill="#e8eefc" font-size="12" text-anchor="middle">64.1</text>
+<line x1="561.2" x2="661.5" y1="79.4" y2="79.4" stroke="#d95926" stroke-width="2.5"/>
+<line x1="561.2" x2="561.2" y1="74.4" y2="84.4" stroke="#d95926" stroke-width="2.5"/>
+<line x1="661.5" x2="661.5" y1="74.4" y2="84.4" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="611.3" cy="79.4" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="611.3" y="68.4" fill="#e8eefc" font-size="12" text-anchor="middle">82.0</text>
+<text x="258" y="127.2" fill="#e8eefc" font-size="14" text-anchor="end">GPT-4 judge (2023 release)</text>
+<line x1="407.6" x2="487.6" y1="122.2" y2="122.2" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="407.6" x2="407.6" y1="117.2" y2="127.2" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="487.6" x2="487.6" y1="117.2" y2="127.2" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="447.1" cy="122.2" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="447.1" y="111.2" fill="#e8eefc" font-size="12" text-anchor="middle">66.6</text>
+<line x1="618.8" x2="686.0" y1="122.2" y2="122.2" stroke="#d95926" stroke-width="2.5"/>
+<line x1="618.8" x2="618.8" y1="117.2" y2="127.2" stroke="#d95926" stroke-width="2.5"/>
+<line x1="686.0" x2="686.0" y1="117.2" y2="127.2" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="652.9" cy="122.2" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="652.9" y="111.2" fill="#e8eefc" font-size="12" text-anchor="middle">85.9</text>
+<text x="258" y="170.0" fill="#e8eefc" font-size="14" text-anchor="end">Haiku 5.5, scores each answer</text>
+<line x1="401.2" x2="476.9" y1="165.0" y2="165.0" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="401.2" x2="401.2" y1="160.0" y2="170.0" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="476.9" x2="476.9" y1="160.0" y2="170.0" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="438.5" cy="165.0" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="438.5" y="154.0" fill="#e8eefc" font-size="12" text-anchor="middle">65.8</text>
+<line x1="617.7" x2="676.4" y1="165.0" y2="165.0" stroke="#d95926" stroke-width="2.5"/>
+<line x1="617.7" x2="617.7" y1="160.0" y2="170.0" stroke="#d95926" stroke-width="2.5"/>
+<line x1="676.4" x2="676.4" y1="160.0" y2="170.0" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="647.6" cy="165.0" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="647.6" y="154.0" fill="#e8eefc" font-size="12" text-anchor="middle">85.4</text>
+<text x="258" y="212.8" fill="#e8eefc" font-size="14" text-anchor="end">Haiku 5.5, pairwise, one order</text>
+<line x1="426.8" x2="488.7" y1="207.8" y2="207.8" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="426.8" x2="426.8" y1="202.8" y2="212.8" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="488.7" x2="488.7" y1="202.8" y2="212.8" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="457.7" cy="207.8" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="457.7" y="196.8" fill="#e8eefc" font-size="12" text-anchor="middle">67.6</text>
+<line x1="602.8" x2="663.6" y1="207.8" y2="207.8" stroke="#d95926" stroke-width="2.5"/>
+<line x1="602.8" x2="602.8" y1="202.8" y2="212.8" stroke="#d95926" stroke-width="2.5"/>
+<line x1="663.6" x2="663.6" y1="202.8" y2="212.8" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="632.7" cy="207.8" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="632.7" y="196.8" fill="#e8eefc" font-size="12" text-anchor="middle">84.0</text>
+<text x="258" y="255.6" fill="#e8eefc" font-size="14" text-anchor="end">Haiku 5.5, pairwise, both orders</text>
+<line x1="437.5" x2="500.4" y1="250.6" y2="250.6" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="437.5" x2="437.5" y1="245.6" y2="255.6" stroke="#38bdf8" stroke-width="2.5"/>
+<line x1="500.4" x2="500.4" y1="245.6" y2="255.6" stroke="#38bdf8" stroke-width="2.5"/>
+<circle cx="468.4" cy="250.6" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="468.4" y="239.6" fill="#e8eefc" font-size="12" text-anchor="middle">68.6</text>
+<line x1="624.1" x2="682.8" y1="250.6" y2="250.6" stroke="#d95926" stroke-width="2.5"/>
+<line x1="624.1" x2="624.1" y1="245.6" y2="255.6" stroke="#d95926" stroke-width="2.5"/>
+<line x1="682.8" x2="682.8" y1="245.6" y2="255.6" stroke="#d95926" stroke-width="2.5"/>
+<circle cx="654.0" cy="250.6" r="6" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="654.0" y="239.6" fill="#e8eefc" font-size="12" text-anchor="middle">86.0</text>
+</svg>

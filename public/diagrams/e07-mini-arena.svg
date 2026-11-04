@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="400" fill="#ffffff"/>
+<line x1="279.3" x2="279.3" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="279.3" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">600</text>
+<line x1="338.0" x2="338.0" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="338.0" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">700</text>
+<line x1="396.7" x2="396.7" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="396.7" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">800</text>
+<line x1="455.3" x2="455.3" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="455.3" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">900</text>
+<line x1="514.0" x2="514.0" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="514.0" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">1000</text>
+<line x1="572.7" x2="572.7" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="572.7" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">1100</text>
+<line x1="631.3" x2="631.3" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="631.3" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">1200</text>
+<line x1="690.0" x2="690.0" y1="74" y2="344" stroke="#dde5f2" stroke-width="1"/>
+<text x="690.0" y="364" fill="#4a5b78" font-size="13" text-anchor="middle">1300</text>
+<text x="470.0" y="388" fill="#0b1a33" font-size="14" text-anchor="middle">Rating from Haiku-judged pairs (Elo scale, mean 1000)</text>
+<line x1="250" x2="280" y1="22" y2="22" stroke="#eb6834" stroke-width="4"/><circle cx="265" cy="22" r="5" fill="#eb6834"/>
+<text x="290" y="27" fill="#0b1a33" font-size="13">Plain Bradley-Terry</text>
+<line x1="450" x2="480" y1="22" y2="22" stroke="#0b5fd6" stroke-width="4"/><circle cx="465" cy="22" r="5" fill="#0b5fd6"/>
+<text x="490" y="27" fill="#0b1a33" font-size="13">Style-controlled (95% intervals)</text>
+<text x="735" y="62" fill="#0b1a33" font-size="13" text-anchor="middle">MMLU</text>
+<text x="240" y="106.0" fill="#0b1a33" font-size="13" text-anchor="end">Haiku, "detail + markdown" prompt</text>
+<line x1="599.5" x2="661.7" y1="94.0" y2="94.0" stroke="#eb6834" stroke-width="3.5"/>
+<circle cx="628.5" cy="94.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="355.4" x2="487.0" y1="108.0" y2="108.0" stroke="#0b5fd6" stroke-width="3.5"/>
+<circle cx="436.4" cy="108.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="735" y="106.0" fill="#0b1a33" font-size="13" text-anchor="middle">n/a</text>
+<text x="240" y="160.0" fill="#0b1a33" font-size="13" text-anchor="end">Sonnet 5.5, thinking off</text>
+<line x1="572.1" x2="630.6" y1="148.0" y2="148.0" stroke="#eb6834" stroke-width="3.5"/>
+<circle cx="598.7" cy="148.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="559.6" x2="616.0" y1="162.0" y2="162.0" stroke="#0b5fd6" stroke-width="3.5"/>
+<circle cx="583.5" cy="162.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="735" y="160.0" fill="#0b1a33" font-size="13" text-anchor="middle">86.7%</text>
+<text x="240" y="214.0" fill="#0b1a33" font-size="13" text-anchor="end">Haiku 5.5, adaptive thinking, low</text>
+<line x1="512.2" x2="569.1" y1="202.0" y2="202.0" stroke="#eb6834" stroke-width="3.5"/>
+<circle cx="539.1" cy="202.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="537.1" x2="592.7" y1="216.0" y2="216.0" stroke="#0b5fd6" stroke-width="3.5"/>
+<circle cx="561.9" cy="216.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="735" y="214.0" fill="#0b1a33" font-size="13" text-anchor="middle">89.7%</text>
+<text x="240" y="268.0" fill="#0b1a33" font-size="13" text-anchor="end">Haiku 5.5, thinking off</text>
+<line x1="447.2" x2="486.0" y1="256.0" y2="256.0" stroke="#eb6834" stroke-width="3.5"/>
+<circle cx="467.2" cy="256.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="474.2" x2="531.8" y1="270.0" y2="270.0" stroke="#0b5fd6" stroke-width="3.5"/>
+<circle cx="499.8" cy="270.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="735" y="268.0" fill="#0b1a33" font-size="13" text-anchor="middle">79.7%</text>
+<text x="240" y="322.0" fill="#0b1a33" font-size="13" text-anchor="end">Haiku, "be concise" prompt</text>
+<line x1="274.9" x2="380.4" y1="310.0" y2="310.0" stroke="#eb6834" stroke-width="3.5"/>
+<circle cx="336.5" cy="310.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="434.3" x2="549.8" y1="324.0" y2="324.0" stroke="#0b5fd6" stroke-width="3.5"/>
+<circle cx="488.4" cy="324.0" r="5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<text x="735" y="322.0" fill="#0b1a33" font-size="13" text-anchor="middle">n/a</text>
+</svg>

@@ -195,10 +195,10 @@ Series slug `llm-evals`, short name "Evals", file prefix `e`, category `evaluati
 | 2 | How benchmarks are built | `how-benchmarks-are-built` | MMLU to GPQA to Humanity's Last Exam; item writing and validation | e01 | Published |
 | 3 | The statistics of evals | `eval-statistics` | Confidence intervals, sample size, paired tests; measured on a benchmark subset | m04 | Published |
 | 4 | Prompt and harness sensitivity | `eval-harness-sensitivity` | Format, few-shot choice and answer extraction move scores; measured | e03 | Published |
-| 5 | Contamination and memorization | `benchmark-contamination` | Detection methods, tested on open models | t09 |  |
-| 6 | Grading open-ended outputs | `grading-generative-outputs` | Reference metrics vs rubric graders vs LLM judges | SD16 |  |
-| 7 | Arenas and Elo rankings | `chatbot-arena-elo` | Bradley-Terry, style control, arena biases | m16 |  |
-| 8 | Code and math benchmarks | `code-math-benchmarks` | pass@k, verifiers, HumanEval to SWE-bench and AIME | a11 |  |
+| 5 | Contamination and memorization | `benchmark-contamination` | Detection methods, tested on open models | t09 | Published |
+| 6 | Grading open-ended outputs | `grading-generative-outputs` | Reference metrics vs rubric graders vs LLM judges | SD16 | Published |
+| 7 | Arenas and Elo rankings | `chatbot-arena-elo` | Bradley-Terry, style control, arena biases | m16 | Published |
+| 8 | Code and math benchmarks | `code-math-benchmarks` | pass@k, verifiers, HumanEval to SWE-bench and AIME | a11 | Published |
 | 9 | Long-context evals | `long-context-evals` | Needle tests vs RULER-style tasks | i11 |  |
 | 10 | Safety and capability evals | `safety-evals` | Dangerous-capability evals, refusal benchmarks, red-teaming; research-based | e01 |  |
 | 11 | Reading a model card, building your own eval | `reading-model-cards` | Finale: interpreting reported numbers; links SD15 | all |  |

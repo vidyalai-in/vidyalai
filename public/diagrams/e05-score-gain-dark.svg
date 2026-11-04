@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="400" fill="#0b162d"/>
+<line x1="200.0" x2="200.0" y1="56" y2="340" stroke="#22355a" stroke-width="1"/>
+<text x="200.0" y="360" fill="#9fb0cf" font-size="13" text-anchor="middle">0%</text>
+<line x1="307.5" x2="307.5" y1="56" y2="340" stroke="#22355a" stroke-width="1"/>
+<text x="307.5" y="360" fill="#9fb0cf" font-size="13" text-anchor="middle">25%</text>
+<line x1="415.0" x2="415.0" y1="56" y2="340" stroke="#22355a" stroke-width="1"/>
+<text x="415.0" y="360" fill="#9fb0cf" font-size="13" text-anchor="middle">50%</text>
+<line x1="522.5" x2="522.5" y1="56" y2="340" stroke="#22355a" stroke-width="1"/>
+<text x="522.5" y="360" fill="#9fb0cf" font-size="13" text-anchor="middle">75%</text>
+<line x1="630.0" x2="630.0" y1="56" y2="340" stroke="#22355a" stroke-width="1"/>
+<text x="630.0" y="360" fill="#9fb0cf" font-size="13" text-anchor="middle">100%</text>
+<line x1="307.5" x2="307.5" y1="56" y2="340" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="312.5" y="48" fill="#9fb0cf" font-size="12">chance</text>
+<text x="415.0" y="386" fill="#e8eefc" font-size="14" text-anchor="middle">ARC-Challenge accuracy on the group's 234 items</text>
+<text x="705" y="30" fill="#e8eefc" font-size="13" text-anchor="middle">Gain vs never-</text>
+<text x="705" y="46" fill="#e8eefc" font-size="13" text-anchor="middle">seen, points</text>
+<circle cx="30" cy="30" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/><text x="42" y="35" fill="#e8eefc" font-size="13">before</text>
+<circle cx="110" cy="30" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/><text x="122" y="35" fill="#e8eefc" font-size="13">after training</text>
+<text x="188" y="89.4" fill="#e8eefc" font-size="14" text-anchor="end">Never in training</text>
+<line x1="325.1" x2="352.6" y1="84.4" y2="84.4" stroke="#22355a" stroke-width="5"/>
+<line x1="301.5" x2="351.4" y1="75.4" y2="75.4" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="301.5" x2="301.5" y1="71.4" y2="79.4" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="351.4" x2="351.4" y1="71.4" y2="79.4" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="327.3" x2="379.7" y1="93.4" y2="93.4" stroke="#38bdf8" stroke-width="2"/>
+<line x1="327.3" x2="327.3" y1="89.4" y2="97.4" stroke="#38bdf8" stroke-width="2"/>
+<line x1="379.7" x2="379.7" y1="89.4" y2="97.4" stroke="#38bdf8" stroke-width="2"/>
+<circle cx="325.1" cy="84.4" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="352.6" cy="84.4" r="7" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="705" y="84.4" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">+0.0</text>
+<text x="705" y="101.4" fill="#9fb0cf" font-size="12" text-anchor="middle">[-7.3, +7.3]</text>
+<text x="188" y="146.2" fill="#e8eefc" font-size="14" text-anchor="end">Verbatim, 1 copy</text>
+<line x1="332.4" x2="381.9" y1="141.2" y2="141.2" stroke="#22355a" stroke-width="5"/>
+<line x1="308.4" x2="359.1" y1="132.2" y2="132.2" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="308.4" x2="308.4" y1="128.2" y2="136.2" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="359.1" x2="359.1" y1="128.2" y2="136.2" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="355.7" x2="409.4" y1="150.2" y2="150.2" stroke="#38bdf8" stroke-width="2"/>
+<line x1="355.7" x2="355.7" y1="146.2" y2="154.2" stroke="#38bdf8" stroke-width="2"/>
+<line x1="409.4" x2="409.4" y1="146.2" y2="154.2" stroke="#38bdf8" stroke-width="2"/>
+<circle cx="332.4" cy="141.2" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="381.9" cy="141.2" r="7" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="705" y="141.2" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">+5.1</text>
+<text x="705" y="158.2" fill="#9fb0cf" font-size="12" text-anchor="middle">[-2.6, +13.2]</text>
+<text x="188" y="203.0" fill="#e8eefc" font-size="14" text-anchor="end">Verbatim, 4 copies</text>
+<line x1="317.8" x2="468.3" y1="198.0" y2="198.0" stroke="#22355a" stroke-width="5"/>
+<line x1="294.6" x2="343.6" y1="189.0" y2="189.0" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="294.6" x2="294.6" y1="185.0" y2="193.0" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="343.6" x2="343.6" y1="185.0" y2="193.0" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="440.8" x2="494.1" y1="207.0" y2="207.0" stroke="#38bdf8" stroke-width="2"/>
+<line x1="440.8" x2="440.8" y1="203.0" y2="211.0" stroke="#38bdf8" stroke-width="2"/>
+<line x1="494.1" x2="494.1" y1="203.0" y2="211.0" stroke="#38bdf8" stroke-width="2"/>
+<circle cx="317.8" cy="198.0" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="468.3" cy="198.0" r="7" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="705" y="198.0" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">+28.6</text>
+<text x="705" y="215.0" fill="#9fb0cf" font-size="12" text-anchor="middle">[+20.5, +36.8]</text>
+<text x="188" y="259.8" fill="#e8eefc" font-size="14" text-anchor="end">Verbatim, 16 copies</text>
+<line x1="341.5" x2="618.8" y1="254.8" y2="254.8" stroke="#22355a" stroke-width="5"/>
+<line x1="317.0" x2="368.6" y1="245.8" y2="245.8" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="317.0" x2="317.0" y1="241.8" y2="249.8" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="368.6" x2="368.6" y1="241.8" y2="249.8" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="606.3" x2="624.8" y1="263.8" y2="263.8" stroke="#38bdf8" stroke-width="2"/>
+<line x1="606.3" x2="606.3" y1="259.8" y2="267.8" stroke="#38bdf8" stroke-width="2"/>
+<line x1="624.8" x2="624.8" y1="259.8" y2="267.8" stroke="#38bdf8" stroke-width="2"/>
+<circle cx="341.5" cy="254.8" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="618.8" cy="254.8" r="7" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="705" y="254.8" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">+58.1</text>
+<text x="705" y="271.8" fill="#9fb0cf" font-size="12" text-anchor="middle">[+50.0, +66.2]</text>
+<text x="188" y="316.6" fill="#e8eefc" font-size="14" text-anchor="end">Paraphrase, 16 copies</text>
+<line x1="317.8" x2="556.5" y1="311.6" y2="311.6" stroke="#22355a" stroke-width="5"/>
+<line x1="294.6" x2="343.6" y1="302.6" y2="302.6" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="294.6" x2="294.6" y1="298.6" y2="306.6" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="343.6" x2="343.6" y1="298.6" y2="306.6" stroke="#9fb0cf" stroke-width="2"/>
+<line x1="533.7" x2="575.0" y1="320.6" y2="320.6" stroke="#d95926" stroke-width="2"/>
+<line x1="533.7" x2="533.7" y1="316.6" y2="324.6" stroke="#d95926" stroke-width="2"/>
+<line x1="575.0" x2="575.0" y1="316.6" y2="324.6" stroke="#d95926" stroke-width="2"/>
+<circle cx="317.8" cy="311.6" r="6" fill="#0b162d" stroke="#9fb0cf" stroke-width="2.5"/>
+<circle cx="556.5" cy="311.6" r="7" fill="#d95926" stroke="#0b162d" stroke-width="2"/>
+<text x="705" y="311.6" fill="#e8eefc" font-size="14" font-weight="bold" text-anchor="middle">+49.1</text>
+<text x="705" y="328.6" fill="#9fb0cf" font-size="12" text-anchor="middle">[+41.0, +57.3]</text>
+</svg>

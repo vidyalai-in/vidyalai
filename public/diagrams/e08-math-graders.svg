@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#ffffff"/>
+<line x1="210.0" x2="210.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="210.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">0%</text>
+<line x1="294.0" x2="294.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="294.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">20%</text>
+<line x1="378.0" x2="378.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="378.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">40%</text>
+<line x1="462.0" x2="462.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="462.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">60%</text>
+<line x1="546.0" x2="546.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="546.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">80%</text>
+<line x1="630.0" x2="630.0" y1="58" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="630.0" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">100%</text>
+<text x="420.0" y="418" fill="#0b1a33" font-size="14" text-anchor="middle">Accuracy on MATH-500, same replies, four graders</text>
+<rect x="210" y="16" width="14" height="14" fill="#0b5fd6"/><text x="230" y="28" fill="#0b1a33" font-size="13">Thinking off</text>
+<rect x="330" y="16" width="14" height="14" fill="#eb6834"/><text x="350" y="28" fill="#0b1a33" font-size="13">Adaptive thinking, effort high</text>
+<text x="705" y="28" fill="#0b1a33" font-size="13" text-anchor="middle">High minus</text>
+<text x="705" y="44" fill="#0b1a33" font-size="13" text-anchor="middle">off (points)</text>
+<text x="200" y="93.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">exact</text>
+<text x="200" y="110.5" fill="#4a5b78" font-size="12" text-anchor="end">same string as the key</text>
+<rect x="210" y="68.0" width="341.0" height="23.5" fill="#0b5fd6"/>
+<line x1="535.5" x2="564.5" y1="79.8" y2="79.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="535.5" x2="535.5" y1="75.8" y2="83.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="564.5" x2="564.5" y1="75.8" y2="83.8" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="570.5" y="83.8" fill="#0b1a33" font-size="12">81.2</text>
+<rect x="210" y="97.5" width="308.3" height="23.5" fill="#eb6834"/>
+<line x1="501.5" x2="533.8" y1="109.2" y2="109.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="501.5" x2="501.5" y1="105.2" y2="113.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="533.8" x2="533.8" y1="105.2" y2="113.2" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="539.8" y="113.2" fill="#0b1a33" font-size="12">73.4</text>
+<text x="705" y="97.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">-7.8</text>
+<text x="705" y="113.5" fill="#4a5b78" font-size="12" text-anchor="middle">[-11.4, -4.2]</text>
+<text x="200" y="172.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">normalized</text>
+<text x="200" y="189.5" fill="#4a5b78" font-size="12" text-anchor="end">MATH repo string rules</text>
+<rect x="210" y="147.0" width="393.1" height="23.5" fill="#0b5fd6"/>
+<line x1="592.6" x2="610.7" y1="158.8" y2="158.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="592.6" x2="592.6" y1="154.8" y2="162.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="610.7" x2="610.7" y1="154.8" y2="162.8" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="616.7" y="162.8" fill="#0b1a33" font-size="12">93.6</text>
+<rect x="210" y="176.5" width="361.2" height="23.5" fill="#eb6834"/>
+<line x1="557.3" x2="583.0" y1="188.2" y2="188.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="557.3" x2="557.3" y1="184.2" y2="192.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="583.0" x2="583.0" y1="184.2" y2="192.2" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="589.0" y="192.2" fill="#0b1a33" font-size="12">86.0</text>
+<text x="705" y="176.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">-7.6</text>
+<text x="705" y="192.5" fill="#4a5b78" font-size="12" text-anchor="middle">[-10.4, -4.8]</text>
+<text x="200" y="251.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">symbolic</text>
+<text x="200" y="268.5" fill="#4a5b78" font-size="12" text-anchor="end">math-verify (SymPy)</text>
+<rect x="210" y="226.0" width="409.1" height="23.5" fill="#0b5fd6"/>
+<line x1="611.5" x2="623.7" y1="237.8" y2="237.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="611.5" x2="611.5" y1="233.8" y2="241.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="623.7" x2="623.7" y1="233.8" y2="241.8" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="629.7" y="241.8" fill="#0b1a33" font-size="12">97.4</text>
+<rect x="210" y="255.5" width="380.5" height="23.5" fill="#eb6834"/>
+<line x1="578.3" x2="600.2" y1="267.2" y2="267.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="578.3" x2="578.3" y1="263.2" y2="271.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="600.2" x2="600.2" y1="263.2" y2="271.2" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="606.2" y="271.2" fill="#0b1a33" font-size="12">90.6</text>
+<text x="705" y="255.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">-6.8</text>
+<text x="705" y="271.5" fill="#4a5b78" font-size="12" text-anchor="middle">[-9.6, -4.2]</text>
+<text x="200" y="330.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="end">read one by one</text>
+<text x="200" y="347.5" fill="#4a5b78" font-size="12" text-anchor="end">every disputed reply</text>
+<rect x="210" y="305.0" width="409.9" height="23.5" fill="#0b5fd6"/>
+<line x1="612.8" x2="624.1" y1="316.8" y2="316.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="612.8" x2="612.8" y1="312.8" y2="320.8" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="624.1" x2="624.1" y1="312.8" y2="320.8" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="630.1" y="320.8" fill="#0b1a33" font-size="12">97.6</text>
+<rect x="210" y="334.5" width="414.1" height="23.5" fill="#eb6834"/>
+<line x1="617.8" x2="627.1" y1="346.2" y2="346.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="617.8" x2="617.8" y1="342.2" y2="350.2" stroke="#0b1a33" stroke-width="1.5"/>
+<line x1="627.1" x2="627.1" y1="342.2" y2="350.2" stroke="#0b1a33" stroke-width="1.5"/>
+<text x="633.1" y="350.2" fill="#0b1a33" font-size="12">98.6</text>
+<text x="705" y="334.5" fill="#0b1a33" font-size="14" font-weight="bold" text-anchor="middle">+1.0</text>
+<text x="705" y="350.5" fill="#4a5b78" font-size="12" text-anchor="middle">[-0.4, +2.6]</text>
+</svg>

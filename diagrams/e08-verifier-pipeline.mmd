@@ -1,0 +1,11 @@
+flowchart TD
+  P["Benchmark item:<br/>problem + reference"]
+  P --> M["Model reply"]
+  M --> C["Code: pull out<br/>the code block"]
+  M --> A["Math: pull out<br/>the final answer"]
+  C --> S["Run hidden tests<br/>in a sandbox"]
+  A --> G["Compare with the<br/>reference answer"]
+  S --> V["Verdict: pass or fail"]
+  G --> V
+  S -.-> W1["Misses: bugs the<br/>tests never exercise"]
+  G -.-> W2["Misses: right answers<br/>written another way"]

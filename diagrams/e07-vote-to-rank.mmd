@@ -1,0 +1,10 @@
+flowchart TD
+  P["User types any prompt"] --> S["Two anonymous models answer"]
+  S --> V["Vote: A, B, tie or both bad"]
+  V --> R["Names revealed; vote logged"]
+  R --> E["Online Elo: update two ratings,<br/>order matters"]
+  R --> BT["Bradley-Terry: refit on all votes,<br/>order ignored"]
+  BT --> SC["Optional style terms:<br/>length, headers, lists, bold"]
+  SC --> CI["Bootstrap or sandwich<br/>95% intervals"]
+  BT --> CI
+  CI --> RK["Rank = 1 + models<br/>clearly above"]

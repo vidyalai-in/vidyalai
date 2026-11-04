@@ -1,0 +1,11 @@
+flowchart LR
+  Q["Did the model<br/>see the test?"]
+  Q --> A["Training data<br/>in hand"]
+  Q --> B["Weights<br/>in hand"]
+  Q --> C["Text-only API"]
+  Q --> D["No access"]
+  A --> A1["n-gram overlap"]
+  B --> B1["Membership scores:<br/>loss, zlib, Min-K%"]
+  B --> B2["Shuffled-order test"]
+  C --> C1["Guided completion,<br/>TS-Guessing"]
+  D --> D1["Fresh copy of<br/>the test (GSM1k)"]
