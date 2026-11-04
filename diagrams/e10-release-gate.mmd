@@ -1,0 +1,11 @@
+flowchart TD
+  A["Threat model:<br/>who could cause what harm"] --> B["Capability thresholds<br/>(e.g. uplift to novices)"]
+  B --> C["Automated evals:<br/>proxy questions, CTF tasks,<br/>agentic tasks"]
+  C --> D{"Close to a<br/>threshold?"}
+  D -- "No" --> E["Release with<br/>standard safeguards"]
+  D -- "Maybe" --> F["Deep dives:<br/>expert red teams,<br/>uplift trials"]
+  F --> G{"Threshold<br/>crossed?"}
+  G -- "No" --> E
+  G -- "Yes or can't rule out" --> H["Stronger safeguards<br/>before release"]
+  E --> I["System card<br/>and risk report"]
+  H --> I

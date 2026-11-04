@@ -199,6 +199,6 @@ Series slug `llm-evals`, short name "Evals", file prefix `e`, category `evaluati
 | 6 | Grading open-ended outputs | `grading-generative-outputs` | Reference metrics vs rubric graders vs LLM judges | SD16 | Published |
 | 7 | Arenas and Elo rankings | `chatbot-arena-elo` | Bradley-Terry, style control, arena biases | m16 | Published |
 | 8 | Code and math benchmarks | `code-math-benchmarks` | pass@k, verifiers, HumanEval to SWE-bench and AIME | a11 | Published |
-| 9 | Long-context evals | `long-context-evals` | Needle tests vs RULER-style tasks | i11 |  |
-| 10 | Safety and capability evals | `safety-evals` | Dangerous-capability evals, refusal benchmarks, red-teaming; research-based | e01 |  |
-| 11 | Reading a model card, building your own eval | `reading-model-cards` | Finale: interpreting reported numbers; links SD15 | all |  |
+| 9 | Long-context evals | `long-context-evals` | Needle tests vs RULER-style tasks | i11 | Published |
+| 10 | Safety and capability evals | `safety-evals` | Dangerous-capability evals, refusal benchmarks, red-teaming; research-based | e01 | Published |
+| 11 | Reading a model card, building your own eval | `reading-model-cards` | Finale: interpreting reported numbers; links SD15 | all | Published |

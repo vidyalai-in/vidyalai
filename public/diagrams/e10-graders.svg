@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 462" width="780" height="462" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="462" fill="#ffffff"/>
+<text x="16" y="22" fill="#0b1a33" font-size="15" font-weight="bold">Safe prompts: share refused</text>
+<line x1="356.0" x2="356.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<line x1="245.0" x2="245.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<line x1="134.0" x2="134.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<text x="16" y="56" fill="#0b1a33" font-size="13" font-weight="bold">Claude Haiku 5.5</text>
+<text x="126" y="75.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="134.0" y="64.0" width="4.9" height="15" fill="#eb6834" rx="2"/>
+<line x1="135.8" x2="142.9" y1="71.5" y2="71.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="135.8" x2="135.8" y1="67.5" y2="75.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="142.9" x2="142.9" y1="67.5" y2="75.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="147.9" y="75.5" fill="#0b1a33" font-size="12">2.2</text>
+<text x="126" y="93.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="134.0" y="82.0" width="12.9" height="15" fill="#eb6834" rx="2"/>
+<line x1="142.0" x2="152.2" y1="89.5" y2="89.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="142.0" x2="142.0" y1="85.5" y2="93.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="152.2" x2="152.2" y1="85.5" y2="93.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="157.2" y="93.5" fill="#0b1a33" font-size="12">5.8</text>
+<text x="126" y="111.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="134.0" y="100.0" width="20.4" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="148.2" x2="161.1" y1="107.5" y2="107.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="148.2" x2="148.2" y1="103.5" y2="111.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="161.1" x2="161.1" y1="103.5" y2="111.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="166.1" y="111.5" fill="#0b1a33" font-size="12">9.2</text>
+<text x="126" y="129.5" fill="#0b1a33" font-size="12" text-anchor="end">Read by hand</text>
+<rect x="134.0" y="118.0" width="1.8" height="15" fill="#4a5b78" rx="2"/>
+<line x1="134.4" x2="140.4" y1="125.5" y2="125.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="134.4" x2="134.4" y1="121.5" y2="129.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="140.4" x2="140.4" y1="121.5" y2="129.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="145.4" y="129.5" fill="#0b1a33" font-size="12">0.8</text>
+<text x="16" y="175" fill="#0b1a33" font-size="13" font-weight="bold">Qwen2.5-1.5B-Instruct</text>
+<text x="126" y="194.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="134.0" y="183.0" width="107.4" height="15" fill="#eb6834" rx="2"/>
+<line x1="227.9" x2="255.2" y1="190.5" y2="190.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="227.9" x2="227.9" y1="186.5" y2="194.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="255.2" x2="255.2" y1="186.5" y2="194.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="260.2" y="194.5" fill="#0b1a33" font-size="12">48.4</text>
+<text x="126" y="212.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="134.0" y="201.0" width="124.3" height="15" fill="#eb6834" rx="2"/>
+<line x1="244.6" x2="271.6" y1="208.5" y2="208.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="244.6" x2="244.6" y1="204.5" y2="212.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="271.6" x2="271.6" y1="204.5" y2="212.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="276.6" y="212.5" fill="#0b1a33" font-size="12">56.0</text>
+<text x="126" y="230.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="134.0" y="219.0" width="105.7" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="226.1" x2="253.4" y1="226.5" y2="226.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="226.1" x2="226.1" y1="222.5" y2="230.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="253.4" x2="253.4" y1="222.5" y2="230.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="258.4" y="230.5" fill="#0b1a33" font-size="12">47.6</text>
+<text x="126" y="248.5" fill="#0b1a33" font-size="12" text-anchor="end">Read by hand</text>
+<rect x="134.0" y="237.0" width="94.1" height="15" fill="#4a5b78" rx="2"/>
+<line x1="214.8" x2="241.9" y1="244.5" y2="244.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="214.8" x2="214.8" y1="240.5" y2="248.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="241.9" x2="241.9" y1="240.5" y2="248.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="246.9" y="248.5" fill="#0b1a33" font-size="12">42.4</text>
+<text x="16" y="294" fill="#0b1a33" font-size="13" font-weight="bold">Gemma 2 2B IT</text>
+<text x="126" y="313.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="134.0" y="302.0" width="7.1" height="15" fill="#eb6834" rx="2"/>
+<line x1="137.6" x2="147.8" y1="309.5" y2="309.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="137.6" x2="137.6" y1="305.5" y2="313.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="147.8" x2="147.8" y1="305.5" y2="313.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="152.8" y="313.5" fill="#0b1a33" font-size="12">3.2</text>
+<text x="126" y="331.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="134.0" y="320.0" width="26.6" height="15" fill="#eb6834" rx="2"/>
+<line x1="152.9" x2="170.9" y1="327.5" y2="327.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="152.9" x2="152.9" y1="323.5" y2="331.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="170.9" x2="170.9" y1="323.5" y2="331.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="175.9" y="331.5" fill="#0b1a33" font-size="12">12.0</text>
+<text x="126" y="349.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="134.0" y="338.0" width="53.3" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="176.4" x2="199.9" y1="345.5" y2="345.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="176.4" x2="176.4" y1="341.5" y2="349.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="199.9" x2="199.9" y1="341.5" y2="349.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="204.9" y="349.5" fill="#0b1a33" font-size="12">24.0</text>
+<text x="126" y="367.5" fill="#0b1a33" font-size="12" text-anchor="end">Read by hand</text>
+<rect x="134.0" y="356.0" width="25.8" height="15" fill="#4a5b78" rx="2"/>
+<line x1="152.2" x2="170.0" y1="363.5" y2="363.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="152.2" x2="152.2" y1="359.5" y2="367.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="170.0" x2="170.0" y1="359.5" y2="367.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="175.0" y="367.5" fill="#0b1a33" font-size="12">11.6</text>
+<text x="134.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">0%</text>
+<text x="245.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">50%</text>
+<text x="356.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">100%</text>
+<text x="406" y="22" fill="#0b1a33" font-size="15" font-weight="bold">Unsafe prompts: share not refused</text>
+<line x1="746.0" x2="746.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<line x1="635.0" x2="635.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<line x1="524.0" x2="524.0" y1="38" y2="379" stroke="#dde5f2" stroke-width="1"/>
+<text x="406" y="56" fill="#0b1a33" font-size="13" font-weight="bold">Claude Haiku 5.5</text>
+<text x="516" y="75.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="524.0" y="64.0" width="148.7" height="15" fill="#eb6834" rx="2"/>
+<line x1="657.6" x2="686.3" y1="71.5" y2="71.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="657.6" x2="657.6" y1="67.5" y2="75.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="686.3" x2="686.3" y1="67.5" y2="75.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="691.3" y="75.5" fill="#0b1a33" font-size="12">67.0</text>
+<text x="516" y="93.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="524.0" y="82.0" width="198.7" height="15" fill="#eb6834" rx="2"/>
+<line x1="711.6" x2="730.5" y1="89.5" y2="89.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="711.6" x2="711.6" y1="85.5" y2="93.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="730.5" x2="730.5" y1="85.5" y2="93.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="735.5" y="93.5" fill="#0b1a33" font-size="12">89.5</text>
+<text x="516" y="111.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="524.0" y="100.0" width="10.0" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="529.3" x2="542.4" y1="107.5" y2="107.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="529.3" x2="529.3" y1="103.5" y2="111.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="542.4" x2="542.4" y1="103.5" y2="111.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="547.4" y="111.5" fill="#0b1a33" font-size="12">4.5</text>
+<text x="516" y="129.5" fill="#0b1a33" font-size="12" text-anchor="end">StrongREJECT</text>
+<rect x="524.0" y="118.0" width="12.9" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="531.3" x2="546.4" y1="125.5" y2="125.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="531.3" x2="531.3" y1="121.5" y2="129.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="546.4" x2="546.4" y1="121.5" y2="129.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="551.4" y="129.5" fill="#0b1a33" font-size="12">5.8</text>
+<text x="406" y="175" fill="#0b1a33" font-size="13" font-weight="bold">Qwen2.5-1.5B-Instruct</text>
+<text x="516" y="194.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="524.0" y="183.0" width="11.1" height="15" fill="#eb6834" rx="2"/>
+<line x1="530.0" x2="544.0" y1="190.5" y2="190.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="530.0" x2="530.0" y1="186.5" y2="194.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="544.0" x2="544.0" y1="186.5" y2="194.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="549.0" y="194.5" fill="#0b1a33" font-size="12">5.0</text>
+<text x="516" y="212.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="524.0" y="201.0" width="5.5" height="15" fill="#eb6834" rx="2"/>
+<line x1="526.4" x2="536.7" y1="208.5" y2="208.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="526.4" x2="526.4" y1="204.5" y2="212.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="536.7" x2="536.7" y1="204.5" y2="212.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="541.7" y="212.5" fill="#0b1a33" font-size="12">2.5</text>
+<text x="516" y="230.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="524.0" y="219.0" width="2.2" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="524.7" x2="532.0" y1="226.5" y2="226.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="524.7" x2="524.7" y1="222.5" y2="230.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="532.0" x2="532.0" y1="222.5" y2="230.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="537.0" y="230.5" fill="#0b1a33" font-size="12">1.0</text>
+<text x="516" y="248.5" fill="#0b1a33" font-size="12" text-anchor="end">StrongREJECT</text>
+<rect x="524.0" y="237.0" width="3.3" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="525.1" x2="533.5" y1="244.5" y2="244.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="525.1" x2="525.1" y1="240.5" y2="248.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="533.5" x2="533.5" y1="240.5" y2="248.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="538.5" y="248.5" fill="#0b1a33" font-size="12">1.5</text>
+<text x="406" y="294" fill="#0b1a33" font-size="13" font-weight="bold">Gemma 2 2B IT</text>
+<text x="516" y="313.5" fill="#0b1a33" font-size="12" text-anchor="end">Prefix match</text>
+<rect x="524.0" y="302.0" width="118.8" height="15" fill="#eb6834" rx="2"/>
+<line x1="627.5" x2="657.9" y1="309.5" y2="309.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="627.5" x2="627.5" y1="305.5" y2="313.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="657.9" x2="657.9" y1="305.5" y2="313.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="662.9" y="313.5" fill="#0b1a33" font-size="12">53.5</text>
+<text x="516" y="331.5" fill="#0b1a33" font-size="12" text-anchor="end">Keyword anywhere</text>
+<rect x="524.0" y="320.0" width="27.8" height="15" fill="#eb6834" rx="2"/>
+<line x1="543.1" x2="563.5" y1="327.5" y2="327.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="543.1" x2="543.1" y1="323.5" y2="331.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="563.5" x2="563.5" y1="323.5" y2="331.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="568.5" y="331.5" fill="#0b1a33" font-size="12">12.5</text>
+<text x="516" y="349.5" fill="#0b1a33" font-size="12" text-anchor="end">XSTest judge</text>
+<rect x="524.0" y="338.0" width="7.8" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="527.8" x2="539.5" y1="345.5" y2="345.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="527.8" x2="527.8" y1="341.5" y2="349.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="539.5" x2="539.5" y1="341.5" y2="349.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="544.5" y="349.5" fill="#0b1a33" font-size="12">3.5</text>
+<text x="516" y="367.5" fill="#0b1a33" font-size="12" text-anchor="end">StrongREJECT</text>
+<rect x="524.0" y="356.0" width="5.5" height="15" fill="#0b5fd6" rx="2"/>
+<line x1="526.4" x2="536.9" y1="363.5" y2="363.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="526.4" x2="526.4" y1="359.5" y2="367.5" stroke="#0b1a33" stroke-width="1.6"/>
+<line x1="536.9" x2="536.9" y1="359.5" y2="367.5" stroke="#0b1a33" stroke-width="1.6"/>
+<text x="541.9" y="367.5" fill="#0b1a33" font-size="12">2.5</text>
+<text x="524.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">0%</text>
+<text x="635.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">50%</text>
+<text x="746.0" y="395" fill="#4a5b78" font-size="12" text-anchor="middle">100%</text>
+<rect x="16" y="429" width="14" height="14" fill="#eb6834" rx="2"/>
+<text x="36" y="440" fill="#0b1a33" font-size="13">Substring rule</text>
+<rect x="165.60000000000002" y="429" width="14" height="14" fill="#0b5fd6" rx="2"/>
+<text x="185.60000000000002" y="440" fill="#0b1a33" font-size="13">Claude Haiku 5.5 as judge</text>
+<rect x="396.6" y="429" width="14" height="14" fill="#4a5b78" rx="2"/>
+<text x="416.6" y="440" fill="#0b1a33" font-size="13">Read by hand</text>
+</svg>

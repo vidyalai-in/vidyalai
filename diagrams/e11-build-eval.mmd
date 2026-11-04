@@ -1,0 +1,8 @@
+flowchart TD
+    A["1. Define the construct<br/>(Part 1)"] --> B["2. Write and validate items<br/>(Part 2)"]
+    B --> C["3. Size it with a power analysis<br/>(Part 3)"]
+    C --> D["4. Fix and publish the harness<br/>(Part 4)"]
+    D --> E["5. Guard against contamination<br/>(Part 5)"]
+    E --> F["6. Validate the grader<br/>(Parts 6 and 8)"]
+    F --> G["Run paired configurations<br/>and report CIs"]
+    F -- "disputed replies" --> B

@@ -1,0 +1,14 @@
+flowchart TD
+  F["Filler text:<br/>six Austen novels"]
+  N1["6 needles, e.g.<br/>Omar lives next<br/>to the Atomium"]
+  N2["3 variable chains:<br/>VAR A = 48213<br/>VAR B = VAR A ..."]
+  F --> HS["Haystack: set<br/>length, needles<br/>at set depths"]
+  N1 --> HS
+  N2 --> HS
+  HS --> C["Cached prefix:<br/>written once,<br/>read 14 times"]
+  C --> Q1["Literal: who<br/>lives next to<br/>the Atomium?"]
+  C --> Q2["One-hop: who<br/>has been to<br/>Brussels?"]
+  C --> Q3["Tracking: which<br/>variables<br/>hold 48213?"]
+  Q1 --> G["Grade, then<br/>score by length<br/>and depth"]
+  Q2 --> G
+  Q3 --> G

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560" width="780" height="560" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="560" fill="#0b162d"/>
+<text x="20" y="30" fill="#e8eefc" font-size="16" font-weight="bold">Accuracy on the 195-question eval (95% interval)</text>
+<line x1="300.0" x2="300.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="300.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">0%</text>
+<line x1="388.0" x2="388.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="388.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">20%</text>
+<line x1="476.0" x2="476.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="476.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">40%</text>
+<line x1="564.0" x2="564.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="564.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">60%</text>
+<line x1="652.0" x2="652.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="652.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">80%</text>
+<line x1="740.0" x2="740.0" y1="58" y2="270" stroke="#22355a" stroke-width="1"/>
+<text x="740.0" y="290" fill="#9fb0cf" font-size="13" text-anchor="middle">100%</text>
+<text x="286" y="81.5" fill="#e8eefc" font-size="14" text-anchor="end">Closed book, thinking off</text>
+<text x="286" y="98.5" fill="#9fb0cf" font-size="12" text-anchor="end">175 answerable items, 1 run</text>
+<line x1="362.5" x2="414.0" y1="84.5" y2="84.5" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="385.4" cy="84.5" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="424.0" y="75.5" fill="#e8eefc" font-size="13" font-weight="bold" text-anchor="start">19.4%</text>
+<text x="286" y="134.5" fill="#e8eefc" font-size="14" text-anchor="end">Open book, thinking off</text>
+<text x="286" y="151.5" fill="#9fb0cf" font-size="12" text-anchor="end">195 items, 3 runs</text>
+<line x1="726.8" x2="739.6" y1="137.5" y2="137.5" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="733.4" cy="137.5" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="716.8" y="128.5" fill="#e8eefc" font-size="13" font-weight="bold" text-anchor="end">98.5%</text>
+<text x="286" y="187.5" fill="#e8eefc" font-size="14" text-anchor="end">Open book, adaptive, low effort</text>
+<text x="286" y="204.5" fill="#9fb0cf" font-size="12" text-anchor="end">195 items, 3 runs</text>
+<line x1="731.6" x2="740.0" y1="190.5" y2="190.5" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="740.0" cy="190.5" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="721.6" y="181.5" fill="#e8eefc" font-size="13" font-weight="bold" text-anchor="end">100.0%</text>
+<text x="286" y="240.5" fill="#e8eefc" font-size="14" text-anchor="end">Open book, adaptive, medium effort</text>
+<text x="286" y="257.5" fill="#9fb0cf" font-size="12" text-anchor="end">193 items, 2 validation runs</text>
+<line x1="731.2" x2="740.0" y1="243.5" y2="243.5" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="740.0" cy="243.5" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="721.2" y="234.5" fill="#e8eefc" font-size="13" font-weight="bold" text-anchor="end">100.0%</text>
+<text x="20" y="334" fill="#e8eefc" font-size="16" font-weight="bold">Paired difference, low effort minus thinking off (points)</text>
+<rect x="383.6" y="360" width="184.8" height="128" fill="#13223f"/>
+<line x1="300.0" x2="300.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="300.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">-4</text>
+<line x1="388.0" x2="388.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="388.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">-2</text>
+<line x1="476.0" x2="476.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="476.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">+0</text>
+<line x1="564.0" x2="564.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="564.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">+2</text>
+<line x1="652.0" x2="652.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="652.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">+4</text>
+<line x1="740.0" x2="740.0" y1="360" y2="488" stroke="#22355a" stroke-width="1"/>
+<text x="740.0" y="508" fill="#9fb0cf" font-size="13" text-anchor="middle">+6</text>
+<line x1="476.0" x2="476.0" y1="360" y2="488" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="387.6" y="375" fill="#9fb0cf" font-size="12">MDE ±2.1</text>
+<text x="286" y="403.4" fill="#e8eefc" font-size="14" text-anchor="end">Low minus off, items independent</text>
+<line x1="480.4" x2="608.0" y1="398.4" y2="398.4" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="542.0" cy="398.4" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="618.0" y="403.4" fill="#e8eefc" font-size="13">+1.5 (+0.1 to +3.0)</text>
+<text x="286" y="467.4" fill="#e8eefc" font-size="14" text-anchor="end">Low minus off, clustered by article</text>
+<line x1="462.8" x2="625.6" y1="462.4" y2="462.4" stroke="#38bdf8" stroke-width="3"/>
+<circle cx="542.0" cy="462.4" r="6" fill="#38bdf8" stroke="#0b162d" stroke-width="2"/>
+<text x="635.6" y="467.4" fill="#e8eefc" font-size="13">+1.5 (-0.3 to +3.4)</text>
+<text x="520.0" y="544" fill="#9fb0cf" font-size="13" text-anchor="middle">Claude Haiku 5.5, Message Batches API, November 2026</text>
+</svg>
