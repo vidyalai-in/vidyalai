@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 360" width="780" height="360" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="360" fill="#0b162d"/>
+<line x1="210.0" x2="210.0" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="210.0" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">0 s</text>
+<line x1="276.2" x2="276.2" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="276.2" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">0.5 s</text>
+<line x1="342.5" x2="342.5" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="342.5" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">1 s</text>
+<line x1="408.8" x2="408.8" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="408.8" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">1.5 s</text>
+<line x1="475.0" x2="475.0" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="475.0" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">2 s</text>
+<line x1="541.2" x2="541.2" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="541.2" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">2.5 s</text>
+<line x1="607.5" x2="607.5" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="607.5" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">3 s</text>
+<line x1="673.8" x2="673.8" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="673.8" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">3.5 s</text>
+<line x1="740.0" x2="740.0" y1="40" y2="268" stroke="#22355a" stroke-width="1"/>
+<text x="740.0" y="286" fill="#9fb0cf" font-size="12" text-anchor="middle">4 s</text>
+<text x="475.0" y="308" fill="#e8eefc" font-size="13" text-anchor="middle">seconds from the end of the user's speech to the first sound of the reply</text>
+<text x="200" y="73.1" fill="#e8eefc" font-size="13" text-anchor="end">Claude Haiku 5.5,</text>
+<text x="200" y="88.1" fill="#e8eefc" font-size="13" text-anchor="end">stream first sentence</text>
+<rect x="210.0" y="61.6" width="80.0" height="30" fill="#5b6f94" stroke="#0b162d" stroke-width="1"/>
+<rect x="290.0" y="61.6" width="27.8" height="30" fill="#2bb38a" stroke="#0b162d" stroke-width="1"/>
+<rect x="317.9" y="61.6" width="136.5" height="30" fill="#3987e5" stroke="#0b162d" stroke-width="1"/>
+<rect x="454.3" y="61.6" width="18.0" height="30" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<line x1="477.8" x2="527.1" y1="76.6" y2="76.6" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="527.1" x2="527.1" y1="70.6" y2="82.6" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="477.8" x2="477.8" y1="57.6" y2="95.6" stroke="#e8eefc" stroke-width="2.5"/>
+<text x="533.1" y="80.6" fill="#e8eefc" font-size="12">2.02 s (p90 2.39)</text>
+<text x="200" y="124.7" fill="#e8eefc" font-size="13" text-anchor="end">Claude Haiku 5.5,</text>
+<text x="200" y="139.7" fill="#e8eefc" font-size="13" text-anchor="end">wait for the full reply</text>
+<rect x="210.0" y="113.2" width="80.0" height="30" fill="#5b6f94" stroke="#0b162d" stroke-width="1"/>
+<rect x="290.0" y="113.2" width="27.8" height="30" fill="#2bb38a" stroke="#0b162d" stroke-width="1"/>
+<rect x="317.9" y="113.2" width="163.4" height="30" fill="#3987e5" stroke="#0b162d" stroke-width="1"/>
+<rect x="481.2" y="113.2" width="44.4" height="30" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<line x1="528.7" x2="588.7" y1="128.2" y2="128.2" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="588.7" x2="588.7" y1="122.2" y2="134.2" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="528.7" x2="528.7" y1="109.2" y2="147.2" stroke="#e8eefc" stroke-width="2.5"/>
+<text x="594.7" y="132.2" fill="#e8eefc" font-size="12">2.40 s (p90 2.86)</text>
+<text x="200" y="176.3" fill="#e8eefc" font-size="13" text-anchor="end">Qwen2.5-1.5B, local,</text>
+<text x="200" y="191.3" fill="#e8eefc" font-size="13" text-anchor="end">stream first sentence</text>
+<rect x="210.0" y="164.8" width="80.2" height="30" fill="#5b6f94" stroke="#0b162d" stroke-width="1"/>
+<rect x="290.2" y="164.8" width="27.8" height="30" fill="#2bb38a" stroke="#0b162d" stroke-width="1"/>
+<rect x="318.0" y="164.8" width="67.7" height="30" fill="#3987e5" stroke="#0b162d" stroke-width="1"/>
+<rect x="385.7" y="164.8" width="13.9" height="30" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<line x1="401.5" x2="452.3" y1="179.8" y2="179.8" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="452.3" x2="452.3" y1="173.8" y2="185.8" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="401.5" x2="401.5" y1="160.8" y2="198.8" stroke="#e8eefc" stroke-width="2.5"/>
+<text x="458.3" y="183.8" fill="#e8eefc" font-size="12">1.45 s (p90 1.83)</text>
+<text x="200" y="227.9" fill="#e8eefc" font-size="13" text-anchor="end">Qwen2.5-1.5B, local,</text>
+<text x="200" y="242.9" fill="#e8eefc" font-size="13" text-anchor="end">wait for the full reply</text>
+<rect x="210.0" y="216.4" width="80.2" height="30" fill="#5b6f94" stroke="#0b162d" stroke-width="1"/>
+<rect x="290.2" y="216.4" width="27.8" height="30" fill="#2bb38a" stroke="#0b162d" stroke-width="1"/>
+<rect x="318.0" y="216.4" width="108.4" height="30" fill="#3987e5" stroke="#0b162d" stroke-width="1"/>
+<rect x="426.4" y="216.4" width="33.9" height="30" fill="#d95926" stroke="#0b162d" stroke-width="1"/>
+<line x1="460.8" x2="633.3" y1="231.4" y2="231.4" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="633.3" x2="633.3" y1="225.4" y2="237.4" stroke="#e8eefc" stroke-width="1.5"/>
+<line x1="460.8" x2="460.8" y1="212.4" y2="250.4" stroke="#e8eefc" stroke-width="2.5"/>
+<text x="639.3" y="235.4" fill="#e8eefc" font-size="12">1.89 s (p90 3.19)</text>
+<line x1="237.6" x2="237.6" y1="32" y2="268" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="241.6" y="28" fill="#9fb0cf" font-size="12">human turn gap, 0.21 s</text>
+<rect x="20" y="327" width="14" height="14" fill="#5b6f94"/><text x="40" y="338" fill="#e8eefc" font-size="13">endpoint wait (VAD)</text>
+<rect x="196.8" y="327" width="14" height="14" fill="#2bb38a"/><text x="216.8" y="338" fill="#e8eefc" font-size="13">speech recognition</text>
+<rect x="366.4" y="327" width="14" height="14" fill="#3987e5"/><text x="386.4" y="338" fill="#e8eefc" font-size="13">LLM</text>
+<rect x="428.0" y="327" width="14" height="14" fill="#d95926"/><text x="448.0" y="338" fill="#e8eefc" font-size="13">text-to-speech</text>
+</svg>

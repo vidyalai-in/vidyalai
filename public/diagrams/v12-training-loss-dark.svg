@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 460" width="780" height="460" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="460" fill="#0b162d"/>
+<line x1="70" x2="750" y1="398.0" y2="398.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="402.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.08</text>
+<line x1="70" x2="750" y1="351.2" y2="351.2" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="355.2" fill="#9fb0cf" font-size="13" text-anchor="end">0.10</text>
+<line x1="70" x2="750" y1="304.5" y2="304.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="308.5" fill="#9fb0cf" font-size="13" text-anchor="end">0.12</text>
+<line x1="70" x2="750" y1="257.8" y2="257.8" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="261.8" fill="#9fb0cf" font-size="13" text-anchor="end">0.14</text>
+<line x1="70" x2="750" y1="211.0" y2="211.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="215.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.16</text>
+<line x1="70" x2="750" y1="164.2" y2="164.2" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="168.2" fill="#9fb0cf" font-size="13" text-anchor="end">0.18</text>
+<line x1="70" x2="750" y1="117.5" y2="117.5" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="121.5" fill="#9fb0cf" font-size="13" text-anchor="end">0.20</text>
+<line x1="70" x2="750" y1="70.7" y2="70.7" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="74.7" fill="#9fb0cf" font-size="13" text-anchor="end">0.22</text>
+<line x1="70" x2="750" y1="24.0" y2="24.0" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="28.0" fill="#9fb0cf" font-size="13" text-anchor="end">0.24</text>
+<line x1="70.0" x2="70.0" y1="24" y2="398" stroke="#22355a" stroke-width="1"/>
+<text x="70.0" y="418" fill="#9fb0cf" font-size="13" text-anchor="middle">0</text>
+<line x1="240.0" x2="240.0" y1="24" y2="398" stroke="#22355a" stroke-width="1"/>
+<text x="240.0" y="418" fill="#9fb0cf" font-size="13" text-anchor="middle">1,000</text>
+<line x1="410.0" x2="410.0" y1="24" y2="398" stroke="#22355a" stroke-width="1"/>
+<text x="410.0" y="418" fill="#9fb0cf" font-size="13" text-anchor="middle">2,000</text>
+<line x1="580.0" x2="580.0" y1="24" y2="398" stroke="#22355a" stroke-width="1"/>
+<text x="580.0" y="418" fill="#9fb0cf" font-size="13" text-anchor="middle">3,000</text>
+<line x1="750.0" x2="750.0" y1="24" y2="398" stroke="#22355a" stroke-width="1"/>
+<text x="750.0" y="418" fill="#9fb0cf" font-size="13" text-anchor="middle">4,000</text>
+<text x="410.0" y="446" fill="#e8eefc" font-size="14" text-anchor="middle">Training steps (batches of 32 clips)</text>
+<text transform="translate(18,211.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">Flow-matching loss (lower is better)</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2.5" points="155.0,80.7 197.5,153.8 240.0,218.5 282.5,222.2 325.0,247.4 367.5,252.6 410.0,268.6 452.5,283.8 495.0,293.7 537.5,289.2 580.0,293.3 622.5,308.9 665.0,309.5 707.5,302.9 750.0,312.5"/>
+<circle cx="750.0" cy="312.5" r="4" fill="#d95926"/>
+<polyline fill="none" stroke="#2bb38a" stroke-width="2.5" points="155.0,93.4 197.5,183.0 240.0,250.8 282.5,265.3 325.0,289.4 367.5,292.8 410.0,302.5 452.5,323.0 495.0,326.4 537.5,326.9 580.0,327.9 622.5,342.1 665.0,332.5 707.5,335.8 750.0,344.2"/>
+<circle cx="750.0" cy="344.2" r="4" fill="#2bb38a"/>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.5" points="155.0,63.5 197.5,170.1 240.0,246.7 282.5,259.0 325.0,286.1 367.5,295.0 410.0,313.8 452.5,332.5 495.0,342.7 537.5,348.7 580.0,350.5 622.5,364.0 665.0,351.8 707.5,341.5 750.0,374.1"/>
+<circle cx="750.0" cy="374.1" r="4" fill="#3987e5"/>
+<polyline fill="none" stroke="#a07ee0" stroke-width="2.5" stroke-dasharray="7 4" points="112.5,326.5 155.0,312.0 197.5,328.5 240.0,355.2 274.0,350.2"/>
+<circle cx="274.0" cy="350.2" r="4" fill="#a07ee0"/>
+<line x1="359.0" x2="385.0" y1="35.6875" y2="35.6875" stroke="#d95926" stroke-width="2.5"/><text x="393.0" y="40.6875" fill="#e8eefc" font-size="13">Frame by frame (no temporal attention)</text>
+<line x1="359.0" x2="385.0" y1="57.6875" y2="57.6875" stroke="#2bb38a" stroke-width="2.5"/><text x="393.0" y="62.6875" fill="#e8eefc" font-size="13">Factorized, from scratch</text>
+<line x1="359.0" x2="385.0" y1="79.6875" y2="79.6875" stroke="#3987e5" stroke-width="2.5"/><text x="393.0" y="84.6875" fill="#e8eefc" font-size="13">Full spacetime attention, from scratch</text>
+<line x1="359.0" x2="385.0" y1="101.6875" y2="101.6875" stroke="#a07ee0" stroke-width="2.5" stroke-dasharray="7 4"/><text x="393.0" y="106.6875" fill="#e8eefc" font-size="13">Factorized, inflated from the frame model</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="80" x2="750" y1="352.3" y2="352.3" stroke="#dde5f2" stroke-width="1"/>
+<text x="72" y="356.3" fill="#4a5b78" font-size="13" text-anchor="end">0.1 s</text>
+<line x1="80" x2="750" y1="253.5" y2="253.5" stroke="#dde5f2" stroke-width="1"/>
+<text x="72" y="257.5" fill="#4a5b78" font-size="13" text-anchor="end">1 s</text>
+<line x1="80" x2="750" y1="154.6" y2="154.6" stroke="#dde5f2" stroke-width="1"/>
+<text x="72" y="158.6" fill="#4a5b78" font-size="13" text-anchor="end">10 s</text>
+<line x1="80" x2="750" y1="55.8" y2="55.8" stroke="#dde5f2" stroke-width="1"/>
+<text x="72" y="59.8" fill="#4a5b78" font-size="13" text-anchor="end">100 s</text>
+<line x1="121.9" x2="121.9" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="121.9" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">2 s</text>
+<line x1="255.2" x2="255.2" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="255.2" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">5 s</text>
+<line x1="356.0" x2="356.0" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="356.0" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">10 s</text>
+<line x1="456.9" x2="456.9" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="456.9" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">20 s</text>
+<line x1="590.2" x2="590.2" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="590.2" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">50 s</text>
+<line x1="691.0" x2="691.0" y1="26" y2="404" stroke="#dde5f2" stroke-width="1"/>
+<text x="691.0" y="424" fill="#4a5b78" font-size="13" text-anchor="middle">100 s</text>
+<text x="415.0" y="454" fill="#0b1a33" font-size="14" text-anchor="middle">Length of the speech produced (log scale)</text>
+<text transform="translate(22,215.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Time to synthesize it (log scale)</text>
+<line x1="80.0" y1="236.1" x2="750.0" y2="38.4" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="616.7" y="67.7" fill="#4a5b78" font-size="13" text-anchor="end">real time</text>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.5" points="129.0,279.3 200.1,264.3 312.7,228.5 412.6,190.0 498.8,166.0 595.3,134.0"/>
+<line x1="129.0" x2="129.0" y1="282.7" y2="276.4" stroke="#eb6834" stroke-width="2"/>
+<rect x="124.0" y="274.3" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="200.1" x2="200.1" y1="264.5" y2="262.2" stroke="#eb6834" stroke-width="2"/>
+<rect x="195.1" y="259.3" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="312.7" x2="312.7" y1="232.4" y2="228.1" stroke="#eb6834" stroke-width="2"/>
+<rect x="307.7" y="223.5" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="412.6" x2="412.6" y1="190.7" y2="188.8" stroke="#eb6834" stroke-width="2"/>
+<rect x="407.6" y="185.0" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="498.8" x2="498.8" y1="166.6" y2="163.1" stroke="#eb6834" stroke-width="2"/>
+<rect x="493.8" y="161.0" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="595.3" x2="595.3" y1="136.5" y2="132.2" stroke="#eb6834" stroke-width="2"/>
+<rect x="590.3" y="129.0" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<rect x="105.5" y="42.7" width="10" height="10" fill="#eb6834"/>
+<text x="122.5" y="51.7" fill="#eb6834" font-size="13" font-weight="bold">CPU, 8 threads: 3 to 4 times faster than real time</text>
+<polyline fill="none" stroke="#2a78d6" stroke-width="2.5" points="129.0,362.5 200.1,359.7 312.7,340.0 412.6,308.2 498.8,282.3 595.3,252.9 693.7,224.0"/>
+<line x1="129.0" x2="129.0" y1="370.2" y2="357.1" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="129.0" cy="362.5" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="200.1" x2="200.1" y1="362.4" y2="358.9" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="200.1" cy="359.7" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="312.7" x2="312.7" y1="341.7" y2="336.4" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="312.7" cy="340.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="412.6" x2="412.6" y1="309.1" y2="307.3" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="412.6" cy="308.2" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="498.8" x2="498.8" y1="283.2" y2="280.6" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="498.8" cy="282.3" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="595.3" x2="595.3" y1="254.3" y2="252.1" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="595.3" cy="252.9" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="693.7" x2="693.7" y1="224.7" y2="223.2" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="693.7" cy="224.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="110.5" cy="73.7" r="5" fill="#2a78d6"/>
+<text x="122.5" y="77.7" fill="#2a78d6" font-size="13" font-weight="bold">RTX 4060 Laptop GPU: about 51 times faster</text>
+<text x="683.7" y="212.0" fill="#0b1a33" font-size="12" text-anchor="end">320 words: 101.9 s of speech in 1.98 s</text>
+<text x="137.0" y="384.5" fill="#0b1a33" font-size="12">5 words: 2.1 s in 79 ms</text>
+</svg>

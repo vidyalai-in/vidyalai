@@ -179,10 +179,10 @@ Series slug `multimodal-ai`, short name "Multimodal", file prefix `v`, category 
 | 6 | Latent diffusion | `latent-diffusion` | VAE, U-Net, classifier-free guidance; Stable Diffusion run and timed | v05 | Published |
 | 7 | Diffusion transformers and flow matching | `flow-matching-dit` | DiT, rectified flow (SD3/FLUX family) | v06 | Published |
 | 8 | Autoregressive and unified image generation | `autoregressive-image-generation` | VQ tokens, native image generation in LLMs; research-based | v04 | Published |
-| 9 | Speech recognition with Whisper | `speech-recognition-whisper` | Log-mel spectrograms, encoder-decoder; WER measured | f15 |  |
-| 10 | Text-to-speech | `text-to-speech` | Kokoro and neural codecs; real-time factor measured | v09 |  |
-| 11 | Audio tokens and voice agents | `voice-agents` | EnCodec/Mimi codecs, speech-to-speech models, latency budget | v10, a01 |  |
-| 12 | Video generation | `video-generation` | Spacetime patches, video diffusion; mostly research | v07 |  |
+| 9 | Speech recognition with Whisper | `speech-recognition-whisper` | Log-mel spectrograms, encoder-decoder; WER measured | f15 | Published |
+| 10 | Text-to-speech | `text-to-speech` | Kokoro and neural codecs; real-time factor measured | v09 | Published |
+| 11 | Audio tokens and voice agents | `voice-agents` | EnCodec/Mimi codecs, speech-to-speech models, latency budget | v10, a01 | Published |
+| 12 | Video generation | `video-generation` | Spacetime patches, video diffusion; mostly research | v07 | Published |
 | 13 | Serving multimodal models | `multimodal-inference` | Finale: image and audio token costs, encoder caching, series review | i01 |  |
 
 ## Measuring LLMs: Evals and Benchmarks (11 parts)

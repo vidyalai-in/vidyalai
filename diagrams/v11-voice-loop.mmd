@@ -1,0 +1,10 @@
+flowchart TD
+  M["Microphone:<br/>32 ms chunks"] --> V["Voice activity detection<br/>(Silero VAD)"]
+  V -- "silence longer than<br/>the threshold" --> E["Endpoint:<br/>the user is done"]
+  E --> A["Speech recognition<br/>(Whisper)"]
+  A --> L["Streamed LLM<br/>(Haiku 5.5)"]
+  L --> S["Sentence splitter"]
+  S -- "first complete sentence" --> T["Text-to-speech<br/>(Kokoro)"]
+  T --> P["Speaker"]
+  V -- "speech starts while<br/>the agent talks" --> B["Barge-in: stop playback,<br/>cancel the reply"]
+  B --> P

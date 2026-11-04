@@ -1,0 +1,8 @@
+flowchart TD
+  Z["Noise latent<br/>21 × 90 × 160 × 16"] --> PT["Cut into 1 × 2 × 2<br/>spacetime patches:<br/>75,600 tokens"]
+  P["Text prompt"] --> TE["Text encoder<br/>(T5, umT5 or an LLM)"]
+  PT --> DIT["Diffusion transformer,<br/>full 3D attention:<br/>velocity for every token"]
+  TE --> DIT
+  DIT --> S["ODE step; repeat<br/>about 50 times"]
+  S --> DEC["Causal 3D VAE decoder<br/>4× time, 8 × 8 space"]
+  DEC --> OUT["81 frames<br/>at 1280 × 720"]

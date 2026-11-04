@@ -1,0 +1,10 @@
+flowchart TD
+  A["Text:<br/>Dr. Lee paid $45."] --> B["Text normalization:<br/>Doctor Lee paid forty-five dollars"]
+  B --> C["Grapheme-to-phoneme:<br/>dˈɑktəɹ lˈi pˈAd ..."]
+  C --> D["Phoneme encoders:<br/>PL-BERT and CNN-LSTM"]
+  V["Stock voice:<br/>256-number style vector"] --> E
+  D --> E["Prosody predictor:<br/>duration, pitch, energy"]
+  E --> F["Decoder (iSTFTNet):<br/>spectrum frames to waveform"]
+  D --> F
+  V --> F
+  F --> G["Audio at 24 kHz"]

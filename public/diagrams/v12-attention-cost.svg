@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" width="780" height="480" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="480" fill="#ffffff"/>
+<line x1="78" x2="750" y1="418.0" y2="418.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="422.0" fill="#4a5b78" font-size="13" text-anchor="end">0.1</text>
+<line x1="78" x2="750" y1="339.2" y2="339.2" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="343.2" fill="#4a5b78" font-size="13" text-anchor="end">1</text>
+<line x1="78" x2="750" y1="260.4" y2="260.4" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="264.4" fill="#4a5b78" font-size="13" text-anchor="end">10</text>
+<line x1="78" x2="750" y1="181.6" y2="181.6" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="185.6" fill="#4a5b78" font-size="13" text-anchor="end">100</text>
+<line x1="78" x2="750" y1="102.8" y2="102.8" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="106.8" fill="#4a5b78" font-size="13" text-anchor="end">1,000</text>
+<line x1="78" x2="750" y1="24.0" y2="24.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="70" y="28.0" fill="#4a5b78" font-size="13" text-anchor="end">10,000</text>
+<line x1="105.2" x2="105.2" y1="24" y2="418" stroke="#dde5f2" stroke-width="1"/>
+<text x="105.2" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">1k</text>
+<line x1="238.9" x2="238.9" y1="24" y2="418" stroke="#dde5f2" stroke-width="1"/>
+<text x="238.9" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">3k</text>
+<line x1="385.4" x2="385.4" y1="24" y2="418" stroke="#dde5f2" stroke-width="1"/>
+<text x="385.4" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">10k</text>
+<line x1="519.1" x2="519.1" y1="24" y2="418" stroke="#dde5f2" stroke-width="1"/>
+<text x="519.1" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">30k</text>
+<line x1="665.6" x2="665.6" y1="24" y2="418" stroke="#dde5f2" stroke-width="1"/>
+<text x="665.6" y="438" fill="#4a5b78" font-size="13" text-anchor="middle">100k</text>
+<text x="414.0" y="466" fill="#0b1a33" font-size="14" text-anchor="middle">Video tokens in the clip (log scale)</text>
+<text transform="translate(20,221.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Milliseconds per attention call (log scale)</text>
+<polyline fill="none" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="6 5" points="105.2,423.2 750.0,60.6"/>
+<text x="206.5" y="386.2" fill="#4a5b78" font-size="13">tokens squared</text>
+<polyline fill="none" stroke="#2a78d6" stroke-width="2.5" points="135.2,379.3 375.5,261.1 453.9,226.8 529.8,182.3 631.6,127.2 686.6,95.9"/>
+<line x1="135.2" x2="135.2" y1="383.3" y2="376.9" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="135.2" cy="379.3" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="375.5" x2="375.5" y1="261.5" y2="260.9" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="375.5" cy="261.1" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="453.9" x2="453.9" y1="227.0" y2="226.4" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="453.9" cy="226.8" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="529.8" x2="529.8" y1="182.3" y2="181.5" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="529.8" cy="182.3" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="631.6" x2="631.6" y1="127.5" y2="126.1" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="631.6" cy="127.2" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="686.6" x2="686.6" y1="96.3" y2="94.3" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="686.6" cy="95.9" r="4.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<polyline fill="none" stroke="#1f9e74" stroke-width="2.5" points="135.2,355.2 375.5,299.0 453.9,287.6 529.8,264.4 631.6,220.7 686.6,205.8"/>
+<line x1="135.2" x2="135.2" y1="356.0" y2="354.6" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="135.2" cy="355.2" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="375.5" x2="375.5" y1="303.5" y2="298.0" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="375.5" cy="299.0" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="453.9" x2="453.9" y1="287.9" y2="286.9" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="453.9" cy="287.6" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="529.8" x2="529.8" y1="268.0" y2="263.6" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="529.8" cy="264.4" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="631.6" x2="631.6" y1="221.1" y2="220.5" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="631.6" cy="220.7" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="686.6" x2="686.6" y1="206.1" y2="205.2" stroke="#1f9e74" stroke-width="2"/>
+<circle cx="686.6" cy="205.8" r="4.5" fill="#1f9e74" stroke="#ffffff" stroke-width="1.5"/>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.5" points="135.2,301.4 375.5,171.6 453.9,52.9"/>
+<line x1="135.2" x2="135.2" y1="302.4" y2="300.6" stroke="#eb6834" stroke-width="2"/>
+<circle cx="135.2" cy="301.4" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="375.5" x2="375.5" y1="172.0" y2="171.0" stroke="#eb6834" stroke-width="2"/>
+<circle cx="375.5" cy="171.6" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="453.9" x2="453.9" y1="53.3" y2="52.3" stroke="#eb6834" stroke-width="2"/>
+<circle cx="453.9" cy="52.9" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<text x="639.6" y="115.2" fill="#0b1a33" font-size="13">491 ms</text>
+<text x="639.6" y="242.7" fill="#0b1a33" font-size="13">32 ms</text>
+<text x="463.9" y="57.9" fill="#0b1a33" font-size="13">4.3 s and 21 GiB: spilled past the 8 GB card</text>
+<line x1="332.96939130850177" x2="358.96939130850177" y1="355.5595348675376" y2="355.5595348675376" stroke="#2a78d6" stroke-width="2.5"/><text x="366.96939130850177" y="360.5595348675376" fill="#0b1a33" font-size="13">Full spacetime attention (fused SDPA kernel)</text>
+<line x1="332.96939130850177" x2="358.96939130850177" y1="377.5595348675376" y2="377.5595348675376" stroke="#1f9e74" stroke-width="2.5"/><text x="366.96939130850177" y="382.5595348675376" fill="#0b1a33" font-size="13">Factorized: space, then time</text>
+<line x1="332.96939130850177" x2="358.96939130850177" y1="399.5595348675376" y2="399.5595348675376" stroke="#eb6834" stroke-width="2.5"/><text x="366.96939130850177" y="404.5595348675376" fill="#0b1a33" font-size="13">Full, textbook kernel (stores every score)</text>
+</svg>

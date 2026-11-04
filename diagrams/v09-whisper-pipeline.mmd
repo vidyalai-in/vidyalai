@@ -1,0 +1,8 @@
+flowchart TD
+  A["Audio at 16 kHz,<br/>padded to 30 s"] --> B["Log-mel spectrogram<br/>3,000 frames x 80 bins"]
+  B --> C["Conv stem: 2 x Conv1D + GELU<br/>second has stride 2"]
+  C --> D["Encoder: Transformer blocks<br/>1,500 positions"]
+  P["Prompt tokens:<br/>start, en, transcribe, notimestamps"] --> E["Decoder: Transformer blocks"]
+  D -- "cross-attention" --> E
+  E --> F["Next text token"]
+  F -- "append and repeat<br/>until end of text" --> E
