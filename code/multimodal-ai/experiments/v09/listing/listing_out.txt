@@ -1,0 +1,4 @@
+torch.Size([1, 80, 3000])
+ Whisper listens to 30 seconds at a time and writes down what it heard.
+0.07142857142857142
+0.0

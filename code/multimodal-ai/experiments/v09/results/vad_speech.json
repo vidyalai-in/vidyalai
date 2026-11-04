@@ -1,0 +1,14 @@
+{
+ "test-clean": {
+  "n": 500,
+  "no_speech_found": 0,
+  "ids": []
+ },
+ "test-other": {
+  "n": 500,
+  "no_speech_found": 0,
+  "ids": []
+ },
+ "cpu_s": 97.12390637397766,
+ "audio_s": 7271.350187500002
+}

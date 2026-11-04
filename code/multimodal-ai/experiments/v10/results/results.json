@@ -1,0 +1,1389 @@
+{
+ "voices": {
+  "af_heart": {
+   "grade": "A",
+   "n": 200,
+   "audio_s": 1118.875,
+   "words_per_min": 184.31013294603954,
+   "wer_norm": {
+    "wer": 0.0054802422843957315,
+    "lo": 0.002803156844720011,
+    "hi": 0.008693843238060122,
+    "errors": 19,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 14
+   },
+   "wer_basic": {
+    "wer": 0.00927536231884058,
+    "lo": 0.005463615458793858,
+    "hi": 0.014060471996121579,
+    "errors": 32,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 23
+   }
+  },
+  "af_bella": {
+   "grade": "A-",
+   "n": 200,
+   "audio_s": 1196.55,
+   "words_per_min": 172.345493293218,
+   "wer_norm": {
+    "wer": 0.005191808479953851,
+    "lo": 0.0024256673186838335,
+    "hi": 0.008386599369961426,
+    "errors": 18,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 12
+   },
+   "wer_basic": {
+    "wer": 0.010434782608695653,
+    "lo": 0.006142057055338143,
+    "hi": 0.015156055212232095,
+    "errors": 36,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 23
+   }
+  },
+  "am_michael": {
+   "grade": "C+",
+   "n": 200,
+   "audio_s": 1261.575,
+   "words_per_min": 163.4623387432376,
+   "wer_norm": {
+    "wer": 0.006633977502163254,
+    "lo": 0.0035085672173432417,
+    "hi": 0.010210588582283915,
+    "errors": 23,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 16
+   },
+   "wer_basic": {
+    "wer": 0.011594202898550725,
+    "lo": 0.00722750281853787,
+    "hi": 0.016690917829410793,
+    "errors": 40,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 27
+   }
+  },
+  "am_adam": {
+   "grade": "F+",
+   "n": 200,
+   "audio_s": 1122.025,
+   "words_per_min": 183.7926962411711,
+   "wer_norm": {
+    "wer": 0.004614940871070089,
+    "lo": 0.002025448315414778,
+    "hi": 0.007511678641070133,
+    "errors": 16,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 11
+   },
+   "wer_basic": {
+    "wer": 0.00927536231884058,
+    "lo": 0.005408304053094832,
+    "hi": 0.013674826185759666,
+    "errors": 32,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 22
+   }
+  },
+  "bf_emma": {
+   "grade": "B-",
+   "n": 200,
+   "audio_s": 1103.8,
+   "words_per_min": 186.82732379054178,
+   "wer_norm": {
+    "wer": 0.006057109893279493,
+    "lo": 0.0031864663131410667,
+    "hi": 0.009378198296766973,
+    "errors": 21,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 16
+   },
+   "wer_basic": {
+    "wer": 0.022028985507246378,
+    "lo": 0.014284739964491405,
+    "hi": 0.030080644015164158,
+    "errors": 76,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 35
+   }
+  },
+  "bm_george": {
+   "grade": "C",
+   "n": 200,
+   "audio_s": 1254.925,
+   "words_per_min": 164.3285455306094,
+   "wer_norm": {
+    "wer": 0.005191808479953851,
+    "lo": 0.002619267672296919,
+    "hi": 0.00806115750775,
+    "errors": 18,
+    "words": 3467,
+    "items": 200,
+    "items_with_error": 14
+   },
+   "wer_basic": {
+    "wer": 0.010724637681159421,
+    "lo": 0.006085869242170382,
+    "hi": 0.01590984492382893,
+    "errors": 37,
+    "words": 3450,
+    "items": 200,
+    "items_with_error": 24
+   }
+  }
+ },
+ "hard": {
+  "abbreviations": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.07142857142857142,
+    "lo": 0.04371584699453552,
+    "hi": 0.10227757892013108,
+    "errors": 39,
+    "words": 546,
+    "items": 60,
+    "items_with_error": 18
+   },
+   "wer_basic": {
+    "wer": 0.08052434456928839,
+    "lo": 0.050368452810297955,
+    "hi": 0.11397179081913138,
+    "errors": 43,
+    "words": 534,
+    "items": 60,
+    "items_with_error": 19
+   }
+  },
+  "currency": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.03488372093023256,
+    "lo": 0.015383141762452108,
+    "hi": 0.05996322048475654,
+    "errors": 18,
+    "words": 516,
+    "items": 60,
+    "items_with_error": 12
+   },
+   "wer_basic": {
+    "wer": 0.07142857142857142,
+    "lo": 0.041729090799000064,
+    "hi": 0.10732538330494037,
+    "errors": 42,
+    "words": 588,
+    "items": 60,
+    "items_with_error": 18
+   }
+  },
+  "dates_times": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.17006802721088435,
+    "lo": 0.1305882932597556,
+    "hi": 0.21078845789523537,
+    "errors": 100,
+    "words": 588,
+    "items": 60,
+    "items_with_error": 31
+   },
+   "wer_basic": {
+    "wer": 0.1360544217687075,
+    "lo": 0.09699902305021134,
+    "hi": 0.17190347441918805,
+    "errors": 80,
+    "words": 588,
+    "items": 60,
+    "items_with_error": 26
+   }
+  },
+  "heteronyms": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.011494252873563218,
+    "lo": 0.00375234521575985,
+    "hi": 0.020447239319885423,
+    "errors": 6,
+    "words": 522,
+    "items": 60,
+    "items_with_error": 6
+   },
+   "wer_basic": {
+    "wer": 0.011494252873563218,
+    "lo": 0.00375234521575985,
+    "hi": 0.020447239319885423,
+    "errors": 6,
+    "words": 522,
+    "items": 60,
+    "items_with_error": 6
+   }
+  },
+  "numbers": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.014563106796116505,
+    "lo": 0.0,
+    "hi": 0.03476925978707351,
+    "errors": 9,
+    "words": 618,
+    "items": 60,
+    "items_with_error": 3
+   },
+   "wer_basic": {
+    "wer": 0.09567901234567901,
+    "lo": 0.06756503505004255,
+    "hi": 0.12660707210776542,
+    "errors": 62,
+    "words": 648,
+    "items": 60,
+    "items_with_error": 34
+   }
+  },
+  "rare_words": {
+   "n": 60,
+   "wer_norm": {
+    "wer": 0.03333333333333333,
+    "lo": 0.0164600603341192,
+    "hi": 0.05365095297429506,
+    "errors": 16,
+    "words": 480,
+    "items": 60,
+    "items_with_error": 12
+   },
+   "wer_basic": {
+    "wer": 0.03333333333333333,
+    "lo": 0.0164600603341192,
+    "hi": 0.05365095297429506,
+    "errors": 16,
+    "words": 480,
+    "items": 60,
+    "items_with_error": 12
+   }
+  }
+ },
+ "speed": {
+  "af_heart@0.5": {
+   "voice": "af_heart",
+   "speed": 0.5,
+   "n": 50,
+   "dur_ratio_median": 2.0111671021525446,
+   "dur_ratio_p5": 1.9797427783187276,
+   "dur_ratio_p95": 2.054704433497537,
+   "expected": 2.0,
+   "words_per_min": 86.98601102161933,
+   "wer_norm": {
+    "wer": 0.017462165308498253,
+    "lo": 0.009111617312072893,
+    "hi": 0.02706348437082893,
+    "errors": 15,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 12
+   }
+  },
+  "af_heart@0.75": {
+   "voice": "af_heart",
+   "speed": 0.75,
+   "n": 50,
+   "dur_ratio_median": 1.3675507632562847,
+   "dur_ratio_p5": 1.332277093596059,
+   "dur_ratio_p95": 1.4028874458874458,
+   "expected": 1.3333333333333333,
+   "words_per_min": 127.81065088757398,
+   "wer_norm": {
+    "wer": 0.013969732246798603,
+    "lo": 0.006187895759194869,
+    "hi": 0.02345937560597245,
+    "errors": 12,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 10
+   }
+  },
+  "af_heart@1.0": {
+   "voice": "af_heart",
+   "speed": 1.0,
+   "n": 50,
+   "dur_ratio_median": 1.0,
+   "dur_ratio_p5": 1.0,
+   "dur_ratio_p95": 1.0,
+   "expected": 1.0,
+   "words_per_min": 174.65316197123158,
+   "wer_norm": {
+    "wer": 0.011641443538998836,
+    "lo": 0.004509329231253083,
+    "hi": 0.020943130728245666,
+    "errors": 10,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 8
+   }
+  },
+  "af_heart@1.25": {
+   "voice": "af_heart",
+   "speed": 1.25,
+   "n": 50,
+   "dur_ratio_median": 0.8467901234567901,
+   "dur_ratio_p5": 0.8234581631415053,
+   "dur_ratio_p95": 0.8714696223316912,
+   "expected": 0.8,
+   "words_per_min": 206.48017709800766,
+   "wer_norm": {
+    "wer": 0.010477299185098952,
+    "lo": 0.004400198526987715,
+    "hi": 0.018286446886446883,
+    "errors": 9,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 8
+   }
+  },
+  "af_heart@1.5": {
+   "voice": "af_heart",
+   "speed": 1.5,
+   "n": 50,
+   "dur_ratio_median": 0.6493130058347449,
+   "dur_ratio_p5": 0.6256447670358176,
+   "dur_ratio_p95": 0.6850375939849623,
+   "expected": 0.6666666666666666,
+   "words_per_min": 268.37562123986396,
+   "wer_norm": {
+    "wer": 0.050058207217694994,
+    "lo": 0.0331490134175217,
+    "hi": 0.06826687254765433,
+    "errors": 43,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 23
+   }
+  },
+  "af_heart@2.0": {
+   "voice": "af_heart",
+   "speed": 2.0,
+   "n": 50,
+   "dur_ratio_median": 0.5490219867621089,
+   "dur_ratio_p5": 0.5239852398523984,
+   "dur_ratio_p95": 0.5779884571661761,
+   "expected": 0.5,
+   "words_per_min": 319.8254364089775,
+   "wer_norm": {
+    "wer": 0.1408614668218859,
+    "lo": 0.11123826135718205,
+    "hi": 0.1756481481481481,
+    "errors": 121,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 46
+   }
+  },
+  "am_michael@0.5": {
+   "voice": "am_michael",
+   "speed": 0.5,
+   "n": 50,
+   "dur_ratio_median": 2.0069444444444446,
+   "dur_ratio_p5": 1.9795654063450674,
+   "dur_ratio_p95": 2.0445788974386003,
+   "expected": 2.0,
+   "words_per_min": 77.46026952549923,
+   "wer_norm": {
+    "wer": 0.011641443538998836,
+    "lo": 0.003658203182882376,
+    "hi": 0.020202922077922073,
+    "errors": 10,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 7
+   }
+  },
+  "am_michael@0.75": {
+   "voice": "am_michael",
+   "speed": 0.75,
+   "n": 50,
+   "dur_ratio_median": 1.3585138846505949,
+   "dur_ratio_p5": 1.3351466519092419,
+   "dur_ratio_p95": 1.3917468844005156,
+   "expected": 1.3333333333333333,
+   "words_per_min": 114.29844594218237,
+   "wer_norm": {
+    "wer": 0.008149010477299184,
+    "lo": 0.0022960797387632285,
+    "hi": 0.014995788705917076,
+    "errors": 7,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 6
+   }
+  },
+  "am_michael@1.0": {
+   "voice": "am_michael",
+   "speed": 1.0,
+   "n": 50,
+   "dur_ratio_median": 1.0,
+   "dur_ratio_p5": 1.0,
+   "dur_ratio_p95": 1.0,
+   "expected": 1.0,
+   "words_per_min": 155.5134520651762,
+   "wer_norm": {
+    "wer": 0.011641443538998836,
+    "lo": 0.004540166426010434,
+    "hi": 0.020881741792414647,
+    "errors": 10,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 8
+   }
+  },
+  "am_michael@1.25": {
+   "voice": "am_michael",
+   "speed": 1.25,
+   "n": 50,
+   "dur_ratio_median": 0.8358372809985712,
+   "dur_ratio_p5": 0.8054285714285715,
+   "dur_ratio_p95": 0.8582979664014146,
+   "expected": 0.8,
+   "words_per_min": 186.7321867321867,
+   "wer_norm": {
+    "wer": 0.009313154831199068,
+    "lo": 0.0023752969121140144,
+    "hi": 0.017815787241262294,
+    "errors": 8,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 6
+   }
+  },
+  "am_michael@1.5": {
+   "voice": "am_michael",
+   "speed": 1.5,
+   "n": 50,
+   "dur_ratio_median": 0.6469096300920867,
+   "dur_ratio_p5": 0.6281696946269811,
+   "dur_ratio_p95": 0.6714035490126571,
+   "expected": 0.6666666666666666,
+   "words_per_min": 240.1404330017554,
+   "wer_norm": {
+    "wer": 0.033760186263096625,
+    "lo": 0.020935689329658645,
+    "hi": 0.04804426301920702,
+    "errors": 29,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 21
+   }
+  },
+  "am_michael@2.0": {
+   "voice": "am_michael",
+   "speed": 2.0,
+   "n": 50,
+   "dur_ratio_median": 0.5280321828708925,
+   "dur_ratio_p5": 0.5019911504424779,
+   "dur_ratio_p95": 0.5496552030964986,
+   "expected": 0.5,
+   "words_per_min": 294.19354838709677,
+   "wer_norm": {
+    "wer": 0.15133876600698487,
+    "lo": 0.12640940909942874,
+    "hi": 0.17757328713561443,
+    "errors": 130,
+    "words": 859,
+    "items": 50,
+    "items_with_error": 47
+   }
+  }
+ },
+ "examples": {
+  "worst_main": [
+   [
+    0.2,
+    2,
+    "am_adam",
+    "m168",
+    "It is certainly too bad! said the tender-hearted Woodman.",
+    "It is certainly too bad, said the tenderhearted woodman."
+   ],
+   [
+    0.2,
+    2,
+    "af_bella",
+    "m168",
+    "It is certainly too bad! said the tender-hearted Woodman.",
+    "It is certainly too bad, said the tenderhearted woodman."
+   ],
+   [
+    0.2,
+    2,
+    "af_bella",
+    "m034",
+    "The Nemesis of the delicate ones was creeping on apace.",
+    "The nemesis of the delicate ones was creeping on a pace."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "bm_george",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped, I followed in the Morlock's path."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "bf_emma",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped, I followed in the Morlock's path."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "am_michael",
+    "m104",
+    "And I shall never have a heart, spoke the Tin Woodman.",
+    "And I shall never have a heart, spoke the ten woodmen."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "am_michael",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped, I followed in the Morlock's path."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "am_adam",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped, I followed in the Morlock's path."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "af_heart",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped, I followed in the Morlock's path."
+   ],
+   [
+    0.18181818181818182,
+    2,
+    "af_bella",
+    "m005",
+    "My iron bar still gripped, I followed in the Morlocks' path.",
+    "My iron bar still gripped. I followed in the Morlock's path."
+   ],
+   [
+    0.15384615384615385,
+    2,
+    "am_michael",
+    "m184",
+    "And I should not have had my lovely heart, said the Tin Woodman.",
+    "And I should not have had my lovely heart, said the ten woodmen."
+   ],
+   [
+    0.15384615384615385,
+    2,
+    "am_michael",
+    "m092",
+    "I thought I would make a virtue of necessity, and see the sunrise.",
+    "I thought I would make a virtue of necessity and see the sun rise."
+   ],
+   [
+    0.125,
+    2,
+    "af_bella",
+    "m041",
+    "You can show black is white by argument, said Filby, but you will never convince me.",
+    "You can show black as white by argument, said Philby, but you will never convince me."
+   ],
+   [
+    0.125,
+    1,
+    "am_michael",
+    "m001",
+    "Very calmly I tried to strike the match.",
+    "Very calmly, I try to strike the match."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "bm_george",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "bf_emma",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "am_michael",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "am_adam",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "af_heart",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.11764705882352941,
+    2,
+    "af_bella",
+    "m036",
+    "And at last, in one of the really air-tight cases, I found a box of matches.",
+    "And at last, in one of the really airtight cases, I found a box of matches."
+   ],
+   [
+    0.1111111111111111,
+    1,
+    "af_heart",
+    "m017",
+    "I put out my hand and touched something soft.",
+    "I put out my hand and touch something soft."
+   ],
+   [
+    0.1,
+    1,
+    "am_michael",
+    "m135",
+    "That is because you have no brains answered the girl.",
+    "That is because you have no brains answer the girl."
+   ],
+   [
+    0.09523809523809523,
+    2,
+    "bm_george",
+    "m082",
+    "I looked at little Weena sleeping beside me, her face white and starlike under the stars, and forthwith dismissed the thought.",
+    "I looked at little Weena sleeping beside me, her face white and star-like under the stars, and forthwith dismissed the thought."
+   ],
+   [
+    0.09523809523809523,
+    2,
+    "bf_emma",
+    "m082",
+    "I looked at little Weena sleeping beside me, her face white and starlike under the stars, and forthwith dismissed the thought.",
+    "I looked at little Weena sleeping beside me, her face white and star-like under the stars, and forthwith dismissed the thought."
+   ],
+   [
+    0.09523809523809523,
+    2,
+    "am_michael",
+    "m082",
+    "I looked at little Weena sleeping beside me, her face white and starlike under the stars, and forthwith dismissed the thought.",
+    "I looked at little Weena sleeping beside me, her face white and star-like under the stars, and forthwith dismissed the thought."
+   ]
+  ],
+  "hard_abbreviations": [
+   [
+    "af_heart",
+    "Dr. Lee lives at 42 Oak St. near the old mill.",
+    "Dr. Lee lives at 42 Oaksent, near the Old Mill."
+   ],
+   [
+    "af_heart",
+    "St. Paul's Cathedral is on Ludgate Hill.",
+    "St. Paul's Cathedral is on Ludgate Hill."
+   ],
+   [
+    "af_heart",
+    "Mr. and Mrs. Patel arrived at 6 p.m.",
+    "Mr. and Mrs. Patel arrived at 6 p.m."
+   ],
+   [
+    "af_heart",
+    "The box weighs 5 kg and is 30 cm wide.",
+    "The box weighs 5 kg and is 30 cm wide."
+   ],
+   [
+    "af_heart",
+    "Please reply ASAP, i.e. before noon.",
+    "Please reply ASAP, i.e. before noon."
+   ],
+   [
+    "af_heart",
+    "The NASA probe sent its data to the ESA team.",
+    "The NASA probe sent its data to the ESA team."
+   ],
+   [
+    "af_heart",
+    "Prof. Green teaches at MIT in the spring term.",
+    "Prof. Green teaches at MIT in the spring term."
+   ],
+   [
+    "af_heart",
+    "The car does 40 mph on the A1 road.",
+    "The car does 40 mph on the A1 road."
+   ],
+   [
+    "af_heart",
+    "Add 2 tsp. of salt and 1 tbsp. of oil.",
+    "Add 2 TSB of salt and 1 tablespoon of oil."
+   ],
+   [
+    "af_heart",
+    "Gen. Ortiz met Lt. Brown at HQ.",
+    "Jen Ortiz Med LT, Brown at HQ."
+   ],
+   [
+    "am_michael",
+    "Dr. Lee lives at 42 Oak St. near the old mill.",
+    "Dr. Lee lives at 42 Oaksent, near the Old Mill."
+   ],
+   [
+    "am_michael",
+    "St. Paul's Cathedral is on Ludgate Hill.",
+    "St. Paul's Cathedral is on Ludgate Hill."
+   ],
+   [
+    "am_michael",
+    "Mr. and Mrs. Patel arrived at 6 p.m.",
+    "Mr. and Mrs. Patel arrived at 6 p.m."
+   ],
+   [
+    "am_michael",
+    "The box weighs 5 kg and is 30 cm wide.",
+    "The box weighs 5 kg and is 30 cm wide."
+   ],
+   [
+    "am_michael",
+    "Please reply ASAP, i.e. before noon.",
+    "Please reply ASAP, i.e. before noon."
+   ],
+   [
+    "am_michael",
+    "The NASA probe sent its data to the ESA team.",
+    "The NASA probe sent its data to the ESA team."
+   ],
+   [
+    "am_michael",
+    "Prof. Green teaches at MIT in the spring term.",
+    "Prof. Green teaches at MIT in the spring term."
+   ],
+   [
+    "am_michael",
+    "The car does 40 mph on the A1 road.",
+    "The car does 40 mph on the A1 road."
+   ],
+   [
+    "am_michael",
+    "Add 2 tsp. of salt and 1 tbsp. of oil.",
+    "Add 2 TSB of salt and 1 tablespoon of oil."
+   ],
+   [
+    "am_michael",
+    "Gen. Ortiz met Lt. Brown at HQ.",
+    "Jen Ortiz, MedLT, Brown at HQ."
+   ]
+  ],
+  "hard_currency": [
+   [
+    "af_heart",
+    "The ticket costs $45, or $38.50 with a student card.",
+    "The ticket costs $45, or $38.50 with a student card."
+   ],
+   [
+    "af_heart",
+    "She paid £12.99 for the book and €8 for the map.",
+    "She paid £12.99 for the book and €8 for the map."
+   ],
+   [
+    "af_heart",
+    "The house sold for $1.2 million last spring.",
+    "The house sold for $1.2 million last spring."
+   ],
+   [
+    "af_heart",
+    "A coffee here is $3.75, and a sandwich is $9.",
+    "A coffee here is $3.75, and a sandwich is $9."
+   ],
+   [
+    "af_heart",
+    "The fine was raised from $250 to $1,000.",
+    "The fine was raised from $250 to $1,000."
+   ],
+   [
+    "af_heart",
+    "Each share fell by 35 cents to $17.20.",
+    "Each share fell by $0.35 to $17.20."
+   ],
+   [
+    "af_heart",
+    "The repair bill came to $2,345.67 in total.",
+    "The repair bill came to $2,345.67 in total."
+   ],
+   [
+    "af_heart",
+    "He found ¥500 in the pocket of his coat.",
+    "He found yen 500 in the pocket of his coat."
+   ],
+   [
+    "af_heart",
+    "The budget for the project is $4.5 billion.",
+    "The budget for the project is $4.5 billion."
+   ],
+   [
+    "af_heart",
+    "Lunch for two cost £24, plus a £3 tip.",
+    "Lunch for two costs 24 pounds, plus a 3 pounds tip."
+   ],
+   [
+    "am_michael",
+    "The ticket costs $45, or $38.50 with a student card.",
+    "The ticket costs $45 or $38.50 with a student card."
+   ],
+   [
+    "am_michael",
+    "She paid £12.99 for the book and €8 for the map.",
+    "She paid £12.99 for the book and €8 for the map."
+   ],
+   [
+    "am_michael",
+    "The house sold for $1.2 million last spring.",
+    "The house sold for $1.2 million last spring."
+   ],
+   [
+    "am_michael",
+    "A coffee here is $3.75, and a sandwich is $9.",
+    "A coffee here is $3.75 and a sandwich is $9.00."
+   ],
+   [
+    "am_michael",
+    "The fine was raised from $250 to $1,000.",
+    "The fine was raised from $250 to $1,000."
+   ],
+   [
+    "am_michael",
+    "Each share fell by 35 cents to $17.20.",
+    "Each share fell by $0.35 to $17.20."
+   ],
+   [
+    "am_michael",
+    "The repair bill came to $2,345.67 in total.",
+    "The repair bill came to $2,345.67 in total."
+   ],
+   [
+    "am_michael",
+    "He found ¥500 in the pocket of his coat.",
+    "He found yen 500 in the pocket of his coat."
+   ],
+   [
+    "am_michael",
+    "The budget for the project is $4.5 billion.",
+    "The budget for the project is $4.5 billion."
+   ],
+   [
+    "am_michael",
+    "Lunch for two cost £24, plus a £3 tip.",
+    "Lunch for two costs 24 pounds plus a 3 pounds tip."
+   ]
+  ],
+  "hard_dates_times": [
+   [
+    "af_heart",
+    "The meeting moved from March 3 to April 11, 2025.",
+    "The meeting moved from March 3 to April 11, 2025."
+   ],
+   [
+    "af_heart",
+    "The parcel left the warehouse on 12/05/2024.",
+    "The parcel left the warehouse on 1205-2024."
+   ],
+   [
+    "af_heart",
+    "The shop opens at 9:30 am and closes at 6 pm.",
+    "The shop opens at 9, 30 a.m. and closes at 6 p.m."
+   ],
+   [
+    "af_heart",
+    "The war ended in 1945, and the treaty followed in 1947.",
+    "The war ended in 1945, and the treaty followed in 1947."
+   ],
+   [
+    "af_heart",
+    "Your appointment is on Tue., Nov. 18 at 2:15 pm.",
+    "Your appointment is on 2. Nov. 18 at 2, 15 p.m."
+   ],
+   [
+    "af_heart",
+    "The train leaves at 07:45 and arrives at 13:20.",
+    "The train leaves at 07.45 and arrives at 13.20."
+   ],
+   [
+    "af_heart",
+    "The museum was founded in the 1890s.",
+    "The museum was founded in the 1890s."
+   ],
+   [
+    "af_heart",
+    "The deadline is Friday, the 21st of June.",
+    "The deadline is Friday, the 21st of June."
+   ],
+   [
+    "af_heart",
+    "In 2008 the river flooded twice.",
+    "In 2008, the river flooded twice."
+   ],
+   [
+    "af_heart",
+    "The concert runs from 8:00 to 10:30 pm on July 4th.",
+    "The concert runs from 8.00 to 10.30 p.m. on July 4."
+   ],
+   [
+    "am_michael",
+    "The meeting moved from March 3 to April 11, 2025.",
+    "The meeting moved from March 3 to April 11, 2025."
+   ],
+   [
+    "am_michael",
+    "The parcel left the warehouse on 12/05/2024.",
+    "The parcel left the warehouse on 1205-2024."
+   ],
+   [
+    "am_michael",
+    "The shop opens at 9:30 am and closes at 6 pm.",
+    "The shop opens at 9, 30 a.m. and closes at 6 p.m."
+   ],
+   [
+    "am_michael",
+    "The war ended in 1945, and the treaty followed in 1947.",
+    "The war ended in 1945 and the treaty followed in 1947."
+   ],
+   [
+    "am_michael",
+    "Your appointment is on Tue., Nov. 18 at 2:15 pm.",
+    "Your appointment is on 2, NAV, 18 at 2, 15 p.m."
+   ],
+   [
+    "am_michael",
+    "The train leaves at 07:45 and arrives at 13:20.",
+    "The train leaves at 07.45 and arrives at 13.20."
+   ],
+   [
+    "am_michael",
+    "The museum was founded in the 1890s.",
+    "The museum was founded in the 1890s."
+   ],
+   [
+    "am_michael",
+    "The deadline is Friday, the 21st of June.",
+    "The deadline is Friday, the 21st of June."
+   ],
+   [
+    "am_michael",
+    "In 2008 the river flooded twice.",
+    "In 2008, the river flooded twice."
+   ],
+   [
+    "am_michael",
+    "The concert runs from 8:00 to 10:30 pm on July 4th.",
+    "The concert runs from 8.00 to 10.00, 30 p.m. on July 4."
+   ]
+  ],
+  "hard_heteronyms": [
+   [
+    "af_heart",
+    "I read the letter yesterday, and I will read it again tomorrow.",
+    "I read the letter yesterday, and I will read it again tomorrow."
+   ],
+   [
+    "af_heart",
+    "The wind was too strong to wind the sail.",
+    "The wind was too strong to wind the sail."
+   ],
+   [
+    "af_heart",
+    "They refuse to move the refuse from the yard.",
+    "They refused to move the refuse from the yard."
+   ],
+   [
+    "af_heart",
+    "A white dove dove into the bushes.",
+    "A white dove dove into the bushes."
+   ],
+   [
+    "af_heart",
+    "The nurse wound a bandage around the wound.",
+    "The nurse wound a bandage around the wound."
+   ],
+   [
+    "af_heart",
+    "Please record the record for the archive.",
+    "Please record the record for the archive."
+   ],
+   [
+    "af_heart",
+    "The bass swam past the bass player on the dock.",
+    "The bass swam past the bass player on the dock."
+   ],
+   [
+    "af_heart",
+    "She will present the present to her friend.",
+    "She will present the present to her friend."
+   ],
+   [
+    "af_heart",
+    "Close the door, because the station is close.",
+    "Close the door, because the station is close."
+   ],
+   [
+    "af_heart",
+    "They had to desert the camp in the desert.",
+    "They had to desert the camp in the desert."
+   ],
+   [
+    "am_michael",
+    "I read the letter yesterday, and I will read it again tomorrow.",
+    "I read the letter yesterday, and I will read it again tomorrow."
+   ],
+   [
+    "am_michael",
+    "The wind was too strong to wind the sail.",
+    "The wind was too strong to wind the sail."
+   ],
+   [
+    "am_michael",
+    "They refuse to move the refuse from the yard.",
+    "They refused to move the refuse from the yard."
+   ],
+   [
+    "am_michael",
+    "A white dove dove into the bushes.",
+    "A white dove dove into the bushes."
+   ],
+   [
+    "am_michael",
+    "The nurse wound a bandage around the wound.",
+    "The nurse wound a bandage around the wound."
+   ],
+   [
+    "am_michael",
+    "Please record the record for the archive.",
+    "Please record the record for the archive."
+   ],
+   [
+    "am_michael",
+    "The bass swam past the bass player on the dock.",
+    "The bass swam past the bass player on the dock."
+   ],
+   [
+    "am_michael",
+    "She will present the present to her friend.",
+    "She will present the present to her friend."
+   ],
+   [
+    "am_michael",
+    "Close the door, because the station is close.",
+    "Close the door because the station is closed."
+   ],
+   [
+    "am_michael",
+    "They had to desert the camp in the desert.",
+    "They had to desert the camp in the desert."
+   ]
+  ],
+  "hard_numbers": [
+   [
+    "af_heart",
+    "The bridge is 1,250 meters long and 42 meters high.",
+    "The bridge is 1,250 meters long and 42 meters high."
+   ],
+   [
+    "af_heart",
+    "She finished 3rd out of 117 runners.",
+    "She finished third out of 117 runners,"
+   ],
+   [
+    "af_heart",
+    "The recipe needs 2.5 cups of flour and 0.75 cups of sugar.",
+    "The recipe needs 2.5 cups of flour and 0.75 cups of sugar."
+   ],
+   [
+    "af_heart",
+    "The population grew from 8,400 to 12,960 in ten years.",
+    "The population grew from 8,400 to 12,960 in 10 years."
+   ],
+   [
+    "af_heart",
+    "Turn to page 384 and read the first 15 lines.",
+    "Turn to page 384 and read the first 15 lines."
+   ],
+   [
+    "af_heart",
+    "About 1 in 6 trains arrived more than 10 minutes late.",
+    "About one in six trains arrived more than 10 minutes late."
+   ],
+   [
+    "af_heart",
+    "The test pass rate rose to 98.6% this year.",
+    "The test pass rate rose to 98.6% this year."
+   ],
+   [
+    "af_heart",
+    "Room 4B is on the 2nd floor, next to room 4C.",
+    "Room 4B is on the second floor, next to room 4C."
+   ],
+   [
+    "af_heart",
+    "The tower has 1,001 steps and 7 landings.",
+    "The tower has 1001 steps and seven landings."
+   ],
+   [
+    "af_heart",
+    "Mix 3/4 of the paint with 1/2 a cup of water.",
+    "Mix 3-4 of the paint with 1-2 a cup of water."
+   ],
+   [
+    "am_michael",
+    "The bridge is 1,250 meters long and 42 meters high.",
+    "The bridge is 1,250 meters long and 42 meters high."
+   ],
+   [
+    "am_michael",
+    "She finished 3rd out of 117 runners.",
+    "She finished third out of 117 runners."
+   ],
+   [
+    "am_michael",
+    "The recipe needs 2.5 cups of flour and 0.75 cups of sugar.",
+    "The recipe needs 2.5 cups of flour and 0.75 cups of sugar."
+   ],
+   [
+    "am_michael",
+    "The population grew from 8,400 to 12,960 in ten years.",
+    "The population grew from 8,400 to 12,960 in 10 years."
+   ],
+   [
+    "am_michael",
+    "Turn to page 384 and read the first 15 lines.",
+    "Turn to page 384 and read the first 15 lines."
+   ],
+   [
+    "am_michael",
+    "About 1 in 6 trains arrived more than 10 minutes late.",
+    "About one in six trains arrived more than ten minutes late."
+   ],
+   [
+    "am_michael",
+    "The test pass rate rose to 98.6% this year.",
+    "The test pass rate rose to 98.6% this year."
+   ],
+   [
+    "am_michael",
+    "Room 4B is on the 2nd floor, next to room 4C.",
+    "Room 4B is on the second floor, next to room 4C."
+   ],
+   [
+    "am_michael",
+    "The tower has 1,001 steps and 7 landings.",
+    "The tower has 1001 steps and 7 landings."
+   ],
+   [
+    "am_michael",
+    "Mix 3/4 of the paint with 1/2 a cup of water.",
+    "Mix 3-4 of the paint with 1-2 a cup of water."
+   ]
+  ],
+  "hard_rare_words": [
+   [
+    "af_heart",
+    "The quokka and the axolotl shared a tank at the zoo.",
+    "The quokka and the axolotl shared a tank at the zoo."
+   ],
+   [
+    "af_heart",
+    "We hiked from Llanfair to Aberystwyth in two days.",
+    "We hiked from Lanfair to Aberystwyth in two days."
+   ],
+   [
+    "af_heart",
+    "The chef served gnocchi with a quinoa salad.",
+    "The chef served gnocchi with a quinoa salad."
+   ],
+   [
+    "af_heart",
+    "A pterodactyl skeleton hung above the staircase.",
+    "A pterodactyl skeleton hung above the staircase."
+   ],
+   [
+    "af_heart",
+    "The sommelier recommended a dry Gewürztraminer.",
+    "The sommelier recommended a dry gewustreminer"
+   ],
+   [
+    "af_heart",
+    "Worcestershire sauce is hard to spell and to say.",
+    "Worcestershire sauce is hard to spell and to say."
+   ],
+   [
+    "af_heart",
+    "The ichthyologist studied the coelacanth for years.",
+    "The ichthyologist studied the coelacanth for years."
+   ],
+   [
+    "af_heart",
+    "Their village sits between Loughborough and Leicester.",
+    "Their village sits between Loughborough and Leicester."
+   ],
+   [
+    "af_heart",
+    "The phlebotomist was quick and kind.",
+    "The phlebotomist was quick and kind."
+   ],
+   [
+    "af_heart",
+    "A syzygy happens when three bodies line up in space.",
+    "A syzygy happens when three bodies line up in space."
+   ],
+   [
+    "am_michael",
+    "The quokka and the axolotl shared a tank at the zoo.",
+    "The quokka and the axolotl shared a tank at the zoo."
+   ],
+   [
+    "am_michael",
+    "We hiked from Llanfair to Aberystwyth in two days.",
+    "We hiked from Lanfair to Aberystwyth in two days."
+   ],
+   [
+    "am_michael",
+    "The chef served gnocchi with a quinoa salad.",
+    "The chef served gnocchi with a quinoa salad."
+   ],
+   [
+    "am_michael",
+    "A pterodactyl skeleton hung above the staircase.",
+    "A pterodactyl skeleton hung above the staircase."
+   ],
+   [
+    "am_michael",
+    "The sommelier recommended a dry Gewürztraminer.",
+    "The sommelier recommended a dry Jewish demeanor."
+   ],
+   [
+    "am_michael",
+    "Worcestershire sauce is hard to spell and to say.",
+    "Worcestershire sauce is hard to spell and to say."
+   ],
+   [
+    "am_michael",
+    "The ichthyologist studied the coelacanth for years.",
+    "The ichthyologist studied the coelacanth for years."
+   ],
+   [
+    "am_michael",
+    "Their village sits between Loughborough and Leicester.",
+    "Their village sits between Loughborough and Leicester."
+   ],
+   [
+    "am_michael",
+    "The phlebotomist was quick and kind.",
+    "The phlebotomist was quick and kind."
+   ],
+   [
+    "am_michael",
+    "A syzygy happens when three bodies line up in space.",
+    "A syzygy happens when three bodies line up in space."
+   ]
+  ]
+ },
+ "main_all": {
+  "wer_norm": {
+   "wer": 0.005528314585136045,
+   "lo": 0.004318715673182979,
+   "hi": 0.006759698876766959,
+   "errors": 115,
+   "words": 20802,
+   "items": 1200,
+   "items_with_error": 83
+  },
+  "wer_basic": {
+   "wer": 0.012222222222222223,
+   "lo": 0.010134005486114536,
+   "hi": 0.014578958875516464,
+   "errors": 253,
+   "words": 20700,
+   "items": 1200,
+   "items_with_error": 154
+  }
+ },
+ "main_sentence_error_profile": {
+  "sentences": 200,
+  "error_free_all_voices": 167,
+  "error_in_all_voices": 4
+ },
+ "duration_spread": {
+  "sentences": 200,
+  "max_over_min_median": 1.1693017539474235,
+  "max_over_min_p90": 1.2171175446922955,
+  "cv_median": 0.057810160077645806
+ },
+ "librispeech_ref": {
+  "n": 200,
+  "audio_s": 1618.5703125,
+  "wall_s": 32.008533000946045,
+  "speakers": 40,
+  "wer_norm": {
+   "wer": 0.02584629460201281,
+   "lo": 0.016121166750254788,
+   "hi": 0.04028482517342515,
+   "errors": 113,
+   "words": 4372,
+   "items": 200,
+   "items_with_error": 55
+  },
+  "wer_raw": {
+   "wer": 0.03987093800414842,
+   "lo": 0.02854956748933424,
+   "hi": 0.05504844640790239,
+   "errors": 173,
+   "words": 4339,
+   "items": 200,
+   "items_with_error": 74
+  }
+ },
+ "asr_throughput": {
+  "clips": 2060,
+  "audio_s": 11934.675,
+  "wall_s": 323.4246006011963,
+  "gpu": {
+   "sm_mhz_median": 1860.0,
+   "power_w_median": 49.52,
+   "power_w_max": 62.42,
+   "mem_mib_max": 2673.0,
+   "samples": 1245
+  }
+ }
+}

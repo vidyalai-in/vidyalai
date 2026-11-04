@@ -75,8 +75,12 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `sd.py` | 6 | Stable Diffusion 1.5 loading and timing, the guidance and sampler sweeps, x0 decoding, CLIP score and diversity, the Haiku judge requests |
 | `flow.py` | 7 | Rectified-flow loss and Euler sampler, DDPM baseline, U-Net and tiny DiT with adaLN-Zero, reflow pairs, straightness measures |
 | `ar_image.py` | 8 | VQ-VAE with dead-code restarts, raster-order and MaskGIT-style priors, KV-cached sampling, aMUSEd timing and CLIP scoring |
+| `asr.py` | 9 | Whisper loading and batched transcription, LibriSpeech subsets, WER with Whisper's normalizers and bootstrap intervals, noise mixing at a set SNR, the silent and synthetic clips for the hallucination test |
+| `speech_tts.py` | 10 | Kokoro-82M synthesis with stock voices, timing on GPU and CPU, time to first audio, the Whisper round trip and per-category WER |
+| `voice.py` | 11 | Mimi and DAC round trips at a chosen number of codebooks, STOI, Silero VAD endpointing, streamed first-token and first-sentence timing |
+| `video.py` | 12 | Moving Fashion-MNIST clips, the tiny spacetime-patch DiT with frame-by-frame, factorized and full attention, flow loss and sampler, clip metrics, the attention benchmark |
 
-`experiments/v01` to `v08` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10 and Oxford-IIIT Pet files (measured only; `v02/dl.py` fetches them), rendered and generated image sets, training checkpoints, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
+`experiments/v01` to `v12` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10, Oxford-IIIT Pet and LibriSpeech files (measured only; `v02/dl.py` fetches the first two, and only LibriSpeech utterance IDs are kept), synthesized audio, rendered and generated image sets, training checkpoints, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
 
 ## agents-lab/ (Agentic AI)
 

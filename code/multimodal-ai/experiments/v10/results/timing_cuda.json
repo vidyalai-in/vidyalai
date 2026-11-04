@@ -1,0 +1,160 @@
+{
+ "device": "cuda",
+ "voice": "af_heart",
+ "torch": "2.11.0+cu128",
+ "threads": 8,
+ "n_timed": 7,
+ "warmup": 2,
+ "lengths": [
+  {
+   "words": 5,
+   "chars": 25,
+   "phonemes": 25,
+   "chunks": 1,
+   "audio_s": 2.1,
+   "t_median": 0.07876425993163139,
+   "t_min": 0.0658760080114007,
+   "t_max": 0.08951820502988994,
+   "g2p_median": 0.001189196016639471,
+   "rtf": 0.03750679044363399,
+   "peak_alloc_mib": 598.10400390625,
+   "peak_reserved_mib": 678.0
+  },
+  {
+   "words": 10,
+   "chars": 49,
+   "phonemes": 49,
+   "chunks": 1,
+   "audio_s": 3.425,
+   "t_median": 0.0841919359518215,
+   "t_min": 0.07906133390497416,
+   "t_max": 0.0856639810372144,
+   "g2p_median": 0.0024294230388477445,
+   "rtf": 0.02458158713921796,
+   "peak_alloc_mib": 626.0986328125,
+   "peak_reserved_mib": 706.0
+  },
+  {
+   "words": 20,
+   "chars": 113,
+   "phonemes": 112,
+   "chunks": 1,
+   "audio_s": 7.425,
+   "t_median": 0.13311619800515473,
+   "t_min": 0.12796549999620765,
+   "t_max": 0.14476664399262518,
+   "g2p_median": 0.002030352014116943,
+   "rtf": 0.017928107475441716,
+   "peak_alloc_mib": 701.8017578125,
+   "peak_reserved_mib": 792.0
+  },
+  {
+   "words": 40,
+   "chars": 233,
+   "phonemes": 233,
+   "chunks": 1,
+   "audio_s": 14.75,
+   "t_median": 0.27919410506729037,
+   "t_min": 0.27343800594098866,
+   "t_max": 0.2852727089775726,
+   "g2p_median": 0.00343836797401309,
+   "rtf": 0.018928413902867144,
+   "peak_alloc_mib": 833.181640625,
+   "peak_reserved_mib": 1022.0
+  },
+  {
+   "words": 80,
+   "chars": 457,
+   "phonemes": 453,
+   "chunks": 1,
+   "audio_s": 26.675,
+   "t_median": 0.5103736279997975,
+   "t_min": 0.5000405620085075,
+   "t_max": 0.5310404340270907,
+   "g2p_median": 0.007860918994992971,
+   "rtf": 0.019133031977499437,
+   "peak_alloc_mib": 1050.01708984375,
+   "peak_reserved_mib": 1366.0
+  },
+  {
+   "words": 160,
+   "chars": 903,
+   "phonemes": 895,
+   "chunks": 2,
+   "audio_s": 51.8,
+   "t_median": 1.012678615981713,
+   "t_min": 0.980897624976933,
+   "t_max": 1.032328898087144,
+   "g2p_median": 0.0122569469967857,
+   "rtf": 0.019549780231307202,
+   "peak_alloc_mib": 1058.89208984375,
+   "peak_reserved_mib": 1322.0
+  },
+  {
+   "words": 320,
+   "chars": 1793,
+   "phonemes": 1786,
+   "chunks": 4,
+   "audio_s": 101.9,
+   "t_median": 1.984356767963618,
+   "t_min": 1.9560727200005203,
+   "t_max": 2.0214295940240845,
+   "g2p_median": 0.02375853806734085,
+   "rtf": 0.019473569852439823,
+   "peak_alloc_mib": 1081.37109375,
+   "peak_reserved_mib": 1726.0
+  }
+ ],
+ "ttfa": {
+  "whole": {
+   "first_median": 0.3249198590638116,
+   "first_min": 0.3162139479536563,
+   "first_max": 0.33209645899478346,
+   "total_median": 0.3249745120992884,
+   "audio_s": 17.45,
+   "chunks": 1
+  },
+  "sentences": {
+   "first_median": 0.07236846291925758,
+   "first_min": 0.0688566230237484,
+   "first_max": 0.08300026692450047,
+   "total_median": 0.4032530339900404,
+   "audio_s": 18.0,
+   "chunks": 5
+  }
+ },
+ "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+ "para": "The kettle clicked off just as the rain began. Outside, the street lamps flickered on one by one. A bus hissed to a stop at the corner and pulled away again. Somewhere upstairs, a radio was playing an old song. By the time the tea was ready, the window had fogged over completely.",
+ "para_phonemes": 281,
+ "loadavg_start": [
+  3.720703125,
+  2.68701171875,
+  2.03173828125
+ ],
+ "loadavg_end": [
+  3.03564453125,
+  2.6533203125,
+  2.05126953125
+ ],
+ "determinism": {
+  "len1": 162600,
+  "len2": 162600,
+  "max_abs_diff": 0.10038614273071289
+ },
+ "gpu_stats": {
+  "sm_mhz_median": 2040.0,
+  "power_w_median": 39.364999999999995,
+  "power_w_max": 55.85,
+  "mem_mib_max": 1853.0,
+  "samples": 172
+ },
+ "model_mib": 312.0804672241211,
+ "params": 81810022,
+ "params_by_part": {
+  "bert": 6292480,
+  "bert_encoder": 393728,
+  "predictor": 16203828,
+  "text_encoder": 5606400,
+  "decoder": 53313586
+ }
+}

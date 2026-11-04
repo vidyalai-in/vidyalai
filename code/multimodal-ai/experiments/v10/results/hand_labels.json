@@ -1,0 +1,395 @@
+{
+ "labels": {
+  "h_numbers_9": [
+   "wrong",
+   "3/4 -> 'three four', 1/2 -> 'one two'"
+  ],
+  "h_currency_7": [
+   "wrong",
+   "¥500 -> 'yen five hundred'"
+  ],
+  "h_dates_times_0": [
+   "acceptable",
+   "March 3 -> 'March three' (cardinal)"
+  ],
+  "h_dates_times_1": [
+   "wrong",
+   "12/05/2024 -> 'twelve zero five twenty twenty-four'"
+  ],
+  "h_dates_times_4": [
+   "wrong",
+   "Tue., Nov. not expanded"
+  ],
+  "h_dates_times_5": [
+   "acceptable",
+   "07:45 -> 'zero seven forty-five'"
+  ],
+  "h_dates_times_9": [
+   "wrong",
+   "8:00 -> 'eight zero zero'"
+  ],
+  "h_abbreviations_0": [
+   "wrong",
+   "Oak St. -> 'Saint'"
+  ],
+  "h_abbreviations_3": [
+   "wrong",
+   "kg, cm spelled as letters"
+  ],
+  "h_abbreviations_4": [
+   "acceptable",
+   "ASAP as a word, i.e. as letters"
+  ],
+  "h_abbreviations_6": [
+   "acceptable",
+   "Prof. -> 'prof'"
+  ],
+  "h_abbreviations_8": [
+   "wrong",
+   "tsp. -> 'T S P'"
+  ],
+  "h_abbreviations_9": [
+   "wrong",
+   "Gen. -> 'Jen', Lt. -> 'L T'"
+  ],
+  "h_heteronyms_6": [
+   "wrong",
+   "second bass read as the fish"
+  ],
+  "h_rare_words_1": [
+   "acceptable",
+   "Llanfair, Aberystwyth anglicized"
+  ],
+  "h_rare_words_4": [
+   "wrong",
+   "Gewurztraminer letter-by-letter guess"
+  ]
+ },
+ "counts": {
+  "numbers|ok": 9,
+  "numbers|wrong": 1,
+  "currency|ok": 9,
+  "currency|wrong": 1,
+  "dates_times|acceptable": 2,
+  "dates_times|wrong": 3,
+  "dates_times|ok": 5,
+  "abbreviations|wrong": 4,
+  "abbreviations|ok": 4,
+  "abbreviations|acceptable": 2,
+  "heteronyms|ok": 9,
+  "heteronyms|wrong": 1,
+  "rare_words|ok": 8,
+  "rare_words|acceptable": 1,
+  "rare_words|wrong": 1
+ },
+ "roundtrip_vs_hand": {
+  "ok|flagged=False": 161,
+  "wrong|flagged=False": 10,
+  "wrong|flagged=True": 34,
+  "ok|flagged=True": 15,
+  "acceptable|flagged=False": 12,
+  "acceptable|flagged=True": 8
+ },
+ "per_sentence": {
+  "h_numbers_0": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The bridge is 1,250 meters long and 42 meters high."
+  },
+  "h_numbers_1": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "She finished third out of 117 runners,"
+  },
+  "h_numbers_2": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The recipe needs 2.5 cups of flour and 0.75 cups of sugar."
+  },
+  "h_numbers_3": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The population grew from 8,400 to 12,960 in 10 years."
+  },
+  "h_numbers_4": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Turn to page 384 and read the first 15 lines."
+  },
+  "h_numbers_5": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "About one in six trains arrived more than 10 minutes late."
+  },
+  "h_numbers_6": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The test pass rate rose to 98.6% this year."
+  },
+  "h_numbers_7": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Room 4B is on the second floor, next to room 4C."
+  },
+  "h_numbers_8": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The tower has 1001 steps and seven landings."
+  },
+  "h_numbers_9": {
+   "label": "wrong",
+   "flagged_voices": 2,
+   "hyp_af_heart": "Mix 3-4 of the paint with 1-2 a cup of water."
+  },
+  "h_currency_0": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The ticket costs $45, or $38.50 with a student card."
+  },
+  "h_currency_1": {
+   "label": "ok",
+   "flagged_voices": 2,
+   "hyp_af_heart": "She paid £12.99 for the book and €8 for the map."
+  },
+  "h_currency_2": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The house sold for $1.2 million last spring."
+  },
+  "h_currency_3": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "A coffee here is $3.75, and a sandwich is $9."
+  },
+  "h_currency_4": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The fine was raised from $250 to $1,000."
+  },
+  "h_currency_5": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Each share fell by $0.35 to $17.20."
+  },
+  "h_currency_6": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The repair bill came to $2,345.67 in total."
+  },
+  "h_currency_7": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "He found yen 500 in the pocket of his coat."
+  },
+  "h_currency_8": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The budget for the project is $4.5 billion."
+  },
+  "h_currency_9": {
+   "label": "ok",
+   "flagged_voices": 4,
+   "hyp_af_heart": "Lunch for two costs 24 pounds, plus a 3 pounds tip."
+  },
+  "h_dates_times_0": {
+   "label": "acceptable",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The meeting moved from March 3 to April 11, 2025."
+  },
+  "h_dates_times_1": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "The parcel left the warehouse on 1205-2024."
+  },
+  "h_dates_times_2": {
+   "label": "ok",
+   "flagged_voices": 4,
+   "hyp_af_heart": "The shop opens at 9, 30 a.m. and closes at 6 p.m."
+  },
+  "h_dates_times_3": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The war ended in 1945, and the treaty followed in 1947."
+  },
+  "h_dates_times_4": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "Your appointment is on 2. Nov. 18 at 2, 15 p.m."
+  },
+  "h_dates_times_5": {
+   "label": "acceptable",
+   "flagged_voices": 4,
+   "hyp_af_heart": "The train leaves at 07.45 and arrives at 13.20."
+  },
+  "h_dates_times_6": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The museum was founded in the 1890s."
+  },
+  "h_dates_times_7": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The deadline is Friday, the 21st of June."
+  },
+  "h_dates_times_8": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "In 2008, the river flooded twice."
+  },
+  "h_dates_times_9": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "The concert runs from 8.00 to 10.30 p.m. on July 4."
+  },
+  "h_abbreviations_0": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "Dr. Lee lives at 42 Oaksent, near the Old Mill."
+  },
+  "h_abbreviations_1": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "St. Paul's Cathedral is on Ludgate Hill."
+  },
+  "h_abbreviations_2": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Mr. and Mrs. Patel arrived at 6 p.m."
+  },
+  "h_abbreviations_3": {
+   "label": "wrong",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The box weighs 5 kg and is 30 cm wide."
+  },
+  "h_abbreviations_4": {
+   "label": "acceptable",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Please reply ASAP, i.e. before noon."
+  },
+  "h_abbreviations_5": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The NASA probe sent its data to the ESA team."
+  },
+  "h_abbreviations_6": {
+   "label": "acceptable",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Prof. Green teaches at MIT in the spring term."
+  },
+  "h_abbreviations_7": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The car does 40 mph on the A1 road."
+  },
+  "h_abbreviations_8": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "Add 2 TSB of salt and 1 tablespoon of oil."
+  },
+  "h_abbreviations_9": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "Jen Ortiz Med LT, Brown at HQ."
+  },
+  "h_heteronyms_0": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "I read the letter yesterday, and I will read it again tomorrow."
+  },
+  "h_heteronyms_1": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The wind was too strong to wind the sail."
+  },
+  "h_heteronyms_2": {
+   "label": "ok",
+   "flagged_voices": 4,
+   "hyp_af_heart": "They refused to move the refuse from the yard."
+  },
+  "h_heteronyms_3": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "A white dove dove into the bushes."
+  },
+  "h_heteronyms_4": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The nurse wound a bandage around the wound."
+  },
+  "h_heteronyms_5": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Please record the record for the archive."
+  },
+  "h_heteronyms_6": {
+   "label": "wrong",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The bass swam past the bass player on the dock."
+  },
+  "h_heteronyms_7": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "She will present the present to her friend."
+  },
+  "h_heteronyms_8": {
+   "label": "ok",
+   "flagged_voices": 1,
+   "hyp_af_heart": "Close the door, because the station is close."
+  },
+  "h_heteronyms_9": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "They had to desert the camp in the desert."
+  },
+  "h_rare_words_0": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The quokka and the axolotl shared a tank at the zoo."
+  },
+  "h_rare_words_1": {
+   "label": "acceptable",
+   "flagged_voices": 4,
+   "hyp_af_heart": "We hiked from Lanfair to Aberystwyth in two days."
+  },
+  "h_rare_words_2": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The chef served gnocchi with a quinoa salad."
+  },
+  "h_rare_words_3": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "A pterodactyl skeleton hung above the staircase."
+  },
+  "h_rare_words_4": {
+   "label": "wrong",
+   "flagged_voices": 4,
+   "hyp_af_heart": "The sommelier recommended a dry gewustreminer"
+  },
+  "h_rare_words_5": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Worcestershire sauce is hard to spell and to say."
+  },
+  "h_rare_words_6": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The ichthyologist studied the coelacanth for years."
+  },
+  "h_rare_words_7": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "Their village sits between Loughborough and Leicester."
+  },
+  "h_rare_words_8": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "The phlebotomist was quick and kind."
+  },
+  "h_rare_words_9": {
+   "label": "ok",
+   "flagged_voices": 0,
+   "hyp_af_heart": "A syzygy happens when three bodies line up in space."
+  }
+ }
+}

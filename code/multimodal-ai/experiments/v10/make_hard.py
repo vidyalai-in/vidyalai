@@ -1,0 +1,81 @@
+"""Hard-case sentences written for Part 10. 'targets' = what a correct reading must say."""
+import json
+H = {
+"numbers": [
+ ("The bridge is 1,250 meters long and 42 meters high.", "one thousand two hundred fifty; forty-two"),
+ ("She finished 3rd out of 117 runners.", "third; one hundred seventeen"),
+ ("The recipe needs 2.5 cups of flour and 0.75 cups of sugar.", "two point five; zero point seven five"),
+ ("The population grew from 8,400 to 12,960 in ten years.", "eight thousand four hundred; twelve thousand nine hundred sixty"),
+ ("Turn to page 384 and read the first 15 lines.", "three hundred eighty-four; fifteen"),
+ ("About 1 in 6 trains arrived more than 10 minutes late.", "one in six; ten"),
+ ("The test pass rate rose to 98.6% this year.", "ninety-eight point six percent"),
+ ("Room 4B is on the 2nd floor, next to room 4C.", "four B; second; four C"),
+ ("The tower has 1,001 steps and 7 landings.", "one thousand one; seven"),
+ ("Mix 3/4 of the paint with 1/2 a cup of water.", "three quarters; one half"),
+],
+"currency": [
+ ("The ticket costs $45, or $38.50 with a student card.", "forty-five dollars; thirty-eight dollars fifty"),
+ ("She paid £12.99 for the book and €8 for the map.", "twelve pounds ninety-nine; eight euros"),
+ ("The house sold for $1.2 million last spring.", "one point two million dollars"),
+ ("A coffee here is $3.75, and a sandwich is $9.", "three dollars seventy-five; nine dollars"),
+ ("The fine was raised from $250 to $1,000.", "two hundred fifty dollars; one thousand dollars"),
+ ("Each share fell by 35 cents to $17.20.", "thirty-five cents; seventeen dollars twenty"),
+ ("The repair bill came to $2,345.67 in total.", "two thousand three hundred forty-five dollars sixty-seven cents"),
+ ("He found ¥500 in the pocket of his coat.", "five hundred yen"),
+ ("The budget for the project is $4.5 billion.", "four point five billion dollars"),
+ ("Lunch for two cost £24, plus a £3 tip.", "twenty-four pounds; three pound"),
+],
+"dates_times": [
+ ("The meeting moved from March 3 to April 11, 2025.", "March third; April eleventh, twenty twenty-five"),
+ ("The parcel left the warehouse on 12/05/2024.", "a date: December fifth (US) or twelfth of May, twenty twenty-four"),
+ ("The shop opens at 9:30 am and closes at 6 pm.", "nine thirty a m; six p m"),
+ ("The war ended in 1945, and the treaty followed in 1947.", "nineteen forty-five; nineteen forty-seven"),
+ ("Your appointment is on Tue., Nov. 18 at 2:15 pm.", "Tuesday, November eighteenth, two fifteen p m"),
+ ("The train leaves at 07:45 and arrives at 13:20.", "seven forty-five; thirteen twenty"),
+ ("The museum was founded in the 1890s.", "eighteen nineties"),
+ ("The deadline is Friday, the 21st of June.", "twenty-first"),
+ ("In 2008 the river flooded twice.", "two thousand eight"),
+ ("The concert runs from 8:00 to 10:30 pm on July 4th.", "eight o'clock; ten thirty p m; July fourth"),
+],
+"abbreviations": [
+ ("Dr. Lee lives at 42 Oak St. near the old mill.", "Doctor; Street"),
+ ("St. Paul's Cathedral is on Ludgate Hill.", "Saint"),
+ ("Mr. and Mrs. Patel arrived at 6 p.m.", "Mister; Missus; six p m"),
+ ("The box weighs 5 kg and is 30 cm wide.", "five kilograms; thirty centimeters"),
+ ("Please reply ASAP, i.e. before noon.", "A S A P or asap; that is / i e"),
+ ("The NASA probe sent its data to the ESA team.", "NASA as a word; E S A"),
+ ("Prof. Green teaches at MIT in the spring term.", "Professor; M I T"),
+ ("The car does 40 mph on the A1 road.", "forty miles per hour; A one"),
+ ("Add 2 tsp. of salt and 1 tbsp. of oil.", "two teaspoons; one tablespoon"),
+ ("Gen. Ortiz met Lt. Brown at HQ.", "General; Lieutenant; H Q"),
+],
+"heteronyms": [
+ ("I read the letter yesterday, and I will read it again tomorrow.", "read=past /rɛd/; read=present /rid/"),
+ ("The wind was too strong to wind the sail.", "wind=noun /wɪnd/; wind=verb /waɪnd/"),
+ ("They refuse to move the refuse from the yard.", "refuse=verb /rəˈfjuz/; refuse=noun /ˈrɛfjus/"),
+ ("A white dove dove into the bushes.", "dove=noun /dʌv/; dove=verb /doʊv/"),
+ ("The nurse wound a bandage around the wound.", "wound=verb /waʊnd/; wound=noun /wund/"),
+ ("Please record the record for the archive.", "record=verb /rəˈkɔrd/; record=noun /ˈrɛkərd/"),
+ ("The bass swam past the bass player on the dock.", "bass=fish /bæs/; bass=music /beɪs/"),
+ ("She will present the present to her friend.", "present=verb /prəˈzɛnt/; present=noun /ˈprɛzənt/"),
+ ("Close the door, because the station is close.", "close=verb /kloʊz/; close=adj /kloʊs/"),
+ ("They had to desert the camp in the desert.", "desert=verb /dəˈzɜrt/; desert=noun /ˈdɛzərt/"),
+],
+"rare_words": [
+ ("The quokka and the axolotl shared a tank at the zoo.", "quokka; axolotl"),
+ ("We hiked from Llanfair to Aberystwyth in two days.", "Llanfair; Aberystwyth"),
+ ("The chef served gnocchi with a quinoa salad.", "gnocchi; quinoa"),
+ ("A pterodactyl skeleton hung above the staircase.", "pterodactyl (silent p)"),
+ ("The sommelier recommended a dry Gewürztraminer.", "sommelier; Gewurztraminer"),
+ ("Worcestershire sauce is hard to spell and to say.", "Worcestershire /wʊstərʃər/"),
+ ("The ichthyologist studied the coelacanth for years.", "ichthyologist; coelacanth"),
+ ("Their village sits between Loughborough and Leicester.", "Loughborough /lʌfbərə/; Leicester /lɛstər/"),
+ ("The phlebotomist was quick and kind.", "phlebotomist"),
+ ("A syzygy happens when three bodies line up in space.", "syzygy"),
+],
+}
+with open("texts/hard.jsonl", "w") as f:
+    for cat, items in H.items():
+        for i, (t, tg) in enumerate(items):
+            f.write(json.dumps(dict(id=f"h_{cat}_{i}", cat=cat, text=t, targets=tg), ensure_ascii=False) + "\n")
+print(sum(len(v) for v in H.values()))

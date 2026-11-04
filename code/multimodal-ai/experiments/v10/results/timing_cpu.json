@@ -1,0 +1,125 @@
+{
+ "device": "cpu",
+ "voice": "af_heart",
+ "torch": "2.11.0+cu128",
+ "threads": 8,
+ "n_timed": 5,
+ "warmup": 2,
+ "lengths": [
+  {
+   "words": 5,
+   "chars": 25,
+   "phonemes": 25,
+   "chunks": 1,
+   "audio_s": 2.1,
+   "t_median": 0.5480350819416344,
+   "t_min": 0.5058355240616947,
+   "t_max": 0.5863905230071396,
+   "g2p_median": 0.0020822170190513134,
+   "rtf": 0.2609690866388735
+  },
+  {
+   "words": 10,
+   "chars": 49,
+   "phonemes": 49,
+   "chunks": 1,
+   "audio_s": 3.425,
+   "t_median": 0.7762373280711472,
+   "t_min": 0.7725655189715326,
+   "t_max": 0.8148829719284549,
+   "g2p_median": 0.0019319819984957576,
+   "rtf": 0.22663863593318168
+  },
+  {
+   "words": 20,
+   "chars": 113,
+   "phonemes": 112,
+   "chunks": 1,
+   "audio_s": 7.425,
+   "t_median": 1.7877848470816389,
+   "t_min": 1.6337878529448062,
+   "t_max": 1.8073109900578856,
+   "g2p_median": 0.0019823419861495495,
+   "rtf": 0.2407791039840591
+  },
+  {
+   "words": 40,
+   "chars": 233,
+   "phonemes": 233,
+   "chunks": 1,
+   "audio_s": 14.75,
+   "t_median": 4.380440772045404,
+   "t_min": 4.313709212001413,
+   "t_max": 4.5041766670765355,
+   "g2p_median": 0.003008496016263962,
+   "rtf": 0.2969790353929087
+  },
+  {
+   "words": 80,
+   "chars": 457,
+   "phonemes": 453,
+   "chunks": 1,
+   "audio_s": 26.675,
+   "t_median": 7.675501869991422,
+   "t_min": 7.559583213995211,
+   "t_max": 8.212893319083378,
+   "g2p_median": 0.005682792980223894,
+   "rtf": 0.28774140093688555
+  },
+  {
+   "words": 160,
+   "chars": 903,
+   "phonemes": 895,
+   "chunks": 2,
+   "audio_s": 51.8,
+   "t_median": 16.15755607909523,
+   "t_min": 15.251494235941209,
+   "t_max": 16.871566901914775,
+   "g2p_median": 0.011628814041614532,
+   "rtf": 0.3119219320288655
+  }
+ ],
+ "ttfa": {
+  "whole": {
+   "first_median": 5.766294084023684,
+   "first_min": 5.218944133026525,
+   "first_max": 6.152499621966854,
+   "total_median": 5.766306747100316,
+   "audio_s": 17.45,
+   "chunks": 1
+  },
+  "sentences": {
+   "first_median": 3.005571846035309,
+   "first_min": 0.6640129240695387,
+   "first_max": 4.706026896019466,
+   "total_median": 13.19333298690617,
+   "audio_s": 18.0,
+   "chunks": 5
+  }
+ },
+ "para": "The kettle clicked off just as the rain began. Outside, the street lamps flickered on one by one. A bus hissed to a stop at the corner and pulled away again. Somewhere upstairs, a radio was playing an old song. By the time the tea was ready, the window had fogged over completely.",
+ "para_phonemes": 281,
+ "loadavg_start": [
+  2.8505859375,
+  3.52392578125,
+  2.9951171875
+ ],
+ "loadavg_end": [
+  16.86767578125,
+  9.04345703125,
+  5.35400390625
+ ],
+ "determinism": {
+  "len1": 162600,
+  "len2": 162600,
+  "max_abs_diff": 0.08704826980829239
+ },
+ "params": 81810022,
+ "params_by_part": {
+  "bert": 6292480,
+  "bert_encoder": 393728,
+  "predictor": 16203828,
+  "text_encoder": 5606400,
+  "decoder": 53313586
+ }
+}

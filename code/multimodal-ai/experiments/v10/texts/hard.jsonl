@@ -1,0 +1,60 @@
+{"id": "h_numbers_0", "cat": "numbers", "text": "The bridge is 1,250 meters long and 42 meters high.", "targets": "one thousand two hundred fifty; forty-two"}
+{"id": "h_numbers_1", "cat": "numbers", "text": "She finished 3rd out of 117 runners.", "targets": "third; one hundred seventeen"}
+{"id": "h_numbers_2", "cat": "numbers", "text": "The recipe needs 2.5 cups of flour and 0.75 cups of sugar.", "targets": "two point five; zero point seven five"}
+{"id": "h_numbers_3", "cat": "numbers", "text": "The population grew from 8,400 to 12,960 in ten years.", "targets": "eight thousand four hundred; twelve thousand nine hundred sixty"}
+{"id": "h_numbers_4", "cat": "numbers", "text": "Turn to page 384 and read the first 15 lines.", "targets": "three hundred eighty-four; fifteen"}
+{"id": "h_numbers_5", "cat": "numbers", "text": "About 1 in 6 trains arrived more than 10 minutes late.", "targets": "one in six; ten"}
+{"id": "h_numbers_6", "cat": "numbers", "text": "The test pass rate rose to 98.6% this year.", "targets": "ninety-eight point six percent"}
+{"id": "h_numbers_7", "cat": "numbers", "text": "Room 4B is on the 2nd floor, next to room 4C.", "targets": "four B; second; four C"}
+{"id": "h_numbers_8", "cat": "numbers", "text": "The tower has 1,001 steps and 7 landings.", "targets": "one thousand one; seven"}
+{"id": "h_numbers_9", "cat": "numbers", "text": "Mix 3/4 of the paint with 1/2 a cup of water.", "targets": "three quarters; one half"}
+{"id": "h_currency_0", "cat": "currency", "text": "The ticket costs $45, or $38.50 with a student card.", "targets": "forty-five dollars; thirty-eight dollars fifty"}
+{"id": "h_currency_1", "cat": "currency", "text": "She paid £12.99 for the book and €8 for the map.", "targets": "twelve pounds ninety-nine; eight euros"}
+{"id": "h_currency_2", "cat": "currency", "text": "The house sold for $1.2 million last spring.", "targets": "one point two million dollars"}
+{"id": "h_currency_3", "cat": "currency", "text": "A coffee here is $3.75, and a sandwich is $9.", "targets": "three dollars seventy-five; nine dollars"}
+{"id": "h_currency_4", "cat": "currency", "text": "The fine was raised from $250 to $1,000.", "targets": "two hundred fifty dollars; one thousand dollars"}
+{"id": "h_currency_5", "cat": "currency", "text": "Each share fell by 35 cents to $17.20.", "targets": "thirty-five cents; seventeen dollars twenty"}
+{"id": "h_currency_6", "cat": "currency", "text": "The repair bill came to $2,345.67 in total.", "targets": "two thousand three hundred forty-five dollars sixty-seven cents"}
+{"id": "h_currency_7", "cat": "currency", "text": "He found ¥500 in the pocket of his coat.", "targets": "five hundred yen"}
+{"id": "h_currency_8", "cat": "currency", "text": "The budget for the project is $4.5 billion.", "targets": "four point five billion dollars"}
+{"id": "h_currency_9", "cat": "currency", "text": "Lunch for two cost £24, plus a £3 tip.", "targets": "twenty-four pounds; three pound"}
+{"id": "h_dates_times_0", "cat": "dates_times", "text": "The meeting moved from March 3 to April 11, 2025.", "targets": "March third; April eleventh, twenty twenty-five"}
+{"id": "h_dates_times_1", "cat": "dates_times", "text": "The parcel left the warehouse on 12/05/2024.", "targets": "a date: December fifth (US) or twelfth of May, twenty twenty-four"}
+{"id": "h_dates_times_2", "cat": "dates_times", "text": "The shop opens at 9:30 am and closes at 6 pm.", "targets": "nine thirty a m; six p m"}
+{"id": "h_dates_times_3", "cat": "dates_times", "text": "The war ended in 1945, and the treaty followed in 1947.", "targets": "nineteen forty-five; nineteen forty-seven"}
+{"id": "h_dates_times_4", "cat": "dates_times", "text": "Your appointment is on Tue., Nov. 18 at 2:15 pm.", "targets": "Tuesday, November eighteenth, two fifteen p m"}
+{"id": "h_dates_times_5", "cat": "dates_times", "text": "The train leaves at 07:45 and arrives at 13:20.", "targets": "seven forty-five; thirteen twenty"}
+{"id": "h_dates_times_6", "cat": "dates_times", "text": "The museum was founded in the 1890s.", "targets": "eighteen nineties"}
+{"id": "h_dates_times_7", "cat": "dates_times", "text": "The deadline is Friday, the 21st of June.", "targets": "twenty-first"}
+{"id": "h_dates_times_8", "cat": "dates_times", "text": "In 2008 the river flooded twice.", "targets": "two thousand eight"}
+{"id": "h_dates_times_9", "cat": "dates_times", "text": "The concert runs from 8:00 to 10:30 pm on July 4th.", "targets": "eight o'clock; ten thirty p m; July fourth"}
+{"id": "h_abbreviations_0", "cat": "abbreviations", "text": "Dr. Lee lives at 42 Oak St. near the old mill.", "targets": "Doctor; Street"}
+{"id": "h_abbreviations_1", "cat": "abbreviations", "text": "St. Paul's Cathedral is on Ludgate Hill.", "targets": "Saint"}
+{"id": "h_abbreviations_2", "cat": "abbreviations", "text": "Mr. and Mrs. Patel arrived at 6 p.m.", "targets": "Mister; Missus; six p m"}
+{"id": "h_abbreviations_3", "cat": "abbreviations", "text": "The box weighs 5 kg and is 30 cm wide.", "targets": "five kilograms; thirty centimeters"}
+{"id": "h_abbreviations_4", "cat": "abbreviations", "text": "Please reply ASAP, i.e. before noon.", "targets": "A S A P or asap; that is / i e"}
+{"id": "h_abbreviations_5", "cat": "abbreviations", "text": "The NASA probe sent its data to the ESA team.", "targets": "NASA as a word; E S A"}
+{"id": "h_abbreviations_6", "cat": "abbreviations", "text": "Prof. Green teaches at MIT in the spring term.", "targets": "Professor; M I T"}
+{"id": "h_abbreviations_7", "cat": "abbreviations", "text": "The car does 40 mph on the A1 road.", "targets": "forty miles per hour; A one"}
+{"id": "h_abbreviations_8", "cat": "abbreviations", "text": "Add 2 tsp. of salt and 1 tbsp. of oil.", "targets": "two teaspoons; one tablespoon"}
+{"id": "h_abbreviations_9", "cat": "abbreviations", "text": "Gen. Ortiz met Lt. Brown at HQ.", "targets": "General; Lieutenant; H Q"}
+{"id": "h_heteronyms_0", "cat": "heteronyms", "text": "I read the letter yesterday, and I will read it again tomorrow.", "targets": "read=past /rɛd/; read=present /rid/"}
+{"id": "h_heteronyms_1", "cat": "heteronyms", "text": "The wind was too strong to wind the sail.", "targets": "wind=noun /wɪnd/; wind=verb /waɪnd/"}
+{"id": "h_heteronyms_2", "cat": "heteronyms", "text": "They refuse to move the refuse from the yard.", "targets": "refuse=verb /rəˈfjuz/; refuse=noun /ˈrɛfjus/"}
+{"id": "h_heteronyms_3", "cat": "heteronyms", "text": "A white dove dove into the bushes.", "targets": "dove=noun /dʌv/; dove=verb /doʊv/"}
+{"id": "h_heteronyms_4", "cat": "heteronyms", "text": "The nurse wound a bandage around the wound.", "targets": "wound=verb /waʊnd/; wound=noun /wund/"}
+{"id": "h_heteronyms_5", "cat": "heteronyms", "text": "Please record the record for the archive.", "targets": "record=verb /rəˈkɔrd/; record=noun /ˈrɛkərd/"}
+{"id": "h_heteronyms_6", "cat": "heteronyms", "text": "The bass swam past the bass player on the dock.", "targets": "bass=fish /bæs/; bass=music /beɪs/"}
+{"id": "h_heteronyms_7", "cat": "heteronyms", "text": "She will present the present to her friend.", "targets": "present=verb /prəˈzɛnt/; present=noun /ˈprɛzənt/"}
+{"id": "h_heteronyms_8", "cat": "heteronyms", "text": "Close the door, because the station is close.", "targets": "close=verb /kloʊz/; close=adj /kloʊs/"}
+{"id": "h_heteronyms_9", "cat": "heteronyms", "text": "They had to desert the camp in the desert.", "targets": "desert=verb /dəˈzɜrt/; desert=noun /ˈdɛzərt/"}
+{"id": "h_rare_words_0", "cat": "rare_words", "text": "The quokka and the axolotl shared a tank at the zoo.", "targets": "quokka; axolotl"}
+{"id": "h_rare_words_1", "cat": "rare_words", "text": "We hiked from Llanfair to Aberystwyth in two days.", "targets": "Llanfair; Aberystwyth"}
+{"id": "h_rare_words_2", "cat": "rare_words", "text": "The chef served gnocchi with a quinoa salad.", "targets": "gnocchi; quinoa"}
+{"id": "h_rare_words_3", "cat": "rare_words", "text": "A pterodactyl skeleton hung above the staircase.", "targets": "pterodactyl (silent p)"}
+{"id": "h_rare_words_4", "cat": "rare_words", "text": "The sommelier recommended a dry Gewürztraminer.", "targets": "sommelier; Gewurztraminer"}
+{"id": "h_rare_words_5", "cat": "rare_words", "text": "Worcestershire sauce is hard to spell and to say.", "targets": "Worcestershire /wʊstərʃər/"}
+{"id": "h_rare_words_6", "cat": "rare_words", "text": "The ichthyologist studied the coelacanth for years.", "targets": "ichthyologist; coelacanth"}
+{"id": "h_rare_words_7", "cat": "rare_words", "text": "Their village sits between Loughborough and Leicester.", "targets": "Loughborough /lʌfbərə/; Leicester /lɛstər/"}
+{"id": "h_rare_words_8", "cat": "rare_words", "text": "The phlebotomist was quick and kind.", "targets": "phlebotomist"}
+{"id": "h_rare_words_9", "cat": "rare_words", "text": "A syzygy happens when three bodies line up in space.", "targets": "syzygy"}

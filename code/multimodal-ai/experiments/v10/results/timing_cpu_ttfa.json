@@ -1,0 +1,80 @@
+{
+ "device": "cpu",
+ "voice": "af_heart",
+ "torch": "2.11.0+cu128",
+ "threads": 8,
+ "n_timed": 5,
+ "warmup": 2,
+ "lengths": [],
+ "ttfa": {
+  "whole": {
+   "first_median": 4.984092605067417,
+   "first_min": 4.8740566970082,
+   "first_max": 5.036740072071552,
+   "total_median": 4.984099145047367,
+   "audio_s": 17.45,
+   "chunks": 1,
+   "first_all": [
+    4.986841023084708,
+    4.875738524948247,
+    4.984092605067417,
+    5.036740072071552,
+    4.8740566970082
+   ],
+   "load1": [
+    3.55908203125,
+    4.1552734375,
+    4.46337890625,
+    4.9072265625,
+    5.1552734375
+   ]
+  },
+  "sentences": {
+   "first_median": 0.5909567909548059,
+   "first_min": 0.5754041409818456,
+   "first_max": 0.6264772140420973,
+   "total_median": 3.572911103023216,
+   "audio_s": 18.0,
+   "chunks": 5,
+   "first_all": [
+    0.5893886890262365,
+    0.5909567909548059,
+    0.6043757610023022,
+    0.6264772140420973,
+    0.5754041409818456
+   ],
+   "load1": [
+    5.67333984375,
+    5.85986328125,
+    5.85986328125,
+    6.19140625,
+    6.33642578125
+   ]
+  }
+ },
+ "para": "The kettle clicked off just as the rain began. Outside, the street lamps flickered on one by one. A bus hissed to a stop at the corner and pulled away again. Somewhere upstairs, a radio was playing an old song. By the time the tea was ready, the window had fogged over completely.",
+ "para_phonemes": 281,
+ "loadavg_start": [
+  2.11279296875,
+  2.3076171875,
+  2.88232421875
+ ],
+ "loadavg_end": [
+  6.33642578125,
+  3.49658203125,
+  3.25732421875
+ ],
+ "determinism": {
+  "len1": 162600,
+  "len2": 162600,
+  "max_abs_diff": 0.11644653975963593
+ },
+ "params": 81810022,
+ "params_by_part": {
+  "bert": 6292480,
+  "bert_encoder": 393728,
+  "predictor": 16203828,
+  "text_encoder": 5606400,
+  "decoder": 53313586
+ }
+}
