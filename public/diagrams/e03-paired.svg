@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 520" width="780" height="520" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="520" fill="#ffffff"/>
+<line x1="34.0" x2="34.0" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="34.0" x2="34.0" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="34.0" x2="34.0" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="34.0" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">-8</text>
+<line x1="110.7" x2="110.7" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="110.7" x2="110.7" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="110.7" x2="110.7" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="110.7" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">-4</text>
+<line x1="187.3" x2="187.3" y1="54.0" y2="158.0" stroke="#4a5b78" stroke-width="2"/>
+<line x1="187.3" x2="187.3" y1="200.0" y2="304.0" stroke="#4a5b78" stroke-width="2"/>
+<line x1="187.3" x2="187.3" y1="346.0" y2="450.0" stroke="#4a5b78" stroke-width="2"/>
+<text x="187.3" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">0</text>
+<line x1="264.0" x2="264.0" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="264.0" x2="264.0" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="264.0" x2="264.0" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="264.0" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">+4</text>
+<line x1="340.7" x2="340.7" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="340.7" x2="340.7" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="340.7" x2="340.7" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="340.7" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">+8</text>
+<line x1="417.3" x2="417.3" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="417.3" x2="417.3" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="417.3" x2="417.3" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="417.3" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">+12</text>
+<line x1="494.0" x2="494.0" y1="54.0" y2="158.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="494.0" x2="494.0" y1="200.0" y2="304.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="494.0" x2="494.0" y1="346.0" y2="450.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="494.0" y="478" fill="#4a5b78" font-size="13" text-anchor="middle">+16</text>
+<text x="264.0" y="506" fill="#0b1a33" font-size="14" text-anchor="middle">Accuracy difference (points), 95% interval</text>
+<text x="518" y="42.0" fill="#0b1a33" font-size="13">Difference: +10.0 points</text>
+<text x="34" y="42.0" fill="#0b1a33" font-size="14" font-weight="bold">Haiku: thinking off → adaptive, low</text>
+<line x1="323.0" x2="435.0" y1="68.0" y2="68.0" stroke="#eb6834" stroke-width="4" stroke-linecap="round"/>
+<circle cx="379.0" cy="68.0" r="5.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="72.0" fill="#eb6834" font-size="13">Unpaired: +7.1 to +12.9</text>
+<line x1="338.6" x2="419.4" y1="94.0" y2="94.0" stroke="#2a78d6" stroke-width="4" stroke-linecap="round"/>
+<circle cx="379.0" cy="94.0" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="98.0" fill="#2a78d6" font-size="13">Paired by question: +7.9 to +12.1</text>
+<line x1="300.2" x2="457.8" y1="120.0" y2="120.0" stroke="#1baf7a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="379.0" cy="120.0" r="5.5" fill="#1baf7a" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="124.0" fill="#1baf7a" font-size="13">Paired, clustered: +5.9 to +14.1</text>
+<text x="518" y="188.0" fill="#0b1a33" font-size="13">Difference: +6.9 points</text>
+<text x="34" y="188.0" fill="#0b1a33" font-size="14" font-weight="bold">Haiku 5.5 → Sonnet 5.5, both thinking off</text>
+<line x1="261.5" x2="378.8" y1="214.0" y2="214.0" stroke="#eb6834" stroke-width="4" stroke-linecap="round"/>
+<circle cx="320.2" cy="214.0" r="5.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="218.0" fill="#eb6834" font-size="13">Unpaired: +3.9 to +10.0</text>
+<line x1="282.6" x2="357.7" y1="240.0" y2="240.0" stroke="#2a78d6" stroke-width="4" stroke-linecap="round"/>
+<circle cx="320.2" cy="240.0" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="244.0" fill="#2a78d6" font-size="13">Paired by question: +5.0 to +8.9</text>
+<line x1="284.7" x2="355.6" y1="266.0" y2="266.0" stroke="#1baf7a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="320.2" cy="266.0" r="5.5" fill="#1baf7a" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="270.0" fill="#1baf7a" font-size="13">Paired, clustered: +5.1 to +8.8</text>
+<text x="518" y="334.0" fill="#0b1a33" font-size="13">Difference: -3.1 points</text>
+<text x="34" y="334.0" fill="#0b1a33" font-size="14" font-weight="bold">Haiku 5.5 thinking low → Sonnet 5.5 thinking off</text>
+<line x1="77.7" x2="179.3" y1="360.0" y2="360.0" stroke="#eb6834" stroke-width="4" stroke-linecap="round"/>
+<circle cx="128.5" cy="360.0" r="5.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="364.0" fill="#eb6834" font-size="13">Unpaired: -5.7 to -0.4</text>
+<line x1="87.9" x2="169.1" y1="386.0" y2="386.0" stroke="#2a78d6" stroke-width="4" stroke-linecap="round"/>
+<circle cx="128.5" cy="386.0" r="5.5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="390.0" fill="#2a78d6" font-size="13">Paired by question: -5.2 to -0.9</text>
+<line x1="52.8" x2="204.2" y1="412.0" y2="412.0" stroke="#1baf7a" stroke-width="4" stroke-linecap="round"/>
+<circle cx="128.5" cy="412.0" r="5.5" fill="#1baf7a" stroke="#ffffff" stroke-width="2"/>
+<text x="518" y="416.0" fill="#1baf7a" font-size="13">Paired, clustered: -7.0 to +0.9</text>
+</svg>

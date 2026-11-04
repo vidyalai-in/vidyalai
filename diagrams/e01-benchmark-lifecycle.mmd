@@ -1,0 +1,8 @@
+flowchart TD
+    A["New benchmark:<br/>top models<br/>score low"] --> B["Adopted:<br/>everyone<br/>reports it"]
+    B --> C["Hill-climbing:<br/>scores rise fast"]
+    C --> G["Goodhart pressure:<br/>tuning to the test,<br/>leaked items"]
+    G --> C
+    C --> D["Saturated:<br/>top scores at<br/>the ceiling"]
+    D --> F["Harder successor<br/>replaces it:<br/>SuperGLUE,<br/>MMLU-Pro"]
+    F --> A

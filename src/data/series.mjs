@@ -64,6 +64,15 @@ export const SERIES = [
     filePrefix: 'g',
   },
   {
+    slug: 'llm-evals',
+    name: 'Measuring LLMs: Evals and Benchmarks',
+    short: 'Evals',
+    blurb:
+      'What a benchmark score really tells you, measured: how benchmarks are built, error bars, prompt sensitivity, contamination, LLM judges, arenas, code, math, long-context and safety evals.',
+    total: 11,
+    filePrefix: 'e',
+  },
+  {
     slug: 'llm-system-design',
     name: 'LLM System Design',
     short: 'System Design',

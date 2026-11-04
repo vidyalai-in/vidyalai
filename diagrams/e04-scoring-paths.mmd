@@ -1,0 +1,11 @@
+flowchart TD
+  Q["One MMLU item:<br/>question + 4 options"]
+  Q --> P1["Prompt shows options<br/>labeled A-D"]
+  Q --> P2["Prompt shows the question only"]
+  P1 --> L["Letter log-prob:<br/>compare p(A), p(B), p(C), p(D)"]
+  P1 --> G["Generate a reply<br/>(the only path for API models)"]
+  G --> X["Extractor turns<br/>the text into a letter"]
+  P2 --> C["Cloze log-prob:<br/>score each option's text"]
+  L --> S["Pick the best option,<br/>compare with the key"]
+  X --> S
+  C --> S

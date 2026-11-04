@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="112.9" x2="112.9" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="112.9" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">20</text>
+<line x1="249.3" x2="249.3" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="249.3" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">50</text>
+<line x1="352.6" x2="352.6" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="352.6" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">100</text>
+<line x1="455.9" x2="455.9" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="455.9" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">200</text>
+<line x1="559.1" x2="559.1" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="559.1" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">400</text>
+<line x1="695.6" x2="695.6" y1="24" y2="408" stroke="#dde5f2"/>
+<text x="695.6" y="428" fill="#4a5b78" font-size="13" text-anchor="middle">1,000</text>
+<line x1="70" x2="756" y1="408.0" y2="408.0" stroke="#dde5f2"/>
+<text x="62" y="412.0" fill="#4a5b78" font-size="13" text-anchor="end">±0</text>
+<line x1="70" x2="756" y1="344.0" y2="344.0" stroke="#dde5f2"/>
+<text x="62" y="348.0" fill="#4a5b78" font-size="13" text-anchor="end">±3</text>
+<line x1="70" x2="756" y1="280.0" y2="280.0" stroke="#dde5f2"/>
+<text x="62" y="284.0" fill="#4a5b78" font-size="13" text-anchor="end">±6</text>
+<line x1="70" x2="756" y1="216.0" y2="216.0" stroke="#dde5f2"/>
+<text x="62" y="220.0" fill="#4a5b78" font-size="13" text-anchor="end">±9</text>
+<line x1="70" x2="756" y1="152.0" y2="152.0" stroke="#dde5f2"/>
+<text x="62" y="156.0" fill="#4a5b78" font-size="13" text-anchor="end">±12</text>
+<line x1="70" x2="756" y1="88.0" y2="88.0" stroke="#dde5f2"/>
+<text x="62" y="92.0" fill="#4a5b78" font-size="13" text-anchor="end">±15</text>
+<line x1="70" x2="756" y1="24.0" y2="24.0" stroke="#dde5f2"/>
+<text x="62" y="28.0" fill="#4a5b78" font-size="13" text-anchor="end">±18</text>
+<text x="413.0" y="456" fill="#0b1a33" font-size="14" text-anchor="middle">Questions in the eval (log scale)</text>
+<text transform="translate(20,216.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">95% interval half-width (points)</text>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="" points="112.9,64.3 249.3,177.8 352.6,244.2 455.9,291.3 559.1,325.0 662.4,349.1 715.1,358.5"/>
+<circle cx="112.9" cy="64.3" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="249.3" cy="177.8" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="352.6" cy="244.2" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="455.9" cy="291.3" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="559.1" cy="325.0" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="662.4" cy="349.1" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="715.1" cy="358.5" r="4" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="456" x2="484" y1="38" y2="38" stroke="#eb6834" stroke-width="3" stroke-dasharray=""/>
+<text x="492" y="42" fill="#0b1a33" font-size="13">One run, items independent (Wilson)</text>
+<polyline fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-dasharray="" points="112.9,46.8 249.3,165.7 352.6,227.7 455.9,269.3 559.1,297.1 662.4,313.1 715.1,319.3"/>
+<circle cx="112.9" cy="46.8" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="249.3" cy="165.7" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="352.6" cy="227.7" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="455.9" cy="269.3" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="559.1" cy="297.1" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="662.4" cy="313.1" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="715.1" cy="319.3" r="4" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="456" x2="484" y1="60" y2="60" stroke="#2a78d6" stroke-width="3" stroke-dasharray=""/>
+<text x="492" y="64" fill="#0b1a33" font-size="13">One run, clustered by subject</text>
+<polyline fill="none" stroke="#1baf7a" stroke-width="2.5" stroke-dasharray="7 5" points="112.9,57.1 249.3,177.6 352.6,246.1 455.9,293.4 559.1,326.7 662.4,350.6 715.1,359.8"/>
+<circle cx="112.9" cy="57.1" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="249.3" cy="177.6" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="352.6" cy="246.1" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="455.9" cy="293.4" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="559.1" cy="326.7" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="662.4" cy="350.6" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="715.1" cy="359.8" r="4" fill="#1baf7a" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="456" x2="484" y1="82" y2="82" stroke="#1baf7a" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="492" y="86" fill="#0b1a33" font-size="13">Mean of 5 runs per item</text>
+<text x="709.1" y="309.3" fill="#0b1a33" font-size="13" text-anchor="end">±4.2</text>
+<text x="709.1" y="378.5" fill="#0b1a33" font-size="13" text-anchor="end">±2.3</text>
+<text x="120.9" y="38.8" fill="#0b1a33" font-size="13">±16.1 to ±16.9</text>
+</svg>

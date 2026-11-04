@@ -1,0 +1,12 @@
+flowchart TD
+  W["Expert writes a question<br/>and its answer"] --> E1["Expert 1 answers it,<br/>suggests fixes"]
+  E1 --> RV["Writer revises"]
+  RV --> E2["Expert 2 answers it:<br/>is it objective?"]
+  RV --> NE["3 non-experts with web access:<br/>is it hard for people?"]
+  RV --> M["Frontier models answer it:<br/>is it hard for models?"]
+  E2 --> K{"Keep?"}
+  NE --> K
+  M --> K
+  K -->|"most items"| PUB["Public set<br/>with a canary string"]
+  K -->|"some items"| PRIV["Private held-out set"]
+  PUB --> AUD["After release:<br/>audits and bug bounties<br/>find label errors"]

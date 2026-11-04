@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="440" fill="#0b162d"/>
+<line x1="270.0" x2="270.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="270.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">0%</text>
+<line x1="364.0" x2="364.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="364.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">20%</text>
+<line x1="458.0" x2="458.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="458.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">40%</text>
+<line x1="552.0" x2="552.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="552.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">60%</text>
+<line x1="646.0" x2="646.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="646.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">80%</text>
+<line x1="740.0" x2="740.0" y1="24" y2="378" stroke="#22355a" stroke-width="1"/>
+<text x="740.0" y="398" fill="#9fb0cf" font-size="13" text-anchor="middle">100%</text>
+<text x="505.0" y="426" fill="#e8eefc" font-size="14" text-anchor="middle">Accuracy, Claude Haiku 5.5 (95% interval)</text>
+<text x="12" y="46" fill="#e8eefc" font-size="14" font-weight="bold">ARC-Challenge (1,172)</text>
+<text x="260" y="72.0" fill="#e8eefc" font-size="13" text-anchor="end">Question and options</text>
+<rect x="270.0" y="56.0" width="437.1" height="22" fill="#3987e5" rx="2"/>
+<line x1="699.6" x2="713.4" y1="67.0" y2="67.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="699.6" x2="699.6" y1="61.0" y2="73.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="713.4" x2="713.4" y1="61.0" y2="73.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="721.4" y="72.0" fill="#e8eefc" font-size="13">93.0</text>
+<text x="260" y="100.0" fill="#e8eefc" font-size="13" text-anchor="end">Options only</text>
+<rect x="270.0" y="84.0" width="222.2" height="22" fill="#d95926" rx="2"/>
+<line x1="478.8" x2="505.6" y1="95.0" y2="95.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="478.8" x2="478.8" y1="89.0" y2="101.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="505.6" x2="505.6" y1="89.0" y2="101.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="513.6" y="100.0" fill="#e8eefc" font-size="13">47.3</text>
+<line x1="387.6" x2="387.6" y1="52.0" y2="110.0" stroke="#9fb0cf" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="391.6" y="48.0" fill="#9fb0cf" font-size="12">chance 25%</text>
+<text x="12" y="148" fill="#e8eefc" font-size="14" font-weight="bold">MMLU subset (1,140)</text>
+<text x="260" y="174.0" fill="#e8eefc" font-size="13" text-anchor="end">Question and options</text>
+<rect x="270.0" y="158.0" width="400.7" height="22" fill="#3987e5" rx="2"/>
+<line x1="660.5" x2="679.8" y1="169.0" y2="169.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="660.5" x2="660.5" y1="163.0" y2="175.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="679.8" x2="679.8" y1="163.0" y2="175.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="687.8" y="174.0" fill="#e8eefc" font-size="13">85.3</text>
+<text x="260" y="202.0" fill="#e8eefc" font-size="13" text-anchor="end">A wrong option swapped for NOTA</text>
+<rect x="270.0" y="186.0" width="380.9" height="22" fill="#d95926" rx="2"/>
+<line x1="639.7" x2="661.1" y1="197.0" y2="197.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="639.7" x2="639.7" y1="191.0" y2="203.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="661.1" x2="661.1" y1="191.0" y2="203.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="669.1" y="202.0" fill="#e8eefc" font-size="13">81.0</text>
+<text x="260" y="230.0" fill="#e8eefc" font-size="13" text-anchor="end">Right option swapped for NOTA</text>
+<rect x="270.0" y="214.0" width="247.8" height="22" fill="#d95926" rx="2"/>
+<line x1="504.2" x2="531.3" y1="225.0" y2="225.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="504.2" x2="504.2" y1="219.0" y2="231.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="531.3" x2="531.3" y1="219.0" y2="231.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="539.3" y="230.0" fill="#e8eefc" font-size="13">52.7</text>
+<text x="260" y="258.0" fill="#e8eefc" font-size="13" text-anchor="end">Options only</text>
+<rect x="270.0" y="242.0" width="224.3" height="22" fill="#d95926" rx="2"/>
+<line x1="480.7" x2="507.9" y1="253.0" y2="253.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="480.7" x2="480.7" y1="247.0" y2="259.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="507.9" x2="507.9" y1="247.0" y2="259.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="515.9" y="258.0" fill="#e8eefc" font-size="13">47.7</text>
+<line x1="387.5" x2="387.5" y1="154.0" y2="268.0" stroke="#9fb0cf" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="391.5" y="150.0" fill="#9fb0cf" font-size="12">chance 25%</text>
+<text x="12" y="306" fill="#e8eefc" font-size="14" font-weight="bold">MMLU-Pro subset (840)</text>
+<text x="260" y="332.0" fill="#e8eefc" font-size="13" text-anchor="end">Question and options</text>
+<rect x="270.0" y="316.0" width="333.5" height="22" fill="#3987e5" rx="2"/>
+<line x1="588.6" x2="617.4" y1="327.0" y2="327.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="588.6" x2="588.6" y1="321.0" y2="333.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="617.4" x2="617.4" y1="321.0" y2="333.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="625.4" y="332.0" fill="#e8eefc" font-size="13">71.0</text>
+<text x="260" y="360.0" fill="#e8eefc" font-size="13" text-anchor="end">Options only</text>
+<rect x="270.0" y="344.0" width="166.8" height="22" fill="#d95926" rx="2"/>
+<line x1="421.9" x2="452.2" y1="355.0" y2="355.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="421.9" x2="421.9" y1="349.0" y2="361.0" stroke="#e8eefc" stroke-width="2"/>
+<line x1="452.2" x2="452.2" y1="349.0" y2="361.0" stroke="#e8eefc" stroke-width="2"/>
+<text x="460.2" y="360.0" fill="#e8eefc" font-size="13">35.5</text>
+<line x1="322.5" x2="322.5" y1="312.0" y2="370.0" stroke="#9fb0cf" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="326.5" y="308.0" fill="#9fb0cf" font-size="12">chance 11%</text>
+</svg>
