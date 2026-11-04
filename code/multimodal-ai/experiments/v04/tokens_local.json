@@ -1,0 +1,310 @@
+[
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "ours",
+  "size": 224,
+  "image_tokens": 64,
+  "pixel_values": [
+   256,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "default",
+  "size": 224,
+  "image_tokens": 64,
+  "pixel_values": [
+   256,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "ours",
+  "size": 448,
+  "image_tokens": 256,
+  "pixel_values": [
+   1024,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "default",
+  "size": 448,
+  "image_tokens": 256,
+  "pixel_values": [
+   1024,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "ours",
+  "size": 896,
+  "image_tokens": 1024,
+  "pixel_values": [
+   4096,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "default",
+  "size": 896,
+  "image_tokens": 1024,
+  "pixel_values": [
+   4096,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "ours",
+  "size": 1344,
+  "image_tokens": 2304,
+  "pixel_values": [
+   9216,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "default",
+  "size": 1344,
+  "image_tokens": 2304,
+  "pixel_values": [
+   9216,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "ours",
+  "size": 1792,
+  "image_tokens": 2304,
+  "pixel_values": [
+   9216,
+   1176
+  ]
+ },
+ {
+  "model": "Qwen2-VL-2B",
+  "setting": "default",
+  "size": 1792,
+  "image_tokens": 4096,
+  "pixel_values": [
+   16384,
+   1176
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=512",
+  "size": 224,
+  "image_tokens": 64,
+  "pixel_values": [
+   1,
+   1,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=512",
+  "size": 448,
+  "image_tokens": 64,
+  "pixel_values": [
+   1,
+   1,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=512",
+  "size": 896,
+  "image_tokens": 64,
+  "pixel_values": [
+   1,
+   1,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=512",
+  "size": 1792,
+  "image_tokens": 64,
+  "pixel_values": [
+   1,
+   1,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1024",
+  "size": 224,
+  "image_tokens": 320,
+  "pixel_values": [
+   1,
+   5,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1024",
+  "size": 448,
+  "image_tokens": 320,
+  "pixel_values": [
+   1,
+   5,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1024",
+  "size": 896,
+  "image_tokens": 320,
+  "pixel_values": [
+   1,
+   5,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1024",
+  "size": 1792,
+  "image_tokens": 320,
+  "pixel_values": [
+   1,
+   5,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1536",
+  "size": 224,
+  "image_tokens": 640,
+  "pixel_values": [
+   1,
+   10,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1536",
+  "size": 448,
+  "image_tokens": 640,
+  "pixel_values": [
+   1,
+   10,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1536",
+  "size": 896,
+  "image_tokens": 640,
+  "pixel_values": [
+   1,
+   10,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=1536",
+  "size": 1792,
+  "image_tokens": 640,
+  "pixel_values": [
+   1,
+   10,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=2048",
+  "size": 224,
+  "image_tokens": 1088,
+  "pixel_values": [
+   1,
+   17,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=2048",
+  "size": 448,
+  "image_tokens": 1088,
+  "pixel_values": [
+   1,
+   17,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=2048",
+  "size": 896,
+  "image_tokens": 1088,
+  "pixel_values": [
+   1,
+   17,
+   3,
+   512,
+   512
+  ]
+ },
+ {
+  "model": "SmolVLM-256M",
+  "setting": "longest_edge=2048",
+  "size": 1792,
+  "image_tokens": 1088,
+  "pixel_values": [
+   1,
+   17,
+   3,
+   512,
+   512
+  ]
+ }
+]

@@ -21,19 +21,24 @@ KEY_FILE = Path.home() / ".config/vidyalai/anthropic.env"
 
 PROJECT_CAP = 90.00  # USD, the user's hard limit for the whole project
 
-# Per-part caps (USD). Agentic AI: $75 in total; Evals: $15, shared with v04 and t13.
+# Per-part caps (USD). Agentic AI: $75 in total; Evals: $15, shared with t13; Beyond Text: its own pool.
 PART_CAPS = {
     "a01": 1, "a02": 2, "a03": 5, "a04": 4, "a05": 5, "a06": 3, "a07": 6, "a08": 10,
     "a09": 8, "a10": 5, "a11": 8, "a12": 3, "a13": 2, "a14": 0, "a15": 5, "a16": 5,
     "a-reserve": 3,
-    "evals": 15,  # e01-e11, v04, t13 draw on this shared pool
+    "evals": 15,  # e01-e11 and t13 draw on this shared pool
+    "multimodal": 20,  # v01-v13 (Beyond Text); added 2026-11-04 when the user allowed higher caps within the $90
 }
-EVALS_POOL = {f"e{n:02d}" for n in range(1, 12)} | {"v04", "t13"}
+EVALS_POOL = {f"e{n:02d}" for n in range(1, 12)} | {"t13"}
+MM_POOL = {f"v{n:02d}" for n in range(1, 14)}
 # Sub-caps inside the Evals pool (USD), so parts running in parallel can't overrun it together.
-# They sum to the pool's $15 (t13 used no API).
+# The e-parts were sized to the Evals pool's $15 (t13 used no API; the series used $7.07).
+# Beyond Text sub-caps sit inside the $20 multimodal pool; parts not listed have no sub-cap beyond the pool.
 POOL_SUBCAPS = {
     "e01": 0.5, "e02": 0.5, "e03": 2.0, "e04": 2.0, "e05": 0.5, "e06": 2.0, "e07": 1.0,
-    "e08": 2.0, "e09": 2.0, "e10": 0.5, "e11": 0.5, "v04": 1.5, "t13": 0.0,
+    "e08": 2.0, "e09": 2.0, "e10": 0.5, "e11": 0.5, "t13": 0.0,
+    "v01": 1.0, "v02": 0.5, "v03": 1.0, "v04": 4.0, "v05": 0.0, "v06": 1.5, "v07": 1.0, "v08": 1.0,
+    "v09": 1.0, "v10": 1.0, "v11": 2.0, "v12": 1.0, "v13": 3.0,
 }
 
 # USD per million tokens, from platform.claude.com/docs/en/about-claude/pricing (checked 2026-10-24).
@@ -59,7 +64,7 @@ class BudgetExceeded(RuntimeError):
 
 
 def _pool(part):
-    return "evals" if part in EVALS_POOL else part
+    return "evals" if part in EVALS_POOL else "multimodal" if part in MM_POOL else part
 
 
 def client():

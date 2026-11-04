@@ -62,6 +62,17 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 
 `experiments/e01` to `e11` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC, SummEval, MT-Bench judgments, arena votes, HumanEval+, MATH-500, XSTest, the Austen haystacks; the prep and fetch scripts rebuild them), Part 11's private eval items, raw API transcripts and model replies, Part 5's contaminated SmolLM2 checkpoint and training stream, and open-model weights.
 
+## multimodal-ai/ (Beyond Text: Images, Speech and Video)
+
+| File | Part | What it is |
+|---|---|---|
+| `tokens.py` | 1 | The synthetic scene, video and tones, Claude's visual-token formula and resize rule, a GPU timer that samples nvidia-smi |
+| `vit.py` | 2 | ViT and ResNet loaders, resolution sweeps with position-embedding interpolation, mean attention distance, high-norm token counts, the tiny ViT and CNN trained from scratch |
+| `clip_utils.py` | 3 | Zero-shot classifiers with prompt templates and ensembles, linear probes, modality-gap measures, the synthetic shapes data and tiny CLIP, typographic labels |
+| `vlm.py` | 4 | The five synthetic image tasks (count, dense, read, chart, absent), SmolVLM and Qwen2-VL wrappers, Wilson intervals and paired bootstrap, Claude's resize rule |
+
+`experiments/v01` to `v04` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10 and Oxford-IIIT Pet files (measured only; `v02/dl.py` fetches them), rendered image sets, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
+
 ## agents-lab/ (Agentic AI)
 
 | File | Part | What it is |
