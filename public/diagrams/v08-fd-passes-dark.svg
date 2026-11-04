@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 460" width="780" height="460" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="460" fill="#0b162d"/>
+<line x1="80" x2="750" y1="346.7" y2="346.7" stroke="#22355a" stroke-width="1"/>
+<text x="72" y="350.7" fill="#9fb0cf" font-size="13" text-anchor="end">1</text>
+<line x1="80" x2="750" y1="227.9" y2="227.9" stroke="#22355a" stroke-width="1"/>
+<text x="72" y="231.9" fill="#9fb0cf" font-size="13" text-anchor="end">10</text>
+<line x1="80" x2="750" y1="109.1" y2="109.1" stroke="#22355a" stroke-width="1"/>
+<text x="72" y="113.1" fill="#9fb0cf" font-size="13" text-anchor="end">100</text>
+<line x1="113.4" x2="113.4" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="113.4" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<line x1="217.3" x2="217.3" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="217.3" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="321.1" x2="321.1" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="321.1" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="425.0" x2="425.0" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="425.0" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="485.8" x2="485.8" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="485.8" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">12</text>
+<line x1="528.9" x2="528.9" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="528.9" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">16</text>
+<line x1="696.6" x2="696.6" y1="26" y2="394" stroke="#22355a" stroke-width="1"/>
+<text x="696.6" y="414" fill="#9fb0cf" font-size="13" text-anchor="middle">49</text>
+<text x="415.0" y="444" fill="#e8eefc" font-size="14" text-anchor="middle">Forward passes of the transformer per image (log scale)</text>
+<text transform="translate(22,210.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">FD-FMNIST, lower is better (log)</text>
+<line x1="80" x2="750" y1="233.6" y2="233.6" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="113.43431486514632" y="226.6" fill="#9fb0cf" font-size="13">tokenizer reconstructions: 8.95</text>
+<line x1="80" x2="750" y1="369.7" y2="369.7" stroke="#9fb0cf" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="113.43431486514632" y="362.7" fill="#9fb0cf" font-size="13">real images: 0.64</text>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.5" points="113.4,51.6 217.3,76.9 321.1,131.2 425.0,160.0 485.8,155.1 528.9,150.8 696.6,154.4"/>
+<line x1="113.4" x2="113.4" y1="51.9" y2="51.4" stroke="#3987e5" stroke-width="2"/>
+<circle cx="113.4" cy="51.6" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="217.3" x2="217.3" y1="77.1" y2="76.7" stroke="#3987e5" stroke-width="2"/>
+<circle cx="217.3" cy="76.9" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="321.1" x2="321.1" y1="133.6" y2="129.4" stroke="#3987e5" stroke-width="2"/>
+<circle cx="321.1" cy="131.2" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="425.0" x2="425.0" y1="160.2" y2="159.9" stroke="#3987e5" stroke-width="2"/>
+<circle cx="425.0" cy="160.0" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="485.8" x2="485.8" y1="157.7" y2="153.6" stroke="#3987e5" stroke-width="2"/>
+<circle cx="485.8" cy="155.1" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="528.9" x2="528.9" y1="152.2" y2="150.1" stroke="#3987e5" stroke-width="2"/>
+<circle cx="528.9" cy="150.8" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="696.6" x2="696.6" y1="155.5" y2="153.6" stroke="#3987e5" stroke-width="2"/>
+<circle cx="696.6" cy="154.4" r="5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<text x="129.4" y="56.7" fill="#3987e5" font-size="13" font-weight="bold">masked prior</text>
+<text x="425.0" y="182.0" fill="#e8eefc" font-size="12" text-anchor="middle">37.3 at 8</text>
+<line x1="696.6" x2="696.6" y1="206.4" y2="204.0" stroke="#d95926" stroke-width="2"/>
+<rect x="690.6" y="199.1" width="12" height="12" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<text x="684.6" y="210.1" fill="#d95926" font-size="13" font-weight="bold" text-anchor="end">raster order: 15.5</text>
+</svg>

@@ -1,0 +1,10 @@
+flowchart TD
+  A["Prompt text"] --> B["CLIP ViT-L/14 text encoder:<br/>77 x 768 vectors"]
+  N["Random latent:<br/>4 x 64 x 64 noise"] --> U
+  B --> U["U-Net, 860M<br/>predicts the noise<br/>and cross-attends<br/>to the text"]
+  E["Empty prompt or<br/>negative prompt"] --> B2["Same text encoder"] --> U
+  U --> G["Guidance mixes<br/>both predictions"]
+  G --> S["Sampler step:<br/>a slightly cleaner latent"]
+  S -->|"repeat 20 to 50 times"| U
+  S --> D["VAE decoder:<br/>4 x 64 x 64 to 512 x 512 x 3"]
+  D --> C["Safety checker"] --> I["Image"]

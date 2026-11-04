@@ -175,10 +175,10 @@ Series slug `multimodal-ai`, short name "Multimodal", file prefix `v`, category 
 | 2 | Vision transformers | `vision-transformers` | Patches, position, ViT measured | f06 | Published |
 | 3 | CLIP and contrastive learning | `clip-contrastive-learning` | The contrastive loss, zero-shot classification run locally | m06 | Published |
 | 4 | Vision-language models | `vision-language-models` | Connectors (LLaVA style), image-token counts and cost | v02, v03 | Published |
-| 5 | Diffusion from scratch | `diffusion-math` | DDPM math; train a tiny diffusion model on the laptop | m04, m07 |  |
-| 6 | Latent diffusion | `latent-diffusion` | VAE, U-Net, classifier-free guidance; Stable Diffusion run and timed | v05 |  |
-| 7 | Diffusion transformers and flow matching | `flow-matching-dit` | DiT, rectified flow (SD3/FLUX family) | v06 |  |
-| 8 | Autoregressive and unified image generation | `autoregressive-image-generation` | VQ tokens, native image generation in LLMs; research-based | v04 |  |
+| 5 | Diffusion from scratch | `diffusion-math` | DDPM math; train a tiny diffusion model on the laptop | m04, m07 | Published |
+| 6 | Latent diffusion | `latent-diffusion` | VAE, U-Net, classifier-free guidance; Stable Diffusion run and timed | v05 | Published |
+| 7 | Diffusion transformers and flow matching | `flow-matching-dit` | DiT, rectified flow (SD3/FLUX family) | v06 | Published |
+| 8 | Autoregressive and unified image generation | `autoregressive-image-generation` | VQ tokens, native image generation in LLMs; research-based | v04 | Published |
 | 9 | Speech recognition with Whisper | `speech-recognition-whisper` | Log-mel spectrograms, encoder-decoder; WER measured | f15 |  |
 | 10 | Text-to-speech | `text-to-speech` | Kokoro and neural codecs; real-time factor measured | v09 |  |
 | 11 | Audio tokens and voice agents | `voice-agents` | EnCodec/Mimi codecs, speech-to-speech models, latency budget | v10, a01 |  |

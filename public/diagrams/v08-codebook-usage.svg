@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="780" height="440" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="440" fill="#ffffff"/>
+<line x1="86" x2="570" y1="374.0" y2="374.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="78" y="378.0" fill="#4a5b78" font-size="13" text-anchor="end">10</text>
+<line x1="86" x2="570" y1="250.2" y2="250.2" stroke="#dde5f2" stroke-width="1"/>
+<text x="78" y="254.2" fill="#4a5b78" font-size="13" text-anchor="end">100</text>
+<line x1="86" x2="570" y1="126.4" y2="126.4" stroke="#dde5f2" stroke-width="1"/>
+<text x="78" y="130.4" fill="#4a5b78" font-size="13" text-anchor="end">1,000</text>
+<line x1="121.6" x2="121.6" y1="30" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="121.6" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">16</text>
+<line x1="226.4" x2="226.4" y1="30" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="226.4" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">64</text>
+<line x1="383.8" x2="383.8" y1="30" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="383.8" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">512</text>
+<line x1="541.1" x2="541.1" y1="30" y2="374" stroke="#dde5f2" stroke-width="1"/>
+<text x="541.1" y="394" fill="#4a5b78" font-size="13" text-anchor="middle">4,096</text>
+<text x="328.0" y="424" fill="#0b1a33" font-size="14" text-anchor="middle">Codebook size K (log scale)</text>
+<text transform="translate(22,202.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Entries used on test images (log)</text>
+<line x1="99.8" y1="364.2" x2="556.2" y2="39.8" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="6 5"/>
+<line x1="594" x2="622" y1="100" y2="100" stroke="#4a5b78" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="630" y="105" fill="#4a5b78" font-size="13">every entry used</text>
+<polyline fill="none" stroke="#eb6834" stroke-width="2.5" points="121.6,348.7 226.4,274.2 383.8,239.0 541.1,235.2"/>
+<circle cx="121.6" cy="348.7" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="226.4" cy="274.2" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="383.8" cy="239.0" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="541.1" cy="235.2" r="5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="594" x2="622" y1="45" y2="45" stroke="#eb6834" stroke-width="2.5"/>
+<text x="630" y="50.0" fill="#0b1a33" font-size="13">plain VQ loss</text>
+<polyline fill="none" stroke="#2a78d6" stroke-width="2.5" points="121.6,348.7 226.4,274.2 383.8,163.1 541.1,50.9"/>
+<circle cx="121.6" cy="348.7" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="226.4" cy="274.2" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="383.8" cy="163.1" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="541.1" cy="50.9" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="594" x2="622" y1="70" y2="70" stroke="#2a78d6" stroke-width="2.5"/>
+<text x="630" y="75.0" fill="#0b1a33" font-size="13">dead-code restarts</text>
+<text x="391.8" y="257.0" fill="#4a5b78" font-size="12">123 of 512</text>
+<text x="533.1" y="255.2" fill="#4a5b78" font-size="12" text-anchor="end">132 of 4,096</text>
+</svg>

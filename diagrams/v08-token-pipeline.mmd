@@ -1,0 +1,13 @@
+flowchart TD
+    A["Image pixels"] --> B["Encoder network"]
+    B --> C["Nearest codebook entry per cell"]
+    C --> D["Grid of integer codes"]
+    D --> E["Transformer prior learns the codes"]
+    E --> F["Raster order:<br/>one token per pass"]
+    E --> G["Masked:<br/>many tokens per pass"]
+    E --> H["Next scale:<br/>one resolution per pass"]
+    F --> I["New code grid"]
+    G --> I
+    H --> I
+    I --> J["Decoder network"]
+    J --> K["Generated image"]

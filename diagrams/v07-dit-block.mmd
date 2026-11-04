@@ -1,0 +1,13 @@
+flowchart TD
+  A["Noisy latent or image<br/>28 x 28 x 1"] --> B["Patchify: 2 x 2 patches<br/>196 tokens of width 192"]
+  B --> C["Add fixed 2D<br/>sin-cos positions"]
+  T["Timestep t<br/>(and class or text)"] --> E["Embedding MLP:<br/>one vector c"]
+  C --> D
+  E --> D
+  subgraph D["DiT block, repeated N times"]
+    direction TB
+    D1["adaLN: scale and shift<br/>from c"] --> D2["Self-attention<br/>x gate from c"]
+    D2 --> D3["adaLN: scale and shift<br/>from c"] --> D4["MLP<br/>x gate from c"]
+  end
+  D --> F["Final adaLN and<br/>linear layer"]
+  F --> G["Unpatchify: predicted<br/>noise or velocity"]

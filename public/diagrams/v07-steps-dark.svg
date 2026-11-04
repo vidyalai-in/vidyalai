@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480" width="780" height="480" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="480" fill="#0b162d"/>
+<line x1="70" x2="750" y1="405.3" y2="405.3" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="409.3" fill="#9fb0cf" font-size="13" text-anchor="end">1</text>
+<line x1="70" x2="750" y1="342.6" y2="342.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="346.6" fill="#9fb0cf" font-size="13" text-anchor="end">3</text>
+<line x1="70" x2="750" y1="273.9" y2="273.9" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="277.9" fill="#9fb0cf" font-size="13" text-anchor="end">10</text>
+<line x1="70" x2="750" y1="211.3" y2="211.3" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="215.3" fill="#9fb0cf" font-size="13" text-anchor="end">30</text>
+<line x1="70" x2="750" y1="142.6" y2="142.6" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="146.6" fill="#9fb0cf" font-size="13" text-anchor="end">100</text>
+<line x1="70" x2="750" y1="79.9" y2="79.9" stroke="#22355a" stroke-width="1"/>
+<text x="62" y="83.9" fill="#9fb0cf" font-size="13" text-anchor="end">300</text>
+<line x1="99.8" x2="99.8" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="99.8" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">1</text>
+<line x1="192.4" x2="192.4" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="192.4" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">2</text>
+<line x1="285.0" x2="285.0" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="285.0" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">4</text>
+<line x1="377.6" x2="377.6" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="377.6" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">8</text>
+<line x1="470.2" x2="470.2" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="470.2" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">16</text>
+<line x1="562.8" x2="562.8" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="562.8" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">32</text>
+<line x1="715.0" x2="715.0" y1="24" y2="418" stroke="#22355a" stroke-width="1"/>
+<text x="715.0" y="438" fill="#9fb0cf" font-size="13" text-anchor="middle">100</text>
+<text x="410.0" y="466" fill="#e8eefc" font-size="14" text-anchor="middle">Sampling steps (network calls per image, log scale)</text>
+<text transform="translate(18,221.0) rotate(-90)" fill="#e8eefc" font-size="14" text-anchor="middle">FD-FMNIST (log scale, lower is better)</text>
+<line x1="70" x2="750" y1="402.5" y2="402.5" stroke="#9fb0cf" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="746" y="395.5" fill="#9fb0cf" font-size="13" text-anchor="end">2,000 real images: 1.05</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2.5" points="99.8,46.4 192.4,46.5 285.0,127.7 377.6,202.2 470.2,249.7 562.8,278.0 715.0,287.0"/>
+<line x1="99.8" x2="99.8" y1="46.7" y2="46.1" stroke="#d95926" stroke-width="2"/>
+<circle cx="99.8" cy="46.4" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="192.4" x2="192.4" y1="46.8" y2="46.3" stroke="#d95926" stroke-width="2"/>
+<circle cx="192.4" cy="46.5" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="285.0" x2="285.0" y1="129.1" y2="126.5" stroke="#d95926" stroke-width="2"/>
+<circle cx="285.0" cy="127.7" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="377.6" x2="377.6" y1="203.4" y2="201.6" stroke="#d95926" stroke-width="2"/>
+<circle cx="377.6" cy="202.2" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="470.2" x2="470.2" y1="250.6" y2="249.0" stroke="#d95926" stroke-width="2"/>
+<circle cx="470.2" cy="249.7" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="562.8" x2="562.8" y1="279.5" y2="276.9" stroke="#d95926" stroke-width="2"/>
+<circle cx="562.8" cy="278.0" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="715.0" x2="715.0" y1="289.4" y2="283.7" stroke="#d95926" stroke-width="2"/>
+<circle cx="715.0" cy="287.0" r="4.5" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<polyline fill="none" stroke="#3987e5" stroke-width="2.5" points="99.8,29.7 192.4,55.6 285.0,127.6 377.6,206.3 470.2,253.2 562.8,279.4 715.0,288.9"/>
+<line x1="99.8" x2="99.8" y1="29.8" y2="29.7" stroke="#3987e5" stroke-width="2"/>
+<circle cx="99.8" cy="29.7" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="192.4" x2="192.4" y1="55.9" y2="55.2" stroke="#3987e5" stroke-width="2"/>
+<circle cx="192.4" cy="55.6" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="285.0" x2="285.0" y1="128.7" y2="126.2" stroke="#3987e5" stroke-width="2"/>
+<circle cx="285.0" cy="127.6" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="377.6" x2="377.6" y1="209.1" y2="203.8" stroke="#3987e5" stroke-width="2"/>
+<circle cx="377.6" cy="206.3" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="470.2" x2="470.2" y1="256.9" y2="251.1" stroke="#3987e5" stroke-width="2"/>
+<circle cx="470.2" cy="253.2" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="562.8" x2="562.8" y1="284.5" y2="273.7" stroke="#3987e5" stroke-width="2"/>
+<circle cx="562.8" cy="279.4" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="715.0" x2="715.0" y1="294.3" y2="281.4" stroke="#3987e5" stroke-width="2"/>
+<circle cx="715.0" cy="288.9" r="4.5" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<polyline fill="none" stroke="#2bb38a" stroke-width="2.5" points="99.8,186.2 192.4,209.2 285.0,224.5 377.6,236.2 470.2,244.4 562.8,250.1"/>
+<line x1="99.8" x2="99.8" y1="187.7" y2="185.0" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="99.8" cy="186.2" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="192.4" x2="192.4" y1="211.6" y2="207.4" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="192.4" cy="209.2" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="285.0" x2="285.0" y1="227.7" y2="221.9" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="285.0" cy="224.5" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="377.6" x2="377.6" y1="240.4" y2="232.4" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="377.6" cy="236.2" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="470.2" x2="470.2" y1="249.5" y2="240.4" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="470.2" cy="244.4" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="562.8" x2="562.8" y1="255.4" y2="246.5" stroke="#2bb38a" stroke-width="2"/>
+<circle cx="562.8" cy="250.1" r="4.5" fill="#2bb38a" stroke="#0b162d" stroke-width="1.5"/>
+<line x1="431.7345540435494" x2="457.7345540435494" y1="50.807757722144856" y2="50.807757722144856" stroke="#d95926" stroke-width="2.5"/><text x="465.7345540435494" y="55.807757722144856" fill="#e8eefc" font-size="13">Diffusion (DDPM), DDIM sampler</text>
+<line x1="431.7345540435494" x2="457.7345540435494" y1="72.80775772214486" y2="72.80775772214486" stroke="#3987e5" stroke-width="2.5"/><text x="465.7345540435494" y="77.80775772214486" fill="#e8eefc" font-size="13">Rectified flow, Euler sampler</text>
+<line x1="431.7345540435494" x2="457.7345540435494" y1="94.80775772214486" y2="94.80775772214486" stroke="#2bb38a" stroke-width="2.5"/><text x="465.7345540435494" y="99.80775772214486" fill="#e8eefc" font-size="13">After one reflow, Euler</text>
+</svg>

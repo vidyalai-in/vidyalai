@@ -1,0 +1,14 @@
+flowchart TD
+    A["Noisy image x_t<br/>28 × 28 × 1"] --> D1["28 × 28 × 32<br/>2 res blocks"]
+    T["Noise level t"] --> E["Sine embedding<br/>+ 2-layer MLP"]
+    E -. "added in every res block" .-> M
+    D1 --> D2["14 × 14 × 64<br/>2 res blocks"]
+    D2 --> D3["7 × 7 × 64<br/>2 res blocks"]
+    D3 --> M["7 × 7 middle<br/>res, attention, res"]
+    M --> U3["7 × 7 × 64<br/>3 res + attention"]
+    U3 --> U2["14 × 14 × 64<br/>3 res blocks"]
+    U2 --> U1["28 × 28 × 32<br/>3 res blocks"]
+    U1 --> O["Predicted noise<br/>28 × 28 × 1"]
+    D1 -. "skip" .-> U1
+    D2 -. "skip" .-> U2
+    D3 -. "skip" .-> U3
