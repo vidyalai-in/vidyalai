@@ -70,8 +70,13 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `vit.py` | 2 | ViT and ResNet loaders, resolution sweeps with position-embedding interpolation, mean attention distance, high-norm token counts, the tiny ViT and CNN trained from scratch |
 | `clip_utils.py` | 3 | Zero-shot classifiers with prompt templates and ensembles, linear probes, modality-gap measures, the synthetic shapes data and tiny CLIP, typographic labels |
 | `vlm.py` | 4 | The five synthetic image tasks (count, dense, read, chart, absent), SmolVLM and Qwen2-VL wrappers, Wilson intervals and paired bootstrap, Claude's resize rule |
+| `fmnist_eval.py` | 5-8 | Fashion-MNIST loading and FD-FMNIST, the Fréchet distance on a small classifier's features used to score generated samples; `--train` and `--reference` rebuild the classifier and the reference values (`experiments/fmnist_reference.json`) |
+| `ddpm.py` | 5 | Linear and cosine noise schedules, the closed-form forward process, L_simple, DDPM and DDIM samplers, the small U-Net, the 2D spiral toy |
+| `sd.py` | 6 | Stable Diffusion 1.5 loading and timing, the guidance and sampler sweeps, x0 decoding, CLIP score and diversity, the Haiku judge requests |
+| `flow.py` | 7 | Rectified-flow loss and Euler sampler, DDPM baseline, U-Net and tiny DiT with adaLN-Zero, reflow pairs, straightness measures |
+| `ar_image.py` | 8 | VQ-VAE with dead-code restarts, raster-order and MaskGIT-style priors, KV-cached sampling, aMUSEd timing and CLIP scoring |
 
-`experiments/v01` to `v04` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10 and Oxford-IIIT Pet files (measured only; `v02/dl.py` fetches them), rendered image sets, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
+`experiments/v01` to `v08` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10 and Oxford-IIIT Pet files (measured only; `v02/dl.py` fetches them), rendered and generated image sets, training checkpoints, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
 
 ## agents-lab/ (Agentic AI)
 

@@ -1,0 +1,52 @@
+{
+ "32": {
+  "gflops": 180.1064448,
+  "attn_gflops": 8.54532096,
+  "by_op": {
+   "aten.addmm": 44.8299008,
+   "aten.convolution": 110.98652672,
+   "aten.mm": 15.74469632,
+   "aten.bmm": 8.54532096
+  }
+ },
+ "64": {
+  "gflops": 803.27344128,
+  "attn_gflops": 126.05227008,
+  "by_op": {
+   "aten.addmm": 179.1524864,
+   "aten.convolution": 443.94610688,
+   "aten.mm": 54.12257792,
+   "aten.bmm": 126.05227008
+  }
+ },
+ "128": {
+  "gflops": 4674.0062208,
+  "attn_gflops": 1974.14486016,
+  "by_op": {
+   "aten.addmm": 716.4428288,
+   "aten.convolution": 1775.78442752,
+   "aten.mm": 207.63410432,
+   "aten.bmm": 1974.14486016
+  }
+ },
+ "256": {
+  "gflops": 42205.97403648,
+  "attn_gflops": 31415.55191808,
+  "by_op": {
+   "aten.addmm": 2865.6041984,
+   "aten.convolution": 7103.13771008,
+   "aten.mm": 821.68020992,
+   "aten.bmm": 31415.55191808
+  }
+ },
+ "512": {
+  "gflops": 545118.4324608,
+  "attn_gflops": 501965.76731136,
+  "by_op": {
+   "aten.addmm": 11462.2496768,
+   "aten.convolution": 28412.55084032,
+   "aten.mm": 3277.86463232,
+   "aten.bmm": 501965.76731136
+  }
+ }
+}

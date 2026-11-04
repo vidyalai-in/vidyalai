@@ -1,0 +1,27 @@
+{
+ "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+ "torch": "2.11.0+cu128",
+ "cuda": "12.8",
+ "unet": {
+  "params": 4104929,
+  "gflops_fwd_per_image": 1.0285952,
+  "train_step_ms_b128": 82.02220302482601,
+  "train_img_per_s": 1560.5530609956634,
+  "fwd_ms_b1000": 275.56313950335607,
+  "fwd_img_per_s_b1000": 3628.932381167841,
+  "fwd_ms_b1": 9.241454440634698,
+  "fwd_img_per_s_b1": 108.20807551709582,
+  "peak_mem_mb": 1530.1123046875
+ },
+ "dit": {
+  "params": 4160836,
+  "gflops_fwd_per_image": 1.221046272,
+  "train_step_ms_b128": 88.4501063497737,
+  "train_img_per_s": 1447.1435398147203,
+  "fwd_ms_b1000": 239.97820920776576,
+  "fwd_img_per_s_b1000": 4167.045013383823,
+  "fwd_ms_b1": 4.444038600195199,
+  "fwd_img_per_s_b1": 225.02054774143414,
+  "peak_mem_mb": 1502.83154296875
+ }
+}

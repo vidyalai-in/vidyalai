@@ -1,0 +1,702 @@
+[
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 0,
+  "t": 951,
+  "alpha_bar": 0.008154998533427715,
+  "snr": 0.008222049333685692,
+  "lat_std": 0.9977999329566956,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.013119950890541077,
+   -0.044407010078430176
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 1,
+  "t": 901,
+  "alpha_bar": 0.014004888944327831,
+  "snr": 0.014203811750479434,
+  "lat_std": 0.9952086210250854,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.012662529945373535,
+   -0.041924506425857544
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 2,
+  "t": 851,
+  "alpha_bar": 0.023076973855495453,
+  "snr": 0.0236221004499918,
+  "lat_std": 0.9939156174659729,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.01127961277961731,
+   -0.02349705994129181
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 3,
+  "t": 801,
+  "alpha_bar": 0.0365464948117733,
+  "snr": 0.037932805906013424,
+  "lat_std": 0.9913341403007507,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.00991201400756836,
+   -0.026265308260917664
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 4,
+  "t": 751,
+  "alpha_bar": 0.055718984454870224,
+  "snr": 0.05900678244887076,
+  "lat_std": 0.9882271885871887,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.007570087909698486,
+   -0.04116268455982208
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 5,
+  "t": 701,
+  "alpha_bar": 0.08191665261983871,
+  "snr": 0.0892257253697017,
+  "lat_std": 0.9838636517524719,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.005338981747627258,
+   -0.041118696331977844
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 6,
+  "t": 651,
+  "alpha_bar": 0.1163247674703598,
+  "snr": 0.13163746497382797,
+  "lat_std": 0.9780945777893066,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.0025856196880340576,
+   -0.03675895929336548
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 7,
+  "t": 601,
+  "alpha_bar": 0.15981632471084595,
+  "snr": 0.19021593659963013,
+  "lat_std": 0.9708958864212036,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.00018040835857391357,
+   -0.03595331311225891
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 8,
+  "t": 551,
+  "alpha_bar": 0.2127823531627655,
+  "snr": 0.2702967267281808,
+  "lat_std": 0.9618958830833435,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.002973884344100952,
+   -0.04302181303501129
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 9,
+  "t": 501,
+  "alpha_bar": 0.27499884366989136,
+  "snr": 0.3793081449165006,
+  "lat_std": 0.9510116577148438,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.005591541528701782,
+   -0.04819782078266144
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 10,
+  "t": 451,
+  "alpha_bar": 0.3455579876899719,
+  "snr": 0.5280192609735317,
+  "lat_std": 0.9382550716400146,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.009808331727981567,
+   -0.047223061323165894
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 11,
+  "t": 401,
+  "alpha_bar": 0.4228813052177429,
+  "snr": 0.7327458095553344,
+  "lat_std": 0.9239019751548767,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.012578919529914856,
+   -0.0494687557220459
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 12,
+  "t": 351,
+  "alpha_bar": 0.504818320274353,
+  "snr": 1.019460818005313,
+  "lat_std": 0.908265233039856,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.026453718543052673,
+   -0.05058512091636658
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 13,
+  "t": 301,
+  "alpha_bar": 0.5888184309005737,
+  "snr": 1.4320156231472374,
+  "lat_std": 0.8917441368103027,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.024922087788581848,
+   -0.051359668374061584
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 14,
+  "t": 251,
+  "alpha_bar": 0.6721511483192444,
+  "snr": 2.0501860685903965,
+  "lat_std": 0.8747708201408386,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.025850310921669006,
+   -0.056757763028144836
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 15,
+  "t": 201,
+  "alpha_bar": 0.7521430850028992,
+  "snr": 3.0345858416405163,
+  "lat_std": 0.8576741218566895,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.03460632264614105,
+   -0.05862133204936981
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 16,
+  "t": 151,
+  "alpha_bar": 0.8263989686965942,
+  "snr": 4.760334443245797,
+  "lat_std": 0.8409624099731445,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.05226029455661774,
+   -0.05763311684131622
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 17,
+  "t": 101,
+  "alpha_bar": 0.8929802179336548,
+  "snr": 8.34406686961917,
+  "lat_std": 0.8248052597045898,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.06448395550251007,
+   -0.05908098816871643
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 18,
+  "t": 51,
+  "alpha_bar": 0.950524091720581,
+  "snr": 19.21185734180814,
+  "lat_std": 0.8090898990631104,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.06159156560897827,
+   -0.06089946627616882
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "seed": 11,
+  "step": 19,
+  "t": 1,
+  "alpha_bar": 0.9982960224151611,
+  "snr": 585.8621799356373,
+  "lat_std": 0.7870546579360962,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.06055852770805359,
+   -0.06130744516849518
+  ]
+ },
+ {
+  "prompt": "a lighthouse on a rocky cliff at sunset",
+  "final": true,
+  "nsfw": [
+   false
+  ],
+  "margins": [
+   -0.06124021112918854
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 0,
+  "t": 951,
+  "alpha_bar": 0.008154998533427715,
+  "snr": 0.008222049333685692,
+  "lat_std": 1.0024960041046143,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.007199004292488098,
+   -0.00012424588203430176
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 1,
+  "t": 901,
+  "alpha_bar": 0.014004888944327831,
+  "snr": 0.014203811750479434,
+  "lat_std": 1.0002260208129883,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.007295727729797363,
+   -0.0036883950233459473
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 2,
+  "t": 851,
+  "alpha_bar": 0.023076973855495453,
+  "snr": 0.0236221004499918,
+  "lat_std": 0.9977715611457825,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.008120834827423096,
+   -0.012512639164924622
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 3,
+  "t": 801,
+  "alpha_bar": 0.0365464948117733,
+  "snr": 0.037932805906013424,
+  "lat_std": 0.9964315891265869,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.007860973477363586,
+   -0.020586133003234863
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 4,
+  "t": 751,
+  "alpha_bar": 0.055718984454870224,
+  "snr": 0.05900678244887076,
+  "lat_std": 0.9924366474151611,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.007755383849143982,
+   -0.04034528136253357
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 5,
+  "t": 701,
+  "alpha_bar": 0.08191665261983871,
+  "snr": 0.0892257253697017,
+  "lat_std": 0.9874666333198547,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.006801605224609375,
+   -0.052319735288619995
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 6,
+  "t": 651,
+  "alpha_bar": 0.1163247674703598,
+  "snr": 0.13163746497382797,
+  "lat_std": 0.9808372259140015,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.005521804094314575,
+   -0.06028503179550171
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 7,
+  "t": 601,
+  "alpha_bar": 0.15981632471084595,
+  "snr": 0.19021593659963013,
+  "lat_std": 0.9724324345588684,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.004982277750968933,
+   -0.03554679453372955
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 8,
+  "t": 551,
+  "alpha_bar": 0.2127823531627655,
+  "snr": 0.2702967267281808,
+  "lat_std": 0.9631043076515198,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.004868686199188232,
+   -0.06417369842529297
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 9,
+  "t": 501,
+  "alpha_bar": 0.27499884366989136,
+  "snr": 0.3793081449165006,
+  "lat_std": 0.9505513310432434,
+  "nsfw": [
+   true,
+   false
+  ],
+  "margins": [
+   0.002089962363243103,
+   -0.06412823498249054
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 10,
+  "t": 451,
+  "alpha_bar": 0.3455579876899719,
+  "snr": 0.5280192609735317,
+  "lat_std": 0.9362469911575317,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.0022612661123275757,
+   -0.0668640062212944
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 11,
+  "t": 401,
+  "alpha_bar": 0.4228813052177429,
+  "snr": 0.7327458095553344,
+  "lat_std": 0.9197784662246704,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.011697903275489807,
+   -0.06832727044820786
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 12,
+  "t": 351,
+  "alpha_bar": 0.504818320274353,
+  "snr": 1.019460818005313,
+  "lat_std": 0.9016348719596863,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.018639221787452698,
+   -0.07015591114759445
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 13,
+  "t": 301,
+  "alpha_bar": 0.5888184309005737,
+  "snr": 1.4320156231472374,
+  "lat_std": 0.8827128410339355,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.039899855852127075,
+   -0.07023857533931732
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 14,
+  "t": 251,
+  "alpha_bar": 0.6721511483192444,
+  "snr": 2.0501860685903965,
+  "lat_std": 0.8632292151451111,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.040653735399246216,
+   -0.07102201879024506
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 15,
+  "t": 201,
+  "alpha_bar": 0.7521430850028992,
+  "snr": 3.0345858416405163,
+  "lat_std": 0.8439494967460632,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.051946938037872314,
+   -0.07235883176326752
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 16,
+  "t": 151,
+  "alpha_bar": 0.8263989686965942,
+  "snr": 4.760334443245797,
+  "lat_std": 0.8253507614135742,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.06177447736263275,
+   -0.07440764456987381
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 17,
+  "t": 101,
+  "alpha_bar": 0.8929802179336548,
+  "snr": 8.34406686961917,
+  "lat_std": 0.8075870275497437,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.06445726752281189,
+   -0.07672790437936783
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 18,
+  "t": 51,
+  "alpha_bar": 0.950524091720581,
+  "snr": 19.21185734180814,
+  "lat_std": 0.7906790375709534,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.07322362065315247,
+   -0.07731638848781586
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "seed": 22,
+  "step": 19,
+  "t": 1,
+  "alpha_bar": 0.9982960224151611,
+  "snr": 585.8621799356373,
+  "lat_std": 0.7687162756919861,
+  "nsfw": [
+   false,
+   false
+  ],
+  "margins": [
+   -0.07651611417531967,
+   -0.07556991279125214
+  ]
+ },
+ {
+  "prompt": "a red bicycle leaning against a blue wooden door",
+  "final": true,
+  "nsfw": [
+   false
+  ],
+  "margins": [
+   -0.07814259827136993
+  ]
+ }
+]
