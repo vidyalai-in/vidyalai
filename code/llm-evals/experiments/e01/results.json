@@ -1,0 +1,400 @@
+{
+ "accuracy": {
+  "haiku:mmlu-choices_only": {
+   "n": 1140,
+   "acc": 47.72,
+   "lo": 44.83,
+   "hi": 50.62
+  },
+  "haiku:arce-full": {
+   "n": 2376,
+   "acc": 98.23,
+   "lo": 97.62,
+   "hi": 98.69
+  },
+  "haiku:pro-full": {
+   "n": 840,
+   "acc": 70.95,
+   "lo": 67.79,
+   "hi": 73.92
+  },
+  "haiku:mmlu-nota_correct": {
+   "n": 1140,
+   "acc": 52.72,
+   "lo": 49.82,
+   "hi": 55.6
+  },
+  "haiku:arcc-full": {
+   "n": 1172,
+   "acc": 93.0,
+   "lo": 91.4,
+   "hi": 94.33
+  },
+  "haiku:arcc-choices_only": {
+   "n": 1172,
+   "acc": 47.27,
+   "lo": 44.42,
+   "hi": 50.13
+  },
+  "haiku:mmlu-full": {
+   "n": 1140,
+   "acc": 85.26,
+   "lo": 83.09,
+   "hi": 87.2
+  },
+  "haiku:mmlu-nota_wrong": {
+   "n": 1140,
+   "acc": 81.05,
+   "lo": 78.67,
+   "hi": 83.22
+  },
+  "haiku:pro-choices_only": {
+   "n": 840,
+   "acc": 35.48,
+   "lo": 32.31,
+   "hi": 38.77
+  },
+  "sonnet:arce-full": {
+   "n": 200,
+   "acc": 100.0,
+   "lo": 98.12,
+   "hi": 100.0
+  },
+  "sonnet:pro-full": {
+   "n": 200,
+   "acc": 88.0,
+   "lo": 82.77,
+   "hi": 91.8
+  },
+  "sonnet:mmlu-full": {
+   "n": 200,
+   "acc": 92.5,
+   "lo": 88.0,
+   "hi": 95.4
+  },
+  "Qwen2.5-0.5B:arce-full": {
+   "n": 2376,
+   "acc": 66.33,
+   "lo": 64.4,
+   "hi": 68.2
+  },
+  "Qwen2.5-0.5B:arcc-full": {
+   "n": 1172,
+   "acc": 50.94,
+   "lo": 48.08,
+   "hi": 53.79
+  },
+  "Qwen2.5-0.5B:arcc-choices_only": {
+   "n": 1172,
+   "acc": 32.34,
+   "lo": 29.72,
+   "hi": 35.07
+  },
+  "Qwen2.5-0.5B:mmlu-full": {
+   "n": 1140,
+   "acc": 45.7,
+   "lo": 42.83,
+   "hi": 48.6
+  },
+  "Qwen2.5-0.5B:mmlu-choices_only": {
+   "n": 1140,
+   "acc": 35.53,
+   "lo": 32.8,
+   "hi": 38.35
+  },
+  "Qwen2.5-0.5B:pro-full": {
+   "n": 840,
+   "acc": 15.6,
+   "lo": 13.3,
+   "hi": 18.2
+  },
+  "Qwen2.5-0.5B:pro-choices_only": {
+   "n": 840,
+   "acc": 13.93,
+   "lo": 11.75,
+   "hi": 16.43
+  },
+  "SmolLM2-135M:arce-full": {
+   "n": 2376,
+   "acc": 24.66,
+   "lo": 22.97,
+   "hi": 26.44
+  },
+  "SmolLM2-135M:arcc-full": {
+   "n": 1172,
+   "acc": 24.15,
+   "lo": 21.78,
+   "hi": 26.68
+  },
+  "SmolLM2-135M:arcc-choices_only": {
+   "n": 1172,
+   "acc": 24.91,
+   "lo": 22.52,
+   "hi": 27.47
+  },
+  "SmolLM2-135M:mmlu-full": {
+   "n": 1140,
+   "acc": 24.04,
+   "lo": 21.64,
+   "hi": 26.6
+  },
+  "SmolLM2-135M:mmlu-choices_only": {
+   "n": 1140,
+   "acc": 25.44,
+   "lo": 23.0,
+   "hi": 28.05
+  },
+  "SmolLM2-135M:pro-full": {
+   "n": 840,
+   "acc": 11.19,
+   "lo": 9.23,
+   "hi": 13.5
+  },
+  "SmolLM2-135M:pro-choices_only": {
+   "n": 840,
+   "acc": 10.6,
+   "lo": 8.69,
+   "hi": 12.86
+  }
+ },
+ "baselines": {
+  "arce": {
+   "n": 2376,
+   "chance": 25.02,
+   "majority": 26.64,
+   "majority_letter": "C"
+  },
+  "arcc": {
+   "n": 1172,
+   "chance": 25.02,
+   "majority": 26.54,
+   "majority_letter": "B"
+  },
+  "mmlu": {
+   "n": 1140,
+   "chance": 25.0,
+   "majority": 26.75,
+   "majority_letter": "D"
+  },
+  "pro": {
+   "n": 840,
+   "chance": 11.16,
+   "majority": 12.74,
+   "majority_letter": "C"
+  }
+ },
+ "paired": {
+  "sonnet-haiku:arce": {
+   "n": 200,
+   "a": 100.0,
+   "b": 100.0,
+   "diff": 0.0,
+   "lo": 0.0,
+   "hi": 0.0
+  },
+  "sonnet-haiku:arcc": {
+   "n": 0,
+   "a": NaN,
+   "b": NaN,
+   "diff": NaN,
+   "lo": NaN,
+   "hi": NaN
+  },
+  "sonnet-haiku:mmlu": {
+   "n": 200,
+   "a": 84.5,
+   "b": 92.5,
+   "diff": 8.0,
+   "lo": 3.0,
+   "hi": 13.0
+  },
+  "sonnet-haiku:pro": {
+   "n": 200,
+   "a": 65.5,
+   "b": 88.0,
+   "diff": 22.5,
+   "lo": 16.0,
+   "hi": 29.0
+  },
+  "haiku:mmlu nota_correct-full": {
+   "n": 1140,
+   "a": 85.26,
+   "b": 52.72,
+   "diff": -32.54,
+   "lo": -35.7,
+   "hi": -29.39
+  },
+  "haiku:mmlu nota_wrong-full": {
+   "n": 1140,
+   "a": 85.26,
+   "b": 81.05,
+   "diff": -4.21,
+   "lo": -6.14,
+   "hi": -2.37
+  },
+  "haiku:arcc choices_only-full": {
+   "n": 1172,
+   "a": 93.0,
+   "b": 47.27,
+   "diff": -45.73,
+   "lo": -48.81,
+   "hi": -42.66,
+   "right_both": 531,
+   "right_full": 1090
+  },
+  "haiku:mmlu choices_only-full": {
+   "n": 1140,
+   "a": 85.26,
+   "b": 47.72,
+   "diff": -37.54,
+   "lo": -40.88,
+   "hi": -34.21,
+   "right_both": 491,
+   "right_full": 972
+  },
+  "haiku:pro choices_only-full": {
+   "n": 840,
+   "a": 70.95,
+   "b": 35.48,
+   "diff": -35.48,
+   "lo": -39.52,
+   "hi": -31.43,
+   "right_both": 241,
+   "right_full": 596
+  }
+ },
+ "stats": {
+  "haiku:mmlu-choices_only": {
+   "parsed": 1140,
+   "rerun": 0
+  },
+  "haiku:arce-full": {
+   "parsed": 2375,
+   "rerun": 4,
+   "unparsed": 1
+  },
+  "haiku:pro-full": {
+   "parsed": 835,
+   "rerun": 211,
+   "unparsed": 5
+  },
+  "haiku:mmlu-nota_correct": {
+   "parsed": 1138,
+   "rerun": 82,
+   "unparsed": 2
+  },
+  "haiku:arcc-full": {
+   "parsed": 1171,
+   "rerun": 3,
+   "unparsed": 1
+  },
+  "haiku:arcc-choices_only": {
+   "parsed": 1172,
+   "rerun": 0
+  },
+  "haiku:mmlu-full": {
+   "parsed": 1136,
+   "rerun": 77,
+   "unparsed": 4
+  },
+  "haiku:mmlu-nota_wrong": {
+   "parsed": 1136,
+   "rerun": 79,
+   "unparsed": 4
+  },
+  "haiku:pro-choices_only": {
+   "parsed": 840,
+   "rerun": 3
+  },
+  "sonnet:arce-full": {
+   "parsed": 200,
+   "rerun": 0
+  },
+  "sonnet:pro-full": {
+   "parsed": 200,
+   "rerun": 48
+  },
+  "sonnet:mmlu-full": {
+   "parsed": 200,
+   "rerun": 7
+  }
+ },
+ "first_pass_strict": {
+  "haiku:mmlu-choices_only": {
+   "n": 1140,
+   "acc": 47.72,
+   "lo": 44.83,
+   "hi": 50.62
+  },
+  "haiku:arce-full": {
+   "n": 2376,
+   "acc": 98.15,
+   "lo": 97.52,
+   "hi": 98.62
+  },
+  "haiku:pro-full": {
+   "n": 840,
+   "acc": 50.12,
+   "lo": 46.74,
+   "hi": 53.49
+  },
+  "haiku:mmlu-nota_correct": {
+   "n": 1140,
+   "acc": 46.75,
+   "lo": 43.87,
+   "hi": 49.66
+  },
+  "haiku:arcc-full": {
+   "n": 1172,
+   "acc": 92.92,
+   "lo": 91.3,
+   "hi": 94.25
+  },
+  "haiku:arcc-choices_only": {
+   "n": 1172,
+   "acc": 47.27,
+   "lo": 44.42,
+   "hi": 50.13
+  },
+  "haiku:mmlu-full": {
+   "n": 1140,
+   "acc": 79.3,
+   "lo": 76.85,
+   "hi": 81.55
+  },
+  "haiku:mmlu-nota_wrong": {
+   "n": 1140,
+   "acc": 75.44,
+   "lo": 72.86,
+   "hi": 77.85
+  },
+  "haiku:pro-choices_only": {
+   "n": 840,
+   "acc": 35.36,
+   "lo": 32.2,
+   "hi": 38.65
+  },
+  "sonnet:arce-full": {
+   "n": 200,
+   "acc": 100.0,
+   "lo": 98.12,
+   "hi": 100.0
+  },
+  "sonnet:pro-full": {
+   "n": 200,
+   "acc": 65.5,
+   "lo": 58.68,
+   "hi": 71.74
+  },
+  "sonnet:mmlu-full": {
+   "n": 200,
+   "acc": 90.0,
+   "lo": 85.06,
+   "hi": 93.43
+  }
+ },
+ "nota_flips": {
+  "right_normal": 972,
+  "wrong_after_swap": 410
+ }
+}

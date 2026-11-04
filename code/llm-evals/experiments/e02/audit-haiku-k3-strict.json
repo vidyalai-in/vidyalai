@@ -1,0 +1,142 @@
+{
+ "haiku-k3": {
+  "model": "haiku-k3",
+  "items": 5700,
+  "samples_per_item": 3,
+  "unparsed": 1724,
+  "unparsed_examples": [
+   [
+    "i0067-k2",
+    "First compute the order of p.",
+    "max_tokens"
+   ],
+   [
+    "i0677-k1",
+    "We need to parse: 100",
+    "max_tokens"
+   ],
+   [
+    "i2549-k2",
+    "Surface area scales with square",
+    "max_tokens"
+   ],
+   [
+    "i4737-k1",
+    "Paydays every other Fri",
+    "max_tokens"
+   ],
+   [
+    "i5506-k0",
+    "The family is Parvovi",
+    "max_tokens"
+   ]
+  ],
+  "acc_by_type": {
+   "ok": [
+    0.7889,
+    0.7782,
+    0.7997,
+    5330
+   ],
+   "bad_question_clarity": [
+    0.5732,
+    0.4899,
+    0.654,
+    132
+   ],
+   "bad_options_clarity": [
+    0.7467,
+    0.5733,
+    0.9067,
+    25
+   ],
+   "no_correct_answer": [
+    0.5648,
+    0.3981,
+    0.7222,
+    36
+   ],
+   "multiple_correct_answers": [
+    0.6752,
+    0.5299,
+    0.812,
+    39
+   ],
+   "wrong_groundtruth": [
+    0.1352,
+    0.0786,
+    0.1981,
+    106
+   ],
+   "expert": [
+    0.6875,
+    0.5312,
+    0.8333,
+    32
+   ],
+   "all_flagged": [
+    0.4793,
+    0.4297,
+    0.5288,
+    370
+   ]
+  },
+  "wrong_gt_picks_annotator": [
+   0.5875,
+   0.495,
+   0.6799,
+   101
+  ],
+  "wrong_gt_picks_key": [
+   0.1254,
+   0.0693,
+   0.1881,
+   101
+  ],
+  "score_original": [
+   0.7688,
+   0.7578,
+   0.7798,
+   5700
+  ],
+  "score_drop_flagged": [
+   0.7889,
+   0.778,
+   0.7998,
+   5700
+  ],
+  "score_corrected": [
+   0.7852,
+   0.7744,
+   0.796,
+   5700
+  ],
+  "delta_drop_minus_original": [
+   0.0201,
+   0.0163,
+   0.0239,
+   5700
+  ],
+  "delta_corrected_minus_original": [
+   0.0164,
+   0.0123,
+   0.0204,
+   5700
+  ],
+  "share_errors_on_flagged": [
+   0.1462,
+   0.1272,
+   0.1646,
+   5700
+  ],
+  "share_items_flagged": 0.0649,
+  "items_wrong_every_sample": 1213,
+  "share_flagged_among_always_wrong": [
+   0.1492,
+   0.1293,
+   0.1689,
+   5700
+  ],
+  "items_with_disagreeing_samples": 309
+ }
+}

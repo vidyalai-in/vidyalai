@@ -29,6 +29,12 @@ PART_CAPS = {
     "evals": 15,  # e01-e11, v04, t13 draw on this shared pool
 }
 EVALS_POOL = {f"e{n:02d}" for n in range(1, 12)} | {"v04", "t13"}
+# Sub-caps inside the Evals pool (USD), so parts running in parallel can't overrun it together.
+# They sum to the pool's $15 (t13 used no API).
+POOL_SUBCAPS = {
+    "e01": 0.5, "e02": 0.5, "e03": 2.0, "e04": 2.0, "e05": 0.5, "e06": 2.0, "e07": 1.0,
+    "e08": 2.0, "e09": 2.0, "e10": 0.5, "e11": 0.5, "v04": 1.5, "t13": 0.0,
+}
 
 # USD per million tokens, from platform.claude.com/docs/en/about-claude/pricing (checked 2026-10-24).
 # Haiku 5.5's long-prompt rates apply when a request's prompt (input + cache reads + writes) exceeds 100K.
@@ -108,6 +114,10 @@ def guard(part, estimate):
         raise BudgetExceeded(f"Project cap: spent ${total:.2f} of ${PROJECT_CAP:.2f}, next call up to ${estimate:.4f}")
     if part_spent + estimate > PART_CAPS[pool]:
         raise BudgetExceeded(f"{pool} cap: spent ${part_spent:.2f} of ${PART_CAPS[pool]:.2f}, next call up to ${estimate:.4f}")
+    if part in POOL_SUBCAPS:
+        own = sum(e["cost"] for e in _entries() if e["part"] == part)
+        if own + estimate > POOL_SUBCAPS[part]:
+            raise BudgetExceeded(f"{part} cap: spent ${own:.2f} of ${POOL_SUBCAPS[part]:.2f}, next call up to ${estimate:.4f}")
 
 
 def server_tool_allowance(tools):
@@ -163,6 +173,11 @@ def report():
     for e in _entries():
         by[_pool(e["part"])] = by.get(_pool(e["part"]), 0) + e["cost"]
     lines = [f"{p:10s} ${v:7.4f} of ${PART_CAPS.get(p, 0):.2f}" for p, v in sorted(by.items())]
+    own = {}
+    for e in _entries():
+        if e["part"] in POOL_SUBCAPS:
+            own[e["part"]] = own.get(e["part"], 0) + e["cost"]
+    lines += [f"  {p:8s} ${v:7.4f} of ${POOL_SUBCAPS[p]:.2f}" for p, v in sorted(own.items())]
     lines.append(f"{'TOTAL':10s} ${spent():7.4f} of ${PROJECT_CAP:.2f}")
     return "\n".join(lines)
 

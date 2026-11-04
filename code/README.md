@@ -44,6 +44,17 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 
 `experiments/p01` to `p12` hold each part's scripts and small result files. They run on the TransformerLens 3.9.0 / SAELens environment described in the articles; Part 8's circuit-tracer scripts need a separate environment (circuit-tracer 0.5.0 pins `transformers<=4.57.3`). Not included: saved activations (Part 3 saved 5.9 GB; `collect.py` rebuilds them), tuned-lens and SAE weights, attribution graphs, Gemma 2 weights and Gemma Scope downloads, downloaded datasets (UD English EWT, GeoNames, FineWeb-Edu and WikiText samples; the `prep_*.py` scripts rebuild them) and Part 3's generated city statements (`prep_truth.py` rebuilds them from GeoNames, CC BY 4.0). Parts 9 to 12 also leave out saved steering directions, all model completions (Part 9's harmful-request prompts are downloaded at run time by `prep.py` and never stored here), the From Scratch checkpoints Part 10 reads (`t07/runs`, `t08/runs`), Pythia checkpoints, Part 11's saved activations and the model-written-evals sycophancy sets.
 
+## llm-evals/ (Measuring LLMs: Evals and Benchmarks)
+
+| File | Part | What it is |
+|---|---|---|
+| `validity.py` | 1 | Prompt variants (full, choices-only, NOTA swaps), strict and final-letter extractors, Wilson intervals, paired bootstrap, a ledger-guarded batch runner, open-model letter scoring |
+| `items.py` | 2 | MMLU-Redux 2.0 loader and suggested-answer parser, the zero-shot prompt, letter parsing, Wilson and bootstrap intervals, item difficulty and discrimination |
+| `stats.py` | 3 | Standard, clustered and bootstrap intervals, the item/sampling variance split, paired differences, McNemar, paired t, sign-flip tests, power and minimum detectable effect, Bonferroni, Holm and Benjamini-Hochberg |
+| `mcq.py` | 4 | Five prompt formats with shots and option rotation, five answer extractors, subject-clustered paired differences, a KV-cached `LogProbScorer` for letter, cloze and generation scoring |
+
+`experiments/e01` to `e04` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC; the prep scripts rebuild them), raw API transcripts and model replies, and open-model weights.
+
 ## agents-lab/ (Agentic AI)
 
 | File | Part | What it is |

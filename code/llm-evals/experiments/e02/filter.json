@@ -1,0 +1,49 @@
+{
+ "all items": {
+  "items": 5700,
+  "flagged_share": [
+   0.0649,
+   0.0586,
+   0.0711
+  ],
+  "wrong_gt_share": 0.018596491228070177,
+  "haiku_all_samples_acc": [
+   0.8221,
+   0.8122,
+   0.8317
+  ]
+ },
+ "Haiku wrong on sample 1": {
+  "items": 994,
+  "flagged_share": [
+   0.167,
+   0.1439,
+   0.1911
+  ],
+  "wrong_gt_share": 0.08551307847082495,
+  "haiku_fresh_samples_acc": [
+   0.0749,
+   0.0614,
+   0.089
+  ],
+  "haiku_all_samples_acc": [
+   0.05,
+   0.0409,
+   0.0594
+  ]
+ },
+ "Haiku wrong on all 3": {
+  "items": 883,
+  "flagged_share": [
+   0.1733,
+   0.1484,
+   0.1993
+  ],
+  "wrong_gt_share": 0.0928652321630804,
+  "haiku_all_samples_acc": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+}

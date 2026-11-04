@@ -1,0 +1,109 @@
+{
+ "sonnet_ok_acc": [
+  0.9054,
+  0.8757,
+  0.9324
+ ],
+ "haiku_same_ok_acc": [
+  0.836,
+  0.7991,
+  0.8721
+ ],
+ "sonnet_minus_haiku_ok": [
+  0.0694,
+  0.036,
+  0.1036
+ ],
+ "sonnet_wg_key": [
+  0.1321,
+  0.0755,
+  0.1981
+ ],
+ "sonnet_wg_annotator": [
+  0.7624,
+  0.6733,
+  0.8416
+ ],
+ "haiku_wg_key": [
+  0.1887,
+  0.1195,
+  0.2642
+ ],
+ "haiku_wg_annotator": [
+  0.6733,
+  0.5875,
+  0.7591
+ ],
+ "share_items_wg_in_pop": 0.0195,
+ "sonnet_share_misses_on_wg": [
+  0.1543,
+  0.1207,
+  0.2087
+ ],
+ "haiku_share_misses_on_wg": [
+  0.0922,
+  0.0835,
+  0.1011
+ ],
+ "haiku_share_misses_on_wg_same370": [
+  0.0896,
+  0.0732,
+  0.1124
+ ],
+ "sonnet_direct_letter_ok": [
+  239,
+  370,
+  0.6459,
+  0.5959,
+  0.6929
+ ],
+ "sonnet_direct_letter_bad_question_clarity": [
+  57,
+  132,
+  0.4318,
+  0.3504,
+  0.5171
+ ],
+ "sonnet_direct_letter_bad_options_clarity": [
+  14,
+  25,
+  0.56,
+  0.3707,
+  0.7333
+ ],
+ "sonnet_direct_letter_no_correct_answer": [
+  11,
+  36,
+  0.3056,
+  0.18,
+  0.4686
+ ],
+ "sonnet_direct_letter_multiple_correct_answers": [
+  15,
+  39,
+  0.3846,
+  0.2489,
+  0.541
+ ],
+ "sonnet_direct_letter_wrong_groundtruth": [
+  55,
+  106,
+  0.5189,
+  0.4248,
+  0.6117
+ ],
+ "sonnet_direct_letter_expert": [
+  11,
+  32,
+  0.3438,
+  0.2041,
+  0.5169
+ ],
+ "sonnet_direct_letter_flagged": [
+  163,
+  370,
+  0.4405,
+  0.3908,
+  0.4915
+ ]
+}
