@@ -1,0 +1,10 @@
+flowchart TD
+  R["Request: image + question"] --> H["Hash the image:<br/>seen before?"]
+  H -- "no" --> P["Preprocess<br/>(resize, tile, normalize)"]
+  P --> E["Vision encoder<br/>+ connector"]
+  E --> C["Encoder cache:<br/>image embeddings"]
+  H -- "yes" --> C
+  C --> F["Prefill: image + text tokens"]
+  K["Prefix cache:<br/>KV of earlier turns"] -. "skip the cached prefix" .-> F
+  F --> D["Decode: one token per step"]
+  D --> O["Text reply"]

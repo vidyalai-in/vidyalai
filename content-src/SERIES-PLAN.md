@@ -183,7 +183,7 @@ Series slug `multimodal-ai`, short name "Multimodal", file prefix `v`, category 
 | 10 | Text-to-speech | `text-to-speech` | Kokoro and neural codecs; real-time factor measured | v09 | Published |
 | 11 | Audio tokens and voice agents | `voice-agents` | EnCodec/Mimi codecs, speech-to-speech models, latency budget | v10, a01 | Published |
 | 12 | Video generation | `video-generation` | Spacetime patches, video diffusion; mostly research | v07 | Published |
-| 13 | Serving multimodal models | `multimodal-inference` | Finale: image and audio token costs, encoder caching, series review | i01 |  |
+| 13 | Serving multimodal models | `multimodal-inference` | Finale: image and audio token costs, encoder caching, series review | i01 | Published |
 
 ## Measuring LLMs: Evals and Benchmarks (11 parts)
 

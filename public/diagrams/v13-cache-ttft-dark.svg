@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" width="780" height="430" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="430" fill="#0b162d"/>
+<line x1="250.0" x2="250.0" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="250.0" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">0 s</text>
+<line x1="304.4" x2="304.4" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="304.4" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">0.5 s</text>
+<line x1="358.9" x2="358.9" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="358.9" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">1 s</text>
+<line x1="413.3" x2="413.3" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="413.3" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">1.5 s</text>
+<line x1="467.8" x2="467.8" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="467.8" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">2 s</text>
+<line x1="522.2" x2="522.2" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="522.2" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">2.5 s</text>
+<line x1="576.7" x2="576.7" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="576.7" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">3 s</text>
+<line x1="631.1" x2="631.1" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="631.1" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">3.5 s</text>
+<line x1="685.6" x2="685.6" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="685.6" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">4 s</text>
+<line x1="740.0" x2="740.0" y1="30" y2="360" stroke="#22355a" stroke-width="1"/>
+<text x="740.0" y="378" fill="#9fb0cf" font-size="12" text-anchor="middle">4.5 s</text>
+<text x="495.0" y="400" fill="#e8eefc" font-size="13" text-anchor="middle">time to first token, seconds (40 calls per row)</text>
+<text x="12" y="67.2" fill="#e8eefc" font-size="13">1 page, 1200 × 800</text>
+<text x="12" y="83.2" fill="#9fb0cf" font-size="13">1,274-token prefix</text>
+<text x="240" y="47.8" fill="#9fb0cf" font-size="12" text-anchor="end">no cache_control</text>
+<line x1="375.9" x2="392.2" y1="43.8" y2="43.8" stroke="#7f93b8" stroke-width="3"/>
+<circle cx="384.9" cy="43.8" r="6" fill="#7f93b8" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="419.0,37.8 425.0,43.8 419.0,49.8 413.0,43.8" fill="none" stroke="#7f93b8" stroke-width="2"/>
+<text x="431.0" y="47.8" fill="#e8eefc" font-size="12">1.24 s</text>
+<text x="240" y="75.2" fill="#9fb0cf" font-size="12" text-anchor="end">cache write (miss)</text>
+<line x1="375.2" x2="396.6" y1="71.2" y2="71.2" stroke="#d95926" stroke-width="3"/>
+<circle cx="387.1" cy="71.2" r="6" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="430.5,65.2 436.5,71.2 430.5,77.2 424.5,71.2" fill="none" stroke="#d95926" stroke-width="2"/>
+<text x="442.5" y="75.2" fill="#e8eefc" font-size="12">1.26 s</text>
+<text x="240" y="102.8" fill="#9fb0cf" font-size="12" text-anchor="end">cache hit</text>
+<line x1="367.3" x2="379.1" y1="98.8" y2="98.8" stroke="#3987e5" stroke-width="3"/>
+<circle cx="372.7" cy="98.8" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="399.3,92.8 405.3,98.8 399.3,104.8 393.3,98.8" fill="none" stroke="#3987e5" stroke-width="2"/>
+<text x="411.3" y="102.8" fill="#e8eefc" font-size="12">1.13 s</text>
+<line x1="12" x2="740" y1="126.2" y2="126.2" stroke="#22355a" stroke-width="1"/>
+<text x="12" y="177.2" fill="#e8eefc" font-size="13">1 page, 2352 × 1568</text>
+<text x="12" y="193.2" fill="#9fb0cf" font-size="13">4,731-token prefix</text>
+<text x="240" y="157.8" fill="#9fb0cf" font-size="12" text-anchor="end">no cache_control</text>
+<line x1="382.3" x2="415.3" y1="153.8" y2="153.8" stroke="#7f93b8" stroke-width="3"/>
+<circle cx="400.4" cy="153.8" r="6" fill="#7f93b8" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="434.7,147.8 440.7,153.8 434.7,159.8 428.7,153.8" fill="none" stroke="#7f93b8" stroke-width="2"/>
+<text x="446.7" y="157.8" fill="#e8eefc" font-size="12">1.38 s</text>
+<text x="240" y="185.2" fill="#9fb0cf" font-size="12" text-anchor="end">cache write (miss)</text>
+<line x1="400.4" x2="423.8" y1="181.2" y2="181.2" stroke="#d95926" stroke-width="3"/>
+<circle cx="410.5" cy="181.2" r="6" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="524.8,175.2 530.8,181.2 524.8,187.2 518.8,181.2" fill="none" stroke="#d95926" stroke-width="2"/>
+<text x="536.8" y="185.2" fill="#e8eefc" font-size="12">1.47 s</text>
+<text x="240" y="212.8" fill="#9fb0cf" font-size="12" text-anchor="end">cache hit</text>
+<line x1="397.7" x2="421.8" y1="208.8" y2="208.8" stroke="#3987e5" stroke-width="3"/>
+<circle cx="409.8" cy="208.8" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="447.2,202.8 453.2,208.8 447.2,214.8 441.2,208.8" fill="none" stroke="#3987e5" stroke-width="2"/>
+<text x="459.2" y="212.8" fill="#e8eefc" font-size="12">1.47 s</text>
+<line x1="12" x2="740" y1="236.2" y2="236.2" stroke="#22355a" stroke-width="1"/>
+<text x="12" y="287.2" fill="#e8eefc" font-size="13">8 pages, 2352 × 1568</text>
+<text x="12" y="303.2" fill="#9fb0cf" font-size="13">37,680-token prefix</text>
+<text x="240" y="267.8" fill="#9fb0cf" font-size="12" text-anchor="end">no cache_control</text>
+<line x1="454.9" x2="580.7" y1="263.8" y2="263.8" stroke="#7f93b8" stroke-width="3"/>
+<circle cx="542.0" cy="263.8" r="6" fill="#7f93b8" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="705.2,257.8 711.2,263.8 705.2,269.8 699.2,263.8" fill="none" stroke="#7f93b8" stroke-width="2"/>
+<text x="717.2" y="267.8" fill="#e8eefc" font-size="12">2.68 s</text>
+<text x="240" y="295.2" fill="#9fb0cf" font-size="12" text-anchor="end">cache write (miss)</text>
+<line x1="522.0" x2="573.9" y1="291.2" y2="291.2" stroke="#d95926" stroke-width="3"/>
+<circle cx="550.6" cy="291.2" r="6" fill="#d95926" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="660.9,285.2 666.9,291.2 660.9,297.2 654.9,291.2" fill="none" stroke="#d95926" stroke-width="2"/>
+<text x="672.9" y="295.2" fill="#e8eefc" font-size="12">2.76 s</text>
+<text x="240" y="322.8" fill="#9fb0cf" font-size="12" text-anchor="end">cache hit</text>
+<line x1="451.4" x2="474.6" y1="318.8" y2="318.8" stroke="#3987e5" stroke-width="3"/>
+<circle cx="459.7" cy="318.8" r="6" fill="#3987e5" stroke="#0b162d" stroke-width="1.5"/>
+<polygon points="587.9,312.8 593.9,318.8 587.9,324.8 581.9,318.8" fill="none" stroke="#3987e5" stroke-width="2"/>
+<text x="599.9" y="322.8" fill="#e8eefc" font-size="12">1.93 s</text>
+<circle cx="250" cy="412" r="6" fill="#e8eefc"/><text x="262" y="416" fill="#e8eefc" font-size="12">median with 95% interval</text>
+<polygon points="440,406 446,412 440,418 434,412" fill="none" stroke="#e8eefc" stroke-width="2"/><text x="452" y="416" fill="#e8eefc" font-size="12">90th percentile</text>
+</svg>

@@ -6666,4 +6666,28 @@ export const GLOSSARY = [
     article: 'video-generation',
     source: { title: 'RAFT (Teed and Deng, 2020)', url: 'https://arxiv.org/abs/2003.12039' },
   },
+  {
+    id: 'encoder-cache',
+    term: 'Encoder cache',
+    match: ['encoder cache', 'encoder caching', 'encoder output caching'],
+    def: 'Storing a vision or audio encoder\'s output for an input, keyed by a hash of it, so a repeated image or clip skips the encoder.',
+    article: 'multimodal-inference',
+    source: { title: 'vLLM disaggregated encoder docs', url: 'https://github.com/vllm-project/vllm/blob/main/docs/features/disagg_encoder.md' },
+  },
+  {
+    id: 'epd-disaggregation',
+    term: 'EPD disaggregation',
+    match: ['EPD disaggregation', 'disaggregated encoder'],
+    def: 'Running a multimodal model\'s encode, prefill and decode stages on separate workers, so each can be scaled and batched on its own.',
+    article: 'multimodal-inference',
+    source: { title: 'Efficiently Serving Large Multimodal Models Using EPD Disaggregation (Singh et al., 2025)', url: 'https://arxiv.org/abs/2501.05460' },
+  },
+  {
+    id: 'processor-cache',
+    term: 'Processor cache',
+    match: ['processor cache', 'processor caching'],
+    def: 'Caching the preprocessed (resized, tiled, normalized) form of an image or clip so a repeat skips CPU preprocessing.',
+    article: 'multimodal-inference',
+    source: { title: 'vLLM optimization docs', url: 'https://github.com/vllm-project/vllm/blob/main/docs/configuration/optimization.md' },
+  },
 ];

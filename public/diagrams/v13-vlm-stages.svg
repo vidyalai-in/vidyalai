@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="400" fill="#ffffff"/>
+<line x1="230.0" x2="230.0" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="230.0" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">0 s</text>
+<line x1="278.1" x2="278.1" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<line x1="326.3" x2="326.3" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="326.3" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">0.5 s</text>
+<line x1="374.4" x2="374.4" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<line x1="422.6" x2="422.6" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="422.6" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">1 s</text>
+<line x1="470.7" x2="470.7" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<line x1="518.9" x2="518.9" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="518.9" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">1.5 s</text>
+<line x1="567.0" x2="567.0" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<line x1="615.2" x2="615.2" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="615.2" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">2 s</text>
+<line x1="663.3" x2="663.3" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<line x1="711.5" x2="711.5" y1="30" y2="308" stroke="#dde5f2" stroke-width="1"/>
+<text x="711.5" y="326" fill="#4a5b78" font-size="12" text-anchor="middle">2.5 s</text>
+<text x="490.0" y="348" fill="#0b1a33" font-size="13" text-anchor="middle">seconds for one request: one image, one question, 32 output tokens</text>
+<text x="220" y="62.8" fill="#0b1a33" font-size="13" text-anchor="end">Qwen2-VL-2B, 336 × 224</text>
+<text x="220" y="77.8" fill="#4a5b78" font-size="13" text-anchor="end">96 image tokens</text>
+<rect x="230.0" y="51.3" width="0.5" height="30" fill="#9aa9c4" stroke="#ffffff" stroke-width="1"/>
+<rect x="230.5" y="51.3" width="8.9" height="30" fill="#eb6834" stroke="#ffffff" stroke-width="1"/>
+<rect x="239.4" y="51.3" width="8.0" height="30" fill="#2a78d6" stroke="#ffffff" stroke-width="1"/>
+<rect x="247.4" y="51.3" width="150.4" height="30" fill="#1f9e74" stroke="#ffffff" stroke-width="1"/>
+<line x1="247.4" x2="247.4" y1="47.3" y2="85.3" stroke="#0b1a33" stroke-width="2.5"/>
+<text x="403.7" y="70.3" fill="#0b1a33" font-size="12">first token 90 ms</text>
+<text x="220" y="114.2" fill="#0b1a33" font-size="13" text-anchor="end">Qwen2-VL-2B, 672 × 448</text>
+<text x="220" y="129.2" fill="#4a5b78" font-size="13" text-anchor="end">384 image tokens</text>
+<rect x="230.0" y="102.7" width="0.8" height="30" fill="#9aa9c4" stroke="#ffffff" stroke-width="1"/>
+<rect x="230.8" y="102.7" width="30.1" height="30" fill="#eb6834" stroke="#ffffff" stroke-width="1"/>
+<rect x="260.9" y="102.7" width="14.8" height="30" fill="#2a78d6" stroke="#ffffff" stroke-width="1"/>
+<rect x="275.8" y="102.7" width="155.9" height="30" fill="#1f9e74" stroke="#ffffff" stroke-width="1"/>
+<line x1="275.8" x2="275.8" y1="98.7" y2="136.7" stroke="#0b1a33" stroke-width="2.5"/>
+<text x="437.7" y="121.7" fill="#0b1a33" font-size="12">first token 238 ms</text>
+<text x="220" y="165.5" fill="#0b1a33" font-size="13" text-anchor="end">Qwen2-VL-2B, 1344 × 896</text>
+<text x="220" y="180.5" fill="#4a5b78" font-size="13" text-anchor="end">1,536 image tokens</text>
+<rect x="230.0" y="154.0" width="2.4" height="30" fill="#9aa9c4" stroke="#ffffff" stroke-width="1"/>
+<rect x="232.4" y="154.0" width="170.3" height="30" fill="#eb6834" stroke="#ffffff" stroke-width="1"/>
+<rect x="402.8" y="154.0" width="47.3" height="30" fill="#2a78d6" stroke="#ffffff" stroke-width="1"/>
+<rect x="450.1" y="154.0" width="167.0" height="30" fill="#1f9e74" stroke="#ffffff" stroke-width="1"/>
+<line x1="450.1" x2="450.1" y1="150.0" y2="188.0" stroke="#0b1a33" stroke-width="2.5"/>
+<text x="623.1" y="173.0" fill="#0b1a33" font-size="12">first token 1,143 ms</text>
+<text x="220" y="216.8" fill="#0b1a33" font-size="13" text-anchor="end">SmolVLM-256M, default</text>
+<text x="220" y="231.8" fill="#4a5b78" font-size="13" text-anchor="end">832 image tokens</text>
+<rect x="230.0" y="205.3" width="58.0" height="30" fill="#9aa9c4" stroke="#ffffff" stroke-width="1"/>
+<rect x="288.0" y="205.3" width="33.2" height="30" fill="#eb6834" stroke="#ffffff" stroke-width="1"/>
+<rect x="321.2" y="205.3" width="4.8" height="30" fill="#2a78d6" stroke="#ffffff" stroke-width="1"/>
+<rect x="326.0" y="205.3" width="154.7" height="30" fill="#1f9e74" stroke="#ffffff" stroke-width="1"/>
+<line x1="326.0" x2="326.0" y1="201.3" y2="239.3" stroke="#0b1a33" stroke-width="2.5"/>
+<text x="486.7" y="224.3" fill="#0b1a33" font-size="12">first token 499 ms</text>
+<text x="220" y="268.2" fill="#0b1a33" font-size="13" text-anchor="end">SmolVLM-256M, edge 512</text>
+<text x="220" y="283.2" fill="#4a5b78" font-size="13" text-anchor="end">64 image tokens</text>
+<rect x="230.0" y="256.7" width="4.3" height="30" fill="#9aa9c4" stroke="#ffffff" stroke-width="1"/>
+<rect x="234.3" y="256.7" width="4.8" height="30" fill="#eb6834" stroke="#ffffff" stroke-width="1"/>
+<rect x="239.1" y="256.7" width="5.7" height="30" fill="#2a78d6" stroke="#ffffff" stroke-width="1"/>
+<rect x="244.8" y="256.7" width="157.2" height="30" fill="#1f9e74" stroke="#ffffff" stroke-width="1"/>
+<line x1="244.8" x2="244.8" y1="252.7" y2="290.7" stroke="#0b1a33" stroke-width="2.5"/>
+<text x="407.9" y="275.7" fill="#0b1a33" font-size="12">first token 77 ms</text>
+<rect x="20" y="367" width="14" height="14" fill="#9aa9c4"/><text x="40" y="378" fill="#0b1a33" font-size="13">processor (CPU)</text>
+<rect x="165.0" y="367" width="14" height="14" fill="#eb6834"/><text x="185.0" y="378" fill="#0b1a33" font-size="13">vision encoder</text>
+<rect x="303.0" y="367" width="14" height="14" fill="#2a78d6"/><text x="323.0" y="378" fill="#0b1a33" font-size="13">LM prefill</text>
+<rect x="413.0" y="367" width="14" height="14" fill="#1f9e74"/><text x="433.0" y="378" fill="#0b1a33" font-size="13">32 decoded tokens</text>
+<line x1="576.0" x2="576.0" y1="365" y2="381" stroke="#0b1a33" stroke-width="2.5"/><text x="584.0" y="378" fill="#0b1a33" font-size="13">first token</text>
+</svg>
