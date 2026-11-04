@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 470" width="780" height="470" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="470" fill="#ffffff"/>
+<line x1="64" x2="360" y1="400.0" y2="400.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="64" x2="360" y1="329.2" y2="329.2" stroke="#dde5f2" stroke-width="1"/>
+<line x1="64" x2="360" y1="258.4" y2="258.4" stroke="#dde5f2" stroke-width="1"/>
+<line x1="64" x2="360" y1="187.6" y2="187.6" stroke="#dde5f2" stroke-width="1"/>
+<line x1="64" x2="360" y1="116.8" y2="116.8" stroke="#dde5f2" stroke-width="1"/>
+<line x1="64" x2="360" y1="46.0" y2="46.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="400.0" y2="400.0" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="329.2" y2="329.2" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="258.4" y2="258.4" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="187.6" y2="187.6" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="116.8" y2="116.8" stroke="#dde5f2" stroke-width="1"/>
+<line x1="440" x2="760" y1="46.0" y2="46.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="404.0" fill="#4a5b78" font-size="13" text-anchor="end">0%</text>
+<text x="432" y="404.0" fill="#4a5b78" font-size="13" text-anchor="end">0%</text>
+<text x="56" y="333.2" fill="#4a5b78" font-size="13" text-anchor="end">20%</text>
+<text x="432" y="333.2" fill="#4a5b78" font-size="13" text-anchor="end">20%</text>
+<text x="56" y="262.4" fill="#4a5b78" font-size="13" text-anchor="end">40%</text>
+<text x="432" y="262.4" fill="#4a5b78" font-size="13" text-anchor="end">40%</text>
+<text x="56" y="191.6" fill="#4a5b78" font-size="13" text-anchor="end">60%</text>
+<text x="432" y="191.6" fill="#4a5b78" font-size="13" text-anchor="end">60%</text>
+<text x="56" y="120.8" fill="#4a5b78" font-size="13" text-anchor="end">80%</text>
+<text x="432" y="120.8" fill="#4a5b78" font-size="13" text-anchor="end">80%</text>
+<text x="56" y="50.0" fill="#4a5b78" font-size="13" text-anchor="end">100%</text>
+<text x="432" y="50.0" fill="#4a5b78" font-size="13" text-anchor="end">100%</text>
+<text transform="translate(16,223.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">Top-1 retrieval, 288 captions</text>
+<text x="64" y="26" fill="#0b1a33" font-size="14" font-weight="bold">Fixed temperature (batch 256)</text>
+<text x="440" y="26" fill="#0b1a33" font-size="14" font-weight="bold">Batch size (learned temperature)</text>
+<line x1="77.1" x2="77.1" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="77.1" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.01</text>
+<line x1="141.5" x2="141.5" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="141.5" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.03</text>
+<line x1="212.0" x2="212.0" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="212.0" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.1</text>
+<line x1="276.4" x2="276.4" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="276.4" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">0.3</text>
+<line x1="346.9" x2="346.9" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="346.9" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">1</text>
+<text x="212.0" y="444" fill="#0b1a33" font-size="14" text-anchor="middle">Temperature τ (log scale)</text>
+<line x1="464.4" x2="464.4" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="464.4" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">16</text>
+<line x1="554.6" x2="554.6" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="554.6" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">64</text>
+<line x1="644.9" x2="644.9" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="644.9" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">256</text>
+<line x1="735.1" x2="735.1" y1="46" y2="400" stroke="#dde5f2" stroke-width="1"/>
+<text x="735.1" y="420" fill="#4a5b78" font-size="13" text-anchor="middle">1024</text>
+<text x="600.0" y="444" fill="#0b1a33" font-size="14" text-anchor="middle">Pairs per batch (log scale)</text>
+<polyline points="77.1,57.0 141.5,49.5 191.1,48.8 252.6,55.9 306.3,161.4 346.9,203.9" fill="none" stroke="#0b5fd6" stroke-width="2.5"/>
+<line x1="77.1" x2="77.1" y1="59.5" y2="54.9" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="77.1" cy="57.0" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="141.5" x2="141.5" y1="49.9" y2="49.2" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="141.5" cy="49.5" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="191.1" x2="191.1" y1="50.2" y2="48.1" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="191.1" cy="48.8" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="252.6" x2="252.6" y1="58.7" y2="53.1" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="252.6" cy="55.9" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="306.3" x2="306.3" y1="183.4" y2="145.1" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="306.3" cy="161.4" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="346.9" x2="346.9" y1="205.7" y2="201.8" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="346.9" cy="203.9" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<rect x="173.9" y="43.1" width="10" height="10" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<rect x="82.8" y="75.9" width="10" height="10" fill="#eb6834"/>
+<text x="97.8" y="84.9" fill="#0b1a33" font-size="12" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">learned τ, ends at 0.057: 99.4%</text>
+<text x="342.9" y="225.9" fill="#0b1a33" font-size="12" text-anchor="end" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">τ = 1: 55.4%</text>
+<polyline points="464.4,184.1 554.6,55.9 644.9,48.1 735.1,47.4" fill="none" stroke="#0b5fd6" stroke-width="2.5"/>
+<line x1="464.4" x2="464.4" y1="198.2" y2="174.5" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="464.4" cy="184.1" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="554.6" x2="554.6" y1="57.3" y2="53.4" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="554.6" cy="55.9" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="644.9" x2="644.9" y1="48.8" y2="47.8" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="644.9" cy="48.1" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="735.1" x2="735.1" y1="48.1" y2="46.7" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="735.1" cy="47.4" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<polyline points="464.4,51.7 554.6,47.1 644.9,48.1 735.1,121.4" fill="none" stroke="#0b5fd6" stroke-width="2.5" stroke-dasharray="6 5"/>
+<line x1="464.4" x2="464.4" y1="54.5" y2="49.2" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="464.4" cy="51.7" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="554.6" x2="554.6" y1="47.8" y2="46.4" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="554.6" cy="47.1" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="644.9" x2="644.9" y1="48.8" y2="47.8" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="644.9" cy="48.1" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="735.1" x2="735.1" y1="146.5" y2="106.2" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="735.1" cy="121.4" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<polyline points="464.4,262.6 554.6,86.7 644.9,55.9 735.1,51.0" fill="none" stroke="#eb6834" stroke-width="2.5"/>
+<line x1="464.4" x2="464.4" y1="310.4" y2="204.2" stroke="#eb6834" stroke-width="2"/>
+<circle cx="464.4" cy="262.6" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="554.6" x2="554.6" y1="109.0" y2="68.3" stroke="#eb6834" stroke-width="2"/>
+<circle cx="554.6" cy="86.7" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="644.9" x2="644.9" y1="58.4" y2="52.4" stroke="#eb6834" stroke-width="2"/>
+<circle cx="644.9" cy="55.9" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="735.1" x2="735.1" y1="53.1" y2="49.5" stroke="#eb6834" stroke-width="2"/>
+<circle cx="735.1" cy="51.0" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<polyline points="464.4,46.0 554.6,46.7 644.9,55.9 735.1,391.1" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="6 5"/>
+<line x1="464.4" x2="464.4" y1="46.0" y2="46.0" stroke="#eb6834" stroke-width="2"/>
+<circle cx="464.4" cy="46.0" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="554.6" x2="554.6" y1="47.1" y2="46.7" stroke="#eb6834" stroke-width="2"/>
+<circle cx="554.6" cy="46.7" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="644.9" x2="644.9" y1="58.4" y2="52.4" stroke="#eb6834" stroke-width="2"/>
+<circle cx="644.9" cy="55.9" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="735.1" x2="735.1" y1="393.3" y2="388.3" stroke="#eb6834" stroke-width="2"/>
+<circle cx="735.1" cy="391.1" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="484" x2="510" y1="311.0" y2="311.0" stroke="#0b5fd6" stroke-width="2.5"/>
+<text x="516" y="315.0" fill="#0b1a33" font-size="12" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">softmax (CLIP), 250 steps</text>
+<line x1="484" x2="510" y1="331.0" y2="331.0" stroke="#eb6834" stroke-width="2.5"/>
+<text x="516" y="335.0" fill="#0b1a33" font-size="12" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">sigmoid (SigLIP), 250 steps</text>
+<line x1="484" x2="510" y1="351.0" y2="351.0" stroke="#0b5fd6" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="516" y="355.0" fill="#0b1a33" font-size="12" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">softmax, 64,000 pairs</text>
+<line x1="484" x2="510" y1="371.0" y2="371.0" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="516" y="375.0" fill="#0b1a33" font-size="12" paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">sigmoid, 64,000 pairs</text>
+</svg>

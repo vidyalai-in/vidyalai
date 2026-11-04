@@ -1,0 +1,20 @@
+flowchart LR
+  VID["Video frames"]
+  IMG["Image pixels"]
+  AUD["Audio waveform"]
+  LAT["VAE latent grid<br/>(continuous)"]
+  PATCH["Patch vectors<br/>(continuous)"]
+  CODE["Codebook IDs<br/>(discrete tokens)"]
+  MEL["Log-mel frames,<br/>encoder vectors<br/>(continuous)"]
+  TR["A transformer<br/>or U-Net reads<br/>or writes them"]
+  VID --> LAT
+  VID --> PATCH
+  IMG --> LAT
+  IMG --> PATCH
+  IMG --> CODE
+  AUD --> CODE
+  AUD --> MEL
+  LAT --> TR
+  PATCH --> TR
+  CODE --> TR
+  MEL --> TR

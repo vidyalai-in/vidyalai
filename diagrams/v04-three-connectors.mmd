@@ -1,0 +1,14 @@
+flowchart TD
+  subgraph P["Projector (LLaVA-1.5)"]
+    direction LR
+    P1["CLIP ViT-L/14:<br/>576 vectors"] --> P2["2-layer MLP"] --> P3["576 tokens in<br/>the LLM input"]
+  end
+  subgraph Q["Q-Former (BLIP-2)"]
+    direction LR
+    Q1["Frozen ViT:<br/>257 vectors"] --> Q2["32 learned queries<br/>cross-attend"] --> Q3["32 tokens via<br/>a linear layer"]
+  end
+  subgraph F["Cross-attention (Flamingo)"]
+    direction LR
+    F1["Frozen encoder:<br/>feature grid"] --> F2["Perceiver Resampler:<br/>64 latents"] --> F3["Gated cross-attention<br/>in the frozen LM"]
+  end
+  P ~~~ Q ~~~ F

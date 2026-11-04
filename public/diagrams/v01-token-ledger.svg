@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 640" width="780" height="640" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="640" fill="#ffffff"/>
+<line x1="250.0" x2="250.0" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="250.0" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">1</text>
+<line x1="313.2" x2="313.2" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="313.2" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">10</text>
+<line x1="376.5" x2="376.5" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="376.5" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">100</text>
+<line x1="439.8" x2="439.8" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="439.8" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">1K</text>
+<line x1="503.0" x2="503.0" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="503.0" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">10K</text>
+<line x1="566.2" x2="566.2" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="566.2" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">100K</text>
+<line x1="629.5" x2="629.5" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="629.5" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">1M</text>
+<line x1="692.8" x2="692.8" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="692.8" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">10M</text>
+<line x1="756.0" x2="756.0" y1="40" y2="584" stroke="#dde5f2" stroke-width="1"/>
+<text x="756.0" y="604" fill="#4a5b78" font-size="13" text-anchor="middle">100M</text>
+<text x="503.0" y="628" fill="#0b1a33" font-size="14" text-anchor="middle">Count (log scale)</text>
+<circle cx="258" cy="18" r="6" fill="#0b5fd6"/>
+<text x="270" y="23" fill="#0b1a33" font-size="13">sequence positions (vectors or tokens)</text>
+<circle cx="550" cy="18" r="6" fill="none" stroke="#0b1a33" stroke-width="2"/>
+<text x="562" y="23" fill="#0b1a33" font-size="13">numbers stored</text>
+<text x="12" y="59.3" fill="#0b1a33" font-size="14" font-weight="bold">Image: one 512 × 512 picture</text>
+<text x="240" y="87.4" fill="#0b1a33" font-size="13" text-anchor="end">Raw pixels (RGB)</text>
+<line x1="250" x2="756" y1="82.9" y2="82.9" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="592.7" x2="622.9" y1="82.9" y2="82.9" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="622.9" cy="82.9" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="592.7" cy="82.9" r="6" fill="#0b5fd6"/>
+<text x="240" y="116.1" fill="#0b1a33" font-size="13" text-anchor="end">ViT-B/16 (resized to 224)</text>
+<line x1="250" x2="756" y1="111.6" y2="111.6" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="395.1" x2="577.6" y1="111.6" y2="111.6" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="577.6" cy="111.6" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="395.1" cy="111.6" r="6" fill="#0b5fd6"/>
+<text x="240" y="144.7" fill="#0b1a33" font-size="13" text-anchor="end">SmolVLM-256M tokens</text>
+<line x1="250" x2="756" y1="140.2" y2="140.2" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="442.1" x2="616.7" y1="140.2" y2="140.2" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="616.7" cy="140.2" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="442.1" cy="140.2" r="6" fill="#0b5fd6"/>
+<text x="240" y="173.3" fill="#0b1a33" font-size="13" text-anchor="end">Claude visual tokens</text>
+<line x1="250" x2="756" y1="168.8" y2="168.8" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<circle cx="411.8" cy="168.8" r="6" fill="#0b5fd6"/>
+<text x="240" y="202.0" fill="#0b1a33" font-size="13" text-anchor="end">Qwen2-VL-2B tokens</text>
+<line x1="250" x2="756" y1="197.5" y2="197.5" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="408.8" x2="610.3" y1="197.5" y2="197.5" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="610.3" cy="197.5" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="408.8" cy="197.5" r="6" fill="#0b5fd6"/>
+<text x="240" y="230.6" fill="#0b1a33" font-size="13" text-anchor="end">Stable Diffusion VAE latent</text>
+<line x1="250" x2="756" y1="226.1" y2="226.1" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="478.5" x2="516.6" y1="226.1" y2="226.1" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="516.6" cy="226.1" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="478.5" cy="226.1" r="6" fill="#0b5fd6"/>
+<text x="240" y="259.2" fill="#0b1a33" font-size="13" text-anchor="end">VQ-GAN codes (aMUSEd)</text>
+<line x1="250" x2="756" y1="254.7" y2="254.7" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="440.4" x2="440.4" y1="254.7" y2="254.7" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="440.4" cy="254.7" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="440.4" cy="254.7" r="6" fill="#0b5fd6"/>
+<text x="12" y="288.4" fill="#0b1a33" font-size="14" font-weight="bold">Audio: one second</text>
+<text x="240" y="316.5" fill="#0b1a33" font-size="13" text-anchor="end">Raw samples, 16 kHz</text>
+<line x1="250" x2="756" y1="312.0" y2="312.0" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="515.9" x2="515.9" y1="312.0" y2="312.0" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="515.9" cy="312.0" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="515.9" cy="312.0" r="6" fill="#0b5fd6"/>
+<text x="240" y="345.1" fill="#0b1a33" font-size="13" text-anchor="end">Whisper log-mel frames</text>
+<line x1="250" x2="756" y1="340.6" y2="340.6" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="376.5" x2="496.9" y1="340.6" y2="340.6" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="496.9" cy="340.6" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="376.5" cy="340.6" r="6" fill="#0b5fd6"/>
+<text x="240" y="373.8" fill="#0b1a33" font-size="13" text-anchor="end">Whisper-tiny encoder, 1-s clip</text>
+<line x1="250" x2="756" y1="369.3" y2="369.3" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="450.9" x2="614.3" y1="369.3" y2="369.3" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="614.3" cy="369.3" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="450.9" cy="369.3" r="6" fill="#0b5fd6"/>
+<text x="240" y="402.4" fill="#0b1a33" font-size="13" text-anchor="end">Mimi codec, 8 codebooks</text>
+<line x1="250" x2="756" y1="397.9" y2="397.9" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="376.5" x2="376.5" y1="397.9" y2="397.9" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="376.5" cy="397.9" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="376.5" cy="397.9" r="6" fill="#0b5fd6"/>
+<text x="240" y="431.0" fill="#0b1a33" font-size="13" text-anchor="end">Text transcript (Moshi paper)</text>
+<line x1="250" x2="756" y1="426.5" y2="426.5" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<circle cx="284.4" cy="426.5" r="6" fill="#0b5fd6"/>
+<text x="12" y="460.2" fill="#0b1a33" font-size="14" font-weight="bold">Video: one second at 24 fps</text>
+<text x="240" y="488.3" fill="#0b1a33" font-size="13" text-anchor="end">Raw pixels, 512 × 512 frames</text>
+<line x1="250" x2="756" y1="483.8" y2="483.8" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="680.0" x2="710.2" y1="483.8" y2="483.8" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="710.2" cy="483.8" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="680.0" cy="483.8" r="6" fill="#0b5fd6"/>
+<text x="240" y="516.9" fill="#0b1a33" font-size="13" text-anchor="end">ViT-B/16 on every frame</text>
+<line x1="250" x2="756" y1="512.4" y2="512.4" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="482.4" x2="664.9" y1="512.4" y2="512.4" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="664.9" cy="512.4" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="482.4" cy="512.4" r="6" fill="#0b5fd6"/>
+<text x="240" y="545.6" fill="#0b1a33" font-size="13" text-anchor="end">SD VAE latent on every frame</text>
+<line x1="250" x2="756" y1="541.1" y2="541.1" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="565.8" x2="603.9" y1="541.1" y2="541.1" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="603.9" cy="541.1" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="565.8" cy="541.1" r="6" fill="#0b5fd6"/>
+<text x="240" y="574.2" fill="#0b1a33" font-size="13" text-anchor="end">Qwen2-VL-2B, 2 fps at 448</text>
+<line x1="250" x2="756" y1="569.7" y2="569.7" stroke="#dde5f2" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="402.3" x2="603.9" y1="569.7" y2="569.7" stroke="#4a5b78" stroke-width="2"/>
+<circle cx="603.9" cy="569.7" r="6" fill="#ffffff" stroke="#0b1a33" stroke-width="2"/>
+<circle cx="402.3" cy="569.7" r="6" fill="#0b5fd6"/>
+</svg>

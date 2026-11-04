@@ -36,6 +36,12 @@ export const CATEGORIES = [
     icon: 'lens',
   },
   {
+    slug: 'multimodal',
+    name: 'Images, Speech & Video',
+    blurb: 'Vision transformers, CLIP, vision-language models, diffusion, speech recognition, text-to-speech and video: how models work beyond text.',
+    icon: 'media',
+  },
+  {
     slug: 'retrieval-rag',
     name: 'Retrieval & RAG',
     blurb: 'Chunking, hybrid search, reranking and debugging retrieval-augmented generation.',

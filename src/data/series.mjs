@@ -64,6 +64,15 @@ export const SERIES = [
     filePrefix: 'g',
   },
   {
+    slug: 'multimodal-ai',
+    name: 'Beyond Text: Images, Speech and Video',
+    short: 'Multimodal',
+    blurb:
+      'How models see, hear and draw, measured on a laptop GPU: vision transformers, CLIP, vision-language models, diffusion and flow matching, Whisper, text-to-speech, voice agents and video generation.',
+    total: 13,
+    filePrefix: 'v',
+  },
+  {
     slug: 'llm-evals',
     name: 'Measuring LLMs: Evals and Benchmarks',
     short: 'Evals',

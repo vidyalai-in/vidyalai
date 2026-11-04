@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 450" width="780" height="450" font-family="Arial,Helvetica,sans-serif" role="img">
+<rect width="780" height="450" fill="#ffffff"/>
+<line x1="85.7" x2="85.7" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="85.7" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">1</text>
+<line x1="153.2" x2="153.2" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="153.2" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">2</text>
+<line x1="220.7" x2="220.7" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="220.7" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">4</text>
+<line x1="288.2" x2="288.2" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="288.2" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">8</text>
+<line x1="355.8" x2="355.8" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="355.8" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">16</text>
+<line x1="423.3" x2="423.3" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="423.3" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">32</text>
+<line x1="490.8" x2="490.8" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="490.8" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">64</text>
+<line x1="558.3" x2="558.3" y1="24" y2="388" stroke="#dde5f2" stroke-width="1"/>
+<text x="558.3" y="408" fill="#4a5b78" font-size="13" text-anchor="middle">128</text>
+<line x1="64" x2="580" y1="388.0" y2="388.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="392.0" fill="#4a5b78" font-size="13" text-anchor="end">60%</text>
+<line x1="64" x2="580" y1="297.0" y2="297.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="301.0" fill="#4a5b78" font-size="13" text-anchor="end">70%</text>
+<line x1="64" x2="580" y1="206.0" y2="206.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="210.0" fill="#4a5b78" font-size="13" text-anchor="end">80%</text>
+<line x1="64" x2="580" y1="115.0" y2="115.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="119.0" fill="#4a5b78" font-size="13" text-anchor="end">90%</text>
+<line x1="64" x2="580" y1="24.0" y2="24.0" stroke="#dde5f2" stroke-width="1"/>
+<text x="56" y="28.0" fill="#4a5b78" font-size="13" text-anchor="end">100%</text>
+<text x="322.0" y="436" fill="#0b1a33" font-size="14" text-anchor="middle">Labelled training images per class (log scale)</text>
+<text transform="translate(18,206.0) rotate(-90)" fill="#0b1a33" font-size="14" text-anchor="middle">CIFAR-10 test accuracy</text>
+<line x1="64" x2="580" y1="116.8" y2="116.8" stroke="#0b5fd6" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline points="85.7,342.5 153.2,243.3 220.7,169.6 288.2,135.0 355.8,116.8 423.3,104.1 490.8,95.9 558.3,89.5" fill="none" stroke="#0b5fd6" stroke-width="2.5"/>
+<line x1="85.7" x2="85.7" y1="368.0" y2="316.1" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="85.7" cy="342.5" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="153.2" x2="153.2" y1="268.8" y2="218.7" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="153.2" cy="243.3" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="220.7" x2="220.7" y1="184.2" y2="155.0" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="220.7" cy="169.6" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="288.2" x2="288.2" y1="141.4" y2="129.6" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="288.2" cy="135.0" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="355.8" x2="355.8" y1="119.6" y2="114.1" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="355.8" cy="116.8" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="423.3" x2="423.3" y1="106.8" y2="101.4" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="423.3" cy="104.1" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="490.8" x2="490.8" y1="97.7" y2="93.2" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="490.8" cy="95.9" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="558.3" x2="558.3" y1="91.3" y2="88.6" stroke="#0b5fd6" stroke-width="2"/>
+<circle cx="558.3" cy="89.5" r="4.5" fill="#0b5fd6" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="64" x2="580" y1="93.2" y2="93.2" stroke="#eb6834" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline points="85.7,328.9 153.2,195.1 220.7,145.0 288.2,111.4 355.8,92.2 423.3,85.0 490.8,77.7 558.3,73.1" fill="none" stroke="#eb6834" stroke-width="2.5"/>
+<line x1="85.7" x2="85.7" y1="349.8" y2="307.0" stroke="#eb6834" stroke-width="2"/>
+<circle cx="85.7" cy="328.9" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="153.2" x2="153.2" y1="215.1" y2="175.1" stroke="#eb6834" stroke-width="2"/>
+<circle cx="153.2" cy="195.1" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="220.7" x2="220.7" y1="156.9" y2="133.2" stroke="#eb6834" stroke-width="2"/>
+<circle cx="220.7" cy="145.0" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="288.2" x2="288.2" y1="118.6" y2="105.0" stroke="#eb6834" stroke-width="2"/>
+<circle cx="288.2" cy="111.4" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="355.8" x2="355.8" y1="95.0" y2="89.5" stroke="#eb6834" stroke-width="2"/>
+<circle cx="355.8" cy="92.2" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="423.3" x2="423.3" y1="87.7" y2="81.3" stroke="#eb6834" stroke-width="2"/>
+<circle cx="423.3" cy="85.0" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="490.8" x2="490.8" y1="79.5" y2="75.9" stroke="#eb6834" stroke-width="2"/>
+<circle cx="490.8" cy="77.7" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<line x1="558.3" x2="558.3" y1="74.1" y2="72.2" stroke="#eb6834" stroke-width="2"/>
+<circle cx="558.3" cy="73.1" r="4.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<text x="590" y="42.2" fill="#eb6834" font-size="14" font-weight="bold">SigLIP B/16</text>
+<text x="590" y="62.2" fill="#0b1a33" font-size="13">probe at 128: 94.6%</text>
+<text x="590" y="80.2" fill="#0b1a33" font-size="13">zero-shot: 92.4%</text>
+<text x="590" y="120.2" fill="#0b5fd6" font-size="14" font-weight="bold">CLIP ViT-B/32</text>
+<text x="590" y="140.2" fill="#0b1a33" font-size="13">probe at 128: 92.8%</text>
+<text x="590" y="158.2" fill="#0b1a33" font-size="13">zero-shot: 89.8%</text>
+<text x="590" y="297.0" fill="#4a5b78" font-size="12">Solid: probe, mean of 10</text>
+<text x="590" y="313.0" fill="#4a5b78" font-size="12">draws, 95% interval</text>
+<text x="590" y="333.0" fill="#4a5b78" font-size="12">Dashed: zero-shot,</text>
+<text x="590" y="349.0" fill="#4a5b78" font-size="12">no labelled images</text>
+</svg>

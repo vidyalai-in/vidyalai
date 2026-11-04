@@ -1,0 +1,7 @@
+flowchart TD
+  IMG["Image<br/>224 × 224 × 3"] --> CONV["Patch embedding:<br/>16 × 16 conv, stride 16"]
+  CONV --> SEQ["196 patch vectors<br/>× 768"]
+  SEQ --> ADD["Prepend class token,<br/>add 197 position vectors"]
+  ADD --> ENC["12 Transformer encoder blocks<br/>(attention + MLP)"]
+  ENC --> POOL["Class-token output<br/>(or mean of patches)"]
+  POOL --> HEAD["Linear head:<br/>1,000 class scores"]
