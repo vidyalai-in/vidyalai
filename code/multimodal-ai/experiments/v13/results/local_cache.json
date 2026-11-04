@@ -1,0 +1,1194 @@
+{
+ "questions": [
+  "On page 1, what is the 'Late trucks' value for River depot?",
+  "On page 1, how many trucks were unloaded per day in May?",
+  "On page 1, what is the 'Pallets in' value for West depot?",
+  "On page 1, what is the 'Pallets in' value for River depot?",
+  "On page 1, what is the 'Pallets out' value for East depot?",
+  "On page 1, what is the 'Pallets in' value for South depot?"
+ ],
+ "answers": [
+  "29",
+  "28",
+  "307",
+  "333",
+  "795",
+  "233"
+ ],
+ "runs": {
+  "A": [
+   [
+    {
+     "turn": 0,
+     "prep_ms": 25.564461015164852,
+     "enc_ms": 0.0,
+     "gen_ms": 2362.8217820078135,
+     "total_ms": 2388.3862430229783,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 56.11539795063436,
+     "enc_ms": 0.0,
+     "gen_ms": 1186.6850099759176,
+     "total_ms": 1242.800407926552,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 12.931013945490122,
+     "enc_ms": 0.0,
+     "gen_ms": 1221.6744089964777,
+     "total_ms": 1234.6054229419678,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 12.533445027656853,
+     "enc_ms": 0.0,
+     "gen_ms": 1267.0185449533165,
+     "total_ms": 1279.5519899809733,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 11.743063922040164,
+     "enc_ms": 0.0,
+     "gen_ms": 1243.8902470748872,
+     "total_ms": 1255.6333109969273,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 11.617462034337223,
+     "enc_ms": 0.0,
+     "gen_ms": 1244.9370860122144,
+     "total_ms": 1256.5545480465516,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 28.351560002192855,
+     "enc_ms": 0.0,
+     "gen_ms": 1227.2036309586838,
+     "total_ms": 1255.5551909608766,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 13.623952982015908,
+     "enc_ms": 0.0,
+     "gen_ms": 1181.4542439533398,
+     "total_ms": 1195.0781969353557,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 12.906055082567036,
+     "enc_ms": 0.0,
+     "gen_ms": 1193.3158249594271,
+     "total_ms": 1206.2218800419942,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 11.997231049463153,
+     "enc_ms": 0.0,
+     "gen_ms": 1232.8349950257689,
+     "total_ms": 1244.832226075232,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 12.387968017719686,
+     "enc_ms": 0.0,
+     "gen_ms": 1238.430324010551,
+     "total_ms": 1250.8182920282707,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 14.354155980981886,
+     "enc_ms": 0.0,
+     "gen_ms": 1244.933596928604,
+     "total_ms": 1259.2877529095858,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.799200998619199,
+     "enc_ms": 0.0,
+     "gen_ms": 1217.4519610125571,
+     "total_ms": 1231.2511620111763,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 11.994741973467171,
+     "enc_ms": 0.0,
+     "gen_ms": 1192.5199800170958,
+     "total_ms": 1204.514721990563,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 11.455015977844596,
+     "enc_ms": 0.0,
+     "gen_ms": 1198.581643984653,
+     "total_ms": 1210.0366599624977,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 13.604083913378417,
+     "enc_ms": 0.0,
+     "gen_ms": 1218.5670820763335,
+     "total_ms": 1232.1711659897119,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 11.731909005902708,
+     "enc_ms": 0.0,
+     "gen_ms": 1236.2001299625263,
+     "total_ms": 1247.932038968429,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 11.92963297944516,
+     "enc_ms": 0.0,
+     "gen_ms": 1231.4663750585169,
+     "total_ms": 1243.396008037962,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.624845072627068,
+     "enc_ms": 0.0,
+     "gen_ms": 1239.5961009897292,
+     "total_ms": 1253.2209460623562,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 12.475480907596648,
+     "enc_ms": 0.0,
+     "gen_ms": 1195.2629220904782,
+     "total_ms": 1207.738402998075,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 12.518484960310161,
+     "enc_ms": 0.0,
+     "gen_ms": 1211.226759944111,
+     "total_ms": 1223.7452449044213,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 12.419772101566195,
+     "enc_ms": 0.0,
+     "gen_ms": 1212.4439519830048,
+     "total_ms": 1224.863724084571,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 11.965792975388467,
+     "enc_ms": 0.0,
+     "gen_ms": 1223.49474998191,
+     "total_ms": 1235.4605429572985,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 12.267402955330908,
+     "enc_ms": 0.0,
+     "gen_ms": 1233.9412559522316,
+     "total_ms": 1246.2086589075625,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.958107912912965,
+     "enc_ms": 0.0,
+     "gen_ms": 1208.8256470160559,
+     "total_ms": 1222.7837549289688,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 12.706054956652224,
+     "enc_ms": 0.0,
+     "gen_ms": 1191.6646100580692,
+     "total_ms": 1204.3706650147215,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 12.53288402222097,
+     "enc_ms": 0.0,
+     "gen_ms": 1210.6144219869748,
+     "total_ms": 1223.1473060091957,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 11.848542955704033,
+     "enc_ms": 0.0,
+     "gen_ms": 1222.929029027,
+     "total_ms": 1234.777571982704,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 12.068872922100127,
+     "enc_ms": 0.0,
+     "gen_ms": 1212.405001046136,
+     "total_ms": 1224.4738739682361,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 12.2187560191378,
+     "enc_ms": 0.0,
+     "gen_ms": 1210.7340160291642,
+     "total_ms": 1222.952772048302,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.591288075782359,
+     "enc_ms": 0.0,
+     "gen_ms": 1198.8706230185926,
+     "total_ms": 1211.461911094375,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 12.709840899333358,
+     "enc_ms": 0.0,
+     "gen_ms": 1178.9106520591304,
+     "total_ms": 1191.6204929584637,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 11.921992991119623,
+     "enc_ms": 0.0,
+     "gen_ms": 1198.2324100099504,
+     "total_ms": 1210.15440300107,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 13.793241931125522,
+     "enc_ms": 0.0,
+     "gen_ms": 1208.1901110941544,
+     "total_ms": 1221.98335302528,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 13.055335963144898,
+     "enc_ms": 0.0,
+     "gen_ms": 1224.2238690378144,
+     "total_ms": 1237.2792050009593,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 12.37691193819046,
+     "enc_ms": 0.0,
+     "gen_ms": 1232.7954870415851,
+     "total_ms": 1245.1723989797756,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ]
+  ],
+  "B": [
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.81072199344635,
+     "enc_ms": 881.4957069698721,
+     "gen_ms": 301.13973398692906,
+     "total_ms": 1195.4461629502475,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 2.169331070035696,
+     "enc_ms": 0.0,
+     "gen_ms": 292.53356892149895,
+     "total_ms": 294.70289999153465,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.235697931610048,
+     "enc_ms": 0.0,
+     "gen_ms": 323.1507090386003,
+     "total_ms": 325.3864069702104,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.516419976018369,
+     "enc_ms": 0.0,
+     "gen_ms": 339.8692359915003,
+     "total_ms": 342.3856559675187,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.373517956584692,
+     "enc_ms": 0.0,
+     "gen_ms": 347.9306740919128,
+     "total_ms": 350.3041920484975,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.5041040498763323,
+     "enc_ms": 0.0,
+     "gen_ms": 337.63568790163845,
+     "total_ms": 340.1397919515148,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 14.07885190565139,
+     "enc_ms": 883.1285199848935,
+     "gen_ms": 301.808123011142,
+     "total_ms": 1199.015494901687,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 1.9729459891095757,
+     "enc_ms": 0.0,
+     "gen_ms": 294.45713898167014,
+     "total_ms": 296.4300849707797,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.2885429207235575,
+     "enc_ms": 0.0,
+     "gen_ms": 324.2875640280545,
+     "total_ms": 326.57610694877803,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.2669689496979117,
+     "enc_ms": 0.0,
+     "gen_ms": 333.0735230119899,
+     "total_ms": 335.3404919616878,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.6322539197281003,
+     "enc_ms": 0.0,
+     "gen_ms": 339.9244120810181,
+     "total_ms": 342.5566660007462,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.2115230094641447,
+     "enc_ms": 0.0,
+     "gen_ms": 343.47183001227677,
+     "total_ms": 345.6833530217409,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.011790928430855,
+     "enc_ms": 887.3316959943622,
+     "gen_ms": 306.497942074202,
+     "total_ms": 1206.841428996995,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 2.596904058009386,
+     "enc_ms": 0.0,
+     "gen_ms": 294.6660459274426,
+     "total_ms": 297.262949985452,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.2699700202792883,
+     "enc_ms": 0.0,
+     "gen_ms": 322.8733919095248,
+     "total_ms": 325.1433619298041,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.9259889852255583,
+     "enc_ms": 0.0,
+     "gen_ms": 333.9295380283147,
+     "total_ms": 336.85552701354027,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.9624459566548467,
+     "enc_ms": 0.0,
+     "gen_ms": 341.22393606230617,
+     "total_ms": 344.186382018961,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.4809869937598705,
+     "enc_ms": 0.0,
+     "gen_ms": 338.08761497493833,
+     "total_ms": 340.5686019686982,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.990835006348789,
+     "enc_ms": 878.3209830289707,
+     "gen_ms": 298.78636996727437,
+     "total_ms": 1190.0981880025938,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 2.4343529948964715,
+     "enc_ms": 0.0,
+     "gen_ms": 295.5454509938136,
+     "total_ms": 297.97980398871005,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.298849984072149,
+     "enc_ms": 0.0,
+     "gen_ms": 338.325600954704,
+     "total_ms": 340.62445093877614,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.7869329787790775,
+     "enc_ms": 0.0,
+     "gen_ms": 336.33106807246804,
+     "total_ms": 339.1180010512471,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.6992030907422304,
+     "enc_ms": 0.0,
+     "gen_ms": 336.2296619452536,
+     "total_ms": 338.92886503599584,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.460828050971031,
+     "enc_ms": 0.0,
+     "gen_ms": 342.78516203630716,
+     "total_ms": 345.2459900872782,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.346848961897194,
+     "enc_ms": 877.7400740655139,
+     "gen_ms": 299.708763952367,
+     "total_ms": 1189.795686979778,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 2.698082011193037,
+     "enc_ms": 0.0,
+     "gen_ms": 296.8282620422542,
+     "total_ms": 299.52634405344725,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.4418949615210295,
+     "enc_ms": 0.0,
+     "gen_ms": 327.6005119550973,
+     "total_ms": 330.04240691661835,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.508627949282527,
+     "enc_ms": 0.0,
+     "gen_ms": 328.9403689559549,
+     "total_ms": 331.44899690523744,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.637211000546813,
+     "enc_ms": 0.0,
+     "gen_ms": 344.25204200670123,
+     "total_ms": 346.88925300724804,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.4834199575707316,
+     "enc_ms": 0.0,
+     "gen_ms": 342.1060040127486,
+     "total_ms": 344.58942397031933,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.194151990115643,
+     "enc_ms": 882.4636249337345,
+     "gen_ms": 301.69276101514697,
+     "total_ms": 1196.3505379389971,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "prep_ms": 2.40059697534889,
+     "enc_ms": 0.0,
+     "gen_ms": 296.42792500089854,
+     "total_ms": 298.82852197624743,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "prep_ms": 2.686660038307309,
+     "enc_ms": 0.0,
+     "gen_ms": 327.04734499566257,
+     "total_ms": 329.7340050339699,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "prep_ms": 2.200442017056048,
+     "enc_ms": 0.0,
+     "gen_ms": 332.44245999958366,
+     "total_ms": 334.6429020166397,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "prep_ms": 2.3875990882515907,
+     "enc_ms": 0.0,
+     "gen_ms": 336.2042729277164,
+     "total_ms": 338.59187201596797,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "prep_ms": 2.3174270754680037,
+     "enc_ms": 0.0,
+     "gen_ms": 337.3412899672985,
+     "total_ms": 339.6587170427665,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ]
+  ],
+  "C": [
+   [
+    {
+     "turn": 0,
+     "prep_ms": 15.269960975274444,
+     "enc_ms": 896.3388201082125,
+     "gen_ms": 301.04238097555935,
+     "total_ms": 1212.6511620590463,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 2.33021704480052,
+     "enc_ms": 0.0,
+     "gen_ms": 230.61400593724102,
+     "total_ms": 232.94422298204154,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 3.8605949375778437,
+     "enc_ms": 0.0,
+     "gen_ms": 234.79950206819922,
+     "total_ms": 238.66009700577706,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 4.362609004601836,
+     "enc_ms": 0.0,
+     "gen_ms": 240.63784896861762,
+     "total_ms": 245.00045797321945,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 2.54193099681288,
+     "enc_ms": 0.0,
+     "gen_ms": 222.5161090027541,
+     "total_ms": 225.05803999956697,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 2.6796519523486495,
+     "enc_ms": 0.0,
+     "gen_ms": 249.7369130142033,
+     "total_ms": 252.41656496655196,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.352308073081076,
+     "enc_ms": 884.0457579353824,
+     "gen_ms": 304.1109179612249,
+     "total_ms": 1201.5089839696884,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 2.3362779757007957,
+     "enc_ms": 0.0,
+     "gen_ms": 190.2215329464525,
+     "total_ms": 192.5578109221533,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 2.3502380354329944,
+     "enc_ms": 0.0,
+     "gen_ms": 214.46950896643102,
+     "total_ms": 216.81974700186402,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 2.3090429604053497,
+     "enc_ms": 0.0,
+     "gen_ms": 214.59680201951414,
+     "total_ms": 216.9058449799195,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 2.8966020327061415,
+     "enc_ms": 0.0,
+     "gen_ms": 216.4860910270363,
+     "total_ms": 219.38269305974245,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 2.7205980150029063,
+     "enc_ms": 0.0,
+     "gen_ms": 225.4529349738732,
+     "total_ms": 228.1735329888761,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 13.139337999746203,
+     "enc_ms": 884.0565870050341,
+     "gen_ms": 299.8145050369203,
+     "total_ms": 1197.0104300417006,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 2.3883309913799167,
+     "enc_ms": 0.0,
+     "gen_ms": 185.97898504231125,
+     "total_ms": 188.36731603369117,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 2.602388965897262,
+     "enc_ms": 0.0,
+     "gen_ms": 303.9597430033609,
+     "total_ms": 306.5621319692582,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 2.490287064574659,
+     "enc_ms": 0.0,
+     "gen_ms": 222.5871499394998,
+     "total_ms": 225.07743700407445,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 3.2283819746226072,
+     "enc_ms": 0.0,
+     "gen_ms": 213.96545798052102,
+     "total_ms": 217.19383995514363,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 3.6011430202051997,
+     "enc_ms": 0.0,
+     "gen_ms": 218.85983098763973,
+     "total_ms": 222.46097400784492,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 12.79456599149853,
+     "enc_ms": 881.4519959269091,
+     "gen_ms": 299.96935301460326,
+     "total_ms": 1194.215914933011,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 2.3188770283013582,
+     "enc_ms": 0.0,
+     "gen_ms": 186.2244700314477,
+     "total_ms": 188.54334705974907,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 2.5954509619623423,
+     "enc_ms": 0.0,
+     "gen_ms": 213.5918390704319,
+     "total_ms": 216.18729003239423,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 2.51065194606781,
+     "enc_ms": 0.0,
+     "gen_ms": 213.96415308117867,
+     "total_ms": 216.47480502724648,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 3.578062984161079,
+     "enc_ms": 0.0,
+     "gen_ms": 215.57816409040242,
+     "total_ms": 219.1562270745635,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 3.4029940143227577,
+     "enc_ms": 0.0,
+     "gen_ms": 227.13425697293133,
+     "total_ms": 230.53725098725408,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 14.283598982729018,
+     "enc_ms": 891.8821350671351,
+     "gen_ms": 301.1863789288327,
+     "total_ms": 1207.3521129786968,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 3.2661310397088528,
+     "enc_ms": 0.0,
+     "gen_ms": 185.87792094331235,
+     "total_ms": 189.1440519830212,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 2.386608044616878,
+     "enc_ms": 0.0,
+     "gen_ms": 227.47227095533162,
+     "total_ms": 229.8588789999485,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 3.3665060764178634,
+     "enc_ms": 0.0,
+     "gen_ms": 217.09020098205656,
+     "total_ms": 220.45670705847442,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 2.4521879386156797,
+     "enc_ms": 0.0,
+     "gen_ms": 206.83694607578218,
+     "total_ms": 209.28913401439786,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 2.5013500126078725,
+     "enc_ms": 0.0,
+     "gen_ms": 209.4676970737055,
+     "total_ms": 211.96904708631337,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ],
+   [
+    {
+     "turn": 0,
+     "prep_ms": 15.11400192975998,
+     "enc_ms": 888.9193300856277,
+     "gen_ms": 303.24406491126865,
+     "total_ms": 1207.2773969266564,
+     "prompt_tokens": 1580,
+     "reply": "29",
+     "new_tokens": 3
+    },
+    {
+     "turn": 1,
+     "reused_tokens": 1582,
+     "prep_ms": 2.4479000130668283,
+     "enc_ms": 0.0,
+     "gen_ms": 186.3034019479528,
+     "total_ms": 188.75130196101964,
+     "prompt_tokens": 1613,
+     "reply": "28",
+     "new_tokens": 3
+    },
+    {
+     "turn": 2,
+     "reused_tokens": 1615,
+     "prep_ms": 2.7914289385080338,
+     "enc_ms": 0.0,
+     "gen_ms": 230.93235306441784,
+     "total_ms": 233.72378200292587,
+     "prompt_tokens": 1650,
+     "reply": "307",
+     "new_tokens": 4
+    },
+    {
+     "turn": 3,
+     "reused_tokens": 1653,
+     "prep_ms": 3.1323189614340663,
+     "enc_ms": 0.0,
+     "gen_ms": 211.17010700982064,
+     "total_ms": 214.3024259712547,
+     "prompt_tokens": 1688,
+     "reply": "333",
+     "new_tokens": 4
+    },
+    {
+     "turn": 4,
+     "reused_tokens": 1691,
+     "prep_ms": 2.4538609432056546,
+     "enc_ms": 0.0,
+     "gen_ms": 215.45332204550505,
+     "total_ms": 217.9071829887107,
+     "prompt_tokens": 1726,
+     "reply": "795",
+     "new_tokens": 4
+    },
+    {
+     "turn": 5,
+     "reused_tokens": 1729,
+     "prep_ms": 2.6249910006299615,
+     "enc_ms": 0.0,
+     "gen_ms": 221.89495293423533,
+     "total_ms": 224.5199439348653,
+     "prompt_tokens": 1764,
+     "reply": "233",
+     "new_tokens": 4
+    }
+   ]
+  ]
+ },
+ "gpu": {
+  "sm_clock_mhz": 2010.0,
+  "power_w": 44.29,
+  "samples": 294
+ },
+ "compare": {
+  "B": {
+   "max_abs_logit_diff": 0.0,
+   "median_abs_logit_diff": 0.0,
+   "replies_identical": 30,
+   "of": 30,
+   "logit_scale": 27.25
+  },
+  "C": {
+   "max_abs_logit_diff": 0.310546875,
+   "median_abs_logit_diff": 0.1875,
+   "replies_identical": 30,
+   "of": 30,
+   "logit_scale": 27.25
+  }
+ },
+ "image_tokens": 1536
+}

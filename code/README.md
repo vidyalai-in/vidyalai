@@ -79,8 +79,9 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `speech_tts.py` | 10 | Kokoro-82M synthesis with stock voices, timing on GPU and CPU, time to first audio, the Whisper round trip and per-category WER |
 | `voice.py` | 11 | Mimi and DAC round trips at a chosen number of codebooks, STOI, Silero VAD endpointing, streamed first-token and first-sentence timing |
 | `video.py` | 12 | Moving Fashion-MNIST clips, the tiny spacetime-patch DiT with frame-by-frame, factorized and full attention, flow loss and sampler, clip metrics, the attention benchmark |
+| `serving.py` | 13 | The synthetic report pages and questions, the streamed Claude caching runs, per-stage VLM timing, encoder-output and KV reuse across turns, batch throughput |
 
-`experiments/v01` to `v12` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10, Oxford-IIIT Pet and LibriSpeech files (measured only; `v02/dl.py` fetches the first two, and only LibriSpeech utterance IDs are kept), synthesized audio, rendered and generated image sets, training checkpoints, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
+`experiments/v01` to `v13` hold each part's scripts and small result files. Claude calls go through `agents-lab/ledger.py` (Beyond Text has its own pool with per-part sub-caps). Not included: model weights, the CIFAR-10, Oxford-IIIT Pet and LibriSpeech files (measured only; `v02/dl.py` fetches the first two, and only LibriSpeech utterance IDs are kept), synthesized audio, rendered and generated image sets, training checkpoints, and raw API and model replies. Scripts use absolute paths from the machine they ran on.
 
 ## agents-lab/ (Agentic AI)
 

@@ -1,0 +1,77 @@
+{
+ "text_only": 38,
+ "multi": [
+  {
+   "images": 1,
+   "total": 1288,
+   "image_tokens": 1250,
+   "formula": 1247,
+   "overhead_per_image": 3.0
+  },
+  {
+   "images": 2,
+   "total": 2538,
+   "image_tokens": 2500,
+   "formula": 2494,
+   "overhead_per_image": 3.0
+  },
+  {
+   "images": 4,
+   "total": 5038,
+   "image_tokens": 5000,
+   "formula": 4988,
+   "overhead_per_image": 3.0
+  },
+  {
+   "images": 8,
+   "total": 10038,
+   "image_tokens": 10000,
+   "formula": 9976,
+   "overhead_per_image": 3.0
+  }
+ ],
+ "formats": [
+  {
+   "format": "PNG",
+   "kw": {
+    "optimize": true
+   },
+   "bytes": 105155,
+   "image_tokens": 1250
+  },
+  {
+   "format": "JPEG",
+   "kw": {
+    "quality": 85
+   },
+   "bytes": 74150,
+   "image_tokens": 1250
+  },
+  {
+   "format": "JPEG",
+   "kw": {
+    "quality": 30
+   },
+   "bytes": 39571,
+   "image_tokens": 1250
+  },
+  {
+   "format": "WEBP",
+   "kw": {
+    "quality": 80
+   },
+   "bytes": 27690,
+   "image_tokens": 1250
+  }
+ ],
+ "pdf": {
+  "bytes": 27211,
+  "doc_tokens": 1782,
+  "png_tokens": 1250
+ },
+ "exp_prompts": {
+  "S": 1310,
+  "L": 4767,
+  "XL": 37716
+ }
+}
