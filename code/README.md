@@ -52,8 +52,12 @@ Not included (rebuildable or too large): the token shards in `data/` (about 2.5B
 | `items.py` | 2 | MMLU-Redux 2.0 loader and suggested-answer parser, the zero-shot prompt, letter parsing, Wilson and bootstrap intervals, item difficulty and discrimination |
 | `stats.py` | 3 | Standard, clustered and bootstrap intervals, the item/sampling variance split, paired differences, McNemar, paired t, sign-flip tests, power and minimum detectable effect, Bonferroni, Holm and Benjamini-Hochberg |
 | `mcq.py` | 4 | Five prompt formats with shots and option rotation, five answer extractors, subject-clustered paired differences, a KV-cached `LogProbScorer` for letter, cloze and generation scoring |
+| `contamination.py` | 5 | Loss, zlib, Min-K%, Min-K%++ and reference-ratio membership scores, cloze scoring, the shuffled-order (exchangeability) test, AUROC with bootstrap intervals, n-gram hashing against a token stream, a batch runner |
+| `grading.py` | 6 | Exact match, token F1, ROUGE, BLEU, chrF and BERTScore, summary- and system-level Kendall tau with bootstrap, Cohen's kappa, MT-Bench vote agreement, rubric and pairwise judge prompts |
+| `arena.py` | 7 | Online Elo (single and vectorized over vote orders), Bradley-Terry with ties as half wins or dropped, Rao-Kupper ties, vote and cluster bootstrap, style-controlled Bradley-Terry, Kendall tau |
+| `verify.py` | 8 | pass@k with a bootstrap over problems, code extraction, a namespace sandbox runner (no network, memory and task caps), answer extraction, exact, normalized and symbolic (Math-Verify) math graders |
 
-`experiments/e01` to `e04` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC; the prep scripts rebuild them), raw API transcripts and model replies, and open-model weights.
+`experiments/e01` to `e08` hold each part's scripts and small result files; `experiments/prep_mmlu_1140.py` rebuilds the shared 1,140-item MMLU subset. Every Claude call goes through `agents-lab/ledger.py` (the Evals pool has per-part sub-caps). Not included: downloaded datasets (MMLU, MMLU-Redux, MMLU-Pro, ARC, SummEval, MT-Bench judgments, arena votes, HumanEval+, MATH-500; the prep and fetch scripts rebuild them), raw API transcripts and model replies, Part 5's contaminated SmolLM2 checkpoint and training stream, and open-model weights.
 
 ## agents-lab/ (Agentic AI)
 

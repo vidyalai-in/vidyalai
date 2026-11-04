@@ -1,0 +1,68 @@
+{
+ "restate": {
+  "n": 150,
+  "long_win": 0.0,
+  "long_ci": [
+   0.0,
+   0.0
+  ],
+  "orig_win": 0.6966666666666667,
+  "orig_ci": [
+   0.6366666666666667,
+   0.76
+  ],
+  "per_order": {
+   "ab": {
+    "A": 122,
+    "tie": 28
+   },
+   "ba": {
+    "A": 87,
+    "tie": 63
+   }
+  },
+  "cutoffs": 0,
+  "unparsed": 0
+ },
+ "fluency_truecase": {
+  "n": 200,
+  "mean_before": 2.59,
+  "mean_after": 2.71,
+  "human_mean": 4.726666666666667,
+  "diff": 0.12,
+  "ci": [
+   0.020235045882334227,
+   0.21976495411766578
+  ],
+  "share_le2_before": 0.505,
+  "share_le2_after": 0.495,
+  "spearman_before": 0.27537380126440186,
+  "spearman_after": 0.4202040266725636
+ },
+ "fluency_nocaps": {
+  "n": 200,
+  "mean_before": 2.59,
+  "mean_after": 2.91,
+  "human_mean": 4.726666666666667,
+  "diff": 0.32,
+  "ci": [
+   0.24047686377997712,
+   0.3995231362200229
+  ],
+  "share_le2_before": 0.505,
+  "share_le2_after": 0.325,
+  "spearman_before": 0.27537380126440186,
+  "spearman_after": 0.35836328906279247
+ },
+ "claude_vs_gpt35": {
+  "n_votes": 125,
+  "n_pairs": 64,
+  "human": 0.48,
+  "haiku": 0.636,
+  "diff": 0.156,
+  "ci": [
+   0.055988888888888894,
+   0.25
+  ]
+ }
+}
