@@ -11,7 +11,8 @@ import { rehypeGlossary } from './src/plugins/rehype-glossary.mjs';
 
 export default defineConfig({
   site: 'https://vidyal.ai',
-  integrations: [sitemap()],
+  // /practice/ is unlisted: reachable by direct link only, so it stays out of the sitemap.
+  integrations: [sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/practice/') })],
   markdown: {
     // Math is $$...$$ only (inline or on its own lines), so prices like "$2 to $10" stay plain text.
     remarkPlugins: [[remarkMath, { singleDollarTextMath: false }], remarkReadingTime],

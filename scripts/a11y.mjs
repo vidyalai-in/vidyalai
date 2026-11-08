@@ -1,5 +1,6 @@
 // Runs axe-core (WCAG 2.2 A/AA) against every built page in light and dark themes.
 // Usage: node scripts/a11y.mjs <baseUrl>   (serve dist/ first, e.g. `npx astro preview`)
+// ONLY=/practice/ limits the run to pages under that path.
 import puppeteer from 'puppeteer';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -15,6 +16,7 @@ const pages = [];
     else if (e.name === 'index.html') pages.push(`/${prefix}`);
   }
 })('dist', '');
+if (process.env.ONLY) pages.splice(0, pages.length, ...pages.filter((p) => p.startsWith(process.env.ONLY)));
 
 const pw = join(homedir(), '.cache/ms-playwright');
 const executablePath = readdirSync(pw).filter((d) => d.startsWith('chromium-')).map((d) => join(pw, d, 'chrome-linux64/chrome')).find(existsSync);

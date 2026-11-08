@@ -1,0 +1,886 @@
+/* The unlisted /practice/ section. Imported only by src/pages/practice/*, so none of this reaches
+   the rest of the site. Plain (global) CSS because results and explanations are injected at runtime. */
+
+:root {
+  --ok: #0f7a3d;
+  --ok-soft: #e3f5ea;
+  --bad: #b42318;
+  --bad-soft: #fdecea;
+  --warn: #9a5b00;
+  --pf-line: #0b1a33;
+  --pf-top: #e8eef9;
+  --pf-front: #ffffff;
+  --pf-right: #d3ddef;
+  --pf-shade: #c3cee0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ok: #4ade80;
+    --ok-soft: rgb(74 222 128 / 0.12);
+    --bad: #f87171;
+    --bad-soft: rgb(248 113 113 / 0.12);
+    --warn: #fbbf24;
+    --pf-line: #dfe7f7;
+    --pf-top: #1a2c50;
+    --pf-front: #10203f;
+    --pf-right: #0a1530;
+    --pf-shade: #3a5079;
+  }
+}
+
+:root[data-theme='dark'] {
+  --ok: #4ade80;
+  --ok-soft: rgb(74 222 128 / 0.12);
+  --bad: #f87171;
+  --bad-soft: rgb(248 113 113 / 0.12);
+  --warn: #fbbf24;
+  --pf-line: #dfe7f7;
+  --pf-top: #1a2c50;
+  --pf-front: #10203f;
+  --pf-right: #0a1530;
+  --pf-shade: #3a5079;
+}
+
+.print-only {
+  display: none;
+}
+
+/* ---------- Page ---------- */
+.practice-page {
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 2rem var(--gutter) 4rem;
+}
+
+.practice-page h1 {
+  font-size: clamp(1.8rem, 4.4vw, 2.5rem);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.practice-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.primer {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin: 0 0 2rem;
+}
+
+.primer > summary {
+  cursor: pointer;
+  padding: 0.9rem 1.2rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  min-height: 44px;
+}
+
+.primer .prose {
+  padding: 0 1.2rem 1.2rem;
+}
+
+/* ---------- Bar ---------- */
+.quiz-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--header-bg);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  font-size: 0.92rem;
+}
+
+.bar-progress {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.bar-clock {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-clock.low {
+  color: var(--bad);
+  font-weight: 700;
+}
+
+.bar-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.qbtn {
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.qbtn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.qbtn-primary:hover {
+  background: var(--accent-strong);
+}
+
+.qbtn-ghost {
+  background: var(--surface);
+  color: var(--text-strong);
+  border-color: var(--border);
+}
+
+.qbtn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.quiz[data-state='submitted'] [data-submit] {
+  display: none;
+}
+
+/* ---------- Mock gate ---------- */
+.gate {
+  padding: 1.5rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+}
+
+html.js .quiz[data-state='idle'] .quiz-form,
+html.js .quiz[data-state='idle'] .quiz-end,
+html.js .quiz[data-state='idle'] [data-submit] {
+  display: none;
+}
+
+html.js .quiz:not([data-state='idle']) .gate,
+html:not(.js) .gate {
+  display: none;
+}
+
+/* ---------- Question ---------- */
+.q {
+  position: relative;
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-width: 0;
+  scroll-margin-top: 5rem;
+}
+
+.q[disabled] {
+  opacity: 1;
+}
+
+.q-head {
+  display: flex;
+  gap: 0.7rem;
+  float: left;
+  width: 100%;
+  padding: 0 4.5rem 0 0;
+  margin: 0 0 0.85rem;
+  color: var(--text-strong);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.q-head + * {
+  clear: both;
+}
+
+.q-num {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.q-level {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.q-level.lvl-3 {
+  color: var(--warn);
+}
+
+.q-fig {
+  clear: both;
+  color: var(--pf-line);
+  margin: 0 0 0.9rem;
+  overflow-x: auto;
+}
+
+.q-fig svg.pf {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pf rect.pf-top,
+.pf rect.pf-front,
+.pf rect.pf-right {
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+
+.pf .pf-top {
+  fill: var(--pf-top);
+}
+
+.pf .pf-front {
+  fill: var(--pf-front);
+}
+
+.pf .pf-right {
+  fill: var(--pf-right);
+}
+
+.pf .pf-pip,
+.pf .pf-text {
+  fill: currentColor;
+}
+
+.pf .pf-text {
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+.pf .pf-grid {
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.pf .pf-cell {
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.pf .pf-gridline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.pf .pf-small {
+  fill: currentColor;
+  font: 500 12px var(--font-sans);
+}
+
+.pf .pf-strong {
+  font-weight: 700;
+}
+
+.pf .pf-mono {
+  font-family: var(--font-mono);
+}
+
+.pf-table {
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.pf-table caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 0.35rem;
+  color: var(--text-strong);
+}
+
+.pf-table th,
+.pf-table td {
+  border: 1px solid var(--border-strong);
+  padding: 0.35rem 0.7rem;
+  text-align: center;
+}
+
+.pf-table thead th,
+.pf-table tbody th {
+  background: var(--surface-2);
+  color: var(--text-strong);
+}
+
+.pf .pf-label {
+  fill: currentColor;
+  font: 600 15px var(--font-sans);
+}
+
+.opts {
+  clear: both;
+  display: grid;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .opts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.opts-fig {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.opts-fig .opt {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.opt:hover {
+  border-color: var(--accent);
+}
+
+.opt input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.opt-letter {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-strong);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.opt-body {
+  min-width: 0;
+}
+
+.opt-body.q-fig {
+  margin: 0;
+}
+
+.opt:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.opt:has(input:checked) .opt-letter {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.opt:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+fieldset[disabled] .opt {
+  cursor: default;
+}
+
+fieldset[disabled] .opt:hover {
+  border-color: var(--border);
+}
+
+.opt.opt-correct,
+fieldset[disabled] .opt.opt-correct:hover {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+
+.opt.opt-correct .opt-letter {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: var(--surface);
+}
+
+.opt.opt-wrong,
+fieldset[disabled] .opt.opt-wrong:hover {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+
+.opt.opt-wrong .opt-letter {
+  background: var(--bad);
+  border-color: var(--bad);
+  color: var(--surface);
+}
+
+.q.is-right {
+  border-left: 4px solid var(--ok);
+}
+
+.q.is-wrong {
+  border-left: 4px solid var(--bad);
+}
+
+.q.is-blank {
+  border-left: 4px solid var(--border-strong);
+}
+
+.q-feedback {
+  margin-top: 0.9rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-size: 0.95rem;
+}
+
+.q-feedback p {
+  margin: 0 0 0.5rem;
+}
+
+.q-feedback p:last-child {
+  margin-bottom: 0;
+}
+
+.fb-head {
+  font-weight: 700;
+}
+
+.is-right .fb-head {
+  color: var(--ok);
+}
+
+.is-wrong .fb-head {
+  color: var(--bad);
+}
+
+/* ---------- Shared stems (passages, charts, puzzle set-ups) ---------- */
+.stem {
+  margin: 0 0 1.5rem;
+}
+
+.stem-card {
+  margin: 0 0 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.stem-title {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+}
+
+.stem-for {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.stem-text p {
+  margin: 0 0 0.6rem;
+}
+
+.stem-lines {
+  margin: 0 0 0.5rem;
+  padding-left: 1.2rem;
+}
+
+/* ---------- Memorize ---------- */
+.mem {
+  margin: 0 0 1.5rem;
+}
+
+.mem-card {
+  margin: 0 0 1.25rem;
+  padding: 1.1rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.mem-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.mem-instr {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.mem-fig {
+  margin-bottom: 0.5rem;
+}
+
+.mem-lines {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  line-height: 1.8;
+}
+
+.mem-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mem-count {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-strong);
+}
+
+html.js .mem[data-state='ready'] .mem-body,
+html.js .mem[data-state='ready'] .mem-qs,
+html.js .mem[data-state='studying'] .mem-qs,
+html.js .mem[data-state='done'] .mem-body {
+  display: none;
+}
+
+/* ---------- Results ---------- */
+.quiz-end {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.results {
+  margin: 0 0 2rem;
+  padding: 1.4rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  scroll-margin-top: 5rem;
+}
+
+.results h2 {
+  margin: 0 0 0.3rem;
+}
+
+.score {
+  margin: 0;
+  font: 800 2.4rem var(--font-display);
+  color: var(--text-strong);
+}
+
+.score-pct {
+  font-size: 1.3rem;
+  color: var(--muted);
+}
+
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 1rem 0;
+}
+
+.jump a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--surface);
+}
+
+.jump-right {
+  background: var(--ok);
+}
+
+.jump-wrong {
+  background: var(--bad);
+}
+
+.jump-blank {
+  background: var(--muted);
+}
+
+.topics {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.topics caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  color: var(--text-strong);
+}
+
+.topics th,
+.topics td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.results-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.small {
+  font-size: 0.88rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Hub ---------- */
+.area {
+  margin: 2.5rem 0 0;
+}
+
+.area h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+}
+
+.area > p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.set-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+@media (min-width: 640px) {
+  .set-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.set-card {
+  position: relative;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.set-card p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.set-card .set-meta {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.set-card .set-done {
+  color: var(--ok);
+}
+
+/* ---------- Print: a paper worksheet, then the answer key on its own page ---------- */
+@media print {
+  :root {
+    --surface: #fff;
+    --surface-2: #fff;
+    --bg: #fff;
+    --text: #000;
+    --text-strong: #000;
+    --muted: #333;
+    --border: #999;
+    --pf-line: #000;
+    --pf-top: #eee;
+    --pf-front: #fff;
+    --pf-right: #ddd;
+    --pf-shade: #c8c8c8;
+    color-scheme: light;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .screen-only,
+  .practice-header,
+  .practice-footer,
+  .quiz-bar,
+  .gate,
+  .results,
+  .q-feedback,
+  .q-level,
+  .skip-link,
+  .primer > summary,
+  .heading-anchor {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .practice-page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .primer {
+    border: 0;
+  }
+
+  .primer .prose {
+    padding: 0;
+  }
+
+  html.js .quiz .quiz-form,
+  html.js .mem .mem-body,
+  html.js .mem .mem-qs {
+    display: block !important;
+  }
+
+  .print-name {
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+
+  .stem-card {
+    break-inside: avoid;
+    background: none;
+  }
+
+  .mem-card {
+    break-before: page;
+    break-inside: avoid;
+  }
+
+  .mem-qs {
+    break-before: page;
+  }
+
+  .q {
+    break-inside: avoid;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding: 0.5rem 0 0.7rem;
+    margin: 0;
+  }
+
+  .q.is-right,
+  .q.is-wrong,
+  .q.is-blank {
+    border-left: 0;
+  }
+
+  .q-num {
+    background: none;
+    color: #000;
+    border: 1px solid #000;
+  }
+
+  .opts {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1rem;
+  }
+
+  .opts-fig {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .opt {
+    min-height: 0;
+    border: 0;
+    padding: 0.15rem 0;
+    background: none !important;
+  }
+
+  .opt-letter {
+    background: none !important;
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+
+  .print-key {
+    display: block;
+    break-before: page;
+  }
+
+  .key-list li {
+    margin: 0 0 0.5rem;
+    break-inside: avoid;
+  }
+
+  .key-list p {
+    display: inline;
+    margin: 0;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

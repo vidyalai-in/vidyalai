@@ -1,0 +1,123 @@
+---
+/** One practice set. Unlisted: noindex, no search index, not in the sitemap, linked only from /practice/. */
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PracticeHeader from '../../components/practice/PracticeHeader.astro';
+import Quiz from '../../components/practice/Quiz.astro';
+import { practiceArea, practiceFamily, practiceUrl } from '../../data/practice';
+import '../../styles/practice.css';
+
+export async function getStaticPaths() {
+  const sets = await getCollection('practice');
+  return sets.map((set) => {
+    const parts = sets.filter((s) => s.data.family === set.data.family).sort((a, b) => a.data.part - b.data.part);
+    return { params: { slug: set.id }, props: { set, parts: parts.map((p) => ({ slug: p.id, part: p.data.part, title: p.data.title })) } };
+  });
+}
+
+const { set, parts } = Astro.props;
+const { Content } = await render(set);
+const d = set.data;
+const family = practiceFamily(d.family);
+const area = practiceArea(family.area);
+const isMock = family.area === 'mock';
+const i = parts.findIndex((p) => p.slug === set.id);
+const prev = parts[i - 1];
+const next = parts[i + 1];
+const levels = [1, 2, 3].map((l) => d.questions.filter((q) => q.difficulty === l).length);
+---
+
+<Base title={d.title} description={d.description} noindex bare>
+  <PracticeHeader slot="header" />
+  <div class="practice-page">
+    <nav class="breadcrumb screen-only" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/practice/">Practice</a></li>
+        <li>{area.name}</li>
+      </ol>
+    </nav>
+    <p class="eyebrow">{family.name}{parts.length > 1 && ` · ${isMock ? 'Test' : 'Part'} ${d.part} of ${parts.length}`}</p>
+    <h1>{d.title}</h1>
+    <p class="lede">{d.description}</p>
+    <ul class="practice-meta">
+      <li>{d.questions.length} questions</li>
+      <li>{isMock ? `${d.timeMinutes} minutes, timed` : `About ${d.timeMinutes} minutes`}</li>
+      {!isMock && <li>{levels[0]} easy · {levels[1]} medium · {levels[2]} hard</li>}
+    </ul>
+
+    <details class="primer" open={!isMock}>
+      <summary>{isMock ? 'How this test works' : 'Read first: how to solve these'}</summary>
+      <div class="prose">
+        <Content />
+      </div>
+    </details>
+
+    <Quiz set={set} />
+
+    {
+      parts.length > 1 && (
+        <nav class="part-nav screen-only" aria-label={`${family.name} parts`}>
+          {prev ? (
+            <a href={practiceUrl(prev.slug)} rel="prev">
+              <span>← {isMock ? 'Test' : 'Part'} {prev.part}</span>
+              {prev.title}
+            </a>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <a href={practiceUrl(next.slug)} rel="next" class="next">
+              <span>{isMock ? 'Test' : 'Part'} {next.part} →</span>
+              {next.title}
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .lede {
+    color: var(--muted);
+    font-size: 1.08rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .eyebrow {
+    margin: 0.5rem 0 0;
+  }
+
+  .part-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .part-nav a {
+    display: block;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    text-decoration: none;
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+
+  .part-nav a:hover {
+    border-color: var(--accent);
+  }
+
+  .part-nav a span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+
+  .part-nav .next {
+    text-align: right;
+    grid-column: 2;
+  }
+</style>

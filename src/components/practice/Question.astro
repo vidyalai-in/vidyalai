@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { renderFigure } from '../../lib/practice/figures';
+import { fmt } from '../../lib/practice/format';
+
+type Q = CollectionEntry<'practice'>['data']['questions'][number];
+interface Props {
+  q: Q;
+  n: number;
+}
+const { q, n } = Astro.props;
+const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+const LEVEL = { 1: 'Easy', 2: 'Medium', 3: 'Hard' } as const;
+const opts = q.options ? q.options.map((o) => ({ html: fmt(o), fig: false })) : q.optionFigures!.map((f) => ({ html: renderFigure(f), fig: true }));
+const figOpts = !q.options;
+---
+
+<fieldset class="q" data-q={q.id} id={`q-${q.id}`}>
+  <legend class="q-head">
+    <span class="q-num">{n}</span>
+    <span class="q-text" set:html={fmt(q.q)} />
+  </legend>
+  <span class={`q-level lvl-${q.difficulty}`}>{LEVEL[q.difficulty]}</span>
+  {q.figure && <div class="q-fig" set:html={renderFigure(q.figure)} />}
+  <div class:list={['opts', { 'opts-fig': figOpts }]}>
+    {
+      opts.map((o, i) => (
+        <label class="opt" data-letter={LETTERS[i]}>
+          <input type="radio" name={`q-${q.id}`} value={LETTERS[i]} />
+          <span class="opt-letter" aria-hidden="true">{LETTERS[i]}</span>
+          <span class="visually-hidden">Option {LETTERS[i]}: </span>
+          <span class:list={['opt-body', { 'q-fig': o.fig }]} set:html={o.html} />
+        </label>
+      ))
+    }
+  </div>
+  <div class="q-feedback" data-feedback hidden aria-live="polite"></div>
+</fieldset>

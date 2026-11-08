@@ -1,0 +1,483 @@
+---
+/**
+ * An MCQ set, graded in the browser. Without JS it is a readable, printable worksheet.
+ * With JS: progress and timer, shared stems and memorize-then-answer blocks, Submit grades and shows each explanation,
+ * answers are saved in localStorage, and printing adds an answer key on its own page.
+ * The key lives in a JSON script and is only shown after Submit (or in print).
+ */
+import type { CollectionEntry } from 'astro:content';
+import { renderFigure } from '../../lib/practice/figures';
+import { fmt, fmtBlock, namesOptionLetters } from '../../lib/practice/format';
+import Question from './Question.astro';
+
+interface Props {
+  set: CollectionEntry<'practice'>;
+}
+
+const { set } = Astro.props;
+const { questions, stems = [], timeMinutes } = set.data;
+const kind = set.data.family === 'mock-tests' ? 'mock' : 'topic';
+type Q = (typeof questions)[number];
+type Stem = (typeof stems)[number];
+
+// Lay out: questions without a stem in order; a stem (with all its questions) where its first question is.
+type Block = { kind: 'q'; q: Q; n: number } | { kind: 'stem'; stem: Stem; qs: { q: Q; n: number }[] };
+const blocks: Block[] = [];
+const seen = new Set<string>();
+let n = 0;
+for (const q of questions) {
+  if (!q.stem) {
+    blocks.push({ kind: 'q', q, n: ++n });
+  } else if (!seen.has(q.stem)) {
+    seen.add(q.stem);
+    const stem = stems.find((m) => m.id === q.stem)!;
+    blocks.push({ kind: 'stem', stem, qs: questions.filter((x) => x.stem === q.stem).map((x) => ({ q: x, n: ++n })) });
+  }
+}
+const ordered = blocks.flatMap((b) => (b.kind === 'q' ? [{ q: b.q, n: b.n }] : b.qs));
+
+const key = {
+  slug: set.id,
+  kind,
+  minutes: timeMinutes,
+  questions: ordered.map(({ q, n }) => ({
+    id: q.id,
+    n,
+    answer: q.answer,
+    topic: q.topic,
+    explanation: fmtBlock(q.explanation),
+    shuffle: !namesOptionLetters(q.explanation),
+  })),
+};
+const json = JSON.stringify(key).replace(/</g, '\\u003c');
+---
+
+<div class="quiz" data-quiz data-state={kind === 'mock' ? 'idle' : 'running'}>
+  <div class="quiz-bar" data-bar>
+    <span class="bar-progress" data-progress aria-live="polite">{ordered.length} questions</span>
+    <span class="bar-clock" data-clock title={kind === 'mock' ? 'Time left' : 'Time spent'}>
+      {kind === 'mock' ? `${timeMinutes}:00` : `Suggested ${timeMinutes} min`}
+    </span>
+    <span class="bar-actions">
+      <button type="button" class="qbtn qbtn-ghost" data-print>Print</button>
+      <button type="button" class="qbtn qbtn-primary" data-submit>Submit</button>
+    </span>
+  </div>
+
+  <p class="print-only print-name">Name: ______________________ &nbsp; Date: ____________ &nbsp; Score: ______ / {ordered.length}</p>
+
+  {
+    kind === 'mock' && (
+      <div class="gate" data-gate>
+        <p>
+          <strong>{ordered.length} questions, {timeMinutes} minutes.</strong> The timer starts when you press Start and the test
+          submits itself when time runs out. Unanswered questions score zero, and there is no negative marking.
+        </p>
+        <button type="button" class="qbtn qbtn-primary" data-start>Start the test</button>
+      </div>
+    )
+  }
+
+  <form class="quiz-form" data-form>
+    {
+      blocks.map((b) =>
+        b.kind === 'q' ? (
+          <Question q={b.q} n={b.n} />
+        ) : b.stem.studySeconds ? (
+          <section class="mem" data-mem={b.stem.id} data-seconds={b.stem.studySeconds} data-state="open">
+            <div class="mem-card">
+              <h3 class="mem-title">{b.stem.title}</h3>
+              <p class="mem-instr screen-only" data-mem-instr>
+                Questions {b.qs[0].n}–{b.qs[b.qs.length - 1].n} are about this. You get {b.stem.studySeconds} seconds to
+                study it. Then it hides and the questions appear. No notes!
+              </p>
+              <p class="mem-instr print-only">
+                Study this for {b.stem.studySeconds} seconds, then turn the page and answer questions {b.qs[0].n}–
+                {b.qs[b.qs.length - 1].n} without looking back.
+              </p>
+              <div class="mem-body" data-mem-body>
+                {b.stem.text && <div class="stem-text" set:html={fmtBlock(b.stem.text)} />}
+                {b.stem.figure && <div class="q-fig mem-fig" set:html={renderFigure(b.stem.figure)} />}
+                {b.stem.lines && (
+                  <ul class="mem-lines">
+                    {b.stem.lines.map((l) => (
+                      <li set:html={fmt(l)} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div class="mem-controls screen-only">
+                <button type="button" class="qbtn qbtn-primary" data-mem-start>
+                  Start studying ({b.stem.studySeconds} s)
+                </button>
+                <span class="mem-count" data-mem-count aria-live="polite" />
+                <button type="button" class="qbtn qbtn-ghost" data-mem-done hidden>
+                  I'm ready, hide it
+                </button>
+              </div>
+            </div>
+            <div class="mem-qs" data-mem-qs>
+              {b.qs.map(({ q, n }) => (
+                <Question q={q} n={n} />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section class="stem">
+            <div class="stem-card">
+              <h3 class="stem-title">{b.stem.title}</h3>
+              <p class="stem-for">
+                {b.qs.length > 1 ? `Use this for questions ${b.qs[0].n}–${b.qs[b.qs.length - 1].n}.` : `Use this for question ${b.qs[0].n}.`}
+              </p>
+              {b.stem.text && <div class="stem-text" set:html={fmtBlock(b.stem.text)} />}
+              {b.stem.figure && <div class="q-fig" set:html={renderFigure(b.stem.figure)} />}
+              {b.stem.lines && (
+                <ul class="stem-lines">
+                  {b.stem.lines.map((l) => (
+                    <li set:html={fmt(l)} />
+                  ))}
+                </ul>
+              )}
+            </div>
+            {b.qs.map(({ q, n }) => (
+              <Question q={q} n={n} />
+            ))}
+          </section>
+        ),
+      )
+    }
+  </form>
+
+  <div class="quiz-end screen-only">
+    <button type="button" class="qbtn qbtn-primary" data-submit>Submit and see my score</button>
+  </div>
+
+  <section class="results" data-results hidden tabindex="-1" aria-labelledby="results-title">
+    <h2 id="results-title">Your score</h2>
+    <p class="score"><span data-score></span> <span class="score-pct" data-pct></span></p>
+    <p class="score-note" data-note></p>
+    <div class="jump" data-jump aria-label="Questions: green right, red wrong, grey skipped"></div>
+    <table class="topics">
+      <caption>By topic</caption>
+      <thead><tr><th scope="col">Topic</th><th scope="col">Right</th><th scope="col">Score</th></tr></thead>
+      <tbody data-topics></tbody>
+    </table>
+    <p class="results-actions">
+      <button type="button" class="qbtn qbtn-primary" data-retry>Try the wrong ones again</button>
+      <button type="button" class="qbtn qbtn-ghost" data-reset>Start over</button>
+    </p>
+    <p class="muted small">Scroll down through the questions to read each explanation.</p>
+  </section>
+
+  <section class="print-key print-only" data-print-key aria-hidden="true"></section>
+  <script type="application/json" data-key set:html={json} />
+</div>
+
+<script>
+  type KeyQ = { id: string; n: number; answer: string; topic: string; explanation: string; shuffle: boolean };
+  type Key = { slug: string; kind: 'topic' | 'mock'; minutes: number; questions: KeyQ[] };
+  type Saved = {
+    answers: Record<string, string>;
+    state: 'idle' | 'running' | 'submitted';
+    studied: Record<string, boolean>;
+    elapsed: number;
+    deadline?: number;
+    score?: string;
+    /** Option order per question on a retake: displayed position -> original letter. */
+    order?: Record<string, string[]>;
+  };
+
+  const LET = ['A', 'B', 'C', 'D', 'E'];
+
+  const fmtTime = (s: number) => {
+    s = Math.max(0, Math.round(s));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const ss = String(s % 60).padStart(2, '0');
+    return h ? `${h}:${String(m).padStart(2, '0')}:${ss}` : `${m}:${ss}`;
+  };
+
+  function init(root: HTMLElement) {
+    const key: Key = JSON.parse(root.querySelector<HTMLScriptElement>('[data-key]')!.textContent!);
+    const storeKey = `vidyal-practice:${key.slug}`;
+    const $ = <T extends Element = HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
+    const $$ = <T extends Element = HTMLElement>(sel: string) => [...root.querySelectorAll<T>(sel)];
+    const form = $<HTMLFormElement>('[data-form]');
+    const results = $('[data-results]');
+    const clock = $('[data-clock]');
+    const progress = $('[data-progress]');
+    const total = key.questions.length;
+
+    const fresh = (): Saved => ({ answers: {}, state: key.kind === 'mock' ? 'idle' : 'running', studied: {}, elapsed: 0 });
+    let saved: Saved = fresh();
+    try {
+      const raw = localStorage.getItem(storeKey);
+      if (raw) saved = { ...fresh(), ...JSON.parse(raw) };
+    } catch {}
+    const save = () => {
+      try {
+        localStorage.setItem(storeKey, JSON.stringify(saved));
+      } catch {}
+    };
+
+    const fieldset = (id: string) => form.querySelector<HTMLFieldSetElement>(`[data-q="${id}"]`)!;
+    const chosen = (id: string) => form.querySelector<HTMLInputElement>(`input[name="q-${id}"]:checked`)?.value;
+
+    function setState(s: Saved['state']) {
+      saved.state = s;
+      root.dataset.state = s;
+    }
+
+    function updateProgress() {
+      const done = key.questions.filter((q) => chosen(q.id)).length;
+      progress.textContent = `${done} of ${total} answered`;
+    }
+
+    // ---------- Option order (shuffled on retakes; inputs keep their original letters) ----------
+    const optLabels = (id: string) => [...fieldset(id).querySelectorAll<HTMLElement>('.opt')];
+    /** The letter a student sees for an option's original letter. */
+    const shown = (id: string, orig: string) => {
+      const ord = saved.order?.[id];
+      return ord ? LET[ord.indexOf(orig)] : orig;
+    };
+    function applyOrder(id: string) {
+      const labels = optLabels(id);
+      const ord = saved.order?.[id] ?? labels.map((l) => l.dataset.letter!);
+      const box = labels[0].parentElement!;
+      ord.forEach((orig, i) => {
+        const l = labels.find((x) => x.dataset.letter === orig)!;
+        box.appendChild(l);
+        l.querySelector('.opt-letter')!.textContent = LET[i];
+        l.querySelector('.visually-hidden')!.textContent = `Option ${LET[i]}: `;
+      });
+    }
+    function shuffleOptions(q: KeyQ) {
+      if (!q.shuffle) return;
+      const current = saved.order?.[q.id] ?? optLabels(q.id).map((l) => l.dataset.letter!);
+      let next = current;
+      for (let tries = 0; tries < 5 && next.join() === current.join(); tries++) {
+        next = [...current];
+        for (let i = next.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [next[i], next[j]] = [next[j], next[i]];
+        }
+      }
+      saved.order = { ...saved.order, [q.id]: next };
+      applyOrder(q.id);
+    }
+    for (const id of Object.keys(saved.order ?? {})) if (form.querySelector(`[data-q="${id}"]`)) applyOrder(id);
+
+    // ---------- Restore answers ----------
+    for (const [id, v] of Object.entries(saved.answers)) {
+      const input = form.querySelector<HTMLInputElement>(`input[name="q-${id}"][value="${v}"]`);
+      if (input) input.checked = true;
+    }
+    form.addEventListener('change', (e) => {
+      const t = e.target as HTMLInputElement;
+      if (t.type !== 'radio') return;
+      saved.answers[t.name.slice(2)] = t.value;
+      save();
+      updateProgress();
+    });
+
+    // ---------- Memorize blocks ----------
+    const mems = $$('[data-mem]');
+    const memTimers = new Map<HTMLElement, number>();
+    function memShow(mem: HTMLElement, state: 'ready' | 'studying' | 'done' | 'review') {
+      mem.dataset.state = state;
+      mem.querySelector<HTMLButtonElement>('[data-mem-start]')!.hidden = state !== 'ready';
+      mem.querySelector<HTMLButtonElement>('[data-mem-done]')!.hidden = state !== 'studying';
+      const count = mem.querySelector('[data-mem-count]')!;
+      if (state === 'done') count.textContent = 'Time up. The picture is hidden until you submit.';
+      if (state === 'review') count.textContent = '';
+      const instr = mem.querySelector<HTMLElement>('[data-mem-instr]')!;
+      instr.hidden = state === 'review';
+    }
+    function memFinish(mem: HTMLElement) {
+      clearInterval(memTimers.get(mem));
+      saved.studied[mem.dataset.mem!] = true;
+      save();
+      memShow(mem, 'done');
+      mem.querySelector<HTMLElement>('[data-mem-qs] input')?.focus();
+    }
+    for (const mem of mems) {
+      memShow(mem, saved.studied[mem.dataset.mem!] ? 'done' : 'ready');
+      mem.querySelector('[data-mem-start]')!.addEventListener('click', () => {
+        if (saved.state === 'idle') return;
+        let left = Number(mem.dataset.seconds);
+        const count = mem.querySelector('[data-mem-count]')!;
+        memShow(mem, 'studying');
+        count.textContent = `${left} s left`;
+        memTimers.set(
+          mem,
+          window.setInterval(() => {
+            left -= 1;
+            count.textContent = `${left} s left`;
+            if (left <= 0) memFinish(mem);
+          }, 1000),
+        );
+      });
+      mem.querySelector('[data-mem-done]')!.addEventListener('click', () => memFinish(mem));
+    }
+
+    // ---------- Clock ----------
+    let tick = 0;
+    function startClock() {
+      clearInterval(tick);
+      tick = window.setInterval(() => {
+        if (saved.state !== 'running') return;
+        if (key.kind === 'mock' && saved.deadline) {
+          const left = (saved.deadline - Date.now()) / 1000;
+          clock.textContent = `${fmtTime(left)} left`;
+          clock.classList.toggle('low', left < 300);
+          if (left <= 0) submit(true);
+          return;
+        }
+        if (document.visibilityState !== 'visible') return;
+        saved.elapsed += 1;
+        clock.textContent = `${fmtTime(saved.elapsed)} · suggested ${key.minutes} min`;
+        if (saved.elapsed % 5 === 0) save();
+      }, 1000);
+    }
+
+    root.querySelector('[data-start]')?.addEventListener('click', () => {
+      saved.deadline = Date.now() + key.minutes * 60_000;
+      setState('running');
+      save();
+      startClock();
+      form.querySelector<HTMLElement>('fieldset input, [data-mem-start]')?.focus();
+    });
+
+    // ---------- Grading ----------
+    function grade() {
+      const topics = new Map<string, { right: number; total: number }>();
+      let right = 0;
+      const marks: { n: number; id: string; res: 'right' | 'wrong' | 'blank' }[] = [];
+      for (const q of key.questions) {
+        const fs = fieldset(q.id);
+        const got = chosen(q.id);
+        const res = !got ? 'blank' : got === q.answer ? 'right' : 'wrong';
+        if (res === 'right') right += 1;
+        const t = topics.get(q.topic) ?? { right: 0, total: 0 };
+        t.total += 1;
+        if (res === 'right') t.right += 1;
+        topics.set(q.topic, t);
+        marks.push({ n: q.n, id: q.id, res });
+
+        fs.classList.remove('is-right', 'is-wrong', 'is-blank');
+        fs.classList.add(`is-${res}`);
+        fs.disabled = true;
+        for (const label of fs.querySelectorAll<HTMLElement>('.opt')) {
+          const v = label.dataset.letter;
+          label.classList.toggle('opt-correct', v === q.answer);
+          label.classList.toggle('opt-wrong', v === got && got !== q.answer);
+        }
+        const fb = fs.querySelector<HTMLElement>('[data-feedback]')!;
+        const head =
+          res === 'right'
+            ? '<p class="fb-head">Correct.</p>'
+            : res === 'wrong'
+              ? `<p class="fb-head">You chose ${shown(q.id, got!)}. The answer is <strong>${shown(q.id, q.answer)}</strong>.</p>`
+              : `<p class="fb-head">Not answered. The answer is <strong>${shown(q.id, q.answer)}</strong>.</p>`;
+        fb.innerHTML = head + q.explanation;
+        fb.hidden = false;
+      }
+      return { right, topics, marks };
+    }
+
+    function showResults(r: ReturnType<typeof grade>) {
+      const pct = Math.round((100 * r.right) / total);
+      $('[data-score]').textContent = `${r.right} / ${total}`;
+      $('[data-pct]').textContent = `${pct}%`;
+      const time = key.kind === 'mock' && saved.deadline ? '' : saved.elapsed ? ` Time: ${fmtTime(saved.elapsed)}.` : '';
+      $('[data-note]').textContent =
+        (pct >= 85
+          ? 'Excellent work. Check the explanations for any you got lucky on.'
+          : pct >= 60
+            ? 'Good. Read the explanations for the ones you missed, then try them again.'
+            : 'Keep going. Read the primer at the top again, then try the wrong ones.') + time;
+      $('[data-jump]').innerHTML = r.marks
+        .map((m) => `<a href="#q-${m.id}" class="jump-${m.res}" aria-label="Question ${m.n}: ${m.res}">${m.n}</a>`)
+        .join('');
+      $('[data-topics]').innerHTML = [...r.topics]
+        .map(([t, v]) => `<tr><td>${t}</td><td>${v.right} / ${v.total}</td><td>${Math.round((100 * v.right) / v.total)}%</td></tr>`)
+        .join('');
+      results.hidden = false;
+      for (const mem of mems) memShow(mem, 'review');
+    }
+
+    function submit(auto = false) {
+      if (saved.state === 'submitted') return;
+      if (saved.state === 'idle') return;
+      if (!auto) {
+        const left = key.questions.filter((q) => !chosen(q.id)).length;
+        if (left && !confirm(`${left} question${left === 1 ? ' is' : 's are'} not answered. Submit anyway?`)) return;
+      }
+      for (const mem of mems) clearInterval(memTimers.get(mem));
+      setState('submitted');
+      const r = grade();
+      saved.score = `${r.right}/${total}`;
+      save();
+      showResults(r);
+      clock.textContent = auto ? "Time's up" : key.kind === 'mock' ? 'Submitted' : `Time: ${fmtTime(saved.elapsed)}`;
+      results.focus();
+      results.scrollIntoView({ block: 'start' });
+    }
+    $$('[data-submit]').forEach((b) => b.addEventListener('click', () => submit()));
+
+    $('[data-retry]').addEventListener('click', () => {
+      for (const q of key.questions) {
+        const fs = fieldset(q.id);
+        if (fs.classList.contains('is-right')) continue;
+        fs.classList.remove('is-wrong', 'is-blank');
+        fs.disabled = false;
+        fs.querySelectorAll<HTMLElement>('.opt').forEach((l) => l.classList.remove('opt-correct', 'opt-wrong'));
+        fs.querySelectorAll<HTMLInputElement>('input').forEach((i) => (i.checked = false));
+        fs.querySelector<HTMLElement>('[data-feedback]')!.hidden = true;
+        delete saved.answers[q.id];
+        shuffleOptions(q);
+      }
+      results.hidden = true;
+      setState('running');
+      if (key.kind === 'mock') saved.deadline = Date.now() + key.minutes * 60_000;
+      save();
+      updateProgress();
+      const first = form.querySelector<HTMLElement>('fieldset:not(.is-right)');
+      first?.scrollIntoView({ block: 'center' });
+      first?.querySelector('input')?.focus();
+    });
+
+    $('[data-reset]').addEventListener('click', () => {
+      if (!confirm('Clear all answers and start this set again?')) return;
+      // A fresh attempt with the options mixed up, so answers can't be remembered by position.
+      const order = saved.order;
+      saved = fresh();
+      saved.order = order;
+      for (const q of key.questions) shuffleOptions(q);
+      save();
+      location.reload();
+    });
+
+    // ---------- Print: answer key on its own page ----------
+    $('[data-print]').addEventListener('click', () => window.print());
+    window.addEventListener('beforeprint', () => {
+      $('[data-print-key]').innerHTML =
+        '<h2>Answer key</h2><ol class="key-list">' +
+        key.questions.map((q) => `<li value="${q.n}"><strong>${shown(q.id, q.answer)}</strong> ${q.explanation}</li>`).join('') +
+        '</ol>';
+    });
+
+    // ---------- Start ----------
+    root.dataset.state = saved.state;
+    if (saved.state === 'submitted') {
+      showResults(grade());
+      clock.textContent = 'Submitted';
+    } else {
+      if (key.kind === 'mock' && saved.state === 'running' && saved.deadline && saved.deadline < Date.now()) submit(true);
+      startClock();
+    }
+    updateProgress();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-quiz]').forEach(init);
+</script>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Inter, Arial, Helvetica, sans-serif">
+<rect width="480" height="320" fill="#cfe8f7"/>
+<rect y="250" width="480" height="70" fill="#d9c9a3"/>
+<rect x="120" y="60" width="8" height="190" fill="#7a5a3a"/><rect x="452" y="60" width="8" height="190" fill="#7a5a3a"/>
+<rect x="110" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M110 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="140" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M140 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="170" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M170 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="200" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M200 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="230" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M230 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="260" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M260 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="290" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M290 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="320" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M320 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="350" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M350 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="380" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M380 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="410" y="40" width="30" height="34" fill="#d93a3a"/>
+<path d="M410 74 q15 14 30 0" fill="#d93a3a"/>
+<rect x="440" y="40" width="30" height="34" fill="#ffffff"/>
+<path d="M440 74 q15 14 30 0" fill="#ffffff"/>
+<rect x="235" y="14" width="110" height="28" rx="4" fill="#2b3a8f"/>
+<text x="290" y="33" font-size="16" font-weight="800" text-anchor="middle" fill="#fff">Stall No. 8</text>
+<rect x="14" y="96" width="150" height="128" rx="4" fill="#24513b" stroke="#7a5a3a" stroke-width="5"/>
+<text x="89" y="126" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f4ea">Apples ₹120/kg</text>
+<text x="89" y="152" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f4ea">Bananas ₹50/dozen</text>
+<text x="89" y="178" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f4ea">Oranges ₹80/kg</text>
+<text x="89" y="204" font-size="13" font-weight="600" text-anchor="middle" fill="#f4f4ea">Mangoes ₹200/kg</text>
+<rect x="170" y="186" width="270" height="16" fill="#9a6b3f"/><rect x="182" y="202" width="10" height="56" fill="#7a5a3a"/><rect x="418" y="202" width="10" height="56" fill="#7a5a3a"/>
+<path d="M190 150 h70 l-8 36 h-54 z" fill="#c98b4a" stroke="#8a5a2a" stroke-width="2"/>
+<circle cx="205" cy="146" r="9" fill="#d33f3f"/>
+<circle cx="222" cy="143" r="9" fill="#d33f3f"/>
+<circle cx="239" cy="146" r="9" fill="#d33f3f"/>
+<circle cx="213" cy="133" r="9" fill="#d33f3f"/>
+<circle cx="231" cy="133" r="9" fill="#d33f3f"/>
+<circle cx="222" cy="122" r="9" fill="#d33f3f"/>
+<path d="M285 150 h70 l-8 36 h-54 z" fill="#c98b4a" stroke="#8a5a2a" stroke-width="2"/>
+<path d="M295 148 q8 -34 26 -30 q-14 6 -18 30 z" fill="#f2c12e" stroke="#c99a10" stroke-width="1"/>
+<path d="M309 148 q8 -34 26 -30 q-14 6 -18 30 z" fill="#f2c12e" stroke="#c99a10" stroke-width="1"/>
+<path d="M323 148 q8 -34 26 -30 q-14 6 -18 30 z" fill="#f2c12e" stroke="#c99a10" stroke-width="1"/>
+<path d="M380 150 h70 l-8 36 h-54 z" fill="#c98b4a" stroke="#8a5a2a" stroke-width="2"/>
+<circle cx="395" cy="146" r="9" fill="#f08a24"/>
+<circle cx="412" cy="143" r="9" fill="#f08a24"/>
+<circle cx="429" cy="146" r="9" fill="#f08a24"/>
+<circle cx="403" cy="133" r="9" fill="#f08a24"/>
+<circle cx="421" cy="133" r="9" fill="#f08a24"/>
+<ellipse cx="300" cy="244" rx="30" ry="13" fill="#6b6b6b"/><circle cx="330" cy="234" r="11" fill="#6b6b6b"/>
+<polygon points="323,226 326,214 331,224" fill="#6b6b6b"/><polygon points="332,224 337,214 339,227" fill="#6b6b6b"/>
+<path d="M271 244 q-18 -4 -14 -18" fill="none" stroke="#6b6b6b" stroke-width="5" stroke-linecap="round"/>
+</svg>

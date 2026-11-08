@@ -1,0 +1,152 @@
+---
+/** Hub for the unlisted practice section. Nothing on the main site links here. */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PracticeHeader from '../../components/practice/PracticeHeader.astro';
+import { PRACTICE_AREAS, PRACTICE_FAMILIES, practiceUrl } from '../../data/practice';
+import '../../styles/practice.css';
+
+const sets = (await getCollection('practice')).sort((a, b) => a.data.part - b.data.part);
+const partsOf = (family: string) => sets.filter((s) => s.data.family === family);
+const totalQs = sets.reduce((n, s) => n + s.data.questions.length, 0);
+const areas = PRACTICE_AREAS.map((a) => ({
+  ...a,
+  families: PRACTICE_FAMILIES.filter((f) => f.area === a.slug && partsOf(f.slug).length),
+})).filter((a) => a.families.length);
+---
+
+<Base title="Practice tests" description="Multiple-choice reasoning and mental-ability practice for Class 7 and 8." noindex bare>
+  <PracticeHeader slot="header" />
+  <div class="practice-page">
+    <h1>Reasoning and mental ability practice</h1>
+    <p class="lede">
+      Multiple-choice practice for Class 7 and 8: numbers, words, memory, shapes and logic. {sets.length} short sets, {totalQs}
+      questions. Each set takes 10 to 15 minutes: a short guide, then questions from easy to hard. Press Submit to see your
+      score and an explanation for every answer. You can also print any set as a worksheet with the answer key on the last
+      page.
+    </p>
+    <p class="muted small">Your answers are saved in this browser only. Nothing is sent anywhere.</p>
+
+    <nav class="area-jump" aria-label="Areas">
+      {areas.map((a) => <a href={`#area-${a.slug}`}>{a.name}</a>)}
+    </nav>
+
+    {
+      areas.map((a) => (
+        <section class="area" aria-labelledby={`area-${a.slug}`}>
+          <h2 id={`area-${a.slug}`}>{a.name}</h2>
+          <p>{a.blurb}</p>
+          <ul class="set-list">
+            {a.families.map((f) => (
+              <li class="set-card family-card">
+                <h3>{f.name}</h3>
+                <ol class="part-links">
+                  {partsOf(f.slug).map((s) => (
+                    <li data-set={s.id}>
+                      <a href={practiceUrl(s.id)}>
+                        <span class="part-no">{a.slug === 'mock' ? 'Test' : 'Part'} {s.data.part}</span>
+                        <span class="part-title">{s.data.title.replace(/^.*?:\s*/, '')}</span>
+                      </a>
+                      <span class="part-meta">
+                        {s.data.questions.length} Qs · {s.data.timeMinutes} min <span class="set-done" data-done />
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<style>
+  .lede {
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .area-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0 0;
+  }
+
+  .area-jump a {
+    padding: 0.35rem 0.8rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: var(--surface);
+  }
+
+  .family-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.02rem;
+  }
+
+  .part-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .part-links li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0 0.6rem;
+    border-top: 1px solid var(--border);
+    padding: 0.35rem 0;
+  }
+
+  .part-links a {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    min-height: 32px;
+    padding: 0.2rem 0;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-strong);
+  }
+
+  .part-links a:hover .part-title {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .part-no {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .part-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  // Show the score on sets this browser has already submitted.
+  document.querySelectorAll<HTMLElement>('[data-set]').forEach((el) => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(`vidyal-practice:${el.dataset.set}`) ?? 'null');
+      if (saved?.state === 'submitted') el.querySelector('[data-done]')!.textContent = saved.score ? `· ${saved.score}` : '· Done';
+    } catch {}
+  });
+</script>

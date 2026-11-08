@@ -1,0 +1,52 @@
+---
+/** Header for the unlisted /practice/ section: links only within the section. */
+import ThemeToggle from '../ThemeToggle.astro';
+---
+
+<header class="practice-header">
+  <div class="ph-inner">
+    <a href="/practice/" class="ph-brand">
+      <span class="wordmark">Vidyal<span class="ai">AI</span></span>
+      <span class="ph-tag">Practice</span>
+    </a>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .practice-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--header-bg);
+  }
+
+  .ph-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 860px;
+    margin-inline: auto;
+    padding: 0.5rem var(--gutter);
+    min-height: 60px;
+  }
+
+  .ph-brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    min-height: 44px;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+
+  .ph-tag {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--muted);
+    padding: 0.1rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+</style>

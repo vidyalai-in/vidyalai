@@ -1,10 +1,10 @@
-// Checks every external link in src/content/blog/*.md. Prints failures; exits 1 if any.
+// Checks every external link in src/content/{blog,practice}/*.md. Prints failures; exits 1 if any.
 // Usage: node scripts/check-links.mjs
 import { readdirSync, readFileSync } from 'node:fs';
 
-const dir = 'src/content/blog';
+const dirs = ['src/content/blog', 'src/content/practice'];
 const urls = new Map(); // url -> [files]
-for (const f of readdirSync(dir).filter((f) => f.endsWith('.md'))) {
+for (const [dir, f] of dirs.flatMap((d) => readdirSync(d).filter((f) => f.endsWith('.md')).map((f) => [d, f]))) {
   const text = readFileSync(`${dir}/${f}`, 'utf8');
   for (const m of text.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) {
     const u = m[1];

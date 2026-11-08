@@ -64,6 +64,8 @@ function firstMatch(text) {
  */
 export function rehypeGlossary() {
   return (tree, file) => {
+    // Practice sets are a separate, unlisted section: no AI glossary terms there.
+    if (String(file?.path ?? '').includes('/content/practice/')) return;
     const self = file?.data?.astro?.frontmatter?.slug;
     const usedOnPage = new Map();
     let used = new Set();
