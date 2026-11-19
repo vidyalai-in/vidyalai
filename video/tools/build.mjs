@@ -234,6 +234,27 @@ function wordTimes(text, d, start) {
   });
 }
 
+// ---------- Visuals on their word ----------
+// A step's visual change normally starts with its narration. `at: "<word or phrase>"` moves it to
+// the moment the narrator says that phrase (its first occurrence in the step), starting AT_LEAD
+// seconds early so the ~0.47 s entrance is under way as the word is heard. The audio doesn't move:
+// the previous step's picture simply stays up until then. Ignored on a scene's first step.
+const AT_LEAD = 0.2;
+const wnorm = (w) => String(w).toLowerCase().replace(/[^a-z0-9.%$]+/g, '').replace(/\.$/, '');
+function placeVisual(v, scene, st, si, ti) {
+  st.visualStart = st.start;
+  if (st.at === undefined) return;
+  const where = `${v.id} scene ${si + 1} step ${ti + 1}`;
+  if (ti === 0) return console.warn(`  WARNING: ${where}: \`at\` is ignored on a scene's first step`);
+  const want = String(st.at).split(/\s+/).map(wnorm).filter(Boolean);
+  const words = st.sentences.flatMap((s) => s.words);
+  const said = words.map((w) => wnorm(w.w));
+  const i = said.findIndex((_, k) => want.every((x, j) => said[k + j] === x));
+  if (!want.length || i < 0) return console.warn(`  WARNING: ${where}: \`at: ${st.at}\` is not in its narration; the visual starts with the step`);
+  const latest = st.start + st.duration - minStep; // leave room for the entrance before the next step
+  st.visualStart = frameRound(Math.min(latest, Math.max(st.start, words[i].start - AT_LEAD)));
+}
+
 // ---------- Pacing checks ----------
 // Viewers leave when the picture stops changing or every scene looks the same. These are warnings:
 // fix them in the script (split the step, add a visual scene) unless there's a reason not to.
@@ -268,15 +289,15 @@ function soundCues(v) {
   v.scenes.forEach((sc, si) => {
     if (si > 0 && (sc.chapter || sc.type === 'brand')) cues.push({ name: 'whoosh', t: Math.max(0, sc.start - 0.3) });
     sc.steps.forEach((st, ti) => {
-      if (ti > 0 && CHANGES.some((k) => st[k] !== undefined) && !st.countdown && !st.reveal && !st.speaker) cues.push({ name: 'pop', t: st.start + 0.03 });
-      if (st.countdown) for (let k = 0; k < st.countdown; k++) cues.push({ name: 'tick', t: st.start + k, db: k === st.countdown - 1 ? 2 : 0 });
-      if (st.reveal) cues.push({ name: 'ding', t: st.start + 0.05 });
+      if (ti > 0 && CHANGES.some((k) => st[k] !== undefined) && !st.countdown && !st.reveal && !st.speaker) cues.push({ name: 'pop', t: st.visualStart + 0.03 });
+      if (st.countdown) for (let k = 0; k < st.countdown; k++) cues.push({ name: 'tick', t: st.visualStart + k, db: k === st.countdown - 1 ? 2 : 0 });
+      if (st.reveal) cues.push({ name: 'ding', t: st.visualStart + 0.05 });
       if (sc.type === 'tokens' && st.show === 'text') {
         const text = sc.text ?? sc.pieces.join('');
         const typeT = sc.typeTime ?? 1.4;
-        for (let k = 0; k < text.length; k++) if (text[k] !== ' ') cues.push({ name: 'type', t: st.start + ((k + 0.5) * typeT) / text.length });
+        for (let k = 0; k < text.length; k++) if (text[k] !== ' ') cues.push({ name: 'type', t: st.visualStart + ((k + 0.5) * typeT) / text.length });
       }
-      if (sc.type === 'tokens' && (st.show === 'pieces' || st.show === 'ids')) sc.pieces.forEach((_, k) => cues.push({ name: 'type', t: st.start + k * 0.14, db: 4 }));
+      if (sc.type === 'tokens' && (st.show === 'pieces' || st.show === 'ids')) sc.pieces.forEach((_, k) => cues.push({ name: 'type', t: st.visualStart + k * 0.14, db: 4 }));
     });
   });
   return cues;
@@ -318,6 +339,7 @@ for (const v of videos) {
     scene.dur = t - scene.start;
   });
   v.total = t;
+  v.scenes.forEach((scene, si) => scene.steps.forEach((st, ti) => placeVisual(v, scene, st, si, ti)));
   lintPacing(v);
   v.sfx = fx.sfx ? soundCues(v) : null;
   if (v.chapters.length && v.chapters[0].start > 0) v.chapters[0].start = 0;
@@ -363,8 +385,9 @@ function sceneSpec(v, scene, si) {
   const timing = {
     dur: scene.dur,
     steps: scene.steps.map((st) => ({
-      t0: rel(st.start),
-      dur: st.duration,
+      t0: rel(st.visualStart), // when the step's picture changes (its `at` word, or the step's start)
+      dur: +(st.start + st.duration - st.visualStart).toFixed(4),
+      sayT0: rel(st.start), // when its narration starts (the speaker bubble follows this)
       say: plain(String(st.say ?? '')),
       speaker: st.speaker,
       speakerLabel: st.speaker ? (voices[st.speaker].label ?? st.speaker) : undefined,

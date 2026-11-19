@@ -718,14 +718,18 @@
   }
 
   // ---------- Overlays: second-voice bubble, burned-in word captions ----------
-  function speakerBubble(t, step) {
+  function speakerBubble(t) {
     const bubble = document.getElementById('speaker');
-    const st = state.timing.steps[step];
+    // Follows the narration, not the picture: a step's `at` can delay its visuals, not its voice.
+    const steps = state.timing.steps;
+    let step = 0;
+    for (let i = 0; i < steps.length; i++) if ((steps[i].sayT0 ?? steps[i].t0) <= t + 1e-6) step = i;
+    const st = steps[step];
     if (!st?.speaker) {
       bubble.style.opacity = '0';
       return '';
     }
-    const g = ease((t - st.t0) / TRANSITION);
+    const g = ease((t - (st.sayT0 ?? st.t0)) / TRANSITION);
     bubble.querySelector('.who').textContent = st.speakerLabel ?? st.speaker;
     bubble.querySelector('.what').textContent = st.say;
     bubble.style.opacity = String(g);
@@ -870,7 +874,7 @@
         document.querySelector('.bg-grid').style.backgroundPosition = `${(globalT * 7).toFixed(2)}px ${(globalT * 3.5).toFixed(2)}px`;
         keys.push(t.toFixed(3));
       }
-      keys.push(speakerBubble(t, step), captions(t), wordPulse(t));
+      keys.push(speakerBubble(t), captions(t), wordPulse(t));
       return keys.join('/');
     },
 

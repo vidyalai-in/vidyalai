@@ -11,7 +11,8 @@ for visuals (screenshotted by headless Chromium), and ffmpeg for encoding. You w
 
 Worked examples: `video/how-llms-work/script.yaml` uses every engagement feature (cold open,
 charts, tokens scene, quizzes, quote card, series map, a second voice, sound effects, Shorts captions
-and loops, three thumbnails); copy its structure for new videos.
+and loops, three thumbnails); copy its structure for new videos. Its two `figure` scenes are the
+optional extra described under "Isometric figures": leave them out of a new video unless asked.
 `video/rag-system-10m-documents/script.yaml` is the older, plainer style.
 
 ## 1. Read before writing
@@ -22,15 +23,53 @@ and loops, three thumbnails); copy its structure for new videos.
    `references/narration.md` (writing for the ear, timing budgets, pronunciation).
 3. Look at the article's diagrams in `public/diagrams/<name>.png` if you plan camera moves on them.
 
-## 2. Plan the videos
+## 2. Write the brief
+
+Planning decides more of a video's quality than any later step, so write `video/<slug>/brief.md`
+(committed, about one screen) before any YAML:
+
+- **Promise**: one sentence: "After this, the viewer can explain / decide / spot ___." If it needs an
+  "and", it's two videos: keep one, and give the other to a Short or leave it to the article.
+- **Viewer**: who it's for and what they should already know. The opening says this in a phrase so
+  the wrong viewer leaves at 0:20, not at 4:00.
+- **The sentence to remember**: the one line the recap ends on.
+- **Teaching shape**, which sets the order of the body:
+  - *one mechanism, layer by layer* (Fundamentals, Inference): open on a question, then peel the
+    mechanism back one layer per chapter.
+  - *a process on one stage* (System Design pipelines): keep one diagram and walk it in the order
+    the data moves.
+  - *parallel points* (mistakes, tradeoffs, misconceptions): 3-5 items, each the same shape, each
+    visually distinct.
+  - *one case to a lesson* (debugging, evaluation stories): a single concrete failure, the hunt,
+    then the general rule.
+- **Claims, not sections**: an article is laid out for scanning and a video plays in time. Ignore
+  the headings and list what the article *proves* that the promise needs, numbered, each with its
+  article section, the scene that will show it, and **core** or **cuttable**. Background sections
+  are usually the first to go.
+- **Left out on purpose**: claims you dropped, so the next video in the series can pick them up
+  instead of repeating them.
+- **Shorts**: the 3 claims to cut Shorts from (see below).
+- **Figures**: "none" unless the user asked for them (see "Isometric figures" below).
+
+## 3. Plan the videos
 
 **Main video** (landscape 1920×1080):
 - Target 8-12 minutes. Narration runs at about 145 words/minute plus ~12% pauses, so budget
   **1,300-1,700 narrated words**. The RAG example is ~1,600 words → 11:02.
 - 6-10 chapters, each 30 s or longer (YouTube needs ≥ 3 chapters, first at 0:00, each ≥ 10 s).
+  One claim per chapter, and title chapters with the viewer's search words ("Why recall drops at
+  10M"), not "Part 2".
+- Long videos lose people around the six-minute mark: in a study of 6.9M lecture-video sessions
+  (Guo, Kim & Rubin, 2014), median watch time stopped growing at about 6 minutes whatever the video's
+  length. Keep chapters to about 2 minutes, and put a re-hook near 5-6 minutes: a `quiz`, a small
+  payoff of the open loop, or a signpost for the second half ("That's the offline side. Now the
+  part that breaks in production.").
+- The first 30 s has four jobs: the hook (the problem, or the striking result itself), the
+  promise, who it's for, and the open loop. Keep ceremony short: the brand scene and the
+  `seriesmap` are one or two brief steps each, since more than about 5 s of branding reads as filler.
 - Open cold: the hook (a `tokens` demo, a striking number) comes **before** the brand scene, then an
   open loop (a payoff promised for later), then a `seriesmap` placing this part in its series.
-- Follow the article's arc. System Design posts: hook → the core idea → requirements → design (with
+- Follow the brief's teaching shape, which usually matches the article's arc. System Design posts: hook → the core idea → requirements → design (with
   diagrams and numbers) → measurement → tradeoffs → common mistakes → recap. Explainer posts
   (Fundamentals, Inference): "Why it matters" → hook; "The intuition" → an analogy scene; the
   how-it-works sections → the body; "Common misconceptions" → a myth-vs-fact scene; "Key takeaways"
@@ -40,26 +79,35 @@ and loops, three thumbnails); copy its structure for new videos.
   12 s `teaser` naming it if it isn't; see `references/script-format.md`).
 - Adapt, don't read: drop "Further reading" (it goes in the description), turn tables into
   `chart`/`compare`/`budget`/`stats` scenes, and cut detail the visuals already carry.
+- Each scene proves one thing. If you can't say in one line what a scene shows, split it. Pick a
+  visual for its job: a diagram reveals a mechanism, a chart proves a claim, motion shows what
+  changes. Motion that only keeps the screen busy is noise.
 - Engagement: turn on `fx` (drift, wordSync, sfx, shortsCaptions). Leave `music` off: a bed was
   tried on the Fundamentals Part 1 video and the owner found it added little under narration. Every 60-90 s, break the
   explanation with something different: a chart that animates, a `tokens` demo, a `quiz` (one or two
   per video), a `quote` card, a diagram `flow`. Put misconceptions in the mouth of a second voice.
   Offer 2-3 `thumbnail` designs for YouTube's Test & compare.
-- Isometric `figure` scenes (the `anatomy` skill's style: a real machine whose working is the idea)
-  cost about an hour each to build, so use them only where they carry the most: the one scene that
-  walks through the whole mechanism, and at most one or two others where motion is the point (e.g.
-  sampling and temperature). Everything else stays as charts, tokens and diagrams. See `figure` in
-  `references/script-format.md`.
+
+**Isometric figures (optional, off by default)**: a `figure` scene (the `anatomy` skill's style: a
+real machine whose working is the idea) takes about an hour to build, so a video has none unless
+the user asks for one. Without them, show the mechanism walkthrough as a `diagram` with
+`flow` steps (one per block, plus `follow` on wide pipelines), and motion-heavy ideas with `chart`
+morphs and `tokens` scenes; that is a complete video, not a lesser one. If one scene would clearly
+gain from a figure (a whole-mechanism walkthrough, or an idea where motion is the point, such as
+sampling and temperature), mention it to the user as an option with the hour it costs, and build it
+only on a yes. When asked for figures, use at most one or two per video. See `figure` in
+`references/script-format.md`.
 
 **Shorts** (portrait 1080×1920, 3 per article):
 - Each one stands alone, opens with a hook in the first sentence, and makes **one** point.
 - 60-120 narrated words → 25-50 s. Hard limit: under 60 s (the build warns).
 - Pick the three strongest of these sources: a striking number (sizing math), a counter-intuitive rule, a common bug, a
-  latency or cost budget. End on a complete sentence that echoes the hook (see narration.md), with
+  latency or cost budget. Viewers decide within a second or two whether to keep watching, so open on
+  the payoff or the number itself, with no setup. End on a complete sentence that echoes the hook (see narration.md), with
   or without an `outro` scene pointing to vidyal.ai. Never end on a trailing half-sentence.
 - With `fx.shortsCaptions`, words are burned in above the Shorts UI; keep 2-4 s beats.
 
-## 3. Write `video/<slug>/script.yaml`
+## 4. Write `video/<slug>/script.yaml`
 
 Use `slug` = the article's slug. Match the article's series in the title suffix, summary and
 kickers (see "Series" in `references/script-format.md`). Fill `youtube:` (title ≤ 100 chars, 2 alternatives, summary
@@ -73,8 +121,27 @@ Rules that bite:
   the build converts it for speech (ranges, units, k/M/B, and `video/tools/lexicon.json`).
   Add per-video pronunciations under `lexicon:` when a term is misread.
 - One sentence should never need a comma-separated list of more than ~4 items. Split it.
+- Put a `# cuttable` comment on scenes the brief marked cuttable, so trimming is decided before
+  the build, not argued after it.
 
-## 4. Build and review
+Before building, check the narration on its own:
+
+```sh
+node video/tools/narration.mjs video/<slug>          # every say line in order, word counts, runtimes
+```
+
+1. **Listen-only pass.** Read the output as if the screen were off. Every line must still teach:
+   captions, transcripts and anyone listening without looking get only this text. Lines marked `!`
+   point at the screen ("as you can see here"); say what is there instead ("the bar for Paris
+   jumps to 85%"). Lines marked `~` reveal an item 2 s or more before the narration names it: add
+   the suggested `at:` (or split the step, on a scene's first step). Also fix logic breaks: a step that ends on A, then the next starts on C without
+   the sentence that connects them.
+2. **Budget.** If the main video is over 1,700 words or a Short over 120, cut `# cuttable` scenes
+   first, then sentences that repeat what the screen already shows.
+3. **Humanize.** Run the `humanizer` skill over the `say` lines only, never over numbers, terms,
+   quotes from the article, or on-screen text. Then re-run the listen-only pass.
+
+## 5. Build and review
 
 ```sh
 node video/tools/preview.mjs video/<slug> main 5:2 6:1      # stills of scene:step, 1-based (fast)
@@ -101,23 +168,32 @@ Review every build, don't trust it blind:
 2. Open `video/<slug>/out/<id>-contact.png` (16 frames per video) and check layout: nothing
    clipped, nothing overlapping, text readable, diagrams framed on what the narration is about.
 3. Spot-check frames at specific times with
-   `ffmpeg -ss <sec> -i out/<file>.mp4 -frames:v 1 frame.png` and look at them.
-4. Check loudness (target about -14 to -15 LUFS, true peak under -1 dB):
+   `ffmpeg -ss <sec> -i out/<file>.mp4 -frames:v 1 frame.png` and look at them. Most viewers watch
+   on a phone, so also check the densest frames at phone size
+   (`ffmpeg -ss <sec> -i out/main.mp4 -frames:v 1 -vf scale=640:-1 small.png`): every label must
+   still be readable, and colour must never be the only thing carrying a meaning.
+4. **Does it teach?** Go through the `narration.mjs` output next to the contact sheet and a frame
+   from each chapter, and check: the opening raises a question or a surprise; the core idea is clear
+   by the second content scene; every body scene moves one claim forward; each reveal is on screen
+   while the narration names it (a frame a second into the step); the recap ends on the brief's
+   sentence to remember; every number matches the article.
+5. Check loudness (target about -14 to -15 LUFS, true peak under -1 dB):
    `ffmpeg -i out/<file>.mp4 -af ebur128=peak=true:framelog=quiet -f null - 2>&1 | grep -E ' I:| Peak:'`.
-5. Check the pauses are silent in the narration stem, `out/<id>.narration.wav` (the final mix adds
+6. Check the pauses are silent in the narration stem, `out/<id>.narration.wav` (the final mix adds
    sound effects): render a spectrogram of any 10 s
    (`ffmpeg -ss 140 -t 10 -i out/main.narration.wav -lavfi showspectrumpic=s=1600x400:scale=log spec.png`)
    and look at it. Gaps between sentences should be near-black (below about -90 dB). Bright noise in
    the gaps means something is amplifying the TTS noise floor; never put `loudnorm` or any other
    dynamic gain/compression on the narration (the build uses one static gain plus a limiter).
-6. If the user reports a mispronounced word, follow "Matching a pronunciation" in
+7. If the user reports a mispronounced word, follow "Matching a pronunciation" in
    `references/narration.md`, then re-check the rebuilt clips with `video/tools/phonemes.py`.
-7. Re-read `youtube/main/description.txt` and the chapter titles.
+8. Re-read `youtube/main/description.txt` and the chapter titles.
 
-## 5. Outputs and hand-off
+## 6. Outputs and hand-off
 
 | Path | Committed | What |
 |---|---|---|
+| `video/<slug>/brief.md` | yes | Promise, viewer, teaching shape, claims kept and left out |
 | `video/<slug>/script.yaml` | yes | The source of truth |
 | `video/<slug>/youtube/` | yes | `UPLOAD.md` checklist; `main/` title, description, chapters, tags, captions, thumbnail, pinned comment; `shorts/<id>/` title, description, captions |
 | `video/<slug>/youtube/main/cards.txt` | yes | Times where the narration names another part, for YouTube cards (manual) |
@@ -138,8 +214,19 @@ with `! node video/tools/upload.mjs auth`. Setup, release steps and quota limits
 
 A few days after a video is public, run `node video/tools/upload.mjs analytics video/<slug>`: it
 pulls the audience-retention curve, maps it onto the scenes, and writes `youtube/main/retention.md`
-(the scenes losing viewers fastest). Use it when writing the next script. It needs the
-`yt-analytics.readonly` scope: if the saved sign-in predates it, the user re-runs `upload.mjs auth`.
+(the scenes losing viewers fastest). It needs the `yt-analytics.readonly` scope: if the saved
+sign-in predates it, the user re-runs `upload.mjs auth`.
+
+Use it when writing the next script. For each steep drop, find the step it lands on in
+`narration.mjs` output and name the cause, in this order:
+1. **A logic break**: the step before ended on A and this one opens on C; the sentence connecting
+   them was never said.
+2. **A density drop**: the step repeats what the screen already showed, or takes three sentences
+   over a point that needed one.
+3. **An unspeakable line**: too long, too written, or too tangled to say in one breath.
+Grade each cause high (viewers probably leave here), medium (attention drifts) or low, and put the
+high ones in the next video's brief as things to avoid. A drop at a chapter boundary or in the last
+15 % is normal and needs no fix.
 
 When the user shares the published video's link (or `publish` prints it), embed it in the article: add
 `video: { youtube: "<ID>", duration: "<m:ss>" }` to the post's frontmatter and copy

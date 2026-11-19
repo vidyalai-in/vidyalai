@@ -9,6 +9,9 @@
 - Open with a concrete hook (a number, a scenario), not "In this video", and put it **before** the
   brand scene: the first narration should start within 1-2 seconds. State the core idea in the first
   45 seconds.
+- Name the problem in the viewer's own words (the symptom, the question they'd type into a search
+  box), not the article's terms for it. In the first 30 s, also say who it's for in a phrase ("if
+  you've built a RAG demo and wondered why it falls apart at scale"), so the right viewers stay.
 - Open a loop in the first minute: promise a specific payoff that comes later ("by the end, you'll
   know why a model 100 times smaller won"), and pay it off where the article does.
 - Change the picture every 4-6 seconds. Keep steps to one or two sentences and give each step a visual
@@ -22,8 +25,26 @@
 - Signpost: "First…", "Second…", "Now the online side." Viewers can't scroll back.
 - Each step's narration should match what appears on screen during it. Introduce an item in the
   same step that reveals it.
+- Land each reveal on its word. A step's visual change animates in as its narration starts, so open
+  the step with the words that name what appears: "Recall at 50 drops by half", not "Now, the next
+  thing worth looking at is recall at 50". If the name has to come late in the sentence, split the
+  sentence and put the reveal on the second step, or keep the sentence and add `at: "<word>"`
+  to the step (see `script-format.md`), which starts the visual on that word.
+- Never point at the screen. "As you can see here", "this one", "look at that" mean nothing in the
+  captions, the transcript, or to someone listening without looking. Say what is there: "The bar for
+  Paris jumps to 85%." `video/tools/narration.mjs` flags the common cases with `!`.
+- Don't read on-screen text word for word: a viewer can't read and listen to the same words at
+  once. The bullet carries the label; the narration says it as a full sentence and adds the why.
+- Leave room after a result. When a chart lands or a quiz reveals, give the viewer a moment to
+  read it: end the step on a short sentence, or follow it with a silent step (`hold: 1.5`).
+  Filling every second with talk is the most common pacing fault.
+- For `code` scenes, say what the block does first, then show it and let it sit. Narration that
+  competes with reading code loses both.
 - No filler ("let's dive in", "without further ado"), no hype ("revolutionary"), no claims beyond
   the article.
+- The `say` text is the final audio: there is no second take to fix a misread line. Read it as the
+  voice will (after the conversions below) and watch for places the default reading will get wrong:
+  a stress that changes the meaning, a pause the comma doesn't give, a term the lexicon doesn't know.
 
 ## Written form in, speech out
 

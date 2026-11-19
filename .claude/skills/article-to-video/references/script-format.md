@@ -75,9 +75,34 @@ Common step fields:
 |---|---|
 | `say` | Narration, one or more sentences, written form (see narration.md) |
 | `hold` | Seconds to show a step that has no `say` (default 2.5) |
+| `at` | Start this step's visual change when the narrator says this word or phrase (first match in the step's `say`), not when the step's narration starts. See below |
 | `animate: true` | Force an entrance animation on a step with no visual change |
 | `minDuration` | Hold the step at least this many seconds (the end card uses 20) |
 | `speaker` | Read this step in a second voice from `voices:`, with a speech bubble showing the line |
+
+### Landing a visual on its word (`at`)
+
+A step's visual change (a new bullet, a card, a camera move, a chart morph, a `flow`) normally
+starts with the step's narration. When the thing it shows is named later in the sentence, add
+`at` so it arrives on that word instead:
+
+```yaml
+- add: { value: "5.7%", label: "baseline" }
+  at: the baseline          # the card counts up as the narrator says "the baseline"
+  say: Measured as the top-20 retrieval failure rate, the baseline was 5.7%.
+```
+
+- The value is a word or phrase from the step's `say`, in written form, case and punctuation
+  ignored. The first match wins; use a longer phrase to pick a later one.
+- The change starts 0.2 s before the word, so its 0.47 s entrance is under way as it's heard. The
+  sound effect moves with it. The narration doesn't move: the previous step's picture stays up
+  until then, and a `speaker` bubble still follows the voice.
+- The build warns if the phrase isn't in the narration (the change then starts with the step).
+- Not on a scene's first step: the heading enters with it, so delaying it would leave a blank
+  scene. If a scene's first item is named late, give the first step only the lead-in sentence and
+  reveal the item on the next step, with `at` if needed.
+- `node video/tools/narration.mjs video/<slug>` lists reveals named 2 s or more into their step
+  with `~`, and suggests the word.
 
 ## Scene types
 
@@ -136,7 +161,10 @@ the width and height, and preview with `node video/tools/preview.mjs video/<slug
 Wide diagrams (e.g. 7:1) are unreadable whole at 1080p; show the whole once as an establishing shot,
 then focus on 2-4 nodes at a time.
 
-### `figure`
+### `figure` (optional)
+Build one only when the user asks for it: each takes about an hour (see "Isometric figures" in
+`SKILL.md`). A `diagram` with `flow` steps covers the same walkthrough without one.
+
 An interactive-style isometric figure (a bench machine drawn with `video/tools/iso/`, the `anatomy`
 skill's kit) whose moving parts are posed from the scene clock. Each figure is a build script next
 to the video, `video/<slug>/figures/<name>.mjs`, which writes `<name>.json` (run it after editing;
