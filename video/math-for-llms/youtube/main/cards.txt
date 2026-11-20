@@ -1,0 +1,3 @@
+09:55  Part 7: Derivatives, Gradients and the Chain Rule  ->  not on YouTube yet (use the The Math Behind LLMs playlist, or skip)
+10:22  Part 3: Matrices as Transformations  ->  not on YouTube yet (use the The Math Behind LLMs playlist, or skip)
+11:20  Part 2: Vectors and Dot Products  ->  not on YouTube yet (use the The Math Behind LLMs playlist, or skip)

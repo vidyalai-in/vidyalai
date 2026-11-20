@@ -1,0 +1,35 @@
+1
+00:00:00,150 --> 00:00:05,025
+A famous rule for LLM cost is five
+times off at long context.
+
+2
+00:00:06,050 --> 00:00:09,800
+The rule says a token costs 2
+FLOPs per parameter.
+
+3
+00:00:10,100 --> 00:00:14,175
+For Llama 3.1 8B, about 16 billion.
+
+4
+00:00:14,783 --> 00:00:18,083
+At 1,000 tokens of context, that's close.
+
+5
+00:00:18,383 --> 00:00:21,408
+The real count is 15.5 billion.
+
+6
+00:00:22,417 --> 00:00:29,117
+At 128,000 tokens, it's 82 billion, because
+attention grows with context.
+
+7
+00:00:30,117 --> 00:00:33,742
+Two times parameters is a rule
+for short contexts.
+
+8
+00:00:34,042 --> 00:00:36,892
+At long context, it's five times off.

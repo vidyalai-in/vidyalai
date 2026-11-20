@@ -1,0 +1,11 @@
+00:00 One calculation
+00:54 Scalars, vectors, matrices, tensors
+02:09 The dot product
+02:35 Matrix multiplication
+03:17 The shape rule
+04:57 The shapes inside Llama 3.1 8B
+07:20 2 × parameters, and where it breaks
+08:54 Reading einsum
+09:42 Common misconceptions
+10:25 Four toolkits, 16 parts
+10:54 Recap

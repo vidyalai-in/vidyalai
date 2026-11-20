@@ -1,0 +1,1 @@
+math for LLMs, linear algebra for machine learning, matrix multiplication, dot product, tensors explained, tensor shapes, Llama 3.1 8B, FLOPs, einsum, transformer, large language model, machine learning math, AI explained

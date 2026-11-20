@@ -1,0 +1,35 @@
+To write a single token, Llama 3.1 8B does about 15.5 billion arithmetic operations, and more than 99.9% of them are one calculation: multiply two lists position by position and add up the results. This video builds the math to follow all of it from high-school algebra: scalars, vectors, matrices and tensors, the dot product, matrix multiplication and the one shape rule worth memorizing, and how to count the arithmetic (about 2mkn FLOPs). Then it follows real data through one forward pass of Llama 3.1 8B, from token IDs to 128,256 scores, tracking the shape and cost of every step, checks the "2 FLOPs per parameter" rule of thumb (and where it breaks at long context), and shows how to read einsum strings like "btd,df→btf".
+
+Part 1 of The Math Behind LLMs series from VidyalAI.
+
+📖 Read the full article (with every number and source): https://vidyal.ai/blog/math-for-llms/
+📚 The whole series, The Math Behind LLMs: https://vidyal.ai/series/llm-math/
+
+Chapters
+00:00 One calculation
+00:54 Scalars, vectors, matrices, tensors
+02:09 The dot product
+02:35 Matrix multiplication
+03:17 The shape rule
+04:57 The shapes inside Llama 3.1 8B
+07:20 2 × parameters, and where it breaks
+08:54 Reading einsum
+09:42 Common misconceptions
+10:25 Four toolkits, 16 parts
+10:54 Recap
+
+Sources and further reading
+• The Llama 3 Herd of Models (Llama Team, 2024): https://arxiv.org/abs/2407.21783
+• Llama 3.1 8B config.json (Hugging Face): https://huggingface.co/unsloth/Meta-Llama-3.1-8B/blob/main/config.json
+• Hugging Face Llama modeling code: https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/modeling_llama.py
+• Scaling Laws for Neural Language Models (Kaplan et al., 2020): https://arxiv.org/abs/2001.08361
+• torch.einsum (PyTorch docs): https://docs.pytorch.org/docs/stable/generated/torch.einsum.html
+• torch.nn.Linear (PyTorch docs): https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html
+• Mathematics for Machine Learning (Deisenroth, Faisal & Ong, 2020): https://mml-book.github.io/
+• Essence of linear algebra (3Blue1Brown): https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab
+• Let's build GPT: from scratch, in code, spelled out (Andrej Karpathy, 2023): https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#LLM #Math #MachineLearning

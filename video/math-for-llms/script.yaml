@@ -1,0 +1,555 @@
+# Video script for "The Math You Need for LLMs, and the Shapes Inside One" (The Math Behind LLMs, Part 1).
+# Format reference: .claude/skills/article-to-video/references/script-format.md
+# Plan: video/math-for-llms/brief.md
+# Build: node video/tools/build.mjs video/math-for-llms
+
+slug: math-for-llms
+article: src/content/blog/m01-math-for-llms.md
+voice: af_heart
+speed: 1.05
+
+fx:
+  drift: true
+  wordSync: true
+  sfx: true
+  shortsCaptions: true
+
+voices:
+  skeptic: { voice: am_michael, label: "The skeptic" }
+
+lexicon:
+  FLOPs: flops
+  FLOP: flop
+  MLP: M L P
+  einsum: ine sum
+  Einsum: Ine sum
+  SUMPRODUCT: sum product
+  PyTorch: pie torch
+  btd: B T D
+  df: D F
+  btf: B T F
+  2mkn: 2 M K N
+  "Llama 3.1 8 billion": "Llama 3 point 1, 8 B"
+
+youtube:
+  title: "The Math You Need for LLMs: Vectors, Matrices and Shapes | The Math Behind LLMs"
+  altTitles:
+    - "15.5 Billion Operations per Token: The One Calculation Inside Every LLM"
+    - "Matrix Multiplication for LLMs, Explained with Llama 3.1 8B"
+  summary: |
+    To write a single token, Llama 3.1 8B does about 15.5 billion arithmetic operations, and more than 99.9% of them are one calculation: multiply two lists position by position and add up the results. This video builds the math to follow all of it from high-school algebra: scalars, vectors, matrices and tensors, the dot product, matrix multiplication and the one shape rule worth memorizing, and how to count the arithmetic (about 2mkn FLOPs). Then it follows real data through one forward pass of Llama 3.1 8B, from token IDs to 128,256 scores, tracking the shape and cost of every step, checks the "2 FLOPs per parameter" rule of thumb (and where it breaks at long context), and shows how to read einsum strings like "btd,df->btf".
+
+    Part 1 of The Math Behind LLMs series from VidyalAI.
+  tags:
+    - math for LLMs
+    - linear algebra for machine learning
+    - matrix multiplication
+    - dot product
+    - tensors explained
+    - tensor shapes
+    - Llama 3.1 8B
+    - FLOPs
+    - einsum
+    - transformer
+    - large language model
+    - machine learning math
+    - AI explained
+  hashtags: ["#LLM", "#Math", "#MachineLearning"]
+  pinnedComment: |
+    Quick check: what shape does (8000 × 4096) times (4096 × 14336) give? Answer in the replies.
+    The full article, with every number, the shape table and runnable code: https://vidyal.ai/blog/math-for-llms/
+
+thumbnail:
+  - title: "LLMs Are **Dot Products**"
+    badge: "99.9% of the math"
+  - title: "**15.5B** Ops per Token"
+    badge: "Llama 3.1 8B"
+  - title: "The Shapes **Inside** an LLM"
+    badge: "High-school math"
+
+main:
+  scenes:
+    # ---------- Cold open: the hook comes before the brand ----------
+    - type: stats
+      chapter: One calculation
+      heading: Llama 3.1 8B, writing **one token**
+      steps:
+        - say: To write a single token, Llama 3.1 8B does a lot of arithmetic.
+        - add: { value: "15.5B", label: arithmetic operations }
+          say: About 15.5 billion operations.
+        - add: { value: "> 99.9%", label: "are one calculation", count: false }
+          at: "99.9%"
+          say: >-
+            More than 99.9% of them are one calculation. Multiply two lists of numbers, position by
+            position, and add up the results.
+
+    - type: statement
+      text: "A twelve-year-old can do it on **paper**."
+      sub: "The hard part is the bookkeeping."
+      subStep: 1
+      steps:
+        - say: A twelve-year-old can do that on paper.
+        - say: >-
+            The hard part is bookkeeping. Billions of numbers, in grids of different sizes, and knowing
+            which grid is which.
+
+    - type: statement
+      text: "By the end: read `btd,df->btf`"
+      sub: "…and know the shape it makes, and what it costs."
+      subStep: 1
+      steps:
+        - say: By the end of this video, you'll be able to read an einsum line from real model code.
+        - say: And say what shape it produces, and how much arithmetic it costs.
+
+    - type: brand
+      steps: [{ hold: 1.6 }]
+
+    - type: seriesmap
+      kicker: The Math Behind LLMs · Part 1
+      heading: The Math You Need for **LLMs**
+      steps:
+        - say: >-
+            This is Part 1 of a 16-part series on the math inside language models. If you remember
+            high-school algebra, that's enough.
+
+    # ---------- Four objects ----------
+    - type: bullets
+      chapter: Scalars, vectors, matrices, tensors
+      heading: Four **objects**, one spreadsheet
+      numbered: true
+      steps:
+        - say: Start with a spreadsheet.
+        - add: { text: "Scalar: one cell", sub: "a single number, like a temperature of 0.7" }
+          say: One cell holds a single number. That's a **scalar**.
+        - add: { text: "Vector: a column", sub: "one token in Llama is 4,096 numbers" }
+          say: A column is an ordered list of numbers, a vector. Llama turns each token into a vector of 4,096 numbers.
+        - add: { text: "Matrix: a sheet", sub: "rows first, then columns" }
+          say: A whole sheet, with rows and columns, is a matrix. Almost every learned weight lives in one.
+        - add: { text: "Tensor: a workbook", sub: "a block of numbers with any number of axes" }
+          say: >-
+            And a workbook of identical sheets is a tensor with three axes. In general, a tensor is a
+            block of numbers with any number of axes.
+
+    - type: stats
+      heading: A shape is a list of **sizes**
+      steps:
+        - say: The list of axis sizes is the tensor's **shape**.
+        - add: { value: "(2, 5, 4096)", label: "2 sentences · 5 tokens · 4,096 numbers", count: false }
+          say: Two sentences of five tokens, each token 4,096 numbers, make a tensor of shape 2, 5, 4,096.
+        - add: { value: "40,960", label: numbers in all }
+          at: multiply
+          say: To count its numbers, multiply the sizes. That's 40,960.
+
+    - type: bullets # cuttable
+      heading: Where the spreadsheet **breaks**
+      style: warn
+      steps:
+        - say: The analogy breaks in three places.
+        - add: { text: The columns have no names, sub: "no single number means “price”" }
+          say: A model's 4,096 numbers have no names, and one rarely means anything you could label.
+        - add: { text: Attention juggles five axes, sub: spreadsheets stop at three }
+          say: The attention code inside Llama juggles five axes.
+        - add: { text: Nobody typed the numbers in, sub: all 8 billion were learned }
+          say: And nobody typed the numbers in. All 8 billion were learned in training.
+
+    # ---------- The dot product ----------
+    - type: stats
+      chapter: The dot product
+      heading: "[1, 2, 3] · [7, 9, 11]"
+      steps:
+        - say: >-
+            Now the one operation. The **dot product** takes two lists of the same length, multiplies
+            them position by position, and adds up the results.
+        - add: { value: "7", label: "1 × 7" }
+          say: One times seven is 7.
+        - add: { value: "18", label: "2 × 9" }
+          say: Two times nine is 18.
+        - add: { value: "33", label: "3 × 11" }
+          say: Three times eleven is 33.
+        - add: { value: "58", label: added up }
+          say: Add them up, and the dot product is 58. In a spreadsheet, that's the SUMPRODUCT formula.
+
+    - type: code
+      chapter: Matrix multiplication
+      heading: "Two **matrices**"
+      code: |
+        A = [ 1  2  3 ]        B = [  7   8 ]
+            [ 4  5  6 ]            [  9  10 ]
+                                   [ 11  12 ]
+
+        # A is 2 × 3 (rows first)   B is 3 × 2
+      caption: "Multiply A by B"
+      captionStep: 1
+      steps:
+        - say: >-
+            A matrix multiply is that same formula, filled across a grid. Take a 2 by 3 matrix, A,
+            with rows 1, 2, 3 and 4, 5, 6.
+        - say: And a 3 by 2 matrix, B, with columns 7, 9, 11 and 8, 10, 12.
+
+    - type: stats
+      heading: "A × B is a **grid** of dot products"
+      steps:
+        - say: Each entry of the answer is one dot product, a row of A with a column of B.
+        - add: { value: "58", label: "row 1 · col 1" }
+          say: Row 1 with column 1 is our 58.
+        - add: { value: "64", label: "row 1 · col 2" }
+          say: Row 1 with column 2 gives 64.
+        - add: { value: "139", label: "row 2 · col 1" }
+          say: Row 2 with column 1 gives 139.
+        - add: { value: "154", label: "row 2 · col 2" }
+          say: And row 2 with column 2 gives 154. Four entries, four dot products.
+
+    - type: statement
+      chapter: The shape rule
+      text: "(m × k) times (k × n) → (m × n)"
+      sub: "The inner sizes must match, and they disappear."
+      subStep: 1
+      steps:
+        - say: >-
+            A dot product needs two lists of the same length. So a row of the first matrix must be as
+            long as a column of the second. That gives the one rule worth memorizing.
+        - say: The inner sizes must match, and they disappear. The outer sizes survive.
+
+    - type: quiz
+      question: "(3 × 2) times (2 × 3) gives a matrix of what shape?"
+      options: ["2 × 2", "3 × 3", "It doesn't work"]
+      answer: 1
+      explain: "The inner 2s match and vanish; the outer 3 and 3 survive"
+      steps:
+        - say: Your turn. Our example was 2 by 3, times 3 by 2, which gave 2 by 2. Flip the order. What comes out?
+        - countdown: 4
+        - reveal: true
+          say: >-
+            3 by 3. The inner sizes are both 2, so it works, but the result is a different size. Order
+            matters in matrix multiplication.
+
+    - type: statement
+      text: "Cost ≈ **2mkn** FLOPs"
+      sub: "m × n entries, each k multiplies and k adds"
+      subStep: 1
+      steps:
+        - say: The shape also tells you the cost. The result has m times n entries.
+        - say: Each is a dot product of length k, so k multiplications and k additions.
+        - say: Each one is called a FLOP, a floating-point operation. So about 2mkn FLOPs in all.
+
+    - type: stats
+      heading: "Llama's query projection: (… × 4,096) times (4,096 × 4,096)"
+      steps:
+        - say: >-
+            A real one. Llama 3.1 8B's query projection multiplies each token's 4,096 numbers by a
+            4,096 by 4,096 matrix.
+        - add: { value: "33.6M", label: "FLOPs for 1 token" }
+          say: For one token, that's 33.6 million FLOPs.
+        - add: { value: "268B", label: "FLOPs for 8 prompts of 1,000 tokens" }
+          at: eight prompts
+          say: For eight prompts of 1,000 tokens, stacked into 8,000 rows, it's 268 billion.
+        - add: { value: "1", label: "copy of the weights, reused 8,000 times", count: false }
+          say: >-
+            Only m changed. The weights didn't change at all. They're reused 8,000 times, which is
+            why GPUs like big batches.
+
+    # ---------- Inside Llama 3.1 8B ----------
+    - type: bullets
+      chapter: The shapes inside Llama 3.1 8B
+      heading: Seven numbers set **every** shape
+      steps:
+        - say: Now let's follow real data through Llama 3.1 8B. Every shape in it comes from a handful of numbers in its config file.
+        - add: { text: "4,096 numbers per token", sub: "the model width, d" }
+          say: Each token is a vector of 4,096 numbers.
+        - add: { text: "32 blocks, 32 query heads of 128", sub: "32 × 128 = 4,096" }
+          say: There are 32 blocks, each with 32 query heads of 128 numbers.
+        - add: { text: "8 key and value heads", sub: "each shared by 4 query heads" }
+          say: Keys and values get only 8 heads, each shared by 4 query heads. That's called grouped-query attention.
+        - add: { text: "14,336 wide inside the MLP", sub: "and 128,256 tokens in the vocabulary" }
+          say: The MLP inside each block is 14,336 wide. And the vocabulary has 128,256 tokens.
+
+    - type: diagram
+      heading: One forward pass, in **shapes**
+      diagram: m01-shape-flow
+      steps:
+        - say: >-
+            Here's the whole trip, in shapes. B is the number of sequences in the batch, and T is the
+            number of tokens in each.
+        - focus: [0, 0.22, 0.58, 0.56]
+          flow: [IDS, EMB, X]
+          flowTime: 2.4
+          say: >-
+            Token IDs, B by T, go through the embedding lookup. That's a copy, with zero arithmetic.
+            Out comes the stream: B by T by 4,096.
+        - focus: [0.5, 0, 0.4, 0.41]
+          flow: [X, QKV]
+          flowTime: 1.2
+          say: >-
+            Inside each block, the query projection's 4,096 numbers are cut into 32 heads of 128. That's
+            a reshape, with no arithmetic. Keys and values get 8 heads.
+        - flow: [QKV, S]
+          flowTime: 1.2
+          at: compares
+          say: >-
+            Then each head compares a token with every visible token. That's a T by T grid of scores
+            per head, the only place where tokens meet.
+        - focus: [0.5, 0.36, 0.4, 0.62]
+          flow: [S, O, GU]
+          flowTime: 2.4
+          say: >-
+            The values are mixed and projected back to 4,096. Then the MLP widens each token to
+            14,336 numbers.
+        - flow: [GU, D]
+          flowTime: 1.2
+          say: >-
+            And brings it back down to 4,096. A block takes in B by T by 4,096, and hands out exactly
+            the same shape. That's why 32 identical blocks can be stacked.
+        - focus: [0.55, 0.2, 0.45, 0.6]
+          highlight: [LOG]
+          say: After the last block, an output table turns each token into 128,256 scores, one for every token in the vocabulary.
+        - focus: [0.5, 0.08, 0.4, 0.34]
+          highlight: [S]
+          say: The scores grid grows with T squared, and every other tensor grows with B times T.
+
+    - type: chart
+      heading: Where the **weight** arithmetic goes
+      unit: "%"
+      decimals: 0
+      max: 100
+      note: Share of the FLOPs spent on weight matrices, Llama 3.1 8B
+      bars:
+        - { label: MLP, value: 75 }
+        - { label: Attention projections, value: 18 }
+        - { label: Output table, value: 7 }
+      steps:
+        - say: Count the FLOPs of every step, and one part dominates.
+        - highlight: MLP
+          say: >-
+            The three MLP matrices do 75% of the arithmetic spent on weights. The attention projections
+            do 18%, and the output table 7%.
+
+    # ---------- The rule of thumb ----------
+    - type: quiz
+      chapter: "2 × parameters, and where it breaks"
+      question: "Llama 3.1 8B has **8.03B** parameters. FLOPs per token, by the rule of thumb?"
+      options: ["8 billion", "16 billion", "64 billion"]
+      answer: 1
+      explain: "2 per parameter: one multiply and one add per weight"
+      steps:
+        - say: >-
+            Here's a shortcut people use. Llama 3.1 8B has 8.03 billion parameters. How many FLOPs per
+            token does the rule of thumb predict?
+        - countdown: 4
+        - reveal: true
+          say: About 16 billion. Two FLOPs per parameter, one multiply and one add for every weight.
+
+    - type: chart
+      heading: Checking the **shortcut**
+      unit: B
+      decimals: 2
+      max: 18
+      note: "Llama 3.1 8B, FLOPs per token at 1,000 tokens of context"
+      bars:
+        - { label: "2 × parameters", value: 16.06 }
+        - { label: Counted step by step, value: 15.53 }
+      steps:
+        - show: 1
+          say: The shortcut gives 16.06 billion. Two corrections turn it into a real count.
+        - tag: "−1.05B: a lookup is a copy"
+          say: The embedding table holds 525 million parameters, but a lookup is a copy. That removes 1.05 billion.
+        - tag: "+0.52B: attention"
+          say: Attention over 1,000 tokens of context adds 0.52 billion that no parameter accounts for.
+        - show: 2
+          highlight: Counted step by step
+          tag: within 4%
+          say: Counting every step of the forward pass gives 15.53 billion, within 4% of the shortcut.
+
+    - type: stats
+      heading: Attention grows with **context**
+      steps:
+        - say: But the attention term grows with context.
+        - add: { value: "0.52B", label: "attention FLOPs per token at 1,000 tokens" }
+          say: At 1,000 tokens, attention adds half a billion FLOPs per token.
+        - add: { value: "4.3B", label: "at 8,192 tokens: 22% of the total" }
+          say: At 8,192 tokens, it's 4.3 billion, 22% of the total.
+        - add: { value: "82B", label: "per token at 128,000 tokens: 5× the shortcut" }
+          at: 128,000
+          say: At 128,000 tokens, the per-token cost becomes 82 billion, five times the shortcut.
+
+    - type: statement
+      text: "“2 × parameters” is a rule for **short** contexts."
+      steps:
+        - speaker: skeptic
+          say: So a forward pass always costs 2 FLOPs per parameter?
+        - say: Only for short contexts. At long context, attention takes over the bill.
+
+    # ---------- Einsum ----------
+    - type: bullets
+      chapter: Reading einsum
+      heading: '`torch.einsum("btd,df->btf", x, W)`'
+      steps:
+        - say: >-
+            Now the line from the start. Code needs a compact way to say which axes get multiplied and
+            summed. Einsum notation gives every axis a letter.
+        - add: { text: "`btd`: the input x", sub: "batch, token, and the model's 4,096 numbers" }
+          say: B T D names the axes of x. Batch, token, and the 4,096 numbers.
+        - add: { text: "`df`: the weight W", sub: "4,096 in, 14,336 out" }
+          say: D F names the weight. 4,096 in, 14,336 out.
+        - add: { text: "`btf`: the result", sub: "batch, token, and the MLP's 14,336 numbers" }
+          say: B T F names the result.
+        - add: { text: "`d` is missing from the output", sub: "so it gets summed: a dot product of length 4,096" }
+          say: >-
+            The rule is that any letter missing from the output gets summed. D is in both inputs but
+            not the output, so that's a dot product of length 4,096 for every b, t and f.
+        - add: { text: "Result: (B, T, 14336)", sub: "the same as x @ W, read straight from the string" }
+          say: The result is B by T by 14,336, read straight from the string.
+
+    # ---------- Misconceptions ----------
+    - type: bullets
+      chapter: Common misconceptions
+      heading: What it **doesn't** take
+      style: warn
+      steps:
+        - speaker: skeptic
+          say: Don't you need advanced math to understand LLMs?
+        - add: { text: "High-school algebra is enough", sub: "a forward pass is multiplying and adding" }
+          say: >-
+            No. A forward pass is multiplication and addition, plus a few exponentials and square roots.
+            Training adds derivatives, which Part 7 builds from the slope of a line.
+        - speaker: skeptic
+          say: But tensors are something exotic.
+        - add: { text: "A tensor is numbers plus a shape", sub: "a list is a 1-axis tensor, a grid a 2-axis one" }
+          say: >-
+            In machine learning, a tensor is a block of numbers with a shape. A PyTorch tensor and a
+            NumPy array are both just numbers plus a shape.
+        - add: { text: "The 0.1% still matters", sub: "without curved functions, the stack collapses into one multiply" }
+          say: >-
+            The functions that aren't matrix multiplies are a tiny share of the work, but without them
+            a stack of matrix multiplies collapses into one. Part 3 shows why.
+
+    # ---------- The series ----------
+    - type: seriesmap
+      chapter: Four toolkits, 16 parts
+      heading: Four **toolkits**, 16 parts
+      steps:
+        - highlight: [1, 2, 3, 11, 12, 13]
+          say: >-
+            Everything today used one toolkit, **linear algebra**: what the model computes. It comes
+            back later for attention, rotary positions and low-rank compression.
+        - highlight: [4, 5, 6, 16]
+          say: Probability and information cover what the outputs mean, and how the training loss measures surprise.
+        - highlight: [7, 8, 9, 10]
+          say: Calculus and optimization cover how 8 billion numbers get learned.
+        - highlight: [14, 15]
+          say: And numerics and counting cover the cost, from 4-bit numbers to scaling laws.
+
+    - type: bullets
+      chapter: Recap
+      heading: The math you need
+      steps:
+        - add: { text: "Scalar, vector, matrix, tensor", sub: "a shape is the list of axis sizes" }
+          say: So, to recap. A scalar is a number, a vector a list, a matrix a grid, and a tensor a block with any number of axes.
+        - add: { text: "(m × k) times (k × n) → (m × n)", sub: "about 2mkn FLOPs" }
+          say: A matrix multiply is a grid of dot products. Inner sizes match and vanish, and it costs about 2mkn FLOPs.
+        - add: { text: "15.5B FLOPs per token in Llama 3.1 8B", sub: "more than 99.9% of it dot products" }
+          say: >-
+            An LLM is dot products plus bookkeeping. Track the **shapes**, and you can follow the whole
+            model.
+
+    - type: seriesmap
+      heading: Next, **Part 2**
+      steps:
+        - highlight: [2]
+          say: >-
+            Next is Part 2, a closer look at the dot product: what length and angle mean, and why two
+            random vectors in 4,096 dimensions are almost always nearly perpendicular.
+
+    - type: outro
+      title: Read the full article
+      url: vidyal.ai
+      path: /blog/math-for-llms
+      next: "The full shape table, and code you can run"
+      steps:
+        - say: The full article, with the complete shape table and code you can run, is on vidyal.ai.
+
+    - type: endcard
+      kicker: The Math Behind LLMs
+      title: Keep learning
+      url: vidyal.ai
+      path: /series/llm-math
+      teaser: "Vectors and **dot products**"
+      steps:
+        - say: Thanks for watching. Next in the series, vectors and dot products. Subscribe so you don't miss it.
+          minDuration: 12
+
+shorts:
+  - id: short-dot-products
+    title: "15.5 billion operations per token, and nearly all are this #shorts"
+    description: More than 99.9% of the arithmetic inside an LLM is one calculation you learned in school.
+    hashtags: ["#LLM", "#Math", "#shorts"]
+    scenes:
+      - type: statement
+        text: "**15.5 billion** operations. Per token."
+        steps:
+          - say: To write one token, Llama 3.1 8B does 15.5 billion operations.
+      - type: statement
+        text: "1×7 + 2×9 + 3×11 = **58**"
+        sub: "[1, 2, 3] · [7, 9, 11]"
+        steps:
+          - say: More than 99.9% of them are this.
+          - say: Multiply two lists position by position, then add up the results. That's a dot product.
+      - type: statement
+        text: "Billions of **dot products**."
+        steps:
+          - say: >-
+              A twelve-year-old can do one on paper. An LLM does billions of them, which is where those
+              15.5 billion operations go.
+
+  - id: short-shape-rule
+    title: "The one matrix rule worth memorizing #shorts"
+    description: Matrix shapes in one rule. It tells you every shape inside an LLM.
+    hashtags: ["#LLM", "#Math", "#shorts"]
+    scenes:
+      - type: statement
+        text: "The one matrix rule worth **memorizing**."
+        steps:
+          - say: Here's the one matrix rule worth memorizing.
+      - type: statement
+        text: "(m × k) times (k × n) → (m × n)"
+        sub: "Inner sizes match and vanish."
+        subStep: 1
+        steps:
+          - say: An m by k matrix times a k by n matrix gives m by n.
+          - say: The inner sizes must match, and they disappear. The outer sizes survive.
+      - type: stats
+        heading: Order matters
+        steps:
+          - add: { value: "2 × 2", label: "(2 × 3) times (3 × 2)", count: false }
+            say: So 2 by 3, times 3 by 2, gives 2 by 2.
+          - add: { value: "3 × 3", label: "(3 × 2) times (2 × 3)", count: false }
+            say: Flip the order, and you get 3 by 3.
+      - type: statement
+        text: "Track the **shapes**."
+        steps:
+          - say: Every shape inside an LLM follows that rule. It's the one matrix rule worth memorizing.
+
+  - id: short-long-context
+    title: "The LLM cost rule that's 5× off #shorts"
+    description: "\"2 FLOPs per parameter\" works for short prompts. At 128,000 tokens of context, it's off by 5×."
+    hashtags: ["#LLM", "#Math", "#shorts"]
+    scenes:
+      - type: statement
+        text: "A famous LLM cost rule is **5× off**."
+        steps:
+          - say: A famous rule for LLM cost is five times off at long context.
+      - type: stats
+        heading: FLOPs per token
+        steps:
+          - add: { value: "16B", label: "the rule: 2 × 8.03B parameters" }
+            say: The rule says a token costs 2 FLOPs per parameter. For Llama 3.1 8B, about 16 billion.
+          - add: { value: "15.5B", label: "actual, at 1,000 tokens of context" }
+            say: At 1,000 tokens of context, that's close. The real count is 15.5 billion.
+      - type: stats
+        heading: At 128,000 tokens
+        steps:
+          - add: { value: "82B", label: "FLOPs per token: 5× the rule" }
+            say: At 128,000 tokens, it's 82 billion, because attention grows with context.
+      - type: statement
+        text: "A rule for **short** contexts."
+        steps:
+          - say: Two times parameters is a rule for short contexts. At long context, it's five times off.

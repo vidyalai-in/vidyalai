@@ -1,0 +1,26 @@
+1
+00:00:00,150 --> 00:00:06,400
+To write one token, Llama 3.1 8B does
+15.5 billion operations.
+
+2
+00:00:07,417 --> 00:00:10,767
+More than 99.9% of them are this.
+
+3
+00:00:11,383 --> 00:00:15,908
+Multiply two lists position by
+position, then add up the results.
+
+4
+00:00:16,208 --> 00:00:18,008
+That's a dot product.
+
+5
+00:00:19,017 --> 00:00:21,667
+A twelve-year-old can do one on paper.
+
+6
+00:00:21,967 --> 00:00:28,392
+An LLM does billions of them, which is where
+those 15.5 billion operations go.

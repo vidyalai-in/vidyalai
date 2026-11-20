@@ -9,7 +9,8 @@
 //   node video/tools/upload.mjs analytics video/<slug> [--since 2026-11-01]
 //
 // upload: every video goes up private, with title, description, tags, category, language, audience,
-// AI disclosure, captions, thumbnail (main) and playlist. publish: makes them public (main first) and
+// AI disclosure, captions, thumbnail (main) and playlist (created, public, if the channel has none by that
+// title yet). publish: makes them public (main first) and
 // posts the comment from main/pinned-comment.txt. analytics: pulls the main video's audience-retention
 // curve (YouTube Analytics API) and maps it onto the scenes in main/scenes.json, so the next script can
 // fix the places where viewers leave; writes youtube/main/retention.md. Progress is saved in youtube/uploaded.json after each
@@ -135,6 +136,15 @@ function loadKit(dir) {
       captions: join(kitDir, `shorts/${s.id}/captions.en.srt`),
     })),
   ].filter((e) => !only || only.includes(e.id));
+  // Check what YouTube would reject before any upload session starts (it refuses < and > anywhere here).
+  const bad = entries.flatMap((e) => [
+    ...[['title', e.title], ['description', e.description], ...e.tags.map((t) => ['tag', t])]
+      .filter(([, t]) => /[<>]/.test(t))
+      .map(([what, t]) => `${e.id}: ${what} contains < or >: ${t.match(/.{0,30}[<>].{0,30}/)[0]}`),
+    ...(e.title.length > 100 ? [`${e.id}: title is ${e.title.length} chars (max 100)`] : []),
+    ...(e.description.length > 5000 ? [`${e.id}: description is ${e.description.length} chars (max 5,000)`] : []),
+  ]);
+  if (bad.length) fail(`YouTube would reject this metadata:\n  ${bad.join('\n  ')}\nFix it in script.yaml and rebuild, or edit the files in youtube/.`);
   const statePath = join(kitDir, 'uploaded.json');
   const state = existsSync(statePath) ? JSON.parse(readFileSync(statePath, 'utf8')) : { videos: {} };
   const save = () => {
@@ -145,7 +155,8 @@ function loadKit(dir) {
   const endcard = existsSync(join(kitDir, 'main/endcard.txt'))
     ? read('main/endcard.txt')
     : readFileSync(join(kitDir, 'UPLOAD.md'), 'utf8').match(/from (\d+:\d\d:\d\d) in Studio/)?.[1];
-  return { slug, script, kitDir, entries, state, save, endcard, playlist: script.youtube?.playlist ?? articleSeries(script).name };
+  const series = articleSeries(script);
+  return { slug, script, kitDir, entries, state, save, endcard, series, playlist: script.youtube?.playlist ?? series.name };
 }
 
 /** The series of the article a video is made from (frontmatter `series`, default LLM System Design). */
@@ -254,13 +265,13 @@ async function upload(dir) {
       const m = metadata(e);
       m.snippet.description = `${m.snippet.description.slice(0, 80).replace(/\n/g, ' ')}… (${m.snippet.description.length} chars)`;
       console.log(JSON.stringify(m, null, 2));
-      console.log(`  + captions ${relative(ROOT, e.captions)}${e.thumbnail ? `, thumbnail ${relative(ROOT, e.thumbnail)}` : ''}, playlist "${kit.playlist}"`);
+      console.log(`  + captions ${relative(ROOT, e.captions)}${e.thumbnail ? `, thumbnail ${relative(ROOT, e.thumbnail)}` : ''}, playlist "${kit.playlist}" (created if missing)`);
     }
     return;
   }
   const client = authorized();
   const yt = google.youtube({ version: 'v3', auth: client });
-  state.playlistId ??= await findPlaylist(yt, kit.playlist);
+  state.playlistId ??= (await findPlaylist(yt, kit.playlist)) ?? (await createPlaylist(yt, kit));
   save();
 
   for (const e of entries) {
@@ -335,7 +346,20 @@ async function findPlaylist(yt, title) {
     if (hit) return hit.id;
     pageToken = data.nextPageToken;
   } while (pageToken);
-  fail(`No playlist titled "${title}" on this channel. Create it in YouTube Studio first.`);
+  return null;
+}
+
+/** A public playlist for the series, described by its blurb; costs 50 quota units. */
+async function createPlaylist(yt, { playlist: title, series }) {
+  const description = `${series.blurb}\n\nEvery part, with the full articles: https://vidyal.ai/series/${series.slug}/`;
+  const { data } = await yt.playlists.insert({
+    part: ['snippet', 'status'],
+    requestBody: { snippet: { title, description, defaultLanguage: 'en' }, status: { privacyStatus: 'public' } },
+  });
+  const url = `https://www.youtube.com/playlist?list=${data.id}`;
+  console.log(`Created playlist "${title}": ${url}`);
+  console.log(`  Add it to src/data/series.mjs as playlist: '${url}' on the ${series.slug} entry.`);
+  return data.id;
 }
 
 function manualChecklist(kit) {

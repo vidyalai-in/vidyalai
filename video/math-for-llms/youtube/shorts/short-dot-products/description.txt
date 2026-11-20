@@ -1,0 +1,9 @@
+More than 99.9% of the arithmetic inside an LLM is one calculation you learned in school.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/math-for-llms/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#LLM #Math #shorts

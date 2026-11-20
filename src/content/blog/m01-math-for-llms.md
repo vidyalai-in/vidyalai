@@ -7,6 +7,7 @@ tags: ["math", "transformers", "architecture", "embeddings", "tokens"]
 series: "llm-math"
 seriesOrder: 1
 pubDate: 2026-04-15
+video: { youtube: "vDQDvqS1XGk", duration: "11:52", url: "https://youtu.be/vDQDvqS1XGk" }
 ---
 
 ## TL;DR

@@ -1,0 +1,9 @@
+"2 FLOPs per parameter" works for short prompts. At 128,000 tokens of context, it's off by 5×.
+
+Watch the full breakdown: tap the related video link on this Short.
+Read the full article: vidyal.ai/blog/math-for-llms/
+
+Narration: AI-generated voice (Kokoro open-weight text-to-speech). Script, diagrams and sources by VidyalAI.
+© 2026 VidyalAI. All rights reserved.
+
+#LLM #Math #shorts

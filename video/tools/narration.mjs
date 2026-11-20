@@ -42,10 +42,13 @@ function lateReveal(step, ti) {
   if (!step.add || step.at !== undefined) return null;
   const a = step.add;
   const label = typeof a === 'string' ? a : (a.text ?? a.label ?? a.name ?? '');
-  const key = toks(label).find((w) => !STOP.has(w) && w.length > 2);
-  if (!key) return null;
-  const i = toks(step.say).findIndex((w) => w.startsWith(key.slice(0, 5)));
-  if (i < 0 || i / WPS < 2) return null;
+  // The item counts as named when any of its words is said, so take the earliest one.
+  const keys = toks(label).filter((w) => !STOP.has(w) && w.length > 2);
+  const said = toks(step.say);
+  const hits = keys.map((k) => said.findIndex((w) => w.startsWith(k.slice(0, 5)))).filter((i) => i >= 0);
+  if (!hits.length) return null;
+  const i = Math.min(...hits);
+  if (i / WPS < 2) return null;
   const fix = ti === 0 ? 'split: lead-in on its own first step, item on the next' : `try at: "${toks(step.say)[i]}"`;
   return `"${label}" is named ~${(i / WPS).toFixed(1)} s in (${fix})`;
 }

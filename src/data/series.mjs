@@ -26,6 +26,7 @@ export const SERIES = [
       'The math inside a language model, built up from high-school algebra: vectors, probability, gradients, backpropagation, attention, RoPE and the equations behind training and alignment.',
     total: 16,
     filePrefix: 'm',
+    playlist: 'https://www.youtube.com/playlist?list=PLd9ntRn9N9V0',
   },
   {
     slug: 'llm-from-scratch',

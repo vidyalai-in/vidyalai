@@ -1,0 +1,752 @@
+1
+00:00:00,150 --> 00:00:05,400
+To write a single token, Llama 3.1 8B
+does a lot of arithmetic.
+
+2
+00:00:06,017 --> 00:00:09,017
+About 15.5 billion operations.
+
+3
+00:00:09,617 --> 00:00:13,917
+More than 99.9% of them are
+one calculation.
+
+4
+00:00:14,217 --> 00:00:19,442
+Multiply two lists of numbers, position by
+position, and add up the results.
+
+5
+00:00:20,450 --> 00:00:23,050
+A twelve-year-old can do that on paper.
+
+6
+00:00:23,650 --> 00:00:25,750
+The hard part is bookkeeping.
+
+7
+00:00:26,050 --> 00:00:31,250
+Billions of numbers, in grids of different
+sizes, and knowing which grid is which.
+
+8
+00:00:32,250 --> 00:00:37,235
+By the end of this video, you'll be able to
+read an einsum line from real model
+
+9
+00:00:37,235 --> 00:00:37,550
+code.
+
+10
+00:00:38,150 --> 00:00:42,125
+And say what shape it produces, and how
+much arithmetic it costs.
+
+11
+00:00:45,150 --> 00:00:50,225
+This is Part 1 of a 16-part series on the
+math inside language models.
+
+12
+00:00:50,525 --> 00:00:53,675
+If you remember high-school
+algebra, that's enough.
+
+13
+00:00:54,683 --> 00:00:56,483
+Start with a spreadsheet.
+
+14
+00:00:57,083 --> 00:00:59,483
+One cell holds a single number.
+
+15
+00:00:59,783 --> 00:01:01,358
+That's a scalar.
+
+16
+00:01:01,983 --> 00:01:05,408
+A column is an ordered list of
+numbers, a vector.
+
+17
+00:01:05,708 --> 00:01:10,383
+Llama turns each token into a
+vector of 4,096 numbers.
+
+18
+00:01:10,983 --> 00:01:14,308
+A whole sheet, with rows and
+columns, is a matrix.
+
+19
+00:01:14,608 --> 00:01:17,383
+Almost every learned weight lives in one.
+
+20
+00:01:17,983 --> 00:01:22,258
+And a workbook of identical sheets is
+a tensor with three axes.
+
+21
+00:01:22,558 --> 00:01:27,083
+In general, a tensor is a block of
+numbers with any number of axes.
+
+22
+00:01:28,083 --> 00:01:31,258
+The list of axis sizes is the
+tensor's shape.
+
+23
+00:01:31,883 --> 00:01:40,260
+Two sentences of five tokens, each token 4,096
+numbers, make a tensor of shape 2, 5,
+
+24
+00:01:40,260 --> 00:01:40,858
+4,096.
+
+25
+00:01:41,483 --> 00:01:44,533
+To count its numbers, multiply the sizes.
+
+26
+00:01:44,833 --> 00:01:47,558
+That's 40,960.
+
+27
+00:01:48,583 --> 00:01:51,208
+The analogy breaks in three places.
+
+28
+00:01:51,817 --> 00:01:57,736
+A model's 4,096 numbers have no names, and
+one rarely means anything you could
+
+29
+00:01:57,736 --> 00:01:58,192
+label.
+
+30
+00:01:58,817 --> 00:02:02,492
+The attention code inside Llama
+juggles five axes.
+
+31
+00:02:03,117 --> 00:02:05,467
+And nobody typed the numbers in.
+
+32
+00:02:05,767 --> 00:02:08,442
+All 8 billion were learned in training.
+
+33
+00:02:09,450 --> 00:02:11,300
+Now the one operation.
+
+34
+00:02:11,600 --> 00:02:16,599
+The dot product takes two lists of the same
+length, multiplies them position by
+
+35
+00:02:16,599 --> 00:02:18,750
+position, and adds up the results.
+
+36
+00:02:19,350 --> 00:02:21,575
+One times seven is 7.
+
+37
+00:02:22,183 --> 00:02:24,258
+Two times nine is 18.
+
+38
+00:02:24,883 --> 00:02:27,408
+Three times eleven is 33.
+
+39
+00:02:28,017 --> 00:02:30,992
+Add them up, and the dot product is 58.
+
+40
+00:02:31,292 --> 00:02:34,442
+In a spreadsheet, that's the
+SUMPRODUCT formula.
+
+41
+00:02:35,450 --> 00:02:39,750
+A matrix multiply is that same
+formula, filled across a grid.
+
+42
+00:02:40,050 --> 00:02:45,250
+Take a 2 by 3 matrix, A, with rows
+1, 2, 3 and 4, 5, 6.
+
+43
+00:02:45,850 --> 00:02:51,500
+And a 3 by 2 matrix, B, with columns
+7, 9, 11 and 8, 10, 12.
+
+44
+00:02:52,517 --> 00:02:57,542
+Each entry of the answer is one dot product,
+a row of A with a column of B.
+
+45
+00:02:58,150 --> 00:03:01,025
+Row 1 with column 1 is our 58.
+
+46
+00:03:01,650 --> 00:03:04,525
+Row 1 with column 2 gives 64.
+
+47
+00:03:05,150 --> 00:03:08,950
+Row 2 with column 1 gives 139.
+
+48
+00:03:09,550 --> 00:03:13,375
+And row 2 with column 2 gives 154.
+
+49
+00:03:13,675 --> 00:03:16,150
+Four entries, four dot products.
+
+50
+00:03:17,150 --> 00:03:20,250
+A dot product needs two lists
+of the same length.
+
+51
+00:03:20,550 --> 00:03:25,250
+So a row of the first matrix must be as
+long as a column of the second.
+
+52
+00:03:25,550 --> 00:03:28,300
+That gives the one rule worth memorizing.
+
+53
+00:03:28,917 --> 00:03:32,142
+The inner sizes must match,
+and they disappear.
+
+54
+00:03:32,442 --> 00:03:34,567
+The outer sizes survive.
+
+55
+00:03:35,583 --> 00:03:36,908
+Your turn.
+
+56
+00:03:37,208 --> 00:03:42,008
+Our example was 2 by 3, times 3 by
+2, which gave 2 by 2.
+
+57
+00:03:42,308 --> 00:03:43,883
+Flip the order.
+
+58
+00:03:44,183 --> 00:03:45,658
+What comes out?
+
+59
+00:03:50,683 --> 00:03:52,333
+3 by 3.
+
+60
+00:03:52,633 --> 00:03:57,708
+The inner sizes are both 2, so it works, but
+the result is a different size.
+
+61
+00:03:58,008 --> 00:04:01,108
+Order matters in matrix multiplication.
+
+62
+00:04:02,117 --> 00:04:04,467
+The shape also tells you the cost.
+
+63
+00:04:04,767 --> 00:04:07,392
+The result has m times n entries.
+
+64
+00:04:08,017 --> 00:04:13,242
+Each is a dot product of length k, so k
+multiplications and k additions.
+
+65
+00:04:13,850 --> 00:04:17,425
+Each one is called a FLOP, a
+floating-point operation.
+
+66
+00:04:17,725 --> 00:04:20,525
+So about 2mkn FLOPs in all.
+
+67
+00:04:21,550 --> 00:04:23,025
+A real one.
+
+68
+00:04:23,325 --> 00:04:33,224
+Llama 3.1 8B's query projection multiplies each
+token's 4,096 numbers by a 4,096 by
+
+69
+00:04:33,224 --> 00:04:34,775
+4,096 matrix.
+
+70
+00:04:35,383 --> 00:04:39,308
+For one token, that's 33.6 million FLOPs.
+
+71
+00:04:39,917 --> 00:04:46,867
+For eight prompts of 1,000 tokens, stacked
+into 8,000 rows, it's 268 billion.
+
+72
+00:04:47,483 --> 00:04:49,283
+Only m changed.
+
+73
+00:04:49,583 --> 00:04:51,633
+The weights didn't change at all.
+
+74
+00:04:51,933 --> 00:04:56,808
+They're reused 8,000 times, which is
+why GPUs like big batches.
+
+75
+00:04:57,817 --> 00:05:01,992
+Now let's follow real data
+through Llama 3.1 8B.
+
+76
+00:05:02,292 --> 00:05:06,917
+Every shape in it comes from a handful of
+numbers in its config file.
+
+77
+00:05:07,517 --> 00:05:11,642
+Each token is a vector of 4,096 numbers.
+
+78
+00:05:12,250 --> 00:05:17,650
+There are 32 blocks, each with 32
+query heads of 128 numbers.
+
+79
+00:05:18,250 --> 00:05:22,975
+Keys and values get only 8 heads, each
+shared by 4 query heads.
+
+80
+00:05:23,275 --> 00:05:25,650
+That's called grouped-query attention.
+
+81
+00:05:26,250 --> 00:05:31,675
+The MLP inside each block is 14,336 wide.
+
+82
+00:05:31,975 --> 00:05:37,300
+And the vocabulary has 128,256 tokens.
+
+83
+00:05:38,317 --> 00:05:40,467
+Here's the whole trip, in shapes.
+
+84
+00:05:40,767 --> 00:05:45,917
+B is the number of sequences in the batch, and
+T is the number of tokens in each.
+
+85
+00:05:46,517 --> 00:05:50,342
+Token IDs, B by T, go through
+the embedding lookup.
+
+86
+00:05:50,642 --> 00:05:53,467
+That's a copy, with zero arithmetic.
+
+87
+00:05:53,767 --> 00:05:57,942
+Out comes the stream: B by T by 4,096.
+
+88
+00:05:58,550 --> 00:06:06,288
+Inside each block, the query projection's
+4,096 numbers are cut into 32 heads of
+
+89
+00:06:06,288 --> 00:06:06,675
+128.
+
+90
+00:06:06,975 --> 00:06:09,650
+That's a reshape, with no arithmetic.
+
+91
+00:06:09,950 --> 00:06:12,225
+Keys and values get 8 heads.
+
+92
+00:06:12,850 --> 00:06:16,825
+Then each head compares a token
+with every visible token.
+
+93
+00:06:17,125 --> 00:06:21,875
+That's a T by T grid of scores per head,
+the only place where tokens meet.
+
+94
+00:06:22,483 --> 00:06:26,908
+The values are mixed and
+projected back to 4,096.
+
+95
+00:06:27,208 --> 00:06:32,758
+Then the MLP widens each token
+to 14,336 numbers.
+
+96
+00:06:33,383 --> 00:06:36,558
+And brings it back down to 4,096.
+
+97
+00:06:36,858 --> 00:06:42,858
+A block takes in B by T by 4,096, and
+hands out exactly the same shape.
+
+98
+00:06:43,158 --> 00:06:46,633
+That's why 32 identical
+blocks can be stacked.
+
+99
+00:06:47,250 --> 00:06:54,705
+After the last block, an output table turns each
+token into 128,256 scores, one for
+
+100
+00:06:54,705 --> 00:06:57,400
+every token in the vocabulary.
+
+101
+00:06:58,017 --> 00:07:03,467
+The scores grid grows with T squared, and every
+other tensor grows with B times T.
+
+102
+00:07:04,483 --> 00:07:07,933
+Count the FLOPs of every step,
+and one part dominates.
+
+103
+00:07:08,550 --> 00:07:14,425
+The three MLP matrices do 75% of the
+arithmetic spent on weights.
+
+104
+00:07:14,725 --> 00:07:20,100
+The attention projections do 18%,
+and the output table 7%.
+
+105
+00:07:21,117 --> 00:07:23,342
+Here's a shortcut people use.
+
+106
+00:07:23,642 --> 00:07:28,617
+Llama 3.1 8B has 8.03 billion parameters.
+
+107
+00:07:28,917 --> 00:07:32,542
+How many FLOPs per token does the
+rule of thumb predict?
+
+108
+00:07:37,550 --> 00:07:39,450
+About 16 billion.
+
+109
+00:07:39,750 --> 00:07:44,275
+Two FLOPs per parameter, one multiply
+and one add for every weight.
+
+110
+00:07:45,283 --> 00:07:48,583
+The shortcut gives 16.06 billion.
+
+111
+00:07:48,883 --> 00:07:51,733
+Two corrections turn it into a real count.
+
+112
+00:07:52,350 --> 00:07:58,300
+The embedding table holds 525 million
+parameters, but a lookup is a copy.
+
+113
+00:07:58,600 --> 00:08:01,450
+That removes 1.05 billion.
+
+114
+00:08:02,050 --> 00:08:09,348
+Attention over 1,000 tokens of context adds 0.52
+billion that no parameter accounts
+
+115
+00:08:09,348 --> 00:08:09,700
+for.
+
+116
+00:08:10,317 --> 00:08:16,562
+Counting every step of the forward pass gives
+15.53 billion, within 4% of the
+
+117
+00:08:16,562 --> 00:08:17,292
+shortcut.
+
+118
+00:08:18,317 --> 00:08:21,192
+But the attention term grows with context.
+
+119
+00:08:21,817 --> 00:08:26,667
+At 1,000 tokens, attention adds half a
+billion FLOPs per token.
+
+120
+00:08:27,283 --> 00:08:33,933
+At 8,192 tokens, it's 4.3
+billion, 22% of the total.
+
+121
+00:08:34,550 --> 00:08:41,850
+At 128,000 tokens, the per-token cost becomes
+82 billion, five times the shortcut.
+
+122
+00:08:42,850 --> 00:08:46,925
+So a forward pass always costs 2
+FLOPs per parameter?
+
+123
+00:08:47,550 --> 00:08:49,625
+Only for short contexts.
+
+124
+00:08:49,925 --> 00:08:53,325
+At long context, attention
+takes over the bill.
+
+125
+00:08:54,350 --> 00:08:56,375
+Now the line from the start.
+
+126
+00:08:56,675 --> 00:09:01,150
+Code needs a compact way to say which
+axes get multiplied and summed.
+
+127
+00:09:01,450 --> 00:09:04,950
+Einsum notation gives every axis a letter.
+
+128
+00:09:05,550 --> 00:09:08,250
+B T D names the axes of x.
+
+129
+00:09:08,550 --> 00:09:12,275
+Batch, token, and the 4,096 numbers.
+
+130
+00:09:12,883 --> 00:09:14,758
+D F names the weight.
+
+131
+00:09:15,058 --> 00:09:19,833
+4,096 in, 14,336 out.
+
+132
+00:09:20,450 --> 00:09:22,750
+B T F names the result.
+
+133
+00:09:23,350 --> 00:09:27,200
+The rule is that any letter missing
+from the output gets summed.
+
+134
+00:09:27,500 --> 00:09:34,119
+D is in both inputs but not the output, so
+that's a dot product of length 4,096 for
+
+135
+00:09:34,119 --> 00:09:35,475
+every b, t and f.
+
+136
+00:09:36,083 --> 00:09:42,083
+The result is B by T by 14,336, read
+straight from the string.
+
+137
+00:09:43,083 --> 00:09:47,108
+Don't you need advanced math
+to understand LLMs?
+
+138
+00:09:47,717 --> 00:09:48,942
+No.
+
+139
+00:09:49,242 --> 00:09:54,572
+A forward pass is multiplication and addition,
+plus a few exponentials and square
+
+140
+00:09:54,572 --> 00:09:54,967
+roots.
+
+141
+00:09:55,267 --> 00:09:59,917
+Training adds derivatives, which Part 7
+builds from the slope of a line.
+
+142
+00:10:00,517 --> 00:10:03,342
+But tensors are something exotic.
+
+143
+00:10:03,950 --> 00:10:07,975
+In machine learning, a tensor is a
+block of numbers with a shape.
+
+144
+00:10:08,275 --> 00:10:13,000
+A PyTorch tensor and a NumPy array are
+both just numbers plus a shape.
+
+145
+00:10:13,617 --> 00:10:18,443
+The functions that aren't matrix multiplies
+are a tiny share of the work, but
+
+146
+00:10:18,443 --> 00:10:22,267
+without them a stack of matrix
+multiplies collapses into one.
+
+147
+00:10:22,567 --> 00:10:24,417
+Part 3 shows why.
+
+148
+00:10:25,417 --> 00:10:30,567
+Everything today used one toolkit, linear
+algebra: what the model computes.
+
+149
+00:10:30,867 --> 00:10:35,892
+It comes back later for attention, rotary
+positions and low-rank compression.
+
+150
+00:10:36,517 --> 00:10:41,560
+Probability and information cover what the
+outputs mean, and how the training loss
+
+151
+00:10:41,560 --> 00:10:42,667
+measures surprise.
+
+152
+00:10:43,283 --> 00:10:47,958
+Calculus and optimization cover how 8
+billion numbers get learned.
+
+153
+00:10:48,583 --> 00:10:53,658
+And numerics and counting cover the cost,
+from 4-bit numbers to scaling laws.
+
+154
+00:10:54,683 --> 00:10:56,283
+So, to recap.
+
+155
+00:10:56,583 --> 00:11:02,051
+A scalar is a number, a vector a list, a matrix
+a grid, and a tensor a block with
+
+156
+00:11:02,051 --> 00:11:03,333
+any number of axes.
+
+157
+00:11:03,950 --> 00:11:07,225
+A matrix multiply is a grid
+of dot products.
+
+158
+00:11:07,525 --> 00:11:12,550
+Inner sizes match and vanish, and it
+costs about 2mkn FLOPs.
+
+159
+00:11:13,150 --> 00:11:16,450
+An LLM is dot products plus bookkeeping.
+
+160
+00:11:16,750 --> 00:11:19,900
+Track the shapes, and you can
+follow the whole model.
+
+161
+00:11:20,917 --> 00:11:26,979
+Next is Part 2, a closer look at the dot
+product: what length and angle mean, and
+
+162
+00:11:26,979 --> 00:11:33,117
+why two random vectors in 4,096 dimensions are
+almost always nearly perpendicular.
+
+163
+00:11:34,117 --> 00:11:38,815
+The full article, with the complete shape
+table and code you can run, is on
+
+164
+00:11:38,815 --> 00:11:39,442
+vidyal.ai.
+
+165
+00:11:40,450 --> 00:11:42,150
+Thanks for watching.
+
+166
+00:11:42,450 --> 00:11:45,700
+Next in the series, vectors
+and dot products.
+
+167
+00:11:46,000 --> 00:11:48,075
+Subscribe so you don't miss it.

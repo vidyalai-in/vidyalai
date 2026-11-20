@@ -1,0 +1,39 @@
+{
+  "videos": {
+    "main": {
+      "steps": {
+        "thumbnail": true,
+        "captions": true,
+        "playlist": true,
+        "comment": true
+      },
+      "id": "vDQDvqS1XGk",
+      "published": true
+    },
+    "short-dot-products": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "s5GVYvyoWp4",
+      "published": true
+    },
+    "short-shape-rule": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "FUbW2yMmFck",
+      "published": true
+    },
+    "short-long-context": {
+      "steps": {
+        "captions": true,
+        "playlist": true
+      },
+      "id": "k4RUbdOl4UY",
+      "published": true
+    }
+  },
+  "playlistId": "PLd9ntRn9N9V0"
+}

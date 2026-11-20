@@ -1,0 +1,2 @@
+Quick check: what shape does (8000 × 4096) times (4096 × 14336) give? Answer in the replies.
+The full article, with every number, the shape table and runnable code: https://vidyal.ai/blog/math-for-llms/

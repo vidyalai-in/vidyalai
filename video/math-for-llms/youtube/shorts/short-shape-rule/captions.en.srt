@@ -1,0 +1,35 @@
+1
+00:00:00,150 --> 00:00:03,150
+Here's the one matrix rule
+worth memorizing.
+
+2
+00:00:04,150 --> 00:00:08,600
+An m by k matrix times a k by n
+matrix gives m by n.
+
+3
+00:00:09,217 --> 00:00:12,442
+The inner sizes must match,
+and they disappear.
+
+4
+00:00:12,742 --> 00:00:14,867
+The outer sizes survive.
+
+5
+00:00:15,883 --> 00:00:19,783
+So 2 by 3, times 3 by 2, gives 2 by 2.
+
+6
+00:00:20,383 --> 00:00:23,208
+Flip the order, and you get 3 by 3.
+
+7
+00:00:24,217 --> 00:00:27,692
+Every shape inside an LLM
+follows that rule.
+
+8
+00:00:27,992 --> 00:00:30,967
+It's the one matrix rule worth memorizing.

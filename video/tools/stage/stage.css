@@ -571,6 +571,13 @@ code,
 }
 
 /* ---------- code ---------- */
+/* Code shows what you'd type: no font ligatures turning -> into an arrow or != into ≠. */
+code,
+.codeblock {
+  font-variant-ligatures: none;
+  font-feature-settings: 'calt' 0, 'liga' 0;
+}
+
 .codeblock {
   font-family: var(--mono);
   font-size: 44px;

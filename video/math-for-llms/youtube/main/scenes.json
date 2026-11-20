@@ -1,0 +1,237 @@
+{
+ "total": 712.3,
+ "scenes": [
+  {
+   "scene": 1,
+   "type": "stats",
+   "chapter": "One calculation",
+   "label": "Llama 3.1 8B, writing one token",
+   "start": 0,
+   "end": 20.3
+  },
+  {
+   "scene": 2,
+   "type": "statement",
+   "chapter": "One calculation",
+   "label": "A twelve-year-old can do it on paper.",
+   "start": 20.3,
+   "end": 32.1
+  },
+  {
+   "scene": 3,
+   "type": "statement",
+   "chapter": "One calculation",
+   "label": "By the end: read btd,df->btf",
+   "start": 32.1,
+   "end": 43
+  },
+  {
+   "scene": 4,
+   "type": "brand",
+   "chapter": "One calculation",
+   "label": "brand",
+   "start": 43,
+   "end": 45
+  },
+  {
+   "scene": 5,
+   "type": "seriesmap",
+   "chapter": "One calculation",
+   "label": "The Math You Need for LLMs",
+   "start": 45,
+   "end": 54.53
+  },
+  {
+   "scene": 6,
+   "type": "bullets",
+   "chapter": "Scalars, vectors, matrices, tensors",
+   "label": "Four objects, one spreadsheet",
+   "start": 54.53,
+   "end": 87.93
+  },
+  {
+   "scene": 7,
+   "type": "stats",
+   "chapter": "Scalars, vectors, matrices, tensors",
+   "label": "A shape is a list of sizes",
+   "start": 87.93,
+   "end": 108.43
+  },
+  {
+   "scene": 8,
+   "type": "bullets",
+   "chapter": "Scalars, vectors, matrices, tensors",
+   "label": "Where the spreadsheet breaks",
+   "start": 108.43,
+   "end": 129.3
+  },
+  {
+   "scene": 9,
+   "type": "stats",
+   "chapter": "The dot product",
+   "label": "[1, 2, 3] · [7, 9, 11]",
+   "start": 129.3,
+   "end": 155.3
+  },
+  {
+   "scene": 10,
+   "type": "code",
+   "chapter": "Matrix multiplication",
+   "label": "Two matrices",
+   "start": 155.3,
+   "end": 172.37
+  },
+  {
+   "scene": 11,
+   "type": "stats",
+   "chapter": "Matrix multiplication",
+   "label": "A × B is a grid of dot products",
+   "start": 172.37,
+   "end": 197
+  },
+  {
+   "scene": 12,
+   "type": "statement",
+   "chapter": "The shape rule",
+   "label": "(m × k) times (k × n) → (m × n)",
+   "start": 197,
+   "end": 215.43
+  },
+  {
+   "scene": 13,
+   "type": "quiz",
+   "chapter": "The shape rule",
+   "label": "(3 × 2) times (2 × 3) gives a matrix of what shape?",
+   "start": 215.43,
+   "end": 241.97
+  },
+  {
+   "scene": 14,
+   "type": "statement",
+   "chapter": "The shape rule",
+   "label": "Cost ≈ 2mkn FLOPs",
+   "start": 241.97,
+   "end": 261.4
+  },
+  {
+   "scene": 15,
+   "type": "stats",
+   "chapter": "The shape rule",
+   "label": "Llama's query projection: (… × 4,096) times (4,096 × 4,096)",
+   "start": 261.4,
+   "end": 297.67
+  },
+  {
+   "scene": 16,
+   "type": "bullets",
+   "chapter": "The shapes inside Llama 3.1 8B",
+   "label": "Seven numbers set every shape",
+   "start": 297.67,
+   "end": 338.17
+  },
+  {
+   "scene": 17,
+   "type": "diagram",
+   "chapter": "The shapes inside Llama 3.1 8B",
+   "label": "One forward pass, in shapes",
+   "start": 338.17,
+   "end": 424.33
+  },
+  {
+   "scene": 18,
+   "type": "chart",
+   "chapter": "The shapes inside Llama 3.1 8B",
+   "label": "Where the weight arithmetic goes",
+   "start": 424.33,
+   "end": 440.97
+  },
+  {
+   "scene": 19,
+   "type": "quiz",
+   "chapter": "2 × parameters, and where it breaks",
+   "label": "Llama 3.1 8B has 8.03B parameters. FLOPs per token, by the rule of thumb?",
+   "start": 440.97,
+   "end": 465.13
+  },
+  {
+   "scene": 20,
+   "type": "chart",
+   "chapter": "2 × parameters, and where it breaks",
+   "label": "Checking the shortcut",
+   "start": 465.13,
+   "end": 498.17
+  },
+  {
+   "scene": 21,
+   "type": "stats",
+   "chapter": "2 × parameters, and where it breaks",
+   "label": "Attention grows with context",
+   "start": 498.17,
+   "end": 522.7
+  },
+  {
+   "scene": 22,
+   "type": "statement",
+   "chapter": "2 × parameters, and where it breaks",
+   "label": "“2 × parameters” is a rule for short contexts.",
+   "start": 522.7,
+   "end": 534.2
+  },
+  {
+   "scene": 23,
+   "type": "bullets",
+   "chapter": "Reading einsum",
+   "label": "torch.einsum(\"btd,df->btf\", x, W)",
+   "start": 534.2,
+   "end": 582.93
+  },
+  {
+   "scene": 24,
+   "type": "bullets",
+   "chapter": "Common misconceptions",
+   "label": "What it doesn't take",
+   "start": 582.93,
+   "end": 625.27
+  },
+  {
+   "scene": 25,
+   "type": "seriesmap",
+   "chapter": "Four toolkits, 16 parts",
+   "label": "Four toolkits, 16 parts",
+   "start": 625.27,
+   "end": 654.53
+  },
+  {
+   "scene": 26,
+   "type": "bullets",
+   "chapter": "Recap",
+   "label": "The math you need",
+   "start": 654.53,
+   "end": 680.77
+  },
+  {
+   "scene": 27,
+   "type": "seriesmap",
+   "chapter": "Recap",
+   "label": "Next, Part 2",
+   "start": 680.77,
+   "end": 693.97
+  },
+  {
+   "scene": 28,
+   "type": "outro",
+   "chapter": "Recap",
+   "label": "Read the full article",
+   "start": 693.97,
+   "end": 700.3
+  },
+  {
+   "scene": 29,
+   "type": "endcard",
+   "chapter": "Recap",
+   "label": "Keep learning",
+   "start": 700.3,
+   "end": 712.3
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+The Math You Need for LLMs: Vectors, Matrices and Shapes | The Math Behind LLMs
+
+Alternatives:
+- 15.5 Billion Operations per Token: The One Calculation Inside Every LLM
+- Matrix Multiplication for LLMs, Explained with Llama 3.1 8B
